@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Scala Parser goes JavaScript</title>
+  </head>
+  <body>
+    <textarea id="inputArea">print "Hello"</textarea>
+	<br/>
+	<button onclick="checkSyntax();">Check Syntax</button>
+	<div id="output">Output</div>
+    <script type="text/javascript" src="../release/tigerpython-parser.js"></script>
+    <script type="text/javascript">
+	  function checkSyntax() {
+	    var inp = document.getElementById('inputArea');
+		var outp = document.getElementById('output');
+		TPyParser.rejectDeadCode = true;
+        var err = TPyParser.checkSyntax(inp.value);
+        if (err !== null) {
+  		  outp.innerHTML = err;
+		} else {
+		  outp.innerHTML = "-- no errors found --";
+		}
+	    console.log("Done");
+	  }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+# 2
+# PRINT_NEEDS_PARENTHESES
+s = "Hello World"
+print s

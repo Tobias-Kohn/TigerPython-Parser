@@ -1,0 +1,4 @@
+# 1
+# MISSING_RIGHT_BRACKET
+number = input("Enter a number"
+print(number ** 2)

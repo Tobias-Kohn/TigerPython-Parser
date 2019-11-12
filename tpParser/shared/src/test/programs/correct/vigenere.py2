@@ -1,0 +1,42 @@
+# Beispiel zur Vigenère-Verschlüsselung
+# Das Beispiel stammt aus dem Buch:
+# Simon Singh: Geheime Botschaften
+
+def encode_letter(letter, shift):
+    """Einen einzelnen Buchstaben ver- oder entschlüsseln."""
+    index = ord(letter) - ord('A')
+    index = (index + shift) % 26
+    return chr(index + ord('A'))
+
+def _encode(text, key, encode):
+    """Wenn 'encode=True' wird der Text ver- andonsten entschlüsselt."""
+    # Alles in Grossbuchstaben umwandeln und Satzzeichen entfernen:
+    text = [x for x in text.upper() if 'A' <= x <= 'Z']
+    key = key.upper()
+    code = ""
+    # Wir brauchen beim Entschlüsseln ein zusätzliches Minuszeichen:
+    if encode:
+        factor = 1
+    else:
+        factor = -1
+    # Alles Buchstaben im Text durchgehen und codieren:
+    for i in indices(text):
+        letter = text[i]
+        shift = ord(key[i % len(key)]) - ord('A')
+        code += encode_letter(letter, shift * factor)
+    # Den Klartext geben wir jeweils in Kleinbuchstaben zurück:
+    if encode:
+        return code
+    else:
+        return code.lower()
+
+def encode(code, key):
+    """Verschlüsselt den gegebenen Klartext mit Vigenère."""
+    return _encode(code, key, True)
+
+def decode(code, key):
+    """Entschlüsselt der gegebenen Geheimtext mit Vigenère."""
+    return _encode(code, key, False)
+
+print encode("truppenabzug nach osten", "Licht")
+print decode("EZWWIPVCISFOPHVSWUAXY", "Licht")

@@ -1,0 +1,10 @@
+# 7
+# UNREACHABLE_CODE
+t = 2
+while t < x:
+    r = x % t
+    if r == 0:
+        print("not prime")
+    break
+    else:
+        t += 1

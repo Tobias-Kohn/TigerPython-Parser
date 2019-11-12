@@ -1,0 +1,7 @@
+# 5
+# CALL_NEEDS_PARENTHESES
+def print_squares():
+    for x in range(1, 10):
+         print(x*x)
+
+print_squares

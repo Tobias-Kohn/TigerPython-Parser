@@ -1,0 +1,9 @@
+# 7
+# CALL_NEEDS_PARENTHESES
+def square500(red):
+    for i in range(4):
+        forward(500)
+        right(90)
+
+forward(20)
+square500

@@ -1,0 +1,15 @@
+# 9
+# UNREACHABLE_CODE
+def get_factor(x):
+    if x in [1, 2, 3, 5, 7]:
+        return x
+    t = 3
+    factor = 1
+    while t*t < x:
+        if x % t == 0:
+            break
+            factor = t
+        t += 2
+    return factor
+
+print("Factor is", get_factor(1234321))

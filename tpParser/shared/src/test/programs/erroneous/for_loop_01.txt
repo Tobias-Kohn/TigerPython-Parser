@@ -1,0 +1,6 @@
+# 2
+# FOR_TARGET_NAME_REQUIRED
+count = 0
+for 'e' in word:
+    count += 1
+print(count)
