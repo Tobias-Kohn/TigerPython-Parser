@@ -1,1 +1,1 @@
-["TestErroneousPrograms","TestCorrectPrograms"]
+["TestCorrectPrograms","TestErroneousPrograms","TestTranslator"]

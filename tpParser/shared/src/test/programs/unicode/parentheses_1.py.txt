@@ -1,0 +1,10 @@
+# This is a test for non-ASCII parentheses.
+# They might occur in CJK input, for instance.
+
+def foo（x）:
+    return 4 * （5 + x）
+
+def bar（）：
+    return foo(6.7)
+
+print( foo（ 123 ) ）

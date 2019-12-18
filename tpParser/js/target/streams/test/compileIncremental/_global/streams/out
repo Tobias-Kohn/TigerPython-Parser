@@ -1,1 +1,44 @@
-[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed:Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set(/home/tobias/Development/TjParser/TigerPython-Parser/tpParser/shared/src/test/scala/TestTranslator.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(/home/tobias/Development/TjParser/TigerPython-Parser/tpParser/shared/src/test/scala/TestTranslator.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 1 Scala source to /home/tobias/Development/TjParser/TigerPython-Parser/tpParser/js/target/scala-2.12/test-classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.3.0:compile for Scala 2.12.8[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.3.0:compile for Scala 2.12.8[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 29a0f7c4 for Scala compiler version 2.12.8[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Xplugin:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.8/0.6.29/scalajs-compiler_2.12.8-0.6.29.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/home/tobias/Development/TjParser/TigerPython-Parser/tpParser/js/target/scala-2.12/test-classes:/home/tobias/Development/TjParser/TigerPython-Parser/tpParser/js/target/scala-2.12/classes:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.8/scalatest_2.12-3.0.8.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-test-interface_2.12/0.6.29/scalajs-test-interface_2.12-0.6.29.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-test-bridge_2.12/0.6.29/scalajs-test-bridge_2.12-0.6.29.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.8/scalactic_2.12-3.0.8.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.2.0/scala-xml_2.12-1.2.0.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.8/scala-reflect-2.12.8.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-library_2.12/0.6.29/scalajs-library_2.12-0.6.29.jar:/home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-dom_sjs0.6_2.12/0.9.7/scalajs-dom_sjs0.6_2.12-0.9.7.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 0.878719876 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone compiling.[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from TestTranslator...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: TestTranslator[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(TestTranslator)[0m
+[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(TestTranslator,ModifiedNames(changes = UsedName(withFixture,[Default]), UsedName(convertEquivalenceToAToBConstraint,[Default]), UsedName(info,[Default]), UsedName(notifyAll,[Default]), UsedName(createCatchReporter,[Default]), UsedName(assertThrows,[Default]), UsedName(newAssertionFailedException,[Default]), UsedName(assume,[Default]), UsedName(trap,[Default]), UsedName(lowPriorityConversionCheckedConstraint,[Default]), UsedName(hashCode,[Default]), UsedName(suiteId,[Default]), UsedName(fail,[Default]), UsedName(===,[Default]), UsedName(TestTranslator,[Default]), UsedName(intercept,[Default]), UsedName(run,[Default]), UsedName(AssertionsHelper,[Default]), UsedName(runNestedSuites,[Default]), UsedName($isInstanceOf,[Default]), UsedName(testNames,[Default]), UsedName(equals,[Default]), UsedName(styleName,[Default]), UsedName(registerTest,[Default]), UsedName(defaultEquality,[Default]), UsedName(execute$default$6,[Default]), UsedName(assertDoesNotCompile,[Default]), UsedName(==,[Default]), UsedName(execute$default$7,[Default]), UsedName(testDataFor$default$2,[Default]), UsedName(newTestCanceledException,[Default]), UsedName(conversionCheckedConstraint,[Default]), UsedName(testDataFor,[Default]), UsedName(assertResult,[Default]), UsedName(alert,[Default]), UsedName(asInstanceOf,[Default]), UsedName(eq,[Default]), UsedName(##,[Default]), UsedName(convertToCheckingEqualizer,[Default]), UsedName(runTests,[Default]), UsedName(suiteName,[Default]), UsedName(isInstanceOf,[Default]), UsedName(getClass,[Default]), UsedName(ne,[Default]), UsedName(CheckingEqualizer,[Default]), UsedName(expectedTestCount,[Default]), UsedName(succeed,[Default]), UsedName(unconstrainedEquality,[Implicit]), UsedName(convertToEqualizer,[Implicit]), UsedName(Equalizer,[Default]), UsedName(TestTranslator;init;,[Default]), UsedName(pendingUntilFixed,[Default]), UsedName(tags,[Default]), UsedName(note,[Default]), UsedName(convertEquivalenceToBToAConversionConstraint,[Default]), UsedName(execute$default$4,[Default]), UsedName(runTest,[Default]), UsedName(ignore,[Default]), UsedName(convertEquivalenceToAToBConversionConstraint,[Default]), UsedName(synchronized,[Default]), UsedName(lowPriorityTypeCheckedConstraint,[Default]), UsedName(assertTypeError,[Default]), UsedName(nestedSuites,[Default]), UsedName(typeCheckedConstraint,[Default]), UsedName(execute$default$5,[Default]), UsedName($asInstanceOf,[Default]), UsedName(assert,[Default]), UsedName(execute$default$2,[Default]), UsedName(assertionsHelper,[Default]), UsedName($init$,[Default]), UsedName(clone,[Default]), UsedName(notify,[Default]), UsedName(!==,[Default]), UsedName(!=,[Default]), UsedName(execute$default$1,[Default]), UsedName(markup,[Default]), UsedName(NoArgTest,[Default]), UsedName(toString,[Default]), UsedName(execute,[Default]), UsedName(test,[Default]), UsedName(execute$default$3,[Default]), UsedName(rerunner,[Default]), UsedName(testsFor,[Default]), UsedName(cancel,[Default]), UsedName(assertCompiles,[Default]), UsedName(registerIgnoredTest,[Default]), UsedName(withClue,[Default]), UsedName(finalize,[Default]), UsedName(convertEquivalenceToBToAConstraint,[Default]), UsedName(wait,[Default]), UsedName(pending,[Default]))) invalidates 1 classes due to The TestTranslator has the following implicit definitions changed:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	UsedName(unconstrainedEquality,[Implicit]), UsedName(convertToEqualizer,[Implicit]).[0m
+[0m[[0m[0mdebug[0m] [0m[0m	> by transitive inheritance: Set(TestTranslator)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	> [0m
+[0m[[0m[0mdebug[0m] [0m[0m	> [0m
+[0m[[0m[0mdebug[0m] [0m[0m        [0m
+[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m

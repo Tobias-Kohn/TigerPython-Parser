@@ -1,0 +1,5 @@
+# This is a test of «string delimiters»
+
+s = «Hello \«World\»»
+t = "«Hello» is a common greeting."
+print(»This is testing string delimiters\n", s, t)

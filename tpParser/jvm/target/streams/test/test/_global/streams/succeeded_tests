@@ -1,4 +1,5 @@
 #Successful Tests
-#Tue Nov 12 17:16:40 GMT 2019
-TestErroneousPrograms=1573579000513
-TestCorrectPrograms=1573579000468
+#Wed Dec 18 15:46:32 GMT 2019
+TestErroneousPrograms=1576683992777
+TestTranslator=1576683992694
+TestCorrectPrograms=1576683992694

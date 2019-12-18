@@ -1823,11 +1823,11 @@ function $h_Ltigerpython_parser_Parser() {
   /*<skip>*/
 }
 $h_Ltigerpython_parser_Parser.prototype = $c_Ltigerpython_parser_Parser.prototype;
-$c_Ltigerpython_parser_Parser.prototype.repeatStatement$und$eq__Z__V = (function(value) {
-  this.parser$1.parserState$1.repeatStatement$1 = value
-});
 $c_Ltigerpython_parser_Parser.prototype.strictCode$und$eq__Z__V = (function(value) {
   this.parser$1.parserState$1.strictCode$1 = value
+});
+$c_Ltigerpython_parser_Parser.prototype.repeatStatement$und$eq__Z__V = (function(value) {
+  this.parser$1.parserState$1.repeatStatement$1 = value
 });
 $c_Ltigerpython_parser_Parser.prototype.newDivision$und$eq__Z__V = (function(value) {
   this.parser$1.parserState$1.newDivision$1 = value
@@ -1835,12 +1835,12 @@ $c_Ltigerpython_parser_Parser.prototype.newDivision$und$eq__Z__V = (function(val
 $c_Ltigerpython_parser_Parser.prototype.lineFromPosition__I__I = (function(position) {
   return this.parser$1.lexer__Ltigerpython_parser_lexer_Lexer().scanner$1.lineFromPosition__I__I(position)
 });
-$c_Ltigerpython_parser_Parser.prototype.rejectDeadCode$und$eq__Z__V = (function(value) {
-  this.parser$1.parserState$1.rejectDeadCode$1 = value
-});
 $c_Ltigerpython_parser_Parser.prototype.checkSyntaxAll__ALtigerpython_parser_errors_ExtErrorInfo = (function() {
   this.parser$1.parse__Ltigerpython_parser_ast_AstNode();
   return this.parser$1.errorHandler$1.getAllErrors__ALtigerpython_parser_errors_ExtErrorInfo()
+});
+$c_Ltigerpython_parser_Parser.prototype.rejectDeadCode$und$eq__Z__V = (function(value) {
+  this.parser$1.parserState$1.rejectDeadCode$1 = value
 });
 $c_Ltigerpython_parser_Parser.prototype.init___jl_CharSequence__I = (function(source, pythonVersion) {
   this.source$1 = source;
@@ -1855,9 +1855,6 @@ $c_Ltigerpython_parser_Parser.prototype.checkSyntax__s_Option = (function() {
 $c_Ltigerpython_parser_Parser.prototype.sagePower$und$eq__Z__V = (function(value) {
   this.parser$1.parserState$1.sagePower$1 = value
 });
-$c_Ltigerpython_parser_Parser.prototype.allowPrintAsName$und$eq__Z__V = (function(value) {
-  this.parser$1.parserState$1.allowPrintAsName$1 = value
-});
 $c_Ltigerpython_parser_Parser.prototype.lineOffsetFromPosition__I__I = (function(position) {
   return this.parser$1.lexer__Ltigerpython_parser_lexer_Lexer().scanner$1.lineOffsetFromPosition__I__I(position)
 });
@@ -1871,7 +1868,6 @@ $c_Ltigerpython_parser_Parser.prototype.$classData = $d_Ltigerpython_parser_Pars
 /** @constructor */
 function $c_Ltigerpython_parser_TPyParser$() {
   $c_O.call(this);
-  this.allowPrintAsName$1 = false;
   this.evalMode$1 = false;
   this.newDivision$1 = false;
   this.pythonVersion$1 = 0;
@@ -1889,25 +1885,24 @@ function $h_Ltigerpython_parser_TPyParser$() {
 }
 $h_Ltigerpython_parser_TPyParser$.prototype = $c_Ltigerpython_parser_TPyParser$.prototype;
 $c_Ltigerpython_parser_TPyParser$.prototype.init___ = (function() {
-  this.allowPrintAsName$1 = true;
   this.evalMode$1 = false;
   this.newDivision$1 = true;
   this.pythonVersion$1 = 3;
   this.rejectDeadCode$1 = true;
   this.repeatStatement$1 = false;
   this.sagePower$1 = false;
-  this.strictCode$1 = true;
+  this.strictCode$1 = false;
   this.warningAsErrors$1 = true;
   return this
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$pythonVersion__O = (function() {
   return this.pythonVersion$1
 });
-$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__Z__O = (function(x$1) {
-  this.newDivision$1 = x$1
-});
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__O = (function() {
   return this.newDivision$1
+});
+$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__Z__O = (function(x$1) {
+  this.newDivision$1 = x$1
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$warningAsErrors__O = (function() {
   return this.warningAsErrors$1
@@ -1921,7 +1916,6 @@ $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$getLanguage__O = 
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.findAllErrors__T__sjs_js_Array = (function(source) {
   var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(source, this.pythonVersion$1);
-  parser.allowPrintAsName$und$eq__Z__V(this.allowPrintAsName$1);
   parser.newDivision$und$eq__Z__V(this.newDivision$1);
   parser.rejectDeadCode$und$eq__Z__V(this.rejectDeadCode$1);
   parser.repeatStatement$und$eq__Z__V(this.repeatStatement$1);
@@ -1975,7 +1969,6 @@ $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$pythonVersion__I_
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.checkSyntax__T__Ltigerpython_parser_ErrorInfo = (function(source) {
   var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(source, this.pythonVersion$1);
-  parser.allowPrintAsName$und$eq__Z__V(this.allowPrintAsName$1);
   parser.newDivision$und$eq__Z__V(this.newDivision$1);
   parser.rejectDeadCode$und$eq__Z__V(this.rejectDeadCode$1);
   parser.repeatStatement$und$eq__Z__V(this.repeatStatement$1);
@@ -2009,14 +2002,8 @@ $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$sagePower__O = (f
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$evalMode__Z__O = (function(x$1) {
   this.evalMode$1 = x$1
 });
-$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$allowPrintAsName__Z__O = (function(x$1) {
-  this.allowPrintAsName$1 = x$1
-});
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$meth$setLanguage__T__O = (function(language) {
   $m_Ltigerpython_parser_errors_ErrorTranslator$().errorTranslator$1.language$und$eq__T__V(language)
-});
-$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$allowPrintAsName__O = (function() {
-  return this.allowPrintAsName$1
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$strictCode__Z__O = (function(x$1) {
   this.strictCode$1 = x$1
@@ -2133,16 +2120,6 @@ Object.defineProperty($c_Ltigerpython_parser_TPyParser$.prototype, "evalMode", {
   "set": (function(arg$1) {
     var prep0 = $uZ(arg$1);
     this.$$js$exported$prop$evalMode__Z__O(prep0)
-  }),
-  "configurable": true
-});
-Object.defineProperty($c_Ltigerpython_parser_TPyParser$.prototype, "allowPrintAsName", {
-  "get": (function() {
-    return this.$$js$exported$prop$allowPrintAsName__O()
-  }),
-  "set": (function(arg$1) {
-    var prep0 = $uZ(arg$1);
-    this.$$js$exported$prop$allowPrintAsName__Z__O(prep0)
   }),
   "configurable": true
 });
@@ -2922,1949 +2899,6 @@ var $d_Ltigerpython_parser_ast_AstWalker = new $TypeData().initClass({
 });
 $c_Ltigerpython_parser_ast_AstWalker.prototype.$classData = $d_Ltigerpython_parser_ast_AstWalker;
 /** @constructor */
-function $c_Ltigerpython_parser_errormessages_DutchMessages$() {
-  $c_O.call(this)
-}
-$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype = new $h_O();
-$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_DutchMessages$;
-/** @constructor */
-function $h_Ltigerpython_parser_errormessages_DutchMessages$() {
-  /*<skip>*/
-}
-$h_Ltigerpython_parser_errormessages_DutchMessages$.prototype = $c_Ltigerpython_parser_errormessages_DutchMessages$.prototype;
-$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.init___ = (function() {
-  return this
-});
-$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.getMessage__s_Enumeration$Value__T = (function(msg) {
-  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
-  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
-    return "'%s' verbindt vergelijkingen en geen variabelen."
-  } else {
-    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
-    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
-      return "Je mag geen bijkomende argumenten na een unpacking var/keyword-argument doorgeven."
-    } else {
-      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
-      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
-        return "'as' is hier niet toegestaan."
-      } else {
-        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
-        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
-          return "Het doel van een toewijzing moet links staan."
-        } else {
-          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
-          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
-            return "Gebruik 'break' in plaats van 'return' om een lus te verlaten."
-          } else {
-            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
-            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
-              return "Een '%s'-statement kan niet buiten een lus staan."
-            } else {
-              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
-              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
-                return "Een functie-oproep moet altijd haakjes bevatten, ook als deze leeg zijn."
-              } else {
-                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
-                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
-                  return "Je kan 'async' niet op deze uitdrukking toepassen."
-                } else {
-                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
-                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
-                    return "Je mag niets aan een functie-aanroep toewijzen."
-                  } else {
-                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
-                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
-                      return "Je mag niets aan een functie toewijzen."
-                    } else {
-                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
-                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
-                        return "Je moet elk element van deze tupel individueel testen."
-                      } else {
-                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
-                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
-                          return "Je mag het sleutelwoord '%s' niet als naam gebruiken."
-                        } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
-                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
-                            return "Een klassen-methode heeft minstens \u00e9\u00e9n parameter nodig."
-                          } else {
-                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
-                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
-                              return "Een dubbelepunt ':' is hier nodig."
-                            } else {
-                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
-                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
-                                return "Aan deze voorwaarde wordt nooit voldaan."
-                              } else {
-                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
-                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
-                                  return "Aan deze voorwaarde wordt altijd voldaan."
-                                } else {
-                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
-                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
-                                    return "Een functie en zijn decorator mogen niet dezelfde naam '%s' hebben."
-                                  } else {
-                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
-                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
-                                      return "Je mag decorators alleen op functiess en klassen toepassen."
-                                    } else {
-                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
-                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
-                                        return "Een '%s'-definitie kan niet binnen een lus staan."
-                                      } else {
-                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
-                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
-                                          return "Een '%s'-structuur kan alleen \u00e9\u00e9n 'else' bevatten."
-                                        } else {
-                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
-                                            return "Hier zijn twee gelijkheidstekens '==' nodig."
-                                          } else {
-                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
-                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
-                                              return "Twee parameters kunnen niet dezelfde naam hebben: '%s'."
-                                            } else {
-                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
-                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
-                                                return "'%s' moet inspringen om met de 'if' overeen te komen."
-                                              } else {
-                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
-                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
-                                                  return "'else' heeft geen vergelijking."
-                                                } else {
-                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
-                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
-                                                    return "Er is een '%s' zonder een 'if'."
-                                                  } else {
-                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
-                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
-                                                      return "Subscript mag niet leeg zijn."
-                                                    } else {
-                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
-                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
-                                                        return "Er is een bijkomende inspringing."
-                                                      } else {
-                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
-                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
-                                                          return "Er is een openingshaakje of accolade te veel: '%s'."
-                                                        } else {
-                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
-                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
-                                                            return "Er lijkt een regeleinde te veel te zijn. Je kunt deze door gebruik van '\\' verbergen."
-                                                          } else {
-                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
-                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
-                                                              return "Er is een sluithaakje of accolade te veel: '%s'."
-                                                            } else {
-                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
-                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
-                                                                return "Er is \u00e9\u00e9n spatie te veel."
-                                                              } else {
-                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
-                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
-                                                                  return "Er ontbreek een komma, of er is \u00e9\u00e9n spatie te veel."
-                                                                } else {
-                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
-                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
-                                                                    return "Er is/zijn extra token(s): '%s'."
-                                                                  } else {
-                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
-                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
-                                                                      return "'%s' is geen sleutelwoord in Python."
-                                                                    } else {
-                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
-                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
-                                                                        return "Het token '%s' is ongeldig, gebruik '_' om de functie als 'private' te markeren."
-                                                                      } else {
-                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
-                                                                          return "Python kent geen '%s'-uitdrukking."
-                                                                        } else {
-                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
-                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
-                                                                            return "Deze %s-syntax is niet toegestaan in Python."
-                                                                          } else {
-                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
-                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
-                                                                              return "Het token '%s' is ongeldig, gebruik '%s'."
-                                                                            } else {
-                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
-                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
-                                                                                return "Python gebruikt geen '%s' om variabelen te defini\u00ebren."
-                                                                              } else {
-                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
-                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
-                                                                                  return "De 'for'-lus heeft een variabele nodig."
-                                                                                } else {
-                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
-                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
-                                                                                    return "De 'from __future__ import'-uitdrukking moet de eerste uitdrukking in een module zijn."
-                                                                                  } else {
-                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
-                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
-                                                                                      return "Een generator (functie met yield-expressie) kan niet 'return' gebruiken om een waarde terug te geven."
-                                                                                    } else {
-                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
-                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
-                                                                                        return "'%s'-expressies moeten de eerste expressies in een functie zijn."
-                                                                                      } else {
-                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
-                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
-                                                                                          return "Een '%s'-expressie mag niet buiten een functie staan."
-                                                                                        } else {
-                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
-                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
-                                                                                            return "Een 'import'-expressie kan niet binnen een lus staan."
-                                                                                          } else {
-                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
-                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
-                                                                                              return "Deze 'import'-opdracht is niet volledig."
-                                                                                            } else {
-                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
-                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
-                                                                                                return "Inspringing niet volgens de regels."
-                                                                                              } else {
-                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
-                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
-                                                                                                  return "Deze functie geeft niet altijd een waarde terug."
-                                                                                                } else {
-                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
-                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
-                                                                                                    return "Deze '%s' mag niet inspringen."
-                                                                                                  } else {
-                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
-                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
-                                                                                                      return "Dit is een oneindige lus: ze draait voor altijd."
-                                                                                                    } else {
-                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
-                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
-                                                                                                        return "Je mag niet binnen de lus initialiseren."
-                                                                                                      } else {
-                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
-                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
-                                                                                                          return "Je mag niets aan '%s' toewijzen."
-                                                                                                        } else {
-                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
-                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
-                                                                                                            return "Foutieve definitie van een functie."
-                                                                                                          } else {
-                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
-                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
-                                                                                                              return "Gebruik hier ':' en 'return' in plaats van een toewijzing."
-                                                                                                            } else {
-                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
-                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
-                                                                                                                return "Een 'generator/comprehension' argument mag niet met andere argumenten gecombineerd worden."
-                                                                                                              } else {
-                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
-                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
-                                                                                                                  return "Deze waarde is niet als invoer toegestaan: '%s'."
-                                                                                                                } else {
-                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
-                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
-                                                                                                                    return "Dit is een ongeldige sleutel-waarde-combinatie."
-                                                                                                                  } else {
-                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
-                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
-                                                                                                                      return "Dit is een ongeldige naam: '%s'."
-                                                                                                                    } else {
-                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
-                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
-                                                                                                                        return "Deze expressie is geen geldig doel voor een toewijzing."
-                                                                                                                      } else {
-                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
-                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
-                                                                                                                          return "Dit is een ongeldige beginletter : '%s'."
-                                                                                                                        } else {
-                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
-                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
-                                                                                                                            return "Deze token kan niet aan het begin van een regel staan: '%s'."
-                                                                                                                          } else {
-                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
-                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
-                                                                                                                              return "Een methode vereist een 'self'-parameter."
-                                                                                                                            } else {
-                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
-                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
-                                                                                                                                return "Haakjes of accolades komen niet overeen: '%s' verwacht, maar '%s' gevonden."
-                                                                                                                              } else {
-                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
-                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
-                                                                                                                                  return "De toewijzing '%s' mag niet deel van een expressie zijn."
-                                                                                                                                } else {
-                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
-                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
-                                                                                                                                    return "Er ontbreekt een toewijzing."
-                                                                                                                                  } else {
-                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
-                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
-                                                                                                                                      return "In de toewijzing ontbreekt een expressie."
-                                                                                                                                    } else {
-                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
-                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
-                                                                                                                                        return "Body of inspringing ontbreekt."
-                                                                                                                                      } else {
-                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
-                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
-                                                                                                                                          return "Er ontbreekt een komma."
-                                                                                                                                        } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
-                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
-                                                                                                                                            return "Er ontbreekt een vergelijking."
-                                                                                                                                          } else {
-                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
-                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
-                                                                                                                                              return "Er ontbreekt een punt."
-                                                                                                                                            } else {
-                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
-                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
-                                                                                                                                                return "Er ontbreekt een openingshaakje of accolade: '%s'."
-                                                                                                                                              } else {
-                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
-                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
-                                                                                                                                                  return "Er ontbreekt een openingshaakje '('."
-                                                                                                                                                } else {
-                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
-                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
-                                                                                                                                                    return "Er ontbreekt een operator of komma."
-                                                                                                                                                  } else {
-                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
-                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
-                                                                                                                                                      return "Er ontbreekt een haakje."
-                                                                                                                                                    } else {
-                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
-                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
-                                                                                                                                                        return "Je bent vergeten de haakjes te sluiten: '%s'."
-                                                                                                                                                      } else {
-                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
-                                                                                                                                                          return "Hier ontbreekt een spatie."
-                                                                                                                                                        } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
-                                                                                                                                                            return "Ontbrekend '%s'."
-                                                                                                                                                          } else {
-                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
-                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
-                                                                                                                                                              return "Verkeerd gespeld sleutelwoord '%s' in plaats van '%s'."
-                                                                                                                                                            } else {
-                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
-                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
-                                                                                                                                                                return "Het getal is verkeerd geschreven."
-                                                                                                                                                              } else {
-                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
-                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
-                                                                                                                                                                  return "Verkeerd gespelde operator '%s' in plaats van '%s'."
-                                                                                                                                                                } else {
-                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
-                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
-                                                                                                                                                                    return "Alleen \u00e9\u00e9n unpacking var/keyword-argument is toegestaan."
-                                                                                                                                                                  } else {
-                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
-                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
-                                                                                                                                                                      return "Alleen \u00e9\u00e9n unpacking var/keyword-parameter is toegestaan."
-                                                                                                                                                                    } else {
-                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
-                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
-                                                                                                                                                                        return "Hier is een naam vereist."
-                                                                                                                                                                      } else {
-                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
-                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
-                                                                                                                                                                          return "Er is geen 'end' nodig of toegestaan in Python."
-                                                                                                                                                                        } else {
-                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
-                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
-                                                                                                                                                                            return "Een unpacking parameter kan geen standaardwaarde hebben."
-                                                                                                                                                                          } else {
-                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
-                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
-                                                                                                                                                                              return "Er is geen alternatief op '%s'."
-                                                                                                                                                                            } else {
-                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
-                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
-                                                                                                                                                                                return "Een getal kan geen subscript hebben."
-                                                                                                                                                                              } else {
-                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
-                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
-                                                                                                                                                                                  return "De unpacking keyword-parameter komt als laatste."
-                                                                                                                                                                                } else {
-                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
-                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
-                                                                                                                                                                                    return "Parameter(s) vereist maar '%s' gevonden."
-                                                                                                                                                                                  } else {
-                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
-                                                                                                                                                                                      return "Positionele argumenten kunnen niet volgen op keyword-argumenten."
-                                                                                                                                                                                    } else {
-                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
-                                                                                                                                                                                        return "Parameters zonder standaardwaarde kunnen niet volgen op parameters m\u00e9t een standaardwaarde of unpacking parameters."
-                                                                                                                                                                                      } else {
-                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
-                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
-                                                                                                                                                                                          return "In Python 2.x is 'print' een opdracht, en kan niet met sleutelwoorden opgeroepen worden."
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
-                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
-                                                                                                                                                                                            return "'>>' moet door een doel opgevolgd worden."
-                                                                                                                                                                                          } else {
-                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
-                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
-                                                                                                                                                                                              return "'print' is in Python 3.x  een functie en vereist haakjes."
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
-                                                                                                                                                                                                return "Deze functie van Python 2.x is niet beschikbaar."
-                                                                                                                                                                                              } else {
-                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
-                                                                                                                                                                                                  return "Deze functie van Python 3.x is niet beschikbaar."
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
-                                                                                                                                                                                                    return "Een 'return'-opdracht kan niet buiten een functie bestaan."
-                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
-                                                                                                                                                                                                      return "Gebruik een enkel gelijkheidsteken '=' voor een toewijzing."
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
-                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
-                                                                                                                                                                                                        return "De vergelijking met '%s' is hier overbodig."
-                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
-                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
-                                                                                                                                                                                                          return "Deze waarden zijn blijkbaar verwisseld: '%s' en '%s'."
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
-                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
-                                                                                                                                                                                                            return "'%s' benodigd maar '%s' gevonden."
-                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
-                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
-                                                                                                                                                                                                              return "Deze tupel moet je tussen haakjes plaatsen."
-                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
-                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
-                                                                                                                                                                                                                return "Onverwacht einde van de regel of invoer."
-                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
-                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
-                                                                                                                                                                                                                  return "Het sleutelwoord '%s' kan hier niet staan."
-                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
-                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
-                                                                                                                                                                                                                    return "Dit openingshaakje '%s' heeft geen sluithaakje."
-                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
-                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
-                                                                                                                                                                                                                      return "Deze code wordt nooit bereikt en zal dus nooit uitgevoerd worden."
-                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
-                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
-                                                                                                                                                                                                                        return "Deze tekenreeks is niet be\u00ebindigd."
-                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
-                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
-                                                                                                                                                                                                                          return "Meerdere vergelijkingen worden gecombineerd door 'and' of 'or' in plaats van een komma."
-                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
-                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
-                                                                                                                                                                                                                            return "Meerdere waarden worden door komma gescheiden in plaats van 'and'."
-                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
-                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
-                                                                                                                                                                                                                              return "Gebruik 'elif' in plaats van 'else'."
-                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
-                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                return "Gebruik 'elif' in plaats van 'else if'."
-                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
-                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                  return "Gebruik '== %s' in plaats van '!= %s'."
-                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
-                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                    return "Gebruik '%%' in plaats van '/' om op deelbaarheid te testen."
-                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
-                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                      return "Gebruik 'not' in plaats van een vergelijking met '%s'."
-                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
-                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                        return "Gebruik 'repeat' in plaats van 'while'."
-                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
-                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                          return "Gebruik 'return' in plaats van 'break' om een functie te verlaten."
-                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
-                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                            return "Het resultaat van deze expressie wordt nooit gebruikt."
-                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                              return "Deze opdracht heeft geen effect, en is dus nutteloos."
-                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
-                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                return "Deze opdracht is nutteloos. Bedoel je '%s='?"
-                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
-                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                  return "Het unpacking var-argument moet het unpacking keyword-argument voorafgaan."
-                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
-                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                    return "Unpacking var/keyword-argumenten zijn hier niet toegestaan."
-                                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
-                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                      return "Verkeerde haakjes: gebruik '%s' in plaats van '%s'."
-                                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
-                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                        return "Verkeerd symbool '%s' in plaats van '%s'."
-                                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                          return "Een 'yield'-expressie kan niet buiten een functie bestaan."
-                                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                                          return null
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                  }
-                                                                                                                                                                                                }
-                                                                                                                                                                                              }
-                                                                                                                                                                                            }
-                                                                                                                                                                                          }
-                                                                                                                                                                                        }
-                                                                                                                                                                                      }
-                                                                                                                                                                                    }
-                                                                                                                                                                                  }
-                                                                                                                                                                                }
-                                                                                                                                                                              }
-                                                                                                                                                                            }
-                                                                                                                                                                          }
-                                                                                                                                                                        }
-                                                                                                                                                                      }
-                                                                                                                                                                    }
-                                                                                                                                                                  }
-                                                                                                                                                                }
-                                                                                                                                                              }
-                                                                                                                                                            }
-                                                                                                                                                          }
-                                                                                                                                                        }
-                                                                                                                                                      }
-                                                                                                                                                    }
-                                                                                                                                                  }
-                                                                                                                                                }
-                                                                                                                                              }
-                                                                                                                                            }
-                                                                                                                                          }
-                                                                                                                                        }
-                                                                                                                                      }
-                                                                                                                                    }
-                                                                                                                                  }
-                                                                                                                                }
-                                                                                                                              }
-                                                                                                                            }
-                                                                                                                          }
-                                                                                                                        }
-                                                                                                                      }
-                                                                                                                    }
-                                                                                                                  }
-                                                                                                                }
-                                                                                                              }
-                                                                                                            }
-                                                                                                          }
-                                                                                                        }
-                                                                                                      }
-                                                                                                    }
-                                                                                                  }
-                                                                                                }
-                                                                                              }
-                                                                                            }
-                                                                                          }
-                                                                                        }
-                                                                                      }
-                                                                                    }
-                                                                                  }
-                                                                                }
-                                                                              }
-                                                                            }
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-});
-var $d_Ltigerpython_parser_errormessages_DutchMessages$ = new $TypeData().initClass({
-  Ltigerpython_parser_errormessages_DutchMessages$: 0
-}, false, "tigerpython.parser.errormessages.DutchMessages$", {
-  Ltigerpython_parser_errormessages_DutchMessages$: 1,
-  O: 1
-});
-$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_DutchMessages$;
-var $n_Ltigerpython_parser_errormessages_DutchMessages$ = (void 0);
-function $m_Ltigerpython_parser_errormessages_DutchMessages$() {
-  if ((!$n_Ltigerpython_parser_errormessages_DutchMessages$)) {
-    $n_Ltigerpython_parser_errormessages_DutchMessages$ = new $c_Ltigerpython_parser_errormessages_DutchMessages$().init___()
-  };
-  return $n_Ltigerpython_parser_errormessages_DutchMessages$
-}
-/** @constructor */
-function $c_Ltigerpython_parser_errormessages_FrenchMessages$() {
-  $c_O.call(this)
-}
-$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype = new $h_O();
-$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_FrenchMessages$;
-/** @constructor */
-function $h_Ltigerpython_parser_errormessages_FrenchMessages$() {
-  /*<skip>*/
-}
-$h_Ltigerpython_parser_errormessages_FrenchMessages$.prototype = $c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype;
-$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.init___ = (function() {
-  return this
-});
-$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.getMessage__s_Enumeration$Value__T = (function(msg) {
-  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
-  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
-    return "Combinaison erron\u00e9e d'une expression bool\u00e9enne avec une variable non bool\u00e9enne \u00e0 l'aide de l'op\u00e9rateur logique '%s'."
-  } else {
-    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
-    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
-      return "'as' n'est pas autoris\u00e9 dans ce contexte."
-    } else {
-      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
-      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
-        return "La destination d'une assignation doit se trouve \u00e0 gauche de l'op\u00e9rateur d'assignation et non \u00e0 droite."
-      } else {
-        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
-        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
-          return "Il faut utiliser 'break' au lieu de 'return' pour interrompre une boucle."
-        } else {
-          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
-          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
-            return "Il n'est pas possible d'utiliser l'instruction '%s' \u00e0 l'ext\u00e9rieur d'une boucle."
-          } else {
-            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
-            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
-              return "Il faut utiliser des parenth\u00e8ses pour appeler une fonction."
-            } else {
-              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
-              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
-                return "Il est impossible d'appliquer 'async' \u00e0 cette instruction."
-              } else {
-                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
-                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
-                  return "Il est impossible d'assigner une valeur \u00e0 l'appel d'une fonction."
-                } else {
-                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
-                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
-                    return "Il est dangereux d'assigner une valeur \u00e0 une fonction existante. Par mesure de s\u00e9curit\u00e9, TigerJython n'autorise pas cette op\u00e9ration."
-                  } else {
-                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undCALL$undVALUE$2;
-                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
-                      return "Il n'est pas possible d'appeler '%s' avec des parenth\u00e8ses car ce n'est ni une fonction ni un objet 'callable'."
-                    } else {
-                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
-                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
-                        return "Le nom '%s' est d\u00e9j\u00e0 d\u00e9fini : il est dangereux de l'\u00e9craser. Par mesure de s\u00e9curit\u00e9, TigerJython n'autorise pas cette op\u00e9ration."
-                      } else {
-                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
-                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
-                          return "Il faut tester tous les \u00e9l\u00e9ments de ce tuple individuellement."
-                        } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
-                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
-                            return "'%s' est un mot r\u00e9serv\u00e9 : impossible de l'utiliser comme un nom."
-                          } else {
-                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
-                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
-                              return "Une m\u00e9thode de classe n\u00e9cessite au moins un param\u00e8tre (r\u00e9f\u00e9rence \u00e0 la classe)."
-                            } else {
-                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
-                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
-                                return "Il manque le double point ':'."
-                              } else {
-                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
-                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
-                                  return "Cette condition n'est jamais satisfaite."
-                                } else {
-                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
-                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
-                                    return "Cette condition est toujours satisfaite."
-                                  } else {
-                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
-                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
-                                      return "Une fonction et son d\u00e9corateur ne peuvent pas prendre le m\u00eame nom '%s'."
-                                    } else {
-                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
-                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
-                                        return "Seules les fonctions et les classes peuvent \u00eatre d\u00e9cor\u00e9es."
-                                      } else {
-                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
-                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
-                                          return "Il faut d\u00e9finir la fonction '%s' \u00e0 l'ext\u00e9rieur de la boucle."
-                                        } else {
-                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undCALL$2;
-                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
-                                            return "Double appel : la valeur de retour de la fonction ne peut pas faire l'objet d'un appel."
-                                          } else {
-                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
-                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
-                                              return "Une instruction '%s' ne peut avoir qu'une seule branche 'else'."
-                                            } else {
-                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
-                                                return "Pour tester l'\u00e9galit\u00e9, il faut utiliser l'op\u00e9rateur '=='."
-                                              } else {
-                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
-                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
-                                                  return "La fonction ne peut pas prendre deux param\u00e8tres de m\u00eame nom : '%s'."
-                                                } else {
-                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
-                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
-                                                    return "Il faut que le '%s' soit indent\u00e9 de la m\u00eame mani\u00e8re que le 'if'."
-                                                  } else {
-                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
-                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
-                                                      return "'else' n'accepte pas de condition : utiliser 'elif'."
-                                                    } else {
-                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
-                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
-                                                        return "Il faut d'abord mettre un 'if' avant un '%s'."
-                                                      } else {
-                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
-                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
-                                                          return "Il faut fournir un indice ou un 'slice' entre les crochets []."
-                                                        } else {
-                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undBRACKETS$2;
-                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
-                                                            return "Il y a des parenth\u00e8ses en trop."
-                                                          } else {
-                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
-                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
-                                                              return "Cette ligne est trop indent\u00e9e par rapport \u00e0 la pr\u00e9c\u00e9dente."
-                                                            } else {
-                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
-                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
-                                                                return "Il y a une parenth\u00e8se ouvrante en trop: '%s'."
-                                                              } else {
-                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
-                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
-                                                                  return "Pour \u00e9crire cette instruction sur plusieurs lignes, il faut mettre '\\' en fin de ligne."
-                                                                } else {
-                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINE$undNUMBER$2;
-                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
-                                                                    return "Il semble qu'il y ait un nombre trop grand de lignes."
-                                                                  } else {
-                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
-                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
-                                                                      return "Il y a une parenth\u00e8se fermante en trop: '%s'."
-                                                                    } else {
-                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
-                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
-                                                                        return "Il y a un espace en trop."
-                                                                      } else {
-                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
-                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
-                                                                          return "Soit il y a un espace en trop, soit il manque une virgule."
-                                                                        } else {
-                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
-                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
-                                                                            return "Tokens en trop d\u00e9tect\u00e9s : '%s'."
-                                                                          } else {
-                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
-                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
-                                                                              return "'%s' n'est pas un mot-cl\u00e9 Python valide."
-                                                                            } else {
-                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
-                                                                                return "'%s' n'est pas une instruction Python valide."
-                                                                              } else {
-                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
-                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
-                                                                                  return "'%s' ne constitue pas une syntaxe valide en Python."
-                                                                                } else {
-                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
-                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
-                                                                                    return "Le token '%s' est invalide en Python. Essayer d'utiliser '%s' \u00e0 la place."
-                                                                                  } else {
-                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
-                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
-                                                                                      return "Python n'utilise pas '%s' pour d\u00e9finir les variables."
-                                                                                    } else {
-                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
-                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
-                                                                                        return "Le boucle 'for' n\u00e9cessite une variable de contr\u00f4le."
-                                                                                      } else {
-                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
-                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
-                                                                                          return "L'instruction 'from __future__ import' doit \u00eatre plac\u00e9e au tout d\u00e9but du module."
-                                                                                        } else {
-                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
-                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
-                                                                                            return "On ne peut pas utiliser 'return' pour renvoyer une valeur depuis un g\u00e9n\u00e9rateur."
-                                                                                          } else {
-                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
-                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
-                                                                                              return "Les instructions '%s' doivent \u00eatre plac\u00e9es tout au d\u00e9but du corps de la fonction."
-                                                                                            } else {
-                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
-                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
-                                                                                                return "L'instruction '%s' n'est valide qu'\u00e0 l'int\u00e9rieur d'une fonction."
-                                                                                              } else {
-                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
-                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
-                                                                                                  return "L'instruction 'import' ne peut pas figurer \u00e0 l'int\u00e9rieur d'une boucle."
-                                                                                                } else {
-                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
-                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
-                                                                                                    return "Instruction 'import' incompl\u00e8te."
-                                                                                                  } else {
-                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
-                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
-                                                                                                      return "Indentation incoh\u00e9rente."
-                                                                                                    } else {
-                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
-                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
-                                                                                                        return "Parfois, cette fonction renvoie une valeur, parfois elle ne renvoie rien."
-                                                                                                      } else {
-                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
-                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
-                                                                                                          return "Le '%s' ne doit pas \u00eatre indent\u00e9."
-                                                                                                        } else {
-                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undHEADER$2;
-                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
-                                                                                                            return "L'en-t\u00eate de l'instruction '%s' ne doit pas \u00eatre indent\u00e9 : seul son corps doit l'\u00eatre."
-                                                                                                          } else {
-                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
-                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
-                                                                                                              return "Boucle infinie probablement involontaire."
-                                                                                                            } else {
-                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
-                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
-                                                                                                                return "Il ne faut pas initialiser une variable \u00e0 l'int\u00e9rieur d'une boucle."
-                                                                                                              } else {
-                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
-                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
-                                                                                                                  return "Il n'est pas possible d'assigner une valeur \u00e0 '%s'."
-                                                                                                                } else {
-                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
-                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
-                                                                                                                    return "Cette d\u00e9finition de fonction n'est pas valide."
-                                                                                                                  } else {
-                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
-                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
-                                                                                                                      return "Utiliser ':' et 'return' au lieu d'une assignation."
-                                                                                                                    } else {
-                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
-                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
-                                                                                                                        return "Il n'est pas possible de combiner un param\u00e8tre donn\u00e9 sous forme de 'g\u00e9n\u00e9rateur/compr\u00e9hension' avec d'autres param\u00e8tres."
-                                                                                                                      } else {
-                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
-                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
-                                                                                                                          return "Ce caract\u00e8re n'est pas valide: '%s'."
-                                                                                                                        } else {
-                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
-                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
-                                                                                                                            return "Ce couple de cl\u00e9-valeur n'est pas valide."
-                                                                                                                          } else {
-                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
-                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
-                                                                                                                              return "Ce nom n'est pas valide: '%s'."
-                                                                                                                            } else {
-                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
-                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
-                                                                                                                                return "Cette expression n'est pas valide comme destination d'une assignation."
-                                                                                                                              } else {
-                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
-                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
-                                                                                                                                  return "'%s' n'est pas un pr\u00e9fixe de cha\u00eene de caract\u00e8res valide."
-                                                                                                                                } else {
-                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
-                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
-                                                                                                                                    return "Le token '%s' ne peut pas se trouver en d\u00e9but de ligne."
-                                                                                                                                  } else {
-                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
-                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
-                                                                                                                                      return "Une fonction de classe n\u00e9cessite un param\u00e8tre 'self'."
-                                                                                                                                    } else {
-                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
-                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
-                                                                                                                                        return "La parenth\u00e8se fermante n'est pas appropri\u00e9e: essayer '%s' au lieu de '%s'."
-                                                                                                                                      } else {
-                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
-                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
-                                                                                                                                          return "L'assignation '%s' ne peut pas faire partie d'une expression."
-                                                                                                                                        } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
-                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
-                                                                                                                                            return "Il semble qu'il manque une assignation."
-                                                                                                                                          } else {
-                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
-                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
-                                                                                                                                              return "Il manque une expression source \u00e0 droite de l'assignation."
-                                                                                                                                            } else {
-                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
-                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
-                                                                                                                                                return "Cette structure n\u00e9cessite un corps. V\u00e9rifier l'indentation !"
-                                                                                                                                              } else {
-                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
-                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
-                                                                                                                                                  return "Il manque une virgule."
-                                                                                                                                                } else {
-                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
-                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
-                                                                                                                                                    return "Le test n\u00e9cessaire est manquant."
-                                                                                                                                                  } else {
-                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
-                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
-                                                                                                                                                      return "Il manque un point."
-                                                                                                                                                    } else {
-                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undEXPRESSION$2;
-                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
-                                                                                                                                                        return "Il manque une expression."
-                                                                                                                                                      } else {
-                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
-                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
-                                                                                                                                                          return "Il manque une parenth\u00e8se ouvrante: '%s'."
-                                                                                                                                                        } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
-                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
-                                                                                                                                                            return "Il manque une parenth\u00e8se ouvrante '('."
-                                                                                                                                                          } else {
-                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
-                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
-                                                                                                                                                              return "Il manque une virgule ou un op\u00e9rateur."
-                                                                                                                                                            } else {
-                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
-                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
-                                                                                                                                                                return "Il semble qu'il manque des parenth\u00e8ses ici."
-                                                                                                                                                              } else {
-                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
-                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
-                                                                                                                                                                  return "Il manque une parenth\u00e8se fermante: '%s'."
-                                                                                                                                                                } else {
-                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
-                                                                                                                                                                    return "Il manque un espace."
-                                                                                                                                                                  } else {
-                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
-                                                                                                                                                                      return "Il manque un '%s'."
-                                                                                                                                                                    } else {
-                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
-                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
-                                                                                                                                                                        return "Mot-cl\u00e9 mal orthographi\u00e9 : '%s' au lieu de '%s'."
-                                                                                                                                                                      } else {
-                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
-                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
-                                                                                                                                                                          return "Il semble que le nombre soit mal orthographi\u00e9."
-                                                                                                                                                                        } else {
-                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
-                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
-                                                                                                                                                                            return "Op\u00e9rateur mal orthographi\u00e9 : '%s' au lieu de '%s'."
-                                                                                                                                                                          } else {
-                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
-                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
-                                                                                                                                                                              return "Nom attendu \u00e0 cet endroit."
-                                                                                                                                                                            } else {
-                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NESTED$undFUNCTIONS$2;
-                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
-                                                                                                                                                                                return "D\u00e9finition d'une fonction \u00e0 l'int\u00e9rieur d'une autre fonction : est-ce bien volontaire ?"
-                                                                                                                                                                              } else {
-                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
-                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
-                                                                                                                                                                                  return "En Python, il ne faut pas mettre 'end' pour terminer un bloc d'instructions."
-                                                                                                                                                                                } else {
-                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
-                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
-                                                                                                                                                                                    return "Impossible de d\u00e9terminer le type d'erreur et de sugg\u00e9rer une correction : '%s'."
-                                                                                                                                                                                  } else {
-                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
-                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
-                                                                                                                                                                                      return "Impossible d'indicer les nombres."
-                                                                                                                                                                                    } else {
-                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
-                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
-                                                                                                                                                                                        return "Il faut indiquer les param\u00e8tres entre parenth\u00e8ses : '%s' trouv\u00e9 \u00e0 la place."
-                                                                                                                                                                                      } else {
-                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
-                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
-                                                                                                                                                                                          return "En Python 2.x, 'print' n'est pas une fonction et ne peut pas \u00eatre appel\u00e9 avec des param\u00e8tres nomm\u00e9s."
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
-                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
-                                                                                                                                                                                            return "En Python 3.x, 'print' est une fonction et n\u00e9cessite des parenth\u00e8ses."
-                                                                                                                                                                                          } else {
-                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
-                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
-                                                                                                                                                                                              return "Il faut utiliser 'return' au lieu de 'break' pour sortir d'une fonction."
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
-                                                                                                                                                                                                return "Une instruction 'return' ne peut pas figurer hors d'une fonction."
-                                                                                                                                                                                              } else {
-                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
-                                                                                                                                                                                                  return "Pour effectuer une assignation, il faut utiliser un seul caract\u00e8re '='."
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
-                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
-                                                                                                                                                                                                    return "Dans ce cas, la comparaison avec '%s' est superflue."
-                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
-                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
-                                                                                                                                                                                                      return "Il semble que ces tokens soient invers\u00e9s: '%s' et '%s'."
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
-                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
-                                                                                                                                                                                                        return "Il faut un '%s' \u00e0 la place de '%s'."
-                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
-                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
-                                                                                                                                                                                                          return "Pour former un tuple, il faut mettre les valeurs entre parenth\u00e8ses."
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
-                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
-                                                                                                                                                                                                            return "Fin de ligne inattendue."
-                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
-                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
-                                                                                                                                                                                                              return "Le mot-cl\u00e9 '%s' est inattendu dans ce contexte."
-                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
-                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
-                                                                                                                                                                                                                return "La parenth\u00e8se ouvrante '%s' ne poss\u00e8de pas de parenth\u00e8se fermante correspondante."
-                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
-                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
-                                                                                                                                                                                                                  return "Ce code est hors d'atteinte: il n'est jamais execut\u00e9."
-                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
-                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
-                                                                                                                                                                                                                    return "Cha\u00eene de caract\u00e8res non termin\u00e9e."
-                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
-                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
-                                                                                                                                                                                                                      return "Pour combiner plusieurs conditions, il faut utiliser 'and' ou 'or' et non une virgule."
-                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
-                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
-                                                                                                                                                                                                                        return "Pour combiner plusieurs valeurs, il faut utiliser des virgules et non 'and'."
-                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
-                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
-                                                                                                                                                                                                                          return "Utiliser 'elif' au lieu de 'else'."
-                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
-                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
-                                                                                                                                                                                                                            return "Utiliser 'elif' au lieu de 'else if'."
-                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
-                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
-                                                                                                                                                                                                                              return "Utiliser '== %s' au lieu de '!= %s'."
-                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
-                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                return "Utiliser '%%' au lieu de '/' pour tester la divisibilit\u00e9."
-                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
-                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                  return "Utiliser 'not' au lieu d'une comparaison avec '%s'."
-                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undPYTHON$undPOWER$2;
-                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                    return "Utiliser '**' au lieu de '^'."
-                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
-                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                      return "Utiliser 'repeat' au lieu de 'while'."
-                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undSEMICOLON$undINSTEAD$undOF$undCOMMA$2;
-                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                        return "Utiliser un point-virgule au lieu d'une virgule."
-                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
-                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                          return "Le r\u00e9sultat de cette expression n'est jamais utilis\u00e9."
-                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                            return "Cette instruction est inutile : elle n'a aucun effet."
-                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
-                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                              return "Cette instruction est inutile. L'id\u00e9e \u00e9tait-elle de faire '%s='?"
-                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
-                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                return "Mauvais type de parenth\u00e8ses : il faut utiliser '%s' au lieu de '%s'."
-                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
-                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                  return "Mauvais token : utiliser '%s' au lieu de '%s'."
-                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                    return "L'expression 'yield' ne peut pas figurer \u00e0 l'ext\u00e9rieur du corps d'une fonction."
-                                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                                    return null
-                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                  }
-                                                                                                                                                                                                }
-                                                                                                                                                                                              }
-                                                                                                                                                                                            }
-                                                                                                                                                                                          }
-                                                                                                                                                                                        }
-                                                                                                                                                                                      }
-                                                                                                                                                                                    }
-                                                                                                                                                                                  }
-                                                                                                                                                                                }
-                                                                                                                                                                              }
-                                                                                                                                                                            }
-                                                                                                                                                                          }
-                                                                                                                                                                        }
-                                                                                                                                                                      }
-                                                                                                                                                                    }
-                                                                                                                                                                  }
-                                                                                                                                                                }
-                                                                                                                                                              }
-                                                                                                                                                            }
-                                                                                                                                                          }
-                                                                                                                                                        }
-                                                                                                                                                      }
-                                                                                                                                                    }
-                                                                                                                                                  }
-                                                                                                                                                }
-                                                                                                                                              }
-                                                                                                                                            }
-                                                                                                                                          }
-                                                                                                                                        }
-                                                                                                                                      }
-                                                                                                                                    }
-                                                                                                                                  }
-                                                                                                                                }
-                                                                                                                              }
-                                                                                                                            }
-                                                                                                                          }
-                                                                                                                        }
-                                                                                                                      }
-                                                                                                                    }
-                                                                                                                  }
-                                                                                                                }
-                                                                                                              }
-                                                                                                            }
-                                                                                                          }
-                                                                                                        }
-                                                                                                      }
-                                                                                                    }
-                                                                                                  }
-                                                                                                }
-                                                                                              }
-                                                                                            }
-                                                                                          }
-                                                                                        }
-                                                                                      }
-                                                                                    }
-                                                                                  }
-                                                                                }
-                                                                              }
-                                                                            }
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-});
-var $d_Ltigerpython_parser_errormessages_FrenchMessages$ = new $TypeData().initClass({
-  Ltigerpython_parser_errormessages_FrenchMessages$: 0
-}, false, "tigerpython.parser.errormessages.FrenchMessages$", {
-  Ltigerpython_parser_errormessages_FrenchMessages$: 1,
-  O: 1
-});
-$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_FrenchMessages$;
-var $n_Ltigerpython_parser_errormessages_FrenchMessages$ = (void 0);
-function $m_Ltigerpython_parser_errormessages_FrenchMessages$() {
-  if ((!$n_Ltigerpython_parser_errormessages_FrenchMessages$)) {
-    $n_Ltigerpython_parser_errormessages_FrenchMessages$ = new $c_Ltigerpython_parser_errormessages_FrenchMessages$().init___()
-  };
-  return $n_Ltigerpython_parser_errormessages_FrenchMessages$
-}
-/** @constructor */
-function $c_Ltigerpython_parser_errormessages_ItalianMessages$() {
-  $c_O.call(this)
-}
-$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype = new $h_O();
-$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_ItalianMessages$;
-/** @constructor */
-function $h_Ltigerpython_parser_errormessages_ItalianMessages$() {
-  /*<skip>*/
-}
-$h_Ltigerpython_parser_errormessages_ItalianMessages$.prototype = $c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype;
-$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.init___ = (function() {
-  return this
-});
-$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.getMessage__s_Enumeration$Value__T = (function(msg) {
-  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
-  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
-    return "'%s' connette comparazioni, non variabili."
-  } else {
-    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
-    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
-      return "Non puoi passare ulteriori argomenti dopo un argomento spacchettante."
-    } else {
-      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
-      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
-        return "'as' non \u00e8 permesso/supportato qui."
-      } else {
-        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
-        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
-          return "Il target dell'assegnamento deve essere sulla sinistra."
-        } else {
-          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
-          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
-            return "Usa 'break' invece di 'return' per uscire da un ciclo."
-          } else {
-            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
-            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
-              return "Non si pu\u00f2 usare un'istruzione '%s' fuori da un ciclo."
-            } else {
-              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
-              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
-                return "Per invocare una funzione devi usare le parentesi anche quando sono vuote."
-              } else {
-                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
-                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
-                  return "Non \u00e8 possibile applicare 'async' a questa istruzione."
-                } else {
-                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
-                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
-                    return "Non puoi assegnare qualcosa ad un'invocazione."
-                  } else {
-                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
-                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
-                      return "Non puoi assegnare qualcosa ad una funzione."
-                    } else {
-                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
-                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
-                        return "Il nome '%s' \u00e8 gi\u00e0 definito."
-                      } else {
-                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
-                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
-                          return "Devi testare ogni elemento di questa tupla individualmente."
-                        } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
-                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
-                            return "Non puoi usare la parola chiave '%s' come un nome."
-                          } else {
-                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
-                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
-                              return "Un metodo di classe richiede almeno un parametro."
-                            } else {
-                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
-                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
-                                return "Due punti ':' sono necessari qui."
-                              } else {
-                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
-                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
-                                  return "Questa condizione non pu\u00f2 essere soddisfatta."
-                                } else {
-                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
-                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
-                                    return "Questa condizione \u00e8 sempre soddisfatta."
-                                  } else {
-                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
-                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
-                                      return "Una funziona e il suo decoratore non possono avere lo stesso nome '%s'."
-                                    } else {
-                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
-                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
-                                        return "Decoratori sono applicabili solo a funzioni e classi."
-                                      } else {
-                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
-                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
-                                          return "Una definizione '%s' non pu\u00f2 essere in un ciclo."
-                                        } else {
-                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
-                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
-                                            return "Una struttura '%s' pu\u00f2 avere solo un ramo 'else'."
-                                          } else {
-                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
-                                              return "Qui \u00e8 richiesto un doppio uguale '=='."
-                                            } else {
-                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
-                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
-                                                return "Due parametri non possono avere lo stesso nome: '%s'."
-                                              } else {
-                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
-                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
-                                                  return "'%s' deve essere indentato quanto 'if'."
-                                                } else {
-                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
-                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
-                                                    return "'else' non ha una comparazione."
-                                                  } else {
-                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
-                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
-                                                      return "C'\u00e8 un '%s' senza un 'if'."
-                                                    } else {
-                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
-                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
-                                                        return "L'indice non pu\u00f2 essere vuoto."
-                                                      } else {
-                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
-                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
-                                                          return "C'\u00e8 un indentazione di troppo."
-                                                        } else {
-                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
-                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
-                                                            return "Sembra che ci sia un'interruzione di linea di troppo. Forse vuoi nasconderla usando '\\'."
-                                                          } else {
-                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
-                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
-                                                              return "C'\u00e8 una parentesi aperta di troppo: '%s'."
-                                                            } else {
-                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
-                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
-                                                                return "C'\u00e8 una parentesi chiusa di troppo: '%s'."
-                                                              } else {
-                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
-                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
-                                                                  return "C'\u00e8 uno spazio di troppo."
-                                                                } else {
-                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
-                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
-                                                                    return "C'\u00e8 uno spazio di troppo o una virgola mancante."
-                                                                  } else {
-                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
-                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
-                                                                      return "C'\u00e8 un token di troppo: '%s'."
-                                                                    } else {
-                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
-                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
-                                                                        return "'%s' non \u00e8 una parola chiave in Python."
-                                                                      } else {
-                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
-                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
-                                                                          return "Il token '%s' non \u00e8 valido, usa il trattino basso '_' per marcare la funzione come 'privata'."
-                                                                        } else {
-                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
-                                                                            return "Python non ha un istruzione '%s'."
-                                                                          } else {
-                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
-                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
-                                                                              return "La seguente sintassi non \u00e8 valida in Python: %s."
-                                                                            } else {
-                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
-                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
-                                                                                return "Il token '%s' non \u00e8 valido, invece usa '%s'."
-                                                                              } else {
-                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
-                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
-                                                                                  return "Python non usa '%s' per definire variabili."
-                                                                                } else {
-                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
-                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
-                                                                                    return "Il ciclo-'for' richiede una variabile."
-                                                                                  } else {
-                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
-                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
-                                                                                      return "L'istruzione 'from __future__ import' deve essere la prima istruzione del modulo."
-                                                                                    } else {
-                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
-                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
-                                                                                        return "Un generatore non pu\u00f2 usare 'return' per restituire un valore."
-                                                                                      } else {
-                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
-                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
-                                                                                          return "Le istruzioni '%s' devono essere la prime istruzioni all'interno di una funzione."
-                                                                                        } else {
-                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
-                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
-                                                                                            return "Un'istruzione '%s' non pu\u00f2 essere all'esterno di una funzione."
-                                                                                          } else {
-                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
-                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
-                                                                                              return "Un istruzione 'import' non pu\u00f2 essere all'interno di un ciclo."
-                                                                                            } else {
-                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
-                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
-                                                                                                return "Questa istruzione 'import' \u00e8 incompleta."
-                                                                                              } else {
-                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
-                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
-                                                                                                  return "L'indentazione \u00e8 inconsistente."
-                                                                                                } else {
-                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
-                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
-                                                                                                    return "Questa funzione ogni tanto ritorna un valore e ogni tanto no."
-                                                                                                  } else {
-                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
-                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
-                                                                                                      return "Questo '%s' deve essere indentato."
-                                                                                                    } else {
-                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
-                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
-                                                                                                        return "Questo \u00e8 un ciclo infinito: la sua esecuzione non termina mai."
-                                                                                                      } else {
-                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
-                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
-                                                                                                          return "Non puoi avere un'inizializzazione all'interno di un ciclo."
-                                                                                                        } else {
-                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
-                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
-                                                                                                            return "Non puoi assegnare qualcosa a '%s'."
-                                                                                                          } else {
-                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
-                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
-                                                                                                              return "Definizione di funzione non valida."
-                                                                                                            } else {
-                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
-                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
-                                                                                                                return "Usa ':' e 'return' invece di un assegnamento."
-                                                                                                              } else {
-                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
-                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
-                                                                                                                  return "Un argomento 'generatore/comprensione' non pu\u00f2 essere combinato con altri argomenti."
-                                                                                                                } else {
-                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
-                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
-                                                                                                                    return "Questo carattere immesso non \u00e8 valido: '%s'."
-                                                                                                                  } else {
-                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
-                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
-                                                                                                                      return "Questa coppia chiave-valore non \u00e8 valida."
-                                                                                                                    } else {
-                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
-                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
-                                                                                                                        return "Questo nome non \u00e8 valido: '%s'."
-                                                                                                                      } else {
-                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
-                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
-                                                                                                                          return "Questa espressione non \u00e8 un target valido per un assegnamento aumentato."
-                                                                                                                        } else {
-                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
-                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
-                                                                                                                            return "Questo non \u00e8 un prefisso di stringa valido: '%s'."
-                                                                                                                          } else {
-                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
-                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
-                                                                                                                              return "Questo token non pu\u00f2 essere all'inizio di una riga: '%s'."
-                                                                                                                            } else {
-                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
-                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
-                                                                                                                                return "Un metodo richiede un argomento 'self'."
-                                                                                                                              } else {
-                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
-                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
-                                                                                                                                  return "Ci sono parentesi non corrispondenti: dovrebbe esserci '%s', ma c'\u00e8 '%s'."
-                                                                                                                                } else {
-                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
-                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
-                                                                                                                                    return "L'assegnamento '%s' non pu\u00f2 avvenire all'interno di un espressione."
-                                                                                                                                  } else {
-                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
-                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
-                                                                                                                                      return "Sembra che manca un assegnamento."
-                                                                                                                                    } else {
-                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
-                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
-                                                                                                                                        return "A questo assegnamento manca un espressione sorgente."
-                                                                                                                                      } else {
-                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
-                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
-                                                                                                                                          return "Manca un corpo o un indentazione."
-                                                                                                                                        } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
-                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
-                                                                                                                                            return "Manca una virgola."
-                                                                                                                                          } else {
-                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
-                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
-                                                                                                                                              return "Manca una comparazione."
-                                                                                                                                            } else {
-                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
-                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
-                                                                                                                                                return "Sembra che manca un punto."
-                                                                                                                                              } else {
-                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
-                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
-                                                                                                                                                  return "Manca una parentesi aperta: '%s'."
-                                                                                                                                                } else {
-                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
-                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
-                                                                                                                                                    return "Manca una parentesi tonda aperta '('."
-                                                                                                                                                  } else {
-                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
-                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
-                                                                                                                                                      return "Manca un operatore o una virgola."
-                                                                                                                                                    } else {
-                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
-                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
-                                                                                                                                                        return "Sembra che mancano delle parentesi."
-                                                                                                                                                      } else {
-                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
-                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
-                                                                                                                                                          return "Manca una parentesi chiusa: '%s'."
-                                                                                                                                                        } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
-                                                                                                                                                            return "Manca uno spazio."
-                                                                                                                                                          } else {
-                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
-                                                                                                                                                              return "Manca '%s'."
-                                                                                                                                                            } else {
-                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
-                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
-                                                                                                                                                                return "Parola chiave errata '%s' invece di '%s'."
-                                                                                                                                                              } else {
-                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
-                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
-                                                                                                                                                                  return "Sembra che ci sia un errore all'interno del tuo numero."
-                                                                                                                                                                } else {
-                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
-                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
-                                                                                                                                                                    return "Operatore errato '%s' invece di '%s'."
-                                                                                                                                                                  } else {
-                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
-                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
-                                                                                                                                                                      return "\u00c8 permesso un solo argomento spacchettante."
-                                                                                                                                                                    } else {
-                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
-                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
-                                                                                                                                                                        return "\u00c8 permesso un solo argomento spacchettante."
-                                                                                                                                                                      } else {
-                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
-                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
-                                                                                                                                                                          return "Qui serve un nome."
-                                                                                                                                                                        } else {
-                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
-                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
-                                                                                                                                                                            return "In Python non serve 'end', e non \u00e8 nemmeno permesso."
-                                                                                                                                                                          } else {
-                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
-                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
-                                                                                                                                                                              return "Un argomento spacchettante non pu\u00f2 avere un valore default."
-                                                                                                                                                                            } else {
-                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
-                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
-                                                                                                                                                                                return "Non esiste nessun alternativa sensata: '%s'."
-                                                                                                                                                                              } else {
-                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
-                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
-                                                                                                                                                                                  return "Un numero non pu\u00f2 avere un indice."
-                                                                                                                                                                                } else {
-                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
-                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
-                                                                                                                                                                                    return "L'argomento spacchettante deve essere alla fine."
-                                                                                                                                                                                  } else {
-                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
-                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
-                                                                                                                                                                                      return "Sono richiesti dei parametri, ma si \u00e8 trovato '%s'."
-                                                                                                                                                                                    } else {
-                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
-                                                                                                                                                                                        return "Argomenti posizionali non possono essere dopo argomenti con parola chiave."
-                                                                                                                                                                                      } else {
-                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
-                                                                                                                                                                                          return "Parametri senza defaults non possono essere dopo parametri con valori default o spacchettanti"
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
-                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
-                                                                                                                                                                                            return "'>>' deve essere seguito da un target valido."
-                                                                                                                                                                                          } else {
-                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
-                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
-                                                                                                                                                                                              return "In Python 2.x 'print' \u00e8 un'istruzione e non pu\u00f2 essere invocata con argomenti con parola chiave."
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
-                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
-                                                                                                                                                                                                return "In Python 3.x 'print' \u00e8 una funzione e richiede parentesi."
-                                                                                                                                                                                              } else {
-                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
-                                                                                                                                                                                                  return "Questa funzionalit\u00e0 da Python 2.x non \u00e8 disponibile."
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
-                                                                                                                                                                                                    return "Questa funzionalit\u00e0 da Python 3.x non \u00e8 disponibile."
-                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
-                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
-                                                                                                                                                                                                      return "Usa 'return' invece di 'break' per uscire da una funzione."
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
-                                                                                                                                                                                                        return "Un'istruzione 'return' non pu\u00f2 essere all'esterno di una funzione."
-                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
-                                                                                                                                                                                                          return "Usa un singolo uguale '=' per assegnamenti."
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
-                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
-                                                                                                                                                                                                            return "La comparazione con '%s' \u00e8 superflua qui."
-                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
-                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
-                                                                                                                                                                                                              return "Sembra che questi token sono scambiati: '%s' e '%s'."
-                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
-                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
-                                                                                                                                                                                                                return "'%s' \u00e8 richiesto, per\u00f2 '%s' \u00e8 stato trovato."
-                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
-                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
-                                                                                                                                                                                                                  return "Questa tupla deve essere tra parentesi."
-                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
-                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
-                                                                                                                                                                                                                    return "Interruzione di riga o di input inaspettato."
-                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
-                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
-                                                                                                                                                                                                                      return "La parola chiave '%s' non pu\u00f2 essere in questo punto."
-                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
-                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
-                                                                                                                                                                                                                        return "Questa parentesi aperta '%s' non ha una parentesi chiusa corrispondente."
-                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
-                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
-                                                                                                                                                                                                                          return "Questo codice non \u00e8 raggiungibile e non sar\u00e0 mai eseguito."
-                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
-                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
-                                                                                                                                                                                                                            return "Questa stringa non \u00e8 chiusa."
-                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
-                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
-                                                                                                                                                                                                                              return "Multiple comparazioni sono collegate con 'and' oppure 'or' invece che da una virgola."
-                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
-                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                return "Multipli valori sono separati con la virgola invece che con 'and'."
-                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
-                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                  return "Usa 'elif' invece di 'else'."
-                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
-                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                    return "Usa 'elif' invece di 'else if'."
-                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
-                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                      return "Usa '== %s' invece di '!= %s'."
-                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
-                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                        return "Usa '%%' invece di '/' per verificare se un numero \u00e8 divisibile."
-                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
-                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                          return "Usa 'not' piuttosto che una comparazione con '%s'."
-                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
-                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                            return "Usa 'repeat' invece di 'while'."
-                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
-                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                              return "Il risultato di questa espressione non viene mai usato."
-                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                return "Questa istruzione \u00e8 inutile: non ha nessun effetto."
-                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
-                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                  return "Questa istruzione \u00e8 inutile. Intendevi '%s='?"
-                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
-                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                    return "L'argomento spacchettante variabile deve essere prima dell'argomento spacchettante con parola chiave."
-                                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
-                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                      return "Argomenti spacchettanti non sono permessi a questo punto."
-                                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
-                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                        return "Parentesi sbagliata: '%s' \u00e8 richiesto invece di '%s'."
-                                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
-                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                          return "Simbolo sbagliato '%s' invece di '%s'."
-                                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                                          var x$249 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                                                                          if (((x$249 === null) ? (msg === null) : x$249.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                            return "Un'espressione 'yield' non pu\u00f2 essere all'esterno di una funzione."
-                                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                                            return null
-                                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                  }
-                                                                                                                                                                                                }
-                                                                                                                                                                                              }
-                                                                                                                                                                                            }
-                                                                                                                                                                                          }
-                                                                                                                                                                                        }
-                                                                                                                                                                                      }
-                                                                                                                                                                                    }
-                                                                                                                                                                                  }
-                                                                                                                                                                                }
-                                                                                                                                                                              }
-                                                                                                                                                                            }
-                                                                                                                                                                          }
-                                                                                                                                                                        }
-                                                                                                                                                                      }
-                                                                                                                                                                    }
-                                                                                                                                                                  }
-                                                                                                                                                                }
-                                                                                                                                                              }
-                                                                                                                                                            }
-                                                                                                                                                          }
-                                                                                                                                                        }
-                                                                                                                                                      }
-                                                                                                                                                    }
-                                                                                                                                                  }
-                                                                                                                                                }
-                                                                                                                                              }
-                                                                                                                                            }
-                                                                                                                                          }
-                                                                                                                                        }
-                                                                                                                                      }
-                                                                                                                                    }
-                                                                                                                                  }
-                                                                                                                                }
-                                                                                                                              }
-                                                                                                                            }
-                                                                                                                          }
-                                                                                                                        }
-                                                                                                                      }
-                                                                                                                    }
-                                                                                                                  }
-                                                                                                                }
-                                                                                                              }
-                                                                                                            }
-                                                                                                          }
-                                                                                                        }
-                                                                                                      }
-                                                                                                    }
-                                                                                                  }
-                                                                                                }
-                                                                                              }
-                                                                                            }
-                                                                                          }
-                                                                                        }
-                                                                                      }
-                                                                                    }
-                                                                                  }
-                                                                                }
-                                                                              }
-                                                                            }
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-});
-var $d_Ltigerpython_parser_errormessages_ItalianMessages$ = new $TypeData().initClass({
-  Ltigerpython_parser_errormessages_ItalianMessages$: 0
-}, false, "tigerpython.parser.errormessages.ItalianMessages$", {
-  Ltigerpython_parser_errormessages_ItalianMessages$: 1,
-  O: 1
-});
-$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_ItalianMessages$;
-var $n_Ltigerpython_parser_errormessages_ItalianMessages$ = (void 0);
-function $m_Ltigerpython_parser_errormessages_ItalianMessages$() {
-  if ((!$n_Ltigerpython_parser_errormessages_ItalianMessages$)) {
-    $n_Ltigerpython_parser_errormessages_ItalianMessages$ = new $c_Ltigerpython_parser_errormessages_ItalianMessages$().init___()
-  };
-  return $n_Ltigerpython_parser_errormessages_ItalianMessages$
-}
-/** @constructor */
 function $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages() {
   $c_O.call(this);
   this.messages$1 = null
@@ -4903,662 +2937,6 @@ $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.prototype.setMessag
     this$1.put__O__O__s_Option(code, msg)
   }
 });
-/** @constructor */
-function $c_Ltigerpython_parser_errormessages_RussianMessages$() {
-  $c_O.call(this)
-}
-$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype = new $h_O();
-$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_RussianMessages$;
-/** @constructor */
-function $h_Ltigerpython_parser_errormessages_RussianMessages$() {
-  /*<skip>*/
-}
-$h_Ltigerpython_parser_errormessages_RussianMessages$.prototype = $c_Ltigerpython_parser_errormessages_RussianMessages$.prototype;
-$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.init___ = (function() {
-  return this
-});
-$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.getMessage__s_Enumeration$Value__T = (function(msg) {
-  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
-  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
-    return "'%s' \u0441\u0432\u044f\u0437\u044b\u0432\u0430\u0435\u0442 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f, \u0430 \u043d\u0435 \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435."
-  } else {
-    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
-    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
-      return "\u0417\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0442\u044c \u0434\u0440\u0443\u0433\u0438\u0435 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u044b \u043f\u043e\u0441\u043b\u0435 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430."
-    } else {
-      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
-      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
-        return "'as' \u0437\u0434\u0435\u0441\u044c \u043d\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e / \u043d\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f."
-      } else {
-        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
-        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
-          return "\u0426\u0435\u043b\u0435\u0432\u043e\u0439 \u043e\u0431\u044a\u0435\u043a\u0442 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043e\u043b\u0436\u0435\u043d \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0441\u043b\u0435\u0432\u0430."
-        } else {
-          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
-          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
-            return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'break' \u0432\u043c\u0435\u0441\u0442\u043e 'return' \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u0446\u0438\u043a\u043b\u0430."
-          } else {
-            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
-            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
-              return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0446\u0438\u043a\u043b\u0430."
-            } else {
-              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
-              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
-                return "\u0427\u0442\u043e\u0431\u044b \u0432\u044b\u0437\u0432\u0430\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u044e \u043d\u0443\u0436\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u043a\u043e\u0431\u043a\u0438, \u0434\u0430\u0436\u0435 \u0435\u0441\u043b\u0438 \u043e\u043d\u0438 \u043f\u0443\u0441\u0442\u044b\u0435."
-              } else {
-                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
-                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
-                  return "'async' \u043d\u0435\u043f\u0440\u0438\u043c\u0435\u043d\u0438\u043c\u043e \u0432 \u044d\u0442\u043e\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438."
-                } else {
-                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
-                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
-                    return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0447\u0442\u043e-\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0432\u044b\u0437\u043e\u0432\u0443 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                  } else {
-                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
-                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
-                      return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0447\u0442\u043e-\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                    } else {
-                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
-                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
-                        return "\u0418\u043c\u044f '%s' \u0443\u0436\u0435 \u0437\u0430\u043d\u044f\u0442\u043e."
-                      } else {
-                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
-                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
-                          return "\u0422\u0435\u0441\u0442\u0438\u0440\u0443\u0439\u0442\u0435 \u043a\u0430\u0436\u0434\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u043e\u0440\u0442\u0435\u0436\u0430 \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e."
-                        } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
-                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
-                            return "\u0412\u044b \u043d\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '%s' \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0438\u043c\u0435\u043d\u0438."
-                          } else {
-                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
-                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
-                              return "\u041c\u0435\u0442\u043e\u0434 \u043a\u043b\u0430\u0441\u0441\u0430 \u043e\u0436\u0438\u0434\u0430\u0435\u0442 \u043d\u0435 \u043c\u0435\u043d\u044c\u0448\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430."
-                            } else {
-                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
-                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
-                                return "\u0417\u0434\u0435\u0441\u044c \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0434\u0432\u043e\u0435\u0442\u043e\u0447\u0438\u0435 ':'."
-                              } else {
-                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
-                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
-                                  return "\u0423\u0441\u043b\u043e\u0432\u0438\u0435 \u0431\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0442\u0430\u043a \u043a\u0430\u043a \u043d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f."
-                                } else {
-                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
-                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
-                                    return "\u0423\u0441\u043b\u043e\u0432\u0438\u0435 \u0431\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0442\u0430\u043a \u043a\u0430\u043a \u0432\u0441\u0435\u0433\u0434\u0430 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f."
-                                  } else {
-                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
-                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
-                                      return "\u0424\u0443\u043d\u043a\u0446\u0438\u044f \u0438 \u0435\u0451 \u0434\u0435\u043a\u043e\u0440\u0430\u0442\u043e\u0440 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e: '%s'."
-                                    } else {
-                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
-                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
-                                        return "\u0414\u0435\u043a\u043e\u0440\u0430\u0442\u043e\u0440\u044b \u043f\u0440\u0438\u043c\u0435\u043d\u0438\u043c\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043a \u0444\u0443\u043d\u043a\u0446\u0438\u044f\u043c \u0438 \u043a\u043b\u0430\u0441\u0441\u0430\u043c."
-                                      } else {
-                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
-                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
-                                          return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0443\u0442\u0440\u0438 \u0446\u0438\u043a\u043b\u0430."
-                                        } else {
-                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
-                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
-                                            return "\u0423 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u043e\u0434\u043d\u043e\u0433\u043e 'else'."
-                                          } else {
-                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
-                                              return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f '==', \u0430 \u043d\u0435 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
-                                            } else {
-                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
-                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
-                                                return "\u0414\u0432\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e: '%s'."
-                                              } else {
-                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
-                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
-                                                  return "\u041e\u0442\u0441\u0442\u0443\u043f '%s' \u0434\u043e\u043b\u0436\u0435\u043d \u0440\u0430\u0432\u043d\u044f\u0442\u044c\u0441\u044f \u043e\u0442\u0441\u0442\u0443\u043f\u0443 'if'."
-                                                } else {
-                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
-                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
-                                                    return "\u0423 'else' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f."
-                                                  } else {
-                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
-                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
-                                                      return "\u042d\u0442\u043e\u043c\u0443 '%s' \u043d\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043d\u0438\u043a\u0430\u043a\u043e\u0439 'if'."
-                                                    } else {
-                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
-                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
-                                                        return "\u0418\u043d\u0434\u0435\u043a\u0441 \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c."
-                                                      } else {
-                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
-                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
-                                                          return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043e\u0442\u0441\u0442\u0443\u043f."
-                                                        } else {
-                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
-                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
-                                                            return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043b\u0438\u0448\u043d\u0438\u0439 \u0440\u0430\u0437\u0440\u044b\u0432 \u0441\u0442\u0440\u043e\u043a\u0438. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0435\u0433\u043e \u0441\u043f\u0440\u044f\u0442\u0430\u0442\u044c \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e '\\'."
-                                                          } else {
-                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
-                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
-                                                              return "\u041b\u0438\u0448\u043d\u0430\u044f \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
-                                                            } else {
-                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
-                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
-                                                                return "\u041b\u0438\u0448\u043d\u0430\u044f \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
-                                                              } else {
-                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
-                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
-                                                                  return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043f\u0440\u043e\u0431\u0435\u043b."
-                                                                } else {
-                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
-                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
-                                                                    return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043f\u0440\u043e\u0431\u0435\u043b \u0438\u043b\u0438 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0430\u044f \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
-                                                                  } else {
-                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
-                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
-                                                                      return "\u041b\u0438\u0448\u043d\u044f\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430: '%s'."
-                                                                    } else {
-                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
-                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
-                                                                        return "\u0412 Python \u043d\u0435\u0442 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0433\u043e \u0441\u043b\u043e\u0432\u0430 '%s'."
-                                                                      } else {
-                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
-                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
-                                                                          return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430 '%s', \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 \u043d\u0438\u0436\u043d\u0435\u0435 \u043f\u043e\u0434\u0447\u0451\u0440\u043a\u0438\u0432\u0430\u043d\u0438\u0435 '_', \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u044e \u043a\u0430\u043a \u0437\u0430\u043a\u0440\u044b\u0442\u0443\u044e ('private')."
-                                                                        } else {
-                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
-                                                                            return "\u0412 Python \u043d\u0435\u0442 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438 '%s'."
-                                                                          } else {
-                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
-                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
-                                                                              return "\u0421\u0438\u043d\u0442\u0430\u043a\u0441\u0438\u0441 %s \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u0435\u043d \u0432 Python."
-                                                                            } else {
-                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
-                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
-                                                                                return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430 '%s', \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '%s'."
-                                                                              } else {
-                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
-                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
-                                                                                  return "\u0412 Python \u043d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f '%s' \u0434\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0445."
-                                                                                } else {
-                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
-                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
-                                                                                    return "\u0414\u043b\u044f \u0446\u0438\u043a\u043b\u0430 'for' \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0430\u044f."
-                                                                                  } else {
-                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
-                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
-                                                                                      return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'from __future__ import' \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u043f\u0435\u0440\u0432\u043e\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0435\u0439 \u0432 \u043c\u043e\u0434\u0443\u043b\u0435."
-                                                                                    } else {
-                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
-                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
-                                                                                        return "\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c 'return', \u0447\u0442\u043e\u0431\u044b \u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0438\u043c\u0435\u043b\u0438 \u0432 \u0432\u0438\u0434\u0443 'yield'."
-                                                                                      } else {
-                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
-                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
-                                                                                          return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438 '%s' \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u0430\u043c\u044b\u043c\u0438 \u043f\u0435\u0440\u0432\u044b\u043c\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f\u043c\u0438 \u0432 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                        } else {
-                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
-                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
-                                                                                            return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                          } else {
-                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
-                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
-                                                                                              return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'import' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432 \u0446\u0438\u043a\u043b\u0435."
-                                                                                            } else {
-                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
-                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
-                                                                                                return "\u041d\u0435\u043f\u043e\u043b\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f import."
-                                                                                              } else {
-                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
-                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
-                                                                                                  return "\u041e\u0442\u0441\u0442\u0443\u043f\u044b \u043d\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0442 \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0443."
-                                                                                                } else {
-                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
-                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
-                                                                                                    return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u043d\u043e\u0433\u0434\u0430 \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u0430 \u0438\u043d\u043e\u0433\u0434\u0430 \u043d\u0435\u0442."
-                                                                                                  } else {
-                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
-                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
-                                                                                                      return "\u041b\u0438\u0448\u043d\u0438\u0435 \u043e\u0442\u0441\u0442\u0443\u043f\u044b: '%s'."
-                                                                                                    } else {
-                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
-                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
-                                                                                                        return "\u0411\u0435\u0441\u043a\u043e\u043d\u0435\u0447\u043d\u044b\u0439 \u0446\u0438\u043a\u043b."
-                                                                                                      } else {
-                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
-                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
-                                                                                                          return "\u0418\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0443\u0442\u0440\u0438 \u0446\u0438\u043a\u043b\u0430."
-                                                                                                        } else {
-                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
-                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
-                                                                                                            return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0447\u0442\u043e-\u0442\u043e '%s'."
-                                                                                                          } else {
-                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
-                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
-                                                                                                              return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u043e\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                                            } else {
-                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
-                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
-                                                                                                                return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 ':' \u0438 'return' \u0432\u043c\u0435\u0441\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
-                                                                                                              } else {
-                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
-                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
-                                                                                                                  return "\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440\u0430/\u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u0451\u043d \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430\u043c\u0438."
-                                                                                                                } else {
-                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
-                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
-                                                                                                                    return "\u0412\u044b \u0432\u0432\u0435\u043b\u0438 \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u0438\u043c\u0432\u043e\u043b '%s'."
-                                                                                                                  } else {
-                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
-                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
-                                                                                                                      return "\u041f\u0430\u0440\u0430 '\u043a\u043b\u044e\u0447-\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435' \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u0430."
-                                                                                                                    } else {
-                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
-                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
-                                                                                                                        return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u043e\u0435 \u0438\u043c\u044f: '%s'."
-                                                                                                                      } else {
-                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
-                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
-                                                                                                                          return "\u042d\u0442\u043e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0446\u0435\u043b\u044c\u044e \u043a\u043e\u043c\u0431\u0438\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
-                                                                                                                        } else {
-                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
-                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
-                                                                                                                            return "\u041d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u0447\u0430\u043b\u043e \u0441\u0442\u0440\u043e\u043a\u0438: '%s'."
-                                                                                                                          } else {
-                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
-                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
-                                                                                                                              return "\u042d\u0442\u0430 \u043b\u0435\u043a\u0441\u0435\u043c\u0430 \u043d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430 \u0432 \u043d\u0430\u0447\u0430\u043b\u0435 \u0441\u0442\u0440\u043e\u043a\u0438: '%s'."
-                                                                                                                            } else {
-                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
-                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
-                                                                                                                                return "\u0423 \u043c\u0435\u0442\u043e\u0434\u0430 \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 'self'."
-                                                                                                                              } else {
-                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
-                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
-                                                                                                                                  return "\u041d\u0435\u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0435 \u0441\u043a\u043e\u0431\u043a\u0438: \u043e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f '%s', \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
-                                                                                                                                } else {
-                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
-                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
-                                                                                                                                    return "\u041f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u0435 '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0447\u0430\u0441\u0442\u044c\u044e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f."
-                                                                                                                                  } else {
-                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
-                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
-                                                                                                                                      return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043f\u0440\u043e\u043f\u0430\u043b\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u0435."
-                                                                                                                                    } else {
-                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
-                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
-                                                                                                                                        return "\u042d\u0442\u043e\u0439 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f-\u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430."
-                                                                                                                                      } else {
-                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
-                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
-                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0435\u043b\u043e \u0438\u043b\u0438 \u043e\u0442\u0441\u0442\u0443\u043f."
-                                                                                                                                        } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
-                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
-                                                                                                                                            return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
-                                                                                                                                          } else {
-                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
-                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
-                                                                                                                                              return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435."
-                                                                                                                                            } else {
-                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
-                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
-                                                                                                                                                return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0442\u043e\u0447\u043a\u0438."
-                                                                                                                                              } else {
-                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
-                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
-                                                                                                                                                  return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
-                                                                                                                                                } else {
-                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
-                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
-                                                                                                                                                    return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u043a\u0440\u0443\u0433\u043b\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430 '('."
-                                                                                                                                                  } else {
-                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
-                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
-                                                                                                                                                      return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u0438\u043b\u0438 \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
-                                                                                                                                                    } else {
-                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
-                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
-                                                                                                                                                        return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u043a\u0440\u0443\u0433\u043b\u044b\u0445 \u0441\u043a\u043e\u0431\u043e\u043a."
-                                                                                                                                                      } else {
-                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
-                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
-                                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
-                                                                                                                                                        } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
-                                                                                                                                                            return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043f\u0440\u043e\u0431\u0435\u043b."
-                                                                                                                                                          } else {
-                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
-                                                                                                                                                              return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 '%s'."
-                                                                                                                                                            } else {
-                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
-                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
-                                                                                                                                                                return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u043e\u0435 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e: '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
-                                                                                                                                                              } else {
-                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
-                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
-                                                                                                                                                                  return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u0432 \u0447\u0438\u0441\u043b\u043e \u0437\u0430\u043a\u0440\u0430\u043b\u0430\u0441\u044c \u043e\u043f\u0435\u0447\u0430\u0442\u043a\u0430."
-                                                                                                                                                                } else {
-                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
-                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
-                                                                                                                                                                    return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u044b\u0439 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440: '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
-                                                                                                                                                                  } else {
-                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
-                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
-                                                                                                                                                                      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e \u043d\u0435 \u0431\u043e\u043b\u0435\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430."
-                                                                                                                                                                    } else {
-                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
-                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
-                                                                                                                                                                        return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e \u043d\u0435 \u0431\u043e\u043b\u0435\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430."
-                                                                                                                                                                      } else {
-                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
-                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
-                                                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043c\u044f."
-                                                                                                                                                                        } else {
-                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
-                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
-                                                                                                                                                                            return "\u0412 Python \u043d\u0435\u0442 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0433\u043e \u0441\u043b\u043e\u0432\u0430 'end'."
-                                                                                                                                                                          } else {
-                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
-                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
-                                                                                                                                                                              return "\u0423 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e."
-                                                                                                                                                                            } else {
-                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
-                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
-                                                                                                                                                                                return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043e\u0441\u043c\u044b\u0441\u043b\u0435\u043d\u043d\u043e \u0438\u043d\u0442\u0435\u0440\u043f\u0440\u0435\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u0434: '%s'."
-                                                                                                                                                                              } else {
-                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
-                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
-                                                                                                                                                                                  return "\u0423 \u0447\u0438\u0441\u043b\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0438\u043d\u0434\u0435\u043a\u0441\u0430 \u043c\u0430\u0441\u0441\u0438\u0432\u0430."
-                                                                                                                                                                                } else {
-                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
-                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
-                                                                                                                                                                                    return "\u041a\u043b\u044e\u0447\u0435\u0432\u043e\u0439 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0434\u043e\u043b\u0436\u0435\u043d \u0438\u0434\u0442\u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u043c."
-                                                                                                                                                                                  } else {
-                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
-                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
-                                                                                                                                                                                      return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440/\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b, \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
-                                                                                                                                                                                    } else {
-                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
-                                                                                                                                                                                        return "\u041f\u043e\u0437\u0438\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u0438\u0434\u0442\u0438 \u043f\u043e\u0441\u043b\u0435 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432."
-                                                                                                                                                                                      } else {
-                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
-                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
-                                                                                                                                                                                          return "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0431\u0435\u0437 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u044c \u0437\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0441\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435\u043c \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0438\u043b\u0438 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438."
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
-                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
-                                                                                                                                                                                            return "\u041f\u043e\u0441\u043b\u0435 '>>' \u0434\u043e\u043b\u0436\u0435\u043d \u0441\u0442\u043e\u044f\u0442\u044c \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0432\u044b\u0432\u043e\u0434\u0430."
-                                                                                                                                                                                          } else {
-                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
-                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
-                                                                                                                                                                                              return "\u0412 Python 2.x 'print' \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0435\u0439 \u0438 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u044b\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u0441 \u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u043c\u0438 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430\u043c\u0438."
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
-                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
-                                                                                                                                                                                                return "\u0412 Python 3.x 'print' \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u0435\u0439 \u0438 \u0434\u043e\u043b\u0436\u043d\u043e \u0432\u044b\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u0441 \u043a\u0440\u0443\u0433\u043b\u044b\u043c\u0438 \u0441\u043a\u043e\u0431\u043a\u0430\u043c\u0438."
-                                                                                                                                                                                              } else {
-                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
-                                                                                                                                                                                                  return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u0437 Python 2.x \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430."
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
-                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
-                                                                                                                                                                                                    return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u0437 Python 3.x \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430."
-                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
-                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
-                                                                                                                                                                                                      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'return' \u0432\u043c\u0435\u0441\u0442\u043e 'break' \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
-                                                                                                                                                                                                        return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'return' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
-                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
-                                                                                                                                                                                                          return "\u0414\u043b\u044f \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f (\u043e\u0434\u0438\u043d!) \u0437\u043d\u0430\u043a '='."
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
-                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
-                                                                                                                                                                                                            return "\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435 \u0441 '%s' \u043d\u0435 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f."
-                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
-                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
-                                                                                                                                                                                                              return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043b\u0435\u043a\u0441\u0435\u043c\u044b \u043f\u0435\u0440\u0435\u043f\u0443\u0442\u0430\u043d\u044b: '%s' \u0438 '%s'."
-                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
-                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
-                                                                                                                                                                                                                return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f'%s', \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
-                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
-                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
-                                                                                                                                                                                                                  return "\u0417\u0430\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u043a\u043e\u0440\u0442\u0435\u0436 \u0432 \u0441\u043a\u043e\u0431\u043a\u0438."
-                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
-                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
-                                                                                                                                                                                                                    return "\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u044b\u0439 \u043a\u043e\u043d\u0435\u0446 \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u043b\u0438 \u0432\u0432\u043e\u0434\u0430."
-                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
-                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
-                                                                                                                                                                                                                      return "\u041a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0437\u0434\u0435\u0441\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f."
-                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
-                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
-                                                                                                                                                                                                                        return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430, \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0430\u044f \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0435\u0439 '%s'."
-                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
-                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
-                                                                                                                                                                                                                          return "\u041d\u0435\u0434\u043e\u0441\u0442\u0438\u0436\u0438\u043c\u044b\u0439 \u043a\u043e\u0434: \u044d\u0442\u043e\u0442 \u043a\u043e\u0434 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0434\u043e\u0441\u0442\u0438\u0433\u043d\u0443\u0442 \u0438 \u0438\u0441\u043f\u043e\u043b\u043d\u0435\u043d."
-                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
-                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
-                                                                                                                                                                                                                            return "\u0421\u0442\u0440\u043e\u043a\u0430 \u043d\u0435 \u0437\u0430\u043a\u043e\u043d\u0447\u0435\u043d\u0430. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u043a\u0430\u0432\u044b\u0447\u0435\u043a."
-                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
-                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
-                                                                                                                                                                                                                              return "\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u044b \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e 'and' \u0438\u043b\u0438 'or' \u0432\u043c\u0435\u0441\u0442\u043e \u0437\u0430\u043f\u044f\u0442\u043e\u0439."
-                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
-                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                return "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u044b \u0437\u0430\u043f\u044f\u0442\u044b\u043c\u0438 \u0432\u043c\u0435\u0441\u0442\u043e 'and'."
-                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
-                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                  return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'elif' \u0432\u043c\u0435\u0441\u0442\u043e 'else'."
-                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
-                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                    return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'elif' \u0432\u043c\u0435\u0441\u0442\u043e 'else if'."
-                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
-                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '== %s' \u0432\u043c\u0435\u0441\u0442\u043e '!= %s'."
-                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
-                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                        return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '%%' \u0432\u043c\u0435\u0441\u0442\u043e '/' \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u0430 \u0434\u0435\u043b\u0438\u043c\u043e\u0441\u0442\u044c."
-                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
-                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                          return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'not' \u0432\u043c\u0435\u0441\u0442\u043e \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0441 '%s'."
-                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
-                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                            return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'repeat' \u0432\u043c\u0435\u0441\u0442\u043e 'while'."
-                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
-                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                              return "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u044d\u0442\u043e\u0433\u043e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043d\u0438\u0433\u0434\u0435 \u043d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f."
-                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                return "\u0411\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f: \u043e\u043d\u0430 \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u0434\u0435\u043b\u0430\u0435\u0442."
-                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
-                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                  return "\u0411\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0438\u043c\u0435\u043b\u0438 \u0432 \u0432\u0438\u0434\u0443 '%s='?"
-                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
-                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                    return "\u0420\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0434\u043e\u043b\u0436\u0435\u043d \u0438\u0434\u0442\u0438 \u043f\u0435\u0440\u0435\u0434 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u043c \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u043c."
-                                                                                                                                                                                                                                                  } else {
-                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
-                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                      return "\u0420\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0437\u0434\u0435\u0441\u044c \u0437\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u044b."
-                                                                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
-                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                        return "\u041d\u0435\u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: \u043e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
-                                                                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
-                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                          return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0439 \u0441\u0438\u043c\u0432\u043e\u043b '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
-                                                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                                                          var x$249 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
-                                                                                                                                                                                                                                                          if (((x$249 === null) ? (msg === null) : x$249.equals__O__Z(msg))) {
-                                                                                                                                                                                                                                                            return "\u0412\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435 'yield' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
-                                                                                                                                                                                                                                                          } else {
-                                                                                                                                                                                                                                                            return null
-                                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                  }
-                                                                                                                                                                                                }
-                                                                                                                                                                                              }
-                                                                                                                                                                                            }
-                                                                                                                                                                                          }
-                                                                                                                                                                                        }
-                                                                                                                                                                                      }
-                                                                                                                                                                                    }
-                                                                                                                                                                                  }
-                                                                                                                                                                                }
-                                                                                                                                                                              }
-                                                                                                                                                                            }
-                                                                                                                                                                          }
-                                                                                                                                                                        }
-                                                                                                                                                                      }
-                                                                                                                                                                    }
-                                                                                                                                                                  }
-                                                                                                                                                                }
-                                                                                                                                                              }
-                                                                                                                                                            }
-                                                                                                                                                          }
-                                                                                                                                                        }
-                                                                                                                                                      }
-                                                                                                                                                    }
-                                                                                                                                                  }
-                                                                                                                                                }
-                                                                                                                                              }
-                                                                                                                                            }
-                                                                                                                                          }
-                                                                                                                                        }
-                                                                                                                                      }
-                                                                                                                                    }
-                                                                                                                                  }
-                                                                                                                                }
-                                                                                                                              }
-                                                                                                                            }
-                                                                                                                          }
-                                                                                                                        }
-                                                                                                                      }
-                                                                                                                    }
-                                                                                                                  }
-                                                                                                                }
-                                                                                                              }
-                                                                                                            }
-                                                                                                          }
-                                                                                                        }
-                                                                                                      }
-                                                                                                    }
-                                                                                                  }
-                                                                                                }
-                                                                                              }
-                                                                                            }
-                                                                                          }
-                                                                                        }
-                                                                                      }
-                                                                                    }
-                                                                                  }
-                                                                                }
-                                                                              }
-                                                                            }
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-});
-var $d_Ltigerpython_parser_errormessages_RussianMessages$ = new $TypeData().initClass({
-  Ltigerpython_parser_errormessages_RussianMessages$: 0
-}, false, "tigerpython.parser.errormessages.RussianMessages$", {
-  Ltigerpython_parser_errormessages_RussianMessages$: 1,
-  O: 1
-});
-$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_RussianMessages$;
-var $n_Ltigerpython_parser_errormessages_RussianMessages$ = (void 0);
-function $m_Ltigerpython_parser_errormessages_RussianMessages$() {
-  if ((!$n_Ltigerpython_parser_errormessages_RussianMessages$)) {
-    $n_Ltigerpython_parser_errormessages_RussianMessages$ = new $c_Ltigerpython_parser_errormessages_RussianMessages$().init___()
-  };
-  return $n_Ltigerpython_parser_errormessages_RussianMessages$
-}
 /** @constructor */
 function $c_Ltigerpython_parser_errors_ErrorTranslator$() {
   $c_O.call(this);
@@ -30978,6 +28356,659 @@ var $d_Ltigerpython_parser_ast_AstNode$Statement = new $TypeData().initClass({
 });
 $c_Ltigerpython_parser_ast_AstNode$Statement.prototype.$classData = $d_Ltigerpython_parser_ast_AstNode$Statement;
 /** @constructor */
+function $c_Ltigerpython_parser_errormessages_DutchMessages$() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
+}
+$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype = new $h_Ltigerpython_parser_errormessages_ModifiableErrorMessages();
+$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_DutchMessages$;
+/** @constructor */
+function $h_Ltigerpython_parser_errormessages_DutchMessages$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_parser_errormessages_DutchMessages$.prototype = $c_Ltigerpython_parser_errormessages_DutchMessages$.prototype;
+$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.init___ = (function() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.prototype.init___.call(this);
+  return this
+});
+$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.$$undgetMessage__s_Enumeration$Value__T = (function(msg) {
+  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
+  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
+    return "'%s' verbindt vergelijkingen en geen variabelen."
+  } else {
+    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
+    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
+      return "Je mag geen bijkomende argumenten na een unpacking var/keyword-argument doorgeven."
+    } else {
+      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
+      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
+        return "'as' is hier niet toegestaan."
+      } else {
+        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
+        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
+          return "Het doel van een toewijzing moet links staan."
+        } else {
+          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
+          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
+            return "Gebruik 'break' in plaats van 'return' om een lus te verlaten."
+          } else {
+            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
+            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
+              return "Een '%s'-statement kan niet buiten een lus staan."
+            } else {
+              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
+              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
+                return "Een functie-oproep moet altijd haakjes bevatten, ook als deze leeg zijn."
+              } else {
+                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
+                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
+                  return "Je kan 'async' niet op deze uitdrukking toepassen."
+                } else {
+                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
+                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
+                    return "Je mag niets aan een functie-aanroep toewijzen."
+                  } else {
+                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
+                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
+                      return "Je mag niets aan een functie toewijzen."
+                    } else {
+                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
+                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
+                        return "Je moet elk element van deze tupel individueel testen."
+                      } else {
+                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
+                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
+                          return "Je mag het sleutelwoord '%s' niet als naam gebruiken."
+                        } else {
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
+                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
+                            return "Een klassen-methode heeft minstens \u00e9\u00e9n parameter nodig."
+                          } else {
+                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
+                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
+                              return "Een dubbelepunt ':' is hier nodig."
+                            } else {
+                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
+                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
+                                return "Aan deze voorwaarde wordt nooit voldaan."
+                              } else {
+                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
+                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
+                                  return "Aan deze voorwaarde wordt altijd voldaan."
+                                } else {
+                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
+                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
+                                    return "Een functie en zijn decorator mogen niet dezelfde naam '%s' hebben."
+                                  } else {
+                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
+                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
+                                      return "Je mag decorators alleen op functiess en klassen toepassen."
+                                    } else {
+                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
+                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
+                                        return "Een '%s'-definitie kan niet binnen een lus staan."
+                                      } else {
+                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
+                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
+                                          return "Een '%s'-structuur kan alleen \u00e9\u00e9n 'else' bevatten."
+                                        } else {
+                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
+                                            return "Hier zijn twee gelijkheidstekens '==' nodig."
+                                          } else {
+                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
+                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
+                                              return "Twee parameters kunnen niet dezelfde naam hebben: '%s'."
+                                            } else {
+                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
+                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
+                                                return "'%s' moet inspringen om met de 'if' overeen te komen."
+                                              } else {
+                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
+                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
+                                                  return "'else' heeft geen vergelijking."
+                                                } else {
+                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
+                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
+                                                    return "Er is een '%s' zonder een 'if'."
+                                                  } else {
+                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
+                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
+                                                      return "Subscript mag niet leeg zijn."
+                                                    } else {
+                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
+                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
+                                                        return "Er is een bijkomende inspringing."
+                                                      } else {
+                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
+                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
+                                                          return "Er is een openingshaakje of accolade te veel: '%s'."
+                                                        } else {
+                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
+                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
+                                                            return "Er lijkt een regeleinde te veel te zijn. Je kunt deze door gebruik van '\\' verbergen."
+                                                          } else {
+                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
+                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
+                                                              return "Er is een sluithaakje of accolade te veel: '%s'."
+                                                            } else {
+                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
+                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
+                                                                return "Er is \u00e9\u00e9n spatie te veel."
+                                                              } else {
+                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
+                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
+                                                                  return "Er ontbreek een komma, of er is \u00e9\u00e9n spatie te veel."
+                                                                } else {
+                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
+                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
+                                                                    return "Er is/zijn extra token(s): '%s'."
+                                                                  } else {
+                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
+                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
+                                                                      return "'%s' is geen sleutelwoord in Python."
+                                                                    } else {
+                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
+                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
+                                                                        return "Het token '%s' is ongeldig, gebruik '_' om de functie als 'private' te markeren."
+                                                                      } else {
+                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
+                                                                          return "Python kent geen '%s'-uitdrukking."
+                                                                        } else {
+                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
+                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
+                                                                            return "Deze %s-syntax is niet toegestaan in Python."
+                                                                          } else {
+                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
+                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
+                                                                              return "Het token '%s' is ongeldig, gebruik '%s'."
+                                                                            } else {
+                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
+                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
+                                                                                return "Python gebruikt geen '%s' om variabelen te defini\u00ebren."
+                                                                              } else {
+                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
+                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
+                                                                                  return "De 'for'-lus heeft een variabele nodig."
+                                                                                } else {
+                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
+                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
+                                                                                    return "De 'from __future__ import'-uitdrukking moet de eerste uitdrukking in een module zijn."
+                                                                                  } else {
+                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
+                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
+                                                                                      return "Een generator (functie met yield-expressie) kan niet 'return' gebruiken om een waarde terug te geven."
+                                                                                    } else {
+                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
+                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
+                                                                                        return "'%s'-expressies moeten de eerste expressies in een functie zijn."
+                                                                                      } else {
+                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
+                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
+                                                                                          return "Een '%s'-expressie mag niet buiten een functie staan."
+                                                                                        } else {
+                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
+                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
+                                                                                            return "Een 'import'-expressie kan niet binnen een lus staan."
+                                                                                          } else {
+                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
+                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
+                                                                                              return "Deze 'import'-opdracht is niet volledig."
+                                                                                            } else {
+                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
+                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
+                                                                                                return "Inspringing niet volgens de regels."
+                                                                                              } else {
+                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
+                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
+                                                                                                  return "Deze functie geeft niet altijd een waarde terug."
+                                                                                                } else {
+                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
+                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
+                                                                                                    return "Deze '%s' mag niet inspringen."
+                                                                                                  } else {
+                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
+                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
+                                                                                                      return "Dit is een oneindige lus: ze draait voor altijd."
+                                                                                                    } else {
+                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
+                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
+                                                                                                        return "Je mag niet binnen de lus initialiseren."
+                                                                                                      } else {
+                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
+                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
+                                                                                                          return "Je mag niets aan '%s' toewijzen."
+                                                                                                        } else {
+                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
+                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
+                                                                                                            return "Foutieve definitie van een functie."
+                                                                                                          } else {
+                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
+                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
+                                                                                                              return "Gebruik hier ':' en 'return' in plaats van een toewijzing."
+                                                                                                            } else {
+                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
+                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
+                                                                                                                return "Een 'generator/comprehension' argument mag niet met andere argumenten gecombineerd worden."
+                                                                                                              } else {
+                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
+                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
+                                                                                                                  return "Deze waarde is niet als invoer toegestaan: '%s'."
+                                                                                                                } else {
+                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
+                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
+                                                                                                                    return "Dit is een ongeldige sleutel-waarde-combinatie."
+                                                                                                                  } else {
+                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
+                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
+                                                                                                                      return "Dit is een ongeldige naam: '%s'."
+                                                                                                                    } else {
+                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
+                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
+                                                                                                                        return "Deze expressie is geen geldig doel voor een toewijzing."
+                                                                                                                      } else {
+                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
+                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
+                                                                                                                          return "Dit is een ongeldige beginletter : '%s'."
+                                                                                                                        } else {
+                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
+                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
+                                                                                                                            return "Deze token kan niet aan het begin van een regel staan: '%s'."
+                                                                                                                          } else {
+                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
+                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
+                                                                                                                              return "Een methode vereist een 'self'-parameter."
+                                                                                                                            } else {
+                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
+                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
+                                                                                                                                return "Haakjes of accolades komen niet overeen: '%s' verwacht, maar '%s' gevonden."
+                                                                                                                              } else {
+                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
+                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
+                                                                                                                                  return "De toewijzing '%s' mag niet deel van een expressie zijn."
+                                                                                                                                } else {
+                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
+                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
+                                                                                                                                    return "Er ontbreekt een toewijzing."
+                                                                                                                                  } else {
+                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
+                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
+                                                                                                                                      return "In de toewijzing ontbreekt een expressie."
+                                                                                                                                    } else {
+                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
+                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
+                                                                                                                                        return "Body of inspringing ontbreekt."
+                                                                                                                                      } else {
+                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
+                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
+                                                                                                                                          return "Er ontbreekt een komma."
+                                                                                                                                        } else {
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
+                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
+                                                                                                                                            return "Er ontbreekt een vergelijking."
+                                                                                                                                          } else {
+                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
+                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
+                                                                                                                                              return "Er ontbreekt een punt."
+                                                                                                                                            } else {
+                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
+                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
+                                                                                                                                                return "Er ontbreekt een openingshaakje of accolade: '%s'."
+                                                                                                                                              } else {
+                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
+                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
+                                                                                                                                                  return "Er ontbreekt een openingshaakje '('."
+                                                                                                                                                } else {
+                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
+                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
+                                                                                                                                                    return "Er ontbreekt een operator of komma."
+                                                                                                                                                  } else {
+                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
+                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
+                                                                                                                                                      return "Er ontbreekt een haakje."
+                                                                                                                                                    } else {
+                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
+                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
+                                                                                                                                                        return "Je bent vergeten de haakjes te sluiten: '%s'."
+                                                                                                                                                      } else {
+                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
+                                                                                                                                                          return "Hier ontbreekt een spatie."
+                                                                                                                                                        } else {
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
+                                                                                                                                                            return "Ontbrekend '%s'."
+                                                                                                                                                          } else {
+                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
+                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
+                                                                                                                                                              return "Verkeerd gespeld sleutelwoord '%s' in plaats van '%s'."
+                                                                                                                                                            } else {
+                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
+                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
+                                                                                                                                                                return "Het getal is verkeerd geschreven."
+                                                                                                                                                              } else {
+                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
+                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
+                                                                                                                                                                  return "Verkeerd gespelde operator '%s' in plaats van '%s'."
+                                                                                                                                                                } else {
+                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
+                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
+                                                                                                                                                                    return "Alleen \u00e9\u00e9n unpacking var/keyword-argument is toegestaan."
+                                                                                                                                                                  } else {
+                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
+                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
+                                                                                                                                                                      return "Alleen \u00e9\u00e9n unpacking var/keyword-parameter is toegestaan."
+                                                                                                                                                                    } else {
+                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
+                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
+                                                                                                                                                                        return "Hier is een naam vereist."
+                                                                                                                                                                      } else {
+                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
+                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
+                                                                                                                                                                          return "Er is geen 'end' nodig of toegestaan in Python."
+                                                                                                                                                                        } else {
+                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
+                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
+                                                                                                                                                                            return "Een unpacking parameter kan geen standaardwaarde hebben."
+                                                                                                                                                                          } else {
+                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
+                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
+                                                                                                                                                                              return "Er is geen alternatief op '%s'."
+                                                                                                                                                                            } else {
+                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
+                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
+                                                                                                                                                                                return "Een getal kan geen subscript hebben."
+                                                                                                                                                                              } else {
+                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
+                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
+                                                                                                                                                                                  return "De unpacking keyword-parameter komt als laatste."
+                                                                                                                                                                                } else {
+                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
+                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
+                                                                                                                                                                                    return "Parameter(s) vereist maar '%s' gevonden."
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
+                                                                                                                                                                                      return "Positionele argumenten kunnen niet volgen op keyword-argumenten."
+                                                                                                                                                                                    } else {
+                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
+                                                                                                                                                                                        return "Parameters zonder standaardwaarde kunnen niet volgen op parameters m\u00e9t een standaardwaarde of unpacking parameters."
+                                                                                                                                                                                      } else {
+                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
+                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
+                                                                                                                                                                                          return "In Python 2.x is 'print' een opdracht, en kan niet met sleutelwoorden opgeroepen worden."
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
+                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
+                                                                                                                                                                                            return "'>>' moet door een doel opgevolgd worden."
+                                                                                                                                                                                          } else {
+                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
+                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
+                                                                                                                                                                                              return "'print' is in Python 3.x  een functie en vereist haakjes."
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
+                                                                                                                                                                                                return "Deze functie van Python 2.x is niet beschikbaar."
+                                                                                                                                                                                              } else {
+                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
+                                                                                                                                                                                                  return "Deze functie van Python 3.x is niet beschikbaar."
+                                                                                                                                                                                                } else {
+                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
+                                                                                                                                                                                                    return "Een 'return'-opdracht kan niet buiten een functie bestaan."
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
+                                                                                                                                                                                                      return "Gebruik een enkel gelijkheidsteken '=' voor een toewijzing."
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
+                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
+                                                                                                                                                                                                        return "De vergelijking met '%s' is hier overbodig."
+                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
+                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
+                                                                                                                                                                                                          return "Deze waarden zijn blijkbaar verwisseld: '%s' en '%s'."
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
+                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
+                                                                                                                                                                                                            return "'%s' benodigd maar '%s' gevonden."
+                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
+                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
+                                                                                                                                                                                                              return "Deze tupel moet je tussen haakjes plaatsen."
+                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
+                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
+                                                                                                                                                                                                                return "Onverwacht einde van de regel of invoer."
+                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
+                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
+                                                                                                                                                                                                                  return "Het sleutelwoord '%s' kan hier niet staan."
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
+                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
+                                                                                                                                                                                                                    return "Dit openingshaakje '%s' heeft geen sluithaakje."
+                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
+                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
+                                                                                                                                                                                                                      return "Deze code wordt nooit bereikt en zal dus nooit uitgevoerd worden."
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
+                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
+                                                                                                                                                                                                                        return "Deze tekenreeks is niet be\u00ebindigd."
+                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
+                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
+                                                                                                                                                                                                                          return "Meerdere vergelijkingen worden gecombineerd door 'and' of 'or' in plaats van een komma."
+                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
+                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
+                                                                                                                                                                                                                            return "Meerdere waarden worden door komma gescheiden in plaats van 'and'."
+                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
+                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
+                                                                                                                                                                                                                              return "Gebruik 'elif' in plaats van 'else'."
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
+                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                return "Gebruik 'elif' in plaats van 'else if'."
+                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
+                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                  return "Gebruik '== %s' in plaats van '!= %s'."
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
+                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                    return "Gebruik '%%' in plaats van '/' om op deelbaarheid te testen."
+                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
+                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                      return "Gebruik 'not' in plaats van een vergelijking met '%s'."
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
+                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                        return "Gebruik 'repeat' in plaats van 'while'."
+                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
+                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                          return "Gebruik 'return' in plaats van 'break' om een functie te verlaten."
+                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
+                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                            return "Het resultaat van deze expressie wordt nooit gebruikt."
+                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                              return "Deze opdracht heeft geen effect, en is dus nutteloos."
+                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
+                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                return "Deze opdracht is nutteloos. Bedoel je '%s='?"
+                                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
+                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                  return "Het unpacking var-argument moet het unpacking keyword-argument voorafgaan."
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
+                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                    return "Unpacking var/keyword-argumenten zijn hier niet toegestaan."
+                                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
+                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                      return "Verkeerde haakjes: gebruik '%s' in plaats van '%s'."
+                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
+                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                        return "Verkeerd symbool '%s' in plaats van '%s'."
+                                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                          return "Een 'yield'-expressie kan niet buiten een functie bestaan."
+                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                          return null
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                }
+                                                                                                                                                                                              }
+                                                                                                                                                                                            }
+                                                                                                                                                                                          }
+                                                                                                                                                                                        }
+                                                                                                                                                                                      }
+                                                                                                                                                                                    }
+                                                                                                                                                                                  }
+                                                                                                                                                                                }
+                                                                                                                                                                              }
+                                                                                                                                                                            }
+                                                                                                                                                                          }
+                                                                                                                                                                        }
+                                                                                                                                                                      }
+                                                                                                                                                                    }
+                                                                                                                                                                  }
+                                                                                                                                                                }
+                                                                                                                                                              }
+                                                                                                                                                            }
+                                                                                                                                                          }
+                                                                                                                                                        }
+                                                                                                                                                      }
+                                                                                                                                                    }
+                                                                                                                                                  }
+                                                                                                                                                }
+                                                                                                                                              }
+                                                                                                                                            }
+                                                                                                                                          }
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+var $d_Ltigerpython_parser_errormessages_DutchMessages$ = new $TypeData().initClass({
+  Ltigerpython_parser_errormessages_DutchMessages$: 0
+}, false, "tigerpython.parser.errormessages.DutchMessages$", {
+  Ltigerpython_parser_errormessages_DutchMessages$: 1,
+  Ltigerpython_parser_errormessages_ModifiableErrorMessages: 1,
+  O: 1
+});
+$c_Ltigerpython_parser_errormessages_DutchMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_DutchMessages$;
+var $n_Ltigerpython_parser_errormessages_DutchMessages$ = (void 0);
+function $m_Ltigerpython_parser_errormessages_DutchMessages$() {
+  if ((!$n_Ltigerpython_parser_errormessages_DutchMessages$)) {
+    $n_Ltigerpython_parser_errormessages_DutchMessages$ = new $c_Ltigerpython_parser_errormessages_DutchMessages$().init___()
+  };
+  return $n_Ltigerpython_parser_errormessages_DutchMessages$
+}
+/** @constructor */
 function $c_Ltigerpython_parser_errormessages_EnglishMessages$() {
   $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
 }
@@ -31636,6 +29667,644 @@ function $m_Ltigerpython_parser_errormessages_EnglishMessages$() {
   return $n_Ltigerpython_parser_errormessages_EnglishMessages$
 }
 /** @constructor */
+function $c_Ltigerpython_parser_errormessages_FrenchMessages$() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
+}
+$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype = new $h_Ltigerpython_parser_errormessages_ModifiableErrorMessages();
+$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_FrenchMessages$;
+/** @constructor */
+function $h_Ltigerpython_parser_errormessages_FrenchMessages$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_parser_errormessages_FrenchMessages$.prototype = $c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype;
+$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.init___ = (function() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.prototype.init___.call(this);
+  return this
+});
+$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.$$undgetMessage__s_Enumeration$Value__T = (function(msg) {
+  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
+  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
+    return "Combinaison erron\u00e9e d'une expression bool\u00e9enne avec une variable non bool\u00e9enne \u00e0 l'aide de l'op\u00e9rateur logique '%s'."
+  } else {
+    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
+    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
+      return "'as' n'est pas autoris\u00e9 dans ce contexte."
+    } else {
+      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
+      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
+        return "La destination d'une assignation doit se trouve \u00e0 gauche de l'op\u00e9rateur d'assignation et non \u00e0 droite."
+      } else {
+        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
+        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
+          return "Il faut utiliser 'break' au lieu de 'return' pour interrompre une boucle."
+        } else {
+          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
+          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
+            return "Il n'est pas possible d'utiliser l'instruction '%s' \u00e0 l'ext\u00e9rieur d'une boucle."
+          } else {
+            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
+            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
+              return "Il faut utiliser des parenth\u00e8ses pour appeler une fonction."
+            } else {
+              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
+              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
+                return "Il est impossible d'appliquer 'async' \u00e0 cette instruction."
+              } else {
+                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
+                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
+                  return "Il est impossible d'assigner une valeur \u00e0 l'appel d'une fonction."
+                } else {
+                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
+                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
+                    return "Il est dangereux d'assigner une valeur \u00e0 une fonction existante. Par mesure de s\u00e9curit\u00e9, TigerJython n'autorise pas cette op\u00e9ration."
+                  } else {
+                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undCALL$undVALUE$2;
+                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
+                      return "Il n'est pas possible d'appeler '%s' avec des parenth\u00e8ses car ce n'est ni une fonction ni un objet 'callable'."
+                    } else {
+                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
+                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
+                        return "Le nom '%s' est d\u00e9j\u00e0 d\u00e9fini : il est dangereux de l'\u00e9craser. Par mesure de s\u00e9curit\u00e9, TigerJython n'autorise pas cette op\u00e9ration."
+                      } else {
+                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
+                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
+                          return "Il faut tester tous les \u00e9l\u00e9ments de ce tuple individuellement."
+                        } else {
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
+                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
+                            return "'%s' est un mot r\u00e9serv\u00e9 : impossible de l'utiliser comme un nom."
+                          } else {
+                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
+                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
+                              return "Une m\u00e9thode de classe n\u00e9cessite au moins un param\u00e8tre (r\u00e9f\u00e9rence \u00e0 la classe)."
+                            } else {
+                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
+                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
+                                return "Il manque le double point ':'."
+                              } else {
+                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
+                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
+                                  return "Cette condition n'est jamais satisfaite."
+                                } else {
+                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
+                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
+                                    return "Cette condition est toujours satisfaite."
+                                  } else {
+                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
+                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
+                                      return "Une fonction et son d\u00e9corateur ne peuvent pas prendre le m\u00eame nom '%s'."
+                                    } else {
+                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
+                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
+                                        return "Seules les fonctions et les classes peuvent \u00eatre d\u00e9cor\u00e9es."
+                                      } else {
+                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
+                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
+                                          return "Il faut d\u00e9finir la fonction '%s' \u00e0 l'ext\u00e9rieur de la boucle."
+                                        } else {
+                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undCALL$2;
+                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
+                                            return "Double appel : la valeur de retour de la fonction ne peut pas faire l'objet d'un appel."
+                                          } else {
+                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
+                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
+                                              return "Une instruction '%s' ne peut avoir qu'une seule branche 'else'."
+                                            } else {
+                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
+                                                return "Pour tester l'\u00e9galit\u00e9, il faut utiliser l'op\u00e9rateur '=='."
+                                              } else {
+                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
+                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
+                                                  return "La fonction ne peut pas prendre deux param\u00e8tres de m\u00eame nom : '%s'."
+                                                } else {
+                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
+                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
+                                                    return "Il faut que le '%s' soit indent\u00e9 de la m\u00eame mani\u00e8re que le 'if'."
+                                                  } else {
+                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
+                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
+                                                      return "'else' n'accepte pas de condition : utiliser 'elif'."
+                                                    } else {
+                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
+                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
+                                                        return "Il faut d'abord mettre un 'if' avant un '%s'."
+                                                      } else {
+                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
+                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
+                                                          return "Il faut fournir un indice ou un 'slice' entre les crochets []."
+                                                        } else {
+                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undBRACKETS$2;
+                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
+                                                            return "Il y a des parenth\u00e8ses en trop."
+                                                          } else {
+                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
+                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
+                                                              return "Cette ligne est trop indent\u00e9e par rapport \u00e0 la pr\u00e9c\u00e9dente."
+                                                            } else {
+                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
+                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
+                                                                return "Il y a une parenth\u00e8se ouvrante en trop: '%s'."
+                                                              } else {
+                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
+                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
+                                                                  return "Pour \u00e9crire cette instruction sur plusieurs lignes, il faut mettre '\\' en fin de ligne."
+                                                                } else {
+                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINE$undNUMBER$2;
+                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
+                                                                    return "Il semble qu'il y ait un nombre trop grand de lignes."
+                                                                  } else {
+                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
+                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
+                                                                      return "Il y a une parenth\u00e8se fermante en trop: '%s'."
+                                                                    } else {
+                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
+                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
+                                                                        return "Il y a un espace en trop."
+                                                                      } else {
+                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
+                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
+                                                                          return "Soit il y a un espace en trop, soit il manque une virgule."
+                                                                        } else {
+                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
+                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
+                                                                            return "Tokens en trop d\u00e9tect\u00e9s : '%s'."
+                                                                          } else {
+                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
+                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
+                                                                              return "'%s' n'est pas un mot-cl\u00e9 Python valide."
+                                                                            } else {
+                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
+                                                                                return "'%s' n'est pas une instruction Python valide."
+                                                                              } else {
+                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
+                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
+                                                                                  return "'%s' ne constitue pas une syntaxe valide en Python."
+                                                                                } else {
+                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
+                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
+                                                                                    return "Le token '%s' est invalide en Python. Essayer d'utiliser '%s' \u00e0 la place."
+                                                                                  } else {
+                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
+                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
+                                                                                      return "Python n'utilise pas '%s' pour d\u00e9finir les variables."
+                                                                                    } else {
+                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
+                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
+                                                                                        return "Le boucle 'for' n\u00e9cessite une variable de contr\u00f4le."
+                                                                                      } else {
+                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
+                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
+                                                                                          return "L'instruction 'from __future__ import' doit \u00eatre plac\u00e9e au tout d\u00e9but du module."
+                                                                                        } else {
+                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
+                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
+                                                                                            return "On ne peut pas utiliser 'return' pour renvoyer une valeur depuis un g\u00e9n\u00e9rateur."
+                                                                                          } else {
+                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
+                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
+                                                                                              return "Les instructions '%s' doivent \u00eatre plac\u00e9es tout au d\u00e9but du corps de la fonction."
+                                                                                            } else {
+                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
+                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
+                                                                                                return "L'instruction '%s' n'est valide qu'\u00e0 l'int\u00e9rieur d'une fonction."
+                                                                                              } else {
+                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
+                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
+                                                                                                  return "L'instruction 'import' ne peut pas figurer \u00e0 l'int\u00e9rieur d'une boucle."
+                                                                                                } else {
+                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
+                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
+                                                                                                    return "Instruction 'import' incompl\u00e8te."
+                                                                                                  } else {
+                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
+                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
+                                                                                                      return "Indentation incoh\u00e9rente."
+                                                                                                    } else {
+                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
+                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
+                                                                                                        return "Parfois, cette fonction renvoie une valeur, parfois elle ne renvoie rien."
+                                                                                                      } else {
+                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
+                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
+                                                                                                          return "Le '%s' ne doit pas \u00eatre indent\u00e9."
+                                                                                                        } else {
+                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undHEADER$2;
+                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
+                                                                                                            return "L'en-t\u00eate de l'instruction '%s' ne doit pas \u00eatre indent\u00e9 : seul son corps doit l'\u00eatre."
+                                                                                                          } else {
+                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
+                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
+                                                                                                              return "Boucle infinie probablement involontaire."
+                                                                                                            } else {
+                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
+                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
+                                                                                                                return "Il ne faut pas initialiser une variable \u00e0 l'int\u00e9rieur d'une boucle."
+                                                                                                              } else {
+                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
+                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
+                                                                                                                  return "Il n'est pas possible d'assigner une valeur \u00e0 '%s'."
+                                                                                                                } else {
+                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
+                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
+                                                                                                                    return "Cette d\u00e9finition de fonction n'est pas valide."
+                                                                                                                  } else {
+                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
+                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
+                                                                                                                      return "Utiliser ':' et 'return' au lieu d'une assignation."
+                                                                                                                    } else {
+                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
+                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
+                                                                                                                        return "Il n'est pas possible de combiner un param\u00e8tre donn\u00e9 sous forme de 'g\u00e9n\u00e9rateur/compr\u00e9hension' avec d'autres param\u00e8tres."
+                                                                                                                      } else {
+                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
+                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
+                                                                                                                          return "Ce caract\u00e8re n'est pas valide: '%s'."
+                                                                                                                        } else {
+                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
+                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
+                                                                                                                            return "Ce couple de cl\u00e9-valeur n'est pas valide."
+                                                                                                                          } else {
+                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
+                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
+                                                                                                                              return "Ce nom n'est pas valide: '%s'."
+                                                                                                                            } else {
+                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
+                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
+                                                                                                                                return "Cette expression n'est pas valide comme destination d'une assignation."
+                                                                                                                              } else {
+                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
+                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
+                                                                                                                                  return "'%s' n'est pas un pr\u00e9fixe de cha\u00eene de caract\u00e8res valide."
+                                                                                                                                } else {
+                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
+                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
+                                                                                                                                    return "Le token '%s' ne peut pas se trouver en d\u00e9but de ligne."
+                                                                                                                                  } else {
+                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
+                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
+                                                                                                                                      return "Une fonction de classe n\u00e9cessite un param\u00e8tre 'self'."
+                                                                                                                                    } else {
+                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
+                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
+                                                                                                                                        return "La parenth\u00e8se fermante n'est pas appropri\u00e9e: essayer '%s' au lieu de '%s'."
+                                                                                                                                      } else {
+                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
+                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
+                                                                                                                                          return "L'assignation '%s' ne peut pas faire partie d'une expression."
+                                                                                                                                        } else {
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
+                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
+                                                                                                                                            return "Il semble qu'il manque une assignation."
+                                                                                                                                          } else {
+                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
+                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
+                                                                                                                                              return "Il manque une expression source \u00e0 droite de l'assignation."
+                                                                                                                                            } else {
+                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
+                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
+                                                                                                                                                return "Cette structure n\u00e9cessite un corps. V\u00e9rifier l'indentation !"
+                                                                                                                                              } else {
+                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
+                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
+                                                                                                                                                  return "Il manque une virgule."
+                                                                                                                                                } else {
+                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
+                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
+                                                                                                                                                    return "Le test n\u00e9cessaire est manquant."
+                                                                                                                                                  } else {
+                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
+                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
+                                                                                                                                                      return "Il manque un point."
+                                                                                                                                                    } else {
+                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undEXPRESSION$2;
+                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
+                                                                                                                                                        return "Il manque une expression."
+                                                                                                                                                      } else {
+                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
+                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
+                                                                                                                                                          return "Il manque une parenth\u00e8se ouvrante: '%s'."
+                                                                                                                                                        } else {
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
+                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
+                                                                                                                                                            return "Il manque une parenth\u00e8se ouvrante '('."
+                                                                                                                                                          } else {
+                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
+                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
+                                                                                                                                                              return "Il manque une virgule ou un op\u00e9rateur."
+                                                                                                                                                            } else {
+                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
+                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
+                                                                                                                                                                return "Il semble qu'il manque des parenth\u00e8ses ici."
+                                                                                                                                                              } else {
+                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
+                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
+                                                                                                                                                                  return "Il manque une parenth\u00e8se fermante: '%s'."
+                                                                                                                                                                } else {
+                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
+                                                                                                                                                                    return "Il manque un espace."
+                                                                                                                                                                  } else {
+                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
+                                                                                                                                                                      return "Il manque un '%s'."
+                                                                                                                                                                    } else {
+                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
+                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
+                                                                                                                                                                        return "Mot-cl\u00e9 mal orthographi\u00e9 : '%s' au lieu de '%s'."
+                                                                                                                                                                      } else {
+                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
+                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
+                                                                                                                                                                          return "Il semble que le nombre soit mal orthographi\u00e9."
+                                                                                                                                                                        } else {
+                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
+                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
+                                                                                                                                                                            return "Op\u00e9rateur mal orthographi\u00e9 : '%s' au lieu de '%s'."
+                                                                                                                                                                          } else {
+                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
+                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
+                                                                                                                                                                              return "Nom attendu \u00e0 cet endroit."
+                                                                                                                                                                            } else {
+                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NESTED$undFUNCTIONS$2;
+                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
+                                                                                                                                                                                return "D\u00e9finition d'une fonction \u00e0 l'int\u00e9rieur d'une autre fonction : est-ce bien volontaire ?"
+                                                                                                                                                                              } else {
+                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
+                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
+                                                                                                                                                                                  return "En Python, il ne faut pas mettre 'end' pour terminer un bloc d'instructions."
+                                                                                                                                                                                } else {
+                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
+                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
+                                                                                                                                                                                    return "Impossible de d\u00e9terminer le type d'erreur et de sugg\u00e9rer une correction : '%s'."
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
+                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
+                                                                                                                                                                                      return "Impossible d'indicer les nombres."
+                                                                                                                                                                                    } else {
+                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
+                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
+                                                                                                                                                                                        return "Il faut indiquer les param\u00e8tres entre parenth\u00e8ses : '%s' trouv\u00e9 \u00e0 la place."
+                                                                                                                                                                                      } else {
+                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
+                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
+                                                                                                                                                                                          return "En Python 2.x, 'print' n'est pas une fonction et ne peut pas \u00eatre appel\u00e9 avec des param\u00e8tres nomm\u00e9s."
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
+                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
+                                                                                                                                                                                            return "En Python 3.x, 'print' est une fonction et n\u00e9cessite des parenth\u00e8ses."
+                                                                                                                                                                                          } else {
+                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
+                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
+                                                                                                                                                                                              return "Il faut utiliser 'return' au lieu de 'break' pour sortir d'une fonction."
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
+                                                                                                                                                                                                return "Une instruction 'return' ne peut pas figurer hors d'une fonction."
+                                                                                                                                                                                              } else {
+                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
+                                                                                                                                                                                                  return "Pour effectuer une assignation, il faut utiliser un seul caract\u00e8re '='."
+                                                                                                                                                                                                } else {
+                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
+                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
+                                                                                                                                                                                                    return "Dans ce cas, la comparaison avec '%s' est superflue."
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
+                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
+                                                                                                                                                                                                      return "Il semble que ces tokens soient invers\u00e9s: '%s' et '%s'."
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
+                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
+                                                                                                                                                                                                        return "Il faut un '%s' \u00e0 la place de '%s'."
+                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
+                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
+                                                                                                                                                                                                          return "Pour former un tuple, il faut mettre les valeurs entre parenth\u00e8ses."
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
+                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
+                                                                                                                                                                                                            return "Fin de ligne inattendue."
+                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
+                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
+                                                                                                                                                                                                              return "Le mot-cl\u00e9 '%s' est inattendu dans ce contexte."
+                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
+                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
+                                                                                                                                                                                                                return "La parenth\u00e8se ouvrante '%s' ne poss\u00e8de pas de parenth\u00e8se fermante correspondante."
+                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
+                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
+                                                                                                                                                                                                                  return "Ce code est hors d'atteinte: il n'est jamais execut\u00e9."
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
+                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
+                                                                                                                                                                                                                    return "Cha\u00eene de caract\u00e8res non termin\u00e9e."
+                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
+                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
+                                                                                                                                                                                                                      return "Pour combiner plusieurs conditions, il faut utiliser 'and' ou 'or' et non une virgule."
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
+                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
+                                                                                                                                                                                                                        return "Pour combiner plusieurs valeurs, il faut utiliser des virgules et non 'and'."
+                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
+                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
+                                                                                                                                                                                                                          return "Utiliser 'elif' au lieu de 'else'."
+                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
+                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
+                                                                                                                                                                                                                            return "Utiliser 'elif' au lieu de 'else if'."
+                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
+                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
+                                                                                                                                                                                                                              return "Utiliser '== %s' au lieu de '!= %s'."
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
+                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                return "Utiliser '%%' au lieu de '/' pour tester la divisibilit\u00e9."
+                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
+                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                  return "Utiliser 'not' au lieu d'une comparaison avec '%s'."
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undPYTHON$undPOWER$2;
+                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                    return "Utiliser '**' au lieu de '^'."
+                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
+                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                      return "Utiliser 'repeat' au lieu de 'while'."
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undSEMICOLON$undINSTEAD$undOF$undCOMMA$2;
+                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                        return "Utiliser un point-virgule au lieu d'une virgule."
+                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
+                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                          return "Le r\u00e9sultat de cette expression n'est jamais utilis\u00e9."
+                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                            return "Cette instruction est inutile : elle n'a aucun effet."
+                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
+                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                              return "Cette instruction est inutile. L'id\u00e9e \u00e9tait-elle de faire '%s='?"
+                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
+                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                return "Mauvais type de parenth\u00e8ses : il faut utiliser '%s' au lieu de '%s'."
+                                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
+                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                  return "Mauvais token : utiliser '%s' au lieu de '%s'."
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                    return "L'expression 'yield' ne peut pas figurer \u00e0 l'ext\u00e9rieur du corps d'une fonction."
+                                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                                    return null
+                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                }
+                                                                                                                                                                                              }
+                                                                                                                                                                                            }
+                                                                                                                                                                                          }
+                                                                                                                                                                                        }
+                                                                                                                                                                                      }
+                                                                                                                                                                                    }
+                                                                                                                                                                                  }
+                                                                                                                                                                                }
+                                                                                                                                                                              }
+                                                                                                                                                                            }
+                                                                                                                                                                          }
+                                                                                                                                                                        }
+                                                                                                                                                                      }
+                                                                                                                                                                    }
+                                                                                                                                                                  }
+                                                                                                                                                                }
+                                                                                                                                                              }
+                                                                                                                                                            }
+                                                                                                                                                          }
+                                                                                                                                                        }
+                                                                                                                                                      }
+                                                                                                                                                    }
+                                                                                                                                                  }
+                                                                                                                                                }
+                                                                                                                                              }
+                                                                                                                                            }
+                                                                                                                                          }
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+var $d_Ltigerpython_parser_errormessages_FrenchMessages$ = new $TypeData().initClass({
+  Ltigerpython_parser_errormessages_FrenchMessages$: 0
+}, false, "tigerpython.parser.errormessages.FrenchMessages$", {
+  Ltigerpython_parser_errormessages_FrenchMessages$: 1,
+  Ltigerpython_parser_errormessages_ModifiableErrorMessages: 1,
+  O: 1
+});
+$c_Ltigerpython_parser_errormessages_FrenchMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_FrenchMessages$;
+var $n_Ltigerpython_parser_errormessages_FrenchMessages$ = (void 0);
+function $m_Ltigerpython_parser_errormessages_FrenchMessages$() {
+  if ((!$n_Ltigerpython_parser_errormessages_FrenchMessages$)) {
+    $n_Ltigerpython_parser_errormessages_FrenchMessages$ = new $c_Ltigerpython_parser_errormessages_FrenchMessages$().init___()
+  };
+  return $n_Ltigerpython_parser_errormessages_FrenchMessages$
+}
+/** @constructor */
 function $c_Ltigerpython_parser_errormessages_GermanMessages$() {
   $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
 }
@@ -32292,6 +30961,1322 @@ function $m_Ltigerpython_parser_errormessages_GermanMessages$() {
     $n_Ltigerpython_parser_errormessages_GermanMessages$ = new $c_Ltigerpython_parser_errormessages_GermanMessages$().init___()
   };
   return $n_Ltigerpython_parser_errormessages_GermanMessages$
+}
+/** @constructor */
+function $c_Ltigerpython_parser_errormessages_ItalianMessages$() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
+}
+$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype = new $h_Ltigerpython_parser_errormessages_ModifiableErrorMessages();
+$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_ItalianMessages$;
+/** @constructor */
+function $h_Ltigerpython_parser_errormessages_ItalianMessages$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_parser_errormessages_ItalianMessages$.prototype = $c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype;
+$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.init___ = (function() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.prototype.init___.call(this);
+  return this
+});
+$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.$$undgetMessage__s_Enumeration$Value__T = (function(msg) {
+  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
+  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
+    return "'%s' connette comparazioni, non variabili."
+  } else {
+    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
+    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
+      return "Non puoi passare ulteriori argomenti dopo un argomento spacchettante."
+    } else {
+      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
+      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
+        return "'as' non \u00e8 permesso/supportato qui."
+      } else {
+        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
+        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
+          return "Il target dell'assegnamento deve essere sulla sinistra."
+        } else {
+          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
+          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
+            return "Usa 'break' invece di 'return' per uscire da un ciclo."
+          } else {
+            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
+            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
+              return "Non si pu\u00f2 usare un'istruzione '%s' fuori da un ciclo."
+            } else {
+              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
+              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
+                return "Per invocare una funzione devi usare le parentesi anche quando sono vuote."
+              } else {
+                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
+                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
+                  return "Non \u00e8 possibile applicare 'async' a questa istruzione."
+                } else {
+                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
+                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
+                    return "Non puoi assegnare qualcosa ad un'invocazione."
+                  } else {
+                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
+                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
+                      return "Non puoi assegnare qualcosa ad una funzione."
+                    } else {
+                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
+                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
+                        return "Il nome '%s' \u00e8 gi\u00e0 definito."
+                      } else {
+                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
+                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
+                          return "Devi testare ogni elemento di questa tupla individualmente."
+                        } else {
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
+                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
+                            return "Non puoi usare la parola chiave '%s' come un nome."
+                          } else {
+                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
+                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
+                              return "Un metodo di classe richiede almeno un parametro."
+                            } else {
+                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
+                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
+                                return "Due punti ':' sono necessari qui."
+                              } else {
+                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
+                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
+                                  return "Questa condizione non pu\u00f2 essere soddisfatta."
+                                } else {
+                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
+                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
+                                    return "Questa condizione \u00e8 sempre soddisfatta."
+                                  } else {
+                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
+                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
+                                      return "Una funziona e il suo decoratore non possono avere lo stesso nome '%s'."
+                                    } else {
+                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
+                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
+                                        return "Decoratori sono applicabili solo a funzioni e classi."
+                                      } else {
+                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
+                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
+                                          return "Una definizione '%s' non pu\u00f2 essere in un ciclo."
+                                        } else {
+                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
+                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
+                                            return "Una struttura '%s' pu\u00f2 avere solo un ramo 'else'."
+                                          } else {
+                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
+                                              return "Qui \u00e8 richiesto un doppio uguale '=='."
+                                            } else {
+                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
+                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
+                                                return "Due parametri non possono avere lo stesso nome: '%s'."
+                                              } else {
+                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
+                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
+                                                  return "'%s' deve essere indentato quanto 'if'."
+                                                } else {
+                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
+                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
+                                                    return "'else' non ha una comparazione."
+                                                  } else {
+                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
+                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
+                                                      return "C'\u00e8 un '%s' senza un 'if'."
+                                                    } else {
+                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
+                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
+                                                        return "L'indice non pu\u00f2 essere vuoto."
+                                                      } else {
+                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
+                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
+                                                          return "C'\u00e8 un indentazione di troppo."
+                                                        } else {
+                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
+                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
+                                                            return "Sembra che ci sia un'interruzione di linea di troppo. Forse vuoi nasconderla usando '\\'."
+                                                          } else {
+                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
+                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
+                                                              return "C'\u00e8 una parentesi aperta di troppo: '%s'."
+                                                            } else {
+                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
+                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
+                                                                return "C'\u00e8 una parentesi chiusa di troppo: '%s'."
+                                                              } else {
+                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
+                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
+                                                                  return "C'\u00e8 uno spazio di troppo."
+                                                                } else {
+                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
+                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
+                                                                    return "C'\u00e8 uno spazio di troppo o una virgola mancante."
+                                                                  } else {
+                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
+                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
+                                                                      return "C'\u00e8 un token di troppo: '%s'."
+                                                                    } else {
+                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
+                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
+                                                                        return "'%s' non \u00e8 una parola chiave in Python."
+                                                                      } else {
+                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
+                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
+                                                                          return "Il token '%s' non \u00e8 valido, usa il trattino basso '_' per marcare la funzione come 'privata'."
+                                                                        } else {
+                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
+                                                                            return "Python non ha un istruzione '%s'."
+                                                                          } else {
+                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
+                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
+                                                                              return "La seguente sintassi non \u00e8 valida in Python: %s."
+                                                                            } else {
+                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
+                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
+                                                                                return "Il token '%s' non \u00e8 valido, invece usa '%s'."
+                                                                              } else {
+                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
+                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
+                                                                                  return "Python non usa '%s' per definire variabili."
+                                                                                } else {
+                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
+                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
+                                                                                    return "Il ciclo-'for' richiede una variabile."
+                                                                                  } else {
+                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
+                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
+                                                                                      return "L'istruzione 'from __future__ import' deve essere la prima istruzione del modulo."
+                                                                                    } else {
+                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
+                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
+                                                                                        return "Un generatore non pu\u00f2 usare 'return' per restituire un valore."
+                                                                                      } else {
+                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
+                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
+                                                                                          return "Le istruzioni '%s' devono essere la prime istruzioni all'interno di una funzione."
+                                                                                        } else {
+                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
+                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
+                                                                                            return "Un'istruzione '%s' non pu\u00f2 essere all'esterno di una funzione."
+                                                                                          } else {
+                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
+                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
+                                                                                              return "Un istruzione 'import' non pu\u00f2 essere all'interno di un ciclo."
+                                                                                            } else {
+                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
+                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
+                                                                                                return "Questa istruzione 'import' \u00e8 incompleta."
+                                                                                              } else {
+                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
+                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
+                                                                                                  return "L'indentazione \u00e8 inconsistente."
+                                                                                                } else {
+                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
+                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
+                                                                                                    return "Questa funzione ogni tanto ritorna un valore e ogni tanto no."
+                                                                                                  } else {
+                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
+                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
+                                                                                                      return "Questo '%s' deve essere indentato."
+                                                                                                    } else {
+                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
+                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
+                                                                                                        return "Questo \u00e8 un ciclo infinito: la sua esecuzione non termina mai."
+                                                                                                      } else {
+                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
+                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
+                                                                                                          return "Non puoi avere un'inizializzazione all'interno di un ciclo."
+                                                                                                        } else {
+                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
+                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
+                                                                                                            return "Non puoi assegnare qualcosa a '%s'."
+                                                                                                          } else {
+                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
+                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
+                                                                                                              return "Definizione di funzione non valida."
+                                                                                                            } else {
+                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
+                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
+                                                                                                                return "Usa ':' e 'return' invece di un assegnamento."
+                                                                                                              } else {
+                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
+                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
+                                                                                                                  return "Un argomento 'generatore/comprensione' non pu\u00f2 essere combinato con altri argomenti."
+                                                                                                                } else {
+                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
+                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
+                                                                                                                    return "Questo carattere immesso non \u00e8 valido: '%s'."
+                                                                                                                  } else {
+                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
+                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
+                                                                                                                      return "Questa coppia chiave-valore non \u00e8 valida."
+                                                                                                                    } else {
+                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
+                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
+                                                                                                                        return "Questo nome non \u00e8 valido: '%s'."
+                                                                                                                      } else {
+                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
+                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
+                                                                                                                          return "Questa espressione non \u00e8 un target valido per un assegnamento aumentato."
+                                                                                                                        } else {
+                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
+                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
+                                                                                                                            return "Questo non \u00e8 un prefisso di stringa valido: '%s'."
+                                                                                                                          } else {
+                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
+                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
+                                                                                                                              return "Questo token non pu\u00f2 essere all'inizio di una riga: '%s'."
+                                                                                                                            } else {
+                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
+                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
+                                                                                                                                return "Un metodo richiede un argomento 'self'."
+                                                                                                                              } else {
+                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
+                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
+                                                                                                                                  return "Ci sono parentesi non corrispondenti: dovrebbe esserci '%s', ma c'\u00e8 '%s'."
+                                                                                                                                } else {
+                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
+                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
+                                                                                                                                    return "L'assegnamento '%s' non pu\u00f2 avvenire all'interno di un espressione."
+                                                                                                                                  } else {
+                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
+                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
+                                                                                                                                      return "Sembra che manca un assegnamento."
+                                                                                                                                    } else {
+                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
+                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
+                                                                                                                                        return "A questo assegnamento manca un espressione sorgente."
+                                                                                                                                      } else {
+                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
+                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
+                                                                                                                                          return "Manca un corpo o un indentazione."
+                                                                                                                                        } else {
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
+                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
+                                                                                                                                            return "Manca una virgola."
+                                                                                                                                          } else {
+                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
+                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
+                                                                                                                                              return "Manca una comparazione."
+                                                                                                                                            } else {
+                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
+                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
+                                                                                                                                                return "Sembra che manca un punto."
+                                                                                                                                              } else {
+                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
+                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
+                                                                                                                                                  return "Manca una parentesi aperta: '%s'."
+                                                                                                                                                } else {
+                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
+                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
+                                                                                                                                                    return "Manca una parentesi tonda aperta '('."
+                                                                                                                                                  } else {
+                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
+                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
+                                                                                                                                                      return "Manca un operatore o una virgola."
+                                                                                                                                                    } else {
+                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
+                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
+                                                                                                                                                        return "Sembra che mancano delle parentesi."
+                                                                                                                                                      } else {
+                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
+                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
+                                                                                                                                                          return "Manca una parentesi chiusa: '%s'."
+                                                                                                                                                        } else {
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
+                                                                                                                                                            return "Manca uno spazio."
+                                                                                                                                                          } else {
+                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
+                                                                                                                                                              return "Manca '%s'."
+                                                                                                                                                            } else {
+                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
+                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
+                                                                                                                                                                return "Parola chiave errata '%s' invece di '%s'."
+                                                                                                                                                              } else {
+                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
+                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
+                                                                                                                                                                  return "Sembra che ci sia un errore all'interno del tuo numero."
+                                                                                                                                                                } else {
+                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
+                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
+                                                                                                                                                                    return "Operatore errato '%s' invece di '%s'."
+                                                                                                                                                                  } else {
+                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
+                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
+                                                                                                                                                                      return "\u00c8 permesso un solo argomento spacchettante."
+                                                                                                                                                                    } else {
+                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
+                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
+                                                                                                                                                                        return "\u00c8 permesso un solo argomento spacchettante."
+                                                                                                                                                                      } else {
+                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
+                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
+                                                                                                                                                                          return "Qui serve un nome."
+                                                                                                                                                                        } else {
+                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
+                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
+                                                                                                                                                                            return "In Python non serve 'end', e non \u00e8 nemmeno permesso."
+                                                                                                                                                                          } else {
+                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
+                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
+                                                                                                                                                                              return "Un argomento spacchettante non pu\u00f2 avere un valore default."
+                                                                                                                                                                            } else {
+                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
+                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
+                                                                                                                                                                                return "Non esiste nessun alternativa sensata: '%s'."
+                                                                                                                                                                              } else {
+                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
+                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
+                                                                                                                                                                                  return "Un numero non pu\u00f2 avere un indice."
+                                                                                                                                                                                } else {
+                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
+                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
+                                                                                                                                                                                    return "L'argomento spacchettante deve essere alla fine."
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
+                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
+                                                                                                                                                                                      return "Sono richiesti dei parametri, ma si \u00e8 trovato '%s'."
+                                                                                                                                                                                    } else {
+                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
+                                                                                                                                                                                        return "Argomenti posizionali non possono essere dopo argomenti con parola chiave."
+                                                                                                                                                                                      } else {
+                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
+                                                                                                                                                                                          return "Parametri senza defaults non possono essere dopo parametri con valori default o spacchettanti"
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
+                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
+                                                                                                                                                                                            return "'>>' deve essere seguito da un target valido."
+                                                                                                                                                                                          } else {
+                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
+                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
+                                                                                                                                                                                              return "In Python 2.x 'print' \u00e8 un'istruzione e non pu\u00f2 essere invocata con argomenti con parola chiave."
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
+                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
+                                                                                                                                                                                                return "In Python 3.x 'print' \u00e8 una funzione e richiede parentesi."
+                                                                                                                                                                                              } else {
+                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
+                                                                                                                                                                                                  return "Questa funzionalit\u00e0 da Python 2.x non \u00e8 disponibile."
+                                                                                                                                                                                                } else {
+                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
+                                                                                                                                                                                                    return "Questa funzionalit\u00e0 da Python 3.x non \u00e8 disponibile."
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
+                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
+                                                                                                                                                                                                      return "Usa 'return' invece di 'break' per uscire da una funzione."
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
+                                                                                                                                                                                                        return "Un'istruzione 'return' non pu\u00f2 essere all'esterno di una funzione."
+                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
+                                                                                                                                                                                                          return "Usa un singolo uguale '=' per assegnamenti."
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
+                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
+                                                                                                                                                                                                            return "La comparazione con '%s' \u00e8 superflua qui."
+                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
+                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
+                                                                                                                                                                                                              return "Sembra che questi token sono scambiati: '%s' e '%s'."
+                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
+                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
+                                                                                                                                                                                                                return "'%s' \u00e8 richiesto, per\u00f2 '%s' \u00e8 stato trovato."
+                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
+                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
+                                                                                                                                                                                                                  return "Questa tupla deve essere tra parentesi."
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
+                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
+                                                                                                                                                                                                                    return "Interruzione di riga o di input inaspettato."
+                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
+                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
+                                                                                                                                                                                                                      return "La parola chiave '%s' non pu\u00f2 essere in questo punto."
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
+                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
+                                                                                                                                                                                                                        return "Questa parentesi aperta '%s' non ha una parentesi chiusa corrispondente."
+                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
+                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
+                                                                                                                                                                                                                          return "Questo codice non \u00e8 raggiungibile e non sar\u00e0 mai eseguito."
+                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
+                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
+                                                                                                                                                                                                                            return "Questa stringa non \u00e8 chiusa."
+                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
+                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
+                                                                                                                                                                                                                              return "Multiple comparazioni sono collegate con 'and' oppure 'or' invece che da una virgola."
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
+                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                return "Multipli valori sono separati con la virgola invece che con 'and'."
+                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
+                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                  return "Usa 'elif' invece di 'else'."
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
+                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                    return "Usa 'elif' invece di 'else if'."
+                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
+                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                      return "Usa '== %s' invece di '!= %s'."
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
+                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                        return "Usa '%%' invece di '/' per verificare se un numero \u00e8 divisibile."
+                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
+                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                          return "Usa 'not' piuttosto che una comparazione con '%s'."
+                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
+                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                            return "Usa 'repeat' invece di 'while'."
+                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
+                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                              return "Il risultato di questa espressione non viene mai usato."
+                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                return "Questa istruzione \u00e8 inutile: non ha nessun effetto."
+                                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
+                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                  return "Questa istruzione \u00e8 inutile. Intendevi '%s='?"
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
+                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                    return "L'argomento spacchettante variabile deve essere prima dell'argomento spacchettante con parola chiave."
+                                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
+                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                      return "Argomenti spacchettanti non sono permessi a questo punto."
+                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
+                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                        return "Parentesi sbagliata: '%s' \u00e8 richiesto invece di '%s'."
+                                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
+                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                          return "Simbolo sbagliato '%s' invece di '%s'."
+                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                          var x$249 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                                                                          if (((x$249 === null) ? (msg === null) : x$249.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                            return "Un'espressione 'yield' non pu\u00f2 essere all'esterno di una funzione."
+                                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                                            return null
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                }
+                                                                                                                                                                                              }
+                                                                                                                                                                                            }
+                                                                                                                                                                                          }
+                                                                                                                                                                                        }
+                                                                                                                                                                                      }
+                                                                                                                                                                                    }
+                                                                                                                                                                                  }
+                                                                                                                                                                                }
+                                                                                                                                                                              }
+                                                                                                                                                                            }
+                                                                                                                                                                          }
+                                                                                                                                                                        }
+                                                                                                                                                                      }
+                                                                                                                                                                    }
+                                                                                                                                                                  }
+                                                                                                                                                                }
+                                                                                                                                                              }
+                                                                                                                                                            }
+                                                                                                                                                          }
+                                                                                                                                                        }
+                                                                                                                                                      }
+                                                                                                                                                    }
+                                                                                                                                                  }
+                                                                                                                                                }
+                                                                                                                                              }
+                                                                                                                                            }
+                                                                                                                                          }
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+var $d_Ltigerpython_parser_errormessages_ItalianMessages$ = new $TypeData().initClass({
+  Ltigerpython_parser_errormessages_ItalianMessages$: 0
+}, false, "tigerpython.parser.errormessages.ItalianMessages$", {
+  Ltigerpython_parser_errormessages_ItalianMessages$: 1,
+  Ltigerpython_parser_errormessages_ModifiableErrorMessages: 1,
+  O: 1
+});
+$c_Ltigerpython_parser_errormessages_ItalianMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_ItalianMessages$;
+var $n_Ltigerpython_parser_errormessages_ItalianMessages$ = (void 0);
+function $m_Ltigerpython_parser_errormessages_ItalianMessages$() {
+  if ((!$n_Ltigerpython_parser_errormessages_ItalianMessages$)) {
+    $n_Ltigerpython_parser_errormessages_ItalianMessages$ = new $c_Ltigerpython_parser_errormessages_ItalianMessages$().init___()
+  };
+  return $n_Ltigerpython_parser_errormessages_ItalianMessages$
+}
+/** @constructor */
+function $c_Ltigerpython_parser_errormessages_RussianMessages$() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.call(this)
+}
+$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype = new $h_Ltigerpython_parser_errormessages_ModifiableErrorMessages();
+$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.constructor = $c_Ltigerpython_parser_errormessages_RussianMessages$;
+/** @constructor */
+function $h_Ltigerpython_parser_errormessages_RussianMessages$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_parser_errormessages_RussianMessages$.prototype = $c_Ltigerpython_parser_errormessages_RussianMessages$.prototype;
+$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.init___ = (function() {
+  $c_Ltigerpython_parser_errormessages_ModifiableErrorMessages.prototype.init___.call(this);
+  return this
+});
+$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.$$undgetMessage__s_Enumeration$Value__T = (function(msg) {
+  var x = $m_Ltigerpython_parser_errors_ErrorCode$().AND$undCONNECTS$undCMP$undNOT$undVARS$2;
+  if (((x === null) ? (msg === null) : x.equals__O__Z(msg))) {
+    return "'%s' \u0441\u0432\u044f\u0437\u044b\u0432\u0430\u0435\u0442 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f, \u0430 \u043d\u0435 \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435."
+  } else {
+    var x$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ARG$undAFTER$undVARARGS$2;
+    if (((x$3 === null) ? (msg === null) : x$3.equals__O__Z(msg))) {
+      return "\u0417\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0442\u044c \u0434\u0440\u0443\u0433\u0438\u0435 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u044b \u043f\u043e\u0441\u043b\u0435 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430."
+    } else {
+      var x$5 = $m_Ltigerpython_parser_errors_ErrorCode$().AS$undNOT$undALLOWED$undHERE$2;
+      if (((x$5 === null) ? (msg === null) : x$5.equals__O__Z(msg))) {
+        return "'as' \u0437\u0434\u0435\u0441\u044c \u043d\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e / \u043d\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f."
+      } else {
+        var x$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ASSIGNMENT$undTO$undRIGHT$2;
+        if (((x$7 === null) ? (msg === null) : x$7.equals__O__Z(msg))) {
+          return "\u0426\u0435\u043b\u0435\u0432\u043e\u0439 \u043e\u0431\u044a\u0435\u043a\u0442 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043e\u043b\u0436\u0435\u043d \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0441\u043b\u0435\u0432\u0430."
+        } else {
+          var x$9 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undBREAK$undINSTEAD$undOF$undRETURN$2;
+          if (((x$9 === null) ? (msg === null) : x$9.equals__O__Z(msg))) {
+            return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'break' \u0432\u043c\u0435\u0441\u0442\u043e 'return' \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u0446\u0438\u043a\u043b\u0430."
+          } else {
+            var x$11 = $m_Ltigerpython_parser_errors_ErrorCode$().BREAK$undOUTSIDE$undLOOP$2;
+            if (((x$11 === null) ? (msg === null) : x$11.equals__O__Z(msg))) {
+              return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0446\u0438\u043a\u043b\u0430."
+            } else {
+              var x$13 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
+              if (((x$13 === null) ? (msg === null) : x$13.equals__O__Z(msg))) {
+                return "\u0427\u0442\u043e\u0431\u044b \u0432\u044b\u0437\u0432\u0430\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u044e \u043d\u0443\u0436\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u043a\u043e\u0431\u043a\u0438, \u0434\u0430\u0436\u0435 \u0435\u0441\u043b\u0438 \u043e\u043d\u0438 \u043f\u0443\u0441\u0442\u044b\u0435."
+              } else {
+                var x$15 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undAPPLY$undASYNC$2;
+                if (((x$15 === null) ? (msg === null) : x$15.equals__O__Z(msg))) {
+                  return "'async' \u043d\u0435\u043f\u0440\u0438\u043c\u0435\u043d\u0438\u043c\u043e \u0432 \u044d\u0442\u043e\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438."
+                } else {
+                  var x$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undCALL$2;
+                  if (((x$17 === null) ? (msg === null) : x$17.equals__O__Z(msg))) {
+                    return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0447\u0442\u043e-\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0432\u044b\u0437\u043e\u0432\u0443 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                  } else {
+                    var x$19 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undASSIGN$undTO$undFUNCTION$2;
+                    if (((x$19 === null) ? (msg === null) : x$19.equals__O__Z(msg))) {
+                      return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0447\u0442\u043e-\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                    } else {
+                      var x$21 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undREDEFINE$undNAME$2;
+                      if (((x$21 === null) ? (msg === null) : x$21.equals__O__Z(msg))) {
+                        return "\u0418\u043c\u044f '%s' \u0443\u0436\u0435 \u0437\u0430\u043d\u044f\u0442\u043e."
+                      } else {
+                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undTEST$undTUPLE$2;
+                        if (((x$23 === null) ? (msg === null) : x$23.equals__O__Z(msg))) {
+                          return "\u0422\u0435\u0441\u0442\u0438\u0440\u0443\u0439\u0442\u0435 \u043a\u0430\u0436\u0434\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u043e\u0440\u0442\u0435\u0436\u0430 \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e."
+                        } else {
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().CANNOT$undUSE$undKEYWORD$undAS$undNAME$2;
+                          if (((x$25 === null) ? (msg === null) : x$25.equals__O__Z(msg))) {
+                            return "\u0412\u044b \u043d\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '%s' \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0438\u043c\u0435\u043d\u0438."
+                          } else {
+                            var x$27 = $m_Ltigerpython_parser_errors_ErrorCode$().CLASS$undMETHOD$undWITHOUT$undSELF$2;
+                            if (((x$27 === null) ? (msg === null) : x$27.equals__O__Z(msg))) {
+                              return "\u041c\u0435\u0442\u043e\u0434 \u043a\u043b\u0430\u0441\u0441\u0430 \u043e\u0436\u0438\u0434\u0430\u0435\u0442 \u043d\u0435 \u043c\u0435\u043d\u044c\u0448\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430."
+                            } else {
+                              var x$29 = $m_Ltigerpython_parser_errors_ErrorCode$().COLON$undEXPECTED$2;
+                              if (((x$29 === null) ? (msg === null) : x$29.equals__O__Z(msg))) {
+                                return "\u0417\u0434\u0435\u0441\u044c \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0434\u0432\u043e\u0435\u0442\u043e\u0447\u0438\u0435 ':'."
+                              } else {
+                                var x$31 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undCANNOT$undBE$undFULFILLED$2;
+                                if (((x$31 === null) ? (msg === null) : x$31.equals__O__Z(msg))) {
+                                  return "\u0423\u0441\u043b\u043e\u0432\u0438\u0435 \u0431\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0442\u0430\u043a \u043a\u0430\u043a \u043d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f."
+                                } else {
+                                  var x$33 = $m_Ltigerpython_parser_errors_ErrorCode$().CONDITION$undALWAYS$undFULFILLED$2;
+                                  if (((x$33 === null) ? (msg === null) : x$33.equals__O__Z(msg))) {
+                                    return "\u0423\u0441\u043b\u043e\u0432\u0438\u0435 \u0431\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0442\u0430\u043a \u043a\u0430\u043a \u0432\u0441\u0435\u0433\u0434\u0430 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f."
+                                  } else {
+                                    var x$35 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNAME$undCLASH$2;
+                                    if (((x$35 === null) ? (msg === null) : x$35.equals__O__Z(msg))) {
+                                      return "\u0424\u0443\u043d\u043a\u0446\u0438\u044f \u0438 \u0435\u0451 \u0434\u0435\u043a\u043e\u0440\u0430\u0442\u043e\u0440 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e: '%s'."
+                                    } else {
+                                      var x$37 = $m_Ltigerpython_parser_errors_ErrorCode$().DECORATOR$undNEEDS$undCALLABLE$2;
+                                      if (((x$37 === null) ? (msg === null) : x$37.equals__O__Z(msg))) {
+                                        return "\u0414\u0435\u043a\u043e\u0440\u0430\u0442\u043e\u0440\u044b \u043f\u0440\u0438\u043c\u0435\u043d\u0438\u043c\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043a \u0444\u0443\u043d\u043a\u0446\u0438\u044f\u043c \u0438 \u043a\u043b\u0430\u0441\u0441\u0430\u043c."
+                                      } else {
+                                        var x$39 = $m_Ltigerpython_parser_errors_ErrorCode$().DEFINITION$undINSIDE$undLOOP$2;
+                                        if (((x$39 === null) ? (msg === null) : x$39.equals__O__Z(msg))) {
+                                          return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0443\u0442\u0440\u0438 \u0446\u0438\u043a\u043b\u0430."
+                                        } else {
+                                          var x$41 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undELSE$2;
+                                          if (((x$41 === null) ? (msg === null) : x$41.equals__O__Z(msg))) {
+                                            return "\u0423 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u043e\u0434\u043d\u043e\u0433\u043e 'else'."
+                                          } else {
+                                            var x$43 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                            if (((x$43 === null) ? (msg === null) : x$43.equals__O__Z(msg))) {
+                                              return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f '==', \u0430 \u043d\u0435 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
+                                            } else {
+                                              var x$45 = $m_Ltigerpython_parser_errors_ErrorCode$().DOUBLE$undPARAMETER$undNAMES$2;
+                                              if (((x$45 === null) ? (msg === null) : x$45.equals__O__Z(msg))) {
+                                                return "\u0414\u0432\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e: '%s'."
+                                              } else {
+                                                var x$47 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undMUST$undBE$undINDENTED$2;
+                                                if (((x$47 === null) ? (msg === null) : x$47.equals__O__Z(msg))) {
+                                                  return "\u041e\u0442\u0441\u0442\u0443\u043f '%s' \u0434\u043e\u043b\u0436\u0435\u043d \u0440\u0430\u0432\u043d\u044f\u0442\u044c\u0441\u044f \u043e\u0442\u0441\u0442\u0443\u043f\u0443 'if'."
+                                                } else {
+                                                  var x$49 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITH$undCOMPARISON$2;
+                                                  if (((x$49 === null) ? (msg === null) : x$49.equals__O__Z(msg))) {
+                                                    return "\u0423 'else' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f."
+                                                  } else {
+                                                    var x$51 = $m_Ltigerpython_parser_errors_ErrorCode$().ELSE$undWITHOUT$undIF$2;
+                                                    if (((x$51 === null) ? (msg === null) : x$51.equals__O__Z(msg))) {
+                                                      return "\u042d\u0442\u043e\u043c\u0443 '%s' \u043d\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043d\u0438\u043a\u0430\u043a\u043e\u0439 'if'."
+                                                    } else {
+                                                      var x$53 = $m_Ltigerpython_parser_errors_ErrorCode$().EMPTY$undSUBSCRIPT$2;
+                                                      if (((x$53 === null) ? (msg === null) : x$53.equals__O__Z(msg))) {
+                                                        return "\u0418\u043d\u0434\u0435\u043a\u0441 \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c."
+                                                      } else {
+                                                        var x$55 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undINDENTATION$2;
+                                                        if (((x$55 === null) ? (msg === null) : x$55.equals__O__Z(msg))) {
+                                                          return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043e\u0442\u0441\u0442\u0443\u043f."
+                                                        } else {
+                                                          var x$57 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLINEBREAK$2;
+                                                          if (((x$57 === null) ? (msg === null) : x$57.equals__O__Z(msg))) {
+                                                            return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043b\u0438\u0448\u043d\u0438\u0439 \u0440\u0430\u0437\u0440\u044b\u0432 \u0441\u0442\u0440\u043e\u043a\u0438. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0435\u0433\u043e \u0441\u043f\u0440\u044f\u0442\u0430\u0442\u044c \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e '\\'."
+                                                          } else {
+                                                            var x$59 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undLEFT$undBRACKET$2;
+                                                            if (((x$59 === null) ? (msg === null) : x$59.equals__O__Z(msg))) {
+                                                              return "\u041b\u0438\u0448\u043d\u0430\u044f \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
+                                                            } else {
+                                                              var x$61 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
+                                                              if (((x$61 === null) ? (msg === null) : x$61.equals__O__Z(msg))) {
+                                                                return "\u041b\u0438\u0448\u043d\u0430\u044f \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
+                                                              } else {
+                                                                var x$63 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
+                                                                if (((x$63 === null) ? (msg === null) : x$63.equals__O__Z(msg))) {
+                                                                  return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043f\u0440\u043e\u0431\u0435\u043b."
+                                                                } else {
+                                                                  var x$65 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$undOR$undMISSING$undCOMMA$2;
+                                                                  if (((x$65 === null) ? (msg === null) : x$65.equals__O__Z(msg))) {
+                                                                    return "\u041b\u0438\u0448\u043d\u0438\u0439 \u043f\u0440\u043e\u0431\u0435\u043b \u0438\u043b\u0438 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0430\u044f \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
+                                                                  } else {
+                                                                    var x$67 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
+                                                                    if (((x$67 === null) ? (msg === null) : x$67.equals__O__Z(msg))) {
+                                                                      return "\u041b\u0438\u0448\u043d\u044f\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430: '%s'."
+                                                                    } else {
+                                                                      var x$69 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undKEYWORD$2;
+                                                                      if (((x$69 === null) ? (msg === null) : x$69.equals__O__Z(msg))) {
+                                                                        return "\u0412 Python \u043d\u0435\u0442 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0433\u043e \u0441\u043b\u043e\u0432\u0430 '%s'."
+                                                                      } else {
+                                                                        var x$71 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undPRIVATE$2;
+                                                                        if (((x$71 === null) ? (msg === null) : x$71.equals__O__Z(msg))) {
+                                                                          return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430 '%s', \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 \u043d\u0438\u0436\u043d\u0435\u0435 \u043f\u043e\u0434\u0447\u0451\u0440\u043a\u0438\u0432\u0430\u043d\u0438\u0435 '_', \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u0444\u0443\u043d\u043a\u0446\u0438\u044e \u043a\u0430\u043a \u0437\u0430\u043a\u0440\u044b\u0442\u0443\u044e ('private')."
+                                                                        } else {
+                                                                          var x$73 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+                                                                          if (((x$73 === null) ? (msg === null) : x$73.equals__O__Z(msg))) {
+                                                                            return "\u0412 Python \u043d\u0435\u0442 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438 '%s'."
+                                                                          } else {
+                                                                            var x$75 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSYNTAX$2;
+                                                                            if (((x$75 === null) ? (msg === null) : x$75.equals__O__Z(msg))) {
+                                                                              return "\u0421\u0438\u043d\u0442\u0430\u043a\u0441\u0438\u0441 %s \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u0435\u043d \u0432 Python."
+                                                                            } else {
+                                                                              var x$77 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undTOKEN$2;
+                                                                              if (((x$77 === null) ? (msg === null) : x$77.equals__O__Z(msg))) {
+                                                                                return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430\u044f \u043b\u0435\u043a\u0441\u0435\u043c\u0430 '%s', \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '%s'."
+                                                                              } else {
+                                                                                var x$79 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undVAR$2;
+                                                                                if (((x$79 === null) ? (msg === null) : x$79.equals__O__Z(msg))) {
+                                                                                  return "\u0412 Python \u043d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f '%s' \u0434\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0445."
+                                                                                } else {
+                                                                                  var x$81 = $m_Ltigerpython_parser_errors_ErrorCode$().FOR$undTARGET$undNAME$undREQUIRED$2;
+                                                                                  if (((x$81 === null) ? (msg === null) : x$81.equals__O__Z(msg))) {
+                                                                                    return "\u0414\u043b\u044f \u0446\u0438\u043a\u043b\u0430 'for' \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0430\u044f."
+                                                                                  } else {
+                                                                                    var x$83 = $m_Ltigerpython_parser_errors_ErrorCode$().FUTURE$undMUST$undBE$undFIRST$2;
+                                                                                    if (((x$83 === null) ? (msg === null) : x$83.equals__O__Z(msg))) {
+                                                                                      return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'from __future__ import' \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u043f\u0435\u0440\u0432\u043e\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0435\u0439 \u0432 \u043c\u043e\u0434\u0443\u043b\u0435."
+                                                                                    } else {
+                                                                                      var x$85 = $m_Ltigerpython_parser_errors_ErrorCode$().GENERATOR$undCANNOT$undRETURN$undVALUE$2;
+                                                                                      if (((x$85 === null) ? (msg === null) : x$85.equals__O__Z(msg))) {
+                                                                                        return "\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c 'return', \u0447\u0442\u043e\u0431\u044b \u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0438\u043c\u0435\u043b\u0438 \u0432 \u0432\u0438\u0434\u0443 'yield'."
+                                                                                      } else {
+                                                                                        var x$87 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undMUST$undBE$undFIRST$2;
+                                                                                        if (((x$87 === null) ? (msg === null) : x$87.equals__O__Z(msg))) {
+                                                                                          return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0438 '%s' \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u0430\u043c\u044b\u043c\u0438 \u043f\u0435\u0440\u0432\u044b\u043c\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f\u043c\u0438 \u0432 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                        } else {
+                                                                                          var x$89 = $m_Ltigerpython_parser_errors_ErrorCode$().GLOBAL$undOUTSIDE$undFUNCTION$2;
+                                                                                          if (((x$89 === null) ? (msg === null) : x$89.equals__O__Z(msg))) {
+                                                                                            return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                          } else {
+                                                                                            var x$91 = $m_Ltigerpython_parser_errors_ErrorCode$().IMPORT$undINSIDE$undLOOP$2;
+                                                                                            if (((x$91 === null) ? (msg === null) : x$91.equals__O__Z(msg))) {
+                                                                                              return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'import' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432 \u0446\u0438\u043a\u043b\u0435."
+                                                                                            } else {
+                                                                                              var x$93 = $m_Ltigerpython_parser_errors_ErrorCode$().INCOMPLETE$undIMPORT$2;
+                                                                                              if (((x$93 === null) ? (msg === null) : x$93.equals__O__Z(msg))) {
+                                                                                                return "\u041d\u0435\u043f\u043e\u043b\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f import."
+                                                                                              } else {
+                                                                                                var x$95 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undINDENTATION$2;
+                                                                                                if (((x$95 === null) ? (msg === null) : x$95.equals__O__Z(msg))) {
+                                                                                                  return "\u041e\u0442\u0441\u0442\u0443\u043f\u044b \u043d\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0442 \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0443."
+                                                                                                } else {
+                                                                                                  var x$97 = $m_Ltigerpython_parser_errors_ErrorCode$().INCONSISTENT$undRETURNS$2;
+                                                                                                  if (((x$97 === null) ? (msg === null) : x$97.equals__O__Z(msg))) {
+                                                                                                    return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u043d\u043e\u0433\u0434\u0430 \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u0430 \u0438\u043d\u043e\u0433\u0434\u0430 \u043d\u0435\u0442."
+                                                                                                  } else {
+                                                                                                    var x$99 = $m_Ltigerpython_parser_errors_ErrorCode$().INDENTED$undELSE$2;
+                                                                                                    if (((x$99 === null) ? (msg === null) : x$99.equals__O__Z(msg))) {
+                                                                                                      return "\u041b\u0438\u0448\u043d\u0438\u0435 \u043e\u0442\u0441\u0442\u0443\u043f\u044b: '%s'."
+                                                                                                    } else {
+                                                                                                      var x$101 = $m_Ltigerpython_parser_errors_ErrorCode$().INFINITE$undLOOP$2;
+                                                                                                      if (((x$101 === null) ? (msg === null) : x$101.equals__O__Z(msg))) {
+                                                                                                        return "\u0411\u0435\u0441\u043a\u043e\u043d\u0435\u0447\u043d\u044b\u0439 \u0446\u0438\u043a\u043b."
+                                                                                                      } else {
+                                                                                                        var x$103 = $m_Ltigerpython_parser_errors_ErrorCode$().INITIALIZATION$undINSIDE$undLOOP$2;
+                                                                                                        if (((x$103 === null) ? (msg === null) : x$103.equals__O__Z(msg))) {
+                                                                                                          return "\u0418\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0443\u0442\u0440\u0438 \u0446\u0438\u043a\u043b\u0430."
+                                                                                                        } else {
+                                                                                                          var x$105 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undASSIGNMENT$2;
+                                                                                                          if (((x$105 === null) ? (msg === null) : x$105.equals__O__Z(msg))) {
+                                                                                                            return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0441\u0432\u043e\u0438\u0442\u044c \u0447\u0442\u043e-\u0442\u043e '%s'."
+                                                                                                          } else {
+                                                                                                            var x$107 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$2;
+                                                                                                            if (((x$107 === null) ? (msg === null) : x$107.equals__O__Z(msg))) {
+                                                                                                              return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u043e\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                                            } else {
+                                                                                                              var x$109 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undFUNCTION$undDEF$undASSIGN$2;
+                                                                                                              if (((x$109 === null) ? (msg === null) : x$109.equals__O__Z(msg))) {
+                                                                                                                return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 ':' \u0438 'return' \u0432\u043c\u0435\u0441\u0442\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
+                                                                                                              } else {
+                                                                                                                var x$111 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undGENERATOR$undARG$2;
+                                                                                                                if (((x$111 === null) ? (msg === null) : x$111.equals__O__Z(msg))) {
+                                                                                                                  return "\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440\u0430/\u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u0451\u043d \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430\u043c\u0438."
+                                                                                                                } else {
+                                                                                                                  var x$113 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undINPUT$undCHARACTER$2;
+                                                                                                                  if (((x$113 === null) ? (msg === null) : x$113.equals__O__Z(msg))) {
+                                                                                                                    return "\u0412\u044b \u0432\u0432\u0435\u043b\u0438 \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u0438\u043c\u0432\u043e\u043b '%s'."
+                                                                                                                  } else {
+                                                                                                                    var x$115 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undKEY$undVALUE$undPAIR$2;
+                                                                                                                    if (((x$115 === null) ? (msg === null) : x$115.equals__O__Z(msg))) {
+                                                                                                                      return "\u041f\u0430\u0440\u0430 '\u043a\u043b\u044e\u0447-\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435' \u043d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u0430."
+                                                                                                                    } else {
+                                                                                                                      var x$117 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undNAME$2;
+                                                                                                                      if (((x$117 === null) ? (msg === null) : x$117.equals__O__Z(msg))) {
+                                                                                                                        return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u043e\u0435 \u0438\u043c\u044f: '%s'."
+                                                                                                                      } else {
+                                                                                                                        var x$119 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undAUGASSIGN$undTARGET$2;
+                                                                                                                        if (((x$119 === null) ? (msg === null) : x$119.equals__O__Z(msg))) {
+                                                                                                                          return "\u042d\u0442\u043e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0446\u0435\u043b\u044c\u044e \u043a\u043e\u043c\u0431\u0438\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f."
+                                                                                                                        } else {
+                                                                                                                          var x$121 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undSTRING$undPREFIX$2;
+                                                                                                                          if (((x$121 === null) ? (msg === null) : x$121.equals__O__Z(msg))) {
+                                                                                                                            return "\u041d\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u0447\u0430\u043b\u043e \u0441\u0442\u0440\u043e\u043a\u0438: '%s'."
+                                                                                                                          } else {
+                                                                                                                            var x$123 = $m_Ltigerpython_parser_errors_ErrorCode$().INVALID$undTOKEN$undAT$undSTART$undOF$undLINE$2;
+                                                                                                                            if (((x$123 === null) ? (msg === null) : x$123.equals__O__Z(msg))) {
+                                                                                                                              return "\u042d\u0442\u0430 \u043b\u0435\u043a\u0441\u0435\u043c\u0430 \u043d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430 \u0432 \u043d\u0430\u0447\u0430\u043b\u0435 \u0441\u0442\u0440\u043e\u043a\u0438: '%s'."
+                                                                                                                            } else {
+                                                                                                                              var x$125 = $m_Ltigerpython_parser_errors_ErrorCode$().METHOD$undWITHOUT$undSELF$2;
+                                                                                                                              if (((x$125 === null) ? (msg === null) : x$125.equals__O__Z(msg))) {
+                                                                                                                                return "\u0423 \u043c\u0435\u0442\u043e\u0434\u0430 \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 'self'."
+                                                                                                                              } else {
+                                                                                                                                var x$127 = $m_Ltigerpython_parser_errors_ErrorCode$().MISMATCHED$undCLOSING$undBRACKET$2;
+                                                                                                                                if (((x$127 === null) ? (msg === null) : x$127.equals__O__Z(msg))) {
+                                                                                                                                  return "\u041d\u0435\u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0435 \u0441\u043a\u043e\u0431\u043a\u0438: \u043e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f '%s', \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
+                                                                                                                                } else {
+                                                                                                                                  var x$129 = $m_Ltigerpython_parser_errors_ErrorCode$().MISPLACED$undASSIGN$2;
+                                                                                                                                  if (((x$129 === null) ? (msg === null) : x$129.equals__O__Z(msg))) {
+                                                                                                                                    return "\u041f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u0435 '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0447\u0430\u0441\u0442\u044c\u044e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f."
+                                                                                                                                  } else {
+                                                                                                                                    var x$131 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
+                                                                                                                                    if (((x$131 === null) ? (msg === null) : x$131.equals__O__Z(msg))) {
+                                                                                                                                      return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043f\u0440\u043e\u043f\u0430\u043b\u043e \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u0435."
+                                                                                                                                    } else {
+                                                                                                                                      var x$133 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$undSOURCE$2;
+                                                                                                                                      if (((x$133 === null) ? (msg === null) : x$133.equals__O__Z(msg))) {
+                                                                                                                                        return "\u042d\u0442\u043e\u0439 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f-\u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430."
+                                                                                                                                      } else {
+                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undBODY$2;
+                                                                                                                                        if (((x$135 === null) ? (msg === null) : x$135.equals__O__Z(msg))) {
+                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0435\u043b\u043e \u0438\u043b\u0438 \u043e\u0442\u0441\u0442\u0443\u043f."
+                                                                                                                                        } else {
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMMA$2;
+                                                                                                                                          if (((x$137 === null) ? (msg === null) : x$137.equals__O__Z(msg))) {
+                                                                                                                                            return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
+                                                                                                                                          } else {
+                                                                                                                                            var x$139 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undCOMPARISON$2;
+                                                                                                                                            if (((x$139 === null) ? (msg === null) : x$139.equals__O__Z(msg))) {
+                                                                                                                                              return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435."
+                                                                                                                                            } else {
+                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undDOT$2;
+                                                                                                                                              if (((x$141 === null) ? (msg === null) : x$141.equals__O__Z(msg))) {
+                                                                                                                                                return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0442\u043e\u0447\u043a\u0438."
+                                                                                                                                              } else {
+                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undBRACKET$2;
+                                                                                                                                                if (((x$143 === null) ? (msg === null) : x$143.equals__O__Z(msg))) {
+                                                                                                                                                  return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
+                                                                                                                                                } else {
+                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undLEFT$undPARENTHESIS$2;
+                                                                                                                                                  if (((x$145 === null) ? (msg === null) : x$145.equals__O__Z(msg))) {
+                                                                                                                                                    return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u043a\u0440\u0443\u0433\u043b\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430 '('."
+                                                                                                                                                  } else {
+                                                                                                                                                    var x$147 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undOPERATOR$undOR$undCOMMA$2;
+                                                                                                                                                    if (((x$147 === null) ? (msg === null) : x$147.equals__O__Z(msg))) {
+                                                                                                                                                      return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u0438\u043b\u0438 \u0437\u0430\u043f\u044f\u0442\u0430\u044f."
+                                                                                                                                                    } else {
+                                                                                                                                                      var x$149 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
+                                                                                                                                                      if (((x$149 === null) ? (msg === null) : x$149.equals__O__Z(msg))) {
+                                                                                                                                                        return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u043a\u0440\u0443\u0433\u043b\u044b\u0445 \u0441\u043a\u043e\u0431\u043e\u043a."
+                                                                                                                                                      } else {
+                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undRIGHT$undBRACKET$2;
+                                                                                                                                                        if (((x$151 === null) ? (msg === null) : x$151.equals__O__Z(msg))) {
+                                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'."
+                                                                                                                                                        } else {
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                                                                                                                                                          if (((x$153 === null) ? (msg === null) : x$153.equals__O__Z(msg))) {
+                                                                                                                                                            return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043f\u0440\u043e\u0431\u0435\u043b."
+                                                                                                                                                          } else {
+                                                                                                                                                            var x$155 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+                                                                                                                                                            if (((x$155 === null) ? (msg === null) : x$155.equals__O__Z(msg))) {
+                                                                                                                                                              return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 '%s'."
+                                                                                                                                                            } else {
+                                                                                                                                                              var x$157 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
+                                                                                                                                                              if (((x$157 === null) ? (msg === null) : x$157.equals__O__Z(msg))) {
+                                                                                                                                                                return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u043e\u0435 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e: '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
+                                                                                                                                                              } else {
+                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undNUMBER$2;
+                                                                                                                                                                if (((x$159 === null) ? (msg === null) : x$159.equals__O__Z(msg))) {
+                                                                                                                                                                  return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u0432 \u0447\u0438\u0441\u043b\u043e \u0437\u0430\u043a\u0440\u0430\u043b\u0430\u0441\u044c \u043e\u043f\u0435\u0447\u0430\u0442\u043a\u0430."
+                                                                                                                                                                } else {
+                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undOPERATOR$2;
+                                                                                                                                                                  if (((x$161 === null) ? (msg === null) : x$161.equals__O__Z(msg))) {
+                                                                                                                                                                    return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u044b\u0439 \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440: '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
+                                                                                                                                                                  } else {
+                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undARGS$2;
+                                                                                                                                                                    if (((x$163 === null) ? (msg === null) : x$163.equals__O__Z(msg))) {
+                                                                                                                                                                      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e \u043d\u0435 \u0431\u043e\u043b\u0435\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430."
+                                                                                                                                                                    } else {
+                                                                                                                                                                      var x$165 = $m_Ltigerpython_parser_errors_ErrorCode$().MULTIPLE$undVAR$undPARAMS$2;
+                                                                                                                                                                      if (((x$165 === null) ? (msg === null) : x$165.equals__O__Z(msg))) {
+                                                                                                                                                                        return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e \u043d\u0435 \u0431\u043e\u043b\u0435\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430."
+                                                                                                                                                                      } else {
+                                                                                                                                                                        var x$167 = $m_Ltigerpython_parser_errors_ErrorCode$().NAME$undEXPECTED$2;
+                                                                                                                                                                        if (((x$167 === null) ? (msg === null) : x$167.equals__O__Z(msg))) {
+                                                                                                                                                                          return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043c\u044f."
+                                                                                                                                                                        } else {
+                                                                                                                                                                          var x$169 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undEND$undNEEDED$2;
+                                                                                                                                                                          if (((x$169 === null) ? (msg === null) : x$169.equals__O__Z(msg))) {
+                                                                                                                                                                            return "\u0412 Python \u043d\u0435\u0442 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0433\u043e \u0441\u043b\u043e\u0432\u0430 'end'."
+                                                                                                                                                                          } else {
+                                                                                                                                                                            var x$171 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undPARAM$undDEFAULT$undALLOWED$2;
+                                                                                                                                                                            if (((x$171 === null) ? (msg === null) : x$171.equals__O__Z(msg))) {
+                                                                                                                                                                              return "\u0423 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e."
+                                                                                                                                                                            } else {
+                                                                                                                                                                              var x$173 = $m_Ltigerpython_parser_errors_ErrorCode$().NO$undVIABLE$undALTERNATIVE$2;
+                                                                                                                                                                              if (((x$173 === null) ? (msg === null) : x$173.equals__O__Z(msg))) {
+                                                                                                                                                                                return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043e\u0441\u043c\u044b\u0441\u043b\u0435\u043d\u043d\u043e \u0438\u043d\u0442\u0435\u0440\u043f\u0440\u0435\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u0434: '%s'."
+                                                                                                                                                                              } else {
+                                                                                                                                                                                var x$175 = $m_Ltigerpython_parser_errors_ErrorCode$().NUMBER$undNOT$undSUBSCRIPTABLE$2;
+                                                                                                                                                                                if (((x$175 === null) ? (msg === null) : x$175.equals__O__Z(msg))) {
+                                                                                                                                                                                  return "\u0423 \u0447\u0438\u0441\u043b\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0438\u043d\u0434\u0435\u043a\u0441\u0430 \u043c\u0430\u0441\u0441\u0438\u0432\u0430."
+                                                                                                                                                                                } else {
+                                                                                                                                                                                  var x$177 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAM$undAFTER$undKEYWORD$undPARAM$2;
+                                                                                                                                                                                  if (((x$177 === null) ? (msg === null) : x$177.equals__O__Z(msg))) {
+                                                                                                                                                                                    return "\u041a\u043b\u044e\u0447\u0435\u0432\u043e\u0439 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0434\u043e\u043b\u0436\u0435\u043d \u0438\u0434\u0442\u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u043c."
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    var x$179 = $m_Ltigerpython_parser_errors_ErrorCode$().PARAMS$undREQUIRED$2;
+                                                                                                                                                                                    if (((x$179 === null) ? (msg === null) : x$179.equals__O__Z(msg))) {
+                                                                                                                                                                                      return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440/\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b, \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
+                                                                                                                                                                                    } else {
+                                                                                                                                                                                      var x$181 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undARG$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                      if (((x$181 === null) ? (msg === null) : x$181.equals__O__Z(msg))) {
+                                                                                                                                                                                        return "\u041f\u043e\u0437\u0438\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u0438\u0434\u0442\u0438 \u043f\u043e\u0441\u043b\u0435 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432."
+                                                                                                                                                                                      } else {
+                                                                                                                                                                                        var x$183 = $m_Ltigerpython_parser_errors_ErrorCode$().POS$undPARAM$undAFTER$undKEYWORD$2;
+                                                                                                                                                                                        if (((x$183 === null) ? (msg === null) : x$183.equals__O__Z(msg))) {
+                                                                                                                                                                                          return "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0431\u0435\u0437 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u044c \u0437\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0441\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435\u043c \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0438\u043b\u0438 \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438."
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                          var x$185 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undDEST$undEXPECTED$2;
+                                                                                                                                                                                          if (((x$185 === null) ? (msg === null) : x$185.equals__O__Z(msg))) {
+                                                                                                                                                                                            return "\u041f\u043e\u0441\u043b\u0435 '>>' \u0434\u043e\u043b\u0436\u0435\u043d \u0441\u0442\u043e\u044f\u0442\u044c \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0432\u044b\u0432\u043e\u0434\u0430."
+                                                                                                                                                                                          } else {
+                                                                                                                                                                                            var x$187 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undIS$undSTATEMENT$2;
+                                                                                                                                                                                            if (((x$187 === null) ? (msg === null) : x$187.equals__O__Z(msg))) {
+                                                                                                                                                                                              return "\u0412 Python 2.x 'print' \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0435\u0439 \u0438 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u044b\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u0441 \u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u043c\u0438 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430\u043c\u0438."
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                              var x$189 = $m_Ltigerpython_parser_errors_ErrorCode$().PRINT$undNEEDS$undPARENTHESES$2;
+                                                                                                                                                                                              if (((x$189 === null) ? (msg === null) : x$189.equals__O__Z(msg))) {
+                                                                                                                                                                                                return "\u0412 Python 3.x 'print' \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u0435\u0439 \u0438 \u0434\u043e\u043b\u0436\u043d\u043e \u0432\u044b\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u0441 \u043a\u0440\u0443\u0433\u043b\u044b\u043c\u0438 \u0441\u043a\u043e\u0431\u043a\u0430\u043c\u0438."
+                                                                                                                                                                                              } else {
+                                                                                                                                                                                                var x$191 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und2$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                                if (((x$191 === null) ? (msg === null) : x$191.equals__O__Z(msg))) {
+                                                                                                                                                                                                  return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u0437 Python 2.x \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430."
+                                                                                                                                                                                                } else {
+                                                                                                                                                                                                  var x$193 = $m_Ltigerpython_parser_errors_ErrorCode$().PYTHON$und3$undFEATURE$undNOT$undAVAILABLE$2;
+                                                                                                                                                                                                  if (((x$193 === null) ? (msg === null) : x$193.equals__O__Z(msg))) {
+                                                                                                                                                                                                    return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0438\u0437 Python 3.x \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430."
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    var x$195 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undRETURN$undINSTEAD$undOF$undBREAK$2;
+                                                                                                                                                                                                    if (((x$195 === null) ? (msg === null) : x$195.equals__O__Z(msg))) {
+                                                                                                                                                                                                      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'return' \u0432\u043c\u0435\u0441\u0442\u043e 'break' \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                      var x$197 = $m_Ltigerpython_parser_errors_ErrorCode$().RETURN$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                      if (((x$197 === null) ? (msg === null) : x$197.equals__O__Z(msg))) {
+                                                                                                                                                                                                        return "\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f 'return' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                        var x$199 = $m_Ltigerpython_parser_errors_ErrorCode$().SINGLE$undEQUAL$undSIGN$undEXPECTED$2;
+                                                                                                                                                                                                        if (((x$199 === null) ? (msg === null) : x$199.equals__O__Z(msg))) {
+                                                                                                                                                                                                          return "\u0414\u043b\u044f \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0441\u0432\u0430\u0438\u0432\u0430\u043d\u0438\u044f \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f (\u043e\u0434\u0438\u043d!) \u0437\u043d\u0430\u043a '='."
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                          var x$201 = $m_Ltigerpython_parser_errors_ErrorCode$().SUPERFLUOUS$undCOMPARISON$2;
+                                                                                                                                                                                                          if (((x$201 === null) ? (msg === null) : x$201.equals__O__Z(msg))) {
+                                                                                                                                                                                                            return "\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435 \u0441 '%s' \u043d\u0435 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f."
+                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                            var x$203 = $m_Ltigerpython_parser_errors_ErrorCode$().SWAPPED$undTOKENS$2;
+                                                                                                                                                                                                            if (((x$203 === null) ? (msg === null) : x$203.equals__O__Z(msg))) {
+                                                                                                                                                                                                              return "\u041a\u0430\u0436\u0435\u0442\u0441\u044f, \u043b\u0435\u043a\u0441\u0435\u043c\u044b \u043f\u0435\u0440\u0435\u043f\u0443\u0442\u0430\u043d\u044b: '%s' \u0438 '%s'."
+                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                              var x$205 = $m_Ltigerpython_parser_errors_ErrorCode$().TOKEN$undREQUIRED$2;
+                                                                                                                                                                                                              if (((x$205 === null) ? (msg === null) : x$205.equals__O__Z(msg))) {
+                                                                                                                                                                                                                return "\u041e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f'%s', \u043d\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e '%s'."
+                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                var x$207 = $m_Ltigerpython_parser_errors_ErrorCode$().TUPLE$undNEEDS$undPARENS$2;
+                                                                                                                                                                                                                if (((x$207 === null) ? (msg === null) : x$207.equals__O__Z(msg))) {
+                                                                                                                                                                                                                  return "\u0417\u0430\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u043a\u043e\u0440\u0442\u0435\u0436 \u0432 \u0441\u043a\u043e\u0431\u043a\u0438."
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                  var x$209 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undEND$undOF$undINPUT$2;
+                                                                                                                                                                                                                  if (((x$209 === null) ? (msg === null) : x$209.equals__O__Z(msg))) {
+                                                                                                                                                                                                                    return "\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u044b\u0439 \u043a\u043e\u043d\u0435\u0446 \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u043b\u0438 \u0432\u0432\u043e\u0434\u0430."
+                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                    var x$211 = $m_Ltigerpython_parser_errors_ErrorCode$().UNEXPECTED$undKEYWORD$2;
+                                                                                                                                                                                                                    if (((x$211 === null) ? (msg === null) : x$211.equals__O__Z(msg))) {
+                                                                                                                                                                                                                      return "\u041a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '%s' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0437\u0434\u0435\u0441\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f."
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                      var x$213 = $m_Ltigerpython_parser_errors_ErrorCode$().UNMATCHED$undBRACKET$2;
+                                                                                                                                                                                                                      if (((x$213 === null) ? (msg === null) : x$213.equals__O__Z(msg))) {
+                                                                                                                                                                                                                        return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430, \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0430\u044f \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0435\u0439 '%s'."
+                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                        var x$215 = $m_Ltigerpython_parser_errors_ErrorCode$().UNREACHABLE$undCODE$2;
+                                                                                                                                                                                                                        if (((x$215 === null) ? (msg === null) : x$215.equals__O__Z(msg))) {
+                                                                                                                                                                                                                          return "\u041d\u0435\u0434\u043e\u0441\u0442\u0438\u0436\u0438\u043c\u044b\u0439 \u043a\u043e\u0434: \u044d\u0442\u043e\u0442 \u043a\u043e\u0434 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0434\u043e\u0441\u0442\u0438\u0433\u043d\u0443\u0442 \u0438 \u0438\u0441\u043f\u043e\u043b\u043d\u0435\u043d."
+                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                          var x$217 = $m_Ltigerpython_parser_errors_ErrorCode$().UNTERMINATED$undSTRING$2;
+                                                                                                                                                                                                                          if (((x$217 === null) ? (msg === null) : x$217.equals__O__Z(msg))) {
+                                                                                                                                                                                                                            return "\u0421\u0442\u0440\u043e\u043a\u0430 \u043d\u0435 \u0437\u0430\u043a\u043e\u043d\u0447\u0435\u043d\u0430. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u043d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u043a\u0430\u0432\u044b\u0447\u0435\u043a."
+                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                            var x$219 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undAND$undNOT$undCOMMA$2;
+                                                                                                                                                                                                                            if (((x$219 === null) ? (msg === null) : x$219.equals__O__Z(msg))) {
+                                                                                                                                                                                                                              return "\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u044b \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e 'and' \u0438\u043b\u0438 'or' \u0432\u043c\u0435\u0441\u0442\u043e \u0437\u0430\u043f\u044f\u0442\u043e\u0439."
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                              var x$221 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undCOMMA$undNOT$undAND$2;
+                                                                                                                                                                                                                              if (((x$221 === null) ? (msg === null) : x$221.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                return "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u044b \u0437\u0430\u043f\u044f\u0442\u044b\u043c\u0438 \u0432\u043c\u0435\u0441\u0442\u043e 'and'."
+                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                var x$223 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$2;
+                                                                                                                                                                                                                                if (((x$223 === null) ? (msg === null) : x$223.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                  return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'elif' \u0432\u043c\u0435\u0441\u0442\u043e 'else'."
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                  var x$225 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undELIF$undINSTEAD$undOF$undELSE$undIF$2;
+                                                                                                                                                                                                                                  if (((x$225 === null) ? (msg === null) : x$225.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                    return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'elif' \u0432\u043c\u0435\u0441\u0442\u043e 'else if'."
+                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                    var x$227 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undEQ$undINSTEAD$undOF$undNEQ$2;
+                                                                                                                                                                                                                                    if (((x$227 === null) ? (msg === null) : x$227.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '== %s' \u0432\u043c\u0435\u0441\u0442\u043e '!= %s'."
+                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                      var x$229 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undMOD$undNOT$undDIV$2;
+                                                                                                                                                                                                                                      if (((x$229 === null) ? (msg === null) : x$229.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                        return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 '%%' \u0432\u043c\u0435\u0441\u0442\u043e '/' \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u0430 \u0434\u0435\u043b\u0438\u043c\u043e\u0441\u0442\u044c."
+                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                        var x$231 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undNOT$undINSTEAD$undOF$undFALSE$2;
+                                                                                                                                                                                                                                        if (((x$231 === null) ? (msg === null) : x$231.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                          return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'not' \u0432\u043c\u0435\u0441\u0442\u043e \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0441 '%s'."
+                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                          var x$233 = $m_Ltigerpython_parser_errors_ErrorCode$().USE$undREPEAT$undINSTEAD$undOF$undWHILE$2;
+                                                                                                                                                                                                                                          if (((x$233 === null) ? (msg === null) : x$233.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                            return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 'repeat' \u0432\u043c\u0435\u0441\u0442\u043e 'while'."
+                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                            var x$235 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
+                                                                                                                                                                                                                                            if (((x$235 === null) ? (msg === null) : x$235.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                              return "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u044d\u0442\u043e\u0433\u043e \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043d\u0438\u0433\u0434\u0435 \u043d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f."
+                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                              var x$237 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+                                                                                                                                                                                                                                              if (((x$237 === null) ? (msg === null) : x$237.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                return "\u0411\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f: \u043e\u043d\u0430 \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u0434\u0435\u043b\u0430\u0435\u0442."
+                                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                                var x$239 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
+                                                                                                                                                                                                                                                if (((x$239 === null) ? (msg === null) : x$239.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                  return "\u0411\u0435\u0441\u043f\u043e\u043b\u0435\u0437\u043d\u0430\u044f \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0432\u044b \u0438\u043c\u0435\u043b\u0438 \u0432 \u0432\u0438\u0434\u0443 '%s='?"
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                  var x$241 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undAFTER$undKEYWORD$undARG$2;
+                                                                                                                                                                                                                                                  if (((x$241 === null) ? (msg === null) : x$241.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                    return "\u0420\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0434\u043e\u043b\u0436\u0435\u043d \u0438\u0434\u0442\u0438 \u043f\u0435\u0440\u0435\u0434 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u043c \u0440\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u043c."
+                                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                                    var x$243 = $m_Ltigerpython_parser_errors_ErrorCode$().VARARG$undNOT$undALLOWED$2;
+                                                                                                                                                                                                                                                    if (((x$243 === null) ? (msg === null) : x$243.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                      return "\u0420\u0430\u0441\u043f\u0430\u043a\u043e\u0432\u044b\u0432\u0430\u044e\u0449\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0437\u0434\u0435\u0441\u044c \u0437\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u044b."
+                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                      var x$245 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undBRACKET$2;
+                                                                                                                                                                                                                                                      if (((x$245 === null) ? (msg === null) : x$245.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                        return "\u041d\u0435\u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: \u043e\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044f '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
+                                                                                                                                                                                                                                                      } else {
+                                                                                                                                                                                                                                                        var x$247 = $m_Ltigerpython_parser_errors_ErrorCode$().WRONG$undTOKEN$2;
+                                                                                                                                                                                                                                                        if (((x$247 === null) ? (msg === null) : x$247.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                          return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0439 \u0441\u0438\u043c\u0432\u043e\u043b '%s' \u0432\u043c\u0435\u0441\u0442\u043e '%s'."
+                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                          var x$249 = $m_Ltigerpython_parser_errors_ErrorCode$().YIELD$undOUTSIDE$undFUNCTION$2;
+                                                                                                                                                                                                                                                          if (((x$249 === null) ? (msg === null) : x$249.equals__O__Z(msg))) {
+                                                                                                                                                                                                                                                            return "\u0412\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435 'yield' \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u043d\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438."
+                                                                                                                                                                                                                                                          } else {
+                                                                                                                                                                                                                                                            return null
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                }
+                                                                                                                                                                                              }
+                                                                                                                                                                                            }
+                                                                                                                                                                                          }
+                                                                                                                                                                                        }
+                                                                                                                                                                                      }
+                                                                                                                                                                                    }
+                                                                                                                                                                                  }
+                                                                                                                                                                                }
+                                                                                                                                                                              }
+                                                                                                                                                                            }
+                                                                                                                                                                          }
+                                                                                                                                                                        }
+                                                                                                                                                                      }
+                                                                                                                                                                    }
+                                                                                                                                                                  }
+                                                                                                                                                                }
+                                                                                                                                                              }
+                                                                                                                                                            }
+                                                                                                                                                          }
+                                                                                                                                                        }
+                                                                                                                                                      }
+                                                                                                                                                    }
+                                                                                                                                                  }
+                                                                                                                                                }
+                                                                                                                                              }
+                                                                                                                                            }
+                                                                                                                                          }
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+var $d_Ltigerpython_parser_errormessages_RussianMessages$ = new $TypeData().initClass({
+  Ltigerpython_parser_errormessages_RussianMessages$: 0
+}, false, "tigerpython.parser.errormessages.RussianMessages$", {
+  Ltigerpython_parser_errormessages_RussianMessages$: 1,
+  Ltigerpython_parser_errormessages_ModifiableErrorMessages: 1,
+  O: 1
+});
+$c_Ltigerpython_parser_errormessages_RussianMessages$.prototype.$classData = $d_Ltigerpython_parser_errormessages_RussianMessages$;
+var $n_Ltigerpython_parser_errormessages_RussianMessages$ = (void 0);
+function $m_Ltigerpython_parser_errormessages_RussianMessages$() {
+  if ((!$n_Ltigerpython_parser_errormessages_RussianMessages$)) {
+    $n_Ltigerpython_parser_errormessages_RussianMessages$ = new $c_Ltigerpython_parser_errormessages_RussianMessages$().init___()
+  };
+  return $n_Ltigerpython_parser_errormessages_RussianMessages$
 }
 /** @constructor */
 function $c_Ltigerpython_parser_errors_ErrorHandler$DefaultErrorHandler() {

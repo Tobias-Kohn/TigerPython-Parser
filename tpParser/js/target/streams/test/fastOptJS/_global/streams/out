@@ -1,16 +1,16 @@
-[0m[[0m[0minfo[0m] [0m[0mFast optimizing /home/tobias/Development/TjParser/Python-Error-Messages/tpParser/js/target/scala-2.12/tigerpython-parser-test-fastopt.js[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 120439 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 63972 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 186939 us[0m
+[0m[[0m[0minfo[0m] [0m[0mFast optimizing /home/tobias/Development/TjParser/TigerPython-Parser/tpParser/js/target/scala-2.12/tigerpython-parser-test-fastopt.js[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 226349 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 351959 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 592665 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Batch mode: true[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 48923 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 148994 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 11602 methods.[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 885127 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 937911 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 61853 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 5907 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: 68093 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 1480568 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 1643476 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 70952 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 11783 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 84216 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 860 -- invalidated: 874[0m
 [0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 5515[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter (write output): 688494 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 324 -- invalidated: 6 -- trees read: 249[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter (write output): 1080041 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 0 -- invalidated: 334 -- trees read: 1015[0m
