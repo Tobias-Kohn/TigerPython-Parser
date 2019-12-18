@@ -1,0 +1,10 @@
+# 3
+# MISSPELLED_KEYWORD
+from turtle import *
+
+Def triangle()
+    for i in range(3):
+        forward(100)
+        left(120)
+
+triangle()

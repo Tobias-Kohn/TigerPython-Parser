@@ -745,11 +745,18 @@ class Parser(val source: CharSequence,
               }
             }
             if (stmt == null && tokens.hasNext) {
+              val s1 = expr.expression.asInstanceOf[AstNode.Name].name
+              val s2 = s1.toLowerCase
               if (extParserUtils.isCallableName(tokens.pos, expr.expression.asInstanceOf[AstNode.Name].name)) {
                 parserState.reportError(tokens, ErrorCode.MISSING_PARENTHESES)
                 val arg = argumentParser.parseArgList(tokens)
                 stmt = AstNode.ExprStatement(expr.pos,
                   AstNode.Call.withArguments(expr.expression, arg, tokens.prevEndPos))
+              } else
+              if (tokens.hasTypeSequence(TokenType.NAME, TokenType.LEFT_PARENS) && s1 != s2 &&
+                Set("class", "def").contains(s2)) {
+                parserState.reportError(tokens.pos-1, ErrorCode.MISSPELLED_KEYWORD, s1, s2)
+                tokens.insertToken(TokenType.fromString(s2))
               } else
               if (tokens.hasType(TokenType.NAME, TokenType.INT) &&
                 expr.pos + name.length + 1 == tokens.pos &&

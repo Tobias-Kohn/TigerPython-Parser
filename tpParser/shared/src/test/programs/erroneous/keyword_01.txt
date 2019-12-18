@@ -1,0 +1,10 @@
+# 3
+# MISSPELLED_KEYWORD
+from turtle import *
+
+Def square():
+    for i in range(4):
+        forward(100)
+        left(90)
+
+square()

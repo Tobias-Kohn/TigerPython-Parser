@@ -1807,6 +1807,207 @@ function $asArrayOf_Ljava_io_Closeable(obj, depth) {
   return (($isArrayOf_Ljava_io_Closeable(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.Closeable;", depth))
 }
 /** @constructor */
+function $c_Ltigerpython_inputenc_StringTranslator$() {
+  $c_O.call(this);
+  this.tigerpython$inputenc$StringTranslator$$charMap$1 = null;
+  this.bitmap$0$1 = false
+}
+$c_Ltigerpython_inputenc_StringTranslator$.prototype = new $h_O();
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.constructor = $c_Ltigerpython_inputenc_StringTranslator$;
+/** @constructor */
+function $h_Ltigerpython_inputenc_StringTranslator$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_inputenc_StringTranslator$.prototype = $c_Ltigerpython_inputenc_StringTranslator$.prototype;
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.init___ = (function() {
+  return this
+});
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.translate__T__T = (function(s) {
+  if (((s !== null) && (s !== ""))) {
+    var result = $newArrayObject($d_C.getArrayOf(), [$uI(s.length)]);
+    var translator = new $c_Ltigerpython_inputenc_StringTranslator().init___T(s);
+    var end = result.u.length;
+    var isEmpty$4 = (end <= 0);
+    var scala$collection$immutable$Range$$lastElement$4 = (((-1) + end) | 0);
+    if ((!isEmpty$4)) {
+      var i = 0;
+      while (true) {
+        var v1 = i;
+        result.set(v1, translator.next__C());
+        if ((i === scala$collection$immutable$Range$$lastElement$4)) {
+          break
+        };
+        i = ((1 + i) | 0)
+      }
+    };
+    var this$7 = $m_sjsr_RuntimeString$();
+    return this$7.newString__AC__I__I__T(result, 0, result.u.length)
+  } else {
+    return s
+  }
+});
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.charMap$lzycompute__p1__sci_Map = (function() {
+  if ((!this.bitmap$0$1)) {
+    var jsx$34 = $m_s_Predef$().Map$2;
+    var self = new $c_jl_Character().init___C(171);
+    var $$this = self;
+    var y = new $c_jl_Character().init___C(34);
+    var jsx$33 = new $c_T2().init___O__O($$this, y);
+    var self$1 = new $c_jl_Character().init___C(187);
+    var $$this$1 = self$1;
+    var y$1 = new $c_jl_Character().init___C(34);
+    var jsx$32 = new $c_T2().init___O__O($$this$1, y$1);
+    var self$2 = new $c_jl_Character().init___C(8216);
+    var $$this$2 = self$2;
+    var y$2 = new $c_jl_Character().init___C(39);
+    var jsx$31 = new $c_T2().init___O__O($$this$2, y$2);
+    var self$3 = new $c_jl_Character().init___C(8217);
+    var $$this$3 = self$3;
+    var y$3 = new $c_jl_Character().init___C(39);
+    var jsx$30 = new $c_T2().init___O__O($$this$3, y$3);
+    var self$4 = new $c_jl_Character().init___C(8218);
+    var $$this$4 = self$4;
+    var y$4 = new $c_jl_Character().init___C(39);
+    var jsx$29 = new $c_T2().init___O__O($$this$4, y$4);
+    var self$5 = new $c_jl_Character().init___C(8220);
+    var $$this$5 = self$5;
+    var y$5 = new $c_jl_Character().init___C(34);
+    var jsx$28 = new $c_T2().init___O__O($$this$5, y$5);
+    var self$6 = new $c_jl_Character().init___C(8221);
+    var $$this$6 = self$6;
+    var y$6 = new $c_jl_Character().init___C(34);
+    var jsx$27 = new $c_T2().init___O__O($$this$6, y$6);
+    var self$7 = new $c_jl_Character().init___C(8222);
+    var $$this$7 = self$7;
+    var y$7 = new $c_jl_Character().init___C(34);
+    var jsx$26 = new $c_T2().init___O__O($$this$7, y$7);
+    var self$8 = new $c_jl_Character().init___C(12289);
+    var $$this$8 = self$8;
+    var y$8 = new $c_jl_Character().init___C(44);
+    var jsx$25 = new $c_T2().init___O__O($$this$8, y$8);
+    var self$9 = new $c_jl_Character().init___C(12290);
+    var $$this$9 = self$9;
+    var y$9 = new $c_jl_Character().init___C(46);
+    var jsx$24 = new $c_T2().init___O__O($$this$9, y$9);
+    var self$10 = new $c_jl_Character().init___C(12318);
+    var $$this$10 = self$10;
+    var y$10 = new $c_jl_Character().init___C(34);
+    var jsx$23 = new $c_T2().init___O__O($$this$10, y$10);
+    var self$11 = new $c_jl_Character().init___C(65282);
+    var $$this$11 = self$11;
+    var y$11 = new $c_jl_Character().init___C(34);
+    var jsx$22 = new $c_T2().init___O__O($$this$11, y$11);
+    var self$12 = new $c_jl_Character().init___C(65283);
+    var $$this$12 = self$12;
+    var y$12 = new $c_jl_Character().init___C(35);
+    var jsx$21 = new $c_T2().init___O__O($$this$12, y$12);
+    var self$13 = new $c_jl_Character().init___C(65285);
+    var $$this$13 = self$13;
+    var y$13 = new $c_jl_Character().init___C(37);
+    var jsx$20 = new $c_T2().init___O__O($$this$13, y$13);
+    var self$14 = new $c_jl_Character().init___C(65286);
+    var $$this$14 = self$14;
+    var y$14 = new $c_jl_Character().init___C(38);
+    var jsx$19 = new $c_T2().init___O__O($$this$14, y$14);
+    var self$15 = new $c_jl_Character().init___C(65287);
+    var $$this$15 = self$15;
+    var y$15 = new $c_jl_Character().init___C(39);
+    var jsx$18 = new $c_T2().init___O__O($$this$15, y$15);
+    var self$16 = new $c_jl_Character().init___C(65288);
+    var $$this$16 = self$16;
+    var y$16 = new $c_jl_Character().init___C(40);
+    var jsx$17 = new $c_T2().init___O__O($$this$16, y$16);
+    var self$17 = new $c_jl_Character().init___C(65289);
+    var $$this$17 = self$17;
+    var y$17 = new $c_jl_Character().init___C(41);
+    var jsx$16 = new $c_T2().init___O__O($$this$17, y$17);
+    var self$18 = new $c_jl_Character().init___C(65290);
+    var $$this$18 = self$18;
+    var y$18 = new $c_jl_Character().init___C(42);
+    var jsx$15 = new $c_T2().init___O__O($$this$18, y$18);
+    var self$19 = new $c_jl_Character().init___C(65291);
+    var $$this$19 = self$19;
+    var y$19 = new $c_jl_Character().init___C(43);
+    var jsx$14 = new $c_T2().init___O__O($$this$19, y$19);
+    var self$20 = new $c_jl_Character().init___C(65292);
+    var $$this$20 = self$20;
+    var y$20 = new $c_jl_Character().init___C(44);
+    var jsx$13 = new $c_T2().init___O__O($$this$20, y$20);
+    var self$21 = new $c_jl_Character().init___C(65293);
+    var $$this$21 = self$21;
+    var y$21 = new $c_jl_Character().init___C(45);
+    var jsx$12 = new $c_T2().init___O__O($$this$21, y$21);
+    var self$22 = new $c_jl_Character().init___C(65294);
+    var $$this$22 = self$22;
+    var y$22 = new $c_jl_Character().init___C(46);
+    var jsx$11 = new $c_T2().init___O__O($$this$22, y$22);
+    var self$23 = new $c_jl_Character().init___C(65295);
+    var $$this$23 = self$23;
+    var y$23 = new $c_jl_Character().init___C(47);
+    var jsx$10 = new $c_T2().init___O__O($$this$23, y$23);
+    var self$24 = new $c_jl_Character().init___C(65306);
+    var $$this$24 = self$24;
+    var y$24 = new $c_jl_Character().init___C(58);
+    var jsx$9 = new $c_T2().init___O__O($$this$24, y$24);
+    var self$25 = new $c_jl_Character().init___C(65307);
+    var $$this$25 = self$25;
+    var y$25 = new $c_jl_Character().init___C(59);
+    var jsx$8 = new $c_T2().init___O__O($$this$25, y$25);
+    var self$26 = new $c_jl_Character().init___C(65308);
+    var $$this$26 = self$26;
+    var y$26 = new $c_jl_Character().init___C(60);
+    var jsx$7 = new $c_T2().init___O__O($$this$26, y$26);
+    var self$27 = new $c_jl_Character().init___C(65309);
+    var $$this$27 = self$27;
+    var y$27 = new $c_jl_Character().init___C(61);
+    var jsx$6 = new $c_T2().init___O__O($$this$27, y$27);
+    var self$28 = new $c_jl_Character().init___C(65310);
+    var $$this$28 = self$28;
+    var y$28 = new $c_jl_Character().init___C(62);
+    var jsx$5 = new $c_T2().init___O__O($$this$28, y$28);
+    var self$29 = new $c_jl_Character().init___C(65339);
+    var $$this$29 = self$29;
+    var y$29 = new $c_jl_Character().init___C(91);
+    var jsx$4 = new $c_T2().init___O__O($$this$29, y$29);
+    var self$30 = new $c_jl_Character().init___C(65341);
+    var $$this$30 = self$30;
+    var y$30 = new $c_jl_Character().init___C(93);
+    var jsx$3 = new $c_T2().init___O__O($$this$30, y$30);
+    var self$31 = new $c_jl_Character().init___C(65371);
+    var $$this$31 = self$31;
+    var y$31 = new $c_jl_Character().init___C(123);
+    var jsx$2 = new $c_T2().init___O__O($$this$31, y$31);
+    var self$32 = new $c_jl_Character().init___C(65373);
+    var $$this$32 = self$32;
+    var y$32 = new $c_jl_Character().init___C(125);
+    var jsx$1 = new $c_T2().init___O__O($$this$32, y$32);
+    var self$33 = new $c_jl_Character().init___C(65377);
+    var $$this$33 = self$33;
+    var y$33 = new $c_jl_Character().init___C(46);
+    var array = [jsx$33, jsx$32, jsx$31, jsx$30, jsx$29, jsx$28, jsx$27, jsx$26, jsx$25, jsx$24, jsx$23, jsx$22, jsx$21, jsx$20, jsx$19, jsx$18, jsx$17, jsx$16, jsx$15, jsx$14, jsx$13, jsx$12, jsx$11, jsx$10, jsx$9, jsx$8, jsx$7, jsx$6, jsx$5, jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O($$this$33, y$33)];
+    this.tigerpython$inputenc$StringTranslator$$charMap$1 = $as_sci_Map(jsx$34.apply__sc_Seq__sc_GenMap(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
+    this.bitmap$0$1 = true
+  };
+  return this.tigerpython$inputenc$StringTranslator$$charMap$1
+});
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.tigerpython$inputenc$StringTranslator$$charMap__sci_Map = (function() {
+  return ((!this.bitmap$0$1) ? this.charMap$lzycompute__p1__sci_Map() : this.tigerpython$inputenc$StringTranslator$$charMap$1)
+});
+var $d_Ltigerpython_inputenc_StringTranslator$ = new $TypeData().initClass({
+  Ltigerpython_inputenc_StringTranslator$: 0
+}, false, "tigerpython.inputenc.StringTranslator$", {
+  Ltigerpython_inputenc_StringTranslator$: 1,
+  O: 1
+});
+$c_Ltigerpython_inputenc_StringTranslator$.prototype.$classData = $d_Ltigerpython_inputenc_StringTranslator$;
+var $n_Ltigerpython_inputenc_StringTranslator$ = (void 0);
+function $m_Ltigerpython_inputenc_StringTranslator$() {
+  if ((!$n_Ltigerpython_inputenc_StringTranslator$)) {
+    $n_Ltigerpython_inputenc_StringTranslator$ = new $c_Ltigerpython_inputenc_StringTranslator$().init___()
+  };
+  return $n_Ltigerpython_inputenc_StringTranslator$
+}
+/** @constructor */
 function $c_Ltigerpython_parser_Parser() {
   $c_O.call(this);
   this.$$undast$1 = null;
@@ -1875,6 +2076,7 @@ function $c_Ltigerpython_parser_TPyParser$() {
   this.repeatStatement$1 = false;
   this.sagePower$1 = false;
   this.strictCode$1 = false;
+  this.translateUnicodePunctuation$1 = false;
   this.warningAsErrors$1 = false
 }
 $c_Ltigerpython_parser_TPyParser$.prototype = new $h_O();
@@ -1892,17 +2094,18 @@ $c_Ltigerpython_parser_TPyParser$.prototype.init___ = (function() {
   this.repeatStatement$1 = false;
   this.sagePower$1 = false;
   this.strictCode$1 = false;
+  this.translateUnicodePunctuation$1 = false;
   this.warningAsErrors$1 = true;
   return this
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$pythonVersion__O = (function() {
   return this.pythonVersion$1
 });
-$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__O = (function() {
-  return this.newDivision$1
-});
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__Z__O = (function(x$1) {
   this.newDivision$1 = x$1
+});
+$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$newDivision__O = (function() {
+  return this.newDivision$1
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$warningAsErrors__O = (function() {
   return this.warningAsErrors$1
@@ -1914,8 +2117,12 @@ $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$getLanguage__O = 
   var this$1 = $m_Ltigerpython_parser_errors_ErrorTranslator$().errorTranslator$1;
   return this$1.$$undlang$1
 });
+$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$translateUnicodePunctuation__O = (function() {
+  return this.translateUnicodePunctuation$1
+});
 $c_Ltigerpython_parser_TPyParser$.prototype.findAllErrors__T__sjs_js_Array = (function(source) {
-  var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(source, this.pythonVersion$1);
+  var src = (this.translateUnicodePunctuation$1 ? $m_Ltigerpython_inputenc_StringTranslator$().translate__T__T(source) : source);
+  var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(src, this.pythonVersion$1);
   parser.newDivision$und$eq__Z__V(this.newDivision$1);
   parser.rejectDeadCode$und$eq__Z__V(this.rejectDeadCode$1);
   parser.repeatStatement$und$eq__Z__V(this.repeatStatement$1);
@@ -1958,6 +2165,9 @@ $c_Ltigerpython_parser_TPyParser$.prototype.setErrorMessage__T__T__V = (function
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$meth$checkSyntax__T__O = (function(source) {
   return this.checkSyntax__T__Ltigerpython_parser_ErrorInfo(source)
 });
+$c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$translateUnicodePunctuation__Z__O = (function(x$1) {
+  this.translateUnicodePunctuation$1 = x$1
+});
 $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$repeatStatement__O = (function() {
   return this.repeatStatement$1
 });
@@ -1968,7 +2178,8 @@ $c_Ltigerpython_parser_TPyParser$.prototype.$$js$exported$prop$pythonVersion__I_
   this.pythonVersion$1 = x$1
 });
 $c_Ltigerpython_parser_TPyParser$.prototype.checkSyntax__T__Ltigerpython_parser_ErrorInfo = (function(source) {
-  var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(source, this.pythonVersion$1);
+  var src = (this.translateUnicodePunctuation$1 ? $m_Ltigerpython_inputenc_StringTranslator$().translate__T__T(source) : source);
+  var parser = new $c_Ltigerpython_parser_Parser().init___jl_CharSequence__I(src, this.pythonVersion$1);
   parser.newDivision$und$eq__Z__V(this.newDivision$1);
   parser.rejectDeadCode$und$eq__Z__V(this.rejectDeadCode$1);
   parser.repeatStatement$und$eq__Z__V(this.repeatStatement$1);
@@ -2050,6 +2261,16 @@ Object.defineProperty($c_Ltigerpython_parser_TPyParser$.prototype, "warningAsErr
   "set": (function(arg$1) {
     var prep0 = $uZ(arg$1);
     this.$$js$exported$prop$warningAsErrors__Z__O(prep0)
+  }),
+  "configurable": true
+});
+Object.defineProperty($c_Ltigerpython_parser_TPyParser$.prototype, "translateUnicodePunctuation", {
+  "get": (function() {
+    return this.$$js$exported$prop$translateUnicodePunctuation__O()
+  }),
+  "set": (function(arg$1) {
+    var prep0 = $uZ(arg$1);
+    this.$$js$exported$prop$translateUnicodePunctuation__Z__O(prep0)
   }),
   "configurable": true
 });
@@ -15077,6 +15298,8 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
               }
             };
             if (((stmt === null) && tokens.hasNext__Z())) {
+              var s1$3 = $as_Ltigerpython_parser_ast_AstNode$Name(x2.expression$3).name$3;
+              var s2$3 = $as_T(s1$3.toLowerCase());
               if (this.extParserUtils$1.isCallableName__I__T__Z(tokens.pos__I(), $as_Ltigerpython_parser_ast_AstNode$Name(x2.expression$3).name$3)) {
                 var jsx$66 = this.parserState$1;
                 var jsx$65 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undPARENTHESES$2;
@@ -15089,71 +15312,138 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
                 stmt = new $c_Ltigerpython_parser_ast_AstNode$ExprStatement().init___I__Ltigerpython_parser_ast_AstNode$Expression(jsx$67, new $c_Ltigerpython_parser_ast_AstNode$Call().init___I__I__Ltigerpython_parser_ast_AstNode$Expression__ALtigerpython_parser_ast_AstNode$Expression__ALtigerpython_parser_ast_AstNode$Keyword__Ltigerpython_parser_ast_AstNode$Expression__Ltigerpython_parser_ast_AstNode$Expression(f.pos__I(), endPos, f, arg.values$2, arg.keywords$2, arg.starArgs$2, arg.kwArgs$2));
                 break matchEnd8
               } else {
-                var array$31 = [$m_Ltigerpython_parser_lexer_TokenType$().NAME$1, $m_Ltigerpython_parser_lexer_TokenType$().INT$1];
-                if (tokens.hasNext__Z()) {
-                  var elem$11 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
-                  var i$13 = 0;
-                  while (true) {
-                    if ((i$13 < $uI(array$31.length))) {
-                      var index$13 = i$13;
-                      var arg1$13 = array$31[index$13];
-                      var jsx$69 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$13, elem$11) === false)
-                    } else {
-                      var jsx$69 = false
-                    };
-                    if (jsx$69) {
+                var array$31 = [$m_Ltigerpython_parser_lexer_TokenType$().NAME$1, $m_Ltigerpython_parser_lexer_TokenType$().LEFT$undPARENS$1];
+                var nonLocalReturnKey1$1 = new $c_O().init___();
+                try {
+                  var end$1 = $uI(array$31.length);
+                  var isEmpty$4 = (end$1 <= 0);
+                  var scala$collection$immutable$Range$$lastElement$4 = (((-1) + end$1) | 0);
+                  if ((!isEmpty$4)) {
+                    var i$13 = 0;
+                    while (true) {
+                      var v1 = i$13;
+                      var x$4 = tokens.peekType__I__Ltigerpython_parser_lexer_TokenType(v1);
+                      var x$2$1 = array$31[v1];
+                      if ((!(x$4 === x$2$1))) {
+                        throw new $c_sr_NonLocalReturnControl$mcZ$sp().init___O__Z(nonLocalReturnKey1$1, false)
+                      };
+                      if ((i$13 === scala$collection$immutable$Range$$lastElement$4)) {
+                        break
+                      };
                       i$13 = ((1 + i$13) | 0)
-                    } else {
-                      break
                     }
                   };
-                  var jsx$68 = (i$13 !== $uI(array$31.length))
+                  var jsx$69 = true
+                } catch (e$1) {
+                  if ((e$1 instanceof $c_sr_NonLocalReturnControl)) {
+                    var ex$1 = $as_sr_NonLocalReturnControl(e$1);
+                    if ((ex$1.key$2 === nonLocalReturnKey1$1)) {
+                      var jsx$69 = ex$1.value$mcZ$sp__Z()
+                    } else {
+                      var jsx$69;
+                      throw ex$1
+                    }
+                  } else {
+                    var jsx$69;
+                    throw e$1
+                  }
+                };
+                if ((jsx$69 && (s1$3 !== s2$3))) {
+                  var array$32 = ["class", "def"];
+                  if (($uI(array$32.length) === 0)) {
+                    var jsx$70 = $m_sci_Set$EmptySet$()
+                  } else {
+                    var b$1 = new $c_scm_SetBuilder().init___sc_Set($m_sci_Set$EmptySet$());
+                    var i$14 = 0;
+                    var len$3 = $uI(array$32.length);
+                    while ((i$14 < len$3)) {
+                      var index$13 = i$14;
+                      var arg1$13 = array$32[index$13];
+                      b$1.$$plus$eq__O__scm_SetBuilder(arg1$13);
+                      i$14 = ((1 + i$14) | 0)
+                    };
+                    var jsx$70 = b$1.elems$1
+                  };
+                  var jsx$68 = $as_sc_SetLike(jsx$70).contains__O__Z(s2$3)
                 } else {
                   var jsx$68 = false
                 };
-                if (((jsx$68 && (((1 + ((x2.pos$3 + $uI(name.length)) | 0)) | 0) === tokens.pos__I())) && this.extParserUtils$1.hasName__I__T__Z(x2.pos$3, name))) {
-                  var this$147 = this.parserState$1;
+                if (jsx$68) {
+                  var this$153 = this.parserState$1;
                   var pos$8 = (((-1) + tokens.pos__I()) | 0);
-                  var code$7 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
-                  var array$32 = [];
-                  var params$7 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$32);
-                  this$147.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$8, (-1), code$7, params$7);
-                  tokens.replaceToken__Ltigerpython_parser_lexer_Token__V($m_Ltigerpython_parser_lexer_Token$().createNameToken__I__T__Ltigerpython_parser_lexer_Token(x2.pos$3, (("" + name) + tokens.head__Ltigerpython_parser_lexer_Token().value$1)));
+                  var code$7 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSPELLED$undKEYWORD$2;
+                  var array$33 = [s1$3, s2$3];
+                  var params$7 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$33);
+                  this$153.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$8, (-1), code$7, params$7);
+                  tokens.insertToken__Ltigerpython_parser_lexer_TokenType__V($m_Ltigerpython_parser_lexer_TokenType$().fromString__T__Ltigerpython_parser_lexer_TokenType(s2$3));
                   break matchEnd8
                 } else {
-                  var jsx$71 = this.parserState$1;
-                  var jsx$70 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
-                  var array$33 = [];
-                  jsx$71.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$70, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$33));
-                  var array$34 = [$m_Ltigerpython_parser_lexer_TokenType$().YIELD$1];
+                  var array$34 = [$m_Ltigerpython_parser_lexer_TokenType$().NAME$1, $m_Ltigerpython_parser_lexer_TokenType$().INT$1];
                   if (tokens.hasNext__Z()) {
-                    var elem$12 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
-                    var i$14 = 0;
+                    var elem$11 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
+                    var i$15 = 0;
                     while (true) {
-                      if ((i$14 < $uI(array$34.length))) {
-                        var index$14 = i$14;
+                      if ((i$15 < $uI(array$34.length))) {
+                        var index$14 = i$15;
                         var arg1$14 = array$34[index$14];
-                        var jsx$73 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$14, elem$12) === false)
+                        var jsx$72 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$14, elem$11) === false)
                       } else {
-                        var jsx$73 = false
+                        var jsx$72 = false
                       };
-                      if (jsx$73) {
-                        i$14 = ((1 + i$14) | 0)
+                      if (jsx$72) {
+                        i$15 = ((1 + i$15) | 0)
                       } else {
                         break
                       }
                     };
-                    var jsx$72 = (i$14 !== $uI(array$34.length))
+                    var jsx$71 = (i$15 !== $uI(array$34.length))
                   } else {
-                    var jsx$72 = false
+                    var jsx$71 = false
                   };
-                  if (jsx$72) {
-                    var source$2 = this.expressionParser$1.parseYieldExpr__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$Expression(tokens)
+                  if (((jsx$71 && (((1 + ((x2.pos$3 + $uI(name.length)) | 0)) | 0) === tokens.pos__I())) && this.extParserUtils$1.hasName__I__T__Z(x2.pos$3, name))) {
+                    var this$159 = this.parserState$1;
+                    var pos$9 = (((-1) + tokens.pos__I()) | 0);
+                    var code$8 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undSPACE$2;
+                    var array$35 = [];
+                    var params$8 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$35);
+                    this$159.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$9, (-1), code$8, params$8);
+                    tokens.replaceToken__Ltigerpython_parser_lexer_Token__V($m_Ltigerpython_parser_lexer_Token$().createNameToken__I__T__Ltigerpython_parser_lexer_Token(x2.pos$3, (("" + name) + tokens.head__Ltigerpython_parser_lexer_Token().value$1)));
+                    break matchEnd8
                   } else {
-                    var source$2 = this.expressionParser$1.parseTestListAsTuple__Ltigerpython_parser_lexer_TokenBuffer__Z__Ltigerpython_parser_ast_AstNode$Expression(tokens, true)
-                  };
-                  stmt = new $c_Ltigerpython_parser_ast_AstNode$Assignment().init___I__ALtigerpython_parser_ast_AstNode$Expression__Ltigerpython_parser_ast_AstNode$Expression(x2.pos$3, $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Expression.getArrayOf(), [x2.expression$3]), source$2);
-                  break matchEnd8
+                    var jsx$74 = this.parserState$1;
+                    var jsx$73 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undASSIGNMENT$2;
+                    var array$36 = [];
+                    jsx$74.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$73, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$36));
+                    var array$37 = [$m_Ltigerpython_parser_lexer_TokenType$().YIELD$1];
+                    if (tokens.hasNext__Z()) {
+                      var elem$12 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
+                      var i$16 = 0;
+                      while (true) {
+                        if ((i$16 < $uI(array$37.length))) {
+                          var index$15 = i$16;
+                          var arg1$15 = array$37[index$15];
+                          var jsx$76 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$15, elem$12) === false)
+                        } else {
+                          var jsx$76 = false
+                        };
+                        if (jsx$76) {
+                          i$16 = ((1 + i$16) | 0)
+                        } else {
+                          break
+                        }
+                      };
+                      var jsx$75 = (i$16 !== $uI(array$37.length))
+                    } else {
+                      var jsx$75 = false
+                    };
+                    if (jsx$75) {
+                      var source$2 = this.expressionParser$1.parseYieldExpr__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$Expression(tokens)
+                    } else {
+                      var source$2 = this.expressionParser$1.parseTestListAsTuple__Ltigerpython_parser_lexer_TokenBuffer__Z__Ltigerpython_parser_ast_AstNode$Expression(tokens, true)
+                    };
+                    stmt = new $c_Ltigerpython_parser_ast_AstNode$Assignment().init___I__ALtigerpython_parser_ast_AstNode$Expression__Ltigerpython_parser_ast_AstNode$Expression(x2.pos$3, $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Expression.getArrayOf(), [x2.expression$3]), source$2);
+                    break matchEnd8
+                  }
                 }
               }
             } else {
@@ -15162,73 +15452,27 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
           }
         };
         if (rc7) {
-          var this$152 = x2;
-          if ((this$152.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
-            var array$35 = [$m_Ltigerpython_parser_lexer_TokenType$().LEFT$undBRACE$1];
+          var this$164 = x2;
+          if ((this$164.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
+            var array$38 = [$m_Ltigerpython_parser_lexer_TokenType$().LEFT$undBRACE$1];
             if (tokens.hasNext__Z()) {
               var elem$13 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
-              var i$15 = 0;
+              var i$17 = 0;
               while (true) {
-                if ((i$15 < $uI(array$35.length))) {
-                  var index$15 = i$15;
-                  var arg1$15 = array$35[index$15];
-                  var jsx$76 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$15, elem$13) === false)
-                } else {
-                  var jsx$76 = false
-                };
-                if (jsx$76) {
-                  i$15 = ((1 + i$15) | 0)
-                } else {
-                  break
-                }
-              };
-              var jsx$75 = (i$15 !== $uI(array$35.length))
-            } else {
-              var jsx$75 = false
-            }
-          } else {
-            var jsx$75 = false
-          };
-          if (jsx$75) {
-            var jsx$74 = this.isCallOfFunction__p1__Ltigerpython_parser_ast_AstNode$Expression__T__Z(x2.expression$3, "switch")
-          } else {
-            var jsx$74 = false
-          }
-        } else {
-          var jsx$74 = false
-        };
-        if (jsx$74) {
-          var this$157 = this.parserState$1;
-          var pos$9 = line.startPos$1;
-          var code$8 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-          var array$36 = ["case/switch"];
-          var params$8 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$36);
-          this$157.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$9, (-1), code$8, params$8);
-          tokens.skipAll__V();
-          break matchEnd8
-        };
-        if (rc7) {
-          var this$158 = x2;
-          if ((this$158.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
-            var array$37 = [$m_Ltigerpython_parser_lexer_TokenType$().COLON$1];
-            if (tokens.hasNext__Z()) {
-              var elem$14 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
-              var i$16 = 0;
-              while (true) {
-                if ((i$16 < $uI(array$37.length))) {
-                  var index$16 = i$16;
-                  var arg1$16 = array$37[index$16];
-                  var jsx$79 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$16, elem$14) === false)
+                if ((i$17 < $uI(array$38.length))) {
+                  var index$16 = i$17;
+                  var arg1$16 = array$38[index$16];
+                  var jsx$79 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$16, elem$13) === false)
                 } else {
                   var jsx$79 = false
                 };
                 if (jsx$79) {
-                  i$16 = ((1 + i$16) | 0)
+                  i$17 = ((1 + i$17) | 0)
                 } else {
                   break
                 }
               };
-              var jsx$78 = (i$16 !== $uI(array$37.length))
+              var jsx$78 = (i$17 !== $uI(array$38.length))
             } else {
               var jsx$78 = false
             }
@@ -15236,7 +15480,7 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
             var jsx$78 = false
           };
           if (jsx$78) {
-            var jsx$77 = line.hasSuite__Z()
+            var jsx$77 = this.isCallOfFunction__p1__Ltigerpython_parser_ast_AstNode$Expression__T__Z(x2.expression$3, "switch")
           } else {
             var jsx$77 = false
           }
@@ -15244,89 +15488,37 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
           var jsx$77 = false
         };
         if (jsx$77) {
-          var rc7$2 = false;
-          var x2$2 = null;
-          var x1$3 = $as_Ltigerpython_parser_ast_AstNode$Call(x2.expression$3).function$3;
-          matchEnd8$2: {
-            if ((x1$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
-              rc7$2 = true;
-              x2$2 = $as_Ltigerpython_parser_ast_AstNode$Name(x1$3);
-              var pos$2$1 = x2$2.pos$3;
-              var name$2 = x2$2.name$3;
-              if ((($uI(name$2.length) >= 0) && ($as_T(name$2.substring(0, $uI("class".length))) === "class"))) {
-                var this$168 = this.parserState$1;
-                var pos$10 = ((5 + pos$2$1) | 0);
-                var code$9 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                var array$38 = [];
-                var params$9 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$38);
-                this$168.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$10, (-1), code$9, params$9);
-                break matchEnd8$2
-              }
-            };
-            if (rc7$2) {
-              var pos$3$1 = x2$2.pos$3;
-              var name$3 = x2$2.name$3;
-              if ((($uI(name$3.length) >= 0) && ($as_T(name$3.substring(0, $uI("def".length))) === "def"))) {
-                var this$176 = this.parserState$1;
-                var pos$11 = ((3 + pos$3$1) | 0);
-                var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-                var array$39 = [];
-                var params$10 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$39);
-                this$176.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$11, (-1), code$10, params$10);
-                break matchEnd8$2
-              }
-            };
-            if (rc7$2) {
-              var name$4 = x2$2.name$3;
-              if (((name$4 === "switch") && line.hasSuite__Z())) {
-                var this$179 = this.parserState$1;
-                var pos$12 = line.startPos$1;
-                var code$11 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
-                var array$40 = ["case/switch"];
-                var params$11 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$40);
-                this$179.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$12, (-1), code$11, params$11);
-                break matchEnd8$2
-              }
-            };
-            var this$182 = this.parserState$1;
-            var pos$13 = line.startPos$1;
-            var code$12 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-            var array$41 = ["def"];
-            var params$12 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$41);
-            this$182.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$13, (-1), code$12, params$12);
-            var x$9$2 = new $c_Ltigerpython_parser_lexer_Token().init___I__I__Ltigerpython_parser_lexer_TokenType(line.startPos$1, 0, $m_Ltigerpython_parser_lexer_TokenType$().DEF$1);
-            var xs$3 = line.tokens$1;
-            var currentLength = xs$3.u.length;
-            var len$3 = ((1 + currentLength) | 0);
-            var result = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$3]);
-            result.set(0, x$9$2);
-            $m_s_Array$().copy__O__I__O__I__I__V(xs$3, 0, result, 1, currentLength);
-            return $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [this.parseStatement__Ltigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_ast_AstNode$Statement(new $c_Ltigerpython_parser_parsing_PreParser$Line().init___I__I__I__ALtigerpython_parser_lexer_Token__ALtigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_errors_ErrorHandler(line.startPos$1, line.endPos$1, line.indentation$1, result, line.suite$1, line.errorHandler$1))])
-          };
+          var this$169 = this.parserState$1;
+          var pos$10 = line.startPos$1;
+          var code$9 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+          var array$39 = ["case/switch"];
+          var params$9 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$39);
+          this$169.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$10, (-1), code$9, params$9);
           tokens.skipAll__V();
           break matchEnd8
         };
         if (rc7) {
-          if ((x2.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
-            var array$42 = [$m_Ltigerpython_parser_lexer_TokenType$().COLON$1];
+          var this$170 = x2;
+          if ((this$170.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
+            var array$40 = [$m_Ltigerpython_parser_lexer_TokenType$().COLON$1];
             if (tokens.hasNext__Z()) {
-              var elem$15 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
-              var i$17 = 0;
+              var elem$14 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
+              var i$18 = 0;
               while (true) {
-                if ((i$17 < $uI(array$42.length))) {
-                  var index$17 = i$17;
-                  var arg1$17 = array$42[index$17];
-                  var jsx$82 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$17, elem$15) === false)
+                if ((i$18 < $uI(array$40.length))) {
+                  var index$17 = i$18;
+                  var arg1$17 = array$40[index$17];
+                  var jsx$82 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$17, elem$14) === false)
                 } else {
                   var jsx$82 = false
                 };
                 if (jsx$82) {
-                  i$17 = ((1 + i$17) | 0)
+                  i$18 = ((1 + i$18) | 0)
                 } else {
                   break
                 }
               };
-              var jsx$81 = (i$17 !== $uI(array$42.length))
+              var jsx$81 = (i$18 !== $uI(array$40.length))
             } else {
               var jsx$81 = false
             }
@@ -15342,65 +15534,163 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
           var jsx$80 = false
         };
         if (jsx$80) {
-          if (this.suiteContainsBreak__p1__ALtigerpython_parser_parsing_PreParser$Line__Z(line.suite$1)) {
-            var this$189 = this.parserState$1;
+          var rc7$2 = false;
+          var x2$2 = null;
+          var x1$3 = $as_Ltigerpython_parser_ast_AstNode$Call(x2.expression$3).function$3;
+          matchEnd8$2: {
+            if ((x1$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
+              rc7$2 = true;
+              x2$2 = $as_Ltigerpython_parser_ast_AstNode$Name(x1$3);
+              var pos$2$1 = x2$2.pos$3;
+              var name$2 = x2$2.name$3;
+              if ((($uI(name$2.length) >= 0) && ($as_T(name$2.substring(0, $uI("class".length))) === "class"))) {
+                var this$180 = this.parserState$1;
+                var pos$11 = ((5 + pos$2$1) | 0);
+                var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                var array$41 = [];
+                var params$10 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$41);
+                this$180.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$11, (-1), code$10, params$10);
+                break matchEnd8$2
+              }
+            };
+            if (rc7$2) {
+              var pos$3$1 = x2$2.pos$3;
+              var name$3 = x2$2.name$3;
+              if ((($uI(name$3.length) >= 0) && ($as_T(name$3.substring(0, $uI("def".length))) === "def"))) {
+                var this$188 = this.parserState$1;
+                var pos$12 = ((3 + pos$3$1) | 0);
+                var code$11 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+                var array$42 = [];
+                var params$11 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$42);
+                this$188.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$12, (-1), code$11, params$11);
+                break matchEnd8$2
+              }
+            };
+            if (rc7$2) {
+              var name$4 = x2$2.name$3;
+              if (((name$4 === "switch") && line.hasSuite__Z())) {
+                var this$191 = this.parserState$1;
+                var pos$13 = line.startPos$1;
+                var code$12 = $m_Ltigerpython_parser_errors_ErrorCode$().FOREIGN$undSTATEMENT$2;
+                var array$43 = ["case/switch"];
+                var params$12 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$43);
+                this$191.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$13, (-1), code$12, params$12);
+                break matchEnd8$2
+              }
+            };
+            var this$194 = this.parserState$1;
             var pos$14 = line.startPos$1;
             var code$13 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-            var array$43 = ["while"];
-            var params$13 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$43);
-            this$189.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$14, (-1), code$13, params$13);
+            var array$44 = ["def"];
+            var params$13 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$44);
+            this$194.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$14, (-1), code$13, params$13);
+            var x$9$2 = new $c_Ltigerpython_parser_lexer_Token().init___I__I__Ltigerpython_parser_lexer_TokenType(line.startPos$1, 0, $m_Ltigerpython_parser_lexer_TokenType$().DEF$1);
+            var xs$3 = line.tokens$1;
+            var currentLength = xs$3.u.length;
+            var len$4 = ((1 + currentLength) | 0);
+            var result = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$4]);
+            result.set(0, x$9$2);
+            $m_s_Array$().copy__O__I__O__I__I__V(xs$3, 0, result, 1, currentLength);
+            return $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [this.parseStatement__Ltigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_ast_AstNode$Statement(new $c_Ltigerpython_parser_parsing_PreParser$Line().init___I__I__I__ALtigerpython_parser_lexer_Token__ALtigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_errors_ErrorHandler(line.startPos$1, line.endPos$1, line.indentation$1, result, line.suite$1, line.errorHandler$1))])
+          };
+          tokens.skipAll__V();
+          break matchEnd8
+        };
+        if (rc7) {
+          if ((x2.expression$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
+            var array$45 = [$m_Ltigerpython_parser_lexer_TokenType$().COLON$1];
+            if (tokens.hasNext__Z()) {
+              var elem$15 = tokens.head__Ltigerpython_parser_lexer_Token().tokenType$1;
+              var i$19 = 0;
+              while (true) {
+                if ((i$19 < $uI(array$45.length))) {
+                  var index$18 = i$19;
+                  var arg1$18 = array$45[index$18];
+                  var jsx$85 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$18, elem$15) === false)
+                } else {
+                  var jsx$85 = false
+                };
+                if (jsx$85) {
+                  i$19 = ((1 + i$19) | 0)
+                } else {
+                  break
+                }
+              };
+              var jsx$84 = (i$19 !== $uI(array$45.length))
+            } else {
+              var jsx$84 = false
+            }
+          } else {
+            var jsx$84 = false
+          };
+          if (jsx$84) {
+            var jsx$83 = line.hasSuite__Z()
+          } else {
+            var jsx$83 = false
+          }
+        } else {
+          var jsx$83 = false
+        };
+        if (jsx$83) {
+          if (this.suiteContainsBreak__p1__ALtigerpython_parser_parsing_PreParser$Line__Z(line.suite$1)) {
+            var this$201 = this.parserState$1;
+            var pos$15 = line.startPos$1;
+            var code$14 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+            var array$46 = ["while"];
+            var params$14 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$46);
+            this$201.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$15, (-1), code$14, params$14);
             var x$10$2 = new $c_Ltigerpython_parser_lexer_Token().init___I__I__Ltigerpython_parser_lexer_TokenType(line.startPos$1, 0, $m_Ltigerpython_parser_lexer_TokenType$().WHILE$1);
             var xs$4 = line.tokens$1;
             var currentLength$1 = xs$4.u.length;
-            var len$4 = ((1 + currentLength$1) | 0);
-            var result$1 = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$4]);
+            var len$5 = ((1 + currentLength$1) | 0);
+            var result$1 = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$5]);
             result$1.set(0, x$10$2);
             $m_s_Array$().copy__O__I__O__I__I__V(xs$4, 0, result$1, 1, currentLength$1);
             return $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [this.parseStatement__Ltigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_ast_AstNode$Statement(new $c_Ltigerpython_parser_parsing_PreParser$Line().init___I__I__I__ALtigerpython_parser_lexer_Token__ALtigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_errors_ErrorHandler(line.startPos$1, line.endPos$1, line.indentation$1, result$1, line.suite$1, line.errorHandler$1))])
           } else {
-            var this$194 = this.parserState$1;
-            var pos$15 = line.startPos$1;
-            var code$14 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
-            var array$44 = ["if"];
-            var params$14 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$44);
-            this$194.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$15, (-1), code$14, params$14);
+            var this$206 = this.parserState$1;
+            var pos$16 = line.startPos$1;
+            var code$15 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undTOKEN$2;
+            var array$47 = ["if"];
+            var params$15 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$47);
+            this$206.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$16, (-1), code$15, params$15);
             var x$11$2 = new $c_Ltigerpython_parser_lexer_Token().init___I__I__Ltigerpython_parser_lexer_TokenType(line.startPos$1, 0, $m_Ltigerpython_parser_lexer_TokenType$().IF$1);
             var xs$5 = line.tokens$1;
             var currentLength$2 = xs$5.u.length;
-            var len$5 = ((1 + currentLength$2) | 0);
-            var result$2 = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$5]);
+            var len$6 = ((1 + currentLength$2) | 0);
+            var result$2 = $newArrayObject($d_Ltigerpython_parser_lexer_Token.getArrayOf(), [len$6]);
             result$2.set(0, x$11$2);
             $m_s_Array$().copy__O__I__O__I__I__V(xs$5, 0, result$2, 1, currentLength$2);
             return $makeNativeArrayWrapper($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [this.parseStatement__Ltigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_ast_AstNode$Statement(new $c_Ltigerpython_parser_parsing_PreParser$Line().init___I__I__I__ALtigerpython_parser_lexer_Token__ALtigerpython_parser_parsing_PreParser$Line__Ltigerpython_parser_errors_ErrorHandler(line.startPos$1, line.endPos$1, line.indentation$1, result$2, line.suite$1, line.errorHandler$1))])
           }
         };
-        var this$199 = tokens.headType__Ltigerpython_parser_lexer_TokenType();
-        var array$45 = [$m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undBRACE$1, $m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undBRACKET$1, $m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undPARENS$1];
-        var i$18 = 0;
+        var this$211 = tokens.headType__Ltigerpython_parser_lexer_TokenType();
+        var array$48 = [$m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undBRACE$1, $m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undBRACKET$1, $m_Ltigerpython_parser_lexer_TokenType$().RIGHT$undPARENS$1];
+        var i$20 = 0;
         while (true) {
-          if ((i$18 < $uI(array$45.length))) {
-            var index$18 = i$18;
-            var arg1$18 = array$45[index$18];
-            var jsx$83 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$18, this$199) === false)
+          if ((i$20 < $uI(array$48.length))) {
+            var index$19 = i$20;
+            var arg1$19 = array$48[index$19];
+            var jsx$86 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1$19, this$211) === false)
           } else {
-            var jsx$83 = false
+            var jsx$86 = false
           };
-          if (jsx$83) {
-            i$18 = ((1 + i$18) | 0)
+          if (jsx$86) {
+            i$20 = ((1 + i$20) | 0)
           } else {
             break
           }
         };
-        if ((i$18 !== $uI(array$45.length))) {
-          var jsx$85 = this.parserState$1;
-          var jsx$84 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
-          var array$46 = [];
-          jsx$85.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$84, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$46))
+        if ((i$20 !== $uI(array$48.length))) {
+          var jsx$88 = this.parserState$1;
+          var jsx$87 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undRIGHT$undBRACKET$2;
+          var array$49 = [];
+          jsx$88.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$87, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$49))
         } else {
-          var jsx$87 = this.parserState$1;
-          var jsx$86 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
-          var array$47 = [];
-          jsx$87.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$86, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$47))
+          var jsx$90 = this.parserState$1;
+          var jsx$89 = $m_Ltigerpython_parser_errors_ErrorCode$().EXTRA$undTOKEN$2;
+          var array$50 = [];
+          jsx$90.reportError__Ltigerpython_parser_lexer_TokenBuffer__s_Enumeration$Value__sc_Seq__sr_Null$(tokens, jsx$89, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$50))
         };
         tokens.skipAll__V()
       }
@@ -15408,50 +15698,50 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
       var name$5 = $as_Ltigerpython_parser_ast_AstNode$Name($as_Ltigerpython_parser_ast_AstNode$ExprStatement(stmt).expression$3).name$3;
       var idx = this.splitSimpleName__p1__T__I(name$5);
       if ((idx > 0)) {
-        var this$206 = this.parserState$1;
-        var pos$16 = ((stmt.pos__I() + idx) | 0);
-        var code$15 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
-        var array$48 = [];
-        var params$15 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$48);
-        this$206.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$16, (-1), code$15, params$15);
-        var this$208 = new $c_sci_StringOps().init___T(name$5);
-        var $$this$1 = this$208.repr$1;
+        var this$218 = this.parserState$1;
+        var pos$17 = ((stmt.pos__I() + idx) | 0);
+        var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().MISSING$undSPACE$2;
+        var array$51 = [];
+        var params$16 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$51);
+        this$218.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$17, (-1), code$16, params$16);
+        var this$220 = new $c_sci_StringOps().init___T(name$5);
+        var $$this$1 = this$220.repr$1;
         var until$1 = $uI($$this$1.length);
-        var value = $m_sci_StringOps$().slice$extension__T__I__I__T(this$208.repr$1, idx, until$1);
-        var this$212 = new $c_sci_StringOps().init___T(value);
-        var i$19 = 0;
+        var value = $m_sci_StringOps$().slice$extension__T__I__I__T(this$220.repr$1, idx, until$1);
+        var this$224 = new $c_sci_StringOps().init___T(value);
+        var i$21 = 0;
         while (true) {
-          var jsx$89 = i$19;
-          var $$this$2 = this$212.repr$1;
-          if ((jsx$89 < $uI($$this$2.length))) {
-            var arg1$19 = this$212.apply__I__O(i$19);
-            if ((arg1$19 === null)) {
+          var jsx$92 = i$21;
+          var $$this$2 = this$224.repr$1;
+          if ((jsx$92 < $uI($$this$2.length))) {
+            var arg1$20 = this$224.apply__I__O(i$21);
+            if ((arg1$20 === null)) {
               var x$12$2 = 0
             } else {
-              var this$216 = $as_jl_Character(arg1$19);
-              var x$12$2 = this$216.value$1
+              var this$228 = $as_jl_Character(arg1$20);
+              var x$12$2 = this$228.value$1
             };
-            var this$219 = $m_jl_Character$();
-            var jsx$88 = (this$219.isDigit__I__Z(x$12$2) === true)
+            var this$231 = $m_jl_Character$();
+            var jsx$91 = (this$231.isDigit__I__Z(x$12$2) === true)
           } else {
-            var jsx$88 = false
+            var jsx$91 = false
           };
-          if (jsx$88) {
-            i$19 = ((1 + i$19) | 0)
+          if (jsx$91) {
+            i$21 = ((1 + i$21) | 0)
           } else {
             break
           }
         };
-        var jsx$90 = i$19;
-        var $$this$3 = this$212.repr$1;
-        if ((jsx$90 === $uI($$this$3.length))) {
+        var jsx$93 = i$21;
+        var $$this$3 = this$224.repr$1;
+        if ((jsx$93 === $uI($$this$3.length))) {
           tokens.insertToken__Ltigerpython_parser_lexer_Token__I__V(new $c_Ltigerpython_parser_lexer_Token().init___I__I__Ltigerpython_parser_lexer_TokenType(((stmt.pos__I() + idx) | 0), $uI(value.length), $m_Ltigerpython_parser_lexer_TokenType$().INT$1), 0)
         } else {
           tokens.insertToken__Ltigerpython_parser_lexer_Token__I__V($m_Ltigerpython_parser_lexer_Token$().createNameToken__I__T__Ltigerpython_parser_lexer_Token(((stmt.pos__I() + idx) | 0), value), 0)
         };
         tokens.back__V();
-        var this$224 = new $c_sci_StringOps().init___T(name$5);
-        var x1$4 = $m_sci_StringOps$().slice$extension__T__I__I__T(this$224.repr$1, 0, idx);
+        var this$236 = new $c_sci_StringOps().init___T(name$5);
+        var x1$4 = $m_sci_StringOps$().slice$extension__T__I__I__T(this$236.repr$1, 0, idx);
         if ((x1$4 === "return")) {
           tokens.replaceToken__Ltigerpython_parser_lexer_TokenType__V($m_Ltigerpython_parser_lexer_TokenType$().RETURN$1)
         } else if ((x1$4 === "print")) {
@@ -15464,19 +15754,19 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
         stmt = this.parseSmallStatement__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$Statement(tokens)
       } else if ((this.parserState$1.rejectDeadCode$1 && (!this.parserState$1.evalMode$1))) {
         if (this.extParserUtils$1.isCallableName__I__T__Z(stmt.pos__I(), name$5)) {
-          var this$227 = this.parserState$1;
-          var pos$17 = stmt.pos__I();
-          var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
-          var array$49 = [];
-          var params$16 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$49);
-          this$227.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$17, (-1), code$16, params$16)
-        } else {
-          var this$230 = this.parserState$1;
+          var this$239 = this.parserState$1;
           var pos$18 = stmt.pos__I();
-          var code$17 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-          var array$50 = [];
-          var params$17 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$50);
-          this$230.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$18, (-1), code$17, params$17)
+          var code$17 = $m_Ltigerpython_parser_errors_ErrorCode$().CALL$undNEEDS$undPARENTHESES$2;
+          var array$52 = [];
+          var params$17 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$52);
+          this$239.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$18, (-1), code$17, params$17)
+        } else {
+          var this$242 = this.parserState$1;
+          var pos$19 = stmt.pos__I();
+          var code$18 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+          var array$53 = [];
+          var params$18 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$53);
+          this$242.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$19, (-1), code$18, params$18)
         }
       }
     } else if ((this.parserState$1.rejectDeadCode$1 && (!this.parserState$1.evalMode$1))) {
@@ -15494,11 +15784,11 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
               var x2$4 = $as_Ltigerpython_parser_ast_AstNode$BinaryOp(expr);
               if ((x2$4.left$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
                 if ((!this.parserState$1.errorHandler$1.hasErrorInRange__I__I__Z(x2$4.pos$3, x2$4.endPos__I()))) {
-                  var this$233 = this.parserState$1;
-                  var code$18 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
-                  var array$51 = [x2$4.op$3];
-                  var params$18 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$51);
-                  this$233.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$18, params$18);
+                  var this$245 = this.parserState$1;
+                  var code$19 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTMT$undUSE$undAUG$undASSIGN$2;
+                  var array$54 = [x2$4.op$3];
+                  var params$19 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$54);
+                  this$245.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$19, params$19);
                   break matchEnd6
                 } else {
                   break matchEnd6
@@ -15507,21 +15797,21 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
             };
             if ($is_Ltigerpython_parser_ast_AstNode$Span(expr)) {
               if ((!this.parserState$1.errorHandler$1.hasErrorInRange__I__I__Z(expr.pos__I(), $as_Ltigerpython_parser_ast_AstNode$Span(expr).endPos__I()))) {
-                var this$236 = this.parserState$1;
-                var code$19 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-                var array$52 = [];
-                var params$19 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$52);
-                this$236.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$19, params$19);
+                var this$248 = this.parserState$1;
+                var code$20 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+                var array$55 = [];
+                var params$20 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$55);
+                this$248.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$20, params$20);
                 break matchEnd6
               } else {
                 break matchEnd6
               }
             };
-            var this$239 = this.parserState$1;
-            var code$20 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
-            var array$53 = [];
-            var params$20 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$53);
-            this$239.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$20, params$20);
+            var this$251 = this.parserState$1;
+            var code$21 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undSTATEMENT$2;
+            var array$56 = [];
+            var params$21 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$56);
+            this$251.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$4$1, (-1), code$21, params$21);
             break matchEnd6
           }
         };
@@ -15531,11 +15821,11 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
           if ((expr$2 instanceof $c_Ltigerpython_parser_ast_AstNode$BinaryOp)) {
             var x2$5 = $as_Ltigerpython_parser_ast_AstNode$BinaryOp(expr$2);
             if ((!this.parserState$1.errorHandler$1.hasErrorInRange__I__I__Z(x2$5.pos$3, x2$5.endPos__I()))) {
-              var this$242 = this.parserState$1;
-              var code$21 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
-              var array$54 = [];
-              var params$21 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$54);
-              this$242.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$5$1, (-1), code$21, params$21);
+              var this$254 = this.parserState$1;
+              var code$22 = $m_Ltigerpython_parser_errors_ErrorCode$().USELESS$undCOMPUTATION$2;
+              var array$57 = [];
+              var params$22 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array$57);
+              this$254.reportError__I__I__s_Enumeration$Value__sc_Seq__sr_Null$(pos$5$1, (-1), code$22, params$22);
               break matchEnd6
             } else {
               break matchEnd6
@@ -15549,20 +15839,20 @@ $c_Ltigerpython_parser_parsing_Parser.prototype.parseSimpleStatement__Ltigerpyth
     stmts.$$plus$eq__O__scm_ArrayBuffer(stmt)
   };
   $m_scm_ArrayBuffer$();
-  var b$1 = new $c_scm_ArrayBuffer().init___();
-  var i$20 = 0;
+  var b$2 = new $c_scm_ArrayBuffer().init___();
+  var i$22 = 0;
   var top = stmts.size0$6;
-  while ((i$20 < top)) {
-    var arg1$20 = stmts.array$6.get(i$20);
-    var x$13$2 = $as_Ltigerpython_parser_ast_AstNode$Statement(arg1$20);
+  while ((i$22 < top)) {
+    var arg1$21 = stmts.array$6.get(i$22);
+    var x$13$2 = $as_Ltigerpython_parser_ast_AstNode$Statement(arg1$21);
     if (((x$13$2 !== null) !== false)) {
-      b$1.$$plus$eq__O__scm_ArrayBuffer(arg1$20)
+      b$2.$$plus$eq__O__scm_ArrayBuffer(arg1$21)
     };
-    i$20 = ((1 + i$20) | 0)
+    i$22 = ((1 + i$22) | 0)
   };
-  var len$6 = b$1.size0$6;
-  var result$3 = $newArrayObject($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [len$6]);
-  $f_sc_TraversableOnce__copyToArray__O__I__V(b$1, result$3, 0);
+  var len$7 = b$2.size0$6;
+  var result$3 = $newArrayObject($d_Ltigerpython_parser_ast_AstNode$Statement.getArrayOf(), [len$7]);
+  $f_sc_TraversableOnce__copyToArray__O__I__V(b$2, result$3, 0);
   return result$3
 });
 $c_Ltigerpython_parser_parsing_Parser.prototype.preParser__p1__Ltigerpython_parser_parsing_PreParser = (function() {
@@ -38200,6 +38490,262 @@ function $isArrayOf_Ljava_io_IOException(obj, depth) {
 }
 function $asArrayOf_Ljava_io_IOException(obj, depth) {
   return (($isArrayOf_Ljava_io_IOException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.IOException;", depth))
+}
+/** @constructor */
+function $c_Ltigerpython_inputenc_StringTranslator() {
+  $c_O.call(this);
+  this.source$1 = null;
+  this.index$1 = 0;
+  this.stringMode$1 = null
+}
+$c_Ltigerpython_inputenc_StringTranslator.prototype = new $h_O();
+$c_Ltigerpython_inputenc_StringTranslator.prototype.constructor = $c_Ltigerpython_inputenc_StringTranslator;
+/** @constructor */
+function $h_Ltigerpython_inputenc_StringTranslator() {
+  /*<skip>*/
+}
+$h_Ltigerpython_inputenc_StringTranslator.prototype = $c_Ltigerpython_inputenc_StringTranslator.prototype;
+$c_Ltigerpython_inputenc_StringTranslator.prototype.next__O = (function() {
+  var c = this.next__C();
+  return new $c_jl_Character().init___C(c)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.seq__sc_TraversableOnce = (function() {
+  return this
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.copyToArray__O__I__V = (function(xs, start) {
+  $f_sc_TraversableOnce__copyToArray__O__I__V(this, xs, start)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.isTriple__p1__Z = (function() {
+  if ((this.index$1 > 2)) {
+    var x = this.source$1;
+    var index = this.index$1;
+    var ch = (65535 & $uI(x.charCodeAt(index)));
+    var x$1 = this.source$1;
+    var index$1 = (((-2) + this.index$1) | 0);
+    if (((65535 & $uI(x$1.charCodeAt(index$1))) === ch)) {
+      var x$2 = this.source$1;
+      var index$2 = (((-1) + this.index$1) | 0);
+      return ((65535 & $uI(x$2.charCodeAt(index$2))) === ch)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.isEmpty__Z = (function() {
+  return $f_sc_Iterator__isEmpty__Z(this)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.next__C = (function() {
+  var jsx$1 = this.index$1;
+  var thiz = this.source$1;
+  if ((jsx$1 < $uI(thiz.length))) {
+    var x = this.source$1;
+    var index = this.index$1;
+    var ch = (65535 & $uI(x.charCodeAt(index)));
+    if ((((ch === 34) || (ch === 39)) && (this.prev__p1__C() !== 92))) {
+      this.updateStringMode__p1__C__V(ch)
+    };
+    this.index$1 = ((1 + this.index$1) | 0);
+    var x$1 = this.stringMode$1;
+    var x$2 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+    if (((x$1 === null) ? (x$2 === null) : x$1.equals__O__Z(x$2))) {
+      var c = $m_Ltigerpython_inputenc_StringTranslator$().tigerpython$inputenc$StringTranslator$$charMap__sci_Map().getOrElse__O__F0__O(new $c_jl_Character().init___C(ch), new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this, ch$1) {
+        return (function() {
+          return new $c_jl_Character().init___C(ch$1)
+        })
+      })(this, ch)));
+      if ((c === null)) {
+        return 0
+      } else {
+        var this$10 = $as_jl_Character(c);
+        return this$10.value$1
+      }
+    } else {
+      return ch
+    }
+  } else {
+    return 0
+  }
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.toString__T = (function() {
+  return "<iterator>"
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.foreach__F1__V = (function(f) {
+  $f_sc_Iterator__foreach__F1__V(this, f)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.size__I = (function() {
+  return $f_sc_TraversableOnce__size__I(this)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.toBuffer__scm_Buffer = (function() {
+  var this$1 = $m_scm_ArrayBuffer$();
+  var cbf = this$1.ReusableCBFInstance$2;
+  return $as_scm_Buffer($f_sc_TraversableOnce__to__scg_CanBuildFrom__O(this, cbf))
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.hasNext__Z = (function() {
+  var jsx$1 = this.index$1;
+  var thiz = this.source$1;
+  return (jsx$1 < $uI(thiz.length))
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.updateStringMode__p1__C__V = (function(ch) {
+  if ((ch === 39)) {
+    var rc7 = false;
+    var x2 = null;
+    var x1 = this.stringMode$1;
+    matchEnd8: {
+      var x = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+      if (((x === null) ? (x1 === null) : x.equals__O__Z(x1))) {
+        rc7 = true;
+        x2 = x1;
+        if (this.isTriple__p1__Z()) {
+          this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().SINGLE$undTRIPLE$2;
+          break matchEnd8
+        }
+      };
+      if (rc7) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().SINGLE$2;
+        break matchEnd8
+      };
+      var x$3 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().SINGLE$2;
+      if (((x$3 === null) ? (x1 === null) : x$3.equals__O__Z(x1))) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+        break matchEnd8
+      };
+      var x$5 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().SINGLE$undTRIPLE$2;
+      if ((((x$5 === null) ? (x1 === null) : x$5.equals__O__Z(x1)) && this.isTriple__p1__Z())) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+        break matchEnd8
+      }
+    }
+  } else {
+    var rc7$2 = false;
+    var x2$2 = null;
+    var x1$2 = this.stringMode$1;
+    matchEnd8$2: {
+      var x$7 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+      if (((x$7 === null) ? (x1$2 === null) : x$7.equals__O__Z(x1$2))) {
+        rc7$2 = true;
+        x2$2 = x1$2;
+        if (this.isTriple__p1__Z()) {
+          this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().DOUBLE$undTRIPLE$2;
+          break matchEnd8$2
+        }
+      };
+      if (rc7$2) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().DOUBLE$2;
+        break matchEnd8$2
+      };
+      var x$9 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().DOUBLE$2;
+      if (((x$9 === null) ? (x1$2 === null) : x$9.equals__O__Z(x1$2))) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+        break matchEnd8$2
+      };
+      var x$11 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().DOUBLE$undTRIPLE$2;
+      if ((((x$11 === null) ? (x1$2 === null) : x$11.equals__O__Z(x1$2)) && this.isTriple__p1__Z())) {
+        this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+        break matchEnd8$2
+      }
+    }
+  }
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.toStream__sci_Stream = (function() {
+  return $f_sc_Iterator__toStream__sci_Stream(this)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.prev__p1__C = (function() {
+  if ((this.index$1 > 0)) {
+    var x = this.source$1;
+    var index = (((-1) + this.index$1) | 0);
+    return (65535 & $uI(x.charCodeAt(index)))
+  } else {
+    return 0
+  }
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.addString__scm_StringBuilder__T__T__T__scm_StringBuilder = (function(b, start, sep, end) {
+  return $f_sc_TraversableOnce__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.$$div$colon__O__F2__O = (function(z, op) {
+  return $f_sc_TraversableOnce__foldLeft__O__F2__O(this, z, op)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.copyToArray__O__I__I__V = (function(xs, start, len) {
+  $f_sc_Iterator__copyToArray__O__I__I__V(this, xs, start, len)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.isTraversableAgain__Z = (function() {
+  return false
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.init___T = (function(source) {
+  this.source$1 = source;
+  this.index$1 = 0;
+  this.stringMode$1 = $m_Ltigerpython_inputenc_StringTranslator$StringMode$().NONE$2;
+  return this
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.drop__I__sc_Iterator = (function(n) {
+  return $f_sc_Iterator__drop__I__sc_Iterator(this, n)
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.toArray__s_reflect_ClassTag__O = (function(evidence$1) {
+  return $f_sc_TraversableOnce__toArray__s_reflect_ClassTag__O(this, evidence$1)
+});
+var $d_Ltigerpython_inputenc_StringTranslator = new $TypeData().initClass({
+  Ltigerpython_inputenc_StringTranslator: 0
+}, false, "tigerpython.inputenc.StringTranslator", {
+  Ltigerpython_inputenc_StringTranslator: 1,
+  O: 1,
+  sc_Iterator: 1,
+  sc_TraversableOnce: 1,
+  sc_GenTraversableOnce: 1
+});
+$c_Ltigerpython_inputenc_StringTranslator.prototype.$classData = $d_Ltigerpython_inputenc_StringTranslator;
+/** @constructor */
+function $c_Ltigerpython_inputenc_StringTranslator$StringMode$() {
+  $c_s_Enumeration.call(this);
+  this.NONE$2 = null;
+  this.SINGLE$2 = null;
+  this.DOUBLE$2 = null;
+  this.SINGLE$undTRIPLE$2 = null;
+  this.DOUBLE$undTRIPLE$2 = null
+}
+$c_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype = new $h_s_Enumeration();
+$c_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype.constructor = $c_Ltigerpython_inputenc_StringTranslator$StringMode$;
+/** @constructor */
+function $h_Ltigerpython_inputenc_StringTranslator$StringMode$() {
+  /*<skip>*/
+}
+$h_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype = $c_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype;
+$c_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype.init___ = (function() {
+  $c_s_Enumeration.prototype.init___I.call(this, 0);
+  $n_Ltigerpython_inputenc_StringTranslator$StringMode$ = this;
+  var name = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "NONE");
+  var i = this.nextId$1;
+  this.NONE$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i, name);
+  var name$1 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "SINGLE");
+  var i$1 = this.nextId$1;
+  this.SINGLE$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$1, name$1);
+  var name$2 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "DOUBLE");
+  var i$2 = this.nextId$1;
+  this.DOUBLE$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$2, name$2);
+  var name$3 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "SINGLE_TRIPLE");
+  var i$3 = this.nextId$1;
+  this.SINGLE$undTRIPLE$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$3, name$3);
+  var name$4 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "DOUBLE_TRIPLE");
+  var i$4 = this.nextId$1;
+  this.DOUBLE$undTRIPLE$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$4, name$4);
+  return this
+});
+var $d_Ltigerpython_inputenc_StringTranslator$StringMode$ = new $TypeData().initClass({
+  Ltigerpython_inputenc_StringTranslator$StringMode$: 0
+}, false, "tigerpython.inputenc.StringTranslator$StringMode$", {
+  Ltigerpython_inputenc_StringTranslator$StringMode$: 1,
+  s_Enumeration: 1,
+  O: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Ltigerpython_inputenc_StringTranslator$StringMode$.prototype.$classData = $d_Ltigerpython_inputenc_StringTranslator$StringMode$;
+var $n_Ltigerpython_inputenc_StringTranslator$StringMode$ = (void 0);
+function $m_Ltigerpython_inputenc_StringTranslator$StringMode$() {
+  if ((!$n_Ltigerpython_inputenc_StringTranslator$StringMode$)) {
+    $n_Ltigerpython_inputenc_StringTranslator$StringMode$ = new $c_Ltigerpython_inputenc_StringTranslator$StringMode$().init___()
+  };
+  return $n_Ltigerpython_inputenc_StringTranslator$StringMode$
 }
 /** @constructor */
 function $c_Ltigerpython_parser_ast_AugAssignOp$() {
@@ -64434,6 +64980,21 @@ function $f_sc_MapLike__apply__O__O($thiz, key) {
 function $f_sc_MapLike__isEmpty__Z($thiz) {
   return ($thiz.size__I() === 0)
 }
+function $f_sc_MapLike__getOrElse__O__F0__O($thiz, key, $default) {
+  var x1 = $thiz.get__O__s_Option(key);
+  if ((x1 instanceof $c_s_Some)) {
+    var x2 = $as_s_Some(x1);
+    var v = x2.value$2;
+    return v
+  } else {
+    var x = $m_s_None$();
+    if ((x === x1)) {
+      return $default.apply__O()
+    } else {
+      throw new $c_s_MatchError().init___O(x1)
+    }
+  }
+}
 function $f_sc_MapLike__toBuffer__scm_Buffer($thiz) {
   var result = new $c_scm_ArrayBuffer().init___I($thiz.size__I());
   $thiz.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, result$1) {
@@ -66869,6 +67430,9 @@ $c_sc_AbstractMap.prototype.isEmpty__Z = (function() {
 $c_sc_AbstractMap.prototype.equals__O__Z = (function(that) {
   return $f_sc_GenMapLike__equals__O__Z(this, that)
 });
+$c_sc_AbstractMap.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return $f_sc_MapLike__getOrElse__O__F0__O(this, key, $default)
+});
 $c_sc_AbstractMap.prototype.toString__T = (function() {
   return $f_sc_TraversableLike__toString__T(this)
 });
@@ -68241,6 +68805,9 @@ $c_sci_Map$EmptyMap$.prototype.init___ = (function() {
 $c_sci_Map$EmptyMap$.prototype.apply__O__O = (function(key) {
   this.apply__O__sr_Nothing$(key)
 });
+$c_sci_Map$EmptyMap$.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return $default.apply__O()
+});
 $c_sci_Map$EmptyMap$.prototype.$$plus__T2__sci_Map = (function(kv) {
   var key = kv.$$und1$f;
   var value = kv.$$und2$f;
@@ -68338,6 +68905,9 @@ $c_sci_Map$Map1.prototype.init___O__O = (function(key1, value1) {
   this.value1$5 = value1;
   return this
 });
+$c_sci_Map$Map1.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? this.value1$5 : $default.apply__O())
+});
 $c_sci_Map$Map1.prototype.$$plus__T2__sci_Map = (function(kv) {
   return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
 });
@@ -68428,6 +68998,9 @@ $c_sci_Map$Map2.prototype.apply__O__O = (function(key) {
   } else {
     throw new $c_ju_NoSuchElementException().init___T(("key not found: " + key))
   }
+});
+$c_sci_Map$Map2.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? this.value1$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key2$5) ? this.value2$5 : $default.apply__O()))
 });
 $c_sci_Map$Map2.prototype.$$plus__T2__sci_Map = (function(kv) {
   return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
@@ -68531,6 +69104,9 @@ $c_sci_Map$Map3.prototype.apply__O__O = (function(key) {
   } else {
     throw new $c_ju_NoSuchElementException().init___T(("key not found: " + key))
   }
+});
+$c_sci_Map$Map3.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? this.value1$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key2$5) ? this.value2$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key3$5) ? this.value3$5 : $default.apply__O())))
 });
 $c_sci_Map$Map3.prototype.$$plus__T2__sci_Map = (function(kv) {
   return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
@@ -68641,6 +69217,9 @@ $c_sci_Map$Map4.prototype.apply__O__O = (function(key) {
   } else {
     throw new $c_ju_NoSuchElementException().init___T(("key not found: " + key))
   }
+});
+$c_sci_Map$Map4.prototype.getOrElse__O__F0__O = (function(key, $default) {
+  return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? this.value1$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key2$5) ? this.value2$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key3$5) ? this.value3$5 : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key4$5) ? this.value4$5 : $default.apply__O()))))
 });
 $c_sci_Map$Map4.prototype.$$plus__T2__sci_Map = (function(kv) {
   return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)

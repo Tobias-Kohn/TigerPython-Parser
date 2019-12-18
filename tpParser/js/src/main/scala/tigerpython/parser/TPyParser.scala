@@ -5,6 +5,7 @@ import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 import errors.ExtErrorInfo
+import tigerpython.inputenc.StringTranslator
 
 /**
   * The `TPyParser` is the interface for using the parser in a JavaScript setting.  It provides the means to check a
@@ -14,7 +15,7 @@ import errors.ExtErrorInfo
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 12/11/2019
+  * Updated by Tobias Kohn on 18/12/2019
   */
 @JSExportTopLevel("TPyParser")
 object TPyParser {
@@ -62,6 +63,12 @@ object TPyParser {
   var strictCode: Boolean = false
 
   /**
+    * Translate non-ASCII punctuation marks (such as in CJK texts).
+    */
+  @JSExport
+  var translateUnicodePunctuation: Boolean = false
+
+  /**
     * Treat all warnings as errors.
     */
   @JSExport
@@ -93,7 +100,12 @@ object TPyParser {
     */
   @JSExport
   def checkSyntax(source: String): ErrorInfo = {
-    val parser = new Parser(source, pythonVersion)
+    val src =
+      if (translateUnicodePunctuation)
+        StringTranslator.translate(source)
+      else
+        source
+    val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
     parser.rejectDeadCode = rejectDeadCode
     parser.repeatStatement = repeatStatement
@@ -117,7 +129,12 @@ object TPyParser {
     */
   @JSExport
   def findAllErrors(source: String): js.Array[ErrorInfo] = {
-    val parser = new Parser(source, pythonVersion)
+    val src =
+      if (translateUnicodePunctuation)
+        StringTranslator.translate(source)
+      else
+        source
+    val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
     parser.rejectDeadCode = rejectDeadCode
     parser.repeatStatement = repeatStatement
