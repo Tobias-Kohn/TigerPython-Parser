@@ -23,7 +23,7 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/05/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 18/01/2020
   */
 object ErrorCode extends Enumeration {
 
@@ -139,6 +139,7 @@ object ErrorCode extends Enumeration {
   final val SUPERFLUOUS_COMPARISON = Value("SUPERFLUOUS_COMPARISON")
   final val SWAPPED_TOKENS = Value("SWAPPED_TOKENS")
   final val TOKEN_REQUIRED = Value("TOKEN_REQUIRED")
+  final val TWO_STATEMENTS = Value("TWO_STATEMENTS")  // NEW 18-JAN-2020
   final val TUPLE_NEEDS_PARENS = Value("TUPLE_NEEDS_PARENS")
   final val UNEXPECTED_END_OF_INPUT = Value("UNEXPECTED_END_OF_INPUT")
   final val UNEXPECTED_KEYWORD = Value("UNEXPECTED_KEYWORD")

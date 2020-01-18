@@ -20,7 +20,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 18/01/2020
   */
 object Parser {
 
@@ -146,7 +146,7 @@ class Parser(val source: CharSequence,
   import Parser._
   import PreParser.Line
 
-  val parserState = ParserState(source, pythonVersion, errorHandler)
+  val parserState: ParserState = ParserState(source, pythonVersion, errorHandler)
 
   lazy val lexer = new Lexer(source, parserState, caretPos)
 
@@ -790,6 +790,10 @@ class Parser(val source: CharSequence,
                 return Array(parseStatement(line.recreate(Token(line.startPos, 0, TokenType.DEF) +: line.tokens)))
             }
             tokens.skipAll()
+          case expr: AstNode.ExprStatement if expr.isSingleCall &&
+            tokens.hasType(TokenType.NAME, TokenType.DEF, TokenType.PRINT) =>
+            parserState.reportError(tokens, ErrorCode.TWO_STATEMENTS)
+            tokens.skipAll()
           case expr: AstNode.ExprStatement if expr.expression.isInstanceOf[AstNode.Compare] &&
             tokens.hasType(TokenType.COLON)  && line.hasSuite =>
             if (suiteContainsBreak(line.suite)) {
@@ -833,7 +837,7 @@ class Parser(val source: CharSequence,
         } else
         if (parserState.rejectDeadCode && !parserState.evalMode) {
           if (extParserUtils.isCallableName(stmt.pos, name))
-            parserState.reportError(stmt.pos, ErrorCode.CALL_NEEDS_PARENTHESES)
+            parserState.reportError(stmt.pos, ErrorCode.CALL_NEEDS_PARENTHESES, name)
           else
             parserState.reportError(stmt.pos, ErrorCode.USELESS_STATEMENT)
         }
