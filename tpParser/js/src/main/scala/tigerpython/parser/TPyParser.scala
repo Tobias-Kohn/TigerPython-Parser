@@ -15,7 +15,7 @@ import tigerpython.inputenc.StringTranslator
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 18/12/2019
+  * Updated by Tobias Kohn on 01/03/2020
   */
 @JSExportTopLevel("TPyParser")
 object TPyParser {
@@ -145,5 +145,29 @@ object TPyParser {
       val offset = parser.lineOffsetFromPosition(item.position)
       ErrorInfo(line, offset, item.errorMessage, item.errorCode.toString)
     }).toJSArray
+  }
+
+  /**
+    * Parses the given source code and returns the AST.
+    *
+    * @param source  The entire Python program as a single string.
+    * @return
+    */
+  @JSExport
+  def parse(source: String): js.Any = {
+    val src =
+      if (translateUnicodePunctuation)
+        StringTranslator.translate(source)
+      else
+        source
+    val parser = new Parser(src, pythonVersion)
+    parser.newDivision = newDivision
+    parser.rejectDeadCode = rejectDeadCode
+    parser.repeatStatement = repeatStatement
+    parser.sagePower = sagePower
+    parser.strictCode = strictCode
+    val converter = new AstConverter(parser)
+    val ast = parser.parse()
+    converter.convert(ast)
   }
 }

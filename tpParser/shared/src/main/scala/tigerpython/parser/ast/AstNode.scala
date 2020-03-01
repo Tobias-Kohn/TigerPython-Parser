@@ -7,6 +7,8 @@
  */
 package tigerpython.parser.ast
 
+import scala.annotation.tailrec
+
 /**
   * Our AST does not follow Python's default-implementation in every detail. There are a few notable differences:
   *
@@ -20,10 +22,11 @@ package tigerpython.parser.ast
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 15/10/2017
+  * Updated by Tobias Kohn on 01/03/2020
   */
 abstract class AstNode {
   def pos: Int
+  def kind: AstNodeKind.Value
 }
 object AstNode {
 
@@ -40,6 +43,7 @@ object AstNode {
     * @param body  The body of a function or class, which would contain the doc-string as its first element.
     * @return      Either the associated doc-string or the empty string `""`.
     */
+  @tailrec
   private def extractDocString(body: AstNode): String =
     body match {
       case s: Suite if s.statements.nonEmpty =>
@@ -106,12 +110,12 @@ object AstNode {
     def apply(key: String): Statement =
       key match {
         case "body" => body
-        case "else" | "elsebody" | "elseBody" => elseBody
+        case "else" | "elsebody" | "elseBody" | "orelse" => elseBody
       }
     def update(key: String, value: Statement): Unit =
       key match {
         case "body" => body = value
-        case "else" | "elsebody" | "elseBody" => elseBody = value
+        case "else" | "elsebody" | "elseBody" | "orelse" => elseBody = value
       }
   }
 
@@ -132,22 +136,23 @@ object AstNode {
   case class Keyword(name: String, value: Expression)
 
   // Slices
-  abstract class Slice extends AstNode
-  case class Index(pos: Int, value: Expression) extends Slice
-  case class MultiSlice(pos: Int, elements: Array[Slice]) extends Slice {
+  abstract class Slice(val kind: AstNodeKind.Value) extends AstNode
+  case class Index(pos: Int, value: Expression) extends Slice(AstNodeKind.INDEX)
+  case class MultiSlice(pos: Int, elements: Array[Slice]) extends Slice(AstNodeKind.EXT_SLICE) {
     override def toString: String = "MultiSlice(%s)".format(elements.mkString(", "))
   }
-  case class SliceRange(pos: Int, lower: Expression, upper: Expression, step: Expression) extends Slice
+  case class SliceRange(pos: Int, lower: Expression, upper: Expression, step: Expression) extends Slice(AstNodeKind.SLICE)
 
   ////////////////////////// Statements //////////////////////////
 
-  abstract class Statement extends AstNode {
+  abstract class Statement(val _kind: AstNodeKind.Value) extends AstNode {
     def isSingleName: Boolean = false
     def isStringValue: Boolean = false
+    def kind: AstNodeKind.Value = _kind
   }
 
-  case class Assert(pos: Int, test: Expression, msg: Expression) extends Statement
-  case class Assignment(pos: Int, targets: Array[Expression], value: Expression) extends Statement {
+  case class Assert(pos: Int, test: Expression, msg: Expression) extends Statement(AstNodeKind.ASSERT)
+  case class Assignment(pos: Int, targets: Array[Expression], value: Expression) extends Statement(AstNodeKind.ASSIGN) {
     def getTargetNames: Array[String] = {
       val result = collection.mutable.Set[String]()
       for (target <- targets)
@@ -170,10 +175,11 @@ object AstNode {
     }
     override def toString: String = targets.mkString(" = ") + " = " + value.toString
   }
-  case class AugAssign(pos: Int, target: Expression, op: AugAssignOp.Value, value: Expression) extends Statement
-  case class Break(pos: Int) extends Statement
+  case class AugAssign(pos: Int, target: Expression, op: AugAssignOp.Value, value: Expression)
+    extends Statement(AstNodeKind.AUG_ASSIGN)
+  case class Break(pos: Int) extends Statement(AstNodeKind.BREAK)
   case class ClassDef(pos: Int, endPos: Int, name: Name, bases: Array[Expression], keywords: Array[Keyword],
-                      var body: Statement) extends Statement with Decoratable {
+                      var body: Statement) extends Statement(AstNodeKind.CLASS_DEF) with Decoratable with Span {
     var docString: String = extractDocString(body)
     def getName: String = name.name
     override def toString: String =
@@ -184,10 +190,10 @@ object AstNode {
       docString = extractDocString(body)
     }
   }
-  case class Continue(pos: Int) extends Statement
-  case class Delete(pos: Int, targets: Array[Expression]) extends Statement
-  case class Exec(pos: Int, expr: Expression, globals: Expression, locals: Expression) extends Statement
-  case class ExprStatement(pos: Int, expression: Expression) extends Statement with Span {
+  case class Continue(pos: Int) extends Statement(AstNodeKind.CONTINUE)
+  case class Delete(pos: Int, targets: Array[Expression]) extends Statement(AstNodeKind.DELETE)
+  case class Exec(pos: Int, expr: Expression, globals: Expression, locals: Expression) extends Statement(AstNodeKind.EXEC)
+  case class ExprStatement(pos: Int, expression: Expression) extends Statement(AstNodeKind.EXPR) with Span {
     def endPos: Int =
       expression match {
         case span: Span => span.endPos
@@ -198,11 +204,15 @@ object AstNode {
     override def isStringValue: Boolean = expression.isInstanceOf[AstNode.StringValue]
   }
   case class For(pos: Int, endPos: Int, target: Expression, iter: Expression, var body: Statement,
-                 var elseBody: Statement, isAsync: Boolean) extends Statement with Body
+                 var elseBody: Statement, isAsync: Boolean) extends Statement(AstNodeKind.FOR) with Body with Span {
+    override def kind: AstNodeKind.Value = if (isAsync) AstNodeKind.ASYNC_FOR else AstNodeKind.FOR
+  }
   case class FunctionDef(pos: Int, endPos: Int, name: Name, params: Parameters, var body: Statement,
-                         returns: Expression, isAsync: Boolean) extends Statement with Decoratable {
+                         returns: Expression, isAsync: Boolean) extends Statement(AstNodeKind.FUNCTION_DEF)
+                         with Decoratable with Span {
     var docString: String = extractDocString(body)
     def getName: String = if (name != null) name.name else ""
+    override def kind: AstNodeKind.Value = if (isAsync) AstNodeKind.ASYNC_FUNCTION_DEF else AstNodeKind.FUNCTION_DEF
     override def toString: String =
       if (name != null && params != null)
         "%sFunctionDef(%s, (%s), body: %s, doc: %s)".format(getDecoratorString, name.toString, params.toString,
@@ -217,40 +227,43 @@ object AstNode {
       docString = extractDocString(body)
     }
   }
-  case class Global(pos: Int, names: Array[Name]) extends Statement {
+  case class Global(pos: Int, names: Array[Name]) extends Statement(AstNodeKind.GLOBAL) {
     override def toString: String = "Global(%s)".format(names.mkString(", "))
   }
-  case class If(pos: Int, elsePos: Int, test: Expression, var body: Statement, var elseBody: Statement) extends Statement with Body
-  case class Import(pos: Int, names: Array[Alias]) extends Statement {
+  case class If(pos: Int, elsePos: Int, test: Expression, var body: Statement, var elseBody: Statement)
+    extends Statement(AstNodeKind.IF) with Body
+  case class Import(pos: Int, names: Array[Alias]) extends Statement(AstNodeKind.IMPORT) {
     override def toString: String = "Import(%s)".format(names.mkString(", "))
   }
-  case class ImportFrom(pos: Int, module: Name, names: Array[Alias]) extends Statement {
+  case class ImportFrom(pos: Int, module: Name, names: Array[Alias]) extends Statement(AstNodeKind.IMPORT_FROM) {
     override def toString: String = "ImportFrom(%s, %s)".format(module.toString, names.mkString(", "))
   }
-  case class ImportFuture(pos: Int, names: Array[String]) extends Statement {
+  case class ImportFuture(pos: Int, names: Array[String]) extends Statement(AstNodeKind.IMPORT) {
     override def toString: String = "ImportFuture(%d, %s)".format(pos, names.mkString(", "))
   }
-  case class ImportStar(pos: Int, module: Name) extends Statement
-  case class NonLocal(pos: Int, names: Array[Name]) extends Statement {
+  case class ImportStar(pos: Int, module: Name) extends Statement(AstNodeKind.IMPORT)
+  case class NonLocal(pos: Int, names: Array[Name]) extends Statement(AstNodeKind.NON_LOCAL) {
     override def toString: String = "NonLocal(%s)".format(names.mkString(", "))
   }
-  case class Nothing(pos: Int) extends Statement
-  case class Pass(pos: Int) extends Statement
-  case class Print(pos: Int, dest: Expression, values: Array[Expression], newline: Boolean) extends Statement {
+  case class Nothing(pos: Int) extends Statement(AstNodeKind.NOTHING)
+  case class Pass(pos: Int) extends Statement(AstNodeKind.PASS)
+  case class Print(pos: Int, dest: Expression, values: Array[Expression], newline: Boolean)
+    extends Statement(AstNodeKind.PRINT) {
     override def toString: String =
       if (dest != null)
         "print >>(%s) %s nl:%b".format(dest.toString, values.mkString(", "), newline)
       else
         "print %s nl:%b".format(values.mkString(", "), newline)
   }
-  case class Raise2(pos: Int, exType: Expression, inst: Expression, tBack: Expression) extends Statement
-  case class Raise3(pos: Int, ex: Expression, cause: Expression) extends Statement
-  case class Return(pos: Int, value: Expression) extends Statement
-  case class Suite(pos: Int, statements: Array[Statement]) extends Statement {
+  case class Raise2(pos: Int, exType: Expression, inst: Expression, tBack: Expression)
+    extends Statement(AstNodeKind.RAISE)
+  case class Raise3(pos: Int, ex: Expression, cause: Expression) extends Statement(AstNodeKind.RAISE)
+  case class Return(pos: Int, value: Expression) extends Statement(AstNodeKind.RETURN)
+  case class Suite(pos: Int, statements: Array[Statement]) extends Statement(AstNodeKind.NOTHING) {
     override def toString: String = "Suite({%s})".format(statements.mkString("; "))
   }
   case class Try(pos: Int, var body: Statement, var handlers: Array[ExceptHandler], var elseBody: Statement,
-                 var finalBody: Statement) extends Statement with CompoundStatement {
+                 var finalBody: Statement) extends Statement(AstNodeKind.TRY) with CompoundStatement {
     def apply(key: String): Statement =
       key match {
         case "body" => body
@@ -267,9 +280,10 @@ object AstNode {
       "Try(%d,%s,[%s],%s,%s)".format(pos, body, handlers.mkString(", "), elseBody, finalBody)
     }
   }
-  case class While(pos: Int, test: Expression, var body: Statement, var elseBody: Statement) extends Statement with Body
-  case class With(pos: Int, endPos: Int, context: Expression, opt_vars: Expression, var body: Statement, isAsync: Boolean)
-    extends Statement with Span with CompoundStatement {
+  case class While(pos: Int, test: Expression, var body: Statement, var elseBody: Statement)
+    extends Statement(AstNodeKind.WHILE) with Body
+  case class With(pos: Int, endPos: Int, context: Expression, opt_vars: Expression, var body: Statement,
+                  isAsync: Boolean) extends Statement(AstNodeKind.WITH) with Span with CompoundStatement {
     def apply(key: String): Statement =
       key match {
         case "body" => body
@@ -285,11 +299,15 @@ object AstNode {
   case class Arguments(pos: Int, values: Array[Expression], keywords: Array[Keyword],
                        starArgs: Expression, kwArgs: Expression) extends AstNode {
 
+    def kind: AstNodeKind.Value = AstNodeKind.ARGUMENTS
+
     override def toString: String = "Arguments(%d, %s, %s, %s, %s)".format(pos, str(values), str(keywords),
       str(starArgs), str(kwArgs))
   }
 
-  abstract class Parameter extends AstNode
+  abstract class Parameter extends AstNode {
+    def kind: AstNodeKind.Value = AstNodeKind.PARAMETER
+  }
   case class NameParameter(pos: Int, name: String, annotation: Expression) extends Parameter
   case class TupleParameter(pos: Int, tuple: NameTuple) extends Parameter
 
@@ -310,6 +328,8 @@ object AstNode {
       else
         false
 
+    def kind: AstNodeKind.Value = AstNodeKind.PARAMETERS
+
     def hasClassSelf: Boolean = hasFirstName("self", "this", "cls", "class", "type", "klass", "metacls", "mcls")
     def hasSelf: Boolean = hasFirstName("self", "this")
 
@@ -329,7 +349,7 @@ object AstNode {
     }
   }
 
-  case class ExceptHandler(pos: Int, exType: Expression, name: Expression, var body: Statement) extends AstNode.Statement
+  case class ExceptHandler(pos: Int, exType: Expression, name: Expression, var body: Statement) extends AstNode.Statement(AstNodeKind.EXCEPT_HANDLER)
     with CompoundStatement {
     def apply(key: String): Statement =
       key match {
@@ -343,6 +363,9 @@ object AstNode {
 
   // Comprehensions
   case class Comprehension(pos: Int, target: Expression, iter: Expression, ifs: Array[Expression]) extends AstNode {
+
+    def kind: AstNodeKind.Value = AstNodeKind.COMPREHENSION
+
     override def toString: String =
       try {
         if (ifs.nonEmpty)
@@ -355,47 +378,48 @@ object AstNode {
       }
   }
 
-  ////////////////////////// Statements //////////////////////////
+  ////////////////////////// Expressions //////////////////////////
   // Simple Expressions
 
-  abstract class Expression extends AstNode {
+  abstract class Expression(val kind: AstNodeKind.Value) extends AstNode {
     def isSingleName: Boolean = false
     def isValidAssignTarget: Boolean = false
   }
 
-  abstract class SequenceExpression extends Expression {
+  abstract class SequenceExpression(_kind: AstNodeKind.Value) extends Expression(_kind) {
     def elements: Array[Expression]
   }
 
-  case class EmptyExpression(pos: Int) extends Expression
+  case class EmptyExpression(pos: Int) extends Expression(AstNodeKind.NOTHING)
 
-  case class Alias(pos: Int, name: Name, asName: Name) extends Expression {
+  case class Alias(pos: Int, name: Name, asName: Name) extends Expression(AstNodeKind.ALIAS) {
     override def toString: String =
       if (asName != null)
         "%s as %s".format(name.toString, asName.toString)
       else
         name.toString
   }
-  case class Ellipsis(pos: Int) extends Expression
-  case class Name(pos: Int, name: String) extends Expression with Span with ContextExpression {
+  case class Ellipsis(pos: Int) extends Expression(AstNodeKind.CONSTANT)
+  case class Name(pos: Int, name: String) extends Expression(AstNodeKind.NAME) with Span with ContextExpression {
     var extExprContext: ExtExprContext.Value = ExtExprContext.PLAIN
     def endPos: Int = pos + name.length
     override def isSingleName: Boolean = true
     override def isValidAssignTarget: Boolean = true
     override def toString: String = name
   }
-  case class NameTuple(pos: Int, names: Array[Name]) extends Expression {
+  case class NameTuple(pos: Int, names: Array[Name]) extends Expression(AstNodeKind.TUPLE) {
     override def isValidAssignTarget: Boolean = true
     override def toString: String = "(%s)".format(names.mkString(", "))
   }
-  case class BooleanValue(pos: Int, value: Boolean) extends Expression {
+  case class BooleanValue(pos: Int, value: Boolean) extends Expression(AstNodeKind.CONSTANT) {
     def notToString: String = if (value) "False" else "True"
     override def toString: String = if (value) "True" else "False"
   }
-  case class StringValue(pos: Int, endPos: Int, value: String, isUnicode: Boolean) extends Expression with Span {
+  case class StringValue(pos: Int, endPos: Int, value: String, isUnicode: Boolean)
+    extends Expression(AstNodeKind.CONSTANT) with Span {
     override def toString: String = "\"%s\"".format(value.filter(_ >= ' '))
   }
-  case class Value(pos: Int, valueType: ValueType.Value) extends Expression {
+  case class Value(pos: Int, valueType: ValueType.Value) extends Expression(AstNodeKind.CONSTANT) {
     var value: String = _
     def createNegative(): Value =
       if (value != null && value != "" &&
@@ -438,7 +462,7 @@ object AstNode {
       } else
         null
   }
-  case class Attribute(pos: Int, endPos: Int, base: Expression, attr: Name) extends Expression with Span with ContextExpression {
+  case class Attribute(pos: Int, endPos: Int, base: Expression, attr: Name) extends Expression(AstNodeKind.ATTRIBUTE) with Span with ContextExpression {
      def getAttributeName: String =
        if (attr != null)
          attr.name
@@ -447,9 +471,10 @@ object AstNode {
     override def isValidAssignTarget: Boolean = true
   }
 
-  case class Await(pos: Int, expr: Expression) extends Expression with ExprWrapper
+  case class Await(pos: Int, expr: Expression) extends Expression(AstNodeKind.AWAIT) with ExprWrapper
 
-  case class BinaryOp(pos: Int, op: BinOp.Value, left: Expression, right: Expression) extends Expression with Span {
+  case class BinaryOp(pos: Int, op: BinOp.Value, left: Expression, right: Expression)
+    extends Expression(AstNodeKind.BIN_OP) with Span {
     def endPos: Int = right match {
       case null => pos
       case span: Span => span.endPos
@@ -480,7 +505,7 @@ object AstNode {
       apply(pos, endPos, Name(pos, name), args, Array(), null, null)
   }
   case class Call(pos: Int, endPos: Int, function: Expression, args: Array[Expression], keywords: Array[Keyword],
-                  starArg: Expression, kwArg: Expression) extends Expression with Span {
+                  starArg: Expression, kwArg: Expression) extends Expression(AstNodeKind.CALL) with Span {
     def argPos: Int =
       function match {
         case span: Span =>
@@ -524,7 +549,8 @@ object AstNode {
       Compare(pos, left, Array((op, right)))
   }
 
-  case class Compare(pos: Int, left: Expression, comparators: Array[(BinOp.Value, Expression)]) extends Expression {
+  case class Compare(pos: Int, left: Expression, comparators: Array[(BinOp.Value, Expression)])
+    extends Expression(AstNodeKind.COMPARE) {
 
     def isSimpleEqual: Boolean =
       if (comparators.length == 1)
@@ -568,49 +594,57 @@ object AstNode {
         left.toString
   }
 
-  case class Dict(pos: Int, endPos: Int, keys: Array[Expression], values: Array[Expression]) extends Expression with Span {
+  case class Dict(pos: Int, endPos: Int, keys: Array[Expression], values: Array[Expression])
+    extends Expression(AstNodeKind.DICT) with Span {
     override def toString: String = "Dict(keys: %s; values: %s)".format(keys.mkString(", "), values.mkString(", "))
   }
 
   case class DictComp(pos: Int, endPos: Int, key: Expression, value: Expression, generators: Array[Comprehension])
-    extends Expression with Span {
+    extends Expression(AstNodeKind.DICT_COMP) with Span {
     override def toString: String = "DictComp(%s:%s, %s)".format(key.toString, value.toString, generators.mkString(", "))
   }
 
-  case class Generator(pos: Int, element: Expression, generators: Array[Comprehension]) extends Expression {
+  case class Generator(pos: Int, element: Expression, generators: Array[Comprehension])
+    extends Expression(AstNodeKind.GENERATOR_EXPR) {
     override def toString: String = "Generator(%s, %s)".format(element.toString, generators.mkString(", "))
   }
 
-  case class IfExpr(pos: Int, test: Expression, body: Expression, elseBody: Expression) extends Expression
+  case class IfExpr(pos: Int, test: Expression, body: Expression, elseBody: Expression)
+    extends Expression(AstNodeKind.IF_EXPR)
 
-  case class Lambda(pos: Int, args: Parameters, body: Expression) extends Expression
+  case class Lambda(pos: Int, args: Parameters, body: Expression) extends Expression(AstNodeKind.LAMBDA)
 
-  case class List(pos: Int, endPos: Int, elements: Array[Expression]) extends SequenceExpression with Span with ContextExpression {
+  case class List(pos: Int, endPos: Int, elements: Array[Expression])
+    extends SequenceExpression(AstNodeKind.LIST) with Span with ContextExpression {
     override def toString: String = "List(%s)".format(elements.mkString(", "))
   }
 
   case class ListComp(pos: Int, endPos: Int, elements: Expression, generators: Array[Comprehension])
-    extends Expression with Span {
+    extends Expression(AstNodeKind.LIST_COMP) with Span {
     override def toString: String = "ListComp(%s, %s)".format(elements.toString, generators.mkString(", "))
   }
 
-  case class Set(pos: Int, elements: Array[Expression]) extends SequenceExpression {
+  case class Set(pos: Int, elements: Array[Expression]) extends SequenceExpression(AstNodeKind.SET) {
     override def toString: String = "Set(%s)".format(elements.mkString(", "))
   }
 
-  case class SetComp(pos: Int, elements: Expression, generators: Array[Comprehension]) extends Expression {
+  case class SetComp(pos: Int, elements: Expression, generators: Array[Comprehension])
+    extends Expression(AstNodeKind.SET_COMP) {
     override def toString: String = "SetComp(%s, %s)".format(elements.toString, generators.mkString(", "))
   }
 
-  case class Starred(pos: Int, expr: Expression) extends Expression with ExprWrapper with ContextExpression {
+  case class Starred(pos: Int, expr: Expression)
+    extends Expression(AstNodeKind.STARRED) with ExprWrapper with ContextExpression {
     override def isValidAssignTarget: Boolean = true
   }
 
-  case class Subscript(pos: Int, endPos: Int, base: Expression, slice: Slice) extends Expression with Span {
+  case class Subscript(pos: Int, endPos: Int, base: Expression, slice: Slice)
+    extends Expression(AstNodeKind.SUBSCRIPT) with Span {
     override def isValidAssignTarget: Boolean = true
   }
 
-  case class Tuple(pos: Int, elements: Array[Expression]) extends SequenceExpression with ContextExpression with Span {
+  case class Tuple(pos: Int, elements: Array[Expression])
+    extends SequenceExpression(AstNodeKind.TUPLE) with ContextExpression with Span {
     def length: Int = elements.length
     def endPos: Int =
       if (elements.nonEmpty)
@@ -637,9 +671,9 @@ object AstNode {
     override def isValidAssignTarget: Boolean = true
   }
 
-  case class UnaryOp(pos: Int, op: UnOp.Value, expr: Expression) extends Expression with ExprWrapper
+  case class UnaryOp(pos: Int, op: UnOp.Value, expr: Expression) extends Expression(AstNodeKind.UNARY_OP) with ExprWrapper
 
-  case class Yield(pos: Int, expr: Expression) extends Expression with ExprWrapper
+  case class Yield(pos: Int, expr: Expression) extends Expression(AstNodeKind.YIELD) with ExprWrapper
 
-  case class YieldFrom(pos: Int, source: Expression) extends Expression
+  case class YieldFrom(pos: Int, source: Expression) extends Expression(AstNodeKind.YIELD_FROM)
 }

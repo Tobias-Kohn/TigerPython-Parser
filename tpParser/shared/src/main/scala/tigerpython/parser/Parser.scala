@@ -11,6 +11,8 @@ import ast.AstNode
 import scopes.Scope
 import errors.{ErrorHandler, ExtErrorInfo}
 
+import scala.annotation.tailrec
+
 /**
   * This is the public interface to parse a Python program.
   *
@@ -19,7 +21,7 @@ import errors.{ErrorHandler, ExtErrorInfo}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 01/03/2020
   */
 class Parser(val source: CharSequence,
              val pythonVersion: Int = 3) {
@@ -67,6 +69,7 @@ class Parser(val source: CharSequence,
   def getListOfNames: Array[String] =
     parser.lexer.getNameList
 
+  @tailrec
   private def flatten(node: AstNode): AstNode =
     node match {
       case suite: AstNode.Suite if suite.statements.length == 1 =>
@@ -99,4 +102,10 @@ class Parser(val source: CharSequence,
   def lineFromPosition(position: Int): Int = parser.lexer.scanner.lineFromPosition(position)
 
   def lineOffsetFromPosition(position: Int): Int = parser.lexer.scanner.lineOffsetFromPosition(position)
+
+  def lineAndOffsetFromPosition(position: Int): (Int, Int) = {
+    val line = parser.lexer.scanner.lineFromPosition(position)
+    val offs = parser.lexer.scanner.lineOffsetFromPosition(position)
+    (line, offs)
+  }
 }

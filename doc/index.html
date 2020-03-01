@@ -8,6 +8,7 @@
     <textarea id="inputArea">print "Hello"</textarea>
 	<br/>
 	<button onclick="checkSyntax();">Check Syntax</button>
+    <button onclick="showAST();">Parse</button>
 	<div id="output">Output</div>
     <script type="text/javascript" src="../release/tigerpython-parser.js"></script>
     <script type="text/javascript">
@@ -23,6 +24,15 @@
 		}
 	    console.log("Done");
 	  }
+      function showAST() {
+	    var inp = document.getElementById('inputArea');
+		var outp = document.getElementById('output');
+		TPyParser.rejectDeadCode = true;
+        var ast = TPyParser.parse(inp.value);
+        console.log(ast);
+        outp.innerHTML = "Beta-Testing AST:<br/>" + JSON.stringify(ast);
+        console.log("Done");
+      }
     </script>
   </body>
 </html>
