@@ -34,6 +34,13 @@ The `TPyParser` object provides two methods for checking syntax:
   first error found in the Python program.
 - **`TPyParser.findAllErrors(source: string): Array[ErrorInfo]`**  Takes the entire source code and returns a list of 
   all errors found in the Python program.
+  
+A third method returns the AST:
+- **`TPyParser.parse(source: string): object`**  Takes the entire source code and returns the AST as (generic) objects.
+  Each object has a field `kind` that corresponds to the class in Python.  While the AST is as close to CPython as 
+  possible, there are some minor differences, which stem mainly from the fact that the parser supports several different
+  versions of Python, or provides slightly more information in some cases.
+  Note that this is feature is currently under development and not thoroughly tested, yet.
 
 Available options:
 - **`evalMode: boolean`**  Set to `true` when the given code is from an interactive console / shell.  The parser would 
@@ -70,8 +77,8 @@ The entire project is written in [Scala 2.12](https://scala-lang.org/) / [Scala.
 [sbt](https://www.scala-sbt.org/).
 
 When `sbt` is installed, go the the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
-project (`scala.js` support two compilation mode: fast compilation during development and optimised compilation for
-production code).  The output (JavaScript-files) can then be found in `/tpParser/js/target/scala-2.12`.
+project (`scala.js` supports two compilation modes: fast compilation during development and optimised compilation for
+production code).  The output (JavaScript-files) can then be found in `./tpParser/js/target/scala-2.12/`.
 
 
 ## Contribution
