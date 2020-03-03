@@ -6,7 +6,7 @@ package tigerpython.parser.ast
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 01/03/2020
-  * Updated by Tobias Kohn on 01/03/2020
+  * Updated by Tobias Kohn on 03/03/2020
   */
 object AstNodeKind extends Enumeration {
 
@@ -75,13 +75,15 @@ object AstNodeKind extends Enumeration {
 
   final val EXCEPT_HANDLER = Value("ExceptHandler")
 
-  final val EXEC = Value("Exec")
-  final val PRINT = Value("Print")
-  final val NOTHING = Value("<NOTHING>")
+  final val ALIAS = Value("alias")
+  final val ARGUMENT = Value("<arg>")
+  final val ARGUMENTS = Value("<arguments>")
+  final val COMPREHENSION = Value("<comprehension>")
+  final val PARAMETER = Value("arg")
+  final val PARAMETERS = Value("arguments")
 
-  final val ALIAS = Value(100, "<Alias>")
-  final val ARGUMENTS = Value(101, "<Arguments>")
-  final val COMPREHENSION = Value(102, "<Comprehension>")
-  final val PARAMETER = Value(103, "<Parameter>")
-  final val PARAMETERS = Value(104, "<Parameters>")
+  final val EXEC_2 = Value("Exec/2")
+  final val PRINT_2 = Value("Print/2")
+  final val RAISE_2 = Value("Raise/2")
+  final val NOTHING = Value("<NOTHING>")
 }

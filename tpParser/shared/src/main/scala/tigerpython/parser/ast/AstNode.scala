@@ -22,7 +22,7 @@ import scala.annotation.tailrec
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 01/03/2020
+  * Updated by Tobias Kohn on 03/03/2020
   */
 abstract class AstNode {
   def pos: Int
@@ -192,7 +192,7 @@ object AstNode {
   }
   case class Continue(pos: Int) extends Statement(AstNodeKind.CONTINUE)
   case class Delete(pos: Int, targets: Array[Expression]) extends Statement(AstNodeKind.DELETE)
-  case class Exec(pos: Int, expr: Expression, globals: Expression, locals: Expression) extends Statement(AstNodeKind.EXEC)
+  case class Exec(pos: Int, expr: Expression, globals: Expression, locals: Expression) extends Statement(AstNodeKind.EXEC_2)
   case class ExprStatement(pos: Int, expression: Expression) extends Statement(AstNodeKind.EXPR) with Span {
     def endPos: Int =
       expression match {
@@ -248,7 +248,7 @@ object AstNode {
   case class Nothing(pos: Int) extends Statement(AstNodeKind.NOTHING)
   case class Pass(pos: Int) extends Statement(AstNodeKind.PASS)
   case class Print(pos: Int, dest: Expression, values: Array[Expression], newline: Boolean)
-    extends Statement(AstNodeKind.PRINT) {
+    extends Statement(AstNodeKind.PRINT_2) {
     override def toString: String =
       if (dest != null)
         "print >>(%s) %s nl:%b".format(dest.toString, values.mkString(", "), newline)
@@ -256,7 +256,7 @@ object AstNode {
         "print %s nl:%b".format(values.mkString(", "), newline)
   }
   case class Raise2(pos: Int, exType: Expression, inst: Expression, tBack: Expression)
-    extends Statement(AstNodeKind.RAISE)
+    extends Statement(AstNodeKind.RAISE_2)
   case class Raise3(pos: Int, ex: Expression, cause: Expression) extends Statement(AstNodeKind.RAISE)
   case class Return(pos: Int, value: Expression) extends Statement(AstNodeKind.RETURN)
   case class Suite(pos: Int, statements: Array[Statement]) extends Statement(AstNodeKind.NOTHING) {
@@ -280,8 +280,9 @@ object AstNode {
       "Try(%d,%s,[%s],%s,%s)".format(pos, body, handlers.mkString(", "), elseBody, finalBody)
     }
   }
-  case class While(pos: Int, test: Expression, var body: Statement, var elseBody: Statement)
-    extends Statement(AstNodeKind.WHILE) with Body
+  case class While(pos: Int, endPos: Int, test: Expression, var body: Statement, var elseBody: Statement)
+    extends Statement(AstNodeKind.WHILE) with Body with Span
+
   case class With(pos: Int, endPos: Int, context: Expression, opt_vars: Expression, var body: Statement,
                   isAsync: Boolean) extends Statement(AstNodeKind.WITH) with Span with CompoundStatement {
     def apply(key: String): Statement =

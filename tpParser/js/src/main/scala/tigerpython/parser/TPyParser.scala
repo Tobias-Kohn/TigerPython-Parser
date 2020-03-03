@@ -15,7 +15,7 @@ import tigerpython.inputenc.StringTranslator
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 01/03/2020
+  * Updated by Tobias Kohn on 02/03/2020
   */
 @JSExportTopLevel("TPyParser")
 object TPyParser {
@@ -168,6 +168,6 @@ object TPyParser {
     parser.strictCode = strictCode
     val converter = new AstConverter(parser)
     val ast = parser.parse()
-    converter.convert(ast)
+    converter(ast)
   }
 }

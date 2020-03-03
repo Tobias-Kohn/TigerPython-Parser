@@ -10,6 +10,9 @@ is part of the [TigerJython programming envrionment](http://jython.tobiaskohn.ch
 
 Let us know if you find the library useful and include it in your own project (jython at tobiaskohn.ch).
 
+In order to make the project a self-contained JavaScript-library, additional resources like translations of the error
+messages are directly inlined into the code.
+
 
 ## Usage
 
@@ -27,10 +30,10 @@ if (err !== null) {
 }
 ```
 The `TPyParser` object provides two methods for checking syntax:
-- **`TPyParser.checkSyntax(source: string): ErrorInfo`**  Takes the entire source code and returns either `null` or the first
-  error found in the Python program.
-- **`TPyParser.findAllErrors(source: string): Array[ErrorInfo]`**  Takes the entire source code and returns a list of all errors
-  found in the Python program.
+- **`TPyParser.checkSyntax(source: string): ErrorInfo`**  Takes the entire source code and returns either `null` or the
+  first error found in the Python program.
+- **`TPyParser.findAllErrors(source: string): Array[ErrorInfo]`**  Takes the entire source code and returns a list of 
+  all errors found in the Python program.
 
 Available options:
 - **`evalMode: boolean`**  Set to `true` when the given code is from an interactive console / shell.  The parser would 
@@ -66,8 +69,9 @@ Available options:
 The entire project is written in [Scala 2.12](https://scala-lang.org/) / [Scala.js](http://www.scala-js.org/) and uses
 [sbt](https://www.scala-sbt.org/).
 
-In order to make the project a self-contained JavaScript-library, additional resources like translations of the error
-messages are directly inlined into the code.
+When `sbt` is installed, go the the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
+project (`scala.js` support two compilation mode: fast compilation during development and optimised compilation for
+production code).  The output (JavaScript-files) can then be found in `/tpParser/js/target/scala-2.12`.
 
 
 ## Contribution

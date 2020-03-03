@@ -20,7 +20,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 18/01/2020
+  * Updated by Tobias Kohn on 02/03/2020
   */
 object Parser {
 
@@ -1247,7 +1247,7 @@ class Parser(val source: CharSequence,
             parserState.reportError(tokens.startPos, ErrorCode.INFINITE_LOOP)
         case _ =>
       }
-    val result = AstNode.While(line.startPos, test, null, null)
+    val result = AstNode.While(line.startPos, line.endPos, test, null, null)
     parseBody(tokens, line, result)
     parseElse(followLines, result)
     result
@@ -1332,7 +1332,7 @@ class Parser(val source: CharSequence,
         parseBody(line, result, "body")
         return result
       }
-      val result = AstNode.While(startPos, AstNode.BooleanValue(-1, value = true), null, null)
+      val result = AstNode.While(startPos, line.endPos, AstNode.BooleanValue(-1, value = true), null, null)
       val body = parseBody(tokens, line, result)
       if (parserState.rejectInfiniteLoops && !hasBreak(body, returnOnly = false))
         parserState.reportError(line.startPos, ErrorCode.INFINITE_LOOP)
