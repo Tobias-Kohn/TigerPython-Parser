@@ -1,6 +1,6 @@
 package tigerpython.parser
 
-import tigerpython.parser.ast.{AstNode, AstNodeKind, ExprContext, ExtExprContext}
+import tigerpython.parser.ast.{AstNode, AstNodeKind, ExtExprContext}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
@@ -11,13 +11,13 @@ import scala.scalajs.js.JSConverters._
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 01/03/2020
-  * Updated by Tobias Kohn on 03/03/2020
+  * Updated by Tobias Kohn on 06/03/2020
   */
 class AstConverter(val parser: Parser) {
 
   import AstConverter.FunctionInfo
 
-  private var functionStack: List[FunctionInfo] = _
+  private var functionStack: List[FunctionInfo] = List()
 
   protected def pushFunction(function: AstNode.FunctionDef): Unit =
     if (function != null) {
@@ -36,7 +36,7 @@ class AstConverter(val parser: Parser) {
 
   protected def addRef(name: String): Unit =
     if (functionStack.nonEmpty)
-    functionStack.head.addRef(name)
+      functionStack.head.addRef(name)
 
   /**
     * The nodes in the JS-AST do not only get the "linear" position within the source code, but also line and offset
@@ -195,11 +195,6 @@ class AstConverter(val parser: Parser) {
             addGlobal(name)
           case _ =>
         }
-        /*n.expr_context match {
-          case ExprContext.DEL | ExprContext.STORE =>
-            addRef(name)
-          case _ =>
-        }*/
         js.Dynamic.literal(name=name, ctx=n.expr_context.toString)
       case AstNode.NameTuple(_, names) =>
         js.Dynamic.literal(elts=convert(names))
@@ -235,7 +230,7 @@ class AstConverter(val parser: Parser) {
   private def _convert_body(body: AstNode.Statement): js.Any =
     body match {
       case AstNode.Suite(_, statements) =>
-        (for (stmt <- statements) yield convert(stmt)).toJSArray
+        (for (stmt <- statements) yield convert(stmt)).filter(_ != null).toJSArray
       case _ =>
         js.Array(convert(body))
     }
