@@ -49,7 +49,7 @@ Available options:
 - **`newDivision: boolean`**  (Python 2 only) Python 3 distinguishes between "true" and "integer" division 
   (`/` vs `//`) whereas Python 2 does not (by default).  Set this flag to `true` if you use this "new division" in
   Python 2.
-- **`PythonVersion: int`**  An integer value that is either 2 or 3 and indicates the used Python version.
+- **`pythonVersion: int`**  An integer value that is either 2 or 3 and indicates the used Python version (default 3).
 - **`rejectDeadCode: bool`**  If this flag is set to `true`, dead code will be rejected as erroneous (e.g. code after
   a `return` or `break` statement).
 - **`repeatStatement: bool`**  _TigerJython_ allows the use of `repeat` as a keyword for simple loops.  Set this flag
