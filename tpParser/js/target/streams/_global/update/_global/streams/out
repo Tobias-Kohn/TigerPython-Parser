@@ -1,3 +1,4 @@
-[debug] "not up to date. inChanged = true, force = false
+[warn] scalajs-compiler_2.12.8-0.6.29.jar no longer exists at /home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.8/0.6.29/scalajs-compiler_2.12.8-0.6.29.jar
+[debug] "not up to date. inChanged = false, force = false
 [debug] Updating tpParserJS...
 [debug] Done updating tpParserJS

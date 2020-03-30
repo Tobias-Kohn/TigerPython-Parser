@@ -1,2 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0mthere were four deprecation warnings (since 2.12.0); re-run with -deprecation for details[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tobias/Development/TigerPython-Parser/tpParser/js/src/main/scala/tigerpython/parser/TPyParser.scala:115:29: wrong number of arguments for pattern tigerpython.parser.errors.ExtErrorInfo(position: Int,line: Int,errorCode: tigerpython.parser.errors.ErrorCode.Value,errorMessage: String,params: Seq[AnyRef])[0m
+[0m[[0m[31merror[0m] [0m[0m      case Some(ExtErrorInfo(pos, _, code, msg)) =>[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -15,7 +15,7 @@ import tigerpython.inputenc.StringTranslator
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 02/03/2020
+  * Updated by Tobias Kohn on 30/03/2020
   */
 @JSExportTopLevel("TPyParser")
 object TPyParser {
@@ -112,7 +112,7 @@ object TPyParser {
     parser.sagePower = sagePower
     parser.strictCode = strictCode
     parser.checkSyntax() match {
-      case Some(ExtErrorInfo(pos, _, code, msg)) =>
+      case Some(ExtErrorInfo(pos, _, code, msg, _)) =>
         val line = parser.lineFromPosition(pos)
         val offset = parser.lineOffsetFromPosition(pos)
         ErrorInfo(line, offset, msg, code.toString)

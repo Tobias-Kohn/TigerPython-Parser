@@ -1,12 +1,14 @@
 [0m[[0m[0minfo[0m] [0m[0m[32mTestErroneousPrograms:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test program 'dead_code_02'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'brackets_01'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'for_loop_01'[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test program 'print_stmt_02'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'keyword_02'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'dead_code_03'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'for_loop_01'[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test program 'keyword_01'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'for_loop_02'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'elif_01'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'dead_code_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'brackets_02'[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test program 'print_stmt_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'elif_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'keyword_02'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'double_stmt_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'dead_code_03'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'dead_code_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'brackets_01'[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'for_loop_02'[0m[0m

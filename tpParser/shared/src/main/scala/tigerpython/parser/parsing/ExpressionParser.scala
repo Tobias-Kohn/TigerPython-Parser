@@ -18,7 +18,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 09/11/2019
+  * Updated by Tobias Kohn on 30/03/2020
   */
 object ExpressionParser {
 
@@ -820,8 +820,11 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
                 }
                 keys += key
                 values += parseTest(tokens)
-              } else
+              } else {
                 parserState.reportError(pairPos, ErrorCode.INVALID_KEY_VALUE_PAIR)
+                if (!tokens.hasType(TokenType.COMMA, TokenType.RIGHT_BRACE))
+                  tokens.discard()
+              }
             }
           }
         }

@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 30/03/2020
   */
 trait ErrorHandler {
 
@@ -77,7 +77,7 @@ object ErrorHandler {
                     token.getStringValue
                   case x => x
                 }))
-      errorList += ExtErrorInfo(pos, line, code, msg)
+      errorList += ExtErrorInfo(pos, line, code, msg, params)
       null
     }
 
@@ -91,6 +91,19 @@ object ErrorHandler {
     override def getFirstError: Option[ExtErrorInfo] =
       if (errorList.nonEmpty) {
         sort()
+        // In some cases, we have to make the error message less specific, as picking just the first one might be
+        // highly misleading.
+        val headPos = errorList.head.position
+        val headErrors = errorList.takeWhile(_.position == headPos)
+        if (headErrors.length > 1) {
+          val headErrorTypes = headErrors.map(_.errorCode)
+          if ((headErrorTypes.contains(ErrorCode.TOKEN_REQUIRED) && headErrorTypes.contains(ErrorCode.EXTRA_TOKEN)) ||
+              (headErrorTypes.count(_ == ErrorCode.TOKEN_REQUIRED) > 1)) {
+            val p = headErrors.find(_.errorCode == ErrorCode.TOKEN_REQUIRED).get.params(1)
+            return Some(ExtErrorInfo(headPos, errorList.head.line, ErrorCode.NO_VIABLE_ALTERNATIVE,
+              translator.messageToString(ErrorCode.NO_VIABLE_ALTERNATIVE, Seq(p.toString)), Seq(p)))
+          }
+        }
         Some(errorList.head)
       } else
         None

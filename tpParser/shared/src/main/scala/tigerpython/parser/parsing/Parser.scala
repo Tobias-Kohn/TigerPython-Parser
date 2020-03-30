@@ -12,15 +12,16 @@ import ast._
 import lexer.{Lexer, Token, TokenBuffer, TokenType}
 import ast.AstNode.ExprStatement
 import scopes.BuiltinNames
-import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
+import tigerpython.parser.errors.{ErrorCode, ErrorHandler}
 
+import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 02/03/2020
+  * Updated by Tobias Kohn on 30/03/2020
   */
 object Parser {
 
@@ -194,7 +195,7 @@ class Parser(val source: CharSequence,
   }
 
   def parse(tokens: Array[Token]): AstNode = {
-    val line = PreParser.LineFromTokenArray(tokens, errorHandler)
+    val line = PreParser.LineFromTokenArray(tokens, source, errorHandler)
     val result = parseStatement(line)
     if (errorHandler != ErrorHandler.SilentErrorHandler) {
       extParserUtils.checkForErrors(result)
@@ -842,13 +843,13 @@ class Parser(val source: CharSequence,
             parserState.reportError(stmt.pos, ErrorCode.USELESS_STATEMENT)
         }
       } else
-      if (parserState.rejectDeadCode && !parserState.evalMode)
+      if (parserState.rejectDeadCode && !parserState.evalMode) {
         stmt match {
           case AstNode.ExprStatement(pos, expr) if !hasSideEffect(expr) =>
             expr match {
               case binOp: AstNode.BinaryOp if binOp.left.isInstanceOf[AstNode.Name] =>
                 if (!parserState.errorHandler.hasErrorInRange(binOp.pos, binOp.endPos))
-                parserState.reportError(pos, ErrorCode.USELESS_STMT_USE_AUG_ASSIGN, binOp.op)
+                  parserState.reportError(pos, ErrorCode.USELESS_STMT_USE_AUG_ASSIGN, binOp.op)
               case span: AstNode with AstNode.Span =>
                 if (!parserState.errorHandler.hasErrorInRange(span.pos, span.endPos))
                   parserState.reportError(pos, ErrorCode.USELESS_STATEMENT)
@@ -864,6 +865,7 @@ class Parser(val source: CharSequence,
             }
           case _ =>
         }
+      }
       stmts += stmt
     }
     stmts.filter(_ != null).toArray
@@ -1000,7 +1002,7 @@ class Parser(val source: CharSequence,
           parserState.reportError(tokens, ErrorCode.EXTRA_TOKEN)
         _parseBody(head, fieldName, parseSuite(line.suite.iterator.buffered))
       } else
-        _parseBody(head, fieldName, parseStatement(PreParser.LineFromTokenArray(tokens.toArray, parserState)))
+        _parseBody(head, fieldName, parseStatement(PreParser.LineFromTokenArray(tokens.toArray, source, parserState)))
     } else
     if (line.suite == null) {
       parserState.reportError(line.endPos, ErrorCode.MISSING_BODY)
@@ -1019,6 +1021,7 @@ class Parser(val source: CharSequence,
 
   ///// COMPOUND STATEMENTS /////
 
+  @tailrec
   private def getDecoratorName(expr: AstNode.Expression): String =
     expr match {
       case AstNode.Name(_, name) => name

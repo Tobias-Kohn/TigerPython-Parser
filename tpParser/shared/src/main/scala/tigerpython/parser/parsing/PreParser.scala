@@ -15,18 +15,20 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 30/03/2020
   */
 private[parser] object PreParser {
 
-  def LineFromTokenArray(tokens: Array[Token], errorHandler: ErrorHandler): Line =
+  def LineFromTokenArray(tokens: Array[Token], textSource: CharSequence,
+                         errorHandler: ErrorHandler): Line =
     if (tokens.nonEmpty)
-      Line(tokens.head.pos, tokens.last.endPos, -1, tokens, null, errorHandler)
+      Line(tokens.head.pos, tokens.last.endPos, -1, tokens, null, textSource, errorHandler)
     else
       null
 
   case class Line(startPos: Int, endPos: Int, indentation: Int,
                   tokens: Array[Token], suite: Array[Line],
+                  textSource: CharSequence,
                   errorHandler: ErrorHandler) {
     var parentLine: Line = _
     var prevLine: Line = _
@@ -42,7 +44,7 @@ private[parser] object PreParser {
            if s != null)
         s.parentLine = this
 
-    lazy val tokenSource = new TokenBuffer(tokens, errorHandler)
+    lazy val tokenSource = new TokenBuffer(tokens, textSource, errorHandler)
 
     def hasSuite: Boolean = suite != null && suite.nonEmpty
 
@@ -68,10 +70,10 @@ private[parser] object PreParser {
       tokens.last.tokenType.isOneOf(TokenType.NAME, TokenType.RIGHT_PARENS, TokenType.RIGHT_BRACE, TokenType.RIGHT_BRACKET)
 
     def recreate(newTokens: Array[Token]): Line =
-      Line(startPos, endPos, indentation, newTokens, suite, errorHandler)
+      Line(startPos, endPos, indentation, newTokens, suite, textSource, errorHandler)
 
     def recreateWithSuite(newSuite: Array[Line]): Line =
-      Line(startPos, endPos, indentation, tokens, newSuite, errorHandler)
+      Line(startPos, endPos, indentation, tokens, newSuite, textSource, errorHandler)
 
     def dump(): Unit = dump(0)
 
@@ -121,7 +123,7 @@ private[parser] object PreParser {
         new_tokens ++= tokens
         for (line <- suite)
           new_tokens ++= line.tokens
-        Line(startPos, endPos, indentation, new_tokens.toArray, Array(), errorHandler)
+        Line(startPos, endPos, indentation, new_tokens.toArray, Array(), textSource, errorHandler)
       } else
         this
 
@@ -199,9 +201,10 @@ class PreParser(val source: CharSequence,
         for (l <- suite)
           if (l.indentation < indent)
             parserState.reportError(l.startPos, ErrorCode.INCONSISTENT_INDENTATION)
-        Line(srcLine.pos, findEndOfLine(suite.last.endPos), srcLine.indent, srcLine.tokens, suite.toArray, parserState)
+        Line(srcLine.pos, findEndOfLine(suite.last.endPos), srcLine.indent, srcLine.tokens,
+          suite.toArray, source, parserState)
       } else
-        Line(srcLine.pos, findEndOfLine(srcLine.endPos), srcLine.indent, srcLine.tokens, null, parserState)
+        Line(srcLine.pos, findEndOfLine(srcLine.endPos), srcLine.indent, srcLine.tokens, null, source, parserState)
     } else
       null
 

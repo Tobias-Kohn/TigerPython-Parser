@@ -11,9 +11,10 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created: 08/11/2019
-  * Updated: 08/11/2019
+  * Updated: 30/03/2020
   */
-case class ExtErrorInfo(position: Int, line: Int, errorCode: ErrorCode.Value, errorMessage: String) {
+case class ExtErrorInfo(position: Int, line: Int, errorCode: ErrorCode.Value, errorMessage: String,
+                        params: Seq[AnyRef]) {
 
-  override def toString: String = "[%d] %s: %s".format(line, errorCode.toString, errorMessage)
+  override def toString: String = "[LINE %d] %s(%d): %s".format(line, errorCode.toString, position, errorMessage)
 }

@@ -1,3 +1,4 @@
 # 1
-# ?
+# NO_VIABLE_ALTERNATIVE
 {1:1=
+print(a)

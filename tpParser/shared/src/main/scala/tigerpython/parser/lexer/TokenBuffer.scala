@@ -14,9 +14,10 @@ import errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 01/06/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 30/03/2020
   */
 class TokenBuffer(tokenSource: Seq[Token],
+                  val textSource: CharSequence,
                   val errorHandler: ErrorHandler = null) extends BufferedIterator[Token] {
 
   import TokenType.getStringDistance
@@ -138,22 +139,22 @@ class TokenBuffer(tokenSource: Seq[Token],
         if (hasNext) {
           if (tokenType.category == TokenType.TYPE_KEYWORD && head.tokenType == TokenType.NAME &&
             TokenType.isPossibleKeyword(head, tokenType)) {
-            errorHandler.reportError(pos, -1, ErrorCode.MISSPELLED_KEYWORD, head, tokenType)
+            errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.MISSPELLED_KEYWORD, head, tokenType)
             index += 1
             return true
           } else {
             if (tokenType == TokenType.COLON && source.last.tokenType == TokenType.COLON)
-              errorHandler.reportError(pos, -1, ErrorCode.EXTRA_TOKEN, head)
+              errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.EXTRA_TOKEN, head)
             else
-              errorHandler.reportError(pos, -1, ErrorCode.TOKEN_REQUIRED, tokenType, head)
+              errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.TOKEN_REQUIRED, tokenType, head)
             if (tokenType == TokenType.COLON && remaining == 1 &&
                 head.tokenType.isOneOf(TokenType.DOT, TokenType.COMMA, TokenType.SEMICOLON))
               index += 1
           }
         } else if (tokenType == TokenType.COLON)
-          errorHandler.reportError(pos, -1, ErrorCode.COLON_EXPECTED)
+          errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.COLON_EXPECTED)
         else
-          errorHandler.reportError(pos, -1, ErrorCode.MISSING_TOKEN, tokenType)
+          errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.MISSING_TOKEN, tokenType)
       }
       false
     } else {
@@ -179,7 +180,7 @@ class TokenBuffer(tokenSource: Seq[Token],
       if (tt == tokenType)
         true
       else if (TokenType.isPossibleKeyword(head, tokenType) && remaining > 1 && p(peek(1))) {
-        errorHandler.reportError(pos, -1, ErrorCode.MISSPELLED_KEYWORD, head, tokenType)
+        errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.MISSPELLED_KEYWORD, head, tokenType)
         replaceToken(tokenType)
         true
       } else {
@@ -317,9 +318,10 @@ class TokenBuffer(tokenSource: Seq[Token],
     if (index < source.length) {
       source(index).tokenType match {
         case TokenType.RIGHT_BRACE | TokenType.RIGHT_BRACKET | TokenType.RIGHT_PARENS =>
-          errorHandler.reportError(source(index).pos, -1, ErrorCode.EXTRA_RIGHT_BRACKET, source(index))
+          errorHandler.reportError(source(index).pos, lineFromPos(source(index).pos),
+            ErrorCode.EXTRA_RIGHT_BRACKET, source(index))
         case _ =>
-          errorHandler.reportError(source(index).pos, -1, ErrorCode.EXTRA_TOKEN, source(index))
+          errorHandler.reportError(source(index).pos, lineFromPos(source(index).pos), ErrorCode.EXTRA_TOKEN, source(index))
       }
       index += 1
     }
@@ -327,11 +329,21 @@ class TokenBuffer(tokenSource: Seq[Token],
   def nextSimpleKeyword(): Token = {
     val result = next()
     if (peekType(0) == TokenType.LEFT_PARENS && peekType(1) == TokenType.RIGHT_PARENS) {
-      errorHandler.reportError(pos, -1, ErrorCode.EXTRA_BRACKETS)
+      errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.EXTRA_BRACKETS)
       index += 2
     }
     result
   }
+
+  private def lineFromPos(pos: Int): Int =
+    if (textSource != null) {
+      var result = 0
+      for (i <- 0 until pos)
+        if (textSource.charAt(i) == '\n')
+          result += 1
+      result
+    } else
+      -1
 
   /**
     * This function corrects the input stream so that the next token to be read has the required type.

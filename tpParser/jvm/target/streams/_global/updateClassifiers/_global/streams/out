@@ -1,3 +1,4 @@
-[debug] "not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/home/tobias/Development/TjParser/Python-Error-Messages/"), "tpParserJVM")...
-[debug] Done updating ProjectRef(uri("file:/home/tobias/Development/TjParser/Python-Error-Messages/"), "tpParserJVM")
+[warn] scalatest_2.12-3.0.8-sources.jar no longer exists at /home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.12/3.0.8/scalatest_2.12-3.0.8-sources.jar
+[debug] "not up to date. inChanged = false, force = false
+[debug] Updating ProjectRef(uri("file:/home/tobias/Development/TigerPython-Parser/"), "tpParserJVM")...
+[debug] Done updating ProjectRef(uri("file:/home/tobias/Development/TigerPython-Parser/"), "tpParserJVM")

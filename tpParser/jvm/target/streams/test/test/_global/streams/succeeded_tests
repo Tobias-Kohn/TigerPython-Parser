@@ -1,5 +1,5 @@
 #Successful Tests
-#Wed Dec 18 15:54:10 GMT 2019
-TestErroneousPrograms=1576684450283
-TestTranslator=1576684450191
-TestCorrectPrograms=1576684450208
+#Tue Mar 31 00:02:05 CEST 2020
+TestTranslator=1585605725083
+TestCorrectPrograms=1585605725092
+TestErroneousPrograms=1585605725163

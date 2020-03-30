@@ -1,19 +1,19 @@
-[0m[[0m[0minfo[0m] [0m[0mFull optimizing /home/tobias/Development/TjParser/TigerPython-Parser/tpParser/js/target/scala-2.12/tigerpython-parser-opt.js[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 65446 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 29767 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 96972 us[0m
+[0m[[0m[0minfo[0m] [0m[0mFull optimizing /home/tobias/Development/TigerPython-Parser/tpParser/js/target/scala-2.12/tigerpython-parser-opt.js[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 44323 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 22022 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 67334 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Batch mode: true[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 18960 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 9315 methods.[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 744001 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 766016 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 37662 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 4919 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: 42861 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 636 -- invalidated: 644[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 4324[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter (create Closure trees): 728112 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 27921 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 9477 methods.[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 645007 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 675407 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 32079 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 4084 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 36356 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 640 -- invalidated: 650[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 4373[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter (create Closure trees): 683987 us[0m
 [0m[[0m[0minfo[0m] [0m[0mClosure: 0 error(s), 0 warning(s)[0m
-[0m[[0m[0mdebug[0m] [0m[0mClosure: Compiler pass: 13428669 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mClosure: Write result: 1778113 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 327 -- invalidated: 0 -- trees read: 0[0m
+[0m[[0m[0mdebug[0m] [0m[0mClosure: Compiler pass: 13354681 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mClosure: Write result: 1557668 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 331 -- invalidated: 0 -- trees read: 0[0m
