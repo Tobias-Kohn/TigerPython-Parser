@@ -1,19 +1,19 @@
 [0m[[0m[0minfo[0m] [0m[0mFull optimizing /home/tobias/Development/TigerPython-Parser/tpParser/js/target/scala-2.12/tigerpython-parser-opt.js[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 44323 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 22022 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 67334 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Batch mode: true[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 27921 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 9477 methods.[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 645007 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 675407 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 32079 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 4084 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: 36356 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 640 -- invalidated: 650[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 4373[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter (create Closure trees): 683987 us[0m
-[0m[[0m[0minfo[0m] [0m[0mClosure: 0 error(s), 0 warning(s)[0m
-[0m[[0m[0mdebug[0m] [0m[0mClosure: Compiler pass: 13354681 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mClosure: Write result: 1557668 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 331 -- invalidated: 0 -- trees read: 0[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 374169 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 23934 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Check IR: 255461 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: 682982 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Batch mode: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Incremental part: 84307 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Optimizing 8068 methods.[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Optimizer part: 885437 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: 975292 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 72396 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 3336 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 83214 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Generate classes: 419620 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Write trees: 13022 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 751 -- invalidated: 762[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: reused: 0 -- invalidated: 4485[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: 452730 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasicBackend: Write result: 365067 us[0m

@@ -10,7 +10,11 @@
     <button onclick="checkSyntax();">Check Syntax</button>
     <button onclick="showAST();">Parse</button>
     <div id="output">Output</div>
-    <script src="../release/tigerpython-parser.js"></script>
+    <script type="module" src="./tigerpython-parser.mjs"></script>
+    <script type="module">
+      import { TPyParser } from './tigerpython-parser.mjs';
+      window.TPyParser = TPyParser;
+    </script>
     <script type="text/javascript">
       function checkSyntax() {
         var inp = document.getElementById('inputArea');

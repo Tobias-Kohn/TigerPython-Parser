@@ -13,7 +13,8 @@ lazy val tpParser =
     .crossType(CrossType.Full)
     .settings(sharedSettings)
     .jsSettings(
-      libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
+      libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.8",
+      scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
     )
     .jvmSettings()
 
