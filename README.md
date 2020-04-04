@@ -16,6 +16,18 @@ messages are directly inlined into the code.
 
 ## Usage
 
+### ES Module
+
+To be used in larger projects, the parser is offered as a 
+[JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
+The file can be found in [release/tigerpython-parser.mjs](release/tigerpython-parser.mjs), along a standalone
+JavaScript file (see below).  The accompanying [index.html](release/index.html) demonstrates how the module could
+be loaded and used in a simple HTML.  However, make sure that your server delivers the module with MIME type
+`text/javascript`.
+
+
+### Standalone JavaScript File
+
 In order to use the parser for error checking in your project, load the respective 
 [JavaScript-file](release/tigerpython-parser.js), set your preferences in the `TPyParser` object and then check your
 code.  You can find a simple example in [doc/index.html](doc/index.html).
@@ -29,6 +41,10 @@ if (err !== null) {
   // Display the error...
 }
 ```
+
+
+### The TPyParser Object
+
 The `TPyParser` object provides two methods for checking syntax:
 - **`TPyParser.checkSyntax(source: string): ErrorInfo`**  Takes the entire source code and returns either `null` or the
   first error found in the Python program.
@@ -79,6 +95,11 @@ The entire project is written in [Scala 2.12](https://scala-lang.org/) / [Scala.
 When `sbt` is installed, go the the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
 project (`scala.js` supports two compilation modes: fast compilation during development and optimised compilation for
 production code).  The output (JavaScript-files) can then be found in `./tpParser/js/target/scala-2.12/`.
+
+The JS-linker is currently configured to output a
+[JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).  The line responsible
+for this is in [build.sbt](build.sbt): `scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }`.  Remove
+or comment this line in order to get a classic JavaScript file instead of an ES module.
 
 
 ## Contribution
