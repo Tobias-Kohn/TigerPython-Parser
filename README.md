@@ -18,12 +18,15 @@ messages are directly inlined into the code.
 
 ### ES Module
 
-To be used in larger projects, the parser is offered as a 
+To be used in larger projects, the parser can be compiled to a 
 [JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
 The file can be found in [release/tigerpython-parser.mjs](release/tigerpython-parser.mjs), along a standalone
 JavaScript file (see below).  The accompanying [index.html](release/index.html) demonstrates how the module could
-be loaded and used in a simple HTML.  However, make sure that your server delivers the module with MIME type
+be loaded and used in a simple HTML.  However, make sure your server delivers the module with MIME type
 `text/javascript`.
+
+Note: when compiling to an ES module, the tests currently fail.  It seems node.js is complaining about using `export`
+instead of `module.export` in the generated module.
 
 
 ### Standalone JavaScript File
@@ -96,10 +99,11 @@ When `sbt` is installed, go the the project's root directory and use `sbt fastOp
 project (`scala.js` supports two compilation modes: fast compilation during development and optimised compilation for
 production code).  The output (JavaScript-files) can then be found in `./tpParser/js/target/scala-2.12/`.
 
-The JS-linker is currently configured to output a
+The JS-linker was previsouly configured to output a
 [JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).  The line responsible
 for this is in [build.sbt](build.sbt): `scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }`.  Remove
-or comment this line in order to get a classic JavaScript file instead of an ES module.
+the comments on this line in order to get a an ES module instead of classic JavaScript file (however, `sbt` currently 
+crashes because of an `export` vs. `module.export` error). 
 
 
 ## Contribution
