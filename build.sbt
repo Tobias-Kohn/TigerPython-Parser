@@ -15,7 +15,7 @@ lazy val tpParser =
     .settings(sharedSettings)
     .jsSettings(
       libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.8",
-      scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
+      // scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
     )
     .jvmSettings()
 
