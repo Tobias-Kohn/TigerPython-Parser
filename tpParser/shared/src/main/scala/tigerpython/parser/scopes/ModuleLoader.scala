@@ -15,7 +15,7 @@ import ast.AstNode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 14/06/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 18/05/2020
   */
 class ModuleLoader {
   import ModuleLoader.modules
@@ -165,8 +165,8 @@ object ModuleLoader {
   def addMockPackage(name: String): Unit =
     modules.getOrElseUpdate(name, BuiltinTypes.UNKNOWN_TYPE)
 
-  def addMockPackages(names: TraversableOnce[String]): Unit =
-    for (name <- names)
+  def addMockPackages(names: IterableOnce[String]): Unit =
+    for (name <- names.iterator)
       addMockPackage(name)
 
   var defaultModuleLoader = new ModuleLoader()

@@ -48,7 +48,8 @@ class BracketPatcher(val lexer: Lexer, val parserState: ParserState, tokenSource
 
   import BracketPatcher.BracketType
 
-  protected val tokens: collection.mutable.ArrayBuffer[Token] = collection.mutable.ArrayBuffer[Token](tokenSource: _*)
+  protected val tokens: collection.mutable.ArrayBuffer[Token] =
+    collection.mutable.ArrayBuffer[Token](tokenSource.toSeq: _*)
 
   private def tokenTypes(index: Int): TokenType =
     if (0 <= index && index < tokens.length)

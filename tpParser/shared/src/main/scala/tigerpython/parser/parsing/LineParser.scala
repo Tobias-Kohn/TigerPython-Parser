@@ -15,7 +15,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 18/05/2020
   */
 private[parser] object LineParser {
   case class Line(indent: Int, endPos: Int, var tokens: Array[Token]) {
@@ -92,7 +92,7 @@ private[parser] object LineParser {
 private[parser]
 class LineParser(val source: CharSequence,
                  val lexer: Lexer,
-                 val parserState: ParserState) extends BufferedIterator[LineParser.Line] {
+                 val parserState: ParserState) extends collection.BufferedIterator[LineParser.Line] {
 
   import LineParser.Line
 
@@ -104,7 +104,7 @@ class LineParser(val source: CharSequence,
     else
       result
   }
-  val tokenSource = ExtBufferedIterator(tokens)
+  val tokenSource: ExtBufferedIterator[Token] = ExtBufferedIterator(tokens.toSeq)
 
   private var cache: Line = _
 

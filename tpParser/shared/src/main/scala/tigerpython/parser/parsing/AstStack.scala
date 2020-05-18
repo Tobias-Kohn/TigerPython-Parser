@@ -15,7 +15,7 @@ import ast.AstNode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/09/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 18/05/2020
   */
 class AstStack(parser: Parser) {
   import AstNode.Statement
@@ -90,7 +90,7 @@ class AstStack(parser: Parser) {
   def ++= (stmts: Statement*): Unit =
     stmtStack.top.items ++= stmts
 
-  def ++= (stmts: TraversableOnce[Statement]): Unit =
+  def ++= (stmts: IterableOnce[Statement]): Unit =
     stmtStack.top.items ++= stmts
 
   private def push(item: StackItem): Unit = {

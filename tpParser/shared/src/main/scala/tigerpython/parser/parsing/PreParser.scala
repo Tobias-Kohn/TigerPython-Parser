@@ -15,7 +15,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 30/03/2020
+  * Updated by Tobias Kohn on 18/05/2020
   */
 private[parser] object PreParser {
 
@@ -44,7 +44,7 @@ private[parser] object PreParser {
            if s != null)
         s.parentLine = this
 
-    lazy val tokenSource = new TokenBuffer(tokens, textSource, errorHandler)
+    lazy val tokenSource = new TokenBuffer(tokens.toSeq, textSource, errorHandler)
 
     def hasSuite: Boolean = suite != null && suite.nonEmpty
 
@@ -147,7 +147,7 @@ private[parser] object PreParser {
 private[parser]
 class PreParser(val source: CharSequence,
                 val lexer: Lexer,
-                val parserState: ParserState) extends BufferedIterator[PreParser.Line] {
+                val parserState: ParserState) extends collection.BufferedIterator[PreParser.Line] {
 
   import PreParser.Line
 

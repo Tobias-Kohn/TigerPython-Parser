@@ -12,7 +12,7 @@ package parsing
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 03/06/2016
-  * Updated by Tobias Kohn on 06/07/2016
+  * Updated by Tobias Kohn on 18/05/2020
   */
 object ExtBufferedIterator {
 
@@ -89,6 +89,6 @@ object ExtBufferedIterator {
     }
   }
 }
-trait ExtBufferedIterator[T >: Null] extends BufferedIterator[T] {
+trait ExtBufferedIterator[T >: Null] extends collection.BufferedIterator[T] {
   def peek(index: Int): T
 }

@@ -18,7 +18,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 30/03/2020
+  * Updated by Tobias Kohn on 18/05/2020
   */
 object ExpressionParser {
 
@@ -962,7 +962,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
       if (firstOfTest(tokens))
         result += parseTest(tokens)
     if (insertComma && tokens.hasNext && firstOfTest(tokens) && !tokens.hasType(TokenType.REPR) &&
-      !stopParsingTestList(result, tokens)) {
+      !stopParsingTestList(result.toSeq, tokens)) {
       val missingParens =
         if (result.nonEmpty && tokens.hasType(TokenType.INT, TokenType.FLOAT, TokenType.STR))
           result.last match {

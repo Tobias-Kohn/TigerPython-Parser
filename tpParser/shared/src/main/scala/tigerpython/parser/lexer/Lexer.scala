@@ -18,11 +18,11 @@ import scala.collection.mutable
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 09/11/2019
+  * Updated by Tobias Kohn on 18/05/2020
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,
-            val caretPos: Int) extends BufferedIterator[Token] {
+            val caretPos: Int) extends scala.collection.BufferedIterator[Token] {
 
   val scanner = new Scanner(source)
 

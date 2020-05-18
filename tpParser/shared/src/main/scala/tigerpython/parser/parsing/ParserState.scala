@@ -18,7 +18,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 08/11/2019
+  * Updated by Tobias Kohn on 18/05/2020
   */
 case class ParserState(source: CharSequence,
                        pythonVersion: Int,
@@ -158,7 +158,7 @@ case class ParserState(source: CharSequence,
           val newParams = collection.mutable.ArrayBuffer[AnyRef]()
           newParams ++= params
           newParams += token
-          reportError(token.pos, -1, msg, newParams: _*)
+          reportError(token.pos, -1, msg, newParams.toSeq: _*)
         } catch {
           case _: Throwable =>
         }
@@ -174,7 +174,7 @@ case class ParserState(source: CharSequence,
     else
       reportError(tokens.endPos, -1, msg, params: _*)
 
-  def reportError(tokens: Seq[Token], msg: ErrorCode.Value, params: AnyRef*): Null =
+  def reportError(tokens: Array[Token], msg: ErrorCode.Value, params: AnyRef*): Null =
     if (tokens.nonEmpty)
       _reportError(tokens.head, msg, params: _*)
     else
@@ -217,7 +217,7 @@ case class ParserState(source: CharSequence,
           val newParams = collection.mutable.ArrayBuffer[AnyRef]()
           newParams ++= params
           newParams += token
-          reportWarning(token.pos, msg, newParams: _*)
+          reportWarning(token.pos, msg, newParams.toSeq: _*)
         } catch {
           case _: Throwable =>
         }

@@ -15,7 +15,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 02/08/2016
-  * Updated by Tobias Kohn on 26/09/2016
+  * Updated by Tobias Kohn on 19/05/2020
   */
 class ControlFlowChecker(val parserState: ParserState) extends AstVisitor {
 
@@ -30,7 +30,7 @@ class ControlFlowChecker(val parserState: ParserState) extends AstVisitor {
       case _ =>
     }
 
-  protected def checkForInLoopInitialization(statements: Seq[AstNode.Statement]): Unit =
+  protected def checkForInLoopInitialization(statements: Array[AstNode.Statement]): Unit =
     if (statements.length > 1) {
       val varNames = collection.mutable.Map[String, Int]()
       var i = 0

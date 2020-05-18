@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 30/03/2020
+  * Updated by Tobias Kohn on 18/05/2020
   */
 object Parser {
 
@@ -212,7 +212,7 @@ class Parser(val source: CharSequence,
   def parse(tokenLine: Parser.TokenLine): AstNode =
     parse(tokenLine.tokens)
 
-  protected def parseSuite(lines: BufferedIterator[Line]): AstNode.Suite = {
+  protected def parseSuite(lines: collection.BufferedIterator[Line]): AstNode.Suite = {
     val result = ArrayBuffer[AstNode.Statement]()
     var hasBreak: Boolean = false
     var hasStmt: Boolean = false
@@ -266,7 +266,7 @@ class Parser(val source: CharSequence,
           else
             parserState.reportError(line.startPos, ErrorCode.DOUBLE_ELSE, line.tokens.head)
         }
-        val stmts = parseStatements(line, followLines: _*)
+        val stmts = parseStatements(line, followLines.toSeq: _*)
         if (stmts.length == 1)
           stmts.head match {
             case whileStmt: AstNode.While if parserState.strictCode && isAlwaysTrue(whileStmt.test) =>
@@ -286,7 +286,7 @@ class Parser(val source: CharSequence,
             parserState.reportError(lines.head.startPos, ErrorCode.NO_END_NEEDED)
             lines.next()
           }
-          result ++= parseStatements(line, followLines: _*)
+          result ++= parseStatements(line, followLines.toSeq: _*)
         } else
           parserState.reportError(line.startPos, ErrorCode.DECORATOR_NEEDS_CALLABLE)
       } else {
@@ -304,7 +304,7 @@ class Parser(val source: CharSequence,
                 f.makePrintAName()
           }
         }
-        for (stmt <- parseStatements(line, followLines: _*)) {
+        for (stmt <- parseStatements(line, followLines.toSeq: _*)) {
           stmt match {
             case _: AstNode.Return | _: AstNode.Break | _: AstNode.Continue => hasBreak = true
             case _ =>

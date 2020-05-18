@@ -14,11 +14,11 @@ import errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 01/06/2016
-  * Updated by Tobias Kohn on 30/03/2020
+  * Updated by Tobias Kohn on 18/05/2020
   */
 class TokenBuffer(tokenSource: Seq[Token],
                   val textSource: CharSequence,
-                  val errorHandler: ErrorHandler = null) extends BufferedIterator[Token] {
+                  val errorHandler: ErrorHandler = null) extends scala.collection.BufferedIterator[Token] {
 
   import TokenType.getStringDistance
 
@@ -30,8 +30,6 @@ class TokenBuffer(tokenSource: Seq[Token],
   def hasNext: Boolean = index < source.length
 
   def remaining: Int = source.length - index
-
-  override def nonEmpty: Boolean = hasNext
 
   def head: Token =
     if (index < source.length)
@@ -394,7 +392,7 @@ class TokenBuffer(tokenSource: Seq[Token],
     if (token != null) {
       val newSource = collection.mutable.ArrayBuffer[Token](source: _*)
       newSource.insert(index + idx, token)
-      source = newSource
+      source = newSource.toSeq
     } else
       throw new NullPointerException()
 
@@ -402,7 +400,7 @@ class TokenBuffer(tokenSource: Seq[Token],
     if (index < source.length) {
       val newSource = collection.mutable.ArrayBuffer[Token](source: _*)
       newSource(index) = token
-      source = newSource
+      source = newSource.toSeq
     } else
       insertToken(token)
 
@@ -426,7 +424,7 @@ class TokenBuffer(tokenSource: Seq[Token],
   def skipToken(): Unit = {
     val newSource = collection.mutable.ArrayBuffer[Token](source: _*)
     newSource.remove(index)
-    source = newSource
+    source = newSource.toSeq
   }
 
   def skipAll(): Unit = {
