@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 27/12/2020
   */
 object Parser {
 
@@ -1289,8 +1289,13 @@ class Parser(val source: CharSequence,
           return null
         }
       } else
+      if (tokens.hasType(TokenType.COLON))
+        null
+      else
         expressionParser.parseExprListAsTuple(tokens)
     target match {
+      case null =>
+        parserState.reportError(tokens.pos, ErrorCode.FOR_TARGET_NAME_REQUIRED)
       case _: AstNode.Name | _: AstNode.Tuple | _: AstNode.List | _: AstNode.Attribute |
            _: AstNode.Subscript =>
       case _: AstNode.Value | _: AstNode.StringValue =>

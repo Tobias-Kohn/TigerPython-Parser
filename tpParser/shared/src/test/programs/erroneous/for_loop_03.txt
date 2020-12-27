@@ -1,0 +1,4 @@
+# 1
+# FOR_TARGET_NAME_REQUIRED
+for:
+    print(123)
