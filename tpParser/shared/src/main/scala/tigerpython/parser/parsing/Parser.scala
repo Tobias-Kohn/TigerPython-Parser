@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 27/12/2020
+  * Updated by Tobias Kohn on 22/08/2021
   */
 object Parser {
 
@@ -533,7 +533,8 @@ class Parser(val source: CharSequence,
                     case "private" | "protected" =>
                       parserState.reportError(line.startPos, ErrorCode.FOREIGN_PRIVATE, headName)
                     case "async" =>
-                      parserState.reportError(line.startPos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
+                      if (!parserState.ignoreVersionErrors)
+                        parserState.reportError(line.startPos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
                     case _ =>
                       parserState.reportError(line.startPos, ErrorCode.EXTRA_TOKEN, headName)
                   }
@@ -1068,7 +1069,8 @@ class Parser(val source: CharSequence,
         Array()
       else if (parserState.pythonVersion < 3) {
         if (tokens.hasName("metaclass") && tokens.peekType(1) == TokenType.ASSIGN) {
-          parserState.reportError(tokens, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
+          if (!parserState.ignoreVersionErrors)
+            parserState.reportError(tokens, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
           tokens.skipToken()
           tokens.skipToken()
         }

@@ -18,7 +18,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 22/08/2021
   */
 case class ParserState(source: CharSequence,
                        pythonVersion: Int,
@@ -28,6 +28,7 @@ case class ParserState(source: CharSequence,
   var checkNames: Boolean = false                   //
   var evalMode: Boolean = false                     // Consider expressions to be complete statements
   var flatFunctions: Boolean = false                // Reject functions defined in other functions' bodies
+  var ignoreVersionErrors: Boolean = false          // Ignore errors that stem from Python 2/3 incompatibilities
   var newDivision: Boolean = true                   // Use the division from Python 3 even in Python 2
   var printStatement: Boolean = pythonVersion <= 2  // 'print' is a statement in Python 2, not a function
   var protectFunctions: Boolean = false             // Reject assignments to functions and protect built-ins

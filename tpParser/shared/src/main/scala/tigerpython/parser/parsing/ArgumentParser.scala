@@ -20,7 +20,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 19/05/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 22/08/2021
   */
 class ArgumentParser(val parser: Parser, val parserState: ParserState) {
 
@@ -97,7 +97,7 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             if (kwArg != null && kwArgErrorPos < 0)
               kwArgErrorPos = pos
           case TupleParameter(pos, tuple) =>
-            if (parserState.pythonVersion < 3) {
+            if (parserState.pythonVersion < 3 || parserState.ignoreVersionErrors) {
               for (n <- tuple.names)
                 checkName(pos, n.name)
               args += AstNode.TupleParameter(pos, tuple)
@@ -111,7 +111,7 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             } else
               parserState.reportError(pos, ErrorCode.PYTHON_2_FEATURE_NOT_AVAILABLE)
           case DefaultTupleParameter(pos, tuple, value) =>
-            if (parserState.pythonVersion < 3) {
+            if (parserState.pythonVersion < 3 || parserState.ignoreVersionErrors) {
               for (n <- tuple.names)
                 checkName(pos, n.name)
               args += AstNode.TupleParameter(pos, tuple)
@@ -121,7 +121,7 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             } else
               parserState.reportError(pos, ErrorCode.PYTHON_2_FEATURE_NOT_AVAILABLE)
           case StarParameter(pos) =>
-            if (parserState.pythonVersion < 3)
+            if (parserState.pythonVersion < 3 && !parserState.ignoreVersionErrors)
               parserState.reportError(pos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
             if (varArg != null)
               parserState.reportError(pos, ErrorCode.MULTIPLE_VAR_PARAMS)
@@ -241,7 +241,7 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
 
   private def parseParamAnnotation(tokens: TokenBuffer): AstNode.Expression =
     if (tokens.matchType(TokenType.COLON)) {
-      if (parserState.pythonVersion < 3)
+      if (parserState.pythonVersion < 3 && !parserState.ignoreVersionErrors)
         parserState.reportError(tokens.prevPos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
       expressionParser.parseExpr(tokens)
     } else

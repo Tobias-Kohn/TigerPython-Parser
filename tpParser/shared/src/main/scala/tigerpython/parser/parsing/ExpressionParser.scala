@@ -18,7 +18,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 22/08/2021
   */
 object ExpressionParser {
 
@@ -769,7 +769,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
     val startPos = tokens.pos
     val (test, isDict) =
       if (tokens.matchType(TokenType.DOUBLE_STAR)) {
-        if (parserState.pythonVersion < 3)
+        if (parserState.pythonVersion < 3 && !parserState.ignoreVersionErrors)
           parserState.reportError(startPos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
         (AstNode.Value(tokens.prevPos, ValueType.NONE), true)
       } else {
@@ -798,7 +798,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           tokens.requireType(TokenType.COMMA)
           val pairPos = tokens.pos
           if (tokens.matchType(TokenType.DOUBLE_STAR)) {
-            if (parserState.pythonVersion < 3)
+            if (parserState.pythonVersion < 3 && !parserState.ignoreVersionErrors)
               parserState.reportError(pairPos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
             if (firstOfExpr(tokens)) {
               keys += AstNode.Value(tokens.prevPos, ValueType.NONE)

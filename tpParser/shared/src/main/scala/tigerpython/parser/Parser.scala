@@ -21,7 +21,7 @@ import scala.annotation.tailrec
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/06/2016
-  * Updated by Tobias Kohn on 01/03/2020
+  * Updated by Tobias Kohn on 22/08/2021
   */
 class Parser(val source: CharSequence,
              val pythonVersion: Int = 3) {
@@ -33,6 +33,7 @@ class Parser(val source: CharSequence,
   def allowPrintAsName: Boolean = parser.parserState.allowPrintAsName
   def checkNames: Boolean = parser.parserState.checkNames
   def flatFunctions: Boolean = parser.parserState.flatFunctions
+  def ignoreVersionErrors: Boolean = parser.parserState.ignoreVersionErrors
   def newDivision: Boolean = parser.parserState.newDivision
   def printStatement: Boolean = parser.parserState.printStatement
   def protectFunctions: Boolean = parser.parserState.protectFunctions
@@ -45,6 +46,7 @@ class Parser(val source: CharSequence,
   def allowPrintAsName_=(value: Boolean): Unit = { parser.parserState.allowPrintAsName = value }
   def checkNames_=(value: Boolean): Unit = { parser.parserState.checkNames = value }
   def flatFunctions_=(value: Boolean): Unit = { parser.parserState.flatFunctions = value }
+  def ignoreVersionErrors_=(value: Boolean): Unit = { parser.parserState.ignoreVersionErrors = value }
   def newDivision_=(value: Boolean): Unit = { parser.parserState.newDivision = value}
   def printStatement_=(value: Boolean): Unit = { parser.parserState.printStatement = value}
   def protectFunctions_=(value: Boolean): Unit = { parser.parserState.protectFunctions = value }
