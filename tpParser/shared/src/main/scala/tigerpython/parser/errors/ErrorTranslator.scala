@@ -79,6 +79,18 @@ object ErrorTranslator {
         case "en" =>
           errormessages.EnglishMessages.setMessage(code, msg)
           true
+        case "fr" =>
+          errormessages.FrenchMessages.setMessage(code, msg)
+          true
+        case "nl" =>
+          errormessages.DutchMessages.setMessage(code, msg)
+          true
+        case "it" =>
+          errormessages.ItalianMessages.setMessage(code, msg)
+          true
+        case "ru" =>
+          errormessages.RussianMessages.setMessage(code, msg)
+          true
         case _ =>
           false
       }
