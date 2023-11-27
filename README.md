@@ -1,8 +1,10 @@
 # Python-Error-Messages
 
 This project provides enhanced error messages for Python.  It compiles to a JavaScript-library that can readily be
-imported in a web page and used together with, e.g. [Skulpt](http://skulpt.org/).  The library only checks a Python
-program for syntax errors and is primarily aimed at novice programmers and students.
+imported in a web page and used together with, e.g. [Skulpt](http://skulpt.org/), 
+[Pyodide](https://pyodide.org/en/stable/) or any other Python-interpreter, really (however, note that its main
+support is for Python until 3.6 and selected features from 3.7+ – see below).  The library only checks a Python program 
+for syntax errors and is primarily aimed at novice programmers and students.
 
 It has grown out of a [PhD thesis by Tobias Kohn](https://tobiaskohn.ch/index.php/research/research-tigerjython/) and 
 is part of the [TigerJython programming envrionment](http://jython.tobiaskohn.ch/).  There is also an 
@@ -90,19 +92,35 @@ Available options:
   `setErrorMessage("MISSING_SPACE", "Missing whitespace.")`
 
 
+## Supported Python Versions
+
+The parser was originally written so support Python 2.7 and Python 3.6.  With Python 3.9, the grammar has significantly
+changed (including the AST nodes), as the old LL(1)-parser was replaced by a Pegen-parser.  The structure of this 
+parser and the generated AST therefore deviates quite a bit from the ones used in Python 3.9+.  Nonetheless, we try to
+support new syntactic elements or changes to the syntax, but cannot guarantee full compatibility.  Concerning newer
+features, the current state is as follows:
+
+- Assignment expressions (aka the 'Walrus' operator `:=`) are supported and will generate errors when the assignment
+  expression is used as a statement, if the target is anything other than a name or if they are chained;
+- f-Strings are partially supported in that the parser will accept f-strings, but not inspect them any further.  That
+  is, you can use `f"x = {x}"`, but the parser will not complain about errors such as `f"x = {x"` or `f"x = {x +}"`;
+- Positional only-arguments are, likewise, accepted through the slash in the arguments list.  However, this is currently
+  not reflected in the AST and no further checks are performed.
+
+
 ## Compilation
 
 The entire project is written in [Scala 2.12](https://scala-lang.org/) / [Scala.js](http://www.scala-js.org/) and uses
 [sbt](https://www.scala-sbt.org/).
 
-When `sbt` is installed, go the the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
+When `sbt` is installed, go to the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
 project (`scala.js` supports two compilation modes: fast compilation during development and optimised compilation for
 production code).  The output (JavaScript-files) can then be found in `./tpParser/js/target/scala-2.12/`.
 
 The JS-linker was previsouly configured to output a
 [JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).  The line responsible
 for this is in [build.sbt](build.sbt): `scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }`.  Remove
-the comments on this line in order to get a an ES module instead of classic JavaScript file (however, `sbt` currently 
+the comments on this line in order to get an ES module instead of classic JavaScript file (however, `sbt` currently 
 crashes because of an `export` vs. `module.export` error). 
 
 

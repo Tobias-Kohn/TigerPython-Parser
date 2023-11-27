@@ -1,0 +1,9 @@
+# 3
+# INVALID_EXPR_ASSIGN_TARGET
+def spam(lst):
+    i = 1
+    while (lst[0] := (i, lst[i]))[1] > 0:
+         i += 1
+    return lst[0]
+
+spam([0, 4, 6, 2, -1, 8, 9])

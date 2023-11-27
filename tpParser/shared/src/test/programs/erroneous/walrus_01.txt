@@ -1,0 +1,5 @@
+# 2
+# DOUBLE_WALRUS
+x = 12
+if a := b := x > 0:
+    print(a, '/', b)

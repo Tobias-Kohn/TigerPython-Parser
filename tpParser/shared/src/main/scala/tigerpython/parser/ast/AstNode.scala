@@ -22,7 +22,7 @@ import scala.annotation.tailrec
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 03/03/2020
+  * Updated by Tobias Kohn on 27/11/2023
   */
 abstract class AstNode {
   def pos: Int
@@ -623,6 +623,10 @@ object AstNode {
   case class ListComp(pos: Int, endPos: Int, elements: Expression, generators: Array[Comprehension])
     extends Expression(AstNodeKind.LIST_COMP) with Span {
     override def toString: String = "ListComp(%s, %s)".format(elements.toString, generators.mkString(", "))
+  }
+
+  case class NamedExpr(pos: Int, target: Name, value: Expression) extends Expression(AstNodeKind.NAMED_EXPR) {
+    override def toString: String = "Named(%s := %s)".format(target.toString, value.toString)
   }
 
   case class Set(pos: Int, elements: Array[Expression]) extends SequenceExpression(AstNodeKind.SET) {

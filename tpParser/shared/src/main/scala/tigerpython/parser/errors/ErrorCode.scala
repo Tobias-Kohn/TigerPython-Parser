@@ -23,11 +23,16 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/05/2016
-  * Updated by Tobias Kohn on 18/01/2020
+  * Updated by Tobias Kohn on 27/11/2023
   */
 object ErrorCode extends Enumeration {
 
   final val UNKNOWN = Value("UNKNOWN")
+
+  // Newly added error codes first
+  final val DOUBLE_WALRUS = Value("DOUBLE_WALRUS")
+  final val INVALID_EXPR_ASSIGN_TARGET = Value("INVALID_EXPR_ASSIGN_TARGET")
+  final val WALRUS_AS_STATEMENT = Value("WALRUS_AS_STATEMENT")
 
   final val AND_CONNECTS_CMP_NOT_VARS = Value("AND_CONNECTS_CMP_NOT_VARS")
   final val ARG_AFTER_VARARGS = Value("ARG_AFTER_VARARGS")

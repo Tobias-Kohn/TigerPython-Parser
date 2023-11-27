@@ -10,7 +10,7 @@ package parsing
 
 import ast._
 import lexer.{Lexer, Token, TokenBuffer, TokenType}
-import ast.AstNode.ExprStatement
+import ast.AstNode.{ExprStatement, NamedExpr}
 import scopes.BuiltinNames
 import tigerpython.parser.errors.{ErrorCode, ErrorHandler}
 
@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 22/08/2021
+  * Updated by Tobias Kohn on 27/11/2023
   */
 object Parser {
 
@@ -1679,6 +1679,12 @@ class Parser(val source: CharSequence,
     val expr = expressionParser.parseTestListAsTuple(tokens, insertComma = false)
     if (expr == null)
       return null
+    expr match {
+      case NamedExpr(pos, target, value) =>
+        parserState.reportError(tokens, ErrorCode.WALRUS_AS_STATEMENT)
+        return AstNode.Assignment(pos, Array(target), value)
+      case _ =>
+    }
     val startPos = expr.pos
     if (tokens.hasNext)
       tokens.head.tokenType match {

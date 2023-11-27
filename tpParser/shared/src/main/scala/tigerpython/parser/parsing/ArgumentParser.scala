@@ -20,7 +20,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 19/05/2016
-  * Updated by Tobias Kohn on 22/08/2021
+  * Updated by Tobias Kohn on 27/11/2023
   */
 class ArgumentParser(val parser: Parser, val parserState: ParserState) {
 
@@ -197,6 +197,10 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             TupleParameter(pos, tuple)
         matchComa(tokens)
         result :: parseParameters(tokens, allowTypes)
+      case TokenType.DIV =>
+        tokens.next()
+        matchComa(tokens)
+        parseParameters(tokens, allowTypes)
       case _ =>
         val name = parseKeywordName(tokens)
         if (name == null) {

@@ -11,7 +11,7 @@ package tigerpython.parser.lexer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 16/05/2016
-  * Updated by Tobias Kohn on 23/09/2017
+  * Updated by Tobias Kohn on 27/11/2023
   */
 class TokenType(val category: Int, name: String) {
 
@@ -80,6 +80,7 @@ object TokenType {
   final val DOT = Value(TYPE_OPERATOR, ".")
   final val DOUBLE_STAR = Value(TYPE_OPERATOR, "**")
   final val ELLIPSIS = Value(TYPE_ANY, "...")
+  final val EXPR_ASSIGN = Value(TYPE_ASSIGNMENT, ":=")
   final val EQ = Value(TYPE_COMPARATOR, "==")
   final val GEQ = Value(TYPE_COMPARATOR, ">=")
   final val GREATER = Value(TYPE_COMPARATOR, ">")

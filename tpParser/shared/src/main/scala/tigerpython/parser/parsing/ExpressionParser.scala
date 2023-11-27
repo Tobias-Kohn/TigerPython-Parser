@@ -10,6 +10,7 @@ package parsing
 
 import ast.{AstNode, BinOp, UnOp, ValueType}
 import lexer.{Token, TokenBuffer, TokenType}
+import tigerpython.parser.ast.AstNode.NamedExpr
 import tigerpython.parser.errors.ErrorCode
 
 import scala.collection.mutable.ArrayBuffer
@@ -18,7 +19,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 22/08/2021
+  * Updated by Tobias Kohn on 27/11/2023
   */
 object ExpressionParser {
 
@@ -237,6 +238,10 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
     tokens.headType match {
       case null =>
         result
+      case TokenType.EXPR_ASSIGN =>
+        parserState.reportError(tokens, ErrorCode.INVALID_EXPR_ASSIGN_TARGET, result.toString)
+        tokens.next()
+        parseCmpTest(tokens)
       case TokenType.ASSIGN =>
         parserState.reportError(tokens, ErrorCode.DOUBLE_EQUAL_SIGN_EXPECTED)
         tokens.replaceToken(TokenType.EQ)
@@ -338,7 +343,18 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
   def parseTest(tokens: TokenBuffer): Expression =
     if (tokens.hasType(TokenType.LAMBDA))
       parseLambdaDef(tokens)
-    else if (((tokens.hasTypeSequence(TokenType.NAME, TokenType.NAME) && tokens.hasTokenOfType(1, TokenType.COLON)) ||
+    else if (tokens.hasTypeSequence(TokenType.NAME, TokenType.EXPR_ASSIGN)) {
+      val curIndex = tokens.getIndex
+      val name = parseName(tokens)
+      tokens.next()
+      val value = parseTest(tokens)
+      value match {
+        case expr: NamedExpr =>
+          parserState.reportError(tokens, ErrorCode.DOUBLE_WALRUS, name.name, expr.target.name)
+        case _ =>
+      }
+      NamedExpr(curIndex, name, value)
+    } else if (((tokens.hasTypeSequence(TokenType.NAME, TokenType.NAME) && tokens.hasTokenOfType(1, TokenType.COLON)) ||
       tokens.hasTypeSequence(TokenType.NAME, TokenType.COLON)) &&
       TokenType.isPossibleKeyword(tokens.head, TokenType.LAMBDA)) {
       parseLambdaDef(tokens)
@@ -737,6 +753,10 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
       tokens.replaceToken(TokenType.FOR)
       val c = parseComprehension(tokens)
       AstNode.ListComp(startPos, tokens.endPosOfList, test, c)
+    } else if (tokens.hasType(TokenType.EXPR_ASSIGN)) {
+      parserState.reportError(tokens, ErrorCode.INVALID_EXPR_ASSIGN_TARGET, test.toString)
+      tokens.next()
+      parseTest(tokens)
     } else if (tokens.hasNext) {
       val result = ArrayBuffer[Expression](test)
       while (tokens.hasNext && !tokens.isEndOfList) {

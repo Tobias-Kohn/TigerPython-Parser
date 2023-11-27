@@ -18,7 +18,7 @@ import scala.collection.mutable
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 27/11/2023
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,
@@ -201,8 +201,9 @@ class Lexer(val source: CharSequence,
             nextToken()
         case CatCodes.DELIMITER =>
           if (scanner(0) == ':' && scanner(1) == '=') {
-            parserState.reportError(scanner.pos, ErrorCode.FOREIGN_TOKEN, ":=", "=")
-            makeToken(2, TokenType.ASSIGN)
+            if (parserState.pythonVersion < 3)
+              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_TOKEN, ":=", "=")
+            makeToken(2, TokenType.EXPR_ASSIGN)
           } else
             makeToken(1, TokenType.fromString(scanner(0)))
         case CatCodes.DIGIT =>
@@ -369,6 +370,7 @@ class Lexer(val source: CharSequence,
             hasError = hasError || result != TokenType.STR
             result = TokenType.UNICODE
           case 'r' | 'R' =>
+          case 'f' | 'F' =>
           case _ =>
             hasError = true
         }
