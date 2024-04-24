@@ -6,7 +6,7 @@ package tigerpython.parser.ast
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 01/03/2020
-  * Updated by Tobias Kohn on 03/03/2020
+  * Updated by Tobias Kohn on 24/04/2024
   */
 object AstNodeKind extends Enumeration {
 
@@ -68,6 +68,10 @@ object AstNodeKind extends Enumeration {
   final val NAME = Value("Name")
   final val LIST = Value("List")
   final val TUPLE = Value("Tuple")
+
+  final val MATCH = Value("MATCH")
+  final val MATCH_CASE = Value("MATCH_CASE")
+  final val PATTERN = Value("PATTERN")
 
   final val SLICE = Value("Slice")
   final val EXT_SLICE = Value("ExtSlice")

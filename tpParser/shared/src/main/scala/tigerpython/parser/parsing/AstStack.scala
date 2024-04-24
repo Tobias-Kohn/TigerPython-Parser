@@ -123,6 +123,24 @@ class AstStack(parser: Parser) {
     //null
   }
 
+  def top: AstNode.Statement =
+    if (stmtStack.nonEmpty)
+      stmtStack.head.head
+    else
+      null
+
+  def isInClass: Boolean =
+    top match {
+      case _: AstNode.ClassDef => true
+      case _ => false
+    }
+
+  def isInFunction: Boolean =
+    top match {
+      case _: AstNode.FunctionDef => true
+      case _ => false
+    }
+
   /**
     * This method returns the ast as it currently is, even when the program has not been
     * completely parsed, yet.

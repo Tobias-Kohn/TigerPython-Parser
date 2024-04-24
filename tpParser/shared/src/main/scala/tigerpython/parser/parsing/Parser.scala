@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 24/04/2024
   */
 object Parser {
 
@@ -156,6 +156,7 @@ class Parser(val source: CharSequence,
   val expressionParser = new ExpressionParser(this, parserState)
   val argumentParser = new ArgumentParser(this, parserState)
   val extParserUtils = new ExtParserUtils(this, parserState)
+  val patternParser = new PatternParser(this, parserState)
 
   var future_print_import: Boolean = false
   private var allow_future_import: Boolean = true
@@ -421,6 +422,10 @@ class Parser(val source: CharSequence,
             Array(parseFor(line, followLines))
           case TokenType.REPEAT =>
             Array(parseRepeat(line))
+          case TokenType.MATCH =>
+            Array(parseMatch(line))
+          case TokenType.CASE if line.isInMatch =>
+            Array(parseCase(line))
           case TokenType.WITH =>
             Array(parseWith(line))
           case TokenType.TRY =>
@@ -476,7 +481,8 @@ class Parser(val source: CharSequence,
                       return parseStatements(line.recreate(newTokens.toArray))
                     case tt @ (TokenType.DEF | TokenType.CLASS |
                       TokenType.IF | TokenType.ELIF | TokenType.WHILE | TokenType.FOR |
-                      TokenType.ELSE | TokenType.TRY | TokenType.WITH | TokenType.REPEAT ) =>
+                      TokenType.ELSE | TokenType.TRY | TokenType.WITH | TokenType.REPEAT |
+                      TokenType.MATCH | TokenType.CASE) =>
                       if (headName.startsWith(tt.toString)) {
                         val ttLen = tt.toString.length
                         val rest = headName.drop(ttLen)
@@ -599,8 +605,13 @@ class Parser(val source: CharSequence,
                 }
               }
               result.toArray
-            } else
+            } else {
+              if (line.headTokenType == TokenType.MATCH || line.headTokenType == TokenType.CASE) {
+                println("MAKING HEAD TO NAME!")
+                line.makeHeadTokenName()
+              }
               parseSimpleStatement(line)
+            }
         }
       case _ =>
         Array()
@@ -970,6 +981,14 @@ class Parser(val source: CharSequence,
         case TokenType.YIELD =>
           val expr = expressionParser.parseYieldExpr(tokens)
           AstNode.ExprStatement(expr.pos, expr)
+        case TokenType.MATCH | TokenType.CASE | TokenType.REPEAT =>
+          tokens.replaceToken(TokenType.NAME)
+          parseExprStatement(tokens)
+        case TokenType.NAME if astStack.isInClass && tokens.peekType(1) == TokenType.COLON && tokens.peekType(2) == TokenType.NAME =>
+          val result = AstNode.ExprStatement(tokens.pos, expressionParser.parseName(tokens))
+          tokens.requireType(TokenType.COLON)
+          expressionParser.parseTest(tokens)    // We completely ignore the type
+          result
         case _ =>
           if (expressionParser.firstOfTest(tokens))
             parseExprStatement(tokens)
@@ -1018,6 +1037,19 @@ class Parser(val source: CharSequence,
     val result = body
     astStack.endSuite()
     result
+  }
+
+  protected def parseMatchBody(line: Line): Array[AstNode.MatchCase] = {
+    val suite = parseSuite(line.suite.iterator.buffered)
+    val result = collection.mutable.ArrayBuffer[AstNode.MatchCase]()
+    for (stmt <- suite.statements)
+      stmt match {
+        case c: AstNode.MatchCase =>
+          result += c
+        case _ =>
+          // TODO: Handle/Report error that there cannot be a non-case statement in a match
+      }
+    result.toArray
   }
 
   ///// COMPOUND STATEMENTS /////
@@ -1355,6 +1387,32 @@ class Parser(val source: CharSequence,
       parseBody(tokens, line, result)
       result
     }
+  }
+
+  protected def parseMatch(line: Line): Statement = {
+    parserState.setStatementType(TokenType.MATCH)
+    val tokens = line.tokenSource
+    val startPos = tokens.next().pos
+    val subject = expressionParser.parseTest(tokens)
+    tokens.requireType(TokenType.COLON)
+    val cases = parseMatchBody(line)
+    AstNode.Match(line.startPos, line.endPos, subject, cases)
+  }
+
+  protected def parseCase(line: Line): Statement = {
+    parserState.setStatementType(TokenType.CASE)
+    val tokens = line.tokenSource
+    val startPos = tokens.next().pos
+    val pattern = patternParser.parsePattern(tokens)
+    val guard =
+      if (tokens.hasType(TokenType.IF))
+        expressionParser.parseTest(tokens)
+      else
+        null
+    tokens.requireType(TokenType.COLON)
+    val result = AstNode.MatchCase(line.startPos, line.endPos, pattern, guard, null)
+    parseBody(tokens, line, result)
+    result
   }
 
   private def hasBreak(node: AstNode, returnOnly: Boolean): Boolean =

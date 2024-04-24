@@ -12,7 +12,7 @@ package lexer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 07/11/2019
+  * Updated by Tobias Kohn on 24/04/2024
   */
 case class Token(pos: Int, len: Int, tokenType: TokenType) {
   val endPos: Int = pos + len
@@ -33,6 +33,12 @@ object Token {
   def createNameToken(pos: Int, s: String): Token = {
     val result = Token(pos, s.length, TokenType.NAME)
     result.value = s
+    result
+  }
+
+  def createNameToken(srcToken: Token): Token = {
+    val result = new Token(srcToken.pos, srcToken.len, TokenType.NAME)
+    result.value = srcToken.getStringValue
     result
   }
 

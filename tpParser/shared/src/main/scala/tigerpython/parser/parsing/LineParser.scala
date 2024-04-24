@@ -15,7 +15,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 24/04/2024
   */
 private[parser] object LineParser {
   case class Line(indent: Int, endPos: Int, var tokens: Array[Token]) {
@@ -81,6 +81,8 @@ private[parser] object LineParser {
       if (tokens.length == 1)
         tokens.head.tokenType match {
           case TokenType.IF | TokenType.DEF | TokenType.WHILE | TokenType.REPEAT | TokenType.SEMICOLON =>
+            true
+          case TokenType.MATCH | TokenType.CASE =>
             true
           case _ =>
             false
@@ -234,6 +236,29 @@ class LineParser(val source: CharSequence,
             tokenSource.next()
             return nextLine()
           }
+        case TokenType.MATCH | TokenType.CASE if !parserState.patternMatching =>
+          result += Token.createNameToken(tokenSource.next())
+        case TokenType.REPEAT if !parserState.repeatStatement =>
+          result += Token.createNameToken(tokenSource.next())
+        case TokenType.MATCH =>
+          val token = tokenSource.next()
+          if (result.isEmpty && tokenSource.hasNext) {
+            if (tokenSource.head.tokenType.category == TokenType.TYPE_ASSIGNMENT)
+              result += Token.createNameToken(tokenSource.next())
+            else
+              result += token
+          } else
+            result += Token.createNameToken(tokenSource.next())
+        case TokenType.CASE =>
+          val token = tokenSource.next()
+          if (result.isEmpty)
+            result += token
+          else if (result.last.tokenType == TokenType.COLON) {
+            // TODO: Raise a syntax error as there is a missing newline here
+            result += token
+          }
+          else
+            result += Token.createNameToken(token)
         case _ =>
           result += tokenSource.next()
       }

@@ -11,7 +11,7 @@ package tigerpython.parser.lexer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 16/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 24/04/2024
   */
 class TokenType(val category: Int, name: String) {
 
@@ -26,7 +26,8 @@ class TokenType(val category: Int, name: String) {
 
   def isCompoundKeyword: Boolean =
     isOneOf(TokenType.IF, TokenType.WHILE, TokenType.FOR, TokenType.ELIF, TokenType.REPEAT,
-      TokenType.DEF, TokenType.CLASS, TokenType.TRY, TokenType.WITH)
+      TokenType.DEF, TokenType.CLASS, TokenType.TRY, TokenType.WITH,
+      TokenType.MATCH, TokenType.CASE)
 
   override def toString: String = name
 }
@@ -161,6 +162,9 @@ object TokenType {
   final val WHILE = Value(TYPE_KEYWORD, "while")
   final val WITH = Value(TYPE_KEYWORD, "with")
   final val YIELD = Value(TYPE_KEYWORD, "yield")
+
+  final val MATCH = Value(TYPE_KEYWORD, "match")
+  final val CASE = Value(TYPE_KEYWORD, "case")
 
   final val NOT_IN = Value(TYPE_COMPARATOR, "not in")
   final val IS_NOT = Value(TYPE_COMPARATOR, "is not")

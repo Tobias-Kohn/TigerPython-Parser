@@ -15,7 +15,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 18/05/2020
+  * Updated by Tobias Kohn on 24/04/2024
   */
 private[parser] object PreParser {
 
@@ -63,6 +63,9 @@ private[parser] object PreParser {
       else
         false
 
+    def isInMatch: Boolean =
+      parentLine != null && parentLine.headTokenType == TokenType.MATCH
+
     protected def startsWithDot: Boolean = tokens.length >= 2 && tokens(0).tokenType == TokenType.DOT &&
       tokens(1).tokenType == TokenType.NAME
 
@@ -89,6 +92,10 @@ private[parser] object PreParser {
         tokens.head.tokenType
       else
         null
+
+    def makeHeadTokenName(): Unit =
+      if (tokens.nonEmpty)
+        tokens(0) = Token.createNameToken(tokens.head)
 
     def replaceToken(index: Int, newToken: Token): Boolean =
       if (0 <= index && index < tokens.length) {
@@ -141,7 +148,7 @@ private[parser] object PreParser {
     def isCompoundStatementHeader: Boolean =
       tokens.length > 2 && tokens.last.tokenType == TokenType.COLON &&
         tokens(0).tokenType.isOneOf(TokenType.DEF, TokenType.IF, TokenType.CLASS, TokenType.WHILE, TokenType.FOR,
-          TokenType.TRY, TokenType.REPEAT)
+          TokenType.TRY, TokenType.REPEAT, TokenType.MATCH, TokenType.CASE)
   }
 }
 private[parser]

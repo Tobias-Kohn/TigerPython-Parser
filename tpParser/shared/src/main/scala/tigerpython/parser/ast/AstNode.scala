@@ -22,7 +22,7 @@ import scala.annotation.tailrec
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 24/04/2024
   */
 abstract class AstNode {
   def pos: Int
@@ -184,7 +184,7 @@ object AstNode {
     def getName: String = name.name
     override def toString: String =
       "%sClassDef(%s, (%s), body: %s, doc: %s)".format(getDecoratorString, name.toString, bases.mkString(", "),
-        body.toString, docString.filter(_ >= ' '))
+        if (body != null) body.toString else "<PASS>", docString.filter(_ >= ' '))
 
     def updateDocString(): Unit = {
       docString = extractDocString(body)
@@ -294,6 +294,46 @@ object AstNode {
         case "body" => body = value
       }
   }
+
+  // Pattern Matching
+
+  case class Match(pos: Int, endPos: Int, subject: Expression, var cases: Array[MatchCase])
+    extends Statement(AstNodeKind.MATCH) with Span
+
+  case class MatchCase(pos: Int, endPos: Int, pattern: Pattern, guard: Expression, var body: Statement)
+    extends Statement(AstNodeKind.MATCH_CASE) with Span with CompoundStatement {
+
+    def apply(key: String): Statement =
+      key match {
+        case "body" => body
+      }
+    def update(key: String, value: Statement): Unit =
+      key match {
+        case "body" => body = value
+      }
+  }
+
+  abstract class Pattern extends AstNode {
+    def isSingleName: Boolean = false
+    def isStringValue: Boolean = false
+    def kind: AstNodeKind.Value = AstNodeKind.PATTERN
+  }
+
+  case class MatchValue(value: Expression) extends Pattern() {
+    def pos: Int = value.pos
+  }
+  case class MatchSingleton(value: Value) extends Pattern {
+    def pos: Int = value.pos
+  }
+  case class MatchSequence(pos: Int, patterns: Array[Pattern]) extends Pattern
+  case class MatchMapping(pos: Int, keys: Array[Expression], patterns: Array[Pattern], rest: Name) extends Pattern
+  case class MatchClass(cls: Expression, patterns: Array[Pattern],
+                        keywords: Array[(Name, Pattern)]) extends Pattern {
+    def pos: Int = cls.pos
+  }
+  case class MatchStar(pos: Int, name: Name) extends Pattern
+  case class MatchAs(pos: Int, pattern: Pattern, name: Name) extends Pattern
+  case class MatchOr(pos: Int, patterns: Array[Pattern]) extends Pattern
 
   // Arguments
 

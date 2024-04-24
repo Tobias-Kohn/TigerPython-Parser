@@ -19,7 +19,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 24/04/2024
   */
 object ExpressionParser {
 
@@ -562,7 +562,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         } else
         if (parserState.allowPrintAsName && tokens.hasType(TokenType.PRINT, TokenType.NONE, TokenType.PASS,
           TokenType.AWAIT, TokenType.DEL, TokenType.EXEC, TokenType.GLOBAL, TokenType.IS, TokenType.REPEAT,
-          TokenType.FALSE, TokenType.TRUE)) {
+          TokenType.FALSE, TokenType.TRUE, TokenType.MATCH, TokenType.CASE)) {
           val token = tokens.next()
           val name = AstNode.Name(token.pos, token.value)
           parseTrailer(AstNode.Attribute(base.pos, tokens.prevEndPos, base, name), tokens)
