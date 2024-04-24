@@ -126,6 +126,12 @@ case class ParserState(source: CharSequence,
     tokenType
   }
 
+  def hasError: Boolean =
+    if (errorHandler != null)
+      errorHandler.hasError
+    else
+      false
+
   def reportError(pos: Int, code: ErrorCode.Value, params: AnyRef*): Null =
     reportError(pos, -1, code, params: _*)
 

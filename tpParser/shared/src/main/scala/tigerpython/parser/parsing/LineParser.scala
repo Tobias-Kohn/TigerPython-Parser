@@ -244,17 +244,21 @@ class LineParser(val source: CharSequence,
           val token = tokenSource.next()
           if (result.isEmpty && tokenSource.hasNext) {
             if (tokenSource.head.tokenType.category == TokenType.TYPE_ASSIGNMENT)
-              result += Token.createNameToken(tokenSource.next())
+              result += Token.createNameToken(token)
             else
               result += token
           } else
-            result += Token.createNameToken(tokenSource.next())
+            result += Token.createNameToken(token)
         case TokenType.CASE =>
           val token = tokenSource.next()
-          if (result.isEmpty)
-            result += token
-          else if (result.last.tokenType == TokenType.COLON) {
-            // TODO: Raise a syntax error as there is a missing newline here
+          if (result.isEmpty) {
+            if (tokenSource.hasNext && tokenSource.head.tokenType.category == TokenType.TYPE_ASSIGNMENT)
+              result += Token.createNameToken(token)
+            else
+              result += token
+          } else if (result.last.tokenType == TokenType.COLON) {
+            parserState.reportError(tokens, ErrorCode.MISSING_LINE_BREAK, "case")
+            // TODO: Correct the problem as well as possible
             result += token
           }
           else

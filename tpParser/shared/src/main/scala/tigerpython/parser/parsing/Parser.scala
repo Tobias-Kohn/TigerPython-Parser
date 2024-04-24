@@ -422,7 +422,7 @@ class Parser(val source: CharSequence,
             Array(parseFor(line, followLines))
           case TokenType.REPEAT =>
             Array(parseRepeat(line))
-          case TokenType.MATCH =>
+          case TokenType.MATCH if (line.hasSuite || line.hasColonAtEnd) =>
             Array(parseMatch(line))
           case TokenType.CASE if line.isInMatch =>
             Array(parseCase(line))
@@ -606,10 +606,8 @@ class Parser(val source: CharSequence,
               }
               result.toArray
             } else {
-              if (line.headTokenType == TokenType.MATCH || line.headTokenType == TokenType.CASE) {
-                println("MAKING HEAD TO NAME!")
+              if (line.headTokenType == TokenType.MATCH || line.headTokenType == TokenType.CASE)
                 line.makeHeadTokenName()
-              }
               parseSimpleStatement(line)
             }
         }
@@ -1039,18 +1037,22 @@ class Parser(val source: CharSequence,
     result
   }
 
-  protected def parseMatchBody(line: Line): Array[AstNode.MatchCase] = {
-    val suite = parseSuite(line.suite.iterator.buffered)
-    val result = collection.mutable.ArrayBuffer[AstNode.MatchCase]()
-    for (stmt <- suite.statements)
-      stmt match {
-        case c: AstNode.MatchCase =>
-          result += c
-        case _ =>
-          // TODO: Handle/Report error that there cannot be a non-case statement in a match
-      }
-    result.toArray
-  }
+  protected def parseMatchBody(line: Line): Array[AstNode.MatchCase] =
+    if (line.hasSuite) {
+      val suite = parseSuite(line.suite.iterator.buffered)
+      val result = collection.mutable.ArrayBuffer[AstNode.MatchCase]()
+      for (stmt <- suite.statements)
+        stmt match {
+          case c: AstNode.MatchCase =>
+            result += c
+          case _ =>
+            parserState.reportError(stmt.pos, ErrorCode.CASE_REQUIRED)
+        }
+      result.toArray
+    } else {
+      parserState.reportError(line.startPos, ErrorCode.MISSING_BODY)
+      Array()
+    }
 
   ///// COMPOUND STATEMENTS /////
 
@@ -1405,9 +1407,9 @@ class Parser(val source: CharSequence,
     val startPos = tokens.next().pos
     val pattern = patternParser.parsePattern(tokens)
     val guard =
-      if (tokens.hasType(TokenType.IF))
+      if (tokens.matchType(TokenType.IF)) {
         expressionParser.parseTest(tokens)
-      else
+      } else
         null
     tokens.requireType(TokenType.COLON)
     val result = AstNode.MatchCase(line.startPos, line.endPos, pattern, guard, null)

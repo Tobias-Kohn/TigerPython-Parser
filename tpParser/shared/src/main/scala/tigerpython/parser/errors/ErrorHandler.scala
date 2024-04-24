@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 30/03/2020
+  * Updated by Tobias Kohn on 24/04/2024
   */
 trait ErrorHandler {
 
@@ -34,6 +34,8 @@ trait ErrorHandler {
     }
 
   def getFirstError: Option[ExtErrorInfo] = None
+
+  def hasError: Boolean
 
   def hasErrorInRange(start: Int, end: Int): Boolean = false
 
@@ -55,6 +57,8 @@ object ErrorHandler {
     def apply(index: Int): ExtErrorInfo = errorList(index)
 
     def asString(index: Int): String = errorList(index).toString
+
+    def hasError: Boolean = errorList.nonEmpty
 
     override def hasErrorInRange(start: Int, end: Int): Boolean =
       errorList.exists(item => start <= item.position && item.position <= end)
@@ -126,7 +130,12 @@ object ErrorHandler {
     */
   object PrintErrorHandler extends ErrorHandler {
 
+    private var _hasError: Boolean = false
+
+    def hasError: Boolean = _hasError
+
     def reportError(pos: Int, line: Int, code: ErrorCode.Value, params: AnyRef*): Null = {
+      _hasError = true
       val message = code.toString.format(params.map(_.toString): _*)
       val s = if (pos >= 0)
         "ERROR[%d]: %s".format(pos, message)
@@ -145,6 +154,8 @@ object ErrorHandler {
     * errors.
     */
   object SilentErrorHandler extends ErrorHandler {
+
+    def hasError: Boolean = false
 
     def reportError(pos: Int, line: Int, code: ErrorCode.Value, params: AnyRef*): Null = null
 

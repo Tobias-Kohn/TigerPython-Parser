@@ -716,7 +716,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           parserState.reportError(token.pos, ErrorCode.EXTRA_RIGHT_BRACKET, token)
         case TokenType.SEMICOLON =>
           parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
-        case _ =>
+        case tt =>
           tokens.headType match {
             case TokenType.INT | TokenType.LONG | TokenType.FLOAT | TokenType.STR |
                  TokenType.COMPLEX | TokenType.UNICODE | TokenType.BYTEARRAY |

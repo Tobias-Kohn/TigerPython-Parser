@@ -23,7 +23,7 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 24/04/2024
   */
 object ErrorCode extends Enumeration {
 
@@ -47,6 +47,7 @@ object ErrorCode extends Enumeration {
   final val CANNOT_REDEFINE_NAME = Value("CANNOT_REDEFINE_NAME")
   final val CANNOT_TEST_TUPLE = Value("CANNOT_TEST_TUPLE")
   final val CANNOT_USE_KEYWORD_AS_NAME = Value("CANNOT_USE_KEYWORD_AS_NAME")
+  final val CASE_REQUIRED = Value("CASE_REQUIRED")
   final val CLASS_METHOD_WITHOUT_SELF = Value("CLASS_METHOD_WITHOUT_SELF")
   final val COLON_EXPECTED = Value("COLON_EXPECTED")
   final val CONDITION_CANNOT_BE_FULFILLED = Value("CONDITION_CANNOT_BE_FULFILLED")
@@ -113,6 +114,7 @@ object ErrorCode extends Enumeration {
   final val MISSING_EXPRESSION = Value("MISSING_EXPRESSION")
   final val MISSING_LEFT_BRACKET = Value("MISSING_LEFT_BRACKET")
   final val MISSING_LEFT_PARENTHESIS = Value("MISSING_LEFT_PARENTHESIS")
+  final val MISSING_LINE_BREAK = Value("MISSING_LINE_BREAK")
   final val MISSING_OPERATOR_OR_COMMA = Value("MISSING_OPERATOR_OR_COMMA")
   final val MISSING_PARENTHESES = Value("MISSING_PARENTHESES")
   final val MISSING_RIGHT_BRACKET = Value("MISSING_RIGHT_BRACKET")
