@@ -23,7 +23,7 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 26/04/2024
   */
 object ErrorCode extends Enumeration {
 
@@ -32,6 +32,7 @@ object ErrorCode extends Enumeration {
   // Newly added error codes first
   final val DOUBLE_WALRUS = Value("DOUBLE_WALRUS")
   final val INVALID_EXPR_ASSIGN_TARGET = Value("INVALID_EXPR_ASSIGN_TARGET")
+  final val USE_DOT_NOT_COMMA = Value("USE_DOT_NOT_COMMA")
   final val WALRUS_AS_STATEMENT = Value("WALRUS_AS_STATEMENT")
 
   final val AND_CONNECTS_CMP_NOT_VARS = Value("AND_CONNECTS_CMP_NOT_VARS")

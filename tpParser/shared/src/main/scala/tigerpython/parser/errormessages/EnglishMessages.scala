@@ -14,7 +14,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 30/06/2016
-  * Updated by Tobias Kohn on 18/01/2020
+  * Updated by Tobias Kohn on 26/04/2024
   */
 object EnglishMessages extends ModifiableErrorMessages {
   import tigerpython.parser.errors.ErrorCode._
@@ -137,6 +137,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case UNTERMINATED_STRING => "This string is unterminated."
       case USE_AND_NOT_COMMA => "Multiple comparisons are combined by 'and' or 'or' instead of a comma."
       case USE_COMMA_NOT_AND => "Multiple values are separated by comma instead of 'and'."
+      case USE_DOT_NOT_COMMA => "Write numbers with a dot, not with a comma."
       case USE_ELIF_INSTEAD_OF_ELSE => "Use 'elif' instead of 'else'."
       case USE_ELIF_INSTEAD_OF_ELSE_IF => "Use 'elif' instead of 'else if'."
       case USE_EQ_INSTEAD_OF_NEQ => "Use '== %s' instead of '!= %s'."

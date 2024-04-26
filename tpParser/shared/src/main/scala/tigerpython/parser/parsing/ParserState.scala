@@ -18,7 +18,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 26/04/2024
   */
 case class ParserState(source: CharSequence,
                        pythonVersion: Int,
@@ -41,6 +41,14 @@ case class ParserState(source: CharSequence,
   var warningsAsErrors: Boolean = true              // Treat all warnings as errors
 
   private[parsing] var currentStatementType: TokenType = _
+
+  // Depending on a country's locate settings, fractional numbers might typically be written using a comma instead of
+  // a dot (e.g., `4,5` instead of `4.5`).  The lexer collects the locations where this might be the case in this set,
+  // allowing for some testing further down the line.
+  private val tupleNumberLocations = collection.mutable.Set[Int]()
+
+  private[parser] def addTupleIsNumberLocation(pos: Int): Unit =
+    tupleNumberLocations += pos
 
   def copyFrom(source: ParserState): Unit = {
     evalMode = source.evalMode
@@ -88,6 +96,9 @@ case class ParserState(source: CharSequence,
       case _ =>
         TokenType.findOperator(op)
     }
+
+  def isTuplePossibleNumber(pos: Int): Boolean =
+    tupleNumberLocations.contains(pos)
 
   def lineFromPosition(position: Int): Int =
     if (0 <= position && position <= source.length()) {

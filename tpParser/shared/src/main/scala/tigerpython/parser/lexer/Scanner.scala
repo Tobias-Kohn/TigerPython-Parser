@@ -11,7 +11,7 @@ package tigerpython.parser.lexer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 03/10/2017
+  * Updated by Tobias Kohn on 26/04/2024
   */
 class Scanner(val source: CharSequence) {
 
@@ -61,6 +61,9 @@ class Scanner(val source: CharSequence) {
 
   def testChar(index: Int, chars: Char*): Boolean =
     chars.contains(_apply(pos + index))
+
+  def chatAt(absPos: Int): Char =
+    source.charAt(absPos)
 
   def consume(count: Int): Int = {
     val result = _pos
@@ -156,6 +159,30 @@ class Scanner(val source: CharSequence) {
     result.toString
   }
 
+  def getLastNonWhitespaceChar(startPos: Int): Char =
+    if (startPos <= source.length) {
+      var i = startPos - 1
+      while (i >= 0 && !(catCodes(source.charAt(i)) == CatCodes.WHITESPACE))
+        i -= 1
+      if (i >= 0)
+        source.charAt(i)
+      else
+        '\u0000'
+    } else
+      '\u0000'
+
+  def getNextNonWhitespaceChar(startPos: Int): Char =
+    if (startPos > 0) {
+      var i = startPos
+      while (i < source.length && !(catCodes(source.charAt(i)) == CatCodes.WHITESPACE))
+        i += 1
+      if (i < source.length())
+        source.charAt(i)
+      else
+        '\u0000'
+    } else
+      '\u0000'
+
   def prefixLength(p: Char=>Boolean, startIndex: Int = 0): Int = {
     val start = (pos + startIndex) max 0
     var i = start
@@ -189,6 +216,19 @@ class Scanner(val source: CharSequence) {
     var i = start
     while (i < source.length && isCatCode(catCodes(source.charAt(i))))
       i += 1
+    i - start
+  }
+
+  def prefixLengthWithUnderline(p: Char => Boolean, startIndex: Int = 0): Int = {
+    val start = (pos + startIndex) max 0
+    var i = start
+    while (i < source.length && p(source.charAt(i))) {
+      while (i < source.length && p(source.charAt(i))) {
+        i += 1
+      }
+      if (i + 1 < source.length && source.charAt(i) == '_' && p(source.charAt(i + 1)))
+        i += 1
+    }
     i - start
   }
 

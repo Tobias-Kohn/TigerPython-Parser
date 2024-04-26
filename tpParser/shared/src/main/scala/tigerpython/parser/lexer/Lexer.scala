@@ -18,7 +18,7 @@ import scala.collection.mutable
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 27/11/2023
+  * Updated by Tobias Kohn on 26/04/2024
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,
@@ -208,6 +208,13 @@ class Lexer(val source: CharSequence,
             makeToken(1, TokenType.fromString(scanner(0)))
         case CatCodes.DIGIT =>
           val result = readNumber()
+          if (result.tokenType == TokenType.INT && scanner(0) == ',' && scanner(1).isDigit) {
+            val ch1 = scanner.getLastNonWhitespaceChar(result.pos)
+            val ch2 = scanner.getNextNonWhitespaceChar(result.pos + scanner.prefixLengthWithUnderline(_.isDigit, 1))
+            if (ch1 != ',' && ch1 != '[' && ch2 != ',' && ch2 != ']' && !(ch1 == '(' && ch2 == ')') &&
+                  !(ch1 == '{' && ch2 == '}'))
+              parserState.addTupleIsNumberLocation(result.pos)
+          }
           if (result.tokenType == TokenType.INT && catCodes(scanner(0)) == CatCodes.ALPHA && scanner(1).isDigit) {
             parserState.reportError(scanner.pos, ErrorCode.MISSPELLED_NUMBER)
             scanner.consume(1)
@@ -323,11 +330,11 @@ class Lexer(val source: CharSequence,
       val len =
         scanner(1) match {
           case 'b' | 'B' =>
-            2 + scanner.prefixLength(c => c == '0' || c == '1', 2)
+            2 + scanner.prefixLengthWithUnderline(c => c == '0' || c == '1', 2)
           case 'o' | 'O' =>
-            2 + scanner.prefixLength(c => '0' <= c && c <= '7', 2)
+            2 + scanner.prefixLengthWithUnderline(c => '0' <= c && c <= '7', 2)
           case 'x' | 'X' =>
-            2 + scanner.prefixLength(c => CatCodes.isHexDigit(c), 2)
+            2 + scanner.prefixLengthWithUnderline(c => CatCodes.isHexDigit(c), 2)
           case _ =>
             1
         }
@@ -339,9 +346,9 @@ class Lexer(val source: CharSequence,
         makeToken(len, TokenType.INT)
     } else {
       var t_type = TokenType.INT
-      var len = scanner.prefixLength(_.isDigit)
+      var len = scanner.prefixLengthWithUnderline(_.isDigit)
       if (scanner(len) == '.') {
-        len += 1 + scanner.prefixLength(_.isDigit, len+1)
+        len += 1 + scanner.prefixLengthWithUnderline(_.isDigit, len+1)
         t_type = TokenType.FLOAT
       }
       if (scanner.isFloatExponent(len)) {

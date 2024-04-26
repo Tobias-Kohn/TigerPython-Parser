@@ -105,7 +105,10 @@ features, the current state is as follows:
 - f-Strings are partially supported in that the parser will accept f-strings, but not inspect them any further.  That
   is, you can use `f"x = {x}"`, but the parser will not complain about errors such as `f"x = {x"` or `f"x = {x +}"`;
 - Positional only-arguments are, likewise, accepted through the slash in the arguments list.  However, this is currently
-  not reflected in the AST and no further checks are performed.
+  not reflected in the AST and no further checks are performed;
+- Pattern matching is basically supported, although the patterns are currently parsed as expressions.  This one is a bit
+  tricky because of the subtle mechanisms at play for discerning whether `match` and `case` have to be considered
+  keywords or just normal identifiers.
 
 
 ## Compilation
