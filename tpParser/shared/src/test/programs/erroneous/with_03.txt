@@ -1,0 +1,6 @@
+# 3
+# UNEXPECTED_KEYWORD
+a = "test"
+print(a)
+with as:
+    pass

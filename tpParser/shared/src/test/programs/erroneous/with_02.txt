@@ -1,0 +1,6 @@
+# 3
+# NO_VIABLE_ALTERNATIVE
+a = "test"
+print(a)
+with a as:
+    pass
