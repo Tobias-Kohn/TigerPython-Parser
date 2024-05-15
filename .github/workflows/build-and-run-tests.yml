@@ -1,0 +1,19 @@
+name: Build and run tests
+on: [push,pull_request]
+jobs:
+  Build-And-Run-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Java and Scala
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17.0.11
+          java-package: jdk
+          architecture: x64
+      - name: Compile
+        run: sbt compile
+      - name: Run tests
+        run: sbt test
