@@ -1,7 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 val sharedSettings = Seq(
-  scalaVersion := "2.13.2",
+  scalaVersion := "2.13.14",
   name := "TigerPython Parser",
   version := "1.0",
   libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.8",

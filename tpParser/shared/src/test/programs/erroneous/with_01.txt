@@ -1,0 +1,6 @@
+# 3
+# EXTRA_TOKEN
+a = "test"
+print(a)
+with as b:
+    pass

@@ -1,4 +1,0 @@
-[warn] scalajs-compiler_2.12.8-0.6.29-sources.jar no longer exists at /home/tobias/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.8/0.6.29/scalajs-compiler_2.12.8-0.6.29-sources.jar
-[debug] "not up to date. inChanged = false, force = false
-[debug] Updating ProjectRef(uri("file:/home/tobias/Development/TigerPython-Parser/"), "tpParserJS")...
-[debug] Done updating ProjectRef(uri("file:/home/tobias/Development/TigerPython-Parser/"), "tpParserJS")

@@ -1504,17 +1504,21 @@ class Parser(val source: CharSequence,
   protected def _parseWith(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement =
     if (tokens.matchType(TokenType.WITH, TokenType.COMMA)) {
       val test = expressionParser.parseTest(tokens)
-      val asExpr =
-        if (tokens.matchType(TokenType.AS))
-          expressionParser.parseExpr(tokens)
+      if (test == null) {
+        null
+      } else {
+        val asExpr =
+          if (tokens.matchType(TokenType.AS))
+            expressionParser.parseExpr(tokens)
+          else
+            null
+        val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
+        if (tokens.matchType(TokenType.COLON))
+          parseBody(tokens, line, result)
         else
-          null
-      val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
-      if (tokens.matchType(TokenType.COLON))
-        parseBody(tokens, line, result)
-      else
-        result.body = _parseWith(tokens, line, isAsync)
-      result
+          result.body = _parseWith(tokens, line, isAsync)
+        result
+      }
     } else
       null
 
