@@ -1,0 +1,26 @@
+
+{
+  "name": "tigerpython-parser",
+  "version": "1.0.0",
+  "description": "Enhanced error recognition in Python ",
+  "main": "release/tigerpython-parser.mjs",
+  "types": "tpParser/js/types/index.d.ts",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "sbt test",
+    "build": "sbt makeRelease"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git"
+  },
+  "author": "Tobias Kohn",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Tobias-Kohn/TigerPython-Parser/issues"
+  },
+  "homepage": "https://github.com/Tobias-Kohn/TigerPython-Parser#readme",
+  "dependencies": {}
+}

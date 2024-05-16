@@ -1,7 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 val useScalaVersion = "2.13.14"
-val releaseVersion = "1.0"
+val releaseVersion = "1.0.0"
 
 val sharedSettings = Seq(
   scalaVersion := useScalaVersion,
@@ -64,4 +64,46 @@ makeRelease := {
   IO.copyFile(outputPlain, releasePlain)
   log.info(s"Copying ${outputModule} to ${releaseModule}...")
   IO.copyFile(outputModule, releaseModule)
+
+  // Regenerate the package.json and package-lock.json file:
+  val packageJsonString =
+    s"""
+       |{
+       |  "name": "tigerpython-parser",
+       |  "version": "${releaseVersion}",
+       |  "description": "Enhanced error recognition in Python ",
+       |  "main": "release/tigerpython-parser.mjs",
+       |  "types": "tpParser/js/types/index.d.ts",
+       |  "directories": {
+       |    "doc": "doc"
+       |  },
+       |  "scripts": {
+       |    "test": "sbt test",
+       |    "build": "sbt makeRelease"
+       |  },
+       |  "repository": {
+       |    "type": "git",
+       |    "url": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git"
+       |  },
+       |  "author": "Tobias Kohn",
+       |  "license": "MPL-2.0",
+       |  "bugs": {
+       |    "url": "https://github.com/Tobias-Kohn/TigerPython-Parser/issues"
+       |  },
+       |  "homepage": "https://github.com/Tobias-Kohn/TigerPython-Parser#readme",
+       |  "dependencies": {}
+       |}
+       |""".stripMargin
+  val packageLockJsonString =
+    s"""
+       |{
+       |  "name": "tigerpython-parser",
+       |  "version": "${releaseVersion}",
+       |  "lockfileVersion": 1
+       |}
+       |""".stripMargin
+
+  log.info("Regenerating package.json and package-lock.json")
+  java.nio.file.Files.writeString(new File("package.json").toPath, packageJsonString, java.nio.charset.StandardCharsets.UTF_8)
+  java.nio.file.Files.writeString(new File("package-lock.json").toPath, packageLockJsonString, java.nio.charset.StandardCharsets.UTF_8)
 }
