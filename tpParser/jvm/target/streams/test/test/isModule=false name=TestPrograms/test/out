@@ -1,5 +1,0 @@
-[0m[[0m[0minfo[0m] [0m[0m[32mTestPrograms:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test program 'for_loop_01.txt' with errors[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m- test program 'for_loop_02.txt' with errors *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  "MISSING_[COMMA]" did not equal "MISSING_[PARENTHESES]" (TestPrograms.scala:59)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test correct programs[0m[0m
