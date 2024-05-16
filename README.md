@@ -18,11 +18,17 @@ messages are directly inlined into the code.
 
 ## Usage
 
+### NPM Package
+
+You can point to this Github repository as an NPM dependency.  Add the following line to your `"dependencies"` in your `package.json`:
+
+    "tigerpython-parser": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git",
+
 ### ES Module
 
 To be used in larger projects, the parser can be compiled to a 
 [JavaScript ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
-The file can be found in [release/tigerpython-parser.mjs](release/tigerpython-parser.mjs), along a standalone
+The file can be found in [release/tigerpython-parser.mjs](release/tigerpython-parser.mjs), along with a standalone
 JavaScript file (see below).  The accompanying [index.html](release/index.html) demonstrates how the module could
 be loaded and used in a simple HTML.  However, make sure your server delivers the module with MIME type
 `text/javascript`.
