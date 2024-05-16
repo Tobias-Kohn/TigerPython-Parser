@@ -41,6 +41,9 @@ lazy val tpParserModuleJS =
     )
     .jvmSettings()
 
+// Disable tests in the module version because it complains about exporting:
+tpParserModuleJS.js / test := {}
+
 // Define the custom task
 lazy val makeRelease = taskKey[Unit]("Run fullOptJS on both configurations and copy the output files to the release directory")
 
