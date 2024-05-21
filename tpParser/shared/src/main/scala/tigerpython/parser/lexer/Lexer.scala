@@ -13,12 +13,13 @@ import parsing.ParserState
 import tigerpython.parser.errors.ErrorCode
 
 import scala.collection.mutable
+import scala.util.control.Breaks._
 
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 26/04/2024
+  * Updated by Tobias Kohn on 20/05/2024
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,
@@ -389,8 +390,93 @@ class Lexer(val source: CharSequence,
     } else
       TokenType.STR
 
+  private def isFString(current: Int): Boolean = {
+    var i = current - 1
+    while (i >= 0 && scanner(i).isLetter)
+      scanner(i) match {
+        case 'f' | 'F' =>
+          return true
+        case _ =>
+          i -= 1
+      }
+    false
+  }
+
+  /**
+   * The first iteration of FStrings was no problem for the lexer because we could just pretend to not know about them
+   * and get away with the existing rules.  However, PEP 701 introduced FStrings that could be nested to an arbitrary
+   * depth, where, e.g., `f"{"X"}"` is a legal string (actually, it is just `"X"`).  Note the nested quotation marks,
+   * which defy existing rules.
+   *
+   * With the two functions `readFString` and `readFStringExpr` we provide a simple mutually recursive pair of functions
+   * for reading such FStrings.  The FString itself is still treated as a single token and we do not actually tokenise
+   * the embedded expressions.
+   *
+   * @see  https://peps.python.org/pep-0701/
+   */
+  protected def readFStringExpr(current: Int): Int =
+    if (scanner(current) == '{' && scanner(current+1) != '{') {
+      var i = current + 1
+      var level = 1
+      while (level > 0)
+        scanner(i) match {
+          case '{' =>
+            level += 1
+            i += 1
+          case '}' =>
+            level -= 1
+            i += 1
+          case delim @ ('\'' | '\"') =>
+            i = readFString(delim, i)
+          case '\u0000' =>
+            return i
+          case _ =>
+            i += 1
+        }
+      i
+    } else
+      current + 1
+
+  protected def readFString(delimiter: Char, current: Int): Int =
+    if (scanner.isTripleChar(current)) {
+      val isFStr = isFString(current)
+      var i = current + 3
+      while (true)
+        scanner(i) match {
+          case `delimiter` if scanner.isTripleChar(i) =>
+            return i + 3
+          case '\u0000' =>
+            return i
+          case '\\' =>
+            i += 2
+          case '{' if isFStr =>
+            i = readFStringExpr(i)
+          case _ =>
+            i += 1
+        }
+      i
+    } else {
+      val isFStr = isFString(current)
+      var i = current + 1
+      while (true)
+        scanner(i) match {
+          case `delimiter` =>
+            return i + 1
+          case '\u0000' | '\n' | '\r' =>
+            return i
+          case '\\' =>
+            i += 2
+          case '{' if isFStr =>
+            i = readFStringExpr(i)
+          case _ =>
+            i += 1
+        }
+      i
+    }
+
   protected def readString(prefixLen: Int): Token =
     if (scanner.isTripleChar(prefixLen)) {
+      val isFStr = isFString(prefixLen)
       val delimiter = scanner(prefixLen)
       var i = prefixLen+3
       while ({
@@ -403,6 +489,9 @@ class Lexer(val source: CharSequence,
           case `delimiter` if scanner.isTripleChar(i) =>
             i += 3
             false
+          case '{' if isFStr =>
+            i = readFStringExpr(i) - 1
+            true
           case _ =>
             true
         }
@@ -412,6 +501,7 @@ class Lexer(val source: CharSequence,
         parserState.reportError(scanner.pos, ErrorCode.UNTERMINATED_STRING)
       makeToken(i, getTokenTypeFromPrefix(prefixLen))
     } else {
+      val isFStr = isFString(prefixLen)
       val delimiter = scanner(prefixLen)
       var i = prefixLen+1
       while ({
@@ -426,6 +516,9 @@ class Lexer(val source: CharSequence,
               i += 1
             true
           case '\t' =>
+            true
+          case '{' if isFStr =>
+            i = readFStringExpr(i) - 1
             true
           case c if c < ' ' =>
             false
