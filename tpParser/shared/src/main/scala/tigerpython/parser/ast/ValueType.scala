@@ -7,11 +7,13 @@
  */
 package tigerpython.parser.ast
 
+import tigerpython.parser.lexer.TokenType
+
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 12/06/2016
-  * Updated by Tobias Kohn on 15/09/2017
+  * Updated by Tobias Kohn on 22/05/2024
   */
 object ValueType extends Enumeration {
   final val COMPLEX = Value("complex")
@@ -20,4 +22,13 @@ object ValueType extends Enumeration {
   final val NONE = Value("none")
   final val BYTE_ARRAY = Value("bytearray")
   final val UNKNOWN = Value("<???>")
+
+  def fromTokenType(tokenType: TokenType): ValueType.Value =
+    tokenType match {
+      case TokenType.INT => INTEGER
+      case TokenType.FLOAT => FLOAT
+      case TokenType.NONE => NONE
+      case TokenType.COMPLEX => COMPLEX
+      case _ => UNKNOWN
+    }
 }

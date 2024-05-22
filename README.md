@@ -20,7 +20,7 @@ messages are directly inlined into the code.
 
 ### NPM Package
 
-You can point to this Github repository as an NPM dependency.  Add the following line to your `"dependencies"` in your `package.json`:
+You can point to this GitHub repository as an NPM dependency.  Add the following line to your `"dependencies"` in your `package.json`:
 
     "tigerpython-parser": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git",
 
@@ -108,13 +108,13 @@ features, the current state is as follows:
 
 - Assignment expressions (aka the 'Walrus' operator `:=`) are supported and will generate errors when the assignment
   expression is used as a statement, if the target is anything other than a name or if they are chained;
-- f-Strings are partially supported in that the parser will accept f-strings, but not inspect them any further.  That
-  is, you can use `f"x = {x}"`, but the parser will not complain about errors such as `f"x = {x"` or `f"x = {x +}"`;
+- f-Strings are partially supported in that the parser will accept f-strings (even nested ones according to PEP 701), 
+  but it cannot yet handle errors that end in unterminated strings.  At the moment, it will just treat the entire
+  string literal as a single token;
 - Positional only-arguments are, likewise, accepted through the slash in the arguments list.  However, this is currently
   not reflected in the AST and no further checks are performed;
-- Pattern matching is basically supported, although the patterns are currently parsed as expressions.  This one is a bit
-  tricky because of the subtle mechanisms at play for discerning whether `match` and `case` have to be considered
-  keywords or just normal identifiers.
+- Pattern matching is supported.  This one is a bit tricky because of the subtle mechanisms at play for discerning 
+  whether `match` and `case` have to be considered keywords or just normal identifiers.
 
 
 ## Compilation
@@ -135,8 +135,10 @@ crashes because of an `export` vs. `module.export` error).
 
 ## Contribution
 
-The entire parser was written by [Tobias Kohn](https://tobiaskohn.ch/).  The authors who contributed translations for 
-the error messages are noted in the [respective files](tpParser/shared/src/main/scala/tigerpython/parser/errormessages).
+The parser was initially written by [Tobias Kohn](https://tobiaskohn.ch/).  Further contributions by:
+- [Neil Brown](https://www.twistedsquare.com/)
+
+The authors who contributed translations for the error messages are noted in the [respective files](tpParser/shared/src/main/scala/tigerpython/parser/errormessages).
 
 Please let us know if you would like to add another language for error messages - we are more than happy to include 
 new languages.

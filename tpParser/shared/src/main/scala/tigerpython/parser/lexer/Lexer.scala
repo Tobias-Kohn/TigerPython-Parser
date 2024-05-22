@@ -19,7 +19,7 @@ import scala.util.control.Breaks._
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 20/05/2024
+  * Updated by Tobias Kohn on 21/05/2024
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,

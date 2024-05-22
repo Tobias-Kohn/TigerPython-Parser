@@ -7,6 +7,8 @@
  */
 package tigerpython.parser.ast
 
+import tigerpython.parser.lexer.Token
+
 import scala.annotation.tailrec
 
 /**
@@ -22,7 +24,7 @@ import scala.annotation.tailrec
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 22/05/2024
   */
 abstract class AstNode {
   def pos: Int
@@ -322,7 +324,7 @@ object AstNode {
   case class MatchValue(value: Expression) extends Pattern() {
     def pos: Int = value.pos
   }
-  case class MatchSingleton(value: Value) extends Pattern {
+  case class MatchSingleton(value: Expression) extends Pattern {
     def pos: Int = value.pos
   }
   case class MatchSequence(pos: Int, patterns: Array[Pattern]) extends Pattern
@@ -441,6 +443,9 @@ object AstNode {
         name.toString
   }
   case class Ellipsis(pos: Int) extends Expression(AstNodeKind.CONSTANT)
+  object Name {
+    def apply(token: Token): Name = new Name(token.pos, token.value)
+  }
   case class Name(pos: Int, name: String) extends Expression(AstNodeKind.NAME) with Span with ContextExpression {
     var extExprContext: ExtExprContext.Value = ExtExprContext.PLAIN
     def endPos: Int = pos + name.length
@@ -459,6 +464,13 @@ object AstNode {
   case class StringValue(pos: Int, endPos: Int, value: String, isUnicode: Boolean)
     extends Expression(AstNodeKind.CONSTANT) with Span {
     override def toString: String = "\"%s\"".format(value.filter(_ >= ' '))
+  }
+  object Value {
+    def apply(token: Token): Value = {
+      val result = new Value(token.pos, ValueType.fromTokenType(token.tokenType))
+      result.value = token.value
+      result
+    }
   }
   case class Value(pos: Int, valueType: ValueType.Value) extends Expression(AstNodeKind.CONSTANT) {
     var value: String = _
