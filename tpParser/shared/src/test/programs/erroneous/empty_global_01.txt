@@ -1,0 +1,4 @@
+# 2
+# NAME_EXPECTED
+def func(arg=0.1):
+    global
