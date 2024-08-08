@@ -163,10 +163,12 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
 
   def parseNameList(tokens: TokenBuffer): Array[AstNode.Name] = {
     val result = ArrayBuffer[AstNode.Name]()
-    val startPos = tokens.head.pos
-    while (tokens.hasType(TokenType.NAME)) {
-      result += AstNode.Name(startPos, tokens.next().value)
-      tokens.matchType(TokenType.COMMA)
+    if (tokens.head != null) {
+      val startPos = tokens.head.pos
+      while (tokens.hasType(TokenType.NAME)) {
+        result += AstNode.Name(startPos, tokens.next().value)
+        tokens.matchType(TokenType.COMMA)
+      }
     }
     if (result.isEmpty)
       parserState.reportError(tokens, ErrorCode.NAME_EXPECTED)
