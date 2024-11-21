@@ -1,0 +1,6 @@
+# 1
+# TRY_INCOMPLETE_STRUCTURE
+try:
+    print("in try")
+else:
+    print("in else")

@@ -1457,16 +1457,22 @@ class Parser(val source: CharSequence,
     parseBody(tokens, line, result)
     parserState.rejectDeadCode = deadCode
     val handlers = ArrayBuffer[AstNode.ExceptHandler]()
+    var hasExceptOrFinally = false;
     for (fLine <- followLines)
       fLine.headTokenType match {
         case TokenType.ELSE =>
           parseBody(fLine, result, "else")
         case TokenType.EXCEPT =>
           handlers += parseExcept(fLine)
+          hasExceptOrFinally = true
         case TokenType.FINALLY =>
           parseBody(fLine, result, "final")
+          hasExceptOrFinally = true
         case _ =>
       }
+    // A try structure must contain at least an except or a finally
+    if(!hasExceptOrFinally)
+      parserState.reportError(tokens, ErrorCode.TRY_INCOMPLETE_STRUCTURE)
     result.handlers = handlers.toArray
     result
   }
