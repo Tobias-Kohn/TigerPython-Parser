@@ -26,6 +26,8 @@ import tigerpython.parser.errormessages
 trait ErrorTranslator {
   var language: String
 
+  val languages:Array[String] = Array("en", "de", "nl", "fr", "it", "ru")
+
   def messageToString(msg: ErrorCode.Value, params: Seq[AnyRef]): String
 
   def setMessage(code: ErrorCode.Value, msg: String): Boolean = false
@@ -40,7 +42,7 @@ object ErrorTranslator {
     def language: String = _lang
     def language_=(l: String): Unit =
       l.toLowerCase match {
-        case lang @ ("en" | "de" | "nl" | "fr" | "it" | "ru") =>
+        case lang if languages.contains(lang) =>
           _lang = lang
         case _ =>
       }
