@@ -121,6 +121,7 @@ object FrenchMessages extends ModifiableErrorMessages {
         case SUPERFLUOUS_COMPARISON => "Dans ce cas, la comparaison avec '%s' est superflue."
         case SWAPPED_TOKENS => "Il semble que ces tokens soient inversés: '%s' et '%s'."
         case TOKEN_REQUIRED => "Il faut un '%s' à la place de '%s'."
+        case TRY_INCOMPLETE_STRUCTURE => "Une structure 'try' doit être suivie d'au moins un bloc 'except' ou 'finally'."
         case TUPLE_NEEDS_PARENS => "Pour former un tuple, il faut mettre les valeurs entre parenthèses."
         case UNEXPECTED_END_OF_INPUT => "Fin de ligne inattendue."
         case UNEXPECTED_KEYWORD => "Le mot-clé '%s' est inattendu dans ce contexte."

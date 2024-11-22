@@ -1,7 +1,7 @@
 
 {
   "name": "tigerpython-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enhanced error recognition in Python ",
   "main": "release/tigerpython-parser.mjs",
   "types": "tpParser/js/types/index.d.ts",

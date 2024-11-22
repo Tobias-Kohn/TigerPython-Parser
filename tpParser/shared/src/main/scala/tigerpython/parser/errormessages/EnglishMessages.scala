@@ -128,6 +128,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case SUPERFLUOUS_COMPARISON => "The comparison to '%s' is superfluous here."
       case SWAPPED_TOKENS => "These symbols seem to be swapped: '%s' and '%s'."
       case TOKEN_REQUIRED => "'%s' required but '%s' found."
+      case TRY_INCOMPLETE_STRUCTURE => "A 'try' structure must be followed by at least one 'except' or 'finally' block'."
       case TWO_STATEMENTS => "You cannot put two statements on a single line."
       case TUPLE_NEEDS_PARENS => "This tuple needs to be enclosed in parentheses."
       case UNEXPECTED_END_OF_INPUT => "Unexpected end of line or input."
