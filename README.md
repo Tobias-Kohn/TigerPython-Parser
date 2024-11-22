@@ -86,7 +86,9 @@ Available options:
 - **`strictCode: bool`**  If set to `true`, the parser will be very strict and report issues that are usually not
   considered errors in Python, but typical student mistakes.
 - **`warningAsErrors: bool`**  If set to `true`, warnings are also reported as errors.
-- **`setLanguage(s: string)`**  Change the language for the error message, where the language `s` is a two-letter
+- **`getLanguage(): string`**  Get the two-letter language identifier for the error messages currently in use.
+- **`getLanguages(): string[]`**  Get the list two-letter language identifiers supported by TigerPython for the error messages.
+- **`setLanguage(s: string)`**  Change the language for the error messages, where the language `s` is a two-letter
   identifier like `"en"`, `"de"`, or `"fr"`.
 - **`setErrorMessage(code: string, msg: string)`**  Occasionally, you might want to change just a few of the error
   messages in a given language to adapt it to your system, but you probably do not want to recompile the entire parser

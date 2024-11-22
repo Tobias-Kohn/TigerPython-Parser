@@ -78,13 +78,13 @@ object TPyParser {
     * Returns all the available languages.
     */
   @JSExport
-  def getLanguages: Array[String] = errors.ErrorTranslator.errorTranslator.languages
+  def getLanguages(): Array[String] = errors.ErrorTranslator.errorTranslator.languages
 
   /**
     * Returns the currently set language in which error messages are printed.
     */
   @JSExport
-  def getLanguage: String = errors.ErrorTranslator.errorTranslator.language
+  def getLanguage(): String = errors.ErrorTranslator.errorTranslator.language
 
   /**
     * Sets the language in which error messages are printed.
