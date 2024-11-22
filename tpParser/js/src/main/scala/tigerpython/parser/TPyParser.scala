@@ -75,6 +75,12 @@ object TPyParser {
   var warningAsErrors: Boolean = true
 
   /**
+    * Returns all the available languages.
+    */
+  @JSExport
+  def getLanguages: Array[String] = errors.ErrorTranslator.errorTranslator.languages
+
+  /**
     * Returns the currently set language in which error messages are printed.
     */
   @JSExport

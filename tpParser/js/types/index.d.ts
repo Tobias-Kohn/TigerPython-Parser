@@ -16,6 +16,7 @@ declare module "tigerpython-parser" {
         let warningAsErrors: boolean;
 
         function getLanguage(): string;
+        function getLanguages(): string[];
         function setLanguage(language: string): void;
         function setErrorMessage(code: string, msg: string): void;
         function checkSyntax(source: string): ErrorInfo;
