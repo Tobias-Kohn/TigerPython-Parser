@@ -78,7 +78,7 @@ object TPyParser {
     * Returns all the available languages.
     */
   @JSExport
-  def getLanguages(): Array[String] = errors.ErrorTranslator.errorTranslator.languages
+  def getLanguages(): js.Array[String] = errors.ErrorTranslator.errorTranslator.languages.toJSArray
 
   /**
     * Returns the currently set language in which error messages are printed.
