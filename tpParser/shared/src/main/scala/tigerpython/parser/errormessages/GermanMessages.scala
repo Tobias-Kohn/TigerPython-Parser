@@ -72,6 +72,7 @@ object GermanMessages extends ModifiableErrorMessages {
       case INCONSISTENT_INDENTATION => "Die Einrückung ist nicht einheitlich."
       case INCONSISTENT_RETURNS => "Die 'return'-Anweisungen sind nicht einheitlich."
       case INDENTED_ELSE => "Dieses '%s' ist zu stark eingerückt."
+      case INDENTED_HEADER => "Die erste Zeile von '%s' darf selbst nicht eingerückt sein."
       case INFINITE_LOOP => "Unendliche Schleife: Diese Schleife hört nie auf."
       case INITIALIZATION_INSIDE_LOOP => "Die Variablen-Initialisierung muss vor der Schleife stehen."
       case INVALID_ASSIGNMENT => "Kann nicht etwas zu '%s' zuweisen."

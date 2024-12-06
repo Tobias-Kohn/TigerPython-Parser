@@ -1,0 +1,5 @@
+# 2
+# INDENTED_HEADER
+print("These are my favourite colours:")
+    for item in ['red', 'green', 'blue']:
+    print(item)

@@ -73,6 +73,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case INCONSISTENT_INDENTATION => "The indentation is inconsistent."
       case INCONSISTENT_RETURNS => "This function sometimes returns a value and sometimes does not."
       case INDENTED_ELSE => "This '%s' must not be indented."
+      case INDENTED_HEADER => "The first line of '%s' must not be indented."
       case INFINITE_LOOP => "This is an infinite loop: it runs forever."
       case INITIALIZATION_INSIDE_LOOP => "You cannot have the initialization inside the loop."
       case INVALID_ASSIGNMENT => "You cannot assign something to '%s'."
