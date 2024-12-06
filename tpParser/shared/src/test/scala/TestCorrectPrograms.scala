@@ -1,6 +1,6 @@
 import org.scalatest._
-
 import tigerpython.parser.Parser
+import tigerpython.parser.errors.ErrorHandler
 
 /**
   * Tests correct programs without errors.
@@ -51,10 +51,37 @@ class TestCorrectPrograms extends FunSuite {
       3
   }
 
+  /**
+   * Given the program code and a position, this will extract the 'offensive' line and highlight the
+   * position of the problem.
+   */
+  private def extractSliceFromText(text: String, pos: Int): String =
+    if (0 <= pos && pos < text.length) {
+      var i = pos
+      var j = pos
+      while (i > 0 && text(i-1) >= ' ')
+        i -= 1
+      while (j < text.length && text(j) >= ' ')
+        j += 1
+      text.substring(i, j) + "\n" + (" " * (pos - i)) + "^\n"
+    } else
+      null
+
+  // We want the additional information on where the error occurred
+  ErrorHandler.WANT_STACK_TRACE = true
+
   for (fileName <- listAllFiles("correct"))
     test("test program '%s'".format(getFileName(fileName))) {
       val p = new Parser(loadFromCorrectFile(fileName), getPythonVersion(fileName))
       val cs = p.checkSyntax()
+
+      // In case of an error, we print some extended information to help debugging
+      if (cs.nonEmpty) {
+        print(cs.get.toString + "\n" + extractSliceFromText(loadFromCorrectFile(fileName), cs.get.position))
+        val ste = cs.get.stackTraceElement
+        if (ste != null)
+          println("%s [%d]: %s.%s".format(ste.getFileName, ste.getLineNumber, ste.getClassName, ste.getMethodName))
+      }
       assert(cs.isEmpty)
     }
 }

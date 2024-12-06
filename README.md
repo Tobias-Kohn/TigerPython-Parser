@@ -135,6 +135,20 @@ the comments on this line in order to get an ES module instead of classic JavaSc
 crashes because of an `export` vs. `module.export` error). 
 
 
+### Tests
+
+We include a number of test cases for programs with and without errors in them.  Programs in the folder
+`/test/programs/correct` are correct Python programs that should run without any error.  Those in the folder
+`/test/programs/erroneous` are Python programs that have an error.  These are stored as txt-files to avoid some
+overzealous IDEs from reporting the (deliberate) errors in them.  The first two lines are comments indicating the
+line (with the third actual line in the file starting as `1`) and the expected error code.
+
+If a test with an incorrect program fails, you will find some additional information in the console, but usually
+higher up than all the `[info]`s on successful or failed tests.  That additional information tells you what error
+TigerPython think there actually is, where it seems the error, but also which location in the parser is responsible
+for reporting that error.
+
+
 ## Contribution
 
 The parser was initially written by [Tobias Kohn](https://tobiaskohn.ch/).  Further contributions by:
