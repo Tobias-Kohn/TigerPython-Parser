@@ -10,11 +10,13 @@
     <br/>
     <button onclick="checkSyntax();">Check Syntax</button>
     <button onclick="showAST();">Parse</button>
+    <button onclick="complete();">Suggestions</button>
     <div id="output">Output</div>
     <script type="text/javascript">
+      const inp = document.getElementById('inputArea');
+      const outp = document.getElementById('output');
+      
       function checkSyntax() {
-        var inp = document.getElementById('inputArea');
-        var outp = document.getElementById('output');
         TPyParser.rejectDeadCode = true;
         var err = TPyParser.checkSyntax(inp.value);
         if (err !== null) {
@@ -25,14 +27,17 @@
         console.log("Done");
       }
       function showAST() {
-        var inp = document.getElementById('inputArea');
-        var outp = document.getElementById('output');
         TPyParser.rejectDeadCode = true;
         var ast = TPyParser.parse(inp.value);
         console.log(ast);
         outp.innerHTML = "Beta-Testing AST:<br/>" + JSON.stringify(ast);
         console.log("Done");
       }
+      function complete() {
+        let suggestions = TPyParser.autoComplete(inp.value, inp.selectionStart, true);
+        outp.innerHTML = suggestions.join('<br/>');
+      }
+      TPyParser.defineModule("spam", "[int]breakfast() Delivers a great English breakfast\n[float]eggs\nfoo(x, y)")
     </script>
   </body>
 </html>

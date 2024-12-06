@@ -4,11 +4,13 @@ package scopes
 import types._
 import tigerpython.parser.ast.AstNode
 
+import scala.collection.mutable
+
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 14.06.2016.
-  * Updated by Tobias Kohn on 01.07.2016.
+  * Updated by Tobias Kohn on 06.12.2024.
   */
 class ModuleLoader {
   import ModuleLoader.modules
@@ -110,7 +112,7 @@ class ModuleLoader {
   }
 }
 object ModuleLoader {
-  protected lazy val mathModule = new Module("math") {
+  protected lazy val mathModule: Module = new Module("math") {
     for (s <- BuiltinModules.math) {
       val b = BuiltinFunction.fromString(s)
       setField(b.name, b)
@@ -119,14 +121,14 @@ object ModuleLoader {
     setField("e", BuiltinTypes.FLOAT)
   }
 
-  protected lazy val osModule = new Module("os") {
+  protected lazy val osModule: Module = new Module("os") {
     for (s <- BuiltinModules.os) {
       val b = BuiltinFunction.fromString(s)
       setField(b.name, b)
     }
   }
 
-  protected lazy val sysModule = new Module("sys") {
+  protected lazy val sysModule: Module = new Module("sys") {
     for (s <- BuiltinModules.sys) {
       val b = BuiltinFunction.fromString(s)
       setField(b.name, b)
@@ -135,7 +137,7 @@ object ModuleLoader {
       setField(s, BuiltinTypes.ANY_TYPE)
   }
 
-  protected lazy val timeModule = new Module("time") {
+  protected lazy val timeModule: Module = new Module("time") {
     for (s <- BuiltinModules.time) {
       val b = BuiltinFunction.fromString(s)
       setField(b.name, b)
@@ -144,7 +146,7 @@ object ModuleLoader {
       setField(s, BuiltinTypes.ANY_TYPE)
   }
 
-  lazy val modules = collection.mutable.Map[String, DataType](
+  lazy val modules: mutable.Map[String, DataType] = collection.mutable.Map[String, DataType](
     "math" -> mathModule,
     "os" -> osModule,
     "sys" -> sysModule,
@@ -157,9 +159,31 @@ object ModuleLoader {
   def addMockPackage(name: String): Unit =
     modules.getOrElseUpdate(name, BuiltinTypes.UNKNOWN_TYPE)
 
-  def addMockPackages(names: TraversableOnce[String]): Unit =
+  def addMockPackages(names: IterableOnce[String]): Unit =
     for (name <- names)
       addMockPackage(name)
+
+  def addModule(name: String, items: IterableOnce[String]): Module =
+    if (name != null && name != "") {
+      val module = new Module(name)
+      for (item <- items)
+        if (item.contains('(')) {
+          val b = BuiltinFunction.fromString(item)
+          module.setField(b.name, b)
+        } else
+        if (item != null && item != "") {
+          if (item.startsWith("[")) {
+            val tp = item.drop(1).takeWhile(_ != ']')
+            val nm = item.drop(tp.length + 2)
+            if (nm != "")
+              module.setField(nm, BuiltinTypes.fromString(tp))
+          } else
+            module.setField(item, BuiltinTypes.ANY_TYPE)
+        }
+      modules(name) = module
+      module
+    } else
+      null
 
   var defaultModuleLoader = new ModuleLoader()
 }

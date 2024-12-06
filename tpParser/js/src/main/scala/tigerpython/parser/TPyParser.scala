@@ -3,9 +3,10 @@ package tigerpython.parser
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
-
 import errors.ExtErrorInfo
 import tigerpython.inputenc.StringTranslator
+import tigerpython.utilities.completer.Completer
+import tigerpython.utilities.scopes.ModuleLoader
 
 /**
   * The `TPyParser` is the interface for using the parser in a JavaScript setting.  It provides the means to check a
@@ -175,5 +176,35 @@ object TPyParser {
     val converter = new AstConverter(parser)
     val ast = parser.parse()
     converter(ast)
+  }
+
+  /**
+   * Returns a list of auto-complete suggestions, based on the source file and the current position.  The position
+   * is given as an integer offset with the absolute location from the beginning of the text.
+   *
+   * If you set `filter` to true, the returned list will be filtered according to the identifier left to the position
+   * (if any).
+   */
+  @JSExport
+  def autoComplete(source: String, pos: Int, filter: Boolean = false): js.Array[String] = {
+    val completer = new Completer("<module>", source, pos)
+    val cur_name = completer.getCurrentName
+    if (filter && cur_name != null) {
+      val cur_name_len = cur_name.length
+      var i = pos
+      while (i >= 0 && i + cur_name_len >= pos && source.slice(i, i + cur_name_len) != cur_name)
+        i -= 1
+      if (i >= 0 && source.slice(i, i + cur_name_len) == cur_name)
+        return completer.getNameFilter.getNameList(cur_name.take(pos - i)).toJSArray
+    }
+    completer.getNameFilter.getNameList("").toJSArray
+  }
+
+  /**
+   * Adds a new Python module that can then be used for auto-completion.
+   */
+  @JSExport
+  def defineModule(moduleName: String, moduleBody: String): Unit = {
+    ModuleLoader.addModule(moduleName, moduleBody.split('\n'))
   }
 }

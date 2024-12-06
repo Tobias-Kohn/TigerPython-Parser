@@ -4,12 +4,18 @@ package tigerpython.utilities.types
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 14.06.2016.
-  * Updated by Tobias Kohn on 15.10.2017.
+  * Updated by Tobias Kohn on 06.12.2024.
   */
 object BuiltinTypes {
   val builtins: collection.mutable.Map[String, DataType] = collection.mutable.Map[String, DataType]()
 
-  def fromString(s: String): DataType = builtins.getOrElse(s, ExceptionTypes.byName(s))
+  def fromString(s: String): DataType = {
+    val result = builtins.getOrElse(s, ExceptionTypes.byName(s))
+    if (result != null)
+      result
+    else
+      ANY_TYPE
+  }
 
   val ANY_TYPE = AbstractType("<any>")
   val ECHO_TYPE = AbstractType("<echo>")

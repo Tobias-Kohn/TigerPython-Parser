@@ -100,6 +100,32 @@ Available options:
   `setErrorMessage("MISSING_SPACE", "Missing whitespace.")`
 
 
+### Auto-Completion
+
+You can use the parser to get suggestions for auto-completion.  Use 
+`TPyParser.autoComplete(source: string, pos: int, filter: bool)` for that purpose, which will return a 
+(possibly empty) array of strings.  `source` is the program text and `pos` is the absolute offset of the current 
+positions for which to retrieve the suggestions, counting from the beginning of the text.
+
+The flag `filter` determines whether the resulting suggestions shall be filtered according to the position of the
+caret.  Take, for instance, `math.a|(` (with `|` denoting the caret) and run the auto-completer.  If `filter` is set
+to `false` (the default), it will return all possible suggestions for `math.`, ignoring the `a`.  If `filter` is set
+to `true`, however, it will only return a list with `acos, asin, atan, ...`, that is those names starting with `a`.
+
+Use `TPyParser.defineModule(moduleName: string, moduleBody: string)` in order to add your own modules that can then
+be 'imported' when the auto-completer analyses your program code.  The module's body consists of a individual lines,
+where each line defines either a function or a constant value.  The line can start with a type specified in square
+brackets, followed by a name (no spaces) and a list of parameters in the case of functions.  A function may also be
+followed by a doc-string.  Here is an example:
+```
+[int]factorial(x)   Return *x* factorial. Raises :exc:`ValueError` if *x* is not integral or is negative.
+[float]sqrt(x)
+gamma(x)  Return the Gamma function at *x*.
+[float]pi
+```
+
+
+
 ## Supported Python Versions
 
 The parser was originally written so support Python 2.7 and Python 3.6.  With Python 3.9, the grammar has significantly
