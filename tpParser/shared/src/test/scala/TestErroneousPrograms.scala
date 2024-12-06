@@ -1,6 +1,6 @@
 import org.scalatest._
-
 import tigerpython.parser.Parser
+import tigerpython.parser.errors.ErrorHandler
 
 /**
   * Tests programs with errors.
@@ -14,7 +14,7 @@ import tigerpython.parser.Parser
   * @author Tobias Kohn
   *
   * Created: 08/11/2019
-  * Updated: 09/11/2019
+  * Updated: 06/12/2024
   */
 class TestErroneousPrograms extends FunSuite {
 
@@ -61,6 +61,25 @@ class TestErroneousPrograms extends FunSuite {
       3
   }
 
+  /**
+   * Given the program code and a position, this will extract the 'offensive' line and highlight the
+   * position of the problem.
+   */
+  private def extractSliceFromText(text: String, pos: Int): String =
+    if (0 <= pos && pos < text.length) {
+      var i = pos
+      var j = pos
+      while (i > 0 && text(i-1) >= ' ')
+        i -= 1
+      while (j < text.length && text(j) >= ' ')
+        j += 1
+      text.substring(i, j) + "\n" + (" " * (pos - i)) + "^\n"
+    } else
+      null
+
+  // We want the additional information on where the error occurred
+  ErrorHandler.WANT_STACK_TRACE = true
+
   for (fileName <- listAllFiles("erroneous"))
     test("test program '%s'".format(getFileName(fileName))) {
       val (line_no, error_msg, text) = loadFromErrorFile(fileName)
@@ -70,6 +89,14 @@ class TestErroneousPrograms extends FunSuite {
       val cs = p.checkSyntax()
       assert(cs.isDefined)
       // `line_no` expects the first line to be `1` and not `0`
+
+      // In case of a mismatch, we print some extended information to help debugging
+      if (cs.get.line+1 != line_no || cs.get.errorCode.toString != error_msg) {
+        print(cs.get.toString + "\n" + extractSliceFromText(text, cs.get.position))
+        val ste = cs.get.stackTraceElement
+        if (ste != null)
+          println("%s [%d]: %s.%s".format(ste.getFileName, ste.getLineNumber, ste.getClassName, ste.getMethodName))
+      }
       assert(cs.get.line+1 == line_no)
       assert(cs.get.errorCode.toString == error_msg)
     }

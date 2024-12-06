@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 28/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 06/12/2024
   */
 trait ErrorHandler {
 
@@ -44,6 +44,12 @@ trait ErrorHandler {
   def reportWarning(pos: Int, line: Int, code: ErrorCode.Value, params: AnyRef*): Null = null
 }
 object ErrorHandler {
+
+  /**
+   * If you set this flag to `true`, the `DefaultErrorHandler` will also try to capture the position where
+   * `reportError()` was called, so as to allow for easier debugging.
+   */
+  var WANT_STACK_TRACE: Boolean = false
 
   /**
     * Assembles a list of all reported errors and then sorts them by position.
@@ -81,7 +87,16 @@ object ErrorHandler {
                     token.getStringValue
                   case x => x
                 }))
-      errorList += ExtErrorInfo(pos, line, code, msg, params)
+      val errInfo = ExtErrorInfo(pos, line, code, msg, params)
+      if (WANT_STACK_TRACE) {
+        val stackTrace = Thread.currentThread().getStackTrace
+        var i = 1   // Skip the top element, which refers to the `getStackTrace`-method
+        while (i < stackTrace.length && stackTrace(i).getMethodName.contains("reportError"))
+          i += 1
+        if (i < stackTrace.length)
+          errInfo.stackTraceElement = stackTrace(i)
+      }
+      errorList += errInfo
       null
     }
 

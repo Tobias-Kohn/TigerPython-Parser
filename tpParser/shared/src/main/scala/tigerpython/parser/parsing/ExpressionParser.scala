@@ -681,7 +681,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           tokens.requireType(TokenType.RIGHT_PARENS)
           bracketStack.pop()
           if (tokens.hasType(TokenType.LEFT_PARENS) && parserState.strictCode && bracketStack.nonEmpty) {
-            parserState.reportError(tokens, ErrorCode.MISSING_COMMA)
+            parserState.reportError(tokens.prevEndPos, ErrorCode.MISSING_COMMA)
             tokens.insertToken(TokenType.COMMA)
           }
           result

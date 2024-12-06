@@ -1,0 +1,12 @@
+# 4
+# MISSING_COMMA
+from math import atan
+
+DATA = [
+    (4.2, 5.0), (1.9, 3.0)
+    (9.3, 0.7), (0.5, 1.8)
+]
+
+for (x, y) in DATA:
+    a = atan(y / x)
+    print(a)

@@ -3,7 +3,6 @@ package scopes
 
 import types._
 import tigerpython.parser.ast.AstNode
-import tigerpython.utilities.jtypes.JavaClassLoader
 
 /**
   * @author Tobias Kohn
@@ -55,8 +54,6 @@ class ModuleLoader {
 
   def findName(name: String): Option[DataType] =
     if (name.contains('.')) {
-      if (JavaClassLoader.hasClass(name))
-        return Some(JavaClassLoader.findClass(name))
       val idx = name.indexOf('.')
       val base = findModule(name.take(idx))
       if (base != null)
