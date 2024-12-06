@@ -3,18 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>Scala Parser goes JavaScript</title>
+    <script src="tigerpython-parser.js"></script>
   </head>
   <body>
-    <textarea id="inputArea">print "Hello"</textarea>
+    <textarea id="inputArea">print("Hello, world!")</textarea>
     <br/>
     <button onclick="checkSyntax();">Check Syntax</button>
     <button onclick="showAST();">Parse</button>
     <div id="output">Output</div>
-    <script type="module" src="tigerpython-parser.mjs"></script>
-    <script type="module">
-      import { TPyParser } from './tigerpython-parser.mjs';
-      window.TPyParser = TPyParser;
-    </script>
     <script type="text/javascript">
       function checkSyntax() {
         var inp = document.getElementById('inputArea');

@@ -124,6 +124,12 @@ features, the current state is as follows:
 The entire project is written in [Scala 2.12](https://scala-lang.org/) / [Scala.js](http://www.scala-js.org/) and uses
 [sbt](https://www.scala-sbt.org/).
 
+When `sbt` is installed, go to the project's root directory and use `sbt makeRelease`.  This will create both the
+JavaScript standalone-file and the module and place them inside the `/release` folder.
+
+
+### Old instructions
+
 When `sbt` is installed, go to the project's root directory and use `sbt fastOptJS` or `sbt fullOptJS` to compile the
 project (`scala.js` supports two compilation modes: fast compilation during development and optimised compilation for
 production code).  The output (JavaScript-files) can then be found in `./tpParser/js/target/scala-2.12/`.
