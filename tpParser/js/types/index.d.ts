@@ -10,7 +10,7 @@ declare module "tigerpython-parser" {
         let newDivision: boolean;
         let pythonVersion: number;
         let rejectDeadCode: boolean;
-        let repreatStatement: boolean;
+        let repeatStatement: boolean;
         let sagePower: boolean;
         let translateUnicodePunctuation: boolean;
         let warningAsErrors: boolean;
@@ -22,5 +22,6 @@ declare module "tigerpython-parser" {
         function checkSyntax(source: string): ErrorInfo;
         function findAllErrors(source: string): ErrorInfo[];
         function parse(source: string): any;
+        function autoComplete(source: string, pos: number, filter: boolean);
     }
 }
