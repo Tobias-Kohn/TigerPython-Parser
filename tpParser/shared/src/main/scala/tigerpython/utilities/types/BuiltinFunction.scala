@@ -4,7 +4,7 @@ package tigerpython.utilities.types
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 14.06.2016.
-  * Updated by Tobias Kohn on 15.10.2017.
+  * Updated by Tobias Kohn on 11.12.2024.
   */
 class BuiltinFunction(val name: String,
                       val params: Array[String],
@@ -13,6 +13,7 @@ class BuiltinFunction(val name: String,
 
   override def getFullName: String = if (parent != null) parent.getFullName + "." + name else name
 
+  override def getParams: Array[String] = params
   override def getParamsString: String = params.mkString(", ")
   override def getReturnType: DataType = returnType
 

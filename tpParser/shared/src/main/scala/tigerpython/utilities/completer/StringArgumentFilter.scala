@@ -43,7 +43,7 @@ class StringArgumentFilter(sourceNameList: Iterable[String]) extends StringFilte
     else
       getNameList("")
 
-  override def toString = nameList.map(_._2).distinct.mkString(", ")
+  override def toString: String = nameList.map(_._2).distinct.mkString(", ")
 }
 object StringArgumentFilter {
   private val filterCache = collection.mutable.Map[String, StringFilter]()
