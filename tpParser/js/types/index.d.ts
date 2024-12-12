@@ -9,7 +9,7 @@ declare module "tigerpython-parser" {
         acResult: string;
         documentation: string;
         type: string;
-        params: string[];
+        params: string[] | null;
     }
     export namespace TPyParser {
         let evalMode: boolean;

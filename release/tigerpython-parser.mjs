@@ -8915,7 +8915,11 @@ $p.Q0 = (function(source, pos, filter) {
 });
 $p.Q1 = (function(source, pos) {
   var completer = new $c_Ltigerpython_utilities_completer_Completer("<module>", source, pos);
-  var items = completer.G3().No();
+  var nameFilter = completer.G3();
+  if ((nameFilter === null)) {
+    return null;
+  }
+  var items = nameFilter.No();
   var $x_10 = $m_sjs_js_JSConverters$JSRichIterableOnce$();
   var f = ((item$2) => {
     var item = item$2;

@@ -203,7 +203,11 @@ object TPyParser {
   @JSExport
   def autoCompleteExt(source: String, pos: Int): js.Any = {
     val completer = new Completer("<module>", source, pos)
-    val items = completer.getNameFilter.getExtInfoList
+    val nameFilter = completer.getNameFilter
+    if (nameFilter == null) {
+      return null
+    }
+    val items = nameFilter.getExtInfoList
     (for (item <- items)
       yield js.Dynamic.literal(
         acResult = item.name,
