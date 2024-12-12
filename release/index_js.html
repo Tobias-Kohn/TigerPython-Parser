@@ -34,7 +34,9 @@
         console.log("Done");
       }
       function complete() {
-        let suggestions = TPyParser.autoComplete(inp.value, inp.selectionStart, true);
+        //let suggestions = TPyParser.autoComplete(inp.value, inp.selectionStart, true);
+        let suggestions = TPyParser.autoCompleteExt(inp.value, inp.selectionStart);
+        
         outp.innerHTML = suggestions.join('<br/>');
       }
       TPyParser.defineModule("spam", "[int]breakfast() Delivers a great English breakfast\n[float]eggs\nfoo(x, y)")

@@ -8,6 +8,7 @@ package tigerpython.utilities.types
   */
 abstract class FunctionType extends DataType {
   def getFields: Map[String, DataType] = Map()
+  override def getTypeName: String = "function"
   override def isCallable: Boolean = true
   def setField(name: String, dataType: DataType): Unit = {}
 }

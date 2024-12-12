@@ -2,13 +2,13 @@ package tigerpython.utilities
 package completer
 
 import collection.mutable.ArrayBuffer
-import types.DataType
+import types.{DataType, FunctionType, Instance}
 
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15.06.2016.
-  * Updated by Tobias Kohn on 04.06.2017.
+  * Updated by Tobias Kohn on 11.12.2024.
   */
 abstract class DefaultNameFilter extends NameFilter {
 
@@ -73,5 +73,26 @@ abstract class DefaultNameFilter extends NameFilter {
       nameList.map(_._2).toArray.sortWith(nameSort).distinct
     }
 
-  override def toString = nameList.map(_._2).distinct.mkString(", ")
+  def getExtInfoList: Array[CompleterInfoItem] = {
+    def nameSort(s1: String, s2: String): Boolean = {
+      val test2 = s1(0).isLower
+      if (test2 ^ s2(0).isLower)
+        return test2
+      s1 < s2
+    }
+    val names = nameList.map(_._2).toArray.sortWith(nameSort).distinct
+    for (name <- names)
+      yield nameTargets.get(name) match {
+        case Some(f: FunctionType) =>
+          new CompleterInfoItem(f)
+        case Some(_: Instance) =>
+          new CompleterInfoItem(name)
+        case Some(dt) =>
+          new CompleterInfoItem(dt)
+        case None =>
+          new CompleterInfoItem(name)
+      }
+  }
+
+  override def toString: String = nameList.map(_._2).distinct.mkString(", ")
 }

@@ -200,6 +200,23 @@ object TPyParser {
     completer.getNameFilter.getNameList("").toJSArray
   }
 
+  @JSExport
+  def autoCompleteExt(source: String, pos: Int): js.Any = {
+    val completer = new Completer("<module>", source, pos)
+    val items = completer.getNameFilter.getExtInfoList
+    (for (item <- items)
+      yield js.Dynamic.literal(
+        acResult = item.name,
+        documentation = item.documentation,
+        `type` = item.itemType,
+        params = if (item.parameters != null)
+          item.parameters.toJSArray
+        else
+          null
+      )
+    ).toJSArray
+  }
+
   /**
    * Adds a new Python module that can then be used for auto-completion.
    */

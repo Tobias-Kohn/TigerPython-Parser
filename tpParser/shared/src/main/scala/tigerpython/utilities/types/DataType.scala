@@ -36,9 +36,19 @@ abstract class DataType {
 
   def getItemType: DataType = BuiltinTypes.ANY_TYPE
 
+  def getParams: Array[String] = {
+    val params = getParamsString
+    if (params != null)
+      params.split(", ")
+    else
+      Array()
+  }
+
   def getParamsString: String = null
 
   def getReturnType: DataType = this
+
+  def getTypeName: String = "type"
 
   def hasDocString: Boolean = docString != null && docString != ""
 
