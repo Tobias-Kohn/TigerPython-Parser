@@ -5,6 +5,12 @@ declare module "tigerpython-parser" {
         msg: string;
         code: string;
     }
+    class Completion {
+        acResult: string;
+        documentation: string;
+        `type`: string;
+        params: string[];
+    }
     export namespace TPyParser {
         let evalMode: boolean;
         let newDivision: boolean;
@@ -23,5 +29,6 @@ declare module "tigerpython-parser" {
         function findAllErrors(source: string): ErrorInfo[];
         function parse(source: string): any;
         function autoComplete(source: string, pos: number, filter: boolean) : string[];
+        function autoCompleteExt(source: string, pos: number) : Completion[];
     }
 }
