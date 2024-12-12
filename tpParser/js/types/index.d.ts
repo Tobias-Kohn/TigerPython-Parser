@@ -8,7 +8,7 @@ declare module "tigerpython-parser" {
     class Completion {
         acResult: string;
         documentation: string;
-        `type`: string;
+        type: string;
         params: string[];
     }
     export namespace TPyParser {
