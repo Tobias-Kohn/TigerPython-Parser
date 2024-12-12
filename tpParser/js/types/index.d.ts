@@ -29,6 +29,6 @@ declare module "tigerpython-parser" {
         function findAllErrors(source: string): ErrorInfo[];
         function parse(source: string): any;
         function autoComplete(source: string, pos: number, filter: boolean) : string[];
-        function autoCompleteExt(source: string, pos: number) : Completion[];
+        function autoCompleteExt(source: string, pos: number) : Completion[] | null;
     }
 }
