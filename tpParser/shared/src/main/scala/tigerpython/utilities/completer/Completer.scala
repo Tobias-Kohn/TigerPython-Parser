@@ -134,6 +134,15 @@ class Completer(val moduleName: String,
                   return null
               }
             }
+            else if (tokenRange.length > 1 && tokenRange.last.tokenType == TokenType.DOT &&
+                     filterType != FilterType.IMPORT && filterType != FilterType.IMPORT_FROM &&
+                     tokenRange.dropRight(1).forall(_.tokenType == TokenType.RIGHT_PARENS))
+              scope.findName(prefixName) match {
+                case Some(baseName) =>
+                  return new DataTypeFilter(tokenRange(0).endPos, baseName)
+                case _ =>
+                  return null
+              }
           case _ =>
         }
         filterType match {

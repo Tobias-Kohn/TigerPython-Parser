@@ -2,7 +2,7 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast.AstNode
-import types.{DataType, Module}
+import types.{DataType, Instance, ListType, Module}
 
 /**
   * @author Tobias Kohn
@@ -115,6 +115,13 @@ abstract class Scope {
         findLocal(name.name)
       case _: AstNode.Dict | _: AstNode.DictComp =>
         Some(types.BuiltinTypes.LIST)
+      case lst: AstNode.List if lst.elements.nonEmpty =>
+        val itemTypes = for (el <- lst.elements) yield findName(el).orNull
+        val itemType = itemTypes.head
+        if (itemType != null && itemTypes.forall(_ == itemType))
+          Some(new Instance(ListType(itemType)))
+        else
+          Some(types.BuiltinTypes.LIST)
       case _: AstNode.List | _: AstNode.ListComp =>
         Some(types.BuiltinTypes.LIST)
       case _: AstNode.StringValue =>
