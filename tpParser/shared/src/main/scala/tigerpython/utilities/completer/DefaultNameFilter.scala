@@ -38,24 +38,11 @@ abstract class DefaultNameFilter extends NameFilter {
       }
     }
 
-  def addName(name: String, target: DataType): Unit = {
-    @inline
-    def _doAddName(): Unit =
-      if (target != null && name != null && name != "" && !name.startsWith("<")) {
-        nameTargets(name) = target
-        _addName(name)
-      }
-
-    _doAddName()
-    /*if (name.length > 4 && name.startsWith("__") && name.endsWith("__")) {
-      if (!hideDunderMethods)
-        _doAddName()
-    } else
-    if (name.startsWith("_") && hideProtected) {
-      // do nothing
-    } else
-      _doAddName()*/
-  }
+  def addName(name: String, target: DataType): Unit =
+    if (target != null && name != null && name != "" && !name.startsWith("<")) {
+      nameTargets(name) = target
+      _addName(name)
+    }
 
   def getParams(name: String): String =
     nameTargets.get(name) match {
@@ -108,7 +95,7 @@ abstract class DefaultNameFilter extends NameFilter {
         return test2
       s1 < s2
     }
-    val names = nameList.map(_._2).toArray.sortWith(nameSort).distinct
+    val names = _nameList.map(_._2).toArray.sortWith(nameSort).distinct
     for (name <- names)
       yield nameTargets.get(name) match {
         case Some(f: FunctionType) =>
