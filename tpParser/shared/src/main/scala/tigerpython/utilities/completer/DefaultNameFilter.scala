@@ -4,25 +4,28 @@ package completer
 import collection.mutable.ArrayBuffer
 import types.{DataType, FunctionType, Instance}
 
+import scala.collection.mutable
+
 /**
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15.06.2016.
-  * Updated by Tobias Kohn on 11.12.2024.
+  * Updated by Tobias Kohn on 14.12.2024.
   */
 abstract class DefaultNameFilter extends NameFilter {
 
-  protected val nameList = ArrayBuffer[(String, String)]()
+  protected val _nameList: ArrayBuffer[(String, String)] = ArrayBuffer[(String, String)]()
   protected val nameTargets = collection.mutable.Map[String, DataType]()
 
-  val hideProtected: Boolean = true
+  var hideProtected: Boolean = true
+  var hideDunderMethods: Boolean = true
 
   protected def _addName(name: String, target: String = null): Unit =
     if (name.contains('.')) {
       _addName(name.dropWhile(_ != '.').drop(1), name)
     } else
     if (name.contains('_')) {
-      nameList += ((name, name))
+      _nameList += ((name, name))
       for (n <- name.split('_'))
         _addName(n, name)
     } else
@@ -30,17 +33,29 @@ abstract class DefaultNameFilter extends NameFilter {
       val nameTarget = if (target != null) target else name
       var idx = 0
       while (idx >= 0) {
-        nameList += ((name.drop(idx).toLowerCase, nameTarget))
+        _nameList += ((name.drop(idx).toLowerCase, nameTarget))
         idx = name.indexWhere(_.isUpper, idx + 1)
       }
     }
 
-  def addName(name: String, target: DataType): Unit =
-    if (name.startsWith("_") && hideProtected) {} else
-    if (target != null && name != null && name != "" && !name.startsWith("<")) {
-      nameTargets(name) = target
-      _addName(name)
-    }
+  def addName(name: String, target: DataType): Unit = {
+    @inline
+    def _doAddName(): Unit =
+      if (target != null && name != null && name != "" && !name.startsWith("<")) {
+        nameTargets(name) = target
+        _addName(name)
+      }
+
+    _doAddName()
+    /*if (name.length > 4 && name.startsWith("__") && name.endsWith("__")) {
+      if (!hideDunderMethods)
+        _doAddName()
+    } else
+    if (name.startsWith("_") && hideProtected) {
+      // do nothing
+    } else
+      _doAddName()*/
+  }
 
   def getParams(name: String): String =
     nameTargets.get(name) match {
@@ -49,6 +64,18 @@ abstract class DefaultNameFilter extends NameFilter {
       case _ =>
         null
     }
+
+  private def nameList: ArrayBuffer[(String, String)] = {
+    val result =
+      if (hideDunderMethods)
+        _nameList.filter(x => !(x._2.length > 4 && x._2.startsWith("__") && x._2.endsWith("__")))
+      else
+        _nameList
+    if (hideProtected)
+      result.filter(x => !x._2.startsWith("_"))
+    else
+      result
+  }
 
   def getNameList(prefix: String): Array[String] =
     if (prefix != null && prefix.dropWhile(_ == ' ') != "") {
@@ -62,7 +89,8 @@ abstract class DefaultNameFilter extends NameFilter {
           return test2
         s1 < s2
       }
-      nameList.filter(_._1.startsWith(prefix.dropWhile(_ == ' ').toLowerCase)).map(_._2).toArray.sortWith(nameSort).distinct
+      val _prefix = prefix.dropWhile(_ == ' ').toLowerCase
+      nameList.filter(_._1.startsWith(_prefix)).map(_._2).toArray.sortWith(nameSort).distinct
     } else {
       def nameSort(s1: String, s2: String): Boolean = {
         val test2 = s1(0).isLower
