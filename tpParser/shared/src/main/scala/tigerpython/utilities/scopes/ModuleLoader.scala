@@ -210,7 +210,7 @@ object ModuleLoader {
           modules(names(0)) = new Module(names(0))
         }
         var cur = modules(names(0))
-        for (i <- 1 to (names.length - 1)) {
+        for (i <- 1 until (names.length - 1)) {
           if (cur.findField(names(i)).isEmpty) {
             cur.setField(names(i), new Module(names(i)))
           }

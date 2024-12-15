@@ -32689,7 +32689,8 @@ $p.PI = (function(name, items) {
       var elem$1 = null;
       elem$1 = elem;
       var end = (((-1) + names.a.length) | 0);
-      var isEmpty = (end < 1);
+      var isEmpty = (end <= 1);
+      var scala$collection$immutable$Range$$lastElement = (((-1) + end) | 0);
       if ((!isEmpty)) {
         var i$1 = 1;
         while (true) {
@@ -32698,7 +32699,7 @@ $p.PI = (function(name, items) {
             elem$1.dT(names.a[v1], $ct_Ltigerpython_utilities_types_Module__T__(new $c_Ltigerpython_utilities_types_Module(), names.a[v1]));
           }
           elem$1 = elem$1.dN(names.a[v1]).cL();
-          if ((i$1 === end)) {
+          if ((i$1 === scala$collection$immutable$Range$$lastElement)) {
             break;
           }
           i$1 = ((1 + i$1) | 0);
