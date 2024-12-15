@@ -165,13 +165,17 @@ object ModuleLoader {
 
   def addModule(name: String, items: IterableOnce[String]): Module =
     if (name != null && name != "") {
-      val module = new Module(name)
+      // Allow passing in names with dots:
+      val names = name.split('.')
+      val lastName = names(names.length - 1)
+
+      val module = new Module(lastName)
       var curClass: PythonClass = null
       for (itemRaw <- items) {
         val item = itemRaw.strip()
         if (curClass != null) {
           if (item.nonEmpty && !itemRaw.startsWith(" ")) {
-            // Non-blank line without indent; no longer in class definitino:
+            // Non-blank line without indent; no longer in class definition:
             curClass = null
           }
         }
@@ -198,10 +202,26 @@ object ModuleLoader {
 
         }
       }
-      modules(name) = module
+      if (names.length == 1) {
+        modules(name) = module
+      } else
+      {
+        if (!modules.contains(names(0))) {
+          modules(names(0)) = new Module(names(0))
+        }
+        var cur = modules(names(0))
+        for (i <- 1 to (names.length - 1)) {
+          if (cur.findField(names(i)).isEmpty) {
+            cur.setField(names(i), new Module(names(i)))
+          }
+          cur = cur.findField(names(i)).get
+        }
+        cur.setField(names(names.length - 1), module)
+      }
       module
     } else
       null
+
 
   var defaultModuleLoader = new ModuleLoader()
 }
