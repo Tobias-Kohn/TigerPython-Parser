@@ -166,20 +166,38 @@ object ModuleLoader {
   def addModule(name: String, items: IterableOnce[String]): Module =
     if (name != null && name != "") {
       val module = new Module(name)
-      for (item <- items)
+      var curClass: PythonClass = null
+      for (itemRaw <- items) {
+        val item = itemRaw.strip()
+        if (curClass != null) {
+          if (item.nonEmpty && !itemRaw.startsWith(" ")) {
+            // Non-blank line without indent; no longer in class definitino:
+            curClass = null
+          }
+        }
+
+        val curTarget = if (curClass != null) curClass else module
+
         if (item.contains('(')) {
           val b = BuiltinFunction.fromString(item)
-          module.setField(b.name, b)
+          curTarget.setField(b.name, b)
         } else
         if (item != null && item != "") {
           if (item.startsWith("[")) {
             val tp = item.drop(1).takeWhile(_ != ']')
             val nm = item.drop(tp.length + 2)
             if (nm != "")
-              module.setField(nm, BuiltinTypes.fromString(tp))
+              curTarget.setField(nm, BuiltinTypes.fromString(tp))
           } else
-            module.setField(item, BuiltinTypes.ANY_TYPE)
+          if (item.startsWith("class ") && item.endsWith(":")) {
+            val curClassName = item.substring(6, item.length - 1)
+            curClass = new PythonClass(curClassName, Array.empty[ClassType]);
+            module.setField(curClassName, curClass)
+          } else
+            curTarget.setField(item, BuiltinTypes.ANY_TYPE)
+
         }
+      }
       modules(name) = module
       module
     } else
