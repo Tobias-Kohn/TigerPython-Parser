@@ -165,25 +165,63 @@ object ModuleLoader {
 
   def addModule(name: String, items: IterableOnce[String]): Module =
     if (name != null && name != "") {
-      val module = new Module(name)
-      for (item <- items)
+      // Allow passing in names with dots:
+      val names = name.split('.')
+      val lastName = names(names.length - 1)
+
+      val module = new Module(lastName)
+      var curClass: PythonClass = null
+      for (itemRaw <- items) {
+        val item = itemRaw.strip()
+        if (curClass != null) {
+          if (item.nonEmpty && !itemRaw.startsWith(" ")) {
+            // Non-blank line without indent; no longer in class definition:
+            curClass = null
+          }
+        }
+
+        val curTarget = if (curClass != null) curClass else module
+
         if (item.contains('(')) {
-          val b = BuiltinFunction.fromString(item)
-          module.setField(b.name, b)
+          val b = if (curClass != null) PythonFunction.fromString(item, curClass, module.getFields) else BuiltinFunction.fromString(item, module.getFields)
+          curTarget.setField(b.name, b)
         } else
         if (item != null && item != "") {
           if (item.startsWith("[")) {
             val tp = item.drop(1).takeWhile(_ != ']')
             val nm = item.drop(tp.length + 2)
             if (nm != "")
-              module.setField(nm, BuiltinTypes.fromString(tp))
+              curTarget.setField(nm, if (module.getFields.contains(tp)) module.getFields(tp) else BuiltinTypes.fromString(tp))
           } else
-            module.setField(item, BuiltinTypes.ANY_TYPE)
+          if (item.startsWith("class ") && item.endsWith(":")) {
+            val curClassName = item.substring(6, item.length - 1)
+            curClass = new PythonClass(curClassName, Array.empty[ClassType]);
+            module.setField(curClassName, curClass)
+          } else
+            curTarget.setField(item, BuiltinTypes.ANY_TYPE)
+
         }
-      modules(name) = module
+      }
+      if (names.length == 1) {
+        modules(name) = module
+      } else
+      {
+        if (!modules.contains(names(0))) {
+          modules(names(0)) = new Module(names(0))
+        }
+        var cur = modules(names(0))
+        for (i <- 1 until (names.length - 1)) {
+          if (cur.findField(names(i)).isEmpty) {
+            cur.setField(names(i), new Module(names(i)))
+          }
+          cur = cur.findField(names(i)).get
+        }
+        cur.setField(names(names.length - 1), module)
+      }
       module
     } else
       null
+
 
   var defaultModuleLoader = new ModuleLoader()
 }

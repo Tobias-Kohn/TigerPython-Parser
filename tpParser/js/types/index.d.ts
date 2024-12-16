@@ -30,5 +30,6 @@ declare module "tigerpython-parser" {
         function parse(source: string): any;
         function autoComplete(source: string, pos: number, filter: boolean) : string[];
         function autoCompleteExt(source: string, pos: number) : Completion[] | null;
+        function defineModule(moduleName: string, moduleBody: string) : void;
     }
 }

@@ -1,6 +1,6 @@
 import org.scalatest._
-
 import tigerpython.utilities.completer._
+import tigerpython.utilities.scopes.ModuleLoader
 
 /**
   *
@@ -23,10 +23,23 @@ class TestCompleter extends FunSuite {
   private def loadFromCompleterFile(fileName: String): (Int, String, String) = {
     val src = scala.io.Source.fromFile(fileName)
     val lines = src.getLines().toArray
+    val leadingComments = lines.takeWhile(_.startsWith("#"))
     if (lines.length > 2) {
-      val pos = lines(0).dropWhile(!_.isDigit).takeWhile(_.isDigit).toInt
-      val expected_result = lines(1).drop(1).trim
-      val text = lines.drop(2).mkString("\n")
+      if (leadingComments.length > 2) {
+        // If there's more than two comments line, the earlier set are taken to be a pre-declared module.
+        // The first line is the module name, then everything after that (before the final two lines of comments)
+        // are the contents of the module.  We remove "#" at the start of the string but no more, because
+        // some of the contents might be meaningfully indented so we can't just trim every line:
+        val module_name = leadingComments(0).drop(1).trim
+        val module_contents = leadingComments.slice(1, leadingComments.length - 2).map((x) => if (x.length < 2) x else x.substring(2))
+        ModuleLoader.addModule(module_name, module_contents)
+        // Note: the module contents are not cleared between tests, so it's a good idea to name
+        // all involved modules uniquely to avoid interference.
+      }
+
+      val pos = leadingComments(leadingComments.length - 2).dropWhile(!_.isDigit).takeWhile(_.isDigit).toInt
+      val expected_result = lines(leadingComments.length - 1).drop(1).trim
+      val text = lines.dropWhile(_.startsWith("#")).mkString("\n")
       (pos, expected_result, text)
     } else
       (-1, "", "")
