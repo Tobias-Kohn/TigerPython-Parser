@@ -183,7 +183,7 @@ object ModuleLoader {
         val curTarget = if (curClass != null) curClass else module
 
         if (item.contains('(')) {
-          val b = BuiltinFunction.fromString(item)
+          val b = if (curClass != null) PythonFunction.fromString(item, curClass, module.getFields) else BuiltinFunction.fromString(item, module.getFields)
           curTarget.setField(b.name, b)
         } else
         if (item != null && item != "") {
@@ -191,7 +191,7 @@ object ModuleLoader {
             val tp = item.drop(1).takeWhile(_ != ']')
             val nm = item.drop(tp.length + 2)
             if (nm != "")
-              curTarget.setField(nm, BuiltinTypes.fromString(tp))
+              curTarget.setField(nm, if (module.getFields.contains(tp)) module.getFields(tp) else BuiltinTypes.fromString(tp))
           } else
           if (item.startsWith("class ") && item.endsWith(":")) {
             val curClassName = item.substring(6, item.length - 1)

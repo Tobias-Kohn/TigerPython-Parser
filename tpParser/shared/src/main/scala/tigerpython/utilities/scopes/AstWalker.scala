@@ -412,7 +412,7 @@ class AstWalker(val scope: Scope) {
          name = alias.name.name.filter(_ != '?'))
       scope.importModule(name, null) match {
         case Some(_) =>
-          val impModule = scope.importModule(name.takeWhile(_ != '.'), null).get
+          val impModule = scope.importModule(name, null).get
           if (alias.asName != null)
             scope.define(alias.asName.name, impModule)
           else
