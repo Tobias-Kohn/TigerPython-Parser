@@ -184,7 +184,9 @@ object ModuleLoader {
 
         if (item.contains('(')) {
           val b = if (curClass != null) PythonFunction.fromString(item, curClass, module.getFields) else BuiltinFunction.fromString(item, module.getFields)
-          curTarget.setField(b.name, b)
+          if (b != null) {
+            curTarget.setField(b.name, b)
+          }
         } else
         if (item != null && item != "") {
           if (item.startsWith("[")) {
