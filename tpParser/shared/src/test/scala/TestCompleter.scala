@@ -49,7 +49,7 @@ class TestCompleter extends FunSuite {
     val f = new java.io.File("./tpParser/shared/src/test/programs/%s/".format(subDir))
     val fl = f.listFiles()
     if (fl != null)
-      fl.map(_.getAbsolutePath.replace("/./", "/"))
+      fl.filter(!_.isDirectory).map(_.getAbsolutePath.replace("/./", "/"))
     else
       Array()
   }

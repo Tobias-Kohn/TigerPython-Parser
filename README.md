@@ -20,7 +20,8 @@ messages are directly inlined into the code.
 
 ### NPM Package
 
-You can point to this GitHub repository as an NPM dependency.  Add the following line to your `"dependencies"` in your `package.json`:
+You can point to this GitHub repository as an NPM dependency.  Add the following line to your `"dependencies"` in 
+your `package.json`:
 
     "tigerpython-parser": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git",
 
@@ -87,7 +88,8 @@ Available options:
   considered errors in Python, but typical student mistakes.
 - **`warningAsErrors: bool`**  If set to `true`, warnings are also reported as errors.
 - **`getLanguage(): string`**  Get the two-letter language identifier for the error messages currently in use.
-- **`getLanguages(): string[]`**  Get the list two-letter language identifiers supported by TigerPython for the error messages.
+- **`getLanguages(): string[]`**  Get the list two-letter language identifiers supported by TigerPython for the error 
+  messages.
 - **`setLanguage(s: string)`**  Change the language for the error messages, where the language `s` is a two-letter
   identifier like `"en"`, `"de"`, or `"fr"`.
 - **`setErrorMessage(code: string, msg: string)`**  Occasionally, you might want to change just a few of the error
@@ -113,7 +115,7 @@ to `false` (the default), it will return all possible suggestions for `math.`, i
 to `true`, however, it will only return a list with `acos, asin, atan, ...`, that is those names starting with `a`.
 
 Use `TPyParser.defineModule(moduleName: string, moduleBody: string)` in order to add your own modules that can then
-be 'imported' when the auto-completer analyses your program code.  The module's body consists of a individual lines,
+be 'imported' when the auto-completer analyses your program code.  The module's body consists of individual lines,
 where each line defines either a function or a constant value.  The line can start with a type specified in square
 brackets, followed by a name (no spaces) and a list of parameters in the case of functions.  A function may also be
 followed by a doc-string.  Here is an example:
