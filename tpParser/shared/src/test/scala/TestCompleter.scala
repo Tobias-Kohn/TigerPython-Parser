@@ -12,9 +12,11 @@ import tigerpython.utilities.scopes.ModuleLoader
   */
 class TestCompleter extends FunSuite {
 
-  /*
-   * Files without errors are just plain Python files.
-   */
+  private def loadFromFile(fileName: String): String = {
+    val src = scala.io.Source.fromFile(fileName)
+    src.getLines().mkString("\n")
+  }
+
   /*
    * In order to test programs with errors, we expect a format where the first and second line are comments.  The
    * first line just contains a number indicating the line number that is incorrect.  The second line contains the
@@ -61,6 +63,10 @@ class TestCompleter extends FunSuite {
       n.take(n.lastIndexOf('.'))
     else
       n
+  }
+
+  test("testing PYI-reading") {
+    ModuleLoader.addPyiModule("turtle", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi"))
   }
 
   for (fileName <- listAllFiles("completer"))

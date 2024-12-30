@@ -1,0 +1,5 @@
+# 22
+# addshape;back;backward;begin_fill;begin_poly;bgcolor;bgpic;bk;bye;circle;clear;clearscreen;clearstamp;clearstamps;clone;color;colormode;degrees;delay;distance;done;dot;down;end_fill;end_poly;exitonclick;fd;fillcolor;filling;forward;get_poly;get_shapepoly;getcanvas;getpen;getscreen;getshapes;getturtle;goto;heading;hideturtle;home;ht;isdown;isvisible;left;listen;lt;mainloop;mode;numinput;onclick;ondrag;onkey;onkeypress;onkeyrelease;onrelease;onscreenclick;ontimer;pd;pen;pencolor;pendown;pensize;penup;pos;position;pu;radians;register_shape;reset;resetscreen;resizemode;right;rt;screensize;seth;setheading;setpos;setposition;settiltangle;setundobuffer;setup;setworldcoordinates;setx;sety;shape;shapesize;shapetransform;shearfactor;showturtle;speed;st;stamp;teleport;textinput;tilt;tiltangle;title;towards;tracer;turtles;turtlesize;undo;undobufferentries;up;update;width;window_height;window_width;write;write_docstringdict;xcor;ycor;Pen;RawPen;RawTurtle;Screen;ScrolledCanvas;Shape;TNavigator;TPen;Terminator;Turtle;TurtleGraphicsError;TurtleScreen;TurtleScreenBase;Vec2D
+import turtle
+
+turtle.
