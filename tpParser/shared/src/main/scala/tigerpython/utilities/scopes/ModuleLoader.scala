@@ -3,6 +3,7 @@ package scopes
 
 import types._
 import tigerpython.parser.ast.AstNode
+import tigerpython.utilities.completer.PyiModuleParser
 
 import scala.collection.mutable
 
@@ -204,16 +205,13 @@ object ModuleLoader {
       }
       if (names.length == 1) {
         modules(name) = module
-      } else
-      {
-        if (!modules.contains(names(0))) {
+      } else {
+        if (!modules.contains(names(0)))
           modules(names(0)) = new Module(names(0))
-        }
         var cur = modules(names(0))
         for (i <- 1 until (names.length - 1)) {
-          if (cur.findField(names(i)).isEmpty) {
+          if (cur.findField(names(i)).isEmpty)
             cur.setField(names(i), new Module(names(i)))
-          }
           cur = cur.findField(names(i)).get
         }
         cur.setField(names(names.length - 1), module)
@@ -222,6 +220,29 @@ object ModuleLoader {
     } else
       null
 
+  def addPyiModule(name: String, body: String): Module =
+    if (name != null && name != "") {
+      val names = name.split('.')
+      val lastName = names(names.length - 1)
+      val module = new Module(lastName)
+      val parser = new PyiModuleParser(module)
+      parser.parse(body)
+      if (names.length == 1) {
+        modules(name) = module
+      } else {
+        if (!modules.contains(names(0)))
+          modules(names(0)) = new Module(names(0))
+        var cur = modules(names(0))
+        for (i <- 1 until (names.length - 1)) {
+          if (cur.findField(names(i)).isEmpty)
+            cur.setField(names(i), new Module(names(i)))
+          cur = cur.findField(names(i)).get
+        }
+        cur.setField(names(names.length - 1), module)
+      }
+      module
+    } else
+      null
 
   var defaultModuleLoader = new ModuleLoader()
 }

@@ -46,7 +46,7 @@ class PythonFunction(val name: String,
 object PythonFunction {
   // Note: the methods are assumed to have self as first param if they are a method of a class
   def fromString(s: String, methodOfClass: PythonClass, localTypes: Map[String, DataType]): PythonFunction =
-    if (s != null && s.length > 0) {
+    if (s != null && s.nonEmpty) {
       val (retType, source) =
         if (s(0) == '[') {
           val name = s.drop(1).takeWhile(_ != ']')

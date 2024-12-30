@@ -8,6 +8,8 @@ import tigerpython.inputenc.StringTranslator
 import tigerpython.utilities.completer.Completer
 import tigerpython.utilities.scopes.ModuleLoader
 
+import scala.annotation.tailrec
+
 /**
   * The `TPyParser` is the interface for using the parser in a JavaScript setting.  It provides the means to check a
   * given Python program for possible syntax errors.  All errors are reported as `ErrorInfo` instances with fields for
@@ -222,10 +224,31 @@ object TPyParser {
   }
 
   /**
+   * Returns the (qualified) name at the current position.  If the name stems from a specific module such as `turtle`,
+   * say, it will be returned as `turtle.name`, allowing for a (quasi) unique identification of the name under the
+   * cursor.
+   */
+  @JSExport
+  def getQualifiedName(source: String, pos: Int): String = {
+    val completer = new Completer("<module>", source, pos)
+    completer.getCurrentName
+  }
+
+  /**
    * Adds a new Python module that can then be used for auto-completion.
    */
   @JSExport
-  def defineModule(moduleName: String, moduleBody: String): Unit = {
-    ModuleLoader.addModule(moduleName, moduleBody.split('\n'))
-  }
+  @tailrec
+  def defineModule(moduleName: String, moduleBody: String, sourceFormat: String = null): Unit =
+    if (sourceFormat != null)
+      sourceFormat.toLowerCase match {
+        case "pyi" =>
+          ModuleLoader.addPyiModule(moduleName, moduleBody)
+        case "legacy" | "tj" =>
+          ModuleLoader.addModule(moduleName, moduleBody.split('\n'))
+        case _ =>
+          defineModule(moduleName, moduleBody, "legacy")
+      }
+    else
+      defineModule(moduleName, moduleBody, "legacy")
 }
