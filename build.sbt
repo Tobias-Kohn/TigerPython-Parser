@@ -1,7 +1,7 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 val useScalaVersion = "2.13.14"
-val releaseVersion = "1.0.4"
+val releaseVersion = "1.1.0"
 
 val sharedSettings = Seq(
   scalaVersion := useScalaVersion,
@@ -55,9 +55,15 @@ makeRelease := {
   val outputPlain = (tpParser.js / target).value / scalaDir / "tigerpython-parser-opt.js"
   val outputModule = (tpParserModuleJS.js / target).value / scalaDir / "tigerpython-parser-module-opt.js"
 
+  val outputPlainMap = (tpParser.js / target).value / scalaDir / "tigerpython-parser-opt.js.map"
+  val outputModuleMap = (tpParserModuleJS.js / target).value / scalaDir / "tigerpython-parser-module-opt.js.map"
+
   // Paths to the release directory
   val releasePlain = baseDirectory.value / "release" / "tigerpython-parser.js"
   val releaseModule = baseDirectory.value / "release" / "tigerpython-parser.mjs"
+
+  val releasePlainMap = baseDirectory.value / "release" / "tigerpython-parser.js.map"
+  val releaseModuleMap = baseDirectory.value / "release" / "tigerpython-parser.mjs.map"
 
   // Run fullOptJS for the configuration without ESModule
   log.info("Running fullOptJS for plain and module...")
@@ -67,6 +73,12 @@ makeRelease := {
   IO.copyFile(outputPlain, releasePlain)
   log.info(s"Copying ${outputModule} to ${releaseModule}...")
   IO.copyFile(outputModule, releaseModule)
+
+  // Also copy the map-files, which are needed for debugging
+  log.info(s"Copying ${outputPlainMap} to ${releasePlainMap}...")
+  IO.copyFile(outputPlainMap, releasePlainMap)
+  log.info(s"Copying ${outputModuleMap} to ${releaseModuleMap}...")
+  IO.copyFile(outputModuleMap, releaseModuleMap)
 
   // Regenerate the package.json and package-lock.json file:
   val packageJsonString =
