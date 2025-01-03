@@ -76,4 +76,15 @@ class TestCompleter extends FunSuite {
       val suggestions = completer.getNameFilter.getNameList("").mkString(";")
       assert(suggestions == expected_result)
     }
+
+  for (fileName <- listAllFiles("completer_params"))
+    test("test program '%s'".format(getFileName(fileName))) {
+      val (pos, expected_result, text) = loadFromCompleterFile(fileName)
+      val completer = new Completer(fileName, text, pos)
+      val funcNameAtPos = text.drop(pos).takeWhile(_ != '(')
+      val params = completer.getNameFilter.getParams(funcNameAtPos)
+      assert(params == expected_result)
+      val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos).map(_.parameters.mkString(", "))
+      assert(extParams sameElements Array(expected_result))
+    }
 }
