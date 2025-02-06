@@ -106,7 +106,7 @@ object BuiltinTypes {
   val TUPLE_TYPE = PrimitiveType("tuple", SEQ_TYPE)
   val BYTEARRAY_TYPE = PrimitiveType("bytearray", SEQ_TYPE)
   val BUFFER_TYPE = PrimitiveType("buffer", SEQ_TYPE)
-  val XRANGE_TYPE = PrimitiveType("xrange", SEQ_TYPE)
+//  val XRANGE_TYPE = PrimitiveType("xrange", SEQ_TYPE)
   val UNICODE_TYPE: PrimitiveType = new PrimitiveType("unicode", SEQ_TYPE, Map()) {
     override def getItemType: DataType = this
   }
@@ -293,4 +293,13 @@ object BuiltinTypes {
   val SET = new Instance(SET_TYPE)
   val STRING = new Instance(STRING_TYPE)
   val TUPLE = new Instance(TUPLE_TYPE)
+
+  def appyTigerPythonModifications(): Unit = {
+    LIST_TYPE.addFields(
+      PrimitiveType("first"),
+      PrimitiveType("head"),
+      PrimitiveType("last"),
+      PrimitiveType("tail", LIST_TYPE)
+    )
+  }
 }

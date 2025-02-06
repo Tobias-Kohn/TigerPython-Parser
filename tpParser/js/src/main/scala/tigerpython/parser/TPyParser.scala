@@ -131,6 +131,15 @@ object TPyParser {
   }
 
   /**
+   * TigerPython comes with some small modifications to the Python defaults, which are enabled by this method.  Note
+   * that this cannot be undone; the modifications to the types and built-in dictionary are persistent.
+   */
+  @JSExport
+  def enableTigerPythonModifications(): Unit = {
+    tigerpython.utilities.types.BuiltinTypes.appyTigerPythonModifications()
+  }
+
+  /**
     * Checks the syntax of the given source code and returns a list with all errors detected in the code.
     *
     * @param source  The entire Python program as a single string.
