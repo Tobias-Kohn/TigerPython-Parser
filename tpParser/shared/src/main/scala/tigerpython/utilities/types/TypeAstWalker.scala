@@ -169,7 +169,7 @@ class TypeAstWalker {
       for (element <- list.elements)
         result = DataType.getCompatibleType(result, getType(element))
       if (result != null && result != ANY_TYPE)
-        Instance(ListType(result))
+        new Instance(ListType(result))
       else
         BuiltinTypes.LIST
     } else

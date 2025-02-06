@@ -103,12 +103,6 @@ object BuiltinTypes {
     BuiltinFunction("sort", Array(), MUTABLE_SEQ, "sort the items of the sequence in place")
   )
   val LIST_TYPE = PrimitiveType("list", MUTABLE_SEQ)
-  LIST_TYPE.addFields(
-    PrimitiveType("first"),
-    PrimitiveType("head"),
-    PrimitiveType("last"),
-    PrimitiveType("tail", LIST_TYPE)
-  )
   val TUPLE_TYPE = PrimitiveType("tuple", SEQ_TYPE)
   val BYTEARRAY_TYPE = PrimitiveType("bytearray", SEQ_TYPE)
   val BUFFER_TYPE = PrimitiveType("buffer", SEQ_TYPE)
