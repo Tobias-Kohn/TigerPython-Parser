@@ -71,6 +71,9 @@ A third method returns the AST:
   Note that this is feature is currently under development and not thoroughly tested, yet.
 
 Available options:
+- **`enableTigerPythonModifications()`**  This will enable TigerPython-specific modifications such as adding fields for
+  `first` and `last` to the `list`-type.  This operation cannot be undone due to the kind of modifications, which is
+  why this is not exposed as a boolean flag, but activated through this method.
 - **`evalMode: boolean`**  Set to `true` when the given code is from an interactive console / shell.  The parser would 
   normally reject simple expressions like `3 + 4` as not having side effects.  However, in the context of a shell, this
   is perfectly legal and normal.
@@ -114,18 +117,16 @@ caret.  Take, for instance, `math.a|(` (with `|` denoting the caret) and run the
 to `false` (the default), it will return all possible suggestions for `math.`, ignoring the `a`.  If `filter` is set
 to `true`, however, it will only return a list with `acos, asin, atan, ...`, that is those names starting with `a`.
 
-Use `TPyParser.defineModule(moduleName: string, moduleBody: string)` in order to add your own modules that can then
-be 'imported' when the auto-completer analyses your program code.  The module's body consists of individual lines,
-where each line defines either a function or a constant value.  The line can start with a type specified in square
-brackets, followed by a name (no spaces) and a list of parameters in the case of functions.  A function may also be
-followed by a doc-string.  Here is an example:
-```
-[int]factorial(x)   Return *x* factorial. Raises :exc:`ValueError` if *x* is not integral or is negative.
-[float]sqrt(x)
-gamma(x)  Return the Gamma function at *x*.
-[float]pi
-```
+Use `TPyParser.defineModule(moduleName: string, moduleBody: string, "pyi")` in order to add your own modules that can 
+then be 'imported' when the auto-completer analyses your program code.  You need to give the module's name and the 
+source code, which must be in the PYI-format (see, e.g., [typeshed](https://github.com/python/typeshed)).  For 
+performance reasons, this uses a small and fast parser that does not deal gracefully with errors.  Hence, make sure 
+the PYI-code that you pass in here is correct (this feature is not intended to be exposed to the end-user, but rather 
+to allow you to support additional predefined modules).
 
+There is also a method `getQualifiedName(source: string, pos: int): string` that returns the fully qualified name for an
+identifier at the specified position in the source code.  That is, for instance `sin` is expanded to `math.sin`.  If
+there is no name at the given position the returned value is `null`.
 
 
 ## Supported Python Versions
