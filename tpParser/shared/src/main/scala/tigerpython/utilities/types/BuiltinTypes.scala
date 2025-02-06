@@ -103,12 +103,6 @@ object BuiltinTypes {
     BuiltinFunction("sort", Array(), MUTABLE_SEQ, "sort the items of the sequence in place")
   )
   val LIST_TYPE = PrimitiveType("list", MUTABLE_SEQ)
-  LIST_TYPE.addFields(
-    PrimitiveType("first"),
-    PrimitiveType("head"),
-    PrimitiveType("last"),
-    PrimitiveType("tail", LIST_TYPE)
-  )
   val TUPLE_TYPE = PrimitiveType("tuple", SEQ_TYPE)
   val BYTEARRAY_TYPE = PrimitiveType("bytearray", SEQ_TYPE)
   val BUFFER_TYPE = PrimitiveType("buffer", SEQ_TYPE)
@@ -227,12 +221,6 @@ object BuiltinTypes {
         "to None, so that this method never raises a KeyError."),
     BuiltinFunction("items", Array(), LIST_TYPE,
       "Return a copy of the dictionary’s list of (key, value) pairs."),
-    BuiltinFunction("iteritems", Array(), ITERATOR_TYPE,
-      "Return an iterator over the dictionary’s (key, value) pairs."),
-    BuiltinFunction("iterkeys", Array(), ITERATOR_TYPE,
-      "Return an iterator over the dictionary’s keys."),
-    BuiltinFunction("itervalues", Array(), ITERATOR_TYPE,
-      "Return an iterator over the dictionary’s values."),
     BuiltinFunction("keys", Array(), LIST_TYPE,
       "Return a copy of the dictionary’s list of keys."),
     BuiltinFunction("pop", Array("key", "default"), ANY_TYPE,
@@ -246,13 +234,7 @@ object BuiltinTypes {
     BuiltinFunction("update", Array("other"), NONE_TYPE,
       "Update the dictionary with the key/value pairs from other, overwriting existing keys. Return None."),
     BuiltinFunction("values", Array(), LIST_TYPE,
-      "Return a copy of the dictionary’s list of values."),
-    BuiltinFunction("viewitems", Array(), ANY_TYPE,
-      "Return a new view of the dictionary’s items ((key, value) pairs)."),
-    BuiltinFunction("viewkeys", Array(), ANY_TYPE,
-      "Return a new view of the dictionary’s keys."),
-    BuiltinFunction("viewvalues", Array(), ANY_TYPE,
-      "Return a new view of the dictionary’s values.")
+      "Return a copy of the dictionary’s list of values.")
   )
 
   val FILE_TYPE = PrimitiveType("file", Map(

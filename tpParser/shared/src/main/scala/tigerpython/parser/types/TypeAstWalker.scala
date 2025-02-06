@@ -65,6 +65,10 @@ class TypeAstWalker {
         getTypeOfList(list)
       case list: AstNode.ListComp =>
         getTypeOfListComp(list)
+      case _: AstNode.Dict =>
+        BuiltinTypes.DICT
+      case _dict: AstNode.DictComp =>
+        BuiltinTypes.DICT
       case name: AstNode.Name =>
         validateDataType(findName(name.name))
       case subscript: AstNode.Subscript =>
