@@ -67,6 +67,7 @@ class TestCompleter extends FunSuite {
 
   test("testing PYI-reading") {
     ModuleLoader.addPyiModule("turtle", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi"))
+    ModuleLoader.addPyiModule("turtle_alias", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle_alias.pyi"))
   }
 
   for (fileName <- listAllFiles("completer"))

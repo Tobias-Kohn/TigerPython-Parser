@@ -227,7 +227,7 @@ object ModuleLoader {
       val names = name.split('.')
       val lastName = names(names.length - 1)
       val module = new Module(lastName)
-      val parser = new PyiModuleParser(module)
+      val parser = new PyiModuleParser(module, modules)
       parser.parse(body)
       if (names.length == 1) {
         modules(name) = module

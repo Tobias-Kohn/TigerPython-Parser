@@ -3,12 +3,18 @@ package tigerpython.utilities.completer
 import tigerpython.utilities.fastparse._
 import tigerpython.utilities.types._
 
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 /**
  * This takes a Pyi-file and defines a TigerPython-module from it.
  */
-class PyiModuleParser(val module: Module) extends PyiParser {
+class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, DataType]) extends PyiParser {
+
+  // Maps an alias to a module, imported either as:
+  // import math          # produces "math" -> <math Module>
+  // import math as m     # produces "m" -> <math Module>
+  private val fullModuleImports: mutable.Map[String, Module] = mutable.Map()
 
   private var currentClass: PythonClass = _
 
@@ -36,6 +42,17 @@ class PyiModuleParser(val module: Module) extends PyiParser {
         for (el <- elts.tail)
           tp = DataType.getCompatibleType(tp, convertToType(el))
         tp
+      case AttributeNode(base, name) =>
+        val baseDotted = PyiModuleParser.toDotted(base)
+        if (baseDotted != null && fullModuleImports.contains(baseDotted))
+          fullModuleImports(baseDotted).findField(name) match {
+            case Some (tp) =>
+              tp
+            case _ =>
+              BuiltinTypes.ANY_TYPE
+          }
+        else
+          BuiltinTypes.ANY_TYPE
       case _ =>
         BuiltinTypes.ANY_TYPE
     }
@@ -113,8 +130,32 @@ class PyiModuleParser(val module: Module) extends PyiParser {
   }
 
   override protected
-  def importModule(module: String, alias: String): Boolean = false
+  def importModule(module: String, alias: String): Boolean = {
+    moduleLookup.get(module) match {
+      case Some(m : Module) if m != null =>
+        if (alias == null)
+          fullModuleImports(module) = m;
+        else
+          fullModuleImports(alias) = m;
+    }
+    false
+  }
 
   override protected
   def importNameFromModule(module: String, name: String, alias: String): Boolean = false
+}
+
+object PyiModuleParser {
+  private def toDotted(exprAst: ExprAst): String = {
+    exprAst match {
+      case NameNode(name) =>
+        name
+      case AttributeNode(base, name) =>
+        val prefix = toDotted(base)
+        if (prefix == null) null
+        else s"$prefix.$name"
+      case _ =>
+        null
+    }
+  }
 }
