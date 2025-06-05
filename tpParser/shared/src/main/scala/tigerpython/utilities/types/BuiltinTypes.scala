@@ -9,6 +9,11 @@ package tigerpython.utilities.types
 object BuiltinTypes {
   val builtins: collection.mutable.Map[String, DataType] = collection.mutable.Map[String, DataType]()
 
+  def add(types: Instance*): Unit =
+    for (t <- types)
+      builtins(t.baseType.name) = t.baseType
+
+
   def fromString(s: String): DataType = {
     val result = builtins.getOrElse(s, ExceptionTypes.byName(s))
     if (result != null)
@@ -293,6 +298,8 @@ object BuiltinTypes {
   val SET = new Instance(SET_TYPE)
   val STRING = new Instance(STRING_TYPE)
   val TUPLE = new Instance(TUPLE_TYPE)
+
+  add(BOOLEAN, BUFFER, BYTEARRAY, COMPLEX, DICT, FILE, FLOAT, FROZENSET, GENERATOR, INTEGER, ITERATOR, LIST, LONG, NONE, SET, STRING, TUPLE);
 
   def appyTigerPythonModifications(): Unit = {
     LIST_TYPE.addFields(
