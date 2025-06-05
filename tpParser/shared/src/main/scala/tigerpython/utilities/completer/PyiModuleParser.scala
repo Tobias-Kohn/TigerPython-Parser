@@ -131,16 +131,39 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
 
   override protected
   def importModule(module: String, alias: String): Boolean = {
-    moduleLookup.get(module) match {
-      case Some(m : Module) if m != null =>
-        if (alias == null)
-          fullModuleImports(module) = m;
-        else
-          fullModuleImports(alias) = m;
-      case _ => ()
+    val segments = module.split("\\.")
+    if (segments.isEmpty) return false
+
+    // Start with the outermost module
+    var currentOpt = moduleLookup.get(segments.head) match {
+      case Some(m: Module) if m != null => Some(m)
+      case _ => None
     }
-    false
+
+    // Traverse nested modules
+    for (name <- segments.tail if currentOpt.isDefined) {
+      currentOpt = currentOpt match {
+        case Some(mod) =>
+          mod.getFields(name) match {
+            case m: Module if m != null => Some(m)
+            case _ => None
+          }
+        case None => None
+      }
+    }
+
+    currentOpt match {
+      case Some(finalModule) =>
+        if (alias == null)
+          fullModuleImports(module) = finalModule
+        else
+          fullModuleImports(alias) = finalModule
+        true
+      case None =>
+        false
+    }
   }
+
 
   override protected
   def importNameFromModule(module: String, name: String, alias: String): Boolean = false
