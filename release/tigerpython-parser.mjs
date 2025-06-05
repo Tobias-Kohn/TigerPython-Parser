@@ -46203,7 +46203,6 @@ $p.UT = (function(module, alias) {
         }
       }
     }
-    throw new $c_s_MatchError(x1);
   }
   return false;
 });

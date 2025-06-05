@@ -137,6 +137,7 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
           fullModuleImports(module) = m;
         else
           fullModuleImports(alias) = m;
+      case _ => ()
     }
     false
   }
