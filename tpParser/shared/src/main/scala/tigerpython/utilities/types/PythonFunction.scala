@@ -25,7 +25,7 @@ class PythonFunction(val name: String,
 
   override def getParamsString: String =
     if (isMethod && params.nonEmpty)
-      params.drop(1).map(_.name).take(paramCount).mkString(", ")
+      params.drop(1).map(_.name).take(paramCount - 1).mkString(", ")
     else
       params.map(_.name).take(paramCount).mkString(", ")
 

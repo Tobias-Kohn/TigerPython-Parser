@@ -52453,7 +52453,7 @@ $p.nv = (function() {
         throw new $c_s_MatchError(xs$2);
       }
     }
-    return $f_sc_IterableOnceOps__mkString__T__T__T__T($x_10.aB($m_sc_ArrayOps$().sN(ys, 0, this.H6)), "", ", ", "");
+    return $f_sc_IterableOnceOps__mkString__T__T__T__T($x_10.aB($m_sc_ArrayOps$().sN(ys, 0, (((-1) + this.H6) | 0))), "", ", ", "");
   } else {
     var $x_20 = $m_s_Predef$();
     var xs$3 = this.sd;

@@ -34,7 +34,10 @@ class TestCompleter extends FunSuite {
         // some of the contents might be meaningfully indented so we can't just trim every line:
         val module_name = leadingComments(0).drop(1).trim
         val module_contents = leadingComments.slice(1, leadingComments.length - 2).map((x) => if (x.length < 2) x else x.substring(2))
-        ModuleLoader.addModule(module_name, module_contents)
+        if (module_name.startsWith("pyi:"))
+          ModuleLoader.addPyiModule(module_name.substring("pyi:".length), module_contents.mkString("\n"))
+        else
+          ModuleLoader.addModule(module_name, module_contents)
         // Note: the module contents are not cleared between tests, so it's a good idea to name
         // all involved modules uniquely to avoid interference.
       }
