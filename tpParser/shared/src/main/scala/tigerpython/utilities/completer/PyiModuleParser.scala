@@ -111,7 +111,7 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
       else
         params.head.dataType = new SelfInstance(currentClass)
     }
-    val f = new PythonFunction(functionName, params.toArray, paramCount, convertToType(returnType))
+    val f = new PythonFunction(functionName, params.toArray, paramCount, null, convertToType(returnType))
     if (doc != null)
       f.docString = doc
     if (className == null)

@@ -489,7 +489,7 @@ class AstWalker(val scope: Scope) {
               if (annotation != null)
                 getType(annotation)
               else if (i >= delta) {
-                getType(params.defaults(i - delta)) match {
+                getType(params.defaults(i - delta)._1) match {
                   case BuiltinTypes.NONE_TYPE => BuiltinTypes.ANY_TYPE
                   case d => d
                 }
@@ -499,9 +499,9 @@ class AstWalker(val scope: Scope) {
           case _ =>
         }
       if (params.varArgs != null)
-        result += Parameter(params.varArgs.name, BuiltinTypes.TUPLE_TYPE)
+        result += Parameter(params.varArgs.name, if (params.varArgs.annotation != null) getType(params.varArgs.annotation) else BuiltinTypes.TUPLE_TYPE)
       if (params.kwArgs != null)
-        result += Parameter(params.kwArgs.name, BuiltinTypes.DICT_TYPE)
+        result += Parameter(params.kwArgs.name, if (params.kwArgs.annotation != null) getType(params.kwArgs.annotation) else BuiltinTypes.DICT_TYPE)
       result.toArray
     } else
       Array()

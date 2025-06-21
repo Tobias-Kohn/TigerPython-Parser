@@ -17,6 +17,8 @@ class BuiltinFunction(val name: String,
   override def getParamsString: String = params.mkString(", ")
   override def getReturnType: DataType = returnType
 
+  override def getSignature: Signature = Signature.fromPlainParams(params)
+
   override def toString: String = "%s(%s)".format(name, getParamsString)
 }
 object BuiltinFunction {

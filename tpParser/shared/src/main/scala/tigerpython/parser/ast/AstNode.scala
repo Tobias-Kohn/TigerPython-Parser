@@ -355,10 +355,11 @@ object AstNode {
   case class TupleParameter(pos: Int, tuple: NameTuple) extends Parameter
 
   object Parameters {
-    def empty(pos: Int) = new Parameters(pos, Array(), Array(), 0, null, null)
+    def empty(pos: Int) = new Parameters(pos, Array(), Array(), 0, 0, null, null)
   }
-  case class Parameters(pos: Int, args: Array[Parameter], defaults: Array[Expression],
-                        maxPositionalArgCount: Int,
+  case class Parameters(pos: Int, args: Array[Parameter], defaults: Array[(Expression, String)],
+                        maxPositionalOnlyArgCount: Int, // Index of slash, or 0 if it wasn't present
+                        maxPositionalArgCount: Int, // Index of star, or args.length if it wasn't present
                         varArgs: NameParameter, kwArgs: NameParameter) extends AstNode {
     private def hasFirstName(names: String*): Boolean =
       if (args.nonEmpty)

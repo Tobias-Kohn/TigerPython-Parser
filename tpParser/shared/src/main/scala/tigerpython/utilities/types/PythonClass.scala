@@ -44,6 +44,12 @@ class PythonClass(val name: String, val bases: Array[ClassType]) extends ClassTy
     else
       super.getParamsString
 
+  override def getSignature: Signature =
+    if (initFunction != null)
+      initFunction.getSignature
+    else
+      super.getSignature
+
   override def getProtectedFields: Map[String, DataType] = protectedFields.toMap
 
   def isSubclassOf(base: DataType): Boolean =

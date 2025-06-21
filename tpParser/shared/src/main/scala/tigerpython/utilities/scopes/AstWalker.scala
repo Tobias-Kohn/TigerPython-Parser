@@ -2,7 +2,10 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast._
+import tigerpython.utilities.types.BuiltinTypes.STRING_TYPE
 import types._
+
+import scala.collection.mutable.ListBuffer
 
 /**
   * @author Tobias Kohn
@@ -260,7 +263,7 @@ class AstWalker(val scope: Scope) {
             params(1).dataType = BuiltinTypes.ECHO2_TYPE
       }
     val result = new PythonFunction(function.name.name, params,
-      function.params.maxPositionalArgCount min params.length, ANY_TYPE)
+      function.params.maxPositionalArgCount min params.length, getSignature(function.params, ANY_TYPE), ANY_TYPE)
     result.docString = function.docString
     scope match {
       case cls: ClassScope =>
@@ -482,7 +485,7 @@ class AstWalker(val scope: Scope) {
               if (annotation != null)
                 getType(annotation)
               else if (i >= delta) {
-                getType(params.defaults(i - delta)) match {
+                getType(params.defaults(i - delta)._1) match {
                   case BuiltinTypes.NONE_TYPE => BuiltinTypes.ANY_TYPE
                   case d => d
                 }
@@ -498,6 +501,48 @@ class AstWalker(val scope: Scope) {
       result.toArray
     } else
       Array()
+
+  protected def getSignature(params: AstNode.Parameters, returnType: DataType): Signature =
+    if (params != null && params.args != null && params.defaults != null) {
+      val positionalOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
+      val positionalOrKeywordArgs: ListBuffer[SignatureArg] = ListBuffer()
+      var varArgs: Option[SignatureVarArg] = None           // *args
+      val keywordOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()     // After *
+      var varKwargs: Option[SignatureVarArg] = None
+      // Defaults are from the end backwards, so the ends line up, not the starts:
+      val delta = params.args.length - params.defaults.length
+      for (i <- params.args.indices)
+        params.args(i) match {
+          case AstNode.NameParameter(_, name, annotation) =>
+            val dataType =
+              if (annotation != null)
+                getType(annotation)
+              else if (i >= delta) {
+                getType(params.defaults(i - delta)._1) match {
+                  case BuiltinTypes.NONE_TYPE => BuiltinTypes.ANY_TYPE
+                  case d => d
+                }
+              } else
+                BuiltinTypes.ANY_TYPE
+            val addTo =
+              if (i < params.maxPositionalOnlyArgCount)
+                positionalOnlyArgs
+              else if (i < params.maxPositionalArgCount)
+                positionalOrKeywordArgs
+              else
+                keywordOnlyArgs
+            addTo += SignatureArg(name, Option(if (i - delta >= 0) params.defaults(i - delta)._2 else null), dataType)
+          case _ =>
+        }
+      if (params.varArgs != null)
+        varArgs = Option(SignatureVarArg(params.varArgs.name, if (params.varArgs.annotation != null) new VarTupleType(getType(params.varArgs.annotation)) else BuiltinTypes.TUPLE_TYPE))
+      if (params.kwArgs != null)
+        varKwargs = Option(SignatureVarArg(params.kwArgs.name, if (params.kwArgs.annotation != null) new DictType(STRING_TYPE, getType(params.kwArgs.annotation)) else BuiltinTypes.DICT_TYPE))
+      Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, returnType)
+    } else
+      null
+
+
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

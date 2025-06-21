@@ -46,6 +46,8 @@ abstract class DataType {
 
   def getParamsString: String = null
 
+  def getSignature: Signature = null
+
   def getReturnType: DataType = this
 
   def getTypeName: String = "type"
