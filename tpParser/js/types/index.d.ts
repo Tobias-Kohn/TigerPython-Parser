@@ -1,16 +1,37 @@
 declare module "tigerpython-parser" {
-    class ErrorInfo {
+    interface ErrorInfo {
         line: number;
         offset: number;
         msg: string;
         code: string;
     }
-    class Completion {
-        acResult: string;
-        documentation: string;
-        type: string;
+    interface Completion {
+        acResult: string; // the name of the item (ac=autocomplete)
+        documentation: string | null;
+        type: string | null;
         params: string[] | null;
+        signature: Signature | null;
     }
+    interface SignatureArg {
+      name: string;
+      defaultValue: string | null;
+      argType: string | null;
+    };
+
+    type SignatureVarArg = {
+      name: string;
+      argType: string | null;
+    };
+
+    type Signature = {
+      positionalOnlyArgs: SignatureArg[];      // before /
+      positionalOrKeywordArgs: SignatureArg[]; // after / before *
+      varArgs: SignatureVarArg | null;         // *args
+      keywordOnlyArgs: SignatureArg[];         // after *
+      varKwargs: SignatureVarArg | null;       // **kwargs
+    };
+
+
     export namespace TPyParser {
         let evalMode: boolean;
         let newDivision: boolean;
