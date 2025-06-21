@@ -29,6 +29,7 @@ declare module "tigerpython-parser" {
       varArgs: SignatureVarArg | null;         // *args
       keywordOnlyArgs: SignatureArg[];         // after *
       varKwargs: SignatureVarArg | null;       // **kwargs
+      firstParamIsSelf: boolean;
     };
 
 

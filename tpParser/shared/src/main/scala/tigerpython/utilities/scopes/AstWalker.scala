@@ -263,7 +263,7 @@ class AstWalker(val scope: Scope) {
             params(1).dataType = BuiltinTypes.ECHO2_TYPE
       }
     val result = new PythonFunction(function.name.name, params,
-      function.params.maxPositionalArgCount min params.length, getSignature(function.params, ANY_TYPE), ANY_TYPE)
+      function.params.maxPositionalArgCount min params.length, getSignature(function.params, ANY_TYPE, params.length > 0 && params(0).dataType.isInstanceOf[SelfInstance]), ANY_TYPE)
     result.docString = function.docString
     scope match {
       case cls: ClassScope =>
@@ -502,7 +502,7 @@ class AstWalker(val scope: Scope) {
     } else
       Array()
 
-  protected def getSignature(params: AstNode.Parameters, returnType: DataType): Signature =
+  protected def getSignature(params: AstNode.Parameters, returnType: DataType, firstParamIsSelf: Boolean): Signature =
     if (params != null && params.args != null && params.defaults != null) {
       val positionalOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
       val positionalOrKeywordArgs: ListBuffer[SignatureArg] = ListBuffer()
@@ -538,7 +538,7 @@ class AstWalker(val scope: Scope) {
         varArgs = Option(SignatureVarArg(params.varArgs.name, if (params.varArgs.annotation != null) new VarTupleType(getType(params.varArgs.annotation)) else BuiltinTypes.TUPLE_TYPE))
       if (params.kwArgs != null)
         varKwargs = Option(SignatureVarArg(params.kwArgs.name, if (params.kwArgs.annotation != null) new DictType(STRING_TYPE, getType(params.kwArgs.annotation)) else BuiltinTypes.DICT_TYPE))
-      Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, returnType)
+      Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, returnType, firstParamIsSelf)
     } else
       null
 

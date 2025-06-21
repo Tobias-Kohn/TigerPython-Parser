@@ -40,7 +40,8 @@ case class Signature(
                       varArgs: Option[SignatureVarArg],           // *args
                       keywordOnlyArgs: List[SignatureArg],      // After *
                       varKwargs: Option[SignatureVarArg],
-                      returnType: DataType
+                      returnType: DataType,
+                      firstParamIsSelf: Boolean
                     ) {
   // Note: we only put the / or * if they are semantically necessary
   override def toString: String = {
@@ -76,6 +77,6 @@ case class Signature(
 
 object Signature {
 
-  def fromPlainParams(params: Array[String]): Signature = new Signature(List.empty, params.map((n) => SignatureArg(n, Option.empty, BuiltinTypes.ANY_TYPE)).toList, Option.empty, List.empty, Option.empty, BuiltinTypes.ANY_TYPE)
+  def fromPlainParams(params: Array[String]): Signature = new Signature(List.empty, params.map((n) => SignatureArg(n, Option.empty, BuiltinTypes.ANY_TYPE)).toList, Option.empty, List.empty, Option.empty, BuiltinTypes.ANY_TYPE, false)
 
 }

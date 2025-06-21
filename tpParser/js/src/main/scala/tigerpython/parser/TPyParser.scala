@@ -246,7 +246,8 @@ object TPyParser {
             positionalOrKeywordArgs = item.signature.positionalOrKeywordArgs.map(makeSignatureArg).toJSArray,
             varArgs = item.signature.varArgs.map(makeSignatureVarArg).getOrElse(null),
             keywordOnlyArgs = item.signature.keywordOnlyArgs.map(makeSignatureArg).toJSArray,
-            varKwargs = item.signature.varKwargs.map(makeSignatureVarArg).getOrElse(null)
+            varKwargs = item.signature.varKwargs.map(makeSignatureVarArg).getOrElse(null),
+            firstParamIsSelf = item.signature.firstParamIsSelf
           )
         }
         else
