@@ -9155,18 +9155,12 @@ $p.setLanguage = (function(arg) {
   var prep0 = arg;
   $m_Ltigerpython_parser_errors_ErrorTranslator$().uX.W1(prep0);
 });
-Object.defineProperty($p, "getLanguage", ({
-  "get": (function() {
-    return $m_Ltigerpython_parser_errors_ErrorTranslator$().uX.y4;
-  }),
-  "configurable": true
-}));
-Object.defineProperty($p, "getLanguages", ({
-  "get": (function() {
-    return $m_Ltigerpython_parser_TPyParser$().UP();
-  }),
-  "configurable": true
-}));
+$p.getLanguage = (function() {
+  return $m_Ltigerpython_parser_errors_ErrorTranslator$().uX.y4;
+});
+$p.getLanguages = (function() {
+  return $m_Ltigerpython_parser_TPyParser$().UP();
+});
 Object.defineProperty($p, "warningAsErrors", ({
   "get": (function() {
     return $m_Ltigerpython_parser_TPyParser$().Fo;
