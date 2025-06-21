@@ -9,8 +9,8 @@ class FunctionArguments(
                        val arguments: Array[Arg],
                        val keywordOnlyArguments: Array[Arg],
                        val posOnlyArguments: Array[Arg],
-                       val varArg: String,
-                       val keywordArg: String
+                       val varArg: Arg,
+                       val keywordArg: Arg
                        ) {
 
   private def argArrayToString(args: Array[Arg]): String =
@@ -51,16 +51,17 @@ object FunctionArguments {
    *
    * @return      `(arguments, keywordOnlyArgument, varArg)`
    */
-  private def _analyseClassicParameters(args: Array[Arg]): (Array[Arg], Array[Arg], String) = {
+  private def _analyseClassicParameters(args: Array[Arg]): (Array[Arg], Array[Arg], Arg) = {
     val idx = args.indexWhere(_.name.startsWith("*"))
     if (idx >= 0) {
       val varArgName = args(idx).name.drop(1)
-      (args.take(idx), args.drop(idx + 1), if (varArgName.nonEmpty) varArgName else null)
+      val varArgType = args(idx).argType
+      (args.take(idx), args.drop(idx + 1), if (varArgName.nonEmpty) Arg(varArgName, varArgType, null) else null)
     } else
       (args, Array(), null)
   }
 
-  private def _analyseParameters(args: Array[Arg], posOnlyArgs: Array[Arg], kwArgs: String): FunctionArguments = {
+  private def _analyseParameters(args: Array[Arg], posOnlyArgs: Array[Arg], kwArgs: Arg): FunctionArguments = {
     // A common special case: _all_ arguments are position-only
     if (args.isEmpty && posOnlyArgs != null)
       new FunctionArguments(Array(), Array(), posOnlyArgs, null, kwArgs)
@@ -76,7 +77,7 @@ object FunctionArguments {
   def apply(args: Array[Arg], posOnlyArgs: Array[Arg]): FunctionArguments =
     if (args.nonEmpty) {
       if (args.last.name.startsWith("**"))
-        _analyseParameters(args.dropRight(1), posOnlyArgs, args.last.name.drop(2))
+        _analyseParameters(args.dropRight(1), posOnlyArgs, new Arg(args.last.name.drop(2), args.last.argType, null))
       else
         _analyseParameters(args, posOnlyArgs, null)
     } else
