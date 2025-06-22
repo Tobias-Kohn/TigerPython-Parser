@@ -129,7 +129,12 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
         params.head.dataType = new SelfInstance(currentClass)
     }
     val retType = convertToType(returnType)
-    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, params.nonEmpty && params.head.dataType.isInstanceOf[SelfInstance]), retType)
+    val firstParamIsSelf = params.nonEmpty && params.head.dataType.isInstanceOf[SelfInstance]
+    if (firstParamIsSelf && positionalOnlyArgs.isEmpty && positionalOrKeywordArgs.nonEmpty) {
+      // Move self from pos-or-keyword to pos-only, which makes more semantic sense:
+      positionalOnlyArgs += positionalOrKeywordArgs.remove(0)
+    }
+    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, firstParamIsSelf), retType)
     if (doc != null)
       f.docString = doc
     if (className == null)

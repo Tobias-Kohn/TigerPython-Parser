@@ -525,7 +525,7 @@ class AstWalker(val scope: Scope) {
               } else
                 BuiltinTypes.ANY_TYPE
             val addTo =
-              if (i < params.maxPositionalOnlyArgCount)
+              if (i < params.maxPositionalOnlyArgCount || (i == 0 && firstParamIsSelf))
                 positionalOnlyArgs
               else if (i < params.maxPositionalArgCount)
                 positionalOrKeywordArgs
