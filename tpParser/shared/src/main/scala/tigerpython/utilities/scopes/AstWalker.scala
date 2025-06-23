@@ -245,9 +245,11 @@ class AstWalker(val scope: Scope) {
 
   protected def walkFunction(function: AstNode.FunctionDef): Unit = {
     val params = getParameters(function.params)
+    var firstParamIsSelfOrCls = false;
     if (params.nonEmpty)
       scope match {
         case cls: ClassScope if !function.hasDecorator("staticmethod") =>
+          firstParamIsSelfOrCls = true;
           if (function.hasDecorator("classmethod"))
             params(0).dataType = new SelfClass(cls.pyClass)
           else
@@ -263,7 +265,7 @@ class AstWalker(val scope: Scope) {
             params(1).dataType = BuiltinTypes.ECHO2_TYPE
       }
     val result = new PythonFunction(function.name.name, params,
-      function.params.maxPositionalArgCount min params.length, getSignature(function.params, ANY_TYPE, params.length > 0 && params(0).dataType.isInstanceOf[SelfInstance]), ANY_TYPE)
+      function.params.maxPositionalArgCount min params.length, getSignature(function.params, ANY_TYPE, firstParamIsSelfOrCls), ANY_TYPE)
     result.docString = function.docString
     scope match {
       case cls: ClassScope =>
@@ -502,7 +504,7 @@ class AstWalker(val scope: Scope) {
     } else
       Array()
 
-  protected def getSignature(params: AstNode.Parameters, returnType: DataType, firstParamIsSelf: Boolean): Signature =
+  protected def getSignature(params: AstNode.Parameters, returnType: DataType, firstParamIsSelfOrCls: Boolean): Signature =
     if (params != null && params.args != null && params.defaults != null) {
       val positionalOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
       val positionalOrKeywordArgs: ListBuffer[SignatureArg] = ListBuffer()
@@ -525,7 +527,7 @@ class AstWalker(val scope: Scope) {
               } else
                 BuiltinTypes.ANY_TYPE
             val addTo =
-              if (i < params.maxPositionalOnlyArgCount || (i == 0 && firstParamIsSelf))
+              if (i < params.maxPositionalOnlyArgCount || (i == 0 && firstParamIsSelfOrCls))
                 positionalOnlyArgs
               else if (i < params.maxPositionalArgCount)
                 positionalOrKeywordArgs
@@ -538,7 +540,7 @@ class AstWalker(val scope: Scope) {
         varArgs = Option(SignatureVarArg(params.varArgs.name, if (params.varArgs.annotation != null) new VarTupleType(getType(params.varArgs.annotation)) else BuiltinTypes.TUPLE_TYPE))
       if (params.kwArgs != null)
         varKwargs = Option(SignatureVarArg(params.kwArgs.name, if (params.kwArgs.annotation != null) new DictType(STRING_TYPE, getType(params.kwArgs.annotation)) else BuiltinTypes.DICT_TYPE))
-      Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, returnType, firstParamIsSelf)
+      Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, returnType, firstParamIsSelfOrCls)
     } else
       null
 

@@ -41,7 +41,7 @@ case class Signature(
                       keywordOnlyArgs: List[SignatureArg],      // After *
                       varKwargs: Option[SignatureVarArg],
                       returnType: DataType,
-                      firstParamIsSelf: Boolean
+                      firstParamIsSelfOrCls: Boolean
                     ) {
   // Note: we only put the / or * if they are semantically necessary
   override def toString: String = {

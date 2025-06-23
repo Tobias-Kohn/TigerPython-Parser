@@ -101,7 +101,7 @@ class TestCompleter extends FunSuite {
       val funcNameAtPos = text.drop(pos).takeWhile(_ != '(')
       val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos)
       assert(extParams.length == 1)
-      assert(expected_result.startsWith("!") == extParams(0).signature.firstParamIsSelf)
+      assert(expected_result.startsWith("!") == extParams(0).signature.firstParamIsSelfOrCls)
       assert(Objects.toString(extParams(0).signature) == expected_result.substring(if (expected_result.startsWith("!")) 1 else 0))
     }
 }

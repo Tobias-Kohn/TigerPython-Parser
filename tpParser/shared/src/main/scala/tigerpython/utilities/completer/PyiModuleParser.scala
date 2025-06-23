@@ -121,20 +121,21 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
     }
     val paramCount = (arguments.posOnlyArguments.count(_.defaultValue == null) +
       arguments.arguments.count(_.defaultValue == null))
+    var firstParamIsSelfOrCls = false;
     if (className != null && currentClass != null && currentClass.name == className &&
         params.nonEmpty && !hasDecorator(decorator, "staticmethod")) {
+      firstParamIsSelfOrCls = true;
       if (hasDecorator(decorator, "classmethod"))
         params.head.dataType = currentClass
       else
         params.head.dataType = new SelfInstance(currentClass)
     }
     val retType = convertToType(returnType)
-    val firstParamIsSelf = params.nonEmpty && params.head.dataType.isInstanceOf[SelfInstance]
-    if (firstParamIsSelf && positionalOnlyArgs.isEmpty && positionalOrKeywordArgs.nonEmpty) {
+    if (firstParamIsSelfOrCls && positionalOnlyArgs.isEmpty && positionalOrKeywordArgs.nonEmpty) {
       // Move self from pos-or-keyword to pos-only, which makes more semantic sense:
       positionalOnlyArgs += positionalOrKeywordArgs.remove(0)
     }
-    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, firstParamIsSelf), retType)
+    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, firstParamIsSelfOrCls), retType)
     if (doc != null)
       f.docString = doc
     if (className == null)

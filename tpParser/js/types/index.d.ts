@@ -18,18 +18,18 @@ declare module "tigerpython-parser" {
       argType: string | null;
     };
 
-    type SignatureVarArg = {
+    interface SignatureVarArg {
       name: string;
       argType: string | null;
     };
 
-    type Signature = {
+    interface Signature {
       positionalOnlyArgs: SignatureArg[];      // before /
       positionalOrKeywordArgs: SignatureArg[]; // after / before *
       varArgs: SignatureVarArg | null;         // *args
       keywordOnlyArgs: SignatureArg[];         // after *
       varKwargs: SignatureVarArg | null;       // **kwargs
-      firstParamIsSelf: boolean;
+      firstParamIsSelfOrCls: boolean;
     };
 
 

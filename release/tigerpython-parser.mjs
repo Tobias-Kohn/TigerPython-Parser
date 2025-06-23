@@ -4910,8 +4910,8 @@ $p.constructor = $c_s_Array$UnapplySeqWrapper$;
 function $h_s_Array$UnapplySeqWrapper$() {
 }
 $h_s_Array$UnapplySeqWrapper$.prototype = $p;
-$p.eM = (function(this$, len) {
-  return $m_sc_ArrayOps$().eM(this$, len);
+$p.eL = (function(this$, len) {
+  return $m_sc_ArrayOps$().eL(this$, len);
 });
 var $d_s_Array$UnapplySeqWrapper$ = new $TypeData().i($c_s_Array$UnapplySeqWrapper$, "scala.Array$UnapplySeqWrapper$", ({
   ik: 1
@@ -5004,7 +5004,7 @@ $p.df = (function(this$) {
     throw new $c_ju_NoSuchElementException("last of empty array");
   }
 });
-$p.eM = (function(this$, len) {
+$p.eL = (function(this$, len) {
   var x = $m_jl_reflect_Array$().aX(this$);
   return ((x === len) ? 0 : ((x < len) ? (-1) : 1));
 });
@@ -5748,7 +5748,7 @@ $p.XZ = (function(this$, suffix) {
 $p.XY = (function(this$, marginChar) {
   var sb = $ct_jl_StringBuilder__I__(new $c_jl_StringBuilder(), this$.length);
   var this$3 = new $c_sc_StringOps$$anon$1(this$, false);
-  while ((this$3.eU < this$3.qW)) {
+  while ((this$3.eT < this$3.qW)) {
     var arg1 = this$3.QQ();
     var len = arg1.length;
     var index = 0;
@@ -5776,7 +5776,7 @@ $p.Yg = (function(this$, arg) {
   return (false ? arg.Zb() : arg);
 });
 $p.ao = (function(this$, args) {
-  return $m_jl_String$().Uw(this$, args.aY(new $c_sjsr_AnonFunction1(((arg$2) => $m_sc_StringOps$().Yg(this$, arg$2)))).eS($m_s_reflect_ManifestFactory$ObjectManifest$()));
+  return $m_jl_String$().Uw(this$, args.aY(new $c_sjsr_AnonFunction1(((arg$2) => $m_sc_StringOps$().Yg(this$, arg$2)))).eR($m_s_reflect_ManifestFactory$ObjectManifest$()));
 });
 $p.HE = (function(this$, that) {
   return ($f_T__compareTo__T__I(this$, that) < 0);
@@ -5948,7 +5948,7 @@ $p.constructor = $c_sci_Node$;
 function $h_sci_Node$() {
 }
 $h_sci_Node$.prototype = $p;
-$p.fg = (function(hash, shift) {
+$p.ff = (function(hash, shift) {
   return (31 & ((hash >>> shift) | 0));
 });
 $p.cv = (function(mask) {
@@ -5957,7 +5957,7 @@ $p.cv = (function(mask) {
 $p.qy = (function(bitmap, bitpos) {
   return $m_jl_Integer$().cj((bitmap & (((-1) + bitpos) | 0)));
 });
-$p.eL = (function(bitmap, mask, bitpos) {
+$p.eK = (function(bitmap, mask, bitpos) {
   return ((bitmap === (-1)) ? mask : this.qy(bitmap, bitpos));
 });
 var $d_sci_Node$ = new $TypeData().i($c_sci_Node$, "scala.collection.immutable.Node$", ({
@@ -6478,7 +6478,7 @@ $p.constructor = $c_scm_HashMap$Node;
 function $h_scm_HashMap$Node() {
 }
 $h_scm_HashMap$Node.prototype = $p;
-$p.fe = (function(k, h) {
+$p.fd = (function(k, h) {
   var _$this = this;
   while (true) {
     if (((h === _$this.gN) && $m_sr_BoxesRunTime$().Q(k, _$this.hm))) {
@@ -6615,7 +6615,7 @@ function $h_s_math_Numeric$NumericOps() {
 }
 $h_s_math_Numeric$NumericOps.prototype = $p;
 $p.sz = (function(rhs) {
-  return this.oq.fi(this.tG, rhs);
+  return this.oq.fh(this.tG, rhs);
 });
 $p.ON = (function(rhs) {
   return this.oq.h5(this.tG, rhs);
@@ -8395,7 +8395,7 @@ $p.OQ = (function(ast) {
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "lower", this.au(lower)), $ct_T2__O__O__(new $c_T2(), "upper", this.au(upper)), $ct_T2__O__O__(new $c_T2(), "step", this.au(step))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
     var x8 = ast;
-    var name = x8.f2;
+    var name = x8.f1;
     var annotation = x8.fU;
     this.z6(name);
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "name", name), $ct_T2__O__O__(new $c_T2(), "annotation", this.au(annotation))]));
@@ -8403,8 +8403,8 @@ $p.OQ = (function(ast) {
     var x10 = ast;
     var args = x10.cQ;
     var defaults = x10.eC;
-    var varArgs = x10.f3;
-    var kwArgs = x10.fs;
+    var varArgs = x10.f2;
+    var kwArgs = x10.fr;
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "args", this.dP(args)), $ct_T2__O__O__(new $c_T2(), "vararg", this.au(varArgs)), $ct_T2__O__O__(new $c_T2(), "kwarg", this.au(kwArgs)), $ct_T2__O__O__(new $c_T2(), "default", this.dP($m_sc_ArrayOps$().QL(defaults, new $c_sjsr_AnonFunction1(((x$3$2) => x$3$2.aB())), new $c_s_reflect_ClassTag$GenericClassTag($d_Ltigerpython_parser_ast_AstNode$Expression.l()))))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Assert)) {
     var x14 = ast;
@@ -8504,7 +8504,7 @@ $p.OQ = (function(ast) {
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "value", this.au(ast.iX))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x66 = ast;
-    var body$5 = x66.ft;
+    var body$5 = x66.fs;
     var handlers = x66.gv;
     var elseBody$3 = x66.ep;
     var finalBody = x66.eq;
@@ -8523,7 +8523,7 @@ $p.OQ = (function(ast) {
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "context", this.au(context)), $ct_T2__O__O__(new $c_T2(), "opt_vars", this.au(opt_vars)), $ct_T2__O__O__(new $c_T2(), "body", $p_Ltigerpython_parser_AstConverter___convert_body__Ltigerpython_parser_ast_AstNode$Statement__sjs_js_Any(this, body$7))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Alias)) {
     var x75 = ast;
-    var name$4 = x75.fq;
+    var name$4 = x75.fp;
     var asName = x75.em;
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "name", this.au(name$4)), $ct_T2__O__O__(new $c_T2(), "as_name", this.au(asName))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Attribute)) {
@@ -8549,7 +8549,7 @@ $p.OQ = (function(ast) {
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "func", this.au(function$1)), $ct_T2__O__O__(new $c_T2(), "args", this.dP(args$2)), $ct_T2__O__O__(new $c_T2(), "keywords", $p_Ltigerpython_parser_AstConverter___convert_kw__ALtigerpython_parser_ast_AstNode$Keyword__sjs_js_Any(this, keywords$2))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
     var x89 = ast;
-    var left$2 = x89.fr;
+    var left$2 = x89.fq;
     var comparators = x89.bV;
     var this$153 = $m_scm_ArrayBuffer$();
     var elems = $m_sci_Nil$();
@@ -8602,7 +8602,7 @@ $p.OQ = (function(ast) {
     return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "args", this.au(args$3)), $ct_T2__O__O__(new $c_T2(), "body", this.au(body$9))]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$List)) {
     var x105 = ast;
-    return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "elts", this.dP(x105.f1)), $ct_T2__O__O__(new $c_T2(), "ctx", x105.Fs.j())]));
+    return $m_sjs_js_special_package$().ax(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "elts", this.dP(x105.f0)), $ct_T2__O__O__(new $c_T2(), "ctx", x105.Fs.j())]));
   } else if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$ListComp)) {
     var x108 = ast;
     var elements$3 = x108.iW;
@@ -9088,7 +9088,7 @@ $p.T2 = (function(source, pos) {
       var this$26 = item.kh.ql;
       var this$27 = (this$26.t() ? $m_s_None$() : new $c_s_Some(makeSignatureVarArg.w(this$26.b5())));
       var default$3 = new $c_sjsr_AnonFunction0((() => null));
-      var $x_3 = $x_8.ax(new $c_sjsr_WrappedVarArgs([$x_7, $x_6, $x_5, $x_4, $ct_T2__O__O__(new $c_T2(), "varKwargs", (this$27.t() ? default$3.dc() : this$27.b5())), $ct_T2__O__O__(new $c_T2(), "firstParamIsSelf", item.kh.wd)]));
+      var $x_3 = $x_8.ax(new $c_sjsr_WrappedVarArgs([$x_7, $x_6, $x_5, $x_4, $ct_T2__O__O__(new $c_T2(), "varKwargs", (this$27.t() ? default$3.dc() : this$27.b5())), $ct_T2__O__O__(new $c_T2(), "firstParamIsSelfOrCls", item.kh.wd)]));
     } else {
       var $x_3 = null;
     }
@@ -9345,7 +9345,7 @@ function $f_Ltigerpython_parser_ast_AstVisitor__walkStatement__Ltigerpython_pars
 }
 function $f_Ltigerpython_parser_ast_AstVisitor__acceptParameter__Ltigerpython_parser_ast_AstNode$Parameter__Z($thiz, param) {
   if ((param instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
-    $thiz.z5(param.f2);
+    $thiz.z5(param.f1);
     return true;
   } else if ((param instanceof $c_Ltigerpython_parser_ast_AstNode$TupleParameter)) {
     var x3 = param;
@@ -10506,7 +10506,7 @@ $p.Yl = (function(stmt) {
     }
   } else if ((stmt instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x17 = stmt;
-    this.af(x17.ft);
+    this.af(x17.fs);
     var xs$8 = x17.gv;
     var f$8 = ((handler$2) => {
       var handler = handler$2;
@@ -10762,7 +10762,7 @@ $p.Yk = (function(expr) {
     this.a5(x5$1.mA);
   } else if ((expr instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
     var x6$2 = expr;
-    this.a5(x6$2.fr);
+    this.a5(x6$2.fq);
     var this$8 = new $c_sc_ArrayOps$WithFilter(new $c_sjsr_AnonFunction1(((check$ifrefutable$1$2) => (check$ifrefutable$1$2 !== null))), x6$2.bV);
     var len$2 = $m_jl_reflect_Array$().aX(this$8.hY);
     var i$2 = 0;
@@ -11092,7 +11092,7 @@ $p.Yk = (function(expr) {
     }
   } else if ((expr instanceof $c_Ltigerpython_parser_ast_AstNode$List)) {
     var x12 = expr;
-    var xs$8 = x12.f1;
+    var xs$8 = x12.f0;
     var f$6 = ((element$2) => {
       var element = element$2;
       this.a5(element);
@@ -11720,7 +11720,7 @@ $p.hG = (function(c) {
     var originalHash = $m_sr_Statics$().m($bC(c));
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1$1 = this$2.Z.a[(hash & (((-1) + this$2.Z.a.length) | 0))];
-    var nd = ((x1$1 === null) ? null : x1$1.fe($bC(c), hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd($bC(c), hash));
     var $x_1 = ((nd === null) ? f() : nd.bU);
   }
   return $x_1;
@@ -12118,9 +12118,9 @@ var $d_Ltigerpython_parser_lexer_Scanner = new $TypeData().i($c_Ltigerpython_par
 }));
 /** @constructor */
 function $c_Ltigerpython_parser_lexer_TokenType(category, name) {
-  this.fw = 0;
+  this.fv = 0;
   this.k9 = null;
-  this.fw = category;
+  this.fv = category;
   this.k9 = name;
 }
 $p = $c_Ltigerpython_parser_lexer_TokenType.prototype = new $h_O();
@@ -12160,7 +12160,7 @@ function $c_Ltigerpython_parser_lexer_TokenType$() {
   this.va = null;
   this.Bo = null;
   this.pW = 0;
-  this.f6 = 0;
+  this.f5 = 0;
   this.dt = 0;
   this.nt = 0;
   this.aO = 0;
@@ -12223,7 +12223,7 @@ function $c_Ltigerpython_parser_lexer_TokenType$() {
   this.gU = null;
   this.MI = null;
   this.rZ = null;
-  this.fx = null;
+  this.fw = null;
   this.d7 = null;
   this.bt = null;
   this.lp = null;
@@ -12278,7 +12278,7 @@ function $c_Ltigerpython_parser_lexer_TokenType$() {
   var elems = $m_sci_Nil$();
   this.Bo = this$1.ak(elems);
   this.pW = 0;
-  this.f6 = 1;
+  this.f5 = 1;
   this.dt = 2;
   this.nt = 3;
   this.aO = 4;
@@ -12289,30 +12289,30 @@ function $c_Ltigerpython_parser_lexer_TokenType$() {
   this.s0 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.pW, "<invalid>");
   this.T = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.pW, "<name>");
   this.dN = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.pW, "<newline>");
-  this.pS = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "@");
+  this.pS = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "@");
   this.MG = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, "->");
   this.bs = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "=");
-  this.B9 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "&");
+  this.B9 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "&");
   this.FZ = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "&=");
-  this.Ba = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "|");
+  this.Ba = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "|");
   this.G0 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "|=");
-  this.yc = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "~");
-  this.Bb = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "^");
+  this.yc = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "~");
+  this.Bb = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "^");
   this.Bc = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "^=");
   this.a9 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, ":");
   this.at = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, ",");
   this.G1 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "-=");
-  this.pT = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "/");
+  this.pT = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "/");
   this.G2 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "/=");
-  this.dM = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, ".");
-  this.v0 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "**");
+  this.dM = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, ".");
+  this.v0 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "**");
   this.lm = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.pW, "...");
   this.ye = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, ":=");
   this.v1 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, "==");
   this.v3 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, ">=");
   this.Bh = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, ">");
   this.G4 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "+=");
-  this.yf = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "//");
+  this.yf = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "//");
   this.G5 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "//=");
   this.bl = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, "{");
   this.bJ = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, "[");
@@ -12320,28 +12320,28 @@ function $c_Ltigerpython_parser_lexer_TokenType$() {
   this.v5 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, "<=");
   this.Bi = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, "<");
   this.G6 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "@=");
-  this.G8 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "*");
-  this.cD = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "-");
-  this.v6 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "%");
+  this.G8 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "*");
+  this.cD = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "-");
+  this.v6 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "%");
   this.G7 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "%=");
   this.G9 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "*=");
   this.Bj = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.nt, "!=");
-  this.cE = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "+");
+  this.cE = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "+");
   this.Bk = this.v0;
   this.Bl = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "**=");
-  this.v8 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "`");
+  this.v8 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "`");
   this.b9 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, "}");
   this.b3 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, "]");
   this.am = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, ")");
   this.gz = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.kc, ";");
-  this.Gc = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, "<<");
+  this.Gc = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, "<<");
   this.yg = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, "<<=");
-  this.Bm = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f6, ">>");
+  this.Bm = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.f5, ">>");
   this.Bn = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.dt, ">>=");
   this.gU = this.G8;
   this.MI = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<bool>");
   this.rZ = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<bytearray>");
-  this.fx = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<complex>");
+  this.fw = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<complex>");
   this.d7 = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<float>");
   this.bt = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<int>");
   this.lp = $p_Ltigerpython_parser_lexer_TokenType$__Value__I__T__Ltigerpython_parser_lexer_TokenType(this, this.ls, "<long>");
@@ -12728,12 +12728,12 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
           var varParam = new $c_Ltigerpython_parser_parsing_ArgumentParser$VarParameter($thiz, pos$1, name.R, annot);
           if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bs]))) {
             var this$9 = $thiz.aM;
-            var pos$2 = tokens.eO();
+            var pos$2 = tokens.eN();
             var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().pp;
             var params$1 = $m_sci_Nil$();
             this$9.l(pos$2, (-1), code$1, params$1);
-            if ($thiz.f7.ad.gD(tokens)) {
-              $thiz.f7.ad.aZ(tokens);
+            if ($thiz.f6.ad.gD(tokens)) {
+              $thiz.f6.ad.aZ(tokens);
             }
           }
           var x1$1 = tokens.de();
@@ -12763,7 +12763,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
               }
             }
             if ((!$x_2)) {
-              $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+              $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
             }
           }
           return new $c_sci_$colon$colon(varParam, $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerpython_parser_lexer_TokenBuffer__Z__sci_List($thiz, tokens, allowTypes));
@@ -12778,12 +12778,12 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
             var annot$2 = (allowTypes ? $p_Ltigerpython_parser_parsing_ArgumentParser__parseParamAnnotation__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$Expression($thiz, tokens) : null);
             if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bs]))) {
               var this$14 = $thiz.aM;
-              var pos$3 = tokens.eO();
+              var pos$3 = tokens.eN();
               var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().pp;
               var params$2 = $m_sci_Nil$();
               this$14.l(pos$3, (-1), code$2, params$2);
-              if ($thiz.f7.ad.gD(tokens)) {
-                $thiz.f7.ad.aZ(tokens);
+              if ($thiz.f6.ad.gD(tokens)) {
+                $thiz.f6.ad.aZ(tokens);
               }
             }
             var x1$2 = tokens.de();
@@ -12813,7 +12813,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
                 }
               }
               if ((!$x_3)) {
-                $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+                $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
               }
             }
             return new $c_sci_$colon$colon(new $c_Ltigerpython_parser_parsing_ArgumentParser$KeywordParameter($thiz, pos$2$1, name$2.R, annot$2), $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerpython_parser_lexer_TokenBuffer__Z__sci_List($thiz, tokens, allowTypes));
@@ -12824,7 +12824,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
               var tuple = $p_Ltigerpython_parser_parsing_ArgumentParser__parseParamNameList__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$NameTuple($thiz, tokens);
               if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bs]))) {
                 var defStart = tokens.n();
-                var defExpr = $thiz.f7.ad.aZ(tokens);
+                var defExpr = $thiz.f6.ad.aZ(tokens);
                 var defEnd = tokens.n();
                 var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$DefaultTupleParameter($thiz, pos$3$1, tuple, defExpr, $f_T__trim__T($dp_toString__T($dp_subSequence__I__I__jl_CharSequence(tokens.ya, defStart, defEnd))));
               } else {
@@ -12857,7 +12857,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
                   }
                 }
                 if ((!$x_4)) {
-                  $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+                  $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
                 }
               }
               return new $c_sci_$colon$colon(result, $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerpython_parser_lexer_TokenBuffer__Z__sci_List($thiz, tokens, allowTypes));
@@ -12893,7 +12893,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
                     }
                   }
                   if ((!$x_5)) {
-                    $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+                    $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
                   }
                 }
                 return new $c_sci_$colon$colon(new $c_Ltigerpython_parser_parsing_ArgumentParser$SlashParameter($thiz, pos$4), $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerpython_parser_lexer_TokenBuffer__Z__sci_List($thiz, tokens, allowTypes));
@@ -12909,7 +12909,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
                 var annot$3 = (allowTypes ? $p_Ltigerpython_parser_parsing_ArgumentParser__parseParamAnnotation__Ltigerpython_parser_lexer_TokenBuffer__Ltigerpython_parser_ast_AstNode$Expression($thiz, tokens) : null);
                 if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bs]))) {
                   var defStart$2 = tokens.n();
-                  var defExpr$2 = $thiz.f7.ad.aZ(tokens);
+                  var defExpr$2 = $thiz.f6.ad.aZ(tokens);
                   var defEnd$2 = tokens.n();
                   var result$2 = new $c_Ltigerpython_parser_parsing_ArgumentParser$DefaultParameter($thiz, name$3.fT, name$3.R, defExpr$2, $f_T__trim__T($dp_toString__T($dp_subSequence__I__I__jl_CharSequence(tokens.ya, defStart$2, defEnd$2))), annot$3);
                 } else {
@@ -12942,7 +12942,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerp
                     }
                   }
                   if ((!$x_6)) {
-                    $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+                    $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
                   }
                 }
                 return new $c_sci_$colon$colon(result$2, $p_Ltigerpython_parser_parsing_ArgumentParser__parseParameters__Ltigerpython_parser_lexer_TokenBuffer__Z__sci_List($thiz, tokens, allowTypes));
@@ -12968,27 +12968,27 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseKeywordName__Ltiger
     if (this$8.sO(elems).al(token.ew())) {
       var this$12 = $thiz.aM;
       var pos = token.x;
-      var code = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+      var code = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
       var params = new $c_sjsr_WrappedVarArgs([token.ew()]);
       this$12.m3(pos, (-1), code, params);
     } else {
       var this$16 = $thiz.aM;
       var pos$1 = token.x;
-      var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+      var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
       var params$1 = new $c_sjsr_WrappedVarArgs([token.ew()]);
       this$16.l(pos$1, (-1), code$1, params$1);
     }
     return new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew());
   } else {
-    var x1 = $thiz.f7.ad.hQ(tokens);
+    var x1 = $thiz.f6.ad.hQ(tokens);
     if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
       return x1;
     } else {
       if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
-        $thiz.f7.ad.hQ(tokens);
+        $thiz.f6.ad.hQ(tokens);
       }
       if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bs]))) {
-        $thiz.f7.ad.aZ(tokens);
+        $thiz.f6.ad.aZ(tokens);
       }
       tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().at]));
       if ((x1 !== null)) {
@@ -13011,12 +13011,12 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseParamAnnotation__Lt
   if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
     if ((($thiz.aM.cu < 3) && (!$thiz.aM.lt))) {
       var this$4 = $thiz.aM;
-      var pos = tokens.eO();
+      var pos = tokens.eN();
       var code = $m_Ltigerpython_parser_errors_ErrorCode$().id;
       var params = $m_sci_Nil$();
       this$4.l(pos, (-1), code, params);
     }
-    return $thiz.f7.ad.hQ(tokens);
+    return $thiz.f6.ad.hQ(tokens);
   } else {
     return null;
   }
@@ -13083,12 +13083,12 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpy
   }
   var x$5 = $m_Ltigerpython_parser_lexer_TokenType$().gU;
   if ((x$5 === x1)) {
-    var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$VarArgument($thiz, tokens.O().x, $thiz.f7.ad.hQ(tokens));
+    var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$VarArgument($thiz, tokens.O().x, $thiz.f6.ad.hQ(tokens));
   } else {
     var x$7 = $m_Ltigerpython_parser_lexer_TokenType$().v0;
     if ((x$7 === x1)) {
-      var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$KeywordArgument($thiz, tokens.O().x, $thiz.f7.ad.hQ(tokens));
-    } else if (((x1.fw === $m_Ltigerpython_parser_lexer_TokenType$().aO) && (!$thiz.f7.ad.gD(tokens)))) {
+      var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$KeywordArgument($thiz, tokens.O().x, $thiz.f6.ad.hQ(tokens));
+    } else if (((x1.fv === $m_Ltigerpython_parser_lexer_TokenType$().aO) && (!$thiz.f6.ad.gD(tokens)))) {
       var pos$3 = tokens.n();
       var x1$2 = tokens.b6(1);
       var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().bs;
@@ -13099,12 +13099,12 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpy
         if ((!this$4.sO(elems).al(token.ew()))) {
           var this$8 = $thiz.aM;
           var pos$1 = token.x;
-          var code = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+          var code = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
           var params = new $c_sjsr_WrappedVarArgs([token.ew()]);
           this$8.m3(pos$1, (-1), code, params);
         }
         tokens.bp($m_Ltigerpython_parser_lexer_TokenType$().bs);
-        var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$NamedArgument($thiz, pos$3, new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew()), $thiz.f7.ad.aZ(tokens));
+        var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$NamedArgument($thiz, pos$3, new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew()), $thiz.f6.ad.aZ(tokens));
       } else {
         var x$11 = $m_Ltigerpython_parser_lexer_TokenType$().at;
         if ((x$11 === x1$2)) {
@@ -13117,22 +13117,22 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpy
           $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().k4, $m_sci_Nil$());
           return $m_sci_Nil$();
         }
-        $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+        $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
         var token$2 = tokens.O();
         var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$SimpleArgument($thiz, pos$3, new $c_Ltigerpython_parser_ast_AstNode$Name(token$2.x, token$2.ew()));
       }
     } else {
       var pos$4 = tokens.n();
-      var test = $thiz.f7.ad.aZ(tokens);
+      var test = $thiz.f6.ad.aZ(tokens);
       var x1$3 = tokens.de();
       var x$15 = $m_Ltigerpython_parser_lexer_TokenType$().bd;
       if ((x$15 === x1$3)) {
-        var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$CompArgument($thiz, pos$4, new $c_Ltigerpython_parser_ast_AstNode$ListComp(pos$4, tokens.lS(), test, $thiz.f7.ad.sZ(tokens)));
+        var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$CompArgument($thiz, pos$4, new $c_Ltigerpython_parser_ast_AstNode$ListComp(pos$4, tokens.lS(), test, $thiz.f6.ad.sZ(tokens)));
       } else {
         var x$17 = $m_Ltigerpython_parser_lexer_TokenType$().bs;
         if ((x$17 === x1$3)) {
           tokens.O();
-          var value = $thiz.f7.ad.aZ(tokens);
+          var value = $thiz.f6.ad.aZ(tokens);
           if ((test instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
             var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$NamedArgument($thiz, pos$4, test, value);
           } else if ((test === null)) {
@@ -13159,7 +13159,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpy
           }
         } else if ((x1$3 === null)) {
           var result = new $c_Ltigerpython_parser_parsing_ArgumentParser$SimpleArgument($thiz, pos$4, test);
-        } else if ((x1$3.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
+        } else if ((x1$3.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
           var this$15 = $thiz.aM;
           var pos$7 = tokens.n();
           var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().li;
@@ -13202,7 +13202,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpy
       }
     }
     if ((!$x_3)) {
-      $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+      $thiz.aM.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
     }
   }
   return new $c_sci_$colon$colon(result, $p_Ltigerpython_parser_parsing_ArgumentParser__parseArguments__Ltigerpython_parser_lexer_TokenBuffer__sci_List($thiz, tokens));
@@ -13224,7 +13224,7 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__parseSlicePart__Ltigerpy
       if ($x_1) {
         return null;
       } else {
-        return $thiz.f7.ad.aZ(tokens);
+        return $thiz.f6.ad.aZ(tokens);
       }
     }
   } else {
@@ -13250,10 +13250,10 @@ function $p_Ltigerpython_parser_parsing_ArgumentParser__checkName$1__I__T__scm_S
 /** @constructor */
 function $c_Ltigerpython_parser_parsing_ArgumentParser(parser, parserState) {
   this.Ge = null;
-  this.f7 = null;
+  this.f6 = null;
   this.aM = null;
   this.Gd = false;
-  this.f7 = parser;
+  this.f6 = parser;
   this.aM = parserState;
 }
 $p = $c_Ltigerpython_parser_parsing_ArgumentParser.prototype = new $h_O();
@@ -14269,7 +14269,7 @@ function $p_Ltigerpython_parser_parsing_BracketPatcher__findEndOfExpression__I__
     } else if (tt.qz()) {
       depth = (((-1) + depth) | 0);
     } else if (((depth === 0) && (!$f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().T, $m_Ltigerpython_parser_lexer_TokenType$().lm, $m_Ltigerpython_parser_lexer_TokenType$().lr, $m_Ltigerpython_parser_lexer_TokenType$().ln, $m_Ltigerpython_parser_lexer_TokenType$().ka]), tt)))) {
-      if (((tt.fw !== $m_Ltigerpython_parser_lexer_TokenType$().ls) && (tt.fw !== $m_Ltigerpython_parser_lexer_TokenType$().f6))) {
+      if (((tt.fv !== $m_Ltigerpython_parser_lexer_TokenType$().ls) && (tt.fv !== $m_Ltigerpython_parser_lexer_TokenType$().f5))) {
         return result;
       }
     }
@@ -14740,7 +14740,7 @@ $p.Uu = (function(bracketIndex) {
         if (((x$5 === x$6) && this.ai.s((((-2) + tokenIndex1) | 0)).o.qz())) {
           var this$2 = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$();
           var token = this.ai.s((((-2) + tokenIndex1) | 0));
-          var preType = this$2.eK(token.o);
+          var preType = this$2.eJ(token.o);
         } else {
           var preType = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$().s4;
         }
@@ -14770,7 +14770,7 @@ $p.Uu = (function(bracketIndex) {
         if ($x_2) {
           var this$3 = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$();
           var token$1 = this.ai.s(((2 + tokenIndex4) | 0));
-          var postType = this$3.eK(token$1.o);
+          var postType = this$3.eJ(token$1.o);
         } else {
           var postType = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$().s4;
         }
@@ -14792,7 +14792,7 @@ $p.Uu = (function(bracketIndex) {
           if (($x_4 || ((postType === null) ? (preType === null) : postType.b(preType)))) {
             var this$4 = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$();
             var token$2 = this.ay.s(bracketIndex);
-            var x$23 = this$4.eK(token$2.o);
+            var x$23 = this$4.eJ(token$2.o);
             if (((x$23 === null) ? (preType === null) : x$23.b(preType))) {
               return $p_Ltigerpython_parser_parsing_BracketPatcher__swapTokens__I__Z(this, tokenIndex1);
             } else {
@@ -14810,7 +14810,7 @@ $p.Uu = (function(bracketIndex) {
           if ($x_5) {
             var this$5 = $m_Ltigerpython_parser_parsing_BracketPatcher$BracketType$();
             var token$3 = this.ay.s(bracketIndex);
-            var x$29 = this$5.eK(token$3.o);
+            var x$29 = this$5.eJ(token$3.o);
             if (((x$29 === null) ? (postType === null) : x$29.b(postType))) {
               return $p_Ltigerpython_parser_parsing_BracketPatcher__swapTokens__I__Z(this, tokenIndex1);
             } else {
@@ -15427,7 +15427,7 @@ $p.D9 = (function(tokens) {
       }
       if ((!tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().at])))) {
         if (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().T]))) {
-          this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+          this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
         }
       }
     }
@@ -15551,7 +15551,7 @@ $p.kw = (function(tokens) {
           var params$1 = $m_sci_Nil$();
           this$8.l(pos$1, (-1), code$1, params$1);
         }
-        return $m_Ltigerpython_parser_ast_AstNode$Compare$().Ik(result.n(), result, $m_Ltigerpython_parser_ast_BinOp$().eK(op.o), right);
+        return $m_Ltigerpython_parser_ast_AstNode$Compare$().Ik(result.n(), result, $m_Ltigerpython_parser_ast_BinOp$().eJ(op.o), right);
       } else {
         var x$21 = $m_Ltigerpython_parser_lexer_TokenType$().d8;
         if ((x$21 === x1$2)) {
@@ -15578,7 +15578,7 @@ $p.kw = (function(tokens) {
           var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().no;
           var params$2 = $m_sci_Nil$();
           this$9.l(pos$2, (-1), code$2, params$2);
-          return $m_Ltigerpython_parser_ast_AstNode$Compare$().Ik(result.n(), result, $m_Ltigerpython_parser_ast_BinOp$().eK(op$2.o), right$2);
+          return $m_Ltigerpython_parser_ast_AstNode$Compare$().Ik(result.n(), result, $m_Ltigerpython_parser_ast_BinOp$().eJ(op$2.o), right$2);
         } else {
           return result;
         }
@@ -15687,7 +15687,7 @@ $p.kw = (function(tokens) {
       if ((((x1$3.length >= 0) && (x1$3.substring(0, 2) === "in")) || ((x1$3.length >= 0) && (x1$3.substring(0, 2) === "is")))) {
         var this$22 = this.ab;
         var pos$5 = ((2 + tokens.n()) | 0);
-        var code$5 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+        var code$5 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
         var params$5 = $m_sci_Nil$();
         this$22.l(pos$5, (-1), code$5, params$5);
         tokens.a6().ah = $m_sc_StringOps$().bo(tokens.a6().ah, 2);
@@ -15706,7 +15706,7 @@ $p.kw = (function(tokens) {
     tokens.m4(curIndex);
     return this.kw(tokens);
   }
-  if ((x1.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
+  if ((x1.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
     this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().li, $m_sci_Nil$());
     tokens.cX($m_Ltigerpython_parser_lexer_TokenType$().v1);
     tokens.m4(curIndex);
@@ -15883,7 +15883,7 @@ $p.Db = (function(tokens) {
       var $x_1 = false;
     }
     if ($x_1) {
-      var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+      var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
       result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.QW(tokens));
     } else {
       break;
@@ -15902,7 +15902,7 @@ $p.QW = (function(tokens) {
       var $x_1 = false;
     }
     if ($x_1) {
-      var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+      var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
       result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.J1(tokens));
     } else {
       break;
@@ -15922,7 +15922,7 @@ $p.WT = (function(tokens) {
   var elems = $m_sci_Nil$();
   var result = this$1.ak(elems);
   while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().v1, $m_Ltigerpython_parser_lexer_TokenType$().Bj, $m_Ltigerpython_parser_lexer_TokenType$().ns, $m_Ltigerpython_parser_lexer_TokenType$().v4, $m_Ltigerpython_parser_lexer_TokenType$().v5, $m_Ltigerpython_parser_lexer_TokenType$().Bi, $m_Ltigerpython_parser_lexer_TokenType$().d8, $m_Ltigerpython_parser_lexer_TokenType$().v7, $m_Ltigerpython_parser_lexer_TokenType$().v3, $m_Ltigerpython_parser_lexer_TokenType$().Bh]))) {
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     var elem = $ct_T2__O__O__(new $c_T2(), op, this.hQ(tokens));
     result.I(elem);
   }
@@ -15958,7 +15958,7 @@ $p.hQ = (function(tokens) {
     var hasStar = tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().gU]));
     var result = this.QV(tokens);
     while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().Ba]))) {
-      var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+      var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
       result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.QV(tokens));
     }
     return (hasStar ? new $c_Ltigerpython_parser_ast_AstNode$Starred(startPos, result) : result);
@@ -15973,7 +15973,7 @@ $p.hQ = (function(tokens) {
 $p.QV = (function(tokens) {
   var result = this.Rk(tokens);
   while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().B9]))) {
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.Rk(tokens));
   }
   return result;
@@ -16013,7 +16013,7 @@ $p.Rk = (function(tokens) {
         }
       }
     }
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.Re(tokens));
   }
   return result;
@@ -16021,7 +16021,7 @@ $p.Rk = (function(tokens) {
 $p.Re = (function(tokens) {
   var result = this.QZ(tokens);
   while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().Gc, $m_Ltigerpython_parser_lexer_TokenType$().Bm]))) {
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.QZ(tokens));
   }
   return result;
@@ -16029,7 +16029,7 @@ $p.Re = (function(tokens) {
 $p.QZ = (function(tokens) {
   var result = this.Ri(tokens);
   while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().cE, $m_Ltigerpython_parser_lexer_TokenType$().cD]))) {
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.Ri(tokens));
   }
   return result;
@@ -16037,7 +16037,7 @@ $p.QZ = (function(tokens) {
 $p.Ri = (function(tokens) {
   var result = this.t0(tokens);
   while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().gU, $m_Ltigerpython_parser_lexer_TokenType$().pT, $m_Ltigerpython_parser_lexer_TokenType$().yf, $m_Ltigerpython_parser_lexer_TokenType$().v6, $m_Ltigerpython_parser_lexer_TokenType$().pS]))) {
-    var op = $m_Ltigerpython_parser_ast_BinOp$().eK(tokens.O().o);
+    var op = $m_Ltigerpython_parser_ast_BinOp$().eJ(tokens.O().o);
     result = new $c_Ltigerpython_parser_ast_AstNode$BinaryOp(result.n(), op, result, this.t0(tokens));
   }
   return result;
@@ -16103,7 +16103,7 @@ $p.t2 = (function(base, tokens) {
             if (((x$7 === null) ? (p4 === null) : x$7.b(p4))) {
               var $x_1 = true;
             } else {
-              var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+              var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
               var $x_1 = (x$9 === p4);
             }
           }
@@ -16166,8 +16166,8 @@ $p.t2 = (function(base, tokens) {
             tokens.cX($m_Ltigerpython_parser_lexer_TokenType$().at);
             return base;
           } else {
-            if ((tokens.c() && (tokens.de().fw === $m_Ltigerpython_parser_lexer_TokenType$().aO))) {
-              this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+            if ((tokens.c() && (tokens.de().fv === $m_Ltigerpython_parser_lexer_TokenType$().aO))) {
+              this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
             } else {
               this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().e1, $m_sci_Nil$());
             }
@@ -16208,7 +16208,7 @@ $p.R0 = (function(tokens) {
           result$2.iY = token.ah;
           return result$2;
         } else {
-          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
           if ((x$9 === x1)) {
             return new $c_Ltigerpython_parser_ast_AstNode$Value(token.x, $m_Ltigerpython_parser_ast_ValueType$().y2);
           } else {
@@ -16283,7 +16283,7 @@ $p.R0 = (function(tokens) {
                                 x2 = x1$2;
                                 if (tokens.QC(new $c_sjsr_WrappedVarArgs(["define", "let", "defun"]))) {
                                   var this$13 = this.ab;
-                                  var pos = tokens.eO();
+                                  var pos = tokens.eN();
                                   var code = $m_Ltigerpython_parser_errors_ErrorCode$().hv;
                                   var params = new $c_sjsr_WrappedVarArgs(["Lisp"]);
                                   this$13.l(pos, (-1), code, params);
@@ -16292,7 +16292,7 @@ $p.R0 = (function(tokens) {
                               }
                               if ((rc9 && tokens.QC(new $c_sjsr_WrappedVarArgs(["defn", "fn", "ns", "require", "do"])))) {
                                 var this$20 = this.ab;
-                                var pos$1 = tokens.eO();
+                                var pos$1 = tokens.eN();
                                 var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().hv;
                                 var params$1 = new $c_sjsr_WrappedVarArgs(["Clojure"]);
                                 this$20.l(pos$1, (-1), code$1, params$1);
@@ -16317,7 +16317,7 @@ $p.R0 = (function(tokens) {
                               }
                               if ($x_7) {
                                 var this$24 = this.ab;
-                                var pos$2 = tokens.eO();
+                                var pos$2 = tokens.eN();
                                 var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().hv;
                                 var params$2 = new $c_sjsr_WrappedVarArgs(["Lisp"]);
                                 this$24.l(pos$2, (-1), code$2, params$2);
@@ -16349,7 +16349,7 @@ $p.R0 = (function(tokens) {
                           if (((tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().aw])) && this.ab.ch) && (!this.gV.t()))) {
                             var this$39 = this.ab;
                             var pos$3 = tokens.m1();
-                            var code$3 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                            var code$3 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                             var params$3 = $m_sci_Nil$();
                             this$39.l(pos$3, (-1), code$3, params$3);
                             tokens.ku($m_Ltigerpython_parser_lexer_TokenType$().at);
@@ -16379,7 +16379,7 @@ $p.R0 = (function(tokens) {
                             tokens.bp($m_Ltigerpython_parser_lexer_TokenType$().b3);
                             this.gV.jw(false);
                             if (((tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bJ])) && this.ab.ch) && (!this.gV.t()))) {
-                              this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+                              this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
                               tokens.ku($m_Ltigerpython_parser_lexer_TokenType$().at);
                             }
                             return result$5;
@@ -16463,7 +16463,7 @@ $p.R0 = (function(tokens) {
                                           if ((x$63 === x1$3)) {
                                             var $x_14 = true;
                                           } else {
-                                            var x$65 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+                                            var x$65 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
                                             if ((x$65 === x1$3)) {
                                               var $x_14 = true;
                                             } else {
@@ -16521,11 +16521,11 @@ $p.R0 = (function(tokens) {
                                         var params$6 = new $c_sjsr_WrappedVarArgs([token]);
                                         this$74.l(pos$6, (-1), code$6, params$6);
                                         return this.t0(tokens);
-                                      } else if ((token.o.fw === $m_Ltigerpython_parser_lexer_TokenType$().aO)) {
-                                        if ((tokens.De(0) === $m_Ltigerpython_parser_lexer_TokenType$().f6)) {
+                                      } else if ((token.o.fv === $m_Ltigerpython_parser_lexer_TokenType$().aO)) {
+                                        if ((tokens.De(0) === $m_Ltigerpython_parser_lexer_TokenType$().f5)) {
                                           var this$78 = this.ab;
                                           var pos$7 = token.x;
-                                          var code$7 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                                          var code$7 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                                           var params$7 = new $c_sjsr_WrappedVarArgs([token.ew()]);
                                           this$78.l(pos$7, (-1), code$7, params$7);
                                           return new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew());
@@ -16592,7 +16592,7 @@ $p.R9 = (function(tokens) {
       var elems = new $c_sjsr_WrappedVarArgs([test]);
       var result = this$19.ak(elems);
       while ((tokens.c() && (!tokens.wE()))) {
-        if ((tokens.de().fw === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
+        if ((tokens.de().fv === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
           if ((!$f_sc_SeqOps__isEmpty__Z(result))) {
             this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().n3, $m_sci_Nil$());
             tokens.O();
@@ -16671,7 +16671,7 @@ $p.WW = (function(tokens) {
       var params = $m_sci_Nil$();
       this$4.l(startPos, (-1), code, params);
     }
-    var x1___1 = new $c_Ltigerpython_parser_ast_AstNode$Value(tokens.eO(), $m_Ltigerpython_parser_ast_ValueType$().k0);
+    var x1___1 = new $c_Ltigerpython_parser_ast_AstNode$Value(tokens.eN(), $m_Ltigerpython_parser_ast_ValueType$().k0);
     var x1___2 = true;
   } else {
     var x1___1 = this.aZ(tokens);
@@ -16718,7 +16718,7 @@ $p.WW = (function(tokens) {
     if ($x_1) {
       var this$14 = this.ab;
       var pos = tokens.lZ(1).x;
-      var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+      var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
       var params$1 = $m_sci_Nil$();
       this$14.l(pos, (-1), code$1, params$1);
       tokens.Qx($m_Ltigerpython_parser_lexer_TokenType$().at, 1);
@@ -16758,7 +16758,7 @@ $p.WW = (function(tokens) {
               this$35.l(pairPos, (-1), code$2, params$2);
             }
             if ($m_Ltigerpython_parser_parsing_ExpressionParser$().zq(tokens, this.ab)) {
-              var elem = new $c_Ltigerpython_parser_ast_AstNode$Value(tokens.eO(), $m_Ltigerpython_parser_ast_ValueType$().k0);
+              var elem = new $c_Ltigerpython_parser_ast_AstNode$Value(tokens.eN(), $m_Ltigerpython_parser_ast_ValueType$().k0);
               keys.I(elem);
               var elem$1 = this.hQ(tokens);
               values.I(elem$1);
@@ -16812,7 +16812,7 @@ $p.WW = (function(tokens) {
                 if ($x_3) {
                   var this$46 = this.ab;
                   var pos$1 = tokens.lZ(1).x;
-                  var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                  var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                   var params$4 = $m_sci_Nil$();
                   this$46.l(pos$1, (-1), code$4, params$4);
                   tokens.Qx($m_Ltigerpython_parser_lexer_TokenType$().at, 1);
@@ -17030,7 +17030,7 @@ $p.Xe = (function(tokens) {
   if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$List)) {
     var x2 = x1;
     var pos = x2.rw;
-    var items = x2.f1;
+    var items = x2.f0;
     if ((items.a.length === 1)) {
       var x = tokens.t3().o;
       var x$2 = $m_Ltigerpython_parser_lexer_TokenType$().at;
@@ -17139,7 +17139,7 @@ $p.zU = (function(tokens, insertComma) {
     if ($x_1) {
       this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().nj, $m_sci_Nil$());
     } else {
-      this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f4, $m_sci_Nil$());
+      this.ab.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().f3, $m_sci_Nil$());
     }
     var elems$1 = $m_s_Predef$().as(this.zU(tokens, true));
     result.h0(elems$1);
@@ -17234,7 +17234,7 @@ $p.Um = (function(token, parserState) {
         if ((x$7 === x1)) {
           var $x_1 = true;
         } else {
-          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
           if ((x$9 === x1)) {
             var $x_1 = true;
           } else {
@@ -17343,7 +17343,7 @@ $p.hM = (function(token, parserState) {
         if ((x$7 === x1)) {
           var $x_1 = true;
         } else {
-          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+          var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
           if ((x$9 === x1)) {
             var $x_1 = true;
           } else {
@@ -17537,7 +17537,7 @@ $p.g4 = (function(stmt, parent, isFunction, isClass, hasLoop) {
           var decoratorNames$1 = new $c_sjsr_WrappedVarArgs(["staticmethod"]);
           if (((!$f_Ltigerpython_parser_ast_AstNode$Decoratable__hasDecorator__sci_Seq__Z(x2, decoratorNames$1)) && (!x2.en.Vp()))) {
             if ((this.aP.cu >= 3)) {
-              if (((x2.en.f3 === null) && (!x2.en.Qo()))) {
+              if (((x2.en.f2 === null) && (!x2.en.Qo()))) {
                 var this$16 = x2.kt();
                 var $x_1 = (!((this$16.length >= 0) && (this$16.substring(0, 1) === "_")));
               } else {
@@ -17593,7 +17593,7 @@ $p.g4 = (function(stmt, parent, isFunction, isClass, hasLoop) {
   }
   if ((stmt instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x6 = stmt;
-    this.g4(x6.ft, x6, isFunction, false, hasLoop);
+    this.g4(x6.fs, x6, isFunction, false, hasLoop);
     this.g4(x6.ep, x6, isFunction, false, hasLoop);
     this.g4(x6.eq, x6, isFunction, false, hasLoop);
     var xs = x6.gv;
@@ -17993,7 +17993,7 @@ $p.zi = (function(test, parentOp) {
           }
         }
       }
-      var x1$6 = x3.fr;
+      var x1$6 = x3.fq;
       matchEnd14: {
         if ((x1$6 instanceof $c_Ltigerpython_parser_ast_AstNode$Value)) {
           var x2$4 = x1$6;
@@ -18494,7 +18494,7 @@ function $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_pars
       }
     } else if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
       var x4 = x1;
-      if ((($p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.ft) || $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.eq)) || $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.ep))) {
+      if ((($p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.fs) || $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.eq)) || $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_parser_ast_AstNode$Statement__Z($thiz, x4.ep))) {
         return true;
       } else {
         var xs$1 = x4.gv;
@@ -18521,7 +18521,7 @@ function $p_Ltigerpython_parser_parsing_Parser__whileHasBreak__Ltigerpython_pars
   }
 }
 function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_parser_parsing_PreParser$Line__sci_Seq__ALtigerpython_parser_ast_AstNode$Statement($thiz, line, followLines) {
-  if (((line.J.a.length >= 3) && (line.c7().fw === $m_Ltigerpython_parser_lexer_TokenType$().aO))) {
+  if (((line.J.a.length >= 3) && (line.c7().fv === $m_Ltigerpython_parser_lexer_TokenType$().aO))) {
     var x = line.J.a[1].o;
     var x$2 = $m_Ltigerpython_parser_lexer_TokenType$().bs;
     var $x_2 = (x === x$2);
@@ -18535,7 +18535,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
     var $x_1 = false;
   }
   if ($x_1) {
-    $thiz.p.jx(line.J, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+    $thiz.p.jx(line.J, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
     line.J.a[0] = $m_Ltigerpython_parser_lexer_Token$().hK(line.J.a[0].x, line.J.a[0].ew());
   }
   if (line.Vl()) {
@@ -18637,7 +18637,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                   if ((x$18 === x1$3)) {
                     var this$24 = $thiz.p;
                     var pos$3 = line.aj;
-                    var code$3 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                    var code$3 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                     var params$3 = new $c_sjsr_WrappedVarArgs(["async"]);
                     this$24.l(pos$3, (-1), code$3, params$3);
                     var $x_7 = line.J;
@@ -18670,13 +18670,13 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                 return new ($d_Ltigerpython_parser_ast_AstNode$Statement.r().C)([$thiz.IZ(line, followLines)]);
               } else {
                 var x$26 = $m_Ltigerpython_parser_lexer_TokenType$().pV;
-                if (((x$26 === tokenType) && ((line.eT().zD(1, $m_Ltigerpython_parser_lexer_TokenType$().d8) && line.e9()) && line.eT().lW()))) {
+                if (((x$26 === tokenType) && ((line.eS().zD(1, $m_Ltigerpython_parser_lexer_TokenType$().d8) && line.e9()) && line.eS().lW()))) {
                   var this$33 = $thiz.p;
                   var pos$4 = line.aj;
                   var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().cC;
                   var params$4 = new $c_sjsr_WrappedVarArgs(["or", "for"]);
                   this$33.l(pos$4, (-1), code$4, params$4);
-                  line.eT().cX($m_Ltigerpython_parser_lexer_TokenType$().bd);
+                  line.eS().cX($m_Ltigerpython_parser_lexer_TokenType$().bd);
                   return new ($d_Ltigerpython_parser_ast_AstNode$Statement.r().C)([$thiz.IZ(line, followLines)]);
                 } else {
                   var x$28 = $m_Ltigerpython_parser_lexer_TokenType$().kb;
@@ -19014,7 +19014,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                               if ($x_20) {
                                                 var this$82 = $thiz.p;
                                                 var pos$6 = ((3 + line.aj) | 0);
-                                                var code$6 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                var code$6 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                 var params$6 = $m_sci_Nil$();
                                                 this$82.l(pos$6, (-1), code$6, params$6);
                                                 var this$83 = $m_scm_ArrayBuffer$();
@@ -19145,7 +19145,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                       if ($x_25) {
                                                         var this$98 = $thiz.p;
                                                         var pos$8 = ((line.CD() + ttLen) | 0);
-                                                        var code$8 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                        var code$8 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                         var params$8 = $m_sci_Nil$();
                                                         this$98.l(pos$8, (-1), code$8, params$8);
                                                         var xs$16 = new ($d_Ltigerpython_parser_lexer_Token.r().C)([new $c_Ltigerpython_parser_lexer_Token(line.J.a[0].x, ttLen, x1$4$1)]);
@@ -19166,7 +19166,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                       } else if (($thiz.cW().UT(rest) > 0)) {
                                                         var this$106 = $thiz.p;
                                                         var pos$9 = ((line.CD() + ttLen) | 0);
-                                                        var code$9 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                        var code$9 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                         var params$9 = $m_sci_Nil$();
                                                         this$106.l(pos$9, (-1), code$9, params$9);
                                                         var xs$18 = new ($d_Ltigerpython_parser_lexer_Token.r().C)([new $c_Ltigerpython_parser_lexer_Token(line.J.a[0].x, ttLen, x1$4$1)]);
@@ -19187,7 +19187,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                       } else if (((rest.toLowerCase() === "true") || (rest.toLowerCase() === "false"))) {
                                                         var this$114 = $thiz.p;
                                                         var pos$10 = ((line.CD() + ttLen) | 0);
-                                                        var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                        var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                         var params$10 = $m_sci_Nil$();
                                                         this$114.l(pos$10, (-1), code$10, params$10);
                                                         var xs$20 = new ($d_Ltigerpython_parser_lexer_Token.r().C)([new $c_Ltigerpython_parser_lexer_Token(line.J.a[0].x, ttLen, x1$4$1)]);
@@ -19229,7 +19229,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                               var index$1 = (((headName.length >= 0) && (headName.substring(0, 3) === "def")) ? 3 : 5);
                                               var this$126 = $thiz.p;
                                               var pos$12 = ((line.aj + index$1) | 0);
-                                              var code$12 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                              var code$12 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                               var params$12 = $m_sci_Nil$();
                                               this$126.l(pos$12, (-1), code$12, params$12);
                                               var this$127 = $m_scm_ArrayBuffer$();
@@ -19322,7 +19322,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                 if ($x_28) {
                                                   var this$147 = $thiz.p;
                                                   var pos$16 = ((3 + line.aj) | 0);
-                                                  var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                  var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                   var params$16 = $m_sci_Nil$();
                                                   this$147.l(pos$16, (-1), code$16, params$16);
                                                   var this$148 = $m_scm_ArrayBuffer$();
@@ -19367,7 +19367,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                     var $x_33 = false;
                                                   }
                                                   if ($x_33) {
-                                                    var this$157 = line.eT();
+                                                    var this$157 = line.eS();
                                                     var array$23 = [$m_Ltigerpython_parser_lexer_TokenType$().T, $m_Ltigerpython_parser_lexer_TokenType$().T, $m_Ltigerpython_parser_lexer_TokenType$().aw];
                                                     var nonLocalReturnKey1$1 = $ct_O__(new $c_O());
                                                     try {
@@ -19414,7 +19414,7 @@ function $p_Ltigerpython_parser_parsing_Parser___parseStatements__Ltigerpython_p
                                                     var $x_31 = false;
                                                   }
                                                   if ($x_31) {
-                                                    var tokens$4 = line.eT();
+                                                    var tokens$4 = line.eS();
                                                     var x1$6 = tokens$4.PU(3);
                                                     if ((x1$6 instanceof $c_s_Some)) {
                                                       if ((((2 + (x1$6.W | 0)) | 0) === line.J.a.length)) {
@@ -19699,7 +19699,7 @@ function $p_Ltigerpython_parser_parsing_Parser__hasSideEffect__Ltigerpython_pars
     }
     if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
       var x11 = x1;
-      if ((!$p_Ltigerpython_parser_parsing_Parser__hasSideEffect__Ltigerpython_parser_ast_AstNode$Expression__Z($thiz, x11.fr))) {
+      if ((!$p_Ltigerpython_parser_parsing_Parser__hasSideEffect__Ltigerpython_parser_ast_AstNode$Expression__Z($thiz, x11.fq))) {
         var xs = x11.bV;
         _return: {
           var i = 0;
@@ -19861,7 +19861,7 @@ function $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_as
       return ($p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x4$1.eo, returnOnly) || $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x4$1.cg, returnOnly));
     } else if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
       var x5$1 = node;
-      var result = (($p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.ft, returnOnly) || $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.ep, returnOnly)) || $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.eq, returnOnly));
+      var result = (($p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.fs, returnOnly) || $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.ep, returnOnly)) || $p_Ltigerpython_parser_parsing_Parser__hasBreak__Ltigerpython_parser_ast_AstNode__Z__Z($thiz, x5$1.eq, returnOnly));
       if ((!result)) {
         var xs = x5$1.gv;
         var f$1 = ((h$2) => {
@@ -20319,11 +20319,11 @@ $p.Dd = (function(lines) {
             }
             matchEnd25: {
               var $x_8;
-              if (($m_s_Array$UnapplySeqWrapper$().eM(ys, 1) === 0)) {
+              if (($m_s_Array$UnapplySeqWrapper$().eL(ys, 1) === 0)) {
                 var $x_8 = true;
                 break matchEnd25;
               }
-              if (($m_s_Array$UnapplySeqWrapper$().eM(ys, 2) === 0)) {
+              if (($m_s_Array$UnapplySeqWrapper$().eL(ys, 2) === 0)) {
                 var p6 = ys.a[1];
                 var x$3$3 = $m_Ltigerpython_parser_lexer_TokenType$().gz;
                 if ((x$3$3 === p6)) {
@@ -20331,7 +20331,7 @@ $p.Dd = (function(lines) {
                   break matchEnd25;
                 }
               }
-              if (($m_s_Array$UnapplySeqWrapper$().eM(ys, 2) === 0)) {
+              if (($m_s_Array$UnapplySeqWrapper$().eL(ys, 2) === 0)) {
                 var p10 = ys.a[1];
                 var x$5$3 = $m_Ltigerpython_parser_lexer_TokenType$().T;
                 if ((x$5$3 === p10)) {
@@ -20355,7 +20355,7 @@ $p.Dd = (function(lines) {
                   break matchEnd25;
                 }
               }
-              if (($m_s_Array$UnapplySeqWrapper$().eM(ys, 3) === 0)) {
+              if (($m_s_Array$UnapplySeqWrapper$().eL(ys, 3) === 0)) {
                 var p17 = ys.a[1];
                 var p18 = ys.a[2];
                 var x$13$2 = $m_Ltigerpython_parser_lexer_TokenType$().T;
@@ -20639,11 +20639,11 @@ $p.Dd = (function(lines) {
                 }
                 matchEnd25$1: {
                   var $x_26;
-                  if (($m_s_Array$UnapplySeqWrapper$().eM(ys$1, 1) === 0)) {
+                  if (($m_s_Array$UnapplySeqWrapper$().eL(ys$1, 1) === 0)) {
                     var $x_26 = true;
                     break matchEnd25$1;
                   }
-                  if (($m_s_Array$UnapplySeqWrapper$().eM(ys$1, 2) === 0)) {
+                  if (($m_s_Array$UnapplySeqWrapper$().eL(ys$1, 2) === 0)) {
                     var p6$1 = ys$1.a[1];
                     var x$3$4 = $m_Ltigerpython_parser_lexer_TokenType$().gz;
                     if ((x$3$4 === p6$1)) {
@@ -20651,7 +20651,7 @@ $p.Dd = (function(lines) {
                       break matchEnd25$1;
                     }
                   }
-                  if (($m_s_Array$UnapplySeqWrapper$().eM(ys$1, 2) === 0)) {
+                  if (($m_s_Array$UnapplySeqWrapper$().eL(ys$1, 2) === 0)) {
                     var p10$1 = ys$1.a[1];
                     var x$5$4 = $m_Ltigerpython_parser_lexer_TokenType$().T;
                     if ((x$5$4 === p10$1)) {
@@ -20675,7 +20675,7 @@ $p.Dd = (function(lines) {
                       break matchEnd25$1;
                     }
                   }
-                  if (($m_s_Array$UnapplySeqWrapper$().eM(ys$1, 3) === 0)) {
+                  if (($m_s_Array$UnapplySeqWrapper$().eL(ys$1, 3) === 0)) {
                     var p17$1 = ys$1.a[1];
                     var p18$1 = ys$1.a[2];
                     var x$13$3 = $m_Ltigerpython_parser_lexer_TokenType$().T;
@@ -20965,7 +20965,7 @@ $p.t1 = (function(line) {
   return ((result.a.length === 1) ? $m_sc_ArrayOps$().aA(result) : ((result.a.length !== 0) ? new $c_Ltigerpython_parser_ast_AstNode$Suite($m_sc_ArrayOps$().aA(result).n(), result) : null));
 });
 $p.Rf = (function(line) {
-  var tokens = line.eT();
+  var tokens = line.eS();
   var this$1 = $m_scm_ArrayBuffer$();
   var elems = $m_sci_Nil$();
   var stmts = this$1.ak(elems);
@@ -21064,7 +21064,7 @@ $p.Rf = (function(line) {
                 stmt = new $c_Ltigerpython_parser_ast_AstNode$Assignment(line.aj, new ($d_Ltigerpython_parser_ast_AstNode$Expression.r().C)([target]), source);
               } else if (((name === "to") && tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().T])))) {
                 var this$31 = this.p;
-                var pos$1 = tokens.eO();
+                var pos$1 = tokens.eN();
                 var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().p8;
                 var params$1 = new $c_sjsr_WrappedVarArgs(["to"]);
                 this$31.l(pos$1, (-1), code$1, params$1);
@@ -21117,14 +21117,14 @@ $p.Rf = (function(line) {
                 if ((($x_4 && line.e9()) && tokens.lW())) {
                   if ((name === "define")) {
                     var this$64 = this.p;
-                    var pos$6 = tokens.eO();
+                    var pos$6 = tokens.eN();
                     var code$5 = $m_Ltigerpython_parser_errors_ErrorCode$().cC;
                     var params$5 = new $c_sjsr_WrappedVarArgs(["define", "def"]);
                     this$64.l(pos$6, (-1), code$5, params$5);
                   } else {
                     var this$65 = this.p;
-                    var pos$7 = ((3 + tokens.eO()) | 0);
-                    var code$6 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                    var pos$7 = ((3 + tokens.eN()) | 0);
+                    var code$6 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                     var params$6 = $m_sci_Nil$();
                     this$65.l(pos$7, (-1), code$6, params$6);
                     if ((tokens.a6().ah !== null)) {
@@ -21147,11 +21147,11 @@ $p.Rf = (function(line) {
                 stmt = this.jv(tokens);
               } else if ((((this.cW().dR((("" + s1) + s2)) > 0) || (this.cW().dR(((s1 + "_") + s2)) > 0)) && ((this.cW().dR(s1) <= 1) || (this.cW().dR(s2) <= 1)))) {
                 this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().hu, $m_sci_Nil$());
-                tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eO(), (("" + s1) + s2)));
+                tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eN(), (("" + s1) + s2)));
                 stmt = this.jv(tokens);
               } else if ((((s2 !== "") && (this.cW().dR(((s1 + $cToS($m_jl_Character$().wT(s2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2, 1, s2.length))) > 0)) && ((this.cW().dR(s1) <= 1) || (this.cW().dR(s2) <= 1)))) {
                 this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().hu, $m_sci_Nil$());
-                tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eO(), ((s1 + $cToS($m_jl_Character$().wT(s2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2, 1, s2.length))));
+                tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eN(), ((s1 + $cToS($m_jl_Character$().wT(s2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2, 1, s2.length))));
                 stmt = this.jv(tokens);
               } else {
                 if ((this.cW().dR(((s1 + ".") + s2)) > 0)) {
@@ -21188,13 +21188,13 @@ $p.Rf = (function(line) {
               if ($x_6) {
                 var s1$2 = x2.bR.R;
                 var s2$2 = tokens.a6().ah;
-                if ((this.ke.CQ(tokens.eO(), (("" + s1$2) + s2$2)) || this.ke.CQ(tokens.eO(), ((s1$2 + "_") + s2$2)))) {
+                if ((this.ke.CQ(tokens.eN(), (("" + s1$2) + s2$2)) || this.ke.CQ(tokens.eN(), ((s1$2 + "_") + s2$2)))) {
                   this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().hu, $m_sci_Nil$());
-                  tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eO(), (("" + s1$2) + s2$2)));
+                  tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eN(), (("" + s1$2) + s2$2)));
                   stmt = this.jv(tokens);
-                } else if (((s2$2 !== "") && this.ke.CQ(tokens.eO(), ((s1$2 + $cToS($m_jl_Character$().wT(s2$2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2$2, 1, s2$2.length))))) {
+                } else if (((s2$2 !== "") && this.ke.CQ(tokens.eN(), ((s1$2 + $cToS($m_jl_Character$().wT(s2$2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2$2, 1, s2$2.length))))) {
                   this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().hu, $m_sci_Nil$());
-                  tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eO(), ((s1$2 + $cToS($m_jl_Character$().wT(s2$2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2$2, 1, s2$2.length))));
+                  tokens.t7($m_Ltigerpython_parser_lexer_Token$().hK(tokens.eN(), ((s1$2 + $cToS($m_jl_Character$().wT(s2$2.charCodeAt(0)))) + $m_sc_StringOps$().iE(s2$2, 1, s2$2.length))));
                   stmt = this.jv(tokens);
                 }
               }
@@ -21304,7 +21304,7 @@ $p.Rf = (function(line) {
               if (((name$2.length >= 0) && (name$2.substring(0, 5) === "class"))) {
                 var this$141 = this.p;
                 var pos$11 = ((5 + pos$2$1) | 0);
-                var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                 var params$10 = $m_sci_Nil$();
                 this$141.l(pos$11, (-1), code$10, params$10);
                 break matchEnd8;
@@ -21316,7 +21316,7 @@ $p.Rf = (function(line) {
               if (((name$3.length >= 0) && (name$3.substring(0, 3) === "def"))) {
                 var this$142 = this.p;
                 var pos$12 = ((3 + pos$3$1) | 0);
-                var code$11 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                var code$11 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                 var params$11 = $m_sci_Nil$();
                 this$142.l(pos$12, (-1), code$11, params$11);
                 break matchEnd8;
@@ -21393,7 +21393,7 @@ $p.Rf = (function(line) {
       if ((idx > 0)) {
         var this$182 = this.p;
         var pos$17 = ((stmt.n() + idx) | 0);
-        var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+        var code$16 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
         var params$16 = $m_sci_Nil$();
         this$182.l(pos$17, (-1), code$16, params$16);
         var value = $m_sc_StringOps$().bo(name$5, idx);
@@ -21524,7 +21524,7 @@ $p.Rf = (function(line) {
       b.hF(elem$2);
     }
   }
-  return b.d5.eS(new $c_s_reflect_ClassTag$GenericClassTag($d_Ltigerpython_parser_ast_AstNode$Statement.l()));
+  return b.d5.eR(new $c_s_reflect_ClassTag$GenericClassTag($d_Ltigerpython_parser_ast_AstNode$Statement.l()));
 });
 $p.jv = (function(tokens) {
   if (tokens.c()) {
@@ -21729,7 +21729,7 @@ $p.jv = (function(tokens) {
   }
 });
 $p.IV = (function(line, head, fieldName) {
-  var tokens = line.eT();
+  var tokens = line.eS();
   while (true) {
     if (tokens.c()) {
       var x = tokens.a6().o;
@@ -21921,7 +21921,7 @@ $p.QX = (function(line, followLines) {
   var x1 = line.c7();
   var x = $m_Ltigerpython_parser_lexer_TokenType$().pS;
   if ((x === x1)) {
-    var tokens = line.eT();
+    var tokens = line.eS();
     tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().pS]));
     var decorator = this.ad.WU(tokens);
     if ((!followLines.t())) {
@@ -21956,7 +21956,7 @@ $p.QX = (function(line, followLines) {
 });
 $p.R1 = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().eu);
-  var tokens = line.eT();
+  var tokens = line.eS();
   tokens.bp($m_Ltigerpython_parser_lexer_TokenType$().eu);
   var name = this.ad.R3(tokens);
   var xs = $m_sci_Nil$();
@@ -22036,7 +22036,7 @@ $p.R1 = (function(line) {
 });
 $p.Da = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().c9);
-  var tokens = line.eT();
+  var tokens = line.eS();
   var isAsync = tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().fX]));
   tokens.bp($m_Ltigerpython_parser_lexer_TokenType$().c9);
   if ((tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9])) && tokens.CR(1, new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().T])))) {
@@ -22116,7 +22116,7 @@ $p.Da = (function(line) {
       var $x_3 = false;
     }
     if ($x_3) {
-      this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+      this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
       var token = tokens.O();
       name = new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew());
     } else if ((!tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().aw, $m_Ltigerpython_parser_lexer_TokenType$().a9])))) {
@@ -22139,7 +22139,7 @@ $p.Da = (function(line) {
     var returns = this.ad.aZ(tokens);
   } else if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().G3]))) {
     var this$60 = this.p;
-    var pos$5 = tokens.eO();
+    var pos$5 = tokens.eN();
     var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().j4;
     var params$5 = new $c_sjsr_WrappedVarArgs(["=>", "->"]);
     this$60.l(pos$5, (-1), code$4, params$5);
@@ -22188,7 +22188,7 @@ $p.Da = (function(line) {
 });
 $p.R7 = (function(line, followLines) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().bX);
-  var tokens = line.eT();
+  var tokens = line.eS();
   tokens.O();
   if (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
     var this$4 = this.p;
@@ -22224,7 +22224,7 @@ $p.R7 = (function(line, followLines) {
     }
     if ($x_2) {
       var this$12 = this.p;
-      var pos$1 = tokens.eR();
+      var pos$1 = tokens.eQ();
       var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().hv;
       var params$1 = new $c_sjsr_WrappedVarArgs(["C/Java"]);
       this$12.l(pos$1, (-1), code$1, params$1);
@@ -22245,7 +22245,7 @@ $p.R7 = (function(line, followLines) {
       }
       if ($x_3) {
         var this$17 = this.p;
-        var pos$2 = tokens.eR();
+        var pos$2 = tokens.eQ();
         var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().hv;
         var params$2 = new $c_sjsr_WrappedVarArgs(["Pascal"]);
         this$17.l(pos$2, (-1), code$2, params$2);
@@ -22264,7 +22264,7 @@ $p.R7 = (function(line, followLines) {
 });
 $p.Xg = (function(line, followLines) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().e2);
-  var tokens = line.eT();
+  var tokens = line.eS();
   tokens.O();
   if (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
     var this$4 = this.p;
@@ -22297,13 +22297,13 @@ $p.Xg = (function(line, followLines) {
     if ((test instanceof $c_Ltigerpython_parser_ast_AstNode$Value)) {
       if (this.p.vL) {
         var this$6 = this.p;
-        var pos$1 = tokens.eR();
+        var pos$1 = tokens.eQ();
         var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().pI;
         var params$1 = $m_sci_Nil$();
         this$6.l(pos$1, (-1), code$1, params$1);
       } else {
         var this$7 = this.p;
-        var pos$2 = tokens.eR();
+        var pos$2 = tokens.eQ();
         var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().na;
         var params$2 = $m_sci_Nil$();
         this$7.l(pos$2, (-1), code$2, params$2);
@@ -22317,7 +22317,7 @@ $p.Xg = (function(line, followLines) {
 });
 $p.IZ = (function(line, followLines) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().bd);
-  var tokens = line.eT();
+  var tokens = line.eS();
   var is_async = tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().fX]));
   tokens.O();
   if (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().d8]))) {
@@ -22348,13 +22348,13 @@ $p.IZ = (function(line, followLines) {
     var x$2 = $m_Ltigerpython_parser_lexer_TokenType$().d8;
     if ((!(x$1 === x$2))) {
       if (tokens.zD(0, $m_Ltigerpython_parser_lexer_TokenType$().d8)) {
-        this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+        this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
         return null;
       }
       this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().k5, $m_sci_Nil$());
       return null;
     }
-    this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().fu, $m_sci_Nil$());
+    this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().ft, $m_sci_Nil$());
     var token = tokens.O();
     var target = new $c_Ltigerpython_parser_ast_AstNode$Name(token.x, token.ew());
   } else {
@@ -22409,7 +22409,7 @@ $p.IZ = (function(line, followLines) {
 });
 $p.Xa = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().kb);
-  var tokens = line.eT();
+  var tokens = line.eS();
   var startPos = tokens.O().x;
   if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
     if ((((tokens.m2() === 1) && tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bt, $m_Ltigerpython_parser_lexer_TokenType$().T]))) && line.e9())) {
@@ -22444,7 +22444,7 @@ $p.Xa = (function(line) {
 });
 $p.X5 = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().ig);
-  var tokens = line.eT();
+  var tokens = line.eS();
   tokens.O();
   var subject = this.ad.aZ(tokens);
   tokens.bp($m_Ltigerpython_parser_lexer_TokenType$().a9);
@@ -22453,7 +22453,7 @@ $p.X5 = (function(line) {
 });
 $p.WQ = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().j7);
-  var tokens = line.eT();
+  var tokens = line.eS();
   tokens.O();
   var pattern = this.Gk.J2(tokens, false);
   var guard = (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bX])) ? this.ad.aZ(tokens) : null);
@@ -22464,7 +22464,7 @@ $p.WQ = (function(line) {
 });
 $p.Xf = (function(line, followLines) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().ih);
-  var tokens = line.eT();
+  var tokens = line.eS();
   var startPos = tokens.O().x;
   tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]));
   var deadCode = this.p.q1;
@@ -22536,7 +22536,7 @@ $p.Xf = (function(line, followLines) {
 });
 $p.WZ = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().pU);
-  var tokens = line.eT();
+  var tokens = line.eS();
   var startPos = tokens.a6().x;
   tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().pU]));
   if (tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9]))) {
@@ -22554,7 +22554,7 @@ $p.WZ = (function(line) {
 });
 $p.Rj = (function(line) {
   this.p.iD($m_Ltigerpython_parser_lexer_TokenType$().pX);
-  var tokens = line.eT();
+  var tokens = line.eS();
   return this.OR(tokens, line, tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().fX])));
 });
 $p.OR = (function(tokens, line, isAsync) {
@@ -22585,7 +22585,7 @@ $p.IW = (function(lines, head) {
       var x = line.c7();
       var x$2 = $m_Ltigerpython_parser_lexer_TokenType$().gx;
       if ((x === x$2)) {
-        var tokens = line.eT();
+        var tokens = line.eS();
         tokens.O();
         if ((!tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().a9])))) {
           if (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().bX]))) {
@@ -22727,7 +22727,7 @@ $p.X4 = (function(tokens) {
           var params$2 = $m_sci_Nil$();
           this$43.l(pos, (-1), code$2, params$2);
         }
-        var elem$1 = n.fq.R;
+        var elem$1 = n.fp.R;
         return result.I(elem$1);
       });
       var len = names$2.a.length;
@@ -22876,7 +22876,7 @@ $p.Rc = (function(tokens) {
   var hasDest = tokens.ag(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().Bm]));
   if ((((!hasDest) && tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().aw]))) && tokens.zD(1, $m_Ltigerpython_parser_lexer_TokenType$().bs))) {
     var this$7 = this.p;
-    var pos = tokens.eO();
+    var pos = tokens.eN();
     var code = $m_Ltigerpython_parser_errors_ErrorCode$().ps;
     var params = $m_sci_Nil$();
     this$7.l(pos, (-1), code, params);
@@ -22894,12 +22894,12 @@ $p.Rc = (function(tokens) {
       var $x_1 = (x === x$2);
     }
     var newline = (!$x_1);
-    return (hasDest ? ((tests.a.length === 0) ? (this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().pr, $m_sci_Nil$()), new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eR(), null, tests, newline)) : new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eR(), $m_sc_ArrayOps$().aA(tests), $m_sc_ArrayOps$().m8(tests), newline)) : new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eR(), null, tests, newline));
+    return (hasDest ? ((tests.a.length === 0) ? (this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().pr, $m_sci_Nil$()), new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eQ(), null, tests, newline)) : new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eQ(), $m_sc_ArrayOps$().aA(tests), $m_sc_ArrayOps$().m8(tests), newline)) : new $c_Ltigerpython_parser_ast_AstNode$Print(tokens.eQ(), null, tests, newline));
   } else {
     if (hasDest) {
       this.p.a7(tokens, $m_Ltigerpython_parser_errors_ErrorCode$().pr, $m_sci_Nil$());
     }
-    var $x_2 = tokens.eR();
+    var $x_2 = tokens.eQ();
     var xs = $m_sci_Nil$();
     var array$3 = new ($d_Ltigerpython_parser_ast_AstNode$Expression.r().C)(xs.g());
     var iterator = $m_sc_Iterator$().r;
@@ -23218,7 +23218,7 @@ $p.IY = (function(tokens) {
         if ($is_Ltigerpython_parser_ast_AstNode$ContextExpression(expr)) {
           expr.sK($m_Ltigerpython_parser_ast_ExprContext$().Mn);
         }
-        return new $c_Ltigerpython_parser_ast_AstNode$AugAssign(startPos, expr, $m_Ltigerpython_parser_ast_AugAssignOp$().eK(tokens.O().o), (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().nu])) ? this.ad.zW(tokens) : this.ad.qG(tokens, true)));
+        return new $c_Ltigerpython_parser_ast_AstNode$AugAssign(startPos, expr, $m_Ltigerpython_parser_ast_AugAssignOp$().eJ(tokens.O().o), (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().nu])) ? this.ad.zW(tokens) : this.ad.qG(tokens, true)));
       } else {
         return new $c_Ltigerpython_parser_ast_AstNode$ExprStatement(startPos, expr);
       }
@@ -23226,13 +23226,13 @@ $p.IY = (function(tokens) {
   } else if (this.p.ch) {
     if ((expr instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
       var x2$4 = expr;
-      if ((x2$4.IF() && x2$4.fr.zG())) {
+      if ((x2$4.IF() && x2$4.fq.zG())) {
         var this$44 = this.p;
         var pos$7 = x2$4.ow;
         var code$10 = $m_Ltigerpython_parser_errors_ErrorCode$().pw;
         var params$10 = $m_sci_Nil$();
         this$44.l(pos$7, (-1), code$10, params$10);
-        return new $c_Ltigerpython_parser_ast_AstNode$Assignment(x2$4.ow, new ($d_Ltigerpython_parser_ast_AstNode$Expression.r().C)([x2$4.fr]), x2$4.t8());
+        return new $c_Ltigerpython_parser_ast_AstNode$Assignment(x2$4.ow, new ($d_Ltigerpython_parser_ast_AstNode$Expression.r().C)([x2$4.fq]), x2$4.t8());
       }
     }
     if ((expr instanceof $c_Ltigerpython_parser_ast_AstNode$Tuple)) {
@@ -23589,7 +23589,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
   var this$1 = $m_scm_ArrayBuffer$();
   var elems = $m_sci_Nil$();
   var items = this$1.ak(elems);
-  while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().cE, $m_Ltigerpython_parser_lexer_TokenType$().cD, $m_Ltigerpython_parser_lexer_TokenType$().fx, $m_Ltigerpython_parser_lexer_TokenType$().d7, $m_Ltigerpython_parser_lexer_TokenType$().bt]))) {
+  while (tokens.Y(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().cE, $m_Ltigerpython_parser_lexer_TokenType$().cD, $m_Ltigerpython_parser_lexer_TokenType$().fw, $m_Ltigerpython_parser_lexer_TokenType$().d7, $m_Ltigerpython_parser_lexer_TokenType$().bt]))) {
     var elem = tokens.O();
     items.I(elem);
   }
@@ -23600,9 +23600,9 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     var elem$1 = it.d().o;
     b.hF(elem$1);
   }
-  var x1 = b.d5.eS(new $c_s_reflect_ClassTag$GenericClassTag($d_Ltigerpython_parser_lexer_TokenType.l()));
+  var x1 = b.d5.eR(new $c_s_reflect_ClassTag$GenericClassTag($d_Ltigerpython_parser_lexer_TokenType.l()));
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 1) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 1) === 0)) {
       var p3 = x1.a[0];
       var x = $m_Ltigerpython_parser_lexer_TokenType$().bt;
       if ((x === p3)) {
@@ -23612,7 +23612,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
         if ((x$3 === p3)) {
           var $x_1 = true;
         } else {
-          var x$5 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+          var x$5 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
           var $x_1 = (x$5 === p3);
         }
       }
@@ -23622,7 +23622,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     }
   }
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 2) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 2) === 0)) {
       var sign = x1.a[0];
       var p8 = x1.a[1];
       var x$7 = $m_Ltigerpython_parser_lexer_TokenType$().cE;
@@ -23641,7 +23641,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
           if ((x$13 === p8)) {
             var $x_2 = true;
           } else {
-            var x$15 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+            var x$15 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
             var $x_2 = (x$15 === p8);
           }
         }
@@ -23659,7 +23659,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     }
   }
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 3) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 3) === 0)) {
       var p15 = x1.a[0];
       var op = x1.a[1];
       var p16 = x1.a[2];
@@ -23679,7 +23679,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
           var $x_6 = (x$25 === op);
         }
         if ($x_6) {
-          var x$27 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+          var x$27 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
           var $x_4 = (x$27 === p16);
         } else {
           var $x_4 = false;
@@ -23696,11 +23696,11 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     }
   }
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 3) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 3) === 0)) {
       var p23 = x1.a[0];
       var op$2 = x1.a[1];
       var p24 = x1.a[2];
-      var x$31 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+      var x$31 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
       if ((x$31 === p23)) {
         var x$33 = $m_Ltigerpython_parser_lexer_TokenType$().cE;
         if ((x$33 === op$2)) {
@@ -23732,7 +23732,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     }
   }
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 4) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 4) === 0)) {
       var sign$2 = x1.a[0];
       var p31 = x1.a[1];
       var op$3 = x1.a[2];
@@ -23761,7 +23761,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
             var $x_12 = (x$53 === op$3);
           }
           if ($x_12) {
-            var x$55 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+            var x$55 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
             var $x_9 = (x$55 === p32);
           } else {
             var $x_9 = false;
@@ -23785,7 +23785,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
     }
   }
   if ((x1 !== null)) {
-    if (($m_s_Array$UnapplySeqWrapper$().eM(x1, 4) === 0)) {
+    if (($m_s_Array$UnapplySeqWrapper$().eL(x1, 4) === 0)) {
       var sign$3 = x1.a[0];
       var p41 = x1.a[1];
       var op$4 = x1.a[2];
@@ -23798,7 +23798,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseNumericLiteral__Ltig
         var $x_14 = (x$63 === sign$3);
       }
       if ($x_14) {
-        var x$65 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+        var x$65 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
         if ((x$65 === p41)) {
           var x$67 = $m_Ltigerpython_parser_lexer_TokenType$().cE;
           if ((x$67 === op$4)) {
@@ -24174,7 +24174,7 @@ function $p_Ltigerpython_parser_parsing_PatternParser__parseKeyValuePair__Ltiger
       if ((x$7 === x1)) {
         var $x_2 = true;
       } else {
-        var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+        var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
         var $x_2 = (x$9 === x1);
       }
     }
@@ -24353,7 +24353,7 @@ $p.R2 = (function(tokens) {
       if ((x$7 === x1)) {
         var $x_2 = true;
       } else {
-        var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+        var x$9 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
         var $x_2 = (x$9 === x1);
       }
     }
@@ -24762,7 +24762,7 @@ function $p_Ltigerpython_parser_scopes_AstWalker__hasReturn__Ltigerpython_parser
       } else if ((x6.ep !== null)) {
         stmt = x6.ep;
       } else {
-        stmt = x6.ft;
+        stmt = x6.fs;
       }
     } else if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$Suite)) {
       var x7 = x1;
@@ -24888,7 +24888,7 @@ $p.af = (function(node) {
     this.JD(node);
   } else if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x14 = node;
-    this.af(x14.ft);
+    this.af(x14.fs);
     var xs = x14.gv;
     var f = ((handler$2) => {
       var handler = handler$2;
@@ -25786,7 +25786,7 @@ $p.Jz = (function(ifStmt) {
       rc6 = true;
       x3 = x1;
       if ((x3.IF() || x3.QE())) {
-        var x1$3 = x3.fr;
+        var x1$3 = x3.fq;
         matchEnd4$2: {
           if ((x1$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
             var x2$3 = x1$3;
@@ -25812,7 +25812,7 @@ $p.Jz = (function(ifStmt) {
       }
     }
     if ((rc6 && x3.QB())) {
-      var x1$5 = x3.fr;
+      var x1$5 = x3.fq;
       matchEnd5: {
         if ((x1$5 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
           var x2$5 = x1$5;
@@ -26093,7 +26093,7 @@ $p.JA = (function(importStmt) {
   var xs = importStmt.jT;
   var f = ((alias$2) => {
     var alias = alias$2;
-    var x = alias.fq.R;
+    var x = alias.fp.R;
     var len = x.length;
     var sb = $ct_jl_StringBuilder__I__(new $c_jl_StringBuilder(), len);
     var i = 0;
@@ -26245,7 +26245,7 @@ $p.JC = (function(importStmt) {
   var xs = importStmt.jU;
   var f = ((alias$2) => {
     var alias = alias$2;
-    var x1 = this.dw.h4(module, alias.fq.R);
+    var x1 = this.dw.h4(module, alias.fp.R);
     if ((x1 instanceof $c_s_Some)) {
       var x2 = x1;
       var impModule = x2.W;
@@ -26442,7 +26442,7 @@ $p.UV = (function(params) {
         var x1 = params.cQ.a[arg1];
         if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
           var x2 = x1;
-          var name = x2.f2;
+          var name = x2.f1;
           var annotation = x2.fU;
           if ((annotation !== null)) {
             var dataType = this.e5.bk(annotation);
@@ -26467,10 +26467,10 @@ $p.UV = (function(params) {
         i = ((i + this$3.aK) | 0);
       }
     }
-    if ((params.f3 !== null)) {
-      var $x_2 = params.f3.f2;
-      if ((params.f3.fU !== null)) {
-        var expr$1 = params.f3.fU;
+    if ((params.f2 !== null)) {
+      var $x_2 = params.f2.f1;
+      if ((params.f2.fU !== null)) {
+        var expr$1 = params.f2.fU;
         var $x_1 = this.e5.bk(expr$1);
       } else {
         var $x_1 = $m_Ltigerpython_parser_types_BuiltinTypes$().hA;
@@ -26478,10 +26478,10 @@ $p.UV = (function(params) {
       var elem$1 = new $c_Ltigerpython_parser_types_Parameter($x_2, $x_1);
       result.I(elem$1);
     }
-    if ((params.fs !== null)) {
-      var $x_4 = params.fs.f2;
-      if ((params.fs.fU !== null)) {
-        var expr$2 = params.fs.fU;
+    if ((params.fr !== null)) {
+      var $x_4 = params.fr.f1;
+      if ((params.fr.fU !== null)) {
+        var expr$2 = params.fr.fU;
         var $x_3 = this.e5.bk(expr$2);
       } else {
         var $x_3 = $m_Ltigerpython_parser_types_BuiltinTypes$().sd;
@@ -26618,8 +26618,8 @@ function $c_Ltigerpython_parser_scopes_BuiltinNames$() {
     array$2.a[i$2] = iterator$2.d();
     i$2 = ((1 + i$2) | 0);
   }
-  this.sB(new $c_sjsr_WrappedVarArgs([$x_31, $x_30, $x_29, $x_28, $x_27, $x_26, $x_25, $x_24, $x_23, $x_22, $x_20, $x_19, $x_18, $x_17, $x_16, $x_15, $x_14, $x_13, $x_11, $x_10, $x_9, $x_8, $x_7, $x_6, $x_5, $x_4, $x_3, $x_2, $x_1.D("locals", array$2, $m_Ltigerpython_parser_types_BuiltinTypes$().vP, "Update and return a dictionary representing the current local symbol table."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("map", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "Apply function to every item of iterable and return a list of the results."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("max", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the largest item in an iterable or the largest of two or more arguments."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("min", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the smallest item in an iterable or the smallest of two or more arguments."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("next", new ($d_T.r().C)(["iterator"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Retrieve the next item from the iterator by calling its next() method."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("oct", new ($d_T.r().C)(["x"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Convert an integer number (of any size) to an octal string."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("open", new ($d_T.r().C)(["name", "mode"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GD, "Open a file, returning an object of the file type"), $m_Ltigerpython_parser_types_BuiltinFunction$().D("ord", new ($d_T.r().C)(["c"]), $m_Ltigerpython_parser_types_BuiltinTypes$().gW, "Given a string of length one, return an integer representing the Unicode code point of the character when the argument is a unicode object, or the value of the byte when the argument is an 8-bit string."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("property", new ($d_T.r().C)(["fget, fset"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GC, "Return a property attribute."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("pow", new ($d_T.r().C)(["x", "y"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return x to the power y; if z is present, return x to the power y, modulo z (computed more efficiently than pow(x, y) % z). The two-argument form pow(x, y) is equivalent to using the power operator: x**y."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("range", new ($d_T.r().C)(["stop:int"]), $m_Ltigerpython_parser_types_ListType$().Cv($m_Ltigerpython_parser_types_BuiltinTypes$().gW), "This is a versatile function to create lists containing arithmetic progressions."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("raw_input", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "The function reads a line from input, converts it to a string (stripping a trailing newline), and returns that."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reduce", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5)."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reload", new ($d_T.r().C)(["module"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Reload a previously imported module."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("repr", new ($d_T.r().C)(["object"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Return a string containing a printable representation of an object."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reversed", new ($d_T.r().C)(["seq"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a reverse iterator."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("round", new ($d_T.r().C)(["number", "ndigits"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is omitted, it defaults to zero."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("setattr", new ($d_T.r().C)(["object", "name", "value"]), $m_Ltigerpython_parser_types_BuiltinTypes$().nA, "This is the counterpart of getattr(). The arguments are an object, a string and an arbitrary value. The string may name an existing attribute or a new attribute. The function assigns the value to the attribute, provided the object allows it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("sorted", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a new sorted list from the items in iterable."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("staticmethod", new ($d_T.r().C)(["function"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a static method for function."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("sum", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Sums the items of an iterable from left to right and returns the total."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("super", new ($d_T.r().C)(["type", "instance"]), $m_Ltigerpython_parser_types_BuiltinTypes$().Np, "Return a proxy object that delegates method calls to a parent or sibling class of type."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("unichr", new ($d_T.r().C)(["i"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Return the Unicode string of one character whose Unicode code is the integer i."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("vars", new ($d_T.r().C)(["object"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return the __dict__ attribute for a module, class, instance, or any other object with a __dict__ attribute."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("xrange", new ($d_T.r().C)(["stop"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "This function is very similar to range(), but returns an xrange object instead of a list."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("zip", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables."), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, $m_Ltigerpython_parser_types_BuiltinTypes$().Bx, $m_Ltigerpython_parser_types_BuiltinTypes$().vO, $m_Ltigerpython_parser_types_BuiltinTypes$().sd, $m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().BA, $m_Ltigerpython_parser_types_BuiltinTypes$().f9, $m_Ltigerpython_parser_types_BuiltinTypes$().fa, $m_Ltigerpython_parser_types_BuiltinTypes$().BC, $m_Ltigerpython_parser_types_BuiltinTypes$().BD, $m_Ltigerpython_parser_types_BuiltinTypes$().bB, $m_Ltigerpython_parser_types_BuiltinTypes$().Nq, $m_Ltigerpython_parser_types_BuiltinTypes$().hA, $m_Ltigerpython_parser_types_BuiltinTypes$().BE]));
-  this.sB(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinFunction$().D("inputInt", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, "The function asks the user to input an integer value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("inputFloat", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, "The function asks the user to input a numeric value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("inputString", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, "The function asks the user to input a text value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("msgDlg", new ($d_T.r().C)(["x"]), $m_Ltigerpython_parser_types_BuiltinTypes$().da, "Displays the given value(s) in a small dialog window."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("head", new ($d_T.r().C)(["s"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GB, "Return the first element of a list or sequence."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("tail", new ($d_T.r().C)(["s"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the list or sequence without its first element.")]));
+  this.sB(new $c_sjsr_WrappedVarArgs([$x_31, $x_30, $x_29, $x_28, $x_27, $x_26, $x_25, $x_24, $x_23, $x_22, $x_20, $x_19, $x_18, $x_17, $x_16, $x_15, $x_14, $x_13, $x_11, $x_10, $x_9, $x_8, $x_7, $x_6, $x_5, $x_4, $x_3, $x_2, $x_1.D("locals", array$2, $m_Ltigerpython_parser_types_BuiltinTypes$().vP, "Update and return a dictionary representing the current local symbol table."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("map", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "Apply function to every item of iterable and return a list of the results."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("max", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the largest item in an iterable or the largest of two or more arguments."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("min", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the smallest item in an iterable or the smallest of two or more arguments."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("next", new ($d_T.r().C)(["iterator"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Retrieve the next item from the iterator by calling its next() method."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("oct", new ($d_T.r().C)(["x"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Convert an integer number (of any size) to an octal string."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("open", new ($d_T.r().C)(["name", "mode"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GD, "Open a file, returning an object of the file type"), $m_Ltigerpython_parser_types_BuiltinFunction$().D("ord", new ($d_T.r().C)(["c"]), $m_Ltigerpython_parser_types_BuiltinTypes$().gW, "Given a string of length one, return an integer representing the Unicode code point of the character when the argument is a unicode object, or the value of the byte when the argument is an 8-bit string."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("property", new ($d_T.r().C)(["fget, fset"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GC, "Return a property attribute."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("pow", new ($d_T.r().C)(["x", "y"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return x to the power y; if z is present, return x to the power y, modulo z (computed more efficiently than pow(x, y) % z). The two-argument form pow(x, y) is equivalent to using the power operator: x**y."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("range", new ($d_T.r().C)(["stop:int"]), $m_Ltigerpython_parser_types_ListType$().Cv($m_Ltigerpython_parser_types_BuiltinTypes$().gW), "This is a versatile function to create lists containing arithmetic progressions."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("raw_input", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "The function reads a line from input, converts it to a string (stripping a trailing newline), and returns that."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reduce", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5)."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reload", new ($d_T.r().C)(["module"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Reload a previously imported module."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("repr", new ($d_T.r().C)(["object"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Return a string containing a printable representation of an object."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("reversed", new ($d_T.r().C)(["seq"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a reverse iterator."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("round", new ($d_T.r().C)(["number", "ndigits"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is omitted, it defaults to zero."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("setattr", new ($d_T.r().C)(["object", "name", "value"]), $m_Ltigerpython_parser_types_BuiltinTypes$().nA, "This is the counterpart of getattr(). The arguments are an object, a string and an arbitrary value. The string may name an existing attribute or a new attribute. The function assigns the value to the attribute, provided the object allows it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("sorted", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a new sorted list from the items in iterable."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("staticmethod", new ($d_T.r().C)(["function"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return a static method for function."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("sum", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Sums the items of an iterable from left to right and returns the total."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("super", new ($d_T.r().C)(["type", "instance"]), $m_Ltigerpython_parser_types_BuiltinTypes$().Np, "Return a proxy object that delegates method calls to a parent or sibling class of type."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("unichr", new ($d_T.r().C)(["i"]), $m_Ltigerpython_parser_types_BuiltinTypes$().im, "Return the Unicode string of one character whose Unicode code is the integer i."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("vars", new ($d_T.r().C)(["object"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "Return the __dict__ attribute for a module, class, instance, or any other object with a __dict__ attribute."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("xrange", new ($d_T.r().C)(["stop"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ap, "This function is very similar to range(), but returns an xrange object instead of a list."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("zip", new ($d_T.r().C)(["..."]), $m_Ltigerpython_parser_types_BuiltinTypes$().hz, "This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables."), $m_Ltigerpython_parser_types_BuiltinTypes$().f7, $m_Ltigerpython_parser_types_BuiltinTypes$().Bx, $m_Ltigerpython_parser_types_BuiltinTypes$().vO, $m_Ltigerpython_parser_types_BuiltinTypes$().sd, $m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().BA, $m_Ltigerpython_parser_types_BuiltinTypes$().f8, $m_Ltigerpython_parser_types_BuiltinTypes$().f9, $m_Ltigerpython_parser_types_BuiltinTypes$().BC, $m_Ltigerpython_parser_types_BuiltinTypes$().BD, $m_Ltigerpython_parser_types_BuiltinTypes$().bB, $m_Ltigerpython_parser_types_BuiltinTypes$().Nq, $m_Ltigerpython_parser_types_BuiltinTypes$().hA, $m_Ltigerpython_parser_types_BuiltinTypes$().BE]));
+  this.sB(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinFunction$().D("inputInt", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, "The function asks the user to input an integer value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("inputFloat", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, "The function asks the user to input a numeric value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("inputString", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, "The function asks the user to input a text value and returns it."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("msgDlg", new ($d_T.r().C)(["x"]), $m_Ltigerpython_parser_types_BuiltinTypes$().da, "Displays the given value(s) in a small dialog window."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("head", new ($d_T.r().C)(["s"]), $m_Ltigerpython_parser_types_BuiltinTypes$().GB, "Return the first element of a list or sequence."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("tail", new ($d_T.r().C)(["s"]), $m_Ltigerpython_parser_types_BuiltinTypes$().ja, "Return the list or sequence without its first element.")]));
 }
 $p = $c_Ltigerpython_parser_scopes_BuiltinNames$.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_parser_scopes_BuiltinNames$;
@@ -26842,7 +26842,7 @@ function $ct_Ltigerpython_parser_scopes_Scope__($thiz) {
 }
 /** @constructor */
 function $c_Ltigerpython_parser_scopes_Scope() {
-  this.fz = null;
+  this.fy = null;
   this.q3 = null;
 }
 $p = $c_Ltigerpython_parser_scopes_Scope.prototype = new $h_O();
@@ -26854,7 +26854,7 @@ $h_Ltigerpython_parser_scopes_Scope.prototype = $p;
 $p.z7 = (function(scope) {
   if ((scope !== null)) {
     this.q3.I(scope);
-    scope.fz = this;
+    scope.fy = this;
     return scope;
   } else {
     return null;
@@ -26863,7 +26863,7 @@ $p.z7 = (function(scope) {
 $p.sN = (function(position) {
   var nonLocalReturnKey1 = $ct_O__(new $c_O());
   try {
-    if (((this.aF() === (-1)) || ((this.eR() <= position) && (position <= this.aF())))) {
+    if (((this.aF() === (-1)) || ((this.eQ() <= position) && (position <= this.aF())))) {
       var this$1 = this.q3;
       var it = this$1.a1().k();
       while (it.c()) {
@@ -26892,10 +26892,10 @@ $p.sN = (function(position) {
   }
 });
 $p.g7 = (function() {
-  return ((this.fz !== null) ? this.fz.g7() : "");
+  return ((this.fy !== null) ? this.fy.g7() : "");
 });
 $p.Io = (function() {
-  return ((this.fz !== null) ? this.fz.Io() : null);
+  return ((this.fy !== null) ? this.fy.Io() : null);
 });
 $p.PC = (function(dataType) {
   if ((dataType !== null)) {
@@ -26904,7 +26904,7 @@ $p.PC = (function(dataType) {
 });
 $p.kr = (function(name) {
   var x1 = this.h2().b1(name);
-  return (($m_s_None$() === x1) ? ((this.fz !== null) ? this.fz.kr(name) : $m_sci_Map$().ac($m_Ltigerpython_parser_scopes_BuiltinNames$().lv).b1(name)) : x1);
+  return (($m_s_None$() === x1) ? ((this.fy !== null) ? this.fy.kr(name) : $m_sci_Map$().ac($m_Ltigerpython_parser_scopes_BuiltinNames$().lv).b1(name)) : x1);
 });
 $p.c6 = (function(name) {
   if ($m_sc_StringOps$().ev(name, 46)) {
@@ -26938,15 +26938,15 @@ $p.W6 = (function(source) {
   this$3.kq().az(f);
 });
 $p.Di = (function(retType) {
-  if ((this.fz !== null)) {
-    this.fz.Di(retType);
+  if ((this.fy !== null)) {
+    this.fy.Di(retType);
   }
 });
 $p.h4 = (function(moduleName, importName) {
-  return ((this.fz !== null) ? this.fz.h4(moduleName, importName) : (((importName === null) || (importName === "")) ? new $c_s_Some($m_Ltigerpython_parser_scopes_ModuleLoader$().yl.Qq(moduleName)) : new $c_s_Some($m_Ltigerpython_parser_scopes_ModuleLoader$().yl.Qs(moduleName, importName))));
+  return ((this.fy !== null) ? this.fy.h4(moduleName, importName) : (((importName === null) || (importName === "")) ? new $c_s_Some($m_Ltigerpython_parser_scopes_ModuleLoader$().yl.Qq(moduleName)) : new $c_s_Some($m_Ltigerpython_parser_scopes_ModuleLoader$().yl.Qs(moduleName, importName))));
 });
 $p.j = (function() {
-  var head = $m_sc_StringOps$().ao("%s(%d, %d)", new $c_sjsr_WrappedVarArgs([$objectGetClass(this).Iu(), this.eR(), this.aF()]));
+  var head = $m_sc_StringOps$().ao("%s(%d, %d)", new $c_sjsr_WrappedVarArgs([$objectGetClass(this).Iu(), this.eQ(), this.aF()]));
   var this$5 = this.q3;
   $m_scm_ArrayBuffer$();
   var b = new $c_scm_ArrayBuffer$$anon$1();
@@ -27153,9 +27153,9 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   this.da = null;
   this.yn = null;
   this.Nq = null;
-  this.f8 = null;
+  this.f7 = null;
   this.vO = null;
-  this.f9 = null;
+  this.f8 = null;
   this.BC = null;
   this.kf = null;
   this.se = null;
@@ -27164,7 +27164,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   this.BD = null;
   this.BA = null;
   this.ly = null;
-  this.fa = null;
+  this.f9 = null;
   this.hA = null;
   this.Bx = null;
   this.GA = null;
@@ -27203,12 +27203,12 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   this.yn = $m_Ltigerpython_parser_types_PrimitiveType$().nH("<numeric>");
   this.Nq = $m_Ltigerpython_parser_types_PrimitiveType$().nH("type");
   var baseType = this.yn;
-  this.f8 = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "bool", baseType, baseType.ci);
+  this.f7 = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "bool", baseType, baseType.ci);
   var baseType$1 = this.yn;
   this.vO = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "complex", baseType$1, baseType$1.ci);
   var baseType$2 = this.yn;
-  this.f9 = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "int", baseType$2, baseType$2.ci);
-  var $x_2 = this.f9;
+  this.f8 = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "int", baseType$2, baseType$2.ci);
+  var $x_2 = this.f8;
   var $x_1 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs = $m_sci_Nil$();
   var array = new ($d_T.r().C)(xs.g());
@@ -27218,11 +27218,11 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array.a[i] = iterator.d();
     i = ((1 + i) | 0);
   }
-  $x_2.g2(new $c_sjsr_WrappedVarArgs([$x_1.D("bit_length", array, this.f9, "Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros.")]));
-  var baseType$3 = this.f9;
+  $x_2.g2(new $c_sjsr_WrappedVarArgs([$x_1.D("bit_length", array, this.f8, "Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros.")]));
+  var baseType$3 = this.f8;
   this.BC = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "long", baseType$3, baseType$3.ci);
   this.kf = new $c_Ltigerpython_parser_types_BuiltinTypes$$anon$1();
-  this.kf.g2(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinFunction$().D("index", new ($d_T.r().C)(["x"]), this.f9, "index of the first occurrence of x in the sequence"), $m_Ltigerpython_parser_types_BuiltinFunction$().D("count", new ($d_T.r().C)(["x"]), this.f9, "total number of occurrences of x in the sequence")]));
+  this.kf.g2(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinFunction$().D("index", new ($d_T.r().C)(["x"]), this.f8, "index of the first occurrence of x in the sequence"), $m_Ltigerpython_parser_types_BuiltinFunction$().D("count", new ($d_T.r().C)(["x"]), this.f8, "total number of occurrences of x in the sequence")]));
   var $x_5 = $m_Ltigerpython_parser_types_PrimitiveType$();
   var $x_4 = $m_sci_Seq$();
   var $x_3 = $m_Ltigerpython_parser_types_BuiltinFunction$();
@@ -27239,9 +27239,9 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   this.BB = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "generator", baseType$4, baseType$4.ci);
   this.nB = $m_Ltigerpython_parser_types_PrimitiveType$().nH("<set>");
   var $x_14 = this.nB;
-  var $x_13 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("isdisjoint", new ($d_T.r().C)(["other"]), this.f8, "Return True if the set has no elements in common with other.");
-  var $x_12 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("issubset", new ($d_T.r().C)(["other"]), this.f8, "Test whether every element in the set is in other.");
-  var $x_11 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("issuperset", new ($d_T.r().C)(["other"]), this.f8, "Test whether every element in other is in the set.");
+  var $x_13 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("isdisjoint", new ($d_T.r().C)(["other"]), this.f7, "Return True if the set has no elements in common with other.");
+  var $x_12 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("issubset", new ($d_T.r().C)(["other"]), this.f7, "Test whether every element in the set is in other.");
+  var $x_11 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("issuperset", new ($d_T.r().C)(["other"]), this.f7, "Test whether every element in other is in the set.");
   var $x_10 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("union", new ($d_T.r().C)(["other"]), this.nB, "Return a new set with elements from the set and all others.");
   var $x_9 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("intersection", new ($d_T.r().C)(["other"]), this.nB, "Return a new set with elements common to the set and all others.");
   var $x_8 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("difference", new ($d_T.r().C)(["other"]), this.nB, "Return a new set with elements in the set that are not in the others.");
@@ -27335,12 +27335,12 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   }
   $x_38.g2(new $c_sjsr_WrappedVarArgs([$x_37, $x_36, $x_34, $x_32, $x_31, $x_29, $x_28.D("sort", array$13, this.ly, "sort the items of the sequence in place")]));
   var baseType$7 = this.ly;
-  this.fa = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "list", baseType$7, baseType$7.ci);
-  var $x_42 = this.fa;
+  this.f9 = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "list", baseType$7, baseType$7.ci);
+  var $x_42 = this.f9;
   var $x_41 = $m_Ltigerpython_parser_types_PrimitiveType$().nH("first");
   var $x_40 = $m_Ltigerpython_parser_types_PrimitiveType$().nH("head");
   var $x_39 = $m_Ltigerpython_parser_types_PrimitiveType$().nH("last");
-  var baseType$8 = this.fa;
+  var baseType$8 = this.f9;
   $x_42.g2(new $c_sjsr_WrappedVarArgs([$x_41, $x_40, $x_39, $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "tail", baseType$8, baseType$8.ci)]));
   var baseType$9 = this.kf;
   this.hA = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "tuple", baseType$9, baseType$9.ci);
@@ -27384,7 +27384,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     i$11 = ((1 + i$11) | 0);
   }
   var $x_90 = $x_91.D("encode", array$18, this.bB, "Return an encoded version of the string. Default encoding is the current default string encoding.");
-  var $x_89 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("endswith", new ($d_T.r().C)(["suffix"]), this.f8, "Return True if the string ends with the specified suffix, otherwise return False. suffix can also be a tuple of suffixes to look for.");
+  var $x_89 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("endswith", new ($d_T.r().C)(["suffix"]), this.f7, "Return True if the string ends with the specified suffix, otherwise return False. suffix can also be a tuple of suffixes to look for.");
   var $x_88 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$12 = $m_sci_Nil$();
   var array$19 = new ($d_T.r().C)(xs$12.g());
@@ -27406,7 +27406,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$20.a[i$13] = iterator$13.d();
     i$13 = ((1 + i$13) | 0);
   }
-  var $x_83 = $x_84.D("isalnum", array$20, this.f8, "Return true if all characters in the string are alphanumeric and there is at least one character, false otherwise.");
+  var $x_83 = $x_84.D("isalnum", array$20, this.f7, "Return true if all characters in the string are alphanumeric and there is at least one character, false otherwise.");
   var $x_82 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$14 = $m_sci_Nil$();
   var array$21 = new ($d_T.r().C)(xs$14.g());
@@ -27416,7 +27416,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$21.a[i$14] = iterator$14.d();
     i$14 = ((1 + i$14) | 0);
   }
-  var $x_81 = $x_82.D("isalpha", array$21, this.f8, "Return true if all characters in the string are alphabetic and there is at least one character, false otherwise.");
+  var $x_81 = $x_82.D("isalpha", array$21, this.f7, "Return true if all characters in the string are alphabetic and there is at least one character, false otherwise.");
   var $x_80 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$15 = $m_sci_Nil$();
   var array$22 = new ($d_T.r().C)(xs$15.g());
@@ -27426,7 +27426,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$22.a[i$15] = iterator$15.d();
     i$15 = ((1 + i$15) | 0);
   }
-  var $x_79 = $x_80.D("isdigit", array$22, this.f8, "Return true if all characters in the string are digits and there is at least one character, false otherwise.");
+  var $x_79 = $x_80.D("isdigit", array$22, this.f7, "Return true if all characters in the string are digits and there is at least one character, false otherwise.");
   var $x_78 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$16 = $m_sci_Nil$();
   var array$23 = new ($d_T.r().C)(xs$16.g());
@@ -27436,7 +27436,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$23.a[i$16] = iterator$16.d();
     i$16 = ((1 + i$16) | 0);
   }
-  var $x_77 = $x_78.D("islower", array$23, this.f8, "Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.");
+  var $x_77 = $x_78.D("islower", array$23, this.f7, "Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.");
   var $x_76 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$17 = $m_sci_Nil$();
   var array$24 = new ($d_T.r().C)(xs$17.g());
@@ -27446,7 +27446,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$24.a[i$17] = iterator$17.d();
     i$17 = ((1 + i$17) | 0);
   }
-  var $x_75 = $x_76.D("isspace", array$24, this.f8, "Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.");
+  var $x_75 = $x_76.D("isspace", array$24, this.f7, "Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.");
   var $x_74 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$18 = $m_sci_Nil$();
   var array$25 = new ($d_T.r().C)(xs$18.g());
@@ -27456,7 +27456,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$25.a[i$18] = iterator$18.d();
     i$18 = ((1 + i$18) | 0);
   }
-  var $x_73 = $x_74.D("istitle", array$25, this.f8, "Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.");
+  var $x_73 = $x_74.D("istitle", array$25, this.f7, "Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.");
   var $x_72 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$19 = $m_sci_Nil$();
   var array$26 = new ($d_T.r().C)(xs$19.g());
@@ -27466,7 +27466,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$26.a[i$19] = iterator$19.d();
     i$19 = ((1 + i$19) | 0);
   }
-  var $x_71 = $x_72.D("isupper", array$26, this.f8, "Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.");
+  var $x_71 = $x_72.D("isupper", array$26, this.f7, "Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.");
   var $x_70 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$20 = $m_sci_Nil$();
   var array$27 = new ($d_T.r().C)(xs$20.g());
@@ -27500,11 +27500,11 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   var $x_64 = $x_65.D("lstrip", array$29, this.bB, "Return a copy of the string with leading characters removed.");
   var $x_63 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("partition", new ($d_T.r().C)(["sep"]), this.hA, "Split the string at the first occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
   var $x_62 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("replace", new ($d_T.r().C)(["old", "new"]), this.bB, "Return a copy of the string with all occurrences of substring old replaced by new.");
-  var $x_61 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rfind", new ($d_T.r().C)(["sub"]), this.f9, "Return the highest index in the string where substring sub is found.");
-  var $x_60 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rindex", new ($d_T.r().C)(["sub"]), this.f9, "Like rfind() but raises ValueError when the substring sub is not found.");
+  var $x_61 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rfind", new ($d_T.r().C)(["sub"]), this.f8, "Return the highest index in the string where substring sub is found.");
+  var $x_60 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rindex", new ($d_T.r().C)(["sub"]), this.f8, "Like rfind() but raises ValueError when the substring sub is not found.");
   var $x_59 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rjust", new ($d_T.r().C)(["width"]), this.bB, "Return the string right justified in a string of length width.");
   var $x_58 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rpartition", new ($d_T.r().C)(["sep"]), this.hA, "Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
-  var $x_57 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rsplit", new ($d_T.r().C)(["sep"]), this.fa, "Return a list of the words in the string, using sep as the delimiter string.");
+  var $x_57 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("rsplit", new ($d_T.r().C)(["sep"]), this.f9, "Return a list of the words in the string, using sep as the delimiter string.");
   var $x_56 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$23 = $m_sci_Nil$();
   var array$30 = new ($d_T.r().C)(xs$23.g());
@@ -27515,7 +27515,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     i$23 = ((1 + i$23) | 0);
   }
   var $x_55 = $x_56.D("rstrip", array$30, this.bB, "Return a copy of the string with trailing characters removed.");
-  var $x_54 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("split", new ($d_T.r().C)(["sep"]), this.fa, "Return a list of the words in the string, using sep as the delimiter string.");
+  var $x_54 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("split", new ($d_T.r().C)(["sep"]), this.f9, "Return a list of the words in the string, using sep as the delimiter string.");
   var $x_53 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$24 = $m_sci_Nil$();
   var array$31 = new ($d_T.r().C)(xs$24.g());
@@ -27525,8 +27525,8 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$31.a[i$24] = iterator$24.d();
     i$24 = ((1 + i$24) | 0);
   }
-  var $x_52 = $x_53.D("splitlines", array$31, this.fa, "Return a list of the lines in the string, breaking at line boundaries.");
-  var $x_51 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("startswith", new ($d_T.r().C)(["prefix"]), this.f8, "Return True if string starts with the prefix, otherwise return False. prefix can also be a tuple of prefixes to look for.");
+  var $x_52 = $x_53.D("splitlines", array$31, this.f9, "Return a list of the lines in the string, breaking at line boundaries.");
+  var $x_51 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("startswith", new ($d_T.r().C)(["prefix"]), this.f7, "Return True if string starts with the prefix, otherwise return False. prefix can also be a tuple of prefixes to look for.");
   var $x_50 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$25 = $m_sci_Nil$();
   var array$32 = new ($d_T.r().C)(xs$25.g());
@@ -27590,7 +27590,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$38.a[i$30] = iterator$30.d();
     i$30 = ((1 + i$30) | 0);
   }
-  var $x_99 = $x_100.D("is_integer", array$38, this.f8, "Return True if the float instance is finite with integral value, and False otherwise.");
+  var $x_99 = $x_100.D("is_integer", array$38, this.f7, "Return True if the float instance is finite with integral value, and False otherwise.");
   var $x_98 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$31 = $m_sci_Nil$();
   var array$39 = new ($d_T.r().C)(xs$31.g());
@@ -27633,7 +27633,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$43.a[i$34] = iterator$34.d();
     i$34 = ((1 + i$34) | 0);
   }
-  var $x_126 = $x_127.D("items", array$43, this.fa, "Return a copy of the dictionary\u2019s list of (key, value) pairs.");
+  var $x_126 = $x_127.D("items", array$43, this.f9, "Return a copy of the dictionary\u2019s list of (key, value) pairs.");
   var $x_125 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$35 = $m_sci_Nil$();
   var array$44 = new ($d_T.r().C)(xs$35.g());
@@ -27673,7 +27673,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$47.a[i$38] = iterator$38.d();
     i$38 = ((1 + i$38) | 0);
   }
-  var $x_118 = $x_119.D("keys", array$47, this.fa, "Return a copy of the dictionary\u2019s list of keys.");
+  var $x_118 = $x_119.D("keys", array$47, this.f9, "Return a copy of the dictionary\u2019s list of keys.");
   var $x_117 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("pop", new ($d_T.r().C)(["key", "default"]), this.ap, "If key is in the dictionary, remove it and return its value, else return default. If default is not given and key is not in the dictionary, a KeyError is raised.");
   var $x_116 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$39 = $m_sci_Nil$();
@@ -27696,7 +27696,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$49.a[i$40] = iterator$40.d();
     i$40 = ((1 + i$40) | 0);
   }
-  var $x_111 = $x_112.D("values", array$49, this.fa, "Return a copy of the dictionary\u2019s list of values.");
+  var $x_111 = $x_112.D("values", array$49, this.f9, "Return a copy of the dictionary\u2019s list of values.");
   var $x_110 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$41 = $m_sci_Nil$();
   var array$50 = new ($d_T.r().C)(xs$41.g());
@@ -27728,7 +27728,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   }
   $x_133.g2(new $c_sjsr_WrappedVarArgs([$x_131, $x_129, $x_128, $x_126, $x_124, $x_122, $x_120, $x_118, $x_117, $x_115, $x_114, $x_113, $x_111, $x_109, $x_107, $x_106.D("viewvalues", array$52, this.ap, "Return a new view of the dictionary\u2019s values.")]));
   var this$143 = $m_sci_Map$();
-  var elems = new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "closed", this.f8), $ct_T2__O__O__(new $c_T2(), "encoding", this.ap), $ct_T2__O__O__(new $c_T2(), "mode", this.bB), $ct_T2__O__O__(new $c_T2(), "name", this.bB)]);
+  var elems = new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "closed", this.f7), $ct_T2__O__O__(new $c_T2(), "encoding", this.ap), $ct_T2__O__O__(new $c_T2(), "mode", this.bB), $ct_T2__O__O__(new $c_T2(), "name", this.bB)]);
   this.Bz = $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_parser_types_PrimitiveType(), "file", null, this$143.ac(elems));
   var $x_151 = this.Bz;
   var $x_150 = $m_Ltigerpython_parser_types_BuiltinFunction$();
@@ -27760,7 +27760,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$57.a[i$46] = iterator$46.d();
     i$46 = ((1 + i$46) | 0);
   }
-  var $x_145 = $x_146.D("fileno", array$57, this.f9, "Return the integer \"file descriptor\" that is used by the underlying implementation to request I/O operations from the operating system.");
+  var $x_145 = $x_146.D("fileno", array$57, this.f8, "Return the integer \"file descriptor\" that is used by the underlying implementation to request I/O operations from the operating system.");
   var $x_144 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$47 = $m_sci_Nil$();
   var array$58 = new ($d_T.r().C)(xs$47.g());
@@ -27770,7 +27770,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$58.a[i$47] = iterator$47.d();
     i$47 = ((1 + i$47) | 0);
   }
-  var $x_143 = $x_144.D("isatty", array$58, this.f8, "Return True if the file is connected to a tty(-like) device, else False.");
+  var $x_143 = $x_144.D("isatty", array$58, this.f7, "Return True if the file is connected to a tty(-like) device, else False.");
   var $x_142 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$48 = $m_sci_Nil$();
   var array$59 = new ($d_T.r().C)(xs$48.g());
@@ -27801,7 +27801,7 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$61.a[i$50] = iterator$50.d();
     i$50 = ((1 + i$50) | 0);
   }
-  var $x_136 = $x_137.D("readlines", array$61, this.fa, "Read until EOF using readline() and return a list containing the lines thus read.");
+  var $x_136 = $x_137.D("readlines", array$61, this.f9, "Read until EOF using readline() and return a list containing the lines thus read.");
   var $x_135 = $m_Ltigerpython_parser_types_BuiltinFunction$().D("seek", new ($d_T.r().C)(["offset"]), this.da, "Set the file's current position. See also: 'tell'.");
   var $x_134 = $m_Ltigerpython_parser_types_BuiltinFunction$();
   var xs$51 = $m_sci_Nil$();
@@ -27812,8 +27812,8 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
     array$62.a[i$51] = iterator$51.d();
     i$51 = ((1 + i$51) | 0);
   }
-  $x_151.g2(new $c_sjsr_WrappedVarArgs([$x_149, $x_147, $x_145, $x_143, $x_141, $x_140, $x_138, $x_136, $x_135, $x_134.D("tell", array$62, this.f9, "Return the file's current position. See also: 'seek'."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("truncate", new ($d_T.r().C)(["size"]), this.da, "Truncate the file\u2019s size. If the optional size argument is present, the file is truncated to (at most) that size. The size defaults to the current position."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("write", new ($d_T.r().C)(["str"]), this.da, "Write a string to the file."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("writelines", new ($d_T.r().C)(["sequence"]), this.da, "Write a sequence of strings to the file.")]));
-  this.il = new $c_Ltigerpython_parser_types_Instance(this.f8);
+  $x_151.g2(new $c_sjsr_WrappedVarArgs([$x_149, $x_147, $x_145, $x_143, $x_141, $x_140, $x_138, $x_136, $x_135, $x_134.D("tell", array$62, this.f8, "Return the file's current position. See also: 'seek'."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("truncate", new ($d_T.r().C)(["size"]), this.da, "Truncate the file\u2019s size. If the optional size argument is present, the file is truncated to (at most) that size. The size defaults to the current position."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("write", new ($d_T.r().C)(["str"]), this.da, "Write a string to the file."), $m_Ltigerpython_parser_types_BuiltinFunction$().D("writelines", new ($d_T.r().C)(["sequence"]), this.da, "Write a sequence of strings to the file.")]));
+  this.il = new $c_Ltigerpython_parser_types_Instance(this.f7);
   this.Ni = new $c_Ltigerpython_parser_types_Instance(this.GA);
   this.Nj = new $c_Ltigerpython_parser_types_Instance(this.Bx);
   this.nz = new $c_Ltigerpython_parser_types_Instance(this.vO);
@@ -27822,9 +27822,9 @@ function $c_Ltigerpython_parser_types_BuiltinTypes$() {
   this.jb = new $c_Ltigerpython_parser_types_Instance(this.q4);
   this.Nk = new $c_Ltigerpython_parser_types_Instance(this.BA);
   this.Nl = new $c_Ltigerpython_parser_types_Instance(this.BB);
-  this.gW = new $c_Ltigerpython_parser_types_Instance(this.f9);
+  this.gW = new $c_Ltigerpython_parser_types_Instance(this.f8);
   this.Nm = new $c_Ltigerpython_parser_types_Instance(this.se);
-  this.hz = new $c_Ltigerpython_parser_types_Instance(this.fa);
+  this.hz = new $c_Ltigerpython_parser_types_Instance(this.f9);
   this.Nn = new $c_Ltigerpython_parser_types_Instance(this.BC);
   this.nA = new $c_Ltigerpython_parser_types_Instance(this.da);
   this.No = new $c_Ltigerpython_parser_types_Instance(this.BD);
@@ -27854,7 +27854,7 @@ $p.UG = (function(s) {
     var originalHash = $m_sr_Statics$().m(s);
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1$1 = this$2.Z.a[(hash & (((-1) + this$2.Z.a.length) | 0))];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(s, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(s, hash));
     var $x_1 = ((nd === null) ? f() : nd.bU);
   }
   return $x_1;
@@ -28083,7 +28083,7 @@ $p.qr = (function(type1, type2) {
       if ($x_9) {
         return $m_Ltigerpython_parser_types_BuiltinTypes$().nC;
       }
-      var x$37 = $m_Ltigerpython_parser_types_BuiltinTypes$().fa;
+      var x$37 = $m_Ltigerpython_parser_types_BuiltinTypes$().f9;
       if ((x$37 === type1)) {
         var x$39 = $m_Ltigerpython_parser_types_BuiltinTypes$().hA;
         var $x_12 = (x$39 === type2);
@@ -28095,7 +28095,7 @@ $p.qr = (function(type1, type2) {
       } else {
         var x$41 = $m_Ltigerpython_parser_types_BuiltinTypes$().hA;
         if ((x$41 === type1)) {
-          var x$43 = $m_Ltigerpython_parser_types_BuiltinTypes$().fa;
+          var x$43 = $m_Ltigerpython_parser_types_BuiltinTypes$().f9;
           var $x_13 = (x$43 === type2);
         } else {
           var $x_13 = false;
@@ -28103,7 +28103,7 @@ $p.qr = (function(type1, type2) {
         if ($x_13) {
           var $x_11 = true;
         } else {
-          var x$45 = $m_Ltigerpython_parser_types_BuiltinTypes$().fa;
+          var x$45 = $m_Ltigerpython_parser_types_BuiltinTypes$().f9;
           if ((x$45 === type1)) {
             var x$47 = $m_Ltigerpython_parser_types_BuiltinTypes$().bB;
             var $x_14 = (x$47 === type2);
@@ -28115,7 +28115,7 @@ $p.qr = (function(type1, type2) {
           } else {
             var x$49 = $m_Ltigerpython_parser_types_BuiltinTypes$().bB;
             if ((x$49 === type1)) {
-              var x$51 = $m_Ltigerpython_parser_types_BuiltinTypes$().fa;
+              var x$51 = $m_Ltigerpython_parser_types_BuiltinTypes$().f9;
               var $x_15 = (x$51 === type2);
             } else {
               var $x_15 = false;
@@ -28316,7 +28316,7 @@ $p.T8 = (function(name) {
     var originalHash = $m_sr_Statics$().m(name);
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1$1 = this$2.Z.a[(hash & (((-1) + this$2.Z.a.length) | 0))];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(name, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(name, hash));
     var $x_1 = ((nd === null) ? f() : nd.bU);
   }
   return $x_1;
@@ -28362,7 +28362,7 @@ function $m_Ltigerpython_parser_types_FutureModule$() {
 function $c_Ltigerpython_parser_types_Instance$() {
   this.Ny = null;
   $n_Ltigerpython_parser_types_Instance$ = this;
-  this.Ny = $m_scm_Map$().ar(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, $m_Ltigerpython_parser_types_BuiltinTypes$().il), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().GA, $m_Ltigerpython_parser_types_BuiltinTypes$().Ni), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().Bx, $m_Ltigerpython_parser_types_BuiltinTypes$().Nj), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().vO, $m_Ltigerpython_parser_types_BuiltinTypes$().nz), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().sd, $m_Ltigerpython_parser_types_BuiltinTypes$().vP), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().Bz, $m_Ltigerpython_parser_types_BuiltinTypes$().GD), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().jb), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BA, $m_Ltigerpython_parser_types_BuiltinTypes$().Nk), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BB, $m_Ltigerpython_parser_types_BuiltinTypes$().Nl), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, $m_Ltigerpython_parser_types_BuiltinTypes$().gW), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().se, $m_Ltigerpython_parser_types_BuiltinTypes$().Nm), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().fa, $m_Ltigerpython_parser_types_BuiltinTypes$().hz), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BC, $m_Ltigerpython_parser_types_BuiltinTypes$().Nn), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().da, $m_Ltigerpython_parser_types_BuiltinTypes$().nA), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BD, $m_Ltigerpython_parser_types_BuiltinTypes$().No), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().bB, $m_Ltigerpython_parser_types_BuiltinTypes$().im), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().hA, $m_Ltigerpython_parser_types_BuiltinTypes$().nC)]));
+  this.Ny = $m_scm_Map$().ar(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().f7, $m_Ltigerpython_parser_types_BuiltinTypes$().il), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().GA, $m_Ltigerpython_parser_types_BuiltinTypes$().Ni), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().Bx, $m_Ltigerpython_parser_types_BuiltinTypes$().Nj), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().vO, $m_Ltigerpython_parser_types_BuiltinTypes$().nz), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().sd, $m_Ltigerpython_parser_types_BuiltinTypes$().vP), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().Bz, $m_Ltigerpython_parser_types_BuiltinTypes$().GD), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().jb), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BA, $m_Ltigerpython_parser_types_BuiltinTypes$().Nk), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BB, $m_Ltigerpython_parser_types_BuiltinTypes$().Nl), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().f8, $m_Ltigerpython_parser_types_BuiltinTypes$().gW), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().se, $m_Ltigerpython_parser_types_BuiltinTypes$().Nm), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, $m_Ltigerpython_parser_types_BuiltinTypes$().hz), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BC, $m_Ltigerpython_parser_types_BuiltinTypes$().Nn), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().da, $m_Ltigerpython_parser_types_BuiltinTypes$().nA), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().BD, $m_Ltigerpython_parser_types_BuiltinTypes$().No), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().bB, $m_Ltigerpython_parser_types_BuiltinTypes$().im), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_parser_types_BuiltinTypes$().hA, $m_Ltigerpython_parser_types_BuiltinTypes$().nC)]));
 }
 $p = $c_Ltigerpython_parser_types_Instance$.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_parser_types_Instance$;
@@ -28396,7 +28396,7 @@ $p.lP = (function(baseType) {
       var hash = (originalHash ^ ((originalHash >>> 16) | 0));
       var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
       var x1$1 = this$2.Z.a[idx];
-      var nd = ((x1$1 === null) ? null : x1$1.fe(x4, hash));
+      var nd = ((x1$1 === null) ? null : x1$1.fd(x4, hash));
       if ((nd !== null)) {
         var $x_1 = nd.bU;
       } else {
@@ -28457,7 +28457,7 @@ $p.Cv = (function(itemType) {
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
     var x1$1 = this$2.Z.a[idx];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(itemType, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(itemType, hash));
     if ((nd !== null)) {
       var $x_1 = nd.bU;
     } else {
@@ -28600,7 +28600,7 @@ $p.P9 = (function(itemTypes) {
         var hash = (originalHash ^ ((originalHash >>> 16) | 0));
         var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
         var x1$2 = this$2.Z.a[idx];
-        var nd = ((x1$2 === null) ? null : x1$2.fe(key, hash));
+        var nd = ((x1$2 === null) ? null : x1$2.fd(key, hash));
         if ((nd !== null)) {
           var $x_1 = nd.bU;
         } else {
@@ -28638,7 +28638,7 @@ $p.P9 = (function(itemTypes) {
         var hash$1 = (originalHash$1 ^ ((originalHash$1 >>> 16) | 0));
         var idx$1 = (hash$1 & (((-1) + this$3.Z.a.length) | 0));
         var x1$4 = this$3.Z.a[idx$1];
-        var nd$1 = ((x1$4 === null) ? null : x1$4.fe(key$1, hash$1));
+        var nd$1 = ((x1$4 === null) ? null : x1$4.fd(key$1, hash$1));
         if ((nd$1 !== null)) {
           var $x_2 = nd$1.bU;
         } else {
@@ -28804,11 +28804,11 @@ $p.V6 = (function(binOp) {
   } else {
     var x$21 = $m_Ltigerpython_parser_ast_BinOp$().rN;
     if (((x$21 === null) ? (x1 === null) : x$21.b(x1))) {
-      return (left.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f9) ? right : (right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f9) ? left : ((left.sU($m_Ltigerpython_parser_types_BuiltinTypes$().q4) && right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().q4)) ? $m_Ltigerpython_parser_types_BuiltinTypes$().jb : (($f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().vO]), left) && $f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().vO]), right)) ? $m_Ltigerpython_parser_types_BuiltinTypes$().nz : $m_Ltigerpython_parser_types_BuiltinTypes$().ap))));
+      return (left.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f8) ? right : (right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f8) ? left : ((left.sU($m_Ltigerpython_parser_types_BuiltinTypes$().q4) && right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().q4)) ? $m_Ltigerpython_parser_types_BuiltinTypes$().jb : (($f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().vO]), left) && $f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_types_BuiltinTypes$().q4, $m_Ltigerpython_parser_types_BuiltinTypes$().vO]), right)) ? $m_Ltigerpython_parser_types_BuiltinTypes$().nz : $m_Ltigerpython_parser_types_BuiltinTypes$().ap))));
     } else {
       var x$23 = $m_Ltigerpython_parser_ast_BinOp$().y0;
       if (((x$23 === null) ? (x1 === null) : x$23.b(x1))) {
-        return (right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f9) ? left : $m_Ltigerpython_parser_types_BuiltinTypes$().ap);
+        return (right.sU($m_Ltigerpython_parser_types_BuiltinTypes$().f8) ? left : $m_Ltigerpython_parser_types_BuiltinTypes$().ap);
       } else {
         var x$25 = $m_Ltigerpython_parser_ast_BinOp$().AQ;
         if (((x$25 === null) ? (x1 === null) : x$25.b(x1))) {
@@ -28874,7 +28874,7 @@ $p.Va = (function(lambda) {
         var p = p$2;
         if ((p instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
           var x2 = p;
-          var elem = new $c_Ltigerpython_parser_types_Parameter(x2.f2, $m_Ltigerpython_parser_types_BuiltinTypes$().ap);
+          var elem = new $c_Ltigerpython_parser_types_Parameter(x2.f1, $m_Ltigerpython_parser_types_BuiltinTypes$().ap);
           return params.I(elem);
         } else {
           return (void 0);
@@ -28975,9 +28975,9 @@ $p.Va = (function(lambda) {
   }
 });
 $p.Vc = (function(list) {
-  if ((list.f1.a.length !== 0)) {
-    var result = new $c_sr_ObjectRef(this.bk($m_sc_ArrayOps$().aA(list.f1)));
-    var xs$2 = list.f1;
+  if ((list.f0.a.length !== 0)) {
+    var result = new $c_sr_ObjectRef(this.bk($m_sc_ArrayOps$().aA(list.f0)));
+    var xs$2 = list.f0;
     var f = ((element$2) => {
       var element = element$2;
       result.b0 = $m_Ltigerpython_parser_types_DataType$().qr(result.b0, this.bk(element));
@@ -29224,7 +29224,7 @@ $p.Ip = (function() {
         }
         return null;
       }
-      if (((token.o.fw === $m_Ltigerpython_parser_lexer_TokenType$().aO) && (token.ct === this.fZ))) {
+      if (((token.o.fv === $m_Ltigerpython_parser_lexer_TokenType$().aO) && (token.ct === this.fZ))) {
         var idx = $m_sc_ArrayOps$().Qw(x1.hy, token, 0);
         if ((idx >= 0)) {
           x1.hy.a[idx] = $m_Ltigerpython_parser_lexer_Token$().hK(token.x, token.ew());
@@ -29934,7 +29934,7 @@ $p.a5 = (function(node) {
   var x3 = null;
   matchEnd18: {
     if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Alias)) {
-      this.a5(node.fq);
+      this.a5(node.fp);
       break matchEnd18;
     }
     if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
@@ -30075,7 +30075,7 @@ $p.a5 = (function(node) {
         var key$6 = x8$1.oG;
         $p_scm_HashMap__put0__O__O__Z__s_Some(this$13, key$6, x8$1, false);
       }
-      var xs$1 = x8$1.f1;
+      var xs$1 = x8$1.f0;
       var f$1 = ((elem$2) => {
         var elem = elem$2;
         this.a5(elem);
@@ -30495,7 +30495,7 @@ $p.a5 = (function(node) {
     }
     if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
       var x15 = node;
-      this.a5(x15.fr);
+      this.a5(x15.fq);
       var xs$6 = x15.bV;
       var f$6 = ((cmp$2) => {
         var cmp = cmp$2;
@@ -30645,7 +30645,7 @@ $p.P5 = (function(functionName, sourceNameList) {
       var hash = (originalHash ^ ((originalHash >>> 16) | 0));
       var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
       var x1$1 = this$2.Z.a[idx];
-      var nd = ((x1$1 === null) ? null : x1$1.fe(functionName, hash));
+      var nd = ((x1$1 === null) ? null : x1$1.fd(functionName, hash));
       if ((nd !== null)) {
         var $x_1 = nd.bU;
       } else {
@@ -30701,7 +30701,7 @@ $h_Ltigerpython_utilities_fastparse_ExprAst$.prototype = $p;
 $p.eb = (function(exprAst) {
   if ((exprAst instanceof $c_Ltigerpython_utilities_fastparse_Arg)) {
     var x2 = exprAst;
-    var name = x2.fA;
+    var name = x2.fz;
     var argType = x2.gC;
     var defaultValue = x2.je;
     return ((name + ((argType !== null) ? (" : " + this.eb(argType)) : "")) + ((defaultValue !== null) ? (" = " + this.eb(defaultValue)) : ""));
@@ -31569,7 +31569,7 @@ function $p_Ltigerpython_utilities_fastparse_FunctionArguments__argArrayToString
   }
 }
 function $p_Ltigerpython_utilities_fastparse_FunctionArguments__argToString$1__Ltigerpython_utilities_fastparse_Arg__T($thiz, a) {
-  var result = ((a.gC !== null) ? ((a.fA + ": ") + a.gC) : a.fA);
+  var result = ((a.gC !== null) ? ((a.fz + ": ") + a.gC) : a.fz);
   return ((a.je !== null) ? ((result + "=") + a.je) : result);
 }
 /** @constructor */
@@ -31607,7 +31607,7 @@ function $p_Ltigerpython_utilities_fastparse_FunctionArguments$___analyseClassic
       var x1 = i;
       var arg1 = args.a[x1];
       var x$1 = arg1;
-      var this$3 = x$1.fA;
+      var this$3 = x$1.fz;
       if (((this$3.length >= 0) && (this$3.substring(0, 1) === "*"))) {
         var idx = i;
         break _return;
@@ -31617,7 +31617,7 @@ function $p_Ltigerpython_utilities_fastparse_FunctionArguments$___analyseClassic
     var idx = (-1);
   }
   if ((idx >= 0)) {
-    var varArgName = $m_sc_StringOps$().bo(args.a[idx].fA, 1);
+    var varArgName = $m_sc_StringOps$().bo(args.a[idx].fz, 1);
     var varArgType = args.a[idx].gC;
     return new $c_T3($m_sc_ArrayOps$().t9(args, 0, idx), $m_sc_ArrayOps$().nK(args, ((1 + idx) | 0)), ((varArgName !== "") ? new $c_Ltigerpython_utilities_fastparse_Arg(varArgName, varArgType, null) : null));
   } else {
@@ -31687,9 +31687,9 @@ function $h_Ltigerpython_utilities_fastparse_FunctionArguments$() {
 $h_Ltigerpython_utilities_fastparse_FunctionArguments$.prototype = $p;
 $p.Pa = (function(args, posOnlyArgs) {
   if ((args.a.length !== 0)) {
-    var this$4 = $m_sc_ArrayOps$().df(args).fA;
+    var this$4 = $m_sc_ArrayOps$().df(args).fz;
     if (((this$4.length >= 0) && (this$4.substring(0, 2) === "**"))) {
-      return $p_Ltigerpython_utilities_fastparse_FunctionArguments$___analyseParameters__ALtigerpython_utilities_fastparse_Arg__ALtigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_FunctionArguments(this, $m_sc_ArrayOps$().I2(args, 1), posOnlyArgs, new $c_Ltigerpython_utilities_fastparse_Arg($m_sc_StringOps$().bo($m_sc_ArrayOps$().df(args).fA, 2), $m_sc_ArrayOps$().df(args).gC, null));
+      return $p_Ltigerpython_utilities_fastparse_FunctionArguments$___analyseParameters__ALtigerpython_utilities_fastparse_Arg__ALtigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_FunctionArguments(this, $m_sc_ArrayOps$().I2(args, 1), posOnlyArgs, new $c_Ltigerpython_utilities_fastparse_Arg($m_sc_StringOps$().bo($m_sc_ArrayOps$().df(args).fz, 2), $m_sc_ArrayOps$().df(args).gC, null));
     } else {
       return $p_Ltigerpython_utilities_fastparse_FunctionArguments$___analyseParameters__ALtigerpython_utilities_fastparse_Arg__ALtigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_Arg__Ltigerpython_utilities_fastparse_FunctionArguments(this, args, posOnlyArgs, null);
     }
@@ -31765,12 +31765,12 @@ function $m_Ltigerpython_utilities_fastparse_FunctionArguments$() {
   return $n_Ltigerpython_utilities_fastparse_FunctionArguments$;
 }
 function $ct_Ltigerpython_utilities_fastparse_Lexer$TokenStack__Ltigerpython_utilities_fastparse_Lexer__($thiz, outer) {
-  $thiz.fB = 0;
+  $thiz.fA = 0;
   return $thiz;
 }
 /** @constructor */
 function $c_Ltigerpython_utilities_fastparse_Lexer$TokenStack() {
-  this.fB = 0;
+  this.fA = 0;
 }
 $p = $c_Ltigerpython_utilities_fastparse_Lexer$TokenStack.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_fastparse_Lexer$TokenStack;
@@ -31779,29 +31779,29 @@ function $h_Ltigerpython_utilities_fastparse_Lexer$TokenStack() {
 }
 $h_Ltigerpython_utilities_fastparse_Lexer$TokenStack.prototype = $p;
 $p.t = (function() {
-  return (this.fB === 0);
+  return (this.fA === 0);
 });
 $p.J5 = (function() {
-  if ((this.fB > 0)) {
-    this.fB = (((-1) + this.fB) | 0);
-    return this.zH().a[this.fB];
+  if ((this.fA > 0)) {
+    this.fA = (((-1) + this.fA) | 0);
+    return this.zH().a[this.fA];
   } else {
     throw new $c_jl_StackOverflowError();
   }
 });
 $p.Rl = (function(value) {
-  if ((this.fB < this.zH().a.length)) {
-    this.zH().a[this.fB] = value;
-    this.fB = ((1 + this.fB) | 0);
+  if ((this.fA < this.zH().a.length)) {
+    this.zH().a[this.fA] = value;
+    this.fA = ((1 + this.fA) | 0);
     return value;
   } else {
     throw new $c_jl_StackOverflowError();
   }
 });
 $p.Ye = (function() {
-  if ((this.fB > 0)) {
-    this.fB = (((-1) + this.fB) | 0);
-    return this.zH().a[this.fB];
+  if ((this.fA > 0)) {
+    this.fA = (((-1) + this.fA) | 0);
+    return this.zH().a[this.fA];
   } else {
     return null;
   }
@@ -31852,10 +31852,10 @@ function $p_Ltigerpython_utilities_fastparse_PyiParser___parseExprList__Ltigerpy
   var this$1 = $m_scm_ArrayBuffer$();
   var elems = $m_sci_Nil$();
   var exprList = this$1.ak(elems);
-  var elem = $thiz.fh();
+  var elem = $thiz.fg();
   exprList.I(elem);
   while ($thiz.U.zB()) {
-    var elem$1 = $thiz.fh();
+    var elem$1 = $thiz.fg();
     exprList.I(elem$1);
   }
   $thiz.U.D2(leftPar);
@@ -31884,13 +31884,13 @@ function $p_Ltigerpython_utilities_fastparse_PyiParser___parseArgList__Ltigerpyt
   var elems = $m_sci_Nil$();
   var exprList = this$1.ak(elems);
   while (true) {
-    var x1 = $thiz.fh();
+    var x1 = $thiz.fg();
     matchEnd4: {
       if ((x1 instanceof $c_Ltigerpython_utilities_fastparse_NameNode)) {
         var x2 = x1;
         var n = x2.iq;
         if ($thiz.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq)) {
-          var elem = $ct_T2__O__O__(new $c_T2(), $m_s_Option$().kj(n), $thiz.fh());
+          var elem = $ct_T2__O__O__(new $c_T2(), $m_s_Option$().kj(n), $thiz.fg());
           exprList.I(elem);
           break matchEnd4;
         }
@@ -31944,7 +31944,7 @@ function $p_Ltigerpython_utilities_fastparse_PyiParser___parseDictOrSet__Ltigerp
     }
     return new $c_Ltigerpython_utilities_fastparse_DictNode(array, array$1);
   } else {
-    var item = $thiz.fh();
+    var item = $thiz.fg();
     if ($thiz.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC)) {
       var this$5 = $m_scm_ArrayBuffer$();
       var elems = $m_sci_Nil$();
@@ -31953,13 +31953,13 @@ function $p_Ltigerpython_utilities_fastparse_PyiParser___parseDictOrSet__Ltigerp
       var elems$1 = $m_sci_Nil$();
       var values = this$6.ak(elems$1);
       keys.I(item);
-      var elem = $thiz.fh();
+      var elem = $thiz.fg();
       values.I(elem);
       while ($thiz.U.zB()) {
-        var elem$1 = $thiz.fh();
+        var elem$1 = $thiz.fg();
         keys.I(elem$1);
         $thiz.U.wJ($m_Ltigerpython_utilities_fastparse_TokenType$().hC);
-        var elem$2 = $thiz.fh();
+        var elem$2 = $thiz.fg();
         values.I(elem$2);
       }
       $thiz.U.D2(leftPar);
@@ -32008,7 +32008,7 @@ function $p_Ltigerpython_utilities_fastparse_PyiParser___parseDictOrSet__Ltigerp
       var items = this$13.ak(elems$2);
       items.I(item);
       while ($thiz.U.zB()) {
-        var elem$5 = $thiz.fh();
+        var elem$5 = $thiz.fg();
         items.I(elem$5);
       }
       $thiz.U.D2(leftPar);
@@ -32203,8 +32203,8 @@ $p.WP = (function() {
   if (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().w5)) {
     throw new $c_Ltigerpython_utilities_fastparse_PyiSyntaxError(this.qJ(), "tuple unpacking not supported");
   }
-  var varType = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fh() : null);
-  var varValue = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq) ? this.fh() : null);
+  var varType = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fg() : null);
+  var varValue = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq) ? this.fg() : null);
   if (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq)) {
     new $c_Ltigerpython_utilities_fastparse_PyiSyntaxError(this.qJ(), "can only assign to one name per line");
   }
@@ -32428,7 +32428,7 @@ $p.R5 = (function() {
   var leftPar = $p_Ltigerpython_utilities_fastparse_PyiParser__readLeftPar__C__Ltigerpython_utilities_fastparse_LeftPar(this, 40);
   var args = this.WN();
   $p_Ltigerpython_utilities_fastparse_PyiParser__readRightPar__Ltigerpython_utilities_fastparse_LeftPar__Ltigerpython_utilities_fastparse_RightPar(this, leftPar);
-  var returnType = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().GU) ? this.fh() : null);
+  var returnType = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().GU) ? this.fg() : null);
   this.U.wJ($m_Ltigerpython_utilities_fastparse_TokenType$().hC);
   var doc = this.X2();
   this.TQ(funcName, $m_Ltigerpython_utilities_fastparse_FunctionArguments$().SW(args), returnType, (doc.t() ? null : doc.b5()), this.yO, this.sp, isAsync);
@@ -32443,7 +32443,7 @@ $p.WV = (function() {
     }
     throw new $c_Ltigerpython_utilities_fastparse_PyiSyntaxError(this.qJ(), "'@' expected");
   }
-  var decorator = this.fh();
+  var decorator = this.fg();
   var x1$2 = this.sp;
   if ((x1$2 === null)) {
     this.sp = decorator;
@@ -32476,7 +32476,7 @@ $p.U9 = (function(left, op, right) {
         var x9 = right;
         var p10 = x9.lC;
         if ((p10 !== null)) {
-          if (($m_s_Array$UnapplySeqWrapper$().eM(p10, 2) === 0)) {
+          if (($m_s_Array$UnapplySeqWrapper$().eL(p10, 2) === 0)) {
             var p12 = p10.a[0];
             var p13 = p10.a[1];
             if ((p12 instanceof $c_Ltigerpython_utilities_fastparse_NumberValueNode)) {
@@ -32527,7 +32527,7 @@ $p.U9 = (function(left, op, right) {
 });
 $p.X3 = (function() {
   this.U.wJ($m_Ltigerpython_utilities_fastparse_TokenType$().H1);
-  var left = this.fh();
+  var left = this.fg();
   var x1 = this.U.cV();
   matchEnd11: {
     if ((x1 instanceof $c_Ltigerpython_utilities_fastparse_Operator)) {
@@ -32535,7 +32535,7 @@ $p.X3 = (function() {
       var op = x2.nD;
       if (((op === "<") || ((op === ">") || ((op === "==") || ((op === "<=") || ((op === ">=") || (op === "!="))))))) {
         this.U.dC();
-        var right = this.fh();
+        var right = this.fg();
         if (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC)) {
           if (this.U9(left, op, right)) {
             $p_Ltigerpython_utilities_fastparse_PyiParser__executeCondBody__V(this);
@@ -32729,21 +32729,21 @@ $p.WN = (function() {
 $p.QY = (function() {
   var x1 = this.U.dC();
   if ((x1 instanceof $c_Ltigerpython_utilities_fastparse_NameToken)) {
-    return new $c_Ltigerpython_utilities_fastparse_Arg(x1.lA, (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fh() : null), (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq) ? this.fh() : null));
+    return new $c_Ltigerpython_utilities_fastparse_Arg(x1.lA, (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fg() : null), (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().sq) ? this.fg() : null));
   } else if ((x1 instanceof $c_Ltigerpython_utilities_fastparse_Star)) {
     var x1$2 = this.U.cV();
     if ((x1$2 instanceof $c_Ltigerpython_utilities_fastparse_NameToken)) {
       var x2$2 = x1$2;
       var name$2 = x2$2.lA;
       this.U.dC();
-      var tp = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fh() : null);
+      var tp = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fg() : null);
       return new $c_Ltigerpython_utilities_fastparse_Arg(("*" + name$2), tp, null);
     } else {
       return new $c_Ltigerpython_utilities_fastparse_Arg("*", null, null);
     }
   } else if ((x1 instanceof $c_Ltigerpython_utilities_fastparse_DoubleStar)) {
     var name$3 = this.U.qD();
-    var tp$2 = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fh() : null);
+    var tp$2 = (this.U.dD($m_Ltigerpython_utilities_fastparse_TokenType$().hC) ? this.fg() : null);
     return new $c_Ltigerpython_utilities_fastparse_Arg(("**" + name$3), tp$2, null);
   } else if (((x1 instanceof $c_Ltigerpython_utilities_fastparse_Slash) && ((this.U.cV() instanceof $c_Ltigerpython_utilities_fastparse_Comma) || (this.U.cV() instanceof $c_Ltigerpython_utilities_fastparse_RightPar)))) {
     return new $c_Ltigerpython_utilities_fastparse_Arg("/", null, null);
@@ -32752,7 +32752,7 @@ $p.QY = (function() {
     throw new $c_Ltigerpython_utilities_fastparse_PyiSyntaxError(this.qJ(), message);
   }
 });
-$p.fh = (function() {
+$p.fg = (function() {
   var ch = this.U.Xh();
   if (((((ch === 44) || (ch === 41)) || (ch === 93)) || (ch === 58))) {
     return this.IU();
@@ -33112,7 +33112,7 @@ function $p_Ltigerpython_utilities_scopes_AstWalker__hasReturn__Ltigerpython_par
       } else if ((x6.ep !== null)) {
         stmt = x6.ep;
       } else {
-        stmt = x6.ft;
+        stmt = x6.fs;
       }
     } else if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$Suite)) {
       var x7 = x1;
@@ -33238,7 +33238,7 @@ $p.af = (function(node) {
     this.JD(node);
   } else if ((node instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x14 = node;
-    this.af(x14.ft);
+    this.af(x14.fs);
     var xs = x14.gv;
     var f = ((handler$2) => {
       var handler = handler$2;
@@ -33782,6 +33782,7 @@ $p.Jv = (function(cls) {
 });
 $p.Jx = (function(function$1) {
   var params = this.UW(function$1.en);
+  var firstParamIsSelfOrCls = false;
   if ((params.a.length !== 0)) {
     var x1 = this.dx;
     matchEnd4: {
@@ -33789,31 +33790,32 @@ $p.Jx = (function(function$1) {
         var x2 = x1;
         var decoratorNames = new $c_sjsr_WrappedVarArgs(["staticmethod"]);
         if ((!$f_Ltigerpython_parser_ast_AstNode$Decoratable__hasDecorator__sci_Seq__Z(function$1, decoratorNames))) {
+          firstParamIsSelfOrCls = true;
           var decoratorNames$1 = new $c_sjsr_WrappedVarArgs(["classmethod"]);
           if ($f_Ltigerpython_parser_ast_AstNode$Decoratable__hasDecorator__sci_Seq__Z(function$1, decoratorNames$1)) {
-            params.a[0].eI = new $c_Ltigerpython_utilities_types_SelfClass(x2.lD);
+            params.a[0].fC = new $c_Ltigerpython_utilities_types_SelfClass(x2.lD);
           } else {
-            params.a[0].eI = new $c_Ltigerpython_utilities_types_SelfInstance(x2.lD);
+            params.a[0].fC = new $c_Ltigerpython_utilities_types_SelfInstance(x2.lD);
           }
           if ((params.a.length > 1)) {
-            var x = params.a[1].eI;
+            var x = params.a[1].fC;
             var x$2 = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
             var $x_1 = ((x === null) ? (x$2 === null) : x.b(x$2));
           } else {
             var $x_1 = false;
           }
           if ($x_1) {
-            params.a[1].eI = $m_Ltigerpython_utilities_types_BuiltinTypes$().ji;
+            params.a[1].fC = $m_Ltigerpython_utilities_types_BuiltinTypes$().ji;
           }
           if ((params.a.length > 2)) {
-            var x$3 = params.a[2].eI;
+            var x$3 = params.a[2].fC;
             var x$4 = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
             var $x_2 = ((x$3 === null) ? (x$4 === null) : x$3.b(x$4));
           } else {
             var $x_2 = false;
           }
           if ($x_2) {
-            params.a[2].eI = $m_Ltigerpython_utilities_types_BuiltinTypes$().BV;
+            params.a[2].fC = $m_Ltigerpython_utilities_types_BuiltinTypes$().BV;
             break matchEnd4;
           } else {
             break matchEnd4;
@@ -33821,31 +33823,31 @@ $p.Jx = (function(function$1) {
         }
       }
       if ((params.a.length > 0)) {
-        var x$5 = params.a[0].eI;
+        var x$5 = params.a[0].fC;
         var x$6 = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
         var $x_3 = ((x$5 === null) ? (x$6 === null) : x$5.b(x$6));
       } else {
         var $x_3 = false;
       }
       if ($x_3) {
-        params.a[0].eI = $m_Ltigerpython_utilities_types_BuiltinTypes$().ji;
+        params.a[0].fC = $m_Ltigerpython_utilities_types_BuiltinTypes$().ji;
       }
       if ((params.a.length > 1)) {
-        var x$7 = params.a[1].eI;
+        var x$7 = params.a[1].fC;
         var x$8 = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
         var $x_4 = ((x$7 === null) ? (x$8 === null) : x$7.b(x$8));
       } else {
         var $x_4 = false;
       }
       if ($x_4) {
-        params.a[1].eI = $m_Ltigerpython_utilities_types_BuiltinTypes$().BV;
+        params.a[1].fC = $m_Ltigerpython_utilities_types_BuiltinTypes$().BV;
       }
     }
   }
   var $x_5 = function$1.gQ.R;
   var x$1 = function$1.en.mO;
   var that = params.a.length;
-  var result = new $c_Ltigerpython_utilities_types_PythonFunction($x_5, params, ((x$1 < that) ? x$1 : that), this.V0(function$1.en, $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, ((params.a.length > 0) && (params.a[0].eI instanceof $c_Ltigerpython_utilities_types_SelfInstance))), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
+  var result = new $c_Ltigerpython_utilities_types_PythonFunction($x_5, params, ((x$1 < that) ? x$1 : that), this.V0(function$1.en, $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, firstParamIsSelfOrCls), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
   var s = function$1.xC;
   result.bn = s;
   var x1$2 = this.dx;
@@ -34136,7 +34138,7 @@ $p.Jz = (function(ifStmt) {
       rc6 = true;
       x3 = x1;
       if ((x3.IF() || x3.QE())) {
-        var x1$3 = x3.fr;
+        var x1$3 = x3.fq;
         matchEnd4$2: {
           if ((x1$3 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
             var x2$3 = x1$3;
@@ -34162,7 +34164,7 @@ $p.Jz = (function(ifStmt) {
       }
     }
     if ((rc6 && x3.QB())) {
-      var x1$5 = x3.fr;
+      var x1$5 = x3.fq;
       matchEnd5: {
         if ((x1$5 instanceof $c_Ltigerpython_parser_ast_AstNode$Call)) {
           var x2$5 = x1$5;
@@ -34443,7 +34445,7 @@ $p.JA = (function(importStmt) {
   var xs = importStmt.jT;
   var f = ((alias$2) => {
     var alias = alias$2;
-    var x = alias.fq.R;
+    var x = alias.fp.R;
     var len = x.length;
     var sb = $ct_jl_StringBuilder__I__(new $c_jl_StringBuilder(), len);
     var i = 0;
@@ -34582,7 +34584,7 @@ $p.JC = (function(importStmt) {
   var xs = importStmt.jU;
   var f = ((alias$2) => {
     var alias = alias$2;
-    var x1 = this.dx.h4(module, alias.fq.R);
+    var x1 = this.dx.h4(module, alias.fp.R);
     if ((x1 instanceof $c_s_Some)) {
       var x2 = x1;
       var impModule = x2.W;
@@ -34779,7 +34781,7 @@ $p.UW = (function(params) {
         var x1 = params.cQ.a[arg1];
         if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
           var x2 = x1;
-          var name = x2.f2;
+          var name = x2.f1;
           var annotation = x2.fU;
           if ((annotation !== null)) {
             var dataType = this.dy.aV(annotation);
@@ -34804,12 +34806,12 @@ $p.UW = (function(params) {
         i = ((i + this$3.aK) | 0);
       }
     }
-    if ((params.f3 !== null)) {
-      var elem$1 = new $c_Ltigerpython_utilities_types_Parameter(params.f3.f2, $m_Ltigerpython_utilities_types_BuiltinTypes$().fd);
+    if ((params.f2 !== null)) {
+      var elem$1 = new $c_Ltigerpython_utilities_types_Parameter(params.f2.f1, $m_Ltigerpython_utilities_types_BuiltinTypes$().fc);
       result.I(elem$1);
     }
-    if ((params.fs !== null)) {
-      var elem$2 = new $c_Ltigerpython_utilities_types_Parameter(params.fs.f2, $m_Ltigerpython_utilities_types_BuiltinTypes$().jh);
+    if ((params.fr !== null)) {
+      var elem$2 = new $c_Ltigerpython_utilities_types_Parameter(params.fr.f1, $m_Ltigerpython_utilities_types_BuiltinTypes$().jh);
       result.I(elem$2);
     }
     if ((result.u >= 0)) {
@@ -34843,7 +34845,7 @@ $p.UW = (function(params) {
     return array;
   }
 });
-$p.V0 = (function(params, returnType, firstParamIsSelf) {
+$p.V0 = (function(params, returnType, firstParamIsSelfOrCls) {
   if ((((params !== null) && (params.cQ !== null)) && (params.eC !== null))) {
     var positionalOnlyArgs = new $c_scm_ListBuffer().m5($m_sci_Nil$());
     var positionalOrKeywordArgs = new $c_scm_ListBuffer().m5($m_sci_Nil$());
@@ -34859,7 +34861,7 @@ $p.V0 = (function(params, returnType, firstParamIsSelf) {
         var x1 = params.cQ.a[arg1];
         if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
           var x2 = x1;
-          var name = x2.f2;
+          var name = x2.f1;
           var annotation = x2.fU;
           if ((annotation !== null)) {
             var dataType = this.dy.aV(annotation);
@@ -34875,7 +34877,7 @@ $p.V0 = (function(params, returnType, firstParamIsSelf) {
           } else {
             var dataType = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
           }
-          var addTo = (((arg1 < params.uz) || ((arg1 === 0) && firstParamIsSelf)) ? positionalOnlyArgs : ((arg1 < params.mO) ? positionalOrKeywordArgs : keywordOnlyArgs));
+          var addTo = (((arg1 < params.uz) || ((arg1 === 0) && firstParamIsSelfOrCls)) ? positionalOnlyArgs : ((arg1 < params.mO) ? positionalOrKeywordArgs : keywordOnlyArgs));
           var elem = new $c_Ltigerpython_utilities_types_SignatureArg(name, $m_s_Option$().kj(((((arg1 - delta) | 0) >= 0) ? params.eC.a[((arg1 - delta) | 0)].an() : null)), dataType);
           addTo.lN(elem);
         }
@@ -34885,30 +34887,30 @@ $p.V0 = (function(params, returnType, firstParamIsSelf) {
         i = ((i + this$5.aK) | 0);
       }
     }
-    if ((params.f3 !== null)) {
+    if ((params.f2 !== null)) {
       var $x_3 = $m_s_Option$();
-      var $x_2 = params.f3.f2;
-      if ((params.f3.fU !== null)) {
-        var expr$1 = params.f3.fU;
+      var $x_2 = params.f2.f1;
+      if ((params.f2.fU !== null)) {
+        var expr$1 = params.f2.fU;
         var $x_1 = new $c_Ltigerpython_utilities_types_VarTupleType(this.dy.aV(expr$1));
       } else {
-        var $x_1 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+        var $x_1 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
       }
       varArgs = $x_3.kj(new $c_Ltigerpython_utilities_types_SignatureVarArg($x_2, $x_1));
     }
-    if ((params.fs !== null)) {
+    if ((params.fr !== null)) {
       var $x_7 = $m_s_Option$();
-      var $x_6 = params.fs.f2;
-      if ((params.fs.fU !== null)) {
+      var $x_6 = params.fr.f1;
+      if ((params.fr.fU !== null)) {
         var $x_5 = $m_Ltigerpython_utilities_types_BuiltinTypes$().bu;
-        var expr$2 = params.fs.fU;
+        var expr$2 = params.fr.fU;
         var $x_4 = new $c_Ltigerpython_utilities_types_DictType($x_5, this.dy.aV(expr$2));
       } else {
         var $x_4 = $m_Ltigerpython_utilities_types_BuiltinTypes$().jh;
       }
       varKwargs = $x_7.kj(new $c_Ltigerpython_utilities_types_SignatureVarArg($x_6, $x_4));
     }
-    return new $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs.qK(), positionalOrKeywordArgs.qK(), varArgs, keywordOnlyArgs.qK(), varKwargs, returnType, firstParamIsSelf);
+    return new $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs.qK(), positionalOrKeywordArgs.qK(), varArgs, keywordOnlyArgs.qK(), varKwargs, returnType, firstParamIsSelfOrCls);
   } else {
     return null;
   }
@@ -34980,7 +34982,7 @@ function $c_Ltigerpython_utilities_scopes_BuiltinNames$() {
   var $x_18 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("enumerate", new ($d_T.r().C)(["sequence"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return an enumerate object. sequence must be a sequence, an iterator, or some other object which supports iteration.");
   var $x_17 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("eval", new ($d_T.r().C)(["expression"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "The arguments are a Unicode or Latin-1 encoded string and optional globals and locals.");
   var $x_16 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("execfile", new ($d_T.r().C)(["filename"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "This function is similar to the exec statement, but parses a file instead of a string. It is different from the import statement in that it does not use the module administration - it reads the file unconditionally and does not create a new module.");
-  var $x_15 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("filter", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fC, "Construct a list from those elements of iterable for which function returns true.");
+  var $x_15 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("filter", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fB, "Construct a list from those elements of iterable for which function returns true.");
   var $x_14 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("format", new ($d_T.r().C)(["value"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Convert a value to a \"formatted\" representation, as controlled by format_spec.");
   var $x_13 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("getattr", new ($d_T.r().C)(["object", "name"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return the value of the named attribute of object. name must be a string. If the string is the name of one of the object\u2019s attributes, the result is the value of that attribute.");
   var $x_12 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
@@ -35011,8 +35013,8 @@ function $c_Ltigerpython_utilities_scopes_BuiltinNames$() {
     array$2.a[i$2] = iterator$2.d();
     i$2 = ((1 + i$2) | 0);
   }
-  this.sB(new $c_sjsr_WrappedVarArgs([$x_31, $x_30, $x_29, $x_28, $x_27, $x_26, $x_25, $x_24, $x_23, $x_22, $x_20, $x_19, $x_18, $x_17, $x_16, $x_15, $x_14, $x_13, $x_11, $x_10, $x_9, $x_8, $x_7, $x_6, $x_5, $x_4, $x_3, $x_2, $x_1.F("locals", array$2, $m_Ltigerpython_utilities_types_BuiltinTypes$().ss, "Update and return a dictionary representing the current local symbol table."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("map", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fC, "Apply function to every item of iterable and return a list of the results."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("max", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the largest item in an iterable or the largest of two or more arguments."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("min", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the smallest item in an iterable or the smallest of two or more arguments."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("next", new ($d_T.r().C)(["iterator"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Retrieve the next item from the iterator by calling its next() method."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("oct", new ($d_T.r().C)(["x"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Convert an integer number (of any size) to an octal string."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("open", new ($d_T.r().C)(["name", "mode"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().BW, "Open a file, returning an object of the file type"), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("ord", new ($d_T.r().C)(["c"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().gZ, "Given a string of length one, return an integer representing the Unicode code point of the character when the argument is a unicode object, or the value of the byte when the argument is an 8-bit string."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("property", new ($d_T.r().C)(["fget, fset"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hk, "Return a property attribute."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("pow", new ($d_T.r().C)(["x", "y"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return x to the power y; if z is present, return x to the power y, modulo z (computed more efficiently than pow(x, y) % z). The two-argument form pow(x, y) is equivalent to using the power operator: x**y."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("range", new ($d_T.r().C)(["stop:int"]), $m_Ltigerpython_utilities_types_ListType$().sF($m_Ltigerpython_utilities_types_BuiltinTypes$().gZ), "This is a versatile function to create lists containing arithmetic progressions."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("raw_input", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "The function reads a line from input, converts it to a string (stripping a trailing newline), and returns that."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reduce", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fC, "Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5)."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reload", new ($d_T.r().C)(["module"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Reload a previously imported module."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("repr", new ($d_T.r().C)(["object"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Return a string containing a printable representation of an object."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reversed", new ($d_T.r().C)(["seq"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a reverse iterator."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("round", new ($d_T.r().C)(["number", "ndigits"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is omitted, it defaults to zero."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("setattr", new ($d_T.r().C)(["object", "name", "value"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().wa, "This is the counterpart of getattr(). The arguments are an object, a string and an arbitrary value. The string may name an existing attribute or a new attribute. The function assigns the value to the attribute, provided the object allows it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("sorted", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a new sorted list from the items in iterable."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("staticmethod", new ($d_T.r().C)(["function"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a static method for function."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("sum", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Sums the items of an iterable from left to right and returns the total."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("super", new ($d_T.r().C)(["type", "instance"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Ow, "Return a proxy object that delegates method calls to a parent or sibling class of type."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("unichr", new ($d_T.r().C)(["i"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Return the Unicode string of one character whose Unicode code is the integer i."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("vars", new ($d_T.r().C)(["object"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return the __dict__ attribute for a module, class, instance, or any other object with a __dict__ attribute."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("xrange", new ($d_T.r().C)(["stop"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "This function is very similar to range(), but returns an xrange object instead of a list."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("zip", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fC, "This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables."), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, $m_Ltigerpython_utilities_types_BuiltinTypes$().BU, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9, $m_Ltigerpython_utilities_types_BuiltinTypes$().jh, $m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().BY, $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().eH, $m_Ltigerpython_utilities_types_BuiltinTypes$().C1, $m_Ltigerpython_utilities_types_BuiltinTypes$().C2, $m_Ltigerpython_utilities_types_BuiltinTypes$().bu, $m_Ltigerpython_utilities_types_BuiltinTypes$().Ox, $m_Ltigerpython_utilities_types_BuiltinTypes$().fd, $m_Ltigerpython_utilities_types_BuiltinTypes$().C3]));
-  this.sB(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputInt", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, "The function asks the user to input an integer value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputFloat", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, "The function asks the user to input a numeric value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputString", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, "The function asks the user to input a text value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("msgDlg", new ($d_T.r().C)(["x"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().dz, "Displays the given value(s) in a small dialog window."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("head", new ($d_T.r().C)(["s"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hj, "Return the first element of a list or sequence."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("tail", new ($d_T.r().C)(["s"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the list or sequence without its first element.")]));
+  this.sB(new $c_sjsr_WrappedVarArgs([$x_31, $x_30, $x_29, $x_28, $x_27, $x_26, $x_25, $x_24, $x_23, $x_22, $x_20, $x_19, $x_18, $x_17, $x_16, $x_15, $x_14, $x_13, $x_11, $x_10, $x_9, $x_8, $x_7, $x_6, $x_5, $x_4, $x_3, $x_2, $x_1.F("locals", array$2, $m_Ltigerpython_utilities_types_BuiltinTypes$().ss, "Update and return a dictionary representing the current local symbol table."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("map", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fB, "Apply function to every item of iterable and return a list of the results."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("max", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the largest item in an iterable or the largest of two or more arguments."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("min", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the smallest item in an iterable or the smallest of two or more arguments."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("next", new ($d_T.r().C)(["iterator"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Retrieve the next item from the iterator by calling its next() method."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("oct", new ($d_T.r().C)(["x"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Convert an integer number (of any size) to an octal string."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("open", new ($d_T.r().C)(["name", "mode"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().BW, "Open a file, returning an object of the file type"), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("ord", new ($d_T.r().C)(["c"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().gZ, "Given a string of length one, return an integer representing the Unicode code point of the character when the argument is a unicode object, or the value of the byte when the argument is an 8-bit string."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("property", new ($d_T.r().C)(["fget, fset"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hk, "Return a property attribute."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("pow", new ($d_T.r().C)(["x", "y"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return x to the power y; if z is present, return x to the power y, modulo z (computed more efficiently than pow(x, y) % z). The two-argument form pow(x, y) is equivalent to using the power operator: x**y."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("range", new ($d_T.r().C)(["stop:int"]), $m_Ltigerpython_utilities_types_ListType$().sF($m_Ltigerpython_utilities_types_BuiltinTypes$().gZ), "This is a versatile function to create lists containing arithmetic progressions."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("raw_input", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "The function reads a line from input, converts it to a string (stripping a trailing newline), and returns that."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reduce", new ($d_T.r().C)(["function", "iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fB, "Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5)."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reload", new ($d_T.r().C)(["module"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Reload a previously imported module."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("repr", new ($d_T.r().C)(["object"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Return a string containing a printable representation of an object."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("reversed", new ($d_T.r().C)(["seq"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a reverse iterator."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("round", new ($d_T.r().C)(["number", "ndigits"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is omitted, it defaults to zero."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("setattr", new ($d_T.r().C)(["object", "name", "value"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().wa, "This is the counterpart of getattr(). The arguments are an object, a string and an arbitrary value. The string may name an existing attribute or a new attribute. The function assigns the value to the attribute, provided the object allows it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("sorted", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a new sorted list from the items in iterable."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("staticmethod", new ($d_T.r().C)(["function"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return a static method for function."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("sum", new ($d_T.r().C)(["iterable"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Sums the items of an iterable from left to right and returns the total."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("super", new ($d_T.r().C)(["type", "instance"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Ow, "Return a proxy object that delegates method calls to a parent or sibling class of type."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("unichr", new ($d_T.r().C)(["i"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().hD, "Return the Unicode string of one character whose Unicode code is the integer i."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("vars", new ($d_T.r().C)(["object"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "Return the __dict__ attribute for a module, class, instance, or any other object with a __dict__ attribute."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("xrange", new ($d_T.r().C)(["stop"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ae, "This function is very similar to range(), but returns an xrange object instead of a list."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("zip", new ($d_T.r().C)(["..."]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fB, "This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables."), $m_Ltigerpython_utilities_types_BuiltinTypes$().fa, $m_Ltigerpython_utilities_types_BuiltinTypes$().BU, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9, $m_Ltigerpython_utilities_types_BuiltinTypes$().jh, $m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().BY, $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, $m_Ltigerpython_utilities_types_BuiltinTypes$().eH, $m_Ltigerpython_utilities_types_BuiltinTypes$().C1, $m_Ltigerpython_utilities_types_BuiltinTypes$().C2, $m_Ltigerpython_utilities_types_BuiltinTypes$().bu, $m_Ltigerpython_utilities_types_BuiltinTypes$().Ox, $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().C3]));
+  this.sB(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputInt", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, "The function asks the user to input an integer value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputFloat", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, "The function asks the user to input a numeric value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("inputString", new ($d_T.r().C)(["prompt"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, "The function asks the user to input a text value and returns it."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("msgDlg", new ($d_T.r().C)(["x"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().dz, "Displays the given value(s) in a small dialog window."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("head", new ($d_T.r().C)(["s"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hj, "Return the first element of a list or sequence."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("tail", new ($d_T.r().C)(["s"]), $m_Ltigerpython_utilities_types_BuiltinTypes$().ji, "Return the list or sequence without its first element.")]));
 }
 $p = $c_Ltigerpython_utilities_scopes_BuiltinNames$.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_scopes_BuiltinNames$;
@@ -35304,7 +35306,7 @@ $p.SJ = (function(name, items) {
           var curClassName = item.substring(6, endIndex);
           curClass.b0 = new $c_Ltigerpython_utilities_types_PythonClass(curClassName, new ($d_Ltigerpython_utilities_types_ClassType.r().C)(0));
           var dataType = curClass.b0;
-          module.dA.fj(curClassName, dataType);
+          module.dA.fi(curClassName, dataType);
         } else {
           curTarget.cY(item, $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
         }
@@ -35453,7 +35455,7 @@ $p.z8 = (function(scope) {
 $p.sN = (function(position) {
   var nonLocalReturnKey1 = $ct_O__(new $c_O());
   try {
-    if (((this.aF() === (-1)) || ((this.eR() <= position) && (position <= this.aF())))) {
+    if (((this.aF() === (-1)) || ((this.eQ() <= position) && (position <= this.aF())))) {
       var this$1 = this.qe;
       var it = this$1.a1().k();
       while (it.c()) {
@@ -35550,12 +35552,12 @@ $p.jo = (function(ast) {
     return this.kr(ast.R);
   }
   if (((ast instanceof $c_Ltigerpython_parser_ast_AstNode$Dict) || (ast instanceof $c_Ltigerpython_parser_ast_AstNode$DictComp))) {
-    return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fC);
+    return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fB);
   }
   if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$List)) {
     var x8 = ast;
-    if ((x8.f1.a.length !== 0)) {
-      var xs$1 = x8.f1;
+    if ((x8.f0.a.length !== 0)) {
+      var xs$1 = x8.f0;
       var f = ((el$2) => {
         var el = el$2;
         var this$6 = this.jo(el);
@@ -35663,12 +35665,12 @@ $p.jo = (function(ast) {
       if ($x_10) {
         return new $c_s_Some(new $c_Ltigerpython_utilities_types_Instance($m_Ltigerpython_utilities_types_ListType$().sF(itemType)));
       } else {
-        return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fC);
+        return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fB);
       }
     }
   }
   if (((ast instanceof $c_Ltigerpython_parser_ast_AstNode$List) || (ast instanceof $c_Ltigerpython_parser_ast_AstNode$ListComp))) {
-    return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fC);
+    return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().fB);
   }
   if ((ast instanceof $c_Ltigerpython_parser_ast_AstNode$StringValue)) {
     return new $c_s_Some($m_Ltigerpython_utilities_types_BuiltinTypes$().hD);
@@ -35712,7 +35714,7 @@ $p.h4 = (function(moduleName, importName) {
   return ((this.eG !== null) ? this.eG.h4(moduleName, importName) : (((importName === null) || (importName === "")) ? new $c_s_Some($m_Ltigerpython_utilities_scopes_ModuleLoader$().yU.Qr(moduleName)) : new $c_s_Some($m_Ltigerpython_utilities_scopes_ModuleLoader$().yU.Qt(moduleName, importName))));
 });
 $p.j = (function() {
-  var head = $m_sc_StringOps$().ao("%s(%d, %d)", new $c_sjsr_WrappedVarArgs([$objectGetClass(this).Iu(), this.eR(), this.aF()]));
+  var head = $m_sc_StringOps$().ao("%s(%d, %d)", new $c_sjsr_WrappedVarArgs([$objectGetClass(this).Iu(), this.eQ(), this.aF()]));
   var this$5 = this.qe;
   $m_scm_ArrayBuffer$();
   var b = new $c_scm_ArrayBuffer$$anon$1();
@@ -35918,9 +35920,9 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.dz = null;
   this.yW = null;
   this.Ox = null;
-  this.fb = null;
+  this.fa = null;
   this.w9 = null;
-  this.fc = null;
+  this.fb = null;
   this.C1 = null;
   this.lI = null;
   this.C0 = null;
@@ -35930,7 +35932,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.BY = null;
   this.lH = null;
   this.eH = null;
-  this.fd = null;
+  this.fc = null;
   this.BU = null;
   this.Hh = null;
   this.C3 = null;
@@ -35949,7 +35951,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.Hm = null;
   this.gZ = null;
   this.Hn = null;
-  this.fC = null;
+  this.fB = null;
   this.Ho = null;
   this.wa = null;
   this.Hp = null;
@@ -35967,12 +35969,12 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.yW = $m_Ltigerpython_utilities_types_PrimitiveType$().nI("<numeric>");
   this.Ox = $m_Ltigerpython_utilities_types_PrimitiveType$().nI("type");
   var baseType = this.yW;
-  this.fb = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "bool", baseType, baseType.bY);
+  this.fa = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "bool", baseType, baseType.bY);
   var baseType$1 = this.yW;
   this.w9 = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "complex", baseType$1, baseType$1.bY);
   var baseType$2 = this.yW;
-  this.fc = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "int", baseType$2, baseType$2.bY);
-  var $x_2 = this.fc;
+  this.fb = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "int", baseType$2, baseType$2.bY);
+  var $x_2 = this.fb;
   var $x_1 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs = $m_sci_Nil$();
   var array = new ($d_T.r().C)(xs.g());
@@ -35982,11 +35984,11 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array.a[i] = iterator.d();
     i = ((1 + i) | 0);
   }
-  $x_2.g2(new $c_sjsr_WrappedVarArgs([$x_1.F("bit_length", array, this.fc, "Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros.")]));
-  var baseType$3 = this.fc;
+  $x_2.g2(new $c_sjsr_WrappedVarArgs([$x_1.F("bit_length", array, this.fb, "Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros.")]));
+  var baseType$3 = this.fb;
   this.C1 = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "long", baseType$3, baseType$3.bY);
   this.lI = new $c_Ltigerpython_utilities_types_BuiltinTypes$$anon$1();
-  this.lI.g2(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinFunction$().F("index", new ($d_T.r().C)(["x"]), this.fc, "index of the first occurrence of x in the sequence"), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("count", new ($d_T.r().C)(["x"]), this.fc, "total number of occurrences of x in the sequence")]));
+  this.lI.g2(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinFunction$().F("index", new ($d_T.r().C)(["x"]), this.fb, "index of the first occurrence of x in the sequence"), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("count", new ($d_T.r().C)(["x"]), this.fb, "total number of occurrences of x in the sequence")]));
   var $x_5 = $m_Ltigerpython_utilities_types_PrimitiveType$();
   var $x_4 = $m_sci_Seq$();
   var $x_3 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
@@ -36003,9 +36005,9 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.BZ = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "generator", baseType$4, baseType$4.bY);
   this.nF = $m_Ltigerpython_utilities_types_PrimitiveType$().nI("<set>");
   var $x_14 = this.nF;
-  var $x_13 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("isdisjoint", new ($d_T.r().C)(["other"]), this.fb, "Return True if the set has no elements in common with other.");
-  var $x_12 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("issubset", new ($d_T.r().C)(["other"]), this.fb, "Test whether every element in the set is in other.");
-  var $x_11 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("issuperset", new ($d_T.r().C)(["other"]), this.fb, "Test whether every element in other is in the set.");
+  var $x_13 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("isdisjoint", new ($d_T.r().C)(["other"]), this.fa, "Return True if the set has no elements in common with other.");
+  var $x_12 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("issubset", new ($d_T.r().C)(["other"]), this.fa, "Test whether every element in the set is in other.");
+  var $x_11 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("issuperset", new ($d_T.r().C)(["other"]), this.fa, "Test whether every element in other is in the set.");
   var $x_10 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("union", new ($d_T.r().C)(["other"]), this.nF, "Return a new set with elements from the set and all others.");
   var $x_9 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("intersection", new ($d_T.r().C)(["other"]), this.nF, "Return a new set with elements common to the set and all others.");
   var $x_8 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("difference", new ($d_T.r().C)(["other"]), this.nF, "Return a new set with elements in the set that are not in the others.");
@@ -36101,7 +36103,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   var baseType$7 = this.lH;
   this.eH = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "list", baseType$7, baseType$7.bY);
   var baseType$8 = this.lI;
-  this.fd = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "tuple", baseType$8, baseType$8.bY);
+  this.fc = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "tuple", baseType$8, baseType$8.bY);
   var baseType$9 = this.lI;
   this.BU = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "bytearray", baseType$9, baseType$9.bY);
   var baseType$10 = this.lI;
@@ -36140,7 +36142,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     i$11 = ((1 + i$11) | 0);
   }
   var $x_86 = $x_87.F("encode", array$17, this.bu, "Return an encoded version of the string. Default encoding is the current default string encoding.");
-  var $x_85 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("endswith", new ($d_T.r().C)(["suffix"]), this.fb, "Return True if the string ends with the specified suffix, otherwise return False. suffix can also be a tuple of suffixes to look for.");
+  var $x_85 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("endswith", new ($d_T.r().C)(["suffix"]), this.fa, "Return True if the string ends with the specified suffix, otherwise return False. suffix can also be a tuple of suffixes to look for.");
   var $x_84 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$12 = $m_sci_Nil$();
   var array$18 = new ($d_T.r().C)(xs$12.g());
@@ -36162,7 +36164,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$19.a[i$13] = iterator$13.d();
     i$13 = ((1 + i$13) | 0);
   }
-  var $x_79 = $x_80.F("isalnum", array$19, this.fb, "Return true if all characters in the string are alphanumeric and there is at least one character, false otherwise.");
+  var $x_79 = $x_80.F("isalnum", array$19, this.fa, "Return true if all characters in the string are alphanumeric and there is at least one character, false otherwise.");
   var $x_78 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$14 = $m_sci_Nil$();
   var array$20 = new ($d_T.r().C)(xs$14.g());
@@ -36172,7 +36174,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$20.a[i$14] = iterator$14.d();
     i$14 = ((1 + i$14) | 0);
   }
-  var $x_77 = $x_78.F("isalpha", array$20, this.fb, "Return true if all characters in the string are alphabetic and there is at least one character, false otherwise.");
+  var $x_77 = $x_78.F("isalpha", array$20, this.fa, "Return true if all characters in the string are alphabetic and there is at least one character, false otherwise.");
   var $x_76 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$15 = $m_sci_Nil$();
   var array$21 = new ($d_T.r().C)(xs$15.g());
@@ -36182,7 +36184,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$21.a[i$15] = iterator$15.d();
     i$15 = ((1 + i$15) | 0);
   }
-  var $x_75 = $x_76.F("isdigit", array$21, this.fb, "Return true if all characters in the string are digits and there is at least one character, false otherwise.");
+  var $x_75 = $x_76.F("isdigit", array$21, this.fa, "Return true if all characters in the string are digits and there is at least one character, false otherwise.");
   var $x_74 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$16 = $m_sci_Nil$();
   var array$22 = new ($d_T.r().C)(xs$16.g());
@@ -36192,7 +36194,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$22.a[i$16] = iterator$16.d();
     i$16 = ((1 + i$16) | 0);
   }
-  var $x_73 = $x_74.F("islower", array$22, this.fb, "Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.");
+  var $x_73 = $x_74.F("islower", array$22, this.fa, "Return true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.");
   var $x_72 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$17 = $m_sci_Nil$();
   var array$23 = new ($d_T.r().C)(xs$17.g());
@@ -36202,7 +36204,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$23.a[i$17] = iterator$17.d();
     i$17 = ((1 + i$17) | 0);
   }
-  var $x_71 = $x_72.F("isspace", array$23, this.fb, "Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.");
+  var $x_71 = $x_72.F("isspace", array$23, this.fa, "Return true if there are only whitespace characters in the string and there is at least one character, false otherwise.");
   var $x_70 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$18 = $m_sci_Nil$();
   var array$24 = new ($d_T.r().C)(xs$18.g());
@@ -36212,7 +36214,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$24.a[i$18] = iterator$18.d();
     i$18 = ((1 + i$18) | 0);
   }
-  var $x_69 = $x_70.F("istitle", array$24, this.fb, "Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.");
+  var $x_69 = $x_70.F("istitle", array$24, this.fa, "Return true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones. Return false otherwise.");
   var $x_68 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$19 = $m_sci_Nil$();
   var array$25 = new ($d_T.r().C)(xs$19.g());
@@ -36222,7 +36224,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$25.a[i$19] = iterator$19.d();
     i$19 = ((1 + i$19) | 0);
   }
-  var $x_67 = $x_68.F("isupper", array$25, this.fb, "Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.");
+  var $x_67 = $x_68.F("isupper", array$25, this.fa, "Return true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.");
   var $x_66 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$20 = $m_sci_Nil$();
   var array$26 = new ($d_T.r().C)(xs$20.g());
@@ -36254,12 +36256,12 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     i$22 = ((1 + i$22) | 0);
   }
   var $x_60 = $x_61.F("lstrip", array$28, this.bu, "Return a copy of the string with leading characters removed.");
-  var $x_59 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("partition", new ($d_T.r().C)(["sep"]), this.fd, "Split the string at the first occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
+  var $x_59 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("partition", new ($d_T.r().C)(["sep"]), this.fc, "Split the string at the first occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
   var $x_58 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("replace", new ($d_T.r().C)(["old", "new"]), this.bu, "Return a copy of the string with all occurrences of substring old replaced by new.");
-  var $x_57 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rfind", new ($d_T.r().C)(["sub"]), this.fc, "Return the highest index in the string where substring sub is found.");
-  var $x_56 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rindex", new ($d_T.r().C)(["sub"]), this.fc, "Like rfind() but raises ValueError when the substring sub is not found.");
+  var $x_57 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rfind", new ($d_T.r().C)(["sub"]), this.fb, "Return the highest index in the string where substring sub is found.");
+  var $x_56 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rindex", new ($d_T.r().C)(["sub"]), this.fb, "Like rfind() but raises ValueError when the substring sub is not found.");
   var $x_55 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rjust", new ($d_T.r().C)(["width"]), this.bu, "Return the string right justified in a string of length width.");
-  var $x_54 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rpartition", new ($d_T.r().C)(["sep"]), this.fd, "Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
+  var $x_54 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rpartition", new ($d_T.r().C)(["sep"]), this.fc, "Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the separator, the separator itself, and the part after the separator.");
   var $x_53 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("rsplit", new ($d_T.r().C)(["sep"]), this.eH, "Return a list of the words in the string, using sep as the delimiter string.");
   var $x_52 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$23 = $m_sci_Nil$();
@@ -36282,7 +36284,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     i$24 = ((1 + i$24) | 0);
   }
   var $x_48 = $x_49.F("splitlines", array$30, this.eH, "Return a list of the lines in the string, breaking at line boundaries.");
-  var $x_47 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("startswith", new ($d_T.r().C)(["prefix"]), this.fb, "Return True if string starts with the prefix, otherwise return False. prefix can also be a tuple of prefixes to look for.");
+  var $x_47 = $m_Ltigerpython_utilities_types_BuiltinFunction$().F("startswith", new ($d_T.r().C)(["prefix"]), this.fa, "Return True if string starts with the prefix, otherwise return False. prefix can also be a tuple of prefixes to look for.");
   var $x_46 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$25 = $m_sci_Nil$();
   var array$31 = new ($d_T.r().C)(xs$25.g());
@@ -36336,7 +36338,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$36.a[i$29] = iterator$29.d();
     i$29 = ((1 + i$29) | 0);
   }
-  var $x_97 = $x_98.F("as_integer_ratio", array$36, this.fd, "Return a pair of integers whose ratio is exactly equal to the original float and with a positive denominator.");
+  var $x_97 = $x_98.F("as_integer_ratio", array$36, this.fc, "Return a pair of integers whose ratio is exactly equal to the original float and with a positive denominator.");
   var $x_96 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$30 = $m_sci_Nil$();
   var array$37 = new ($d_T.r().C)(xs$30.g());
@@ -36346,7 +36348,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$37.a[i$30] = iterator$30.d();
     i$30 = ((1 + i$30) | 0);
   }
-  var $x_95 = $x_96.F("is_integer", array$37, this.fb, "Return True if the float instance is finite with integral value, and False otherwise.");
+  var $x_95 = $x_96.F("is_integer", array$37, this.fa, "Return True if the float instance is finite with integral value, and False otherwise.");
   var $x_94 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$31 = $m_sci_Nil$();
   var array$38 = new ($d_T.r().C)(xs$31.g());
@@ -36424,7 +36426,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   }
   $x_117.g2(new $c_sjsr_WrappedVarArgs([$x_115, $x_113, $x_112, $x_110, $x_108, $x_107, $x_105, $x_104, $x_103, $x_102.F("values", array$45, this.eH, "Return a copy of the dictionary\u2019s list of values.")]));
   var this$126 = $m_sci_Map$();
-  var elems = new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "closed", this.fb), $ct_T2__O__O__(new $c_T2(), "encoding", this.ae), $ct_T2__O__O__(new $c_T2(), "mode", this.bu), $ct_T2__O__O__(new $c_T2(), "name", this.bu)]);
+  var elems = new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), "closed", this.fa), $ct_T2__O__O__(new $c_T2(), "encoding", this.ae), $ct_T2__O__O__(new $c_T2(), "mode", this.bu), $ct_T2__O__O__(new $c_T2(), "name", this.bu)]);
   this.BX = $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(new $c_Ltigerpython_utilities_types_PrimitiveType(), "file", null, this$126.ac(elems));
   var $x_135 = this.BX;
   var $x_134 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
@@ -36456,7 +36458,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$50.a[i$40] = iterator$40.d();
     i$40 = ((1 + i$40) | 0);
   }
-  var $x_129 = $x_130.F("fileno", array$50, this.fc, "Return the integer \"file descriptor\" that is used by the underlying implementation to request I/O operations from the operating system.");
+  var $x_129 = $x_130.F("fileno", array$50, this.fb, "Return the integer \"file descriptor\" that is used by the underlying implementation to request I/O operations from the operating system.");
   var $x_128 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$41 = $m_sci_Nil$();
   var array$51 = new ($d_T.r().C)(xs$41.g());
@@ -36466,7 +36468,7 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$51.a[i$41] = iterator$41.d();
     i$41 = ((1 + i$41) | 0);
   }
-  var $x_127 = $x_128.F("isatty", array$51, this.fb, "Return True if the file is connected to a tty(-like) device, else False.");
+  var $x_127 = $x_128.F("isatty", array$51, this.fa, "Return True if the file is connected to a tty(-like) device, else False.");
   var $x_126 = $m_Ltigerpython_utilities_types_BuiltinFunction$();
   var xs$42 = $m_sci_Nil$();
   var array$52 = new ($d_T.r().C)(xs$42.g());
@@ -36508,8 +36510,8 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
     array$55.a[i$45] = iterator$45.d();
     i$45 = ((1 + i$45) | 0);
   }
-  $x_135.g2(new $c_sjsr_WrappedVarArgs([$x_133, $x_131, $x_129, $x_127, $x_125, $x_124, $x_122, $x_120, $x_119, $x_118.F("tell", array$55, this.fc, "Return the file's current position. See also: 'seek'."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("truncate", new ($d_T.r().C)(["size"]), this.dz, "Truncate the file\u2019s size. If the optional size argument is present, the file is truncated to (at most) that size. The size defaults to the current position."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("write", new ($d_T.r().C)(["str"]), this.dz, "Write a string to the file."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("writelines", new ($d_T.r().C)(["sequence"]), this.dz, "Write a sequence of strings to the file.")]));
-  this.jg = new $c_Ltigerpython_utilities_types_Instance(this.fb);
+  $x_135.g2(new $c_sjsr_WrappedVarArgs([$x_133, $x_131, $x_129, $x_127, $x_125, $x_124, $x_122, $x_120, $x_119, $x_118.F("tell", array$55, this.fb, "Return the file's current position. See also: 'seek'."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("truncate", new ($d_T.r().C)(["size"]), this.dz, "Truncate the file\u2019s size. If the optional size argument is present, the file is truncated to (at most) that size. The size defaults to the current position."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("write", new ($d_T.r().C)(["str"]), this.dz, "Write a string to the file."), $m_Ltigerpython_utilities_types_BuiltinFunction$().F("writelines", new ($d_T.r().C)(["sequence"]), this.dz, "Write a sequence of strings to the file.")]));
+  this.jg = new $c_Ltigerpython_utilities_types_Instance(this.fa);
   this.Hg = new $c_Ltigerpython_utilities_types_Instance(this.Hh);
   this.Hi = new $c_Ltigerpython_utilities_types_Instance(this.BU);
   this.lG = new $c_Ltigerpython_utilities_types_Instance(this.w9);
@@ -36518,15 +36520,15 @@ function $c_Ltigerpython_utilities_types_BuiltinTypes$() {
   this.jj = new $c_Ltigerpython_utilities_types_Instance(this.qf);
   this.Hl = new $c_Ltigerpython_utilities_types_Instance(this.BY);
   this.Hm = new $c_Ltigerpython_utilities_types_Instance(this.BZ);
-  this.gZ = new $c_Ltigerpython_utilities_types_Instance(this.fc);
+  this.gZ = new $c_Ltigerpython_utilities_types_Instance(this.fb);
   this.Hn = new $c_Ltigerpython_utilities_types_Instance(this.C0);
-  this.fC = new $c_Ltigerpython_utilities_types_Instance(this.eH);
+  this.fB = new $c_Ltigerpython_utilities_types_Instance(this.eH);
   this.Ho = new $c_Ltigerpython_utilities_types_Instance(this.C1);
   this.wa = new $c_Ltigerpython_utilities_types_Instance(this.dz);
   this.Hp = new $c_Ltigerpython_utilities_types_Instance(this.C2);
   this.hD = new $c_Ltigerpython_utilities_types_Instance(this.bu);
-  this.lJ = new $c_Ltigerpython_utilities_types_Instance(this.fd);
-  this.sB(new $c_sjsr_WrappedVarArgs([this.jg, this.Hg, this.Hi, this.lG, this.ss, this.BW, this.jj, this.Hl, this.Hm, this.gZ, this.Hn, this.fC, this.Ho, this.wa, this.Hp, this.hD, this.lJ]));
+  this.lJ = new $c_Ltigerpython_utilities_types_Instance(this.fc);
+  this.sB(new $c_sjsr_WrappedVarArgs([this.jg, this.Hg, this.Hi, this.lG, this.ss, this.BW, this.jj, this.Hl, this.Hm, this.gZ, this.Hn, this.fB, this.Ho, this.wa, this.Hp, this.hD, this.lJ]));
 }
 $p = $c_Ltigerpython_utilities_types_BuiltinTypes$.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_types_BuiltinTypes$;
@@ -36560,7 +36562,7 @@ $p.CL = (function(s) {
     var originalHash = $m_sr_Statics$().m(s);
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1$1 = this$2.Z.a[(hash & (((-1) + this$2.Z.a.length) | 0))];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(s, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(s, hash));
     var $x_1 = ((nd === null) ? f() : nd.bU);
   }
   var result = $x_1;
@@ -36753,12 +36755,12 @@ $p.nM = (function(type1, type2) {
           if ((!((dt === null) ? (x$28 === null) : dt.b(x$28)))) {
             return $m_Ltigerpython_utilities_types_ListType$().sF(dt);
           } else {
-            return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+            return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
           }
         }
       }
       if ((type1 instanceof $c_Ltigerpython_utilities_types_ListType)) {
-        var x$29 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+        var x$29 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
         var $x_8 = (x$29 === type2);
       } else {
         var $x_8 = false;
@@ -36766,7 +36768,7 @@ $p.nM = (function(type1, type2) {
       if ($x_8) {
         var $x_7 = true;
       } else {
-        var x$31 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+        var x$31 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
         if ((x$31 === type1)) {
           var $x_7 = (type2 instanceof $c_Ltigerpython_utilities_types_ListType);
         } else {
@@ -36774,7 +36776,7 @@ $p.nM = (function(type1, type2) {
         }
       }
       if ($x_7) {
-        return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+        return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
       }
       if ((type1 instanceof $c_Ltigerpython_utilities_types_TupleType)) {
         var x36 = type1;
@@ -36825,7 +36827,7 @@ $p.nM = (function(type1, type2) {
       }
       var x$37 = $m_Ltigerpython_utilities_types_BuiltinTypes$().eH;
       if ((x$37 === type1)) {
-        var x$39 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+        var x$39 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
         var $x_12 = (x$39 === type2);
       } else {
         var $x_12 = false;
@@ -36833,7 +36835,7 @@ $p.nM = (function(type1, type2) {
       if ($x_12) {
         var $x_11 = true;
       } else {
-        var x$41 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+        var x$41 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
         if ((x$41 === type1)) {
           var x$43 = $m_Ltigerpython_utilities_types_BuiltinTypes$().eH;
           var $x_13 = (x$43 === type2);
@@ -36865,7 +36867,7 @@ $p.nM = (function(type1, type2) {
             } else {
               var x$53 = $m_Ltigerpython_utilities_types_BuiltinTypes$().bu;
               if ((x$53 === type1)) {
-                var x$55 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+                var x$55 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
                 var $x_16 = (x$55 === type2);
               } else {
                 var $x_16 = false;
@@ -36873,7 +36875,7 @@ $p.nM = (function(type1, type2) {
               if ($x_16) {
                 var $x_11 = true;
               } else {
-                var x$57 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+                var x$57 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
                 if ((x$57 === type1)) {
                   var x$59 = $m_Ltigerpython_utilities_types_BuiltinTypes$().bu;
                   var $x_11 = (x$59 === type2);
@@ -37056,7 +37058,7 @@ $p.T9 = (function(name) {
     var originalHash = $m_sr_Statics$().m(name);
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1$1 = this$2.Z.a[(hash & (((-1) + this$2.Z.a.length) | 0))];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(name, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(name, hash));
     var $x_1 = ((nd === null) ? f() : nd.bU);
   }
   return $x_1;
@@ -37102,7 +37104,7 @@ function $m_Ltigerpython_utilities_types_FutureModule$() {
 function $c_Ltigerpython_utilities_types_Instance$() {
   this.OD = null;
   $n_Ltigerpython_utilities_types_Instance$ = this;
-  this.OD = $m_scm_Map$().ar(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, $m_Ltigerpython_utilities_types_BuiltinTypes$().jg), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hh, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hg), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BU, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hi), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().w9, $m_Ltigerpython_utilities_types_BuiltinTypes$().lG), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().jh, $m_Ltigerpython_utilities_types_BuiltinTypes$().ss), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BX, $m_Ltigerpython_utilities_types_BuiltinTypes$().BW), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().jj), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BY, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hl), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BZ, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hm), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().gZ), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C0, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hn), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().eH, $m_Ltigerpython_utilities_types_BuiltinTypes$().fC), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C1, $m_Ltigerpython_utilities_types_BuiltinTypes$().Ho), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().dz, $m_Ltigerpython_utilities_types_BuiltinTypes$().wa), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C2, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hp), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().bu, $m_Ltigerpython_utilities_types_BuiltinTypes$().hD), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fd, $m_Ltigerpython_utilities_types_BuiltinTypes$().lJ)]));
+  this.OD = $m_scm_Map$().ar(new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fa, $m_Ltigerpython_utilities_types_BuiltinTypes$().jg), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().Hh, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hg), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BU, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hi), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().w9, $m_Ltigerpython_utilities_types_BuiltinTypes$().lG), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().jh, $m_Ltigerpython_utilities_types_BuiltinTypes$().ss), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BX, $m_Ltigerpython_utilities_types_BuiltinTypes$().BW), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().jj), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BY, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hl), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().BZ, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hm), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fb, $m_Ltigerpython_utilities_types_BuiltinTypes$().gZ), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C0, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hn), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().eH, $m_Ltigerpython_utilities_types_BuiltinTypes$().fB), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C1, $m_Ltigerpython_utilities_types_BuiltinTypes$().Ho), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().dz, $m_Ltigerpython_utilities_types_BuiltinTypes$().wa), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().C2, $m_Ltigerpython_utilities_types_BuiltinTypes$().Hp), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().bu, $m_Ltigerpython_utilities_types_BuiltinTypes$().hD), $ct_T2__O__O__(new $c_T2(), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().lJ)]));
 }
 $p = $c_Ltigerpython_utilities_types_Instance$.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_types_Instance$;
@@ -37136,7 +37138,7 @@ $p.lQ = (function(baseType) {
       var hash = (originalHash ^ ((originalHash >>> 16) | 0));
       var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
       var x1$1 = this$2.Z.a[idx];
-      var nd = ((x1$1 === null) ? null : x1$1.fe(x4, hash));
+      var nd = ((x1$1 === null) ? null : x1$1.fd(x4, hash));
       if ((nd !== null)) {
         var $x_1 = nd.bU;
       } else {
@@ -37197,7 +37199,7 @@ $p.sF = (function(itemType) {
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
     var x1$1 = this$2.Z.a[idx];
-    var nd = ((x1$1 === null) ? null : x1$1.fe(itemType, hash));
+    var nd = ((x1$1 === null) ? null : x1$1.fd(itemType, hash));
     if ((nd !== null)) {
       var $x_1 = nd.bU;
     } else {
@@ -37234,7 +37236,7 @@ $p.constructor = $c_Ltigerpython_utilities_types_NameMap;
 function $h_Ltigerpython_utilities_types_NameMap() {
 }
 $h_Ltigerpython_utilities_types_NameMap.prototype = $p;
-$p.fj = (function(key, value) {
+$p.fi = (function(key, value) {
   var x1 = this.e6.b1(key);
   matchEnd4: {
     if ((x1 instanceof $c_s_Some)) {
@@ -37531,7 +37533,7 @@ $p.Cw = (function(itemTypes) {
         var hash = (originalHash ^ ((originalHash >>> 16) | 0));
         var idx = (hash & (((-1) + this$2.Z.a.length) | 0));
         var x1$2 = this$2.Z.a[idx];
-        var nd = ((x1$2 === null) ? null : x1$2.fe(key, hash));
+        var nd = ((x1$2 === null) ? null : x1$2.fd(key, hash));
         if ((nd !== null)) {
           var $x_1 = nd.bU;
         } else {
@@ -37569,7 +37571,7 @@ $p.Cw = (function(itemTypes) {
         var hash$1 = (originalHash$1 ^ ((originalHash$1 >>> 16) | 0));
         var idx$1 = (hash$1 & (((-1) + this$3.Z.a.length) | 0));
         var x1$4 = this$3.Z.a[idx$1];
-        var nd$1 = ((x1$4 === null) ? null : x1$4.fe(key$1, hash$1));
+        var nd$1 = ((x1$4 === null) ? null : x1$4.fd(key$1, hash$1));
         if ((nd$1 !== null)) {
           var $x_2 = nd$1.bU;
         } else {
@@ -37678,7 +37680,7 @@ $p.aV = (function(expr) {
       var x9$2 = _2;
       var p11 = x9$2.l5;
       if ((p11 !== null)) {
-        if (($m_s_Array$UnapplySeqWrapper$().eM(p11, 2) === 0)) {
+        if (($m_s_Array$UnapplySeqWrapper$().eL(p11, 2) === 0)) {
           var p13 = p11.a[0];
           var p14 = p11.a[1];
           if ((p13 instanceof $c_Ltigerpython_parser_ast_AstNode$Index)) {
@@ -37693,7 +37695,7 @@ $p.aV = (function(expr) {
         }
       }
     }
-    var x$5 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fd;
+    var x$5 = $m_Ltigerpython_utilities_types_BuiltinTypes$().fc;
     if (((x$5 === _1) && (_2 instanceof $c_Ltigerpython_parser_ast_AstNode$MultiSlice))) {
       var x22 = _2;
       var elements = x22.l5;
@@ -37806,11 +37808,11 @@ $p.V7 = (function(binOp) {
   } else {
     var x$21 = $m_Ltigerpython_parser_ast_BinOp$().rN;
     if (((x$21 === null) ? (x1 === null) : x$21.b(x1))) {
-      return (left.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fc) ? right : (right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fc) ? left : ((left.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().qf) && right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().qf)) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().jj : (($f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9]), left) && $f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9]), right)) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().lG : $m_Ltigerpython_utilities_types_BuiltinTypes$().ae))));
+      return (left.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fb) ? right : (right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fb) ? left : ((left.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().qf) && right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().qf)) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().jj : (($f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9]), left) && $f_sc_SeqOps__contains__O__Z(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_utilities_types_BuiltinTypes$().qf, $m_Ltigerpython_utilities_types_BuiltinTypes$().w9]), right)) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().lG : $m_Ltigerpython_utilities_types_BuiltinTypes$().ae))));
     } else {
       var x$23 = $m_Ltigerpython_parser_ast_BinOp$().y0;
       if (((x$23 === null) ? (x1 === null) : x$23.b(x1))) {
-        return (right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fc) ? left : $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
+        return (right.sV($m_Ltigerpython_utilities_types_BuiltinTypes$().fb) ? left : $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
       } else {
         var x$25 = $m_Ltigerpython_parser_ast_BinOp$().AQ;
         if (((x$25 === null) ? (x1 === null) : x$25.b(x1))) {
@@ -37876,7 +37878,7 @@ $p.Vb = (function(lambda) {
         var p = p$2;
         if ((p instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
           var x2 = p;
-          var elem = new $c_Ltigerpython_utilities_types_Parameter(x2.f2, $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
+          var elem = new $c_Ltigerpython_utilities_types_Parameter(x2.f1, $m_Ltigerpython_utilities_types_BuiltinTypes$().ae);
           return params.I(elem);
         } else {
           return (void 0);
@@ -37977,9 +37979,9 @@ $p.Vb = (function(lambda) {
   }
 });
 $p.Vd = (function(list) {
-  if ((list.f1.a.length !== 0)) {
-    var result = new $c_sr_ObjectRef(this.aV($m_sc_ArrayOps$().aA(list.f1)));
-    var xs$2 = list.f1;
+  if ((list.f0.a.length !== 0)) {
+    var result = new $c_sr_ObjectRef(this.aV($m_sc_ArrayOps$().aA(list.f0)));
+    var xs$2 = list.f0;
     var f = ((element$2) => {
       var element = element$2;
       result.b0 = $m_Ltigerpython_utilities_types_DataType$().nM(result.b0, this.aV(element));
@@ -38063,10 +38065,10 @@ $p.Vd = (function(list) {
     if ($x_1) {
       return new $c_Ltigerpython_utilities_types_Instance($m_Ltigerpython_utilities_types_ListType$().sF(result.b0));
     } else {
-      return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+      return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
     }
   } else {
-    return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+    return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
   }
 });
 $p.Vf = (function(listComp) {
@@ -38084,10 +38086,10 @@ $p.Vf = (function(listComp) {
         this.z1.jw(false);
       }
     } else {
-      return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+      return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
     }
   } else {
-    return $m_Ltigerpython_utilities_types_BuiltinTypes$().fC;
+    return $m_Ltigerpython_utilities_types_BuiltinTypes$().fB;
   }
 });
 $p.Vh = (function(subscript) {
@@ -39473,7 +39475,7 @@ function $p_s_Enumeration__ValueSet$lzycompute$1__V($thiz) {
   }
 }
 function $ct_s_Enumeration__I__($thiz, initial) {
-  $thiz.fk = $ct_scm_HashMap__(new $c_scm_HashMap());
+  $thiz.fj = $ct_scm_HashMap__(new $c_scm_HashMap());
   $thiz.gi = null;
   $thiz.fM = false;
   $ct_scm_HashMap__(new $c_scm_HashMap());
@@ -39486,7 +39488,7 @@ function $ct_s_Enumeration__I__($thiz, initial) {
 function $c_s_Enumeration() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -39518,7 +39520,7 @@ $p.j = (function() {
 $p.Yi = (function() {
   if ((!this.fM)) {
     var this$3 = new $c_s_Enumeration$ValueSet$$anon$1(this.HG());
-    var elems = new $c_sc_MapOps$$anon$1(this.fk);
+    var elems = new $c_sc_MapOps$$anon$1(this.fj);
     this.gi = $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this$3, elems).c0();
     this.fM = true;
   }
@@ -39624,7 +39626,7 @@ function $isArrayOf_sci_MapNode(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bZ)));
 }
 function $p_sci_NumericRange$__bigDecimalCheckUnderflow__O__O__O__s_math_Integral__V($thiz, start, end, step, num) {
-  if ((!$m_sr_BoxesRunTime$().Q(num.h5(num.fi(start, step), start), step))) {
+  if ((!$m_sr_BoxesRunTime$().Q(num.h5(num.fh(start, step), start), step))) {
     $p_sci_NumericRange$__FAIL$1__O__O__V($thiz, start, step);
   }
   if ((!$m_sr_BoxesRunTime$().Q(num.h5(end, num.h5(end, step)), step))) {
@@ -39778,21 +39780,21 @@ $p.TM = (function(start, end, step, isInclusive, num) {
       var diff = num.h5(end, start);
       var quotient = $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, num.nT(diff, step), num, limit);
       var remainder = num.h5(diff, num.jA(quotient, step));
-      var $x_1 = (((!isInclusive) && $m_sr_BoxesRunTime$().Q(zero, remainder)) ? quotient : $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, num.fi(quotient, one), num, limit));
+      var $x_1 = (((!isInclusive) && $m_sr_BoxesRunTime$().Q(zero, remainder)) ? quotient : $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, num.fh(quotient, one), num, limit));
     } else {
       var negone = num.bE((-1));
       var startlim = (posStep ? negone : one);
       var startdiff = (((posStep && $f_s_math_Ordering__lt__O__O__Z(num, startlim, start)) || ((!posStep) && $f_s_math_Ordering__gt__O__O__Z(num, startlim, start))) ? start : num.h5(startlim, start));
       var startq = $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, num.nT(startdiff, step), num, limit);
-      var waypointA = ($m_sr_BoxesRunTime$().Q(startq, zero) ? start : num.fi(start, num.jA(startq, step)));
-      var waypointB = num.fi(waypointA, step);
+      var waypointA = ($m_sr_BoxesRunTime$().Q(startq, zero) ? start : num.fh(start, num.jA(startq, step)));
+      var waypointB = num.fh(waypointA, step);
       if (($f_s_math_Ordering__lt__O__O__Z(num, waypointB, end) !== upward)) {
-        var $x_2 = ((isInclusive && $m_sr_BoxesRunTime$().Q(waypointB, end)) ? num.fi(startq, num.bE(2)) : num.fi(startq, one));
+        var $x_2 = ((isInclusive && $m_sr_BoxesRunTime$().Q(waypointB, end)) ? num.fh(startq, num.bE(2)) : num.fh(startq, one));
       } else {
         var enddiff = num.h5(end, waypointB);
         var endq = $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, num.nT(enddiff, step), num, limit);
-        var last = ($m_sr_BoxesRunTime$().Q(endq, zero) ? waypointB : num.fi(waypointB, num.jA(endq, step)));
-        var $x_2 = num.fi(startq, num.fi(endq, (((!isInclusive) && $m_sr_BoxesRunTime$().Q(last, end)) ? one : num.bE(2))));
+        var last = ($m_sr_BoxesRunTime$().Q(endq, zero) ? waypointB : num.fh(waypointB, num.jA(endq, step)));
+        var $x_2 = num.fh(startq, num.fh(endq, (((!isInclusive) && $m_sr_BoxesRunTime$().Q(last, end)) ? one : num.bE(2))));
       }
       var $x_1 = $p_sci_NumericRange$__check$1__O__s_math_Integral__O__O(this, $x_2, num, limit);
     }
@@ -40606,7 +40608,7 @@ function $h_Ltigerpython_parser_ast_AstNode$Value$() {
 }
 $h_Ltigerpython_parser_ast_AstNode$Value$.prototype = $p;
 $p.kk = (function(token) {
-  var result = new $c_Ltigerpython_parser_ast_AstNode$Value(token.x, $m_Ltigerpython_parser_ast_ValueType$().eK(token.o));
+  var result = new $c_Ltigerpython_parser_ast_AstNode$Value(token.x, $m_Ltigerpython_parser_ast_ValueType$().eJ(token.o));
   result.iY = token.ah;
   return result;
 });
@@ -40677,7 +40679,7 @@ $p.wi = (function(msg) {
                       if (((x$21 === null) ? (msg === null) : x$21.b(msg))) {
                         return "Je moet elk element van deze tupel individueel testen.";
                       } else {
-                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                        var x$23 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "Je mag het sleutelwoord '%s' niet als naam gebruiken.";
                         } else {
@@ -40901,7 +40903,7 @@ $p.wi = (function(msg) {
                                                                                                                                       if (((x$133 === null) ? (msg === null) : x$133.b(msg))) {
                                                                                                                                         return "Body of inspringing ontbreekt.";
                                                                                                                                       } else {
-                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                        var x$135 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                         if (((x$135 === null) ? (msg === null) : x$135.b(msg))) {
                                                                                                                                           return "Er ontbreekt een komma.";
                                                                                                                                         } else {
@@ -40933,7 +40935,7 @@ $p.wi = (function(msg) {
                                                                                                                                                       if (((x$149 === null) ? (msg === null) : x$149.b(msg))) {
                                                                                                                                                         return "Je bent vergeten de haakjes te sluiten: '%s'.";
                                                                                                                                                       } else {
-                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                        var x$151 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                         if (((x$151 === null) ? (msg === null) : x$151.b(msg))) {
                                                                                                                                                           return "Hier ontbreekt een spatie.";
                                                                                                                                                         } else {
@@ -41326,7 +41328,7 @@ $p.wi = (function(msg) {
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "You need to test each element of this tuple individually.";
                         } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                           if (((x$25 === null) ? (msg === null) : x$25.b(msg))) {
                             return "You cannot use the keyword '%s' as a name.";
                           } else {
@@ -41566,7 +41568,7 @@ $p.wi = (function(msg) {
                                                                                                                                                 if (((x$143 === null) ? (msg === null) : x$143.b(msg))) {
                                                                                                                                                   return "There is a body or indentation missing.";
                                                                                                                                                 } else {
-                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                                  var x$145 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                                   if (((x$145 === null) ? (msg === null) : x$145.b(msg))) {
                                                                                                                                                     return "There seems to be a comma missing.";
                                                                                                                                                   } else {
@@ -41602,7 +41604,7 @@ $p.wi = (function(msg) {
                                                                                                                                                                   if (((x$161 === null) ? (msg === null) : x$161.b(msg))) {
                                                                                                                                                                     return "There is a closing bracket or parenthesis missing: '%s'.";
                                                                                                                                                                   } else {
-                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                                    var x$163 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                                     if (((x$163 === null) ? (msg === null) : x$163.b(msg))) {
                                                                                                                                                                       return "There is a space missing.";
                                                                                                                                                                     } else {
@@ -42021,7 +42023,7 @@ $p.wi = (function(msg) {
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "Il faut tester tous les \u00e9l\u00e9ments de ce tuple individuellement.";
                         } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                           if (((x$25 === null) ? (msg === null) : x$25.b(msg))) {
                             return "'%s' est un mot r\u00e9serv\u00e9 : impossible de l'utiliser comme un nom.";
                           } else {
@@ -42257,7 +42259,7 @@ $p.wi = (function(msg) {
                                                                                                                                               if (((x$141 === null) ? (msg === null) : x$141.b(msg))) {
                                                                                                                                                 return "Cette structure n\u00e9cessite un corps. V\u00e9rifier l'indentation !";
                                                                                                                                               } else {
-                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                                var x$143 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                                 if (((x$143 === null) ? (msg === null) : x$143.b(msg))) {
                                                                                                                                                   return "Il manque une virgule.";
                                                                                                                                                 } else {
@@ -42293,7 +42295,7 @@ $p.wi = (function(msg) {
                                                                                                                                                                 if (((x$159 === null) ? (msg === null) : x$159.b(msg))) {
                                                                                                                                                                   return "Il manque une parenth\u00e8se fermante: '%s'.";
                                                                                                                                                                 } else {
-                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                                  var x$161 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                                   if (((x$161 === null) ? (msg === null) : x$161.b(msg))) {
                                                                                                                                                                     return "Il manque un espace.";
                                                                                                                                                                   } else {
@@ -42656,7 +42658,7 @@ $p.wi = (function(msg) {
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "Jedes Element dieses Tupels muss hier einzeln getestet werden.";
                         } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                           if (((x$25 === null) ? (msg === null) : x$25.b(msg))) {
                             return "Das Schl\u00fcsselwort '%s' kann nicht als Name verwendet werden.";
                           } else {
@@ -42888,7 +42890,7 @@ $p.wi = (function(msg) {
                                                                                                                                             if (((x$139 === null) ? (msg === null) : x$139.b(msg))) {
                                                                                                                                               return "Hier fehlt der Code-Block oder er ist nicht korrekt einger\u00fcckt.";
                                                                                                                                             } else {
-                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                              var x$141 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                               if (((x$141 === null) ? (msg === null) : x$141.b(msg))) {
                                                                                                                                                 return "Hier scheint ein Komma ',' zu fehlen.";
                                                                                                                                               } else {
@@ -42924,7 +42926,7 @@ $p.wi = (function(msg) {
                                                                                                                                                               if (((x$157 === null) ? (msg === null) : x$157.b(msg))) {
                                                                                                                                                                 return "Fehlende schliessende Klammer: '%s'";
                                                                                                                                                               } else {
-                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                                var x$159 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                                 if (((x$159 === null) ? (msg === null) : x$159.b(msg))) {
                                                                                                                                                                   return "Fehlender Abstand.";
                                                                                                                                                                 } else {
@@ -43331,7 +43333,7 @@ $p.wi = (function(msg) {
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "Devi testare ogni elemento di questa tupla individualmente.";
                         } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                           if (((x$25 === null) ? (msg === null) : x$25.b(msg))) {
                             return "Non puoi usare la parola chiave '%s' come un nome.";
                           } else {
@@ -43555,7 +43557,7 @@ $p.wi = (function(msg) {
                                                                                                                                         if (((x$135 === null) ? (msg === null) : x$135.b(msg))) {
                                                                                                                                           return "Manca un corpo o un indentazione.";
                                                                                                                                         } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                           if (((x$137 === null) ? (msg === null) : x$137.b(msg))) {
                                                                                                                                             return "Manca una virgola.";
                                                                                                                                           } else {
@@ -43587,7 +43589,7 @@ $p.wi = (function(msg) {
                                                                                                                                                         if (((x$151 === null) ? (msg === null) : x$151.b(msg))) {
                                                                                                                                                           return "Manca una parentesi chiusa: '%s'.";
                                                                                                                                                         } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                           if (((x$153 === null) ? (msg === null) : x$153.b(msg))) {
                                                                                                                                                             return "Manca uno spazio.";
                                                                                                                                                           } else {
@@ -43981,7 +43983,7 @@ $p.wi = (function(msg) {
                         if (((x$23 === null) ? (msg === null) : x$23.b(msg))) {
                           return "\u0422\u0435\u0441\u0442\u0438\u0440\u0443\u0439\u0442\u0435 \u043a\u0430\u0436\u0434\u044b\u0439 \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u043e\u0440\u0442\u0435\u0436\u0430 \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e.";
                         } else {
-                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
+                          var x$25 = $m_Ltigerpython_parser_errors_ErrorCode$().ft;
                           if (((x$25 === null) ? (msg === null) : x$25.b(msg))) {
                             return "\u0412\u044b \u043d\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '%s' \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0438\u043c\u0435\u043d\u0438.";
                           } else {
@@ -44205,7 +44207,7 @@ $p.wi = (function(msg) {
                                                                                                                                         if (((x$135 === null) ? (msg === null) : x$135.b(msg))) {
                                                                                                                                           return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0435\u043b\u043e \u0438\u043b\u0438 \u043e\u0442\u0441\u0442\u0443\u043f.";
                                                                                                                                         } else {
-                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().f4;
+                                                                                                                                          var x$137 = $m_Ltigerpython_parser_errors_ErrorCode$().f3;
                                                                                                                                           if (((x$137 === null) ? (msg === null) : x$137.b(msg))) {
                                                                                                                                             return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043f\u044f\u0442\u0430\u044f.";
                                                                                                                                           } else {
@@ -44237,7 +44239,7 @@ $p.wi = (function(msg) {
                                                                                                                                                         if (((x$151 === null) ? (msg === null) : x$151.b(msg))) {
                                                                                                                                                           return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u044e\u0449\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430: '%s'.";
                                                                                                                                                         } else {
-                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().fv;
+                                                                                                                                                          var x$153 = $m_Ltigerpython_parser_errors_ErrorCode$().fu;
                                                                                                                                                           if (((x$153 === null) ? (msg === null) : x$153.b(msg))) {
                                                                                                                                                             return "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043f\u0440\u043e\u0431\u0435\u043b.";
                                                                                                                                                           } else {
@@ -45085,7 +45087,7 @@ $p.Tc = (function(statements) {
           var x1$2 = x2.gr;
           matchEnd7: {
             if ((x1$2 !== null)) {
-              if (($m_s_Array$UnapplySeqWrapper$().eM(x1$2, 1) === 0)) {
+              if (($m_s_Array$UnapplySeqWrapper$().eL(x1$2, 1) === 0)) {
                 var p3 = x1$2.a[0];
                 if ((p3 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
                   var x4 = p3;
@@ -45128,7 +45130,7 @@ $p.Tc = (function(statements) {
           var p4 = x2$2.gr;
           var value$1 = x2$2.cP;
           if ((p4 !== null)) {
-            if (($m_s_Array$UnapplySeqWrapper$().eM(p4, 1) === 0)) {
+            if (($m_s_Array$UnapplySeqWrapper$().eL(p4, 1) === 0)) {
               var p6 = p4.a[0];
               if ((p6 instanceof $c_Ltigerpython_parser_ast_AstNode$Name)) {
                 var x7 = p6;
@@ -45406,9 +45408,9 @@ $p.Ci = (function(stmt) {
       var alias = alias$2;
       if ((alias.em !== null)) {
         $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias.em, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
-        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias.fq, $m_Ltigerpython_parser_ast_ExtExprContext$().AT);
+        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias.fp, $m_Ltigerpython_parser_ast_ExtExprContext$().AT);
       } else {
-        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias.fq, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
+        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias.fp, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
       }
     });
     var len = xs.a.length;
@@ -45489,9 +45491,9 @@ $p.Ci = (function(stmt) {
       var alias$3 = alias$3$2;
       if ((alias$3.em !== null)) {
         $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias$3.em, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
-        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias$3.fq, $m_Ltigerpython_parser_ast_ExtExprContext$().AT);
+        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias$3.fp, $m_Ltigerpython_parser_ast_ExtExprContext$().AT);
       } else {
-        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias$3.fq, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
+        $p_Ltigerpython_parser_parsing_NameContextWalker__setNameContext__Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__V(this, alias$3.fp, $m_Ltigerpython_parser_ast_ExtExprContext$().y1);
       }
     });
     var len$1 = xs$1.a.length;
@@ -45776,7 +45778,7 @@ $p.qw = (function(stmt) {
   if ((stmt instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x8 = stmt;
     if ((x8.eq === null)) {
-      if (this.qw(x8.ft)) {
+      if (this.qw(x8.fs)) {
         var $x_1 = true;
       } else {
         var xs$2 = x8.gv;
@@ -45829,7 +45831,7 @@ $p.nO = (function(stmt) {
     return this.nO(stmt.gw);
   } else if ((stmt instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var x5 = stmt;
-    if (((this.nO(x5.ft) || this.nO(x5.eq)) || this.nO(x5.ep))) {
+    if (((this.nO(x5.fs) || this.nO(x5.eq)) || this.nO(x5.ep))) {
       return true;
     } else {
       var xs$1 = x5.gv;
@@ -46029,7 +46031,7 @@ var $d_Ltigerpython_parser_scopes_AstWalker$$anon$1 = new $TypeData().i($c_Ltige
 }));
 /** @constructor */
 function $c_Ltigerpython_parser_scopes_ClassScope(startPos, endPos, pyClass) {
-  this.fz = null;
+  this.fy = null;
   this.q3 = null;
   this.N7 = 0;
   this.N6 = 0;
@@ -46045,7 +46047,7 @@ $p.constructor = $c_Ltigerpython_parser_scopes_ClassScope;
 function $h_Ltigerpython_parser_scopes_ClassScope() {
 }
 $h_Ltigerpython_parser_scopes_ClassScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.N7;
 });
 $p.aF = (function() {
@@ -46071,7 +46073,7 @@ var $d_Ltigerpython_parser_scopes_ClassScope = new $TypeData().i($c_Ltigerpython
 }));
 /** @constructor */
 function $c_Ltigerpython_parser_scopes_ForLoopScope(startPos, endPos, loopVars) {
-  this.fz = null;
+  this.fy = null;
   this.q3 = null;
   this.N9 = 0;
   this.N8 = 0;
@@ -46087,14 +46089,14 @@ $p.constructor = $c_Ltigerpython_parser_scopes_ForLoopScope;
 function $h_Ltigerpython_parser_scopes_ForLoopScope() {
 }
 $h_Ltigerpython_parser_scopes_ForLoopScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.N9;
 });
 $p.aF = (function() {
   return this.N8;
 });
 $p.is = (function(name) {
-  var x1 = this.fz;
+  var x1 = this.fy;
   if ((x1 instanceof $c_Ltigerpython_parser_scopes_ForLoopScope)) {
     x1.is(name);
   } else if ((x1 instanceof $c_Ltigerpython_parser_scopes_FunctionScope)) {
@@ -46103,11 +46105,11 @@ $p.is = (function(name) {
 });
 $p.km = (function(name, dataType) {
   if ((!this.Gr.al(name))) {
-    this.fz.km(name, dataType);
+    this.fy.km(name, dataType);
   }
 });
 $p.h2 = (function() {
-  var this$1 = this.fz.h2();
+  var this$1 = this.fy.h2();
   var xs = this.Gr;
   return this$1.fE(xs);
 });
@@ -46120,7 +46122,7 @@ var $d_Ltigerpython_parser_scopes_ForLoopScope = new $TypeData().i($c_Ltigerpyth
 }));
 /** @constructor */
 function $c_Ltigerpython_parser_scopes_FunctionScope(startPos, endPos, function$1) {
-  this.fz = null;
+  this.fy = null;
   this.q3 = null;
   this.Nb = 0;
   this.Na = 0;
@@ -46216,7 +46218,7 @@ $p.constructor = $c_Ltigerpython_parser_scopes_FunctionScope;
 function $h_Ltigerpython_parser_scopes_FunctionScope() {
 }
 $h_Ltigerpython_parser_scopes_FunctionScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.Nb;
 });
 $p.aF = (function() {
@@ -46258,7 +46260,7 @@ var $d_Ltigerpython_parser_scopes_FunctionScope = new $TypeData().i($c_Ltigerpyt
 }));
 /** @constructor */
 function $c_Ltigerpython_parser_scopes_ModuleScope(sourceLength, module, moduleLoader) {
-  this.fz = null;
+  this.fy = null;
   this.q3 = null;
   this.lx = null;
   this.Gz = null;
@@ -46279,7 +46281,7 @@ $p.constructor = $c_Ltigerpython_parser_scopes_ModuleScope;
 function $h_Ltigerpython_parser_scopes_ModuleScope() {
 }
 $h_Ltigerpython_parser_scopes_ModuleScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.Nf;
 });
 $p.aF = (function() {
@@ -46857,7 +46859,7 @@ $p.zt = (function(prefix) {
         b.hF(elem);
       }
     }
-    return $x_3.Cz($x_2.Jf(b.d5.aY(new $c_sjsr_AnonFunction1(((x$6$2) => x$6$2.an()))).eS(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$2, s2$2) => {
+    return $x_3.Cz($x_2.Jf(b.d5.aY(new $c_sjsr_AnonFunction1(((x$6$2) => x$6$2.an()))).eR(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$2, s2$2) => {
       var s1 = s1$2;
       var s2 = s2$2;
       return $p_Ltigerpython_utilities_completer_DefaultNameFilter__nameSort$1__T__T__C__Z(this, s1, s2, prefixChar);
@@ -46873,7 +46875,7 @@ $p.zt = (function(prefix) {
       var elem$1 = it$1.d().an();
       b$1.hF(elem$1);
     }
-    return $x_5.Cz($x_4.Jf(b$1.d5.eS(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$3$2, s2$3$2) => {
+    return $x_5.Cz($x_4.Jf(b$1.d5.eR(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$3$2, s2$3$2) => {
       var s1$3 = s1$3$2;
       var s2$3 = s2$3$2;
       return $p_Ltigerpython_utilities_completer_DefaultNameFilter__nameSort$2__T__T__Z(this, s1$3, s2$3);
@@ -46891,7 +46893,7 @@ $p.Qg = (function() {
     var elem = it.d().an();
     b.hF(elem);
   }
-  var names = $x_2.Cz($x_1.Jf(b.d5.eS(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$2, s2$2) => {
+  var names = $x_2.Cz($x_1.Jf(b.d5.eR(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), new $c_sjsr_AnonFunction2(((s1$2, s2$2) => {
     var s1 = s1$2;
     var s2 = s2$2;
     return $p_Ltigerpython_utilities_completer_DefaultNameFilter__nameSort$3__T__T__Z(this, s1, s2);
@@ -47404,7 +47406,7 @@ $p.TO = (function(className, baseClasses, metaClass) {
   this.hB = cls;
   var this$1 = this.yA;
   var name = cls.hE;
-  this$1.dA.fj(name, cls);
+  this$1.dA.fi(name, cls);
 });
 $p.TP = (function(className, doc) {
   if (((this.hB !== null) && (this.hB.hE === className))) {
@@ -47422,7 +47424,7 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
   } else {
     var arg1 = this$3.b5();
     var arg = arg1;
-    var varArgs = new $c_s_Some(new $c_Ltigerpython_utilities_types_SignatureVarArg(arg.fA, ((arg.gC === null) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().fd : new $c_Ltigerpython_utilities_types_VarTupleType(this.hJ(arg.gC)))));
+    var varArgs = new $c_s_Some(new $c_Ltigerpython_utilities_types_SignatureVarArg(arg.fz, ((arg.gC === null) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().fc : new $c_Ltigerpython_utilities_types_VarTupleType(this.hJ(arg.gC)))));
   }
   var keywordOnlyArgs = new $c_scm_ListBuffer().m5($m_sci_Nil$());
   var this$5 = $m_s_Option$().kj(arguments$1.yH);
@@ -47431,15 +47433,15 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
   } else {
     var arg1$1 = this$5.b5();
     var arg$3 = arg1$1;
-    var varKwargs = new $c_s_Some(new $c_Ltigerpython_utilities_types_SignatureVarArg(arg$3.fA, ((arg$3.gC === null) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().jh : new $c_Ltigerpython_utilities_types_DictType($m_Ltigerpython_utilities_types_BuiltinTypes$().bu, this.hJ(arg$3.gC)))));
+    var varKwargs = new $c_s_Some(new $c_Ltigerpython_utilities_types_SignatureVarArg(arg$3.fz, ((arg$3.gC === null) ? $m_Ltigerpython_utilities_types_BuiltinTypes$().jh : new $c_Ltigerpython_utilities_types_DictType($m_Ltigerpython_utilities_types_BuiltinTypes$().bu, this.hJ(arg$3.gC)))));
   }
   var xs = arguments$1.yI;
   var f = ((arg$4$2) => {
     var arg$4 = arg$4$2;
     var argType = this.hJ(arg$4.gC);
-    var elem = new $c_Ltigerpython_utilities_types_Parameter(arg$4.fA, argType);
+    var elem = new $c_Ltigerpython_utilities_types_Parameter(arg$4.fz, argType);
     params.I(elem);
-    var $x_1 = arg$4.fA;
+    var $x_1 = arg$4.fz;
     var this$7 = $m_s_Option$().kj(arg$4.je);
     var elem$1 = new $c_Ltigerpython_utilities_types_SignatureArg($x_1, (this$7.t() ? $m_s_None$() : new $c_s_Some($m_Ltigerpython_utilities_fastparse_ExprAst$().eb(this$7.b5()))), argType);
     return positionalOnlyArgs.lN(elem$1);
@@ -47517,9 +47519,9 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
   var f$1 = ((arg$5$2) => {
     var arg$5 = arg$5$2;
     var argType$1 = this.hJ(arg$5.gC);
-    var elem$2 = new $c_Ltigerpython_utilities_types_Parameter(arg$5.fA, argType$1);
+    var elem$2 = new $c_Ltigerpython_utilities_types_Parameter(arg$5.fz, argType$1);
     params.I(elem$2);
-    var $x_2 = arg$5.fA;
+    var $x_2 = arg$5.fz;
     var this$10 = $m_s_Option$().kj(arg$5.je);
     var elem$3 = new $c_Ltigerpython_utilities_types_SignatureArg($x_2, (this$10.t() ? $m_s_None$() : new $c_s_Some($m_Ltigerpython_utilities_fastparse_ExprAst$().eb(this$10.b5()))), argType$1);
     return positionalOrKeywordArgs.lN(elem$3);
@@ -47597,7 +47599,7 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
   var f$2 = ((arg$6$2) => {
     var arg$6 = arg$6$2;
     var argType$2 = this.hJ(arg$6.gC);
-    var $x_3 = arg$6.fA;
+    var $x_3 = arg$6.fz;
     var this$13 = $m_s_Option$().kj(arg$6.je);
     var elem$4 = new $c_Ltigerpython_utilities_types_SignatureArg($x_3, (this$13.t() ? $m_s_None$() : new $c_s_Some($m_Ltigerpython_utilities_fastparse_ExprAst$().eb(this$13.b5()))), argType$2);
     return keywordOnlyArgs.lN(elem$4);
@@ -47695,16 +47697,17 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
     i$4 = ((1 + i$4) | 0);
   }
   var paramCount = (($x_4 + res$1) | 0);
+  var firstParamIsSelfOrCls = false;
   if ((((((className !== null) && (this.hB !== null)) && (this.hB.hE === className)) && (!$f_sc_SeqOps__isEmpty__Z(params))) && (!$p_Ltigerpython_utilities_completer_PyiModuleParser__hasDecorator__Ltigerpython_utilities_fastparse_ExprAst__T__Z(this, decorator, "staticmethod")))) {
+    firstParamIsSelfOrCls = true;
     if ($p_Ltigerpython_utilities_completer_PyiModuleParser__hasDecorator__Ltigerpython_utilities_fastparse_ExprAst__T__Z(this, decorator, "classmethod")) {
-      $f_sc_IndexedSeqOps__head__O(params).eI = this.hB;
+      $f_sc_IndexedSeqOps__head__O(params).fC = this.hB;
     } else {
-      $f_sc_IndexedSeqOps__head__O(params).eI = new $c_Ltigerpython_utilities_types_SelfInstance(this.hB);
+      $f_sc_IndexedSeqOps__head__O(params).fC = new $c_Ltigerpython_utilities_types_SelfInstance(this.hB);
     }
   }
   var retType = this.hJ(returnType);
-  var firstParamIsSelf = ((!$f_sc_SeqOps__isEmpty__Z(params)) && ($f_sc_IndexedSeqOps__head__O(params).eI instanceof $c_Ltigerpython_utilities_types_SelfInstance));
-  if (((firstParamIsSelf && positionalOnlyArgs.t()) && (!positionalOrKeywordArgs.t()))) {
+  if (((firstParamIsSelfOrCls && positionalOnlyArgs.t()) && (!positionalOrKeywordArgs.t()))) {
     var elem$5 = positionalOrKeywordArgs.iC(0);
     positionalOnlyArgs.lN(elem$5);
   }
@@ -47727,14 +47730,14 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
     }
     var $x_5 = new ($d_Ltigerpython_utilities_types_Parameter.r().C)(jsElems);
   }
-  var f$3 = new $c_Ltigerpython_utilities_types_PythonFunction(functionName, $x_5, paramCount, new $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs.qK(), positionalOrKeywordArgs.qK(), varArgs, keywordOnlyArgs.qK(), varKwargs, retType, firstParamIsSelf), retType);
+  var f$3 = new $c_Ltigerpython_utilities_types_PythonFunction(functionName, $x_5, paramCount, new $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs.qK(), positionalOrKeywordArgs.qK(), varArgs, keywordOnlyArgs.qK(), varKwargs, retType, firstParamIsSelfOrCls), retType);
   if ((doc !== null)) {
     f$3.bn = doc;
   }
   if ((className === null)) {
     var this$22 = this.yA;
     var name = f$3.lL;
-    this$22.dA.fj(name, f$3);
+    this$22.dA.fi(name, f$3);
   } else if (((this.hB !== null) && (this.hB.hE === className))) {
     this.hB.cY(f$3.lL, f$3);
   }
@@ -47742,7 +47745,7 @@ $p.TQ = (function(functionName, arguments$1, returnType, doc, className, decorat
 $p.TS = (function(varName, varType, varValue, className) {
   var tp = this.hJ(varType);
   if ((className === null)) {
-    this.yA.dA.fj(varName, tp);
+    this.yA.dA.fi(varName, tp);
   } else if (((this.hB !== null) && (this.hB.hE === className))) {
     this.hB.cY(varName, tp);
   }
@@ -47861,7 +47864,7 @@ function $isArrayOf_Ltigerpython_utilities_completer_StringFilter(obj, depth) {
 }
 /** @constructor */
 function $c_Ltigerpython_utilities_fastparse_Lexer$IndentStack(outer) {
-  this.fB = 0;
+  this.fA = 0;
   this.GT = null;
   $ct_Ltigerpython_utilities_fastparse_Lexer$TokenStack__Ltigerpython_utilities_fastparse_Lexer__(this, outer);
   this.GT = new ($d_Ltigerpython_utilities_fastparse_Indent.r().C)(16);
@@ -47873,7 +47876,7 @@ function $h_Ltigerpython_utilities_fastparse_Lexer$IndentStack() {
 }
 $h_Ltigerpython_utilities_fastparse_Lexer$IndentStack.prototype = $p;
 $p.HY = (function() {
-  return ((this.fB > 0) ? this.GT.a[(((-1) + this.fB) | 0)].w2 : 0);
+  return ((this.fA > 0) ? this.GT.a[(((-1) + this.fA) | 0)].w2 : 0);
 });
 $p.zH = (function() {
   return this.GT;
@@ -47884,7 +47887,7 @@ var $d_Ltigerpython_utilities_fastparse_Lexer$IndentStack = new $TypeData().i($c
 }));
 /** @constructor */
 function $c_Ltigerpython_utilities_fastparse_Lexer$ParStack(outer) {
-  this.fB = 0;
+  this.fA = 0;
   this.NL = null;
   $ct_Ltigerpython_utilities_fastparse_Lexer$TokenStack__Ltigerpython_utilities_fastparse_Lexer__(this, outer);
   this.NL = new ($d_Ltigerpython_utilities_fastparse_LeftPar.r().C)(32);
@@ -47941,7 +47944,7 @@ $p.constructor = $c_Ltigerpython_utilities_scopes_ClassScope;
 function $h_Ltigerpython_utilities_scopes_ClassScope() {
 }
 $h_Ltigerpython_utilities_scopes_ClassScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.On;
 });
 $p.aF = (function() {
@@ -47983,7 +47986,7 @@ $p.constructor = $c_Ltigerpython_utilities_scopes_ForLoopScope;
 function $h_Ltigerpython_utilities_scopes_ForLoopScope() {
 }
 $h_Ltigerpython_utilities_scopes_ForLoopScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.Op;
 });
 $p.aF = (function() {
@@ -48034,7 +48037,7 @@ function $c_Ltigerpython_utilities_scopes_FunctionScope(startPos, endPos, functi
   var xs = function$1.su;
   var f = ((param$2) => {
     var param = param$2;
-    this.kn(param.qg, param.eI);
+    this.kn(param.qg, param.fC);
   });
   var len = xs.a.length;
   var i = 0;
@@ -48112,7 +48115,7 @@ $p.constructor = $c_Ltigerpython_utilities_scopes_FunctionScope;
 function $h_Ltigerpython_utilities_scopes_FunctionScope() {
 }
 $h_Ltigerpython_utilities_scopes_FunctionScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.Or;
 });
 $p.aF = (function() {
@@ -48175,7 +48178,7 @@ $p.constructor = $c_Ltigerpython_utilities_scopes_ModuleScope;
 function $h_Ltigerpython_utilities_scopes_ModuleScope() {
 }
 $h_Ltigerpython_utilities_scopes_ModuleScope.prototype = $p;
-$p.eR = (function() {
+$p.eQ = (function() {
   return this.Ou;
 });
 $p.aF = (function() {
@@ -49023,15 +49026,15 @@ function $c_sci_BitmapIndexedMapNode(dataMap, nodeMap, content, originalHashes, 
   this.bc = 0;
   this.bw = 0;
   this.cm = null;
-  this.eW = null;
+  this.eV = null;
   this.cK = 0;
-  this.eV = 0;
+  this.eU = 0;
   this.bc = dataMap;
   this.bw = nodeMap;
   this.cm = content;
-  this.eW = originalHashes;
+  this.eV = originalHashes;
   this.cK = size;
-  this.eV = cachedJavaKeySetHashCode;
+  this.eU = cachedJavaKeySetHashCode;
 }
 $p = $c_sci_BitmapIndexedMapNode.prototype = new $h_sci_MapNode();
 $p.constructor = $c_sci_BitmapIndexedMapNode;
@@ -49043,7 +49046,7 @@ $p.aI = (function() {
   return this.cK;
 });
 $p.cT = (function() {
-  return this.eV;
+  return this.eU;
 });
 $p.e7 = (function(index) {
   return this.cm.a[(index << 1)];
@@ -49055,62 +49058,62 @@ $p.Ir = (function(index) {
   return $ct_T2__O__O__(new $c_T2(), this.cm.a[(index << 1)], this.cm.a[((1 + (index << 1)) | 0)]);
 });
 $p.cI = (function(index) {
-  return this.eW.a[index];
+  return this.eV.a[index];
 });
-$p.ff = (function(index) {
+$p.fe = (function(index) {
   return this.cm.a[(((((-1) + this.cm.a.length) | 0) - index) | 0)];
 });
 $p.HO = (function(key, originalHash, keyHash, shift) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
     if ($m_sr_BoxesRunTime$().Q(key, this.e7(index))) {
       return this.e8(index);
     } else {
       throw new $c_ju_NoSuchElementException(("key not found: " + key));
     }
   } else if (((this.bw & bitpos) !== 0)) {
-    return this.ff($m_sci_Node$().eL(this.bw, mask, bitpos)).HO(key, originalHash, keyHash, ((5 + shift) | 0));
+    return this.fe($m_sci_Node$().eK(this.bw, mask, bitpos)).HO(key, originalHash, keyHash, ((5 + shift) | 0));
   } else {
     throw new $c_ju_NoSuchElementException(("key not found: " + key));
   }
 });
 $p.CM = (function(key, originalHash, keyHash, shift) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
     return ($m_sr_BoxesRunTime$().Q(key, this.e7(index)) ? new $c_s_Some(this.e8(index)) : $m_s_None$());
   } else {
-    return (((this.bw & bitpos) !== 0) ? this.ff($m_sci_Node$().eL(this.bw, mask, bitpos)).CM(key, originalHash, keyHash, ((5 + shift) | 0)) : $m_s_None$());
+    return (((this.bw & bitpos) !== 0) ? this.fe($m_sci_Node$().eK(this.bw, mask, bitpos)).CM(key, originalHash, keyHash, ((5 + shift) | 0)) : $m_s_None$());
   }
 });
 $p.Iq = (function(key, originalHash, keyHash, shift, f) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
     return ($m_sr_BoxesRunTime$().Q(key, this.e7(index)) ? this.e8(index) : f.dc());
   } else {
-    return (((this.bw & bitpos) !== 0) ? this.ff($m_sci_Node$().eL(this.bw, mask, bitpos)).Iq(key, originalHash, keyHash, ((5 + shift) | 0), f) : f.dc());
+    return (((this.bw & bitpos) !== 0) ? this.fe($m_sci_Node$().eK(this.bw, mask, bitpos)).Iq(key, originalHash, keyHash, ((5 + shift) | 0), f) : f.dc());
   }
 });
 $p.HW = (function(key, originalHash, keyHash, shift) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
-    return ((this.eW.a[index] === originalHash) && $m_sr_BoxesRunTime$().Q(key, this.e7(index)));
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
+    return ((this.eV.a[index] === originalHash) && $m_sr_BoxesRunTime$().Q(key, this.e7(index)));
   } else {
-    return (((this.bw & bitpos) !== 0) && this.ff($m_sci_Node$().eL(this.bw, mask, bitpos)).HW(key, originalHash, keyHash, ((5 + shift) | 0)));
+    return (((this.bw & bitpos) !== 0) && this.fe($m_sci_Node$().eK(this.bw, mask, bitpos)).HW(key, originalHash, keyHash, ((5 + shift) | 0)));
   }
 });
 $p.wX = (function(key, value, originalHash, keyHash, shift, replaceValue) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
     var key0 = this.e7(index);
     var key0UnimprovedHash = this.cI(index);
     if (((key0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().Q(key0, key))) {
@@ -49126,8 +49129,8 @@ $p.wX = (function(key, value, originalHash, keyHash, shift, replaceValue) {
       return this.Tw(bitpos, key0Hash, this.zN(key0, value0$2, key0UnimprovedHash, key0Hash, key, value, originalHash, keyHash, ((5 + shift) | 0)));
     }
   } else if (((this.bw & bitpos) !== 0)) {
-    var index$2 = $m_sci_Node$().eL(this.bw, mask, bitpos);
-    var subNode = this.ff(index$2);
+    var index$2 = $m_sci_Node$().eK(this.bw, mask, bitpos);
+    var subNode = this.fe(index$2);
     var subNodeNew$2 = subNode.A5(key, value, originalHash, keyHash, ((5 + shift) | 0), replaceValue);
     return ((subNodeNew$2 === subNode) ? this : this.Ty(bitpos, subNode, subNodeNew$2));
   } else {
@@ -49135,10 +49138,10 @@ $p.wX = (function(key, value, originalHash, keyHash, shift, replaceValue) {
   }
 });
 $p.Dy = (function(key, value, originalHash, keyHash, shift, shallowlyMutableNodeMap) {
-  var mask = $m_sci_Node$().fg(keyHash, shift);
+  var mask = $m_sci_Node$().ff(keyHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bc & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bc, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bc, mask, bitpos);
     var key0 = this.e7(index);
     var key0UnimprovedHash = this.cI(index);
     if (((key0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().Q(key0, key))) {
@@ -49156,8 +49159,8 @@ $p.Dy = (function(key, value, originalHash, keyHash, shift, shallowlyMutableNode
       return (shallowlyMutableNodeMap | bitpos);
     }
   } else if (((this.bw & bitpos) !== 0)) {
-    var index$2 = $m_sci_Node$().eL(this.bw, mask, bitpos);
-    var subNode = this.ff(index$2);
+    var index$2 = $m_sci_Node$().eK(this.bw, mask, bitpos);
+    var subNode = this.fe(index$2);
     var subNodeSize = subNode.aI();
     var subNodeHashCode = subNode.cT();
     var returnMutableNodeMap = shallowlyMutableNodeMap;
@@ -49179,7 +49182,7 @@ $p.Dy = (function(key, value, originalHash, keyHash, shift, shallowlyMutableNode
     }
     this.cm.a[(((((-1) + this.cm.a.length) | 0) - this.qE(bitpos)) | 0)] = subNodeNew$2;
     this.cK = ((((this.cK - subNodeSize) | 0) + subNodeNew$2.aI()) | 0);
-    this.eV = ((((this.eV - subNodeHashCode) | 0) + subNodeNew$2.cT()) | 0);
+    this.eU = ((((this.eU - subNodeHashCode) | 0) + subNodeNew$2.cT()) | 0);
     return returnMutableNodeMap;
   } else {
     var dataIx$2 = this.iw(bitpos);
@@ -49194,9 +49197,9 @@ $p.Dy = (function(key, value, originalHash, keyHash, shift, shallowlyMutableNode
     src.a3(idx$2, dst, destPos, length);
     this.bc = (this.bc | bitpos);
     this.cm = dst;
-    this.eW = this.IB(this.eW, dataIx$2, originalHash);
+    this.eV = this.IB(this.eV, dataIx$2, originalHash);
     this.cK = ((1 + this.cK) | 0);
-    this.eV = ((this.eV + keyHash) | 0);
+    this.eU = ((this.eU + keyHash) | 0);
     return shallowlyMutableNodeMap;
   }
 });
@@ -49206,8 +49209,8 @@ $p.zN = (function(key0, value0, originalHash0, keyHash0, key1, value1, originalH
     var elems = new $c_sjsr_WrappedVarArgs([$ct_T2__O__O__(new $c_T2(), key0, value0), $ct_T2__O__O__(new $c_T2(), key1, value1)]);
     return new $c_sci_HashCollisionMapNode(originalHash0, keyHash0, this$4.CG(elems));
   } else {
-    var mask0 = $m_sci_Node$().fg(keyHash0, shift);
-    var mask1 = $m_sci_Node$().fg(keyHash1, shift);
+    var mask0 = $m_sci_Node$().ff(keyHash0, shift);
+    var mask1 = $m_sci_Node$().ff(keyHash1, shift);
     var newCachedHash = ((keyHash0 + keyHash1) | 0);
     if ((mask0 !== mask1)) {
       var dataMap = ($m_sci_Node$().cv(mask0) | $m_sci_Node$().cv(mask1));
@@ -49245,7 +49248,7 @@ $p.TA = (function(bitpos, newKey, newValue) {
   var length = src.a.length;
   src.a3(0, dst, 0, length);
   dst.a[((1 + idx) | 0)] = newValue;
-  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, dst, this.eW, this.cK, this.eV);
+  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, dst, this.eV, this.cK, this.eU);
 });
 $p.Ty = (function(bitpos, oldNode, newNode) {
   var idx = (((((-1) + this.cm.a.length) | 0) - this.qE(bitpos)) | 0);
@@ -49254,7 +49257,7 @@ $p.Ty = (function(bitpos, oldNode, newNode) {
   var length = src.a.length;
   src.a3(0, dst, 0, length);
   dst.a[idx] = newNode;
-  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, dst, this.eW, ((((this.cK - oldNode.aI()) | 0) + newNode.aI()) | 0), ((((this.eV - oldNode.cT()) | 0) + newNode.cT()) | 0));
+  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, dst, this.eV, ((((this.cK - oldNode.aI()) | 0) + newNode.aI()) | 0), ((((this.eU - oldNode.cT()) | 0) + newNode.cT()) | 0));
 });
 $p.Tu = (function(bitpos, key, originalHash, keyHash, value) {
   var dataIx = this.iw(bitpos);
@@ -49267,8 +49270,8 @@ $p.Tu = (function(bitpos, key, originalHash, keyHash, value) {
   var destPos = ((2 + idx) | 0);
   var length = ((src.a.length - idx) | 0);
   src.a3(idx, dst, destPos, length);
-  var dstHashes = this.IB(this.eW, dataIx, originalHash);
-  return new $c_sci_BitmapIndexedMapNode((this.bc | bitpos), this.bw, dst, dstHashes, ((1 + this.cK) | 0), ((this.eV + keyHash) | 0));
+  var dstHashes = this.IB(this.eV, dataIx, originalHash);
+  return new $c_sci_BitmapIndexedMapNode((this.bc | bitpos), this.bw, dst, dstHashes, ((1 + this.cK) | 0), ((this.eU + keyHash) | 0));
 });
 $p.QO = (function(bitpos, keyHash, node) {
   var dataIx = this.iw(bitpos);
@@ -49285,13 +49288,13 @@ $p.QO = (function(bitpos, keyHash, node) {
   var destPos = ((1 + idxNew) | 0);
   var length$1 = (((-2) + ((src.a.length - idxNew) | 0)) | 0);
   src.a3(srcPos$1, dst, destPos, length$1);
-  var dstHashes = this.Dg(this.eW, dataIx);
+  var dstHashes = this.Dg(this.eV, dataIx);
   this.bc = (this.bc ^ bitpos);
   this.bw = (this.bw | bitpos);
   this.cm = dst;
-  this.eW = dstHashes;
+  this.eV = dstHashes;
   this.cK = (((((-1) + this.cK) | 0) + node.aI()) | 0);
-  this.eV = ((((this.eV - keyHash) | 0) + node.cT()) | 0);
+  this.eU = ((((this.eU - keyHash) | 0) + node.cT()) | 0);
   return this;
 });
 $p.Tw = (function(bitpos, keyHash, node) {
@@ -49309,8 +49312,8 @@ $p.Tw = (function(bitpos, keyHash, node) {
   var destPos = ((1 + idxNew) | 0);
   var length$1 = (((-2) + ((src.a.length - idxNew) | 0)) | 0);
   src.a3(srcPos$1, dst, destPos, length$1);
-  var dstHashes = this.Dg(this.eW, dataIx);
-  return new $c_sci_BitmapIndexedMapNode((this.bc ^ bitpos), (this.bw | bitpos), dst, dstHashes, (((((-1) + this.cK) | 0) + node.aI()) | 0), ((((this.eV - keyHash) | 0) + node.cT()) | 0));
+  var dstHashes = this.Dg(this.eV, dataIx);
+  return new $c_sci_BitmapIndexedMapNode((this.bc ^ bitpos), (this.bw | bitpos), dst, dstHashes, (((((-1) + this.cK) | 0) + node.aI()) | 0), ((((this.eU - keyHash) | 0) + node.cT()) | 0));
 });
 $p.az = (function(f) {
   var iN = $m_jl_Integer$().cj(this.bc);
@@ -49322,7 +49325,7 @@ $p.az = (function(f) {
   var jN = $m_jl_Integer$().cj(this.bw);
   var j = 0;
   while ((j < jN)) {
-    this.ff(j).az(f);
+    this.fe(j).az(f);
     j = ((1 + j) | 0);
   }
 });
@@ -49336,7 +49339,7 @@ $p.jp = (function(f) {
   var jN = $m_jl_Integer$().cj(this.bw);
   var j = 0;
   while ((j < jN)) {
-    this.ff(j).jp(f);
+    this.fe(j).jp(f);
     j = ((1 + j) | 0);
   }
 });
@@ -49350,7 +49353,7 @@ $p.If = (function(f) {
   var jN = $m_jl_Integer$().cj(this.bw);
   var j = 0;
   while ((j < jN)) {
-    this.ff(j).If(f);
+    this.fe(j).If(f);
     j = ((1 + j) | 0);
   }
 });
@@ -49359,7 +49362,7 @@ $p.b = (function(that) {
     var x2 = that;
     if ((this === x2)) {
       return true;
-    } else if ((((((this.eV === x2.eV) && (this.bw === x2.bw)) && (this.bc === x2.bc)) && (this.cK === x2.cK)) && $m_ju_Arrays$().CB(this.eW, x2.eW))) {
+    } else if ((((((this.eU === x2.eU) && (this.bw === x2.bw)) && (this.bc === x2.bc)) && (this.cK === x2.cK)) && $m_ju_Arrays$().CB(this.eV, x2.eV))) {
       var a1 = this.cm;
       var a2 = x2.cm;
       var length = this.cm.a.length;
@@ -49428,7 +49431,7 @@ $p.HU = (function(that, shift) {
             leftDataRightDataRightOverwrites = (leftDataRightDataRightOverwrites | bitpos);
           } else {
             leftDataRightDataMigrateToNode = (leftDataRightDataMigrateToNode | bitpos);
-            dataToNodeMigrationTargets = (dataToNodeMigrationTargets | $m_sci_Node$().cv($m_sci_Node$().fg($m_sc_Hashing$().bz(leftOriginalHash), shift)));
+            dataToNodeMigrationTargets = (dataToNodeMigrationTargets | $m_sci_Node$().cv($m_sci_Node$().ff($m_sc_Hashing$().bz(leftOriginalHash), shift)));
           }
           rightIdx = ((1 + rightIdx) | 0);
         } else if (((bitpos & x2.bw) !== 0)) {
@@ -49480,8 +49483,8 @@ $p.HU = (function(that, shift) {
     var finished$2 = false;
     while ((!finished$2)) {
       if (((bitpos$2 & leftNodeRightNode) !== 0)) {
-        var rightNode = x2.ff(rightNodeIdx);
-        var newNode = this.ff(leftNodeIdx).Ps(rightNode, nextShift);
+        var rightNode = x2.fe(rightNodeIdx);
+        var newNode = this.fe(leftNodeIdx).Ps(rightNode, nextShift);
         if ((rightNode !== newNode)) {
           anyChangesMadeSoFar = true;
         }
@@ -49492,7 +49495,7 @@ $p.HU = (function(that, shift) {
         newSize = ((newSize + newNode.aI()) | 0);
         newCachedHashCode = ((newCachedHashCode + newNode.cT()) | 0);
       } else if (((bitpos$2 & leftDataRightNode) !== 0)) {
-        var n = x2.ff(rightNodeIdx);
+        var n = x2.fe(rightNodeIdx);
         var leftKey = this.e7(leftDataIdx);
         var leftValue = this.e8(leftDataIdx);
         var leftOriginalHash$2 = this.cI(leftDataIdx);
@@ -49510,7 +49513,7 @@ $p.HU = (function(that, shift) {
       } else if (((bitpos$2 & leftNodeRightData) !== 0)) {
         anyChangesMadeSoFar = true;
         var rightOriginalHash = x2.cI(rightDataIdx);
-        var newNode$3 = this.ff(leftNodeIdx).A5(x2.e7(rightDataIdx), x2.e8(rightDataIdx), x2.cI(rightDataIdx), $m_sc_Hashing$().bz(rightOriginalHash), nextShift, true);
+        var newNode$3 = this.fe(leftNodeIdx).A5(x2.e7(rightDataIdx), x2.e8(rightDataIdx), x2.cI(rightDataIdx), $m_sc_Hashing$().bz(rightOriginalHash), nextShift, true);
         newContent.a[(((-1) + ((newContentSize - compressedNodeIdx) | 0)) | 0)] = newNode$3;
         compressedNodeIdx = ((1 + compressedNodeIdx) | 0);
         leftNodeIdx = ((1 + leftNodeIdx) | 0);
@@ -49519,7 +49522,7 @@ $p.HU = (function(that, shift) {
         newCachedHashCode = ((newCachedHashCode + newNode$3.cT()) | 0);
       } else if (((bitpos$2 & leftDataOnly) !== 0)) {
         anyChangesMadeSoFar = true;
-        var originalHash$2 = this.eW.a[leftDataIdx];
+        var originalHash$2 = this.eV.a[leftDataIdx];
         newContent.a[(compressedDataIdx << 1)] = this.e7(leftDataIdx);
         newContent.a[((1 + (compressedDataIdx << 1)) | 0)] = this.e8(leftDataIdx);
         newOriginalHashes.a[compressedDataIdx] = originalHash$2;
@@ -49528,7 +49531,7 @@ $p.HU = (function(that, shift) {
         newSize = ((1 + newSize) | 0);
         newCachedHashCode = ((newCachedHashCode + $m_sc_Hashing$().bz(originalHash$2)) | 0);
       } else if (((bitpos$2 & rightDataOnly) !== 0)) {
-        var originalHash$3 = x2.eW.a[rightDataIdx];
+        var originalHash$3 = x2.eV.a[rightDataIdx];
         newContent.a[(compressedDataIdx << 1)] = x2.e7(rightDataIdx);
         newContent.a[((1 + (compressedDataIdx << 1)) | 0)] = x2.e8(rightDataIdx);
         newOriginalHashes.a[compressedDataIdx] = originalHash$3;
@@ -49538,14 +49541,14 @@ $p.HU = (function(that, shift) {
         newCachedHashCode = ((newCachedHashCode + $m_sc_Hashing$().bz(originalHash$3)) | 0);
       } else if (((bitpos$2 & leftNodeOnly) !== 0)) {
         anyChangesMadeSoFar = true;
-        var newNode$4 = this.ff(leftNodeIdx);
+        var newNode$4 = this.fe(leftNodeIdx);
         newContent.a[(((-1) + ((newContentSize - compressedNodeIdx) | 0)) | 0)] = newNode$4;
         compressedNodeIdx = ((1 + compressedNodeIdx) | 0);
         leftNodeIdx = ((1 + leftNodeIdx) | 0);
         newSize = ((newSize + newNode$4.aI()) | 0);
         newCachedHashCode = ((newCachedHashCode + newNode$4.cT()) | 0);
       } else if (((bitpos$2 & rightNodeOnly) !== 0)) {
-        var newNode$5 = x2.ff(rightNodeIdx);
+        var newNode$5 = x2.fe(rightNodeIdx);
         newContent.a[(((-1) + ((newContentSize - compressedNodeIdx) | 0)) | 0)] = newNode$5;
         compressedNodeIdx = ((1 + compressedNodeIdx) | 0);
         rightNodeIdx = ((1 + rightNodeIdx) | 0);
@@ -49563,7 +49566,7 @@ $p.HU = (function(that, shift) {
         newSize = ((newSize + newNode$6.aI()) | 0);
         newCachedHashCode = ((newCachedHashCode + newNode$6.cT()) | 0);
       } else if (((bitpos$2 & leftDataRightDataRightOverwrites) !== 0)) {
-        var originalHash$4 = x2.eW.a[rightDataIdx];
+        var originalHash$4 = x2.eV.a[rightDataIdx];
         newContent.a[(compressedDataIdx << 1)] = x2.e7(rightDataIdx);
         newContent.a[((1 + (compressedDataIdx << 1)) | 0)] = x2.e8(rightDataIdx);
         newOriginalHashes.a[compressedDataIdx] = originalHash$4;
@@ -49592,7 +49595,7 @@ $p.Pt = (function() {
     contentClone.a[i$1] = contentClone.a[i$1].Pv();
     i$1 = ((1 + i$1) | 0);
   }
-  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, contentClone, this.eW.N(), this.cK, this.eV);
+  return new $c_sci_BitmapIndexedMapNode(this.bc, this.bw, contentClone, this.eV.N(), this.cK, this.eU);
 });
 $p.Pv = (function() {
   return this.Pt();
@@ -49604,7 +49607,7 @@ $p.A5 = (function(key, value, originalHash, hash, shift, replaceValue) {
   return this.wX(key, value, originalHash, hash, shift, replaceValue);
 });
 $p.zu = (function(index) {
-  return this.ff(index);
+  return this.fe(index);
 });
 function $isArrayOf_sci_BitmapIndexedMapNode(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.d3)));
@@ -49699,22 +49702,22 @@ $p.ix = (function(index) {
   return this.ed.a[(((((-1) + this.ed.a.length) | 0) - index) | 0)];
 });
 $p.zk = (function(element, originalHash, elementHash, shift) {
-  var mask = $m_sci_Node$().fg(elementHash, shift);
+  var mask = $m_sci_Node$().ff(elementHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bf & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bf, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bf, mask, bitpos);
     return ((this.hc.a[index] === originalHash) && $m_sr_BoxesRunTime$().Q(element, this.gF(index)));
   }
   if (((this.c8 & bitpos) !== 0)) {
-    return this.ix($m_sci_Node$().eL(this.c8, mask, bitpos)).zk(element, originalHash, elementHash, ((5 + shift) | 0));
+    return this.ix($m_sci_Node$().eK(this.c8, mask, bitpos)).zk(element, originalHash, elementHash, ((5 + shift) | 0));
   }
   return false;
 });
 $p.RY = (function(element, originalHash, elementHash, shift) {
-  var mask = $m_sci_Node$().fg(elementHash, shift);
+  var mask = $m_sci_Node$().ff(elementHash, shift);
   var bitpos = $m_sci_Node$().cv(mask);
   if (((this.bf & bitpos) !== 0)) {
-    var index = $m_sci_Node$().eL(this.bf, mask, bitpos);
+    var index = $m_sci_Node$().eK(this.bf, mask, bitpos);
     var element0 = this.gF(index);
     if (Object.is(element0, element)) {
       return this;
@@ -49729,7 +49732,7 @@ $p.RY = (function(element, originalHash, elementHash, shift) {
     }
   }
   if (((this.c8 & bitpos) !== 0)) {
-    var index$2 = $m_sci_Node$().eL(this.c8, mask, bitpos);
+    var index$2 = $m_sci_Node$().eK(this.c8, mask, bitpos);
     var subNode = this.ix(index$2);
     var subNodeNew$2 = subNode.RZ(element, originalHash, elementHash, ((5 + shift) | 0));
     if ((subNode === subNodeNew$2)) {
@@ -49746,8 +49749,8 @@ $p.IM = (function(key0, originalKeyHash0, keyHash0, key1, originalKeyHash1, keyH
     var elems = new $c_sjsr_WrappedVarArgs([key0, key1]);
     return new $c_sci_HashCollisionSetNode(originalKeyHash0, keyHash0, this$4.CG(elems));
   } else {
-    var mask0 = $m_sci_Node$().fg(keyHash0, shift);
-    var mask1 = $m_sci_Node$().fg(keyHash1, shift);
+    var mask0 = $m_sci_Node$().ff(keyHash0, shift);
+    var mask1 = $m_sci_Node$().ff(keyHash1, shift);
     if ((mask0 !== mask1)) {
       var dataMap = ($m_sci_Node$().cv(mask0) | $m_sci_Node$().cv(mask1));
       var newCachedHashCode = ((keyHash0 + keyHash1) | 0);
@@ -50172,7 +50175,7 @@ $p.zC = (function() {
 $p.zQ = (function() {
   return 0;
 });
-$p.ff = (function(index) {
+$p.fe = (function(index) {
   throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), "No sub-nodes present in hash-collision leaf node.");
 });
 $p.wC = (function() {
@@ -50281,7 +50284,7 @@ $p.Ps = (function(that, shift) {
   return this.Tl(that, shift);
 });
 $p.zu = (function(index) {
-  return this.ff(index);
+  return this.fe(index);
 });
 function $isArrayOf_sci_HashCollisionMapNode(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.d5)));
@@ -50371,7 +50374,7 @@ $p.Jk = (function(that, shift) {
 $p.PT = (function(pred, flipped) {
   var newContent = this.cL.Ue(pred, flipped);
   var newContentLength = newContent.g();
-  return ((newContentLength === 0) ? $m_sci_SetNode$().tB : ((newContentLength === 1) ? new $c_sci_BitmapIndexedSetNode($m_sci_Node$().cv($m_sci_Node$().fg(this.mj, 0)), 0, new $ac_O([newContent.V()]), new $ac_I(new Int32Array([this.tt])), 1, this.mj) : ((newContent.g() === this.cL.g()) ? this : new $c_sci_HashCollisionSetNode(this.tt, this.mj, newContent))));
+  return ((newContentLength === 0) ? $m_sci_SetNode$().tB : ((newContentLength === 1) ? new $c_sci_BitmapIndexedSetNode($m_sci_Node$().cv($m_sci_Node$().ff(this.mj, 0)), 0, new $ac_O([newContent.V()]), new $ac_I(new Int32Array([this.tt])), 1, this.mj) : ((newContent.g() === this.cL.g()) ? this : new $c_sci_HashCollisionSetNode(this.tt, this.mj, newContent))));
 });
 $p.b = (function(that) {
   if ((that instanceof $c_sci_HashCollisionSetNode)) {
@@ -50867,7 +50870,7 @@ class $c_s_util_control_ControlThrowable extends $c_jl_Throwable {
 function $c_Ltigerpython_inputenc_StringTranslator$StringMode$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -50927,7 +50930,7 @@ function $isArrayOf_Ltigerpython_parser_ast_AstNode$SequenceExpression(obj, dept
 function $c_Ltigerpython_parser_ast_AstNodeKind$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51095,7 +51098,7 @@ function $m_Ltigerpython_parser_ast_AstNodeKind$() {
 function $c_Ltigerpython_parser_ast_AugAssignOp$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51137,7 +51140,7 @@ $p.constructor = $c_Ltigerpython_parser_ast_AugAssignOp$;
 function $h_Ltigerpython_parser_ast_AugAssignOp$() {
 }
 $h_Ltigerpython_parser_ast_AugAssignOp$.prototype = $p;
-$p.eK = (function(tokenType) {
+$p.eJ = (function(tokenType) {
   var x = $m_Ltigerpython_parser_lexer_TokenType$().G6;
   if ((x === tokenType)) {
     return this.Md;
@@ -51221,7 +51224,7 @@ function $m_Ltigerpython_parser_ast_AugAssignOp$() {
 function $c_Ltigerpython_parser_ast_BinOp$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51293,7 +51296,7 @@ $p.constructor = $c_Ltigerpython_parser_ast_BinOp$;
 function $h_Ltigerpython_parser_ast_BinOp$() {
 }
 $h_Ltigerpython_parser_ast_BinOp$.prototype = $p;
-$p.eK = (function(tokenType) {
+$p.eJ = (function(tokenType) {
   var x = $m_Ltigerpython_parser_lexer_TokenType$().pS;
   if ((x === tokenType)) {
     return this.Mm;
@@ -51437,7 +51440,7 @@ function $m_Ltigerpython_parser_ast_BinOp$() {
 function $c_Ltigerpython_parser_ast_ExprContext$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51481,7 +51484,7 @@ function $m_Ltigerpython_parser_ast_ExprContext$() {
 function $c_Ltigerpython_parser_ast_ExtExprContext$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51549,7 +51552,7 @@ function $m_Ltigerpython_parser_ast_ExtExprContext$() {
 function $c_Ltigerpython_parser_ast_UnOp$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51588,7 +51591,7 @@ function $m_Ltigerpython_parser_ast_UnOp$() {
 function $c_Ltigerpython_parser_ast_ValueType$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51616,7 +51619,7 @@ $p.constructor = $c_Ltigerpython_parser_ast_ValueType$;
 function $h_Ltigerpython_parser_ast_ValueType$() {
 }
 $h_Ltigerpython_parser_ast_ValueType$.prototype = $p;
-$p.eK = (function(tokenType) {
+$p.eJ = (function(tokenType) {
   var x = $m_Ltigerpython_parser_lexer_TokenType$().bt;
   if ((x === tokenType)) {
     return this.j2;
@@ -51629,7 +51632,7 @@ $p.eK = (function(tokenType) {
       if ((x$5 === tokenType)) {
         return this.k0;
       } else {
-        var x$7 = $m_Ltigerpython_parser_lexer_TokenType$().fx;
+        var x$7 = $m_Ltigerpython_parser_lexer_TokenType$().fw;
         if ((x$7 === tokenType)) {
           return this.y2;
         } else {
@@ -51655,7 +51658,7 @@ function $m_Ltigerpython_parser_ast_ValueType$() {
 function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -51679,7 +51682,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.MB = null;
   this.mY = null;
   this.oY = null;
-  this.fu = null;
+  this.ft = null;
   this.AU = null;
   this.oZ = null;
   this.mZ = null;
@@ -51741,7 +51744,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.pj = null;
   this.pk = null;
   this.nh = null;
-  this.f4 = null;
+  this.f3 = null;
   this.lj = null;
   this.pl = null;
   this.FO = null;
@@ -51751,7 +51754,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.j3 = null;
   this.nj = null;
   this.lk = null;
-  this.fv = null;
+  this.fu = null;
   this.k3 = null;
   this.cC = null;
   this.pn = null;
@@ -51826,7 +51829,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.MB = new $c_s_Enumeration$Val(this, this.f, "CANNOT_CALL_VALUE");
   this.mY = new $c_s_Enumeration$Val(this, this.f, "CANNOT_REDEFINE_NAME");
   this.oY = new $c_s_Enumeration$Val(this, this.f, "CANNOT_TEST_TUPLE");
-  this.fu = new $c_s_Enumeration$Val(this, this.f, "CANNOT_USE_KEYWORD_AS_NAME");
+  this.ft = new $c_s_Enumeration$Val(this, this.f, "CANNOT_USE_KEYWORD_AS_NAME");
   this.AU = new $c_s_Enumeration$Val(this, this.f, "CASE_REQUIRED");
   this.oZ = new $c_s_Enumeration$Val(this, this.f, "CLASS_METHOD_WITHOUT_SELF");
   this.mZ = new $c_s_Enumeration$Val(this, this.f, "COLON_EXPECTED");
@@ -51888,7 +51891,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.pj = new $c_s_Enumeration$Val(this, this.f, "MISSING_ASSIGNMENT");
   this.pk = new $c_s_Enumeration$Val(this, this.f, "MISSING_ASSIGNMENT_SOURCE");
   this.nh = new $c_s_Enumeration$Val(this, this.f, "MISSING_BODY");
-  this.f4 = new $c_s_Enumeration$Val(this, this.f, "MISSING_COMMA");
+  this.f3 = new $c_s_Enumeration$Val(this, this.f, "MISSING_COMMA");
   this.lj = new $c_s_Enumeration$Val(this, this.f, "MISSING_COMPARISON");
   this.pl = new $c_s_Enumeration$Val(this, this.f, "MISSING_DOT");
   this.FO = new $c_s_Enumeration$Val(this, this.f, "MISSING_EXPRESSION");
@@ -51898,7 +51901,7 @@ function $c_Ltigerpython_parser_errors_ErrorCode$() {
   this.j3 = new $c_s_Enumeration$Val(this, this.f, "MISSING_OPERATOR_OR_COMMA");
   this.nj = new $c_s_Enumeration$Val(this, this.f, "MISSING_PARENTHESES");
   this.lk = new $c_s_Enumeration$Val(this, this.f, "MISSING_RIGHT_BRACKET");
-  this.fv = new $c_s_Enumeration$Val(this, this.f, "MISSING_SPACE");
+  this.fu = new $c_s_Enumeration$Val(this, this.f, "MISSING_SPACE");
   this.k3 = new $c_s_Enumeration$Val(this, this.f, "MISSING_TOKEN");
   this.cC = new $c_s_Enumeration$Val(this, this.f, "MISSPELLED_KEYWORD");
   this.pn = new $c_s_Enumeration$Val(this, this.f, "MISSPELLED_NUMBER");
@@ -51977,7 +51980,7 @@ function $m_Ltigerpython_parser_errors_ErrorCode$() {
 function $c_Ltigerpython_parser_lexer_CatCodes$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -52123,7 +52126,7 @@ function $m_Ltigerpython_parser_lexer_CatCodes$() {
 function $c_Ltigerpython_parser_parsing_BracketPatcher$BracketType$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -52151,7 +52154,7 @@ $p.constructor = $c_Ltigerpython_parser_parsing_BracketPatcher$BracketType$;
 function $h_Ltigerpython_parser_parsing_BracketPatcher$BracketType$() {
 }
 $h_Ltigerpython_parser_parsing_BracketPatcher$BracketType$.prototype = $p;
-$p.eK = (function(tokenType) {
+$p.eJ = (function(tokenType) {
   var x = $m_Ltigerpython_parser_lexer_TokenType$().aw;
   if ((x === tokenType)) {
     var $x_1 = true;
@@ -52753,7 +52756,7 @@ var $d_Ltigerpython_parser_types_PythonFunction = new $TypeData().i($c_Ltigerpyt
 function $c_Ltigerpython_utilities_completer_Completer$FilterType$(outer) {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -53187,7 +53190,7 @@ $p.zt = (function(prefix) {
         b.hF(elem);
       }
     }
-    return $x_2.Cz($x_1.Jh(b.d5.aY(new $c_sjsr_AnonFunction1(((x$4$2) => x$4$2.an()))).eS(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), $m_s_math_Ordering$String$()));
+    return $x_2.Cz($x_1.Jh(b.d5.aY(new $c_sjsr_AnonFunction1(((x$4$2) => x$4$2.an()))).eR(new $c_s_reflect_ClassTag$GenericClassTag($d_T.l())), $m_s_math_Ordering$String$()));
   } else {
     return this.zt("");
   }
@@ -53227,7 +53230,7 @@ var $d_Ltigerpython_utilities_completer_StringFileFilter = new $TypeData().i($c_
 function $c_Ltigerpython_utilities_fastparse_TokenType$() {
   this.fK = null;
   this.fL = null;
-  this.fk = null;
+  this.fj = null;
   this.gi = null;
   this.fM = false;
   this.f = 0;
@@ -53791,7 +53794,7 @@ $p.bZ = (function() {
   return $m_sci_Map$().ac(this.dA.e6);
 });
 $p.cY = (function(name, dataType) {
-  this.dA.fj(name, dataType);
+  this.dA.fi(name, dataType);
 });
 function $isArrayOf_Ltigerpython_utilities_types_Module(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.b2)));
@@ -53997,7 +54000,7 @@ $p.cY = (function(name, dataType) {
   if ((dataType instanceof $c_Ltigerpython_utilities_types_PythonFunction)) {
     var x2 = dataType;
     if (x2.CU()) {
-      this.qh.fj(name, x2);
+      this.qh.fi(name, x2);
       if ((name === "__init__")) {
         this.nG = x2;
         return (void 0);
@@ -54007,11 +54010,11 @@ $p.cY = (function(name, dataType) {
     }
   }
   if ((dataType instanceof $c_Ltigerpython_utilities_types_FunctionType)) {
-    this.st.fj(name, dataType);
+    this.st.fi(name, dataType);
     return (void 0);
   }
-  this.st.fj(name, dataType);
-  this.qh.fj(name, dataType);
+  this.st.fi(name, dataType);
+  this.qh.fi(name, dataType);
 });
 $p.RD = (function(name, dataType) {
   matchEnd4: {
@@ -54023,7 +54026,7 @@ $p.RD = (function(name, dataType) {
       }
     }
   }
-  this.qh.fj(name, dataType);
+  this.qh.fi(name, dataType);
 });
 function $isArrayOf_Ltigerpython_utilities_types_PythonClass(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.h0)));
@@ -54036,7 +54039,7 @@ var $d_Ltigerpython_utilities_types_PythonClass = new $TypeData().i($c_Ltigerpyt
 function $p_Ltigerpython_utilities_types_PythonFunction__isMethod$lzycompute__Z($thiz) {
   if ((!$thiz.Hz)) {
     if (($thiz.su.a.length !== 0)) {
-      var x1 = $thiz.su.a[0].eI;
+      var x1 = $thiz.su.a[0].fC;
       var $x_1 = ((x1 instanceof $c_Ltigerpython_utilities_types_SelfInstance) || (x1 instanceof $c_Ltigerpython_utilities_types_SelfClass));
     } else {
       var $x_1 = false;
@@ -54265,7 +54268,7 @@ $p.CU = (function() {
   return ((!this.Hz) ? $p_Ltigerpython_utilities_types_PythonFunction__isMethod$lzycompute__Z(this) : this.HB);
 });
 $p.cY = (function(name, dataType) {
-  this.HA.fj(name, dataType);
+  this.HA.fi(name, dataType);
 });
 function $isArrayOf_Ltigerpython_utilities_types_PythonFunction(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.h1)));
@@ -55694,7 +55697,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -55833,7 +55836,7 @@ function $f_sc_SeqOps__sorted__s_math_Ordering__O($thiz, ord) {
   return b.c0();
 }
 function $f_sc_SeqOps__sortBy__F1__s_math_Ordering__O($thiz, f, ord) {
-  return $thiz.eP(new $c_s_math_Ordering$$anon$1(ord, f));
+  return $thiz.eO(new $c_s_math_Ordering$$anon$1(ord, f));
 }
 function $f_sc_SeqOps__isEmpty__Z($thiz) {
   return ($thiz.dT(0) === 0);
@@ -55982,7 +55985,7 @@ $p.zc = (function(key, value) {
     this.qZ = this.qZ.wX(key, value, originalHash, improved, 0, true);
     if ((this.qZ !== this.KD.bG)) {
       this.EK = true;
-      this.As = $m_sci_Node$().cv($m_sci_Node$().fg(improved, 0));
+      this.As = $m_sci_Node$().cv($m_sci_Node$().ff(improved, 0));
     }
   } else {
     this.As = this.qZ.Dy(key, value, originalHash, improved, 0, this.As);
@@ -56390,7 +56393,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -56844,7 +56847,7 @@ $p.U2 = (function() {
   }
 });
 $p.U1 = (function() {
-  return ((this.cG.a.length !== 0) && ($m_sc_ArrayOps$().df(this.cG).o.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt));
+  return ((this.cG.a.length !== 0) && ($m_sc_ArrayOps$().df(this.cG).o.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt));
 });
 $p.Iw = (function() {
   var nonLocalReturnKey1 = $ct_O__(new $c_O());
@@ -56884,7 +56887,7 @@ $p.Iw = (function() {
           }
           if ($x_2) {
             depth.mv = (((-1) + depth.mv) | 0);
-          } else if (((depth.mv === 0) && (x1.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt))) {
+          } else if (((depth.mv === 0) && (x1.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt))) {
             throw new $c_sr_NonLocalReturnControl$mcZ$sp(nonLocalReturnKey1, true);
           }
         }
@@ -57142,7 +57145,7 @@ $p.CD = (function() {
     return ((this.aj + this.dv) | 0);
   }
 });
-$p.eT = (function() {
+$p.eS = (function() {
   return ((!this.Gp) ? $p_Ltigerpython_parser_parsing_PreParser$Line__tokenSource$lzycompute__Ltigerpython_parser_lexer_TokenBuffer(this) : this.Gq);
 });
 $p.e9 = (function() {
@@ -58120,7 +58123,7 @@ function $c_Ltigerpython_parser_types_ListType(itemType) {
   this.ci = null;
   this.BL = null;
   this.BL = itemType;
-  $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(this, $m_sc_StringOps$().ao("list[%s]", new $c_sjsr_WrappedVarArgs([itemType.aQ()])), $m_Ltigerpython_parser_types_BuiltinTypes$().fa, $m_Ltigerpython_parser_types_BuiltinTypes$().fa.ci);
+  $ct_Ltigerpython_parser_types_PrimitiveType__T__Ltigerpython_parser_types_PrimitiveType__sci_Map__(this, $m_sc_StringOps$().ao("list[%s]", new $c_sjsr_WrappedVarArgs([itemType.aQ()])), $m_Ltigerpython_parser_types_BuiltinTypes$().f9, $m_Ltigerpython_parser_types_BuiltinTypes$().f9.ci);
 }
 $p = $c_Ltigerpython_parser_types_ListType.prototype = new $h_Ltigerpython_parser_types_PrimitiveType();
 $p.constructor = $c_Ltigerpython_parser_types_ListType;
@@ -58594,7 +58597,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -59397,7 +59400,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$1() {
     var s = s$2;
     var b = $m_Ltigerpython_utilities_types_BuiltinFunction$().zr(s, $m_sci_Map$EmptyMap$());
     var name = b.lF;
-    this.dA.fj(name, b);
+    this.dA.fi(name, b);
   });
   var len = xs.a.length;
   var i = 0;
@@ -59469,9 +59472,9 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$1() {
     throw new $c_s_MatchError(xs);
   }
   var dataType = $m_Ltigerpython_utilities_types_BuiltinTypes$().jj;
-  this.dA.fj("pi", dataType);
+  this.dA.fi("pi", dataType);
   var dataType$1 = $m_Ltigerpython_utilities_types_BuiltinTypes$().jj;
-  this.dA.fj("e", dataType$1);
+  this.dA.fi("e", dataType$1);
 }
 $p = $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$1.prototype = new $h_Ltigerpython_utilities_types_Module();
 $p.constructor = $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$1;
@@ -59497,7 +59500,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$2() {
     var s = s$2;
     var b = $m_Ltigerpython_utilities_types_BuiltinFunction$().zr(s, $m_sci_Map$EmptyMap$());
     var name = b.lF;
-    this.dA.fj(name, b);
+    this.dA.fi(name, b);
   });
   var len = xs.a.length;
   var i = 0;
@@ -59593,7 +59596,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$3() {
     var s = s$2;
     var b = $m_Ltigerpython_utilities_types_BuiltinFunction$().zr(s, $m_sci_Map$EmptyMap$());
     var name = b.lF;
-    this.dA.fj(name, b);
+    this.dA.fi(name, b);
   });
   var len = xs.a.length;
   var i = 0;
@@ -59668,7 +59671,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$3() {
   var f$1 = ((s$3$2) => {
     var s$3 = s$3$2;
     var dataType = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
-    this.dA.fj(s$3, dataType);
+    this.dA.fi(s$3, dataType);
   });
   var len$1 = xs$1.a.length;
   var i$1 = 0;
@@ -59764,7 +59767,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$4() {
     var s = s$2;
     var b = $m_Ltigerpython_utilities_types_BuiltinFunction$().zr(s, $m_sci_Map$EmptyMap$());
     var name = b.lF;
-    this.dA.fj(name, b);
+    this.dA.fi(name, b);
   });
   var len = xs.a.length;
   var i = 0;
@@ -59839,7 +59842,7 @@ function $c_Ltigerpython_utilities_scopes_ModuleLoader$$anon$4() {
   var f$1 = ((s$3$2) => {
     var s$3 = s$3$2;
     var dataType = $m_Ltigerpython_utilities_types_BuiltinTypes$().ae;
-    this.dA.fj(s$3, dataType);
+    this.dA.fi(s$3, dataType);
   });
   var len$1 = xs$1.a.length;
   var i$1 = 0;
@@ -60046,9 +60049,9 @@ var $d_Ltigerpython_utilities_types_ListType = new $TypeData().i($c_Ltigerpython
 /** @constructor */
 function $c_Ltigerpython_utilities_types_Parameter(name, dataType) {
   this.qg = null;
-  this.eI = null;
+  this.fC = null;
   this.qg = name;
-  this.eI = dataType;
+  this.fC = dataType;
 }
 $p = $c_Ltigerpython_utilities_types_Parameter.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_types_Parameter;
@@ -60069,7 +60072,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 1: {
-      return this.eI;
+      return this.fC;
       break;
     }
     default: {
@@ -60092,8 +60095,8 @@ $p.b = (function(x$1) {
   } else if ((x$1 instanceof $c_Ltigerpython_utilities_types_Parameter)) {
     var Parameter$1 = x$1;
     if ((this.qg === Parameter$1.qg)) {
-      var x = this.eI;
-      var x$2 = Parameter$1.eI;
+      var x = this.fC;
+      var x$2 = Parameter$1.fC;
       return ((x === null) ? (x$2 === null) : x.b(x$2));
     } else {
       return false;
@@ -60112,7 +60115,7 @@ var $d_Ltigerpython_utilities_types_Parameter = new $TypeData().i($c_Ltigerpytho
   a: 1
 }));
 /** @constructor */
-function $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs, positionalOrKeywordArgs, varArgs, keywordOnlyArgs, varKwargs, returnType, firstParamIsSelf) {
+function $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs, positionalOrKeywordArgs, varArgs, keywordOnlyArgs, varKwargs, returnType, firstParamIsSelfOrCls) {
   this.qj = null;
   this.sw = null;
   this.qk = null;
@@ -60126,7 +60129,7 @@ function $c_Ltigerpython_utilities_types_Signature(positionalOnlyArgs, positiona
   this.qi = keywordOnlyArgs;
   this.ql = varKwargs;
   this.z0 = returnType;
-  this.wd = firstParamIsSelf;
+  this.wd = firstParamIsSelfOrCls;
 }
 $p = $c_Ltigerpython_utilities_types_Signature.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_utilities_types_Signature;
@@ -60575,7 +60578,7 @@ function $c_Ltigerpython_utilities_types_TupleType(itemTypes) {
       throw new $c_s_MatchError(itemTypes);
     }
   }
-  $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(this, $x_11.ao("tuple[%s]", new $c_sjsr_WrappedVarArgs([$f_sc_IterableOnceOps__mkString__T__T__T__T($x_10.as(ys), "", ", ", "")])), $m_Ltigerpython_utilities_types_BuiltinTypes$().fd, $m_Ltigerpython_utilities_types_BuiltinTypes$().fd.bY);
+  $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(this, $x_11.ao("tuple[%s]", new $c_sjsr_WrappedVarArgs([$f_sc_IterableOnceOps__mkString__T__T__T__T($x_10.as(ys), "", ", ", "")])), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().fc.bY);
 }
 $p = $c_Ltigerpython_utilities_types_TupleType.prototype = new $h_Ltigerpython_utilities_types_PrimitiveType();
 $p.constructor = $c_Ltigerpython_utilities_types_TupleType;
@@ -60668,7 +60671,7 @@ function $c_Ltigerpython_utilities_types_VarTupleType(itemType) {
   this.bn = null;
   this.ki = null;
   this.bY = null;
-  $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(this, $m_sc_StringOps$().ao("tuple[%s, ...]", new $c_sjsr_WrappedVarArgs([itemType.aQ()])), $m_Ltigerpython_utilities_types_BuiltinTypes$().fd, $m_Ltigerpython_utilities_types_BuiltinTypes$().fd.bY);
+  $ct_Ltigerpython_utilities_types_PrimitiveType__T__Ltigerpython_utilities_types_PrimitiveType__sci_Map__(this, $m_sc_StringOps$().ao("tuple[%s, ...]", new $c_sjsr_WrappedVarArgs([itemType.aQ()])), $m_Ltigerpython_utilities_types_BuiltinTypes$().fc, $m_Ltigerpython_utilities_types_BuiltinTypes$().fc.bY);
 }
 $p = $c_Ltigerpython_utilities_types_VarTupleType.prototype = new $h_Ltigerpython_utilities_types_PrimitiveType();
 $p.constructor = $c_Ltigerpython_utilities_types_VarTupleType;
@@ -60901,10 +60904,10 @@ function $c_s_Enumeration$Val(outer, i, name) {
   this.hW = i;
   this.E8 = name;
   $ct_s_Enumeration$Value__s_Enumeration__(this, outer);
-  if ((!(!outer.fk.al(i)))) {
+  if ((!(!outer.fj.al(i)))) {
     throw new $c_jl_AssertionError((("assertion failed: " + "Duplicate id: ") + this.hW));
   }
-  $p_scm_HashMap__put0__O__O__Z__s_Some(outer.fk, i, this, false);
+  $p_scm_HashMap__put0__O__O__Z__s_Some(outer.fj, i, this, false);
   outer.fM = false;
   outer.f = ((1 + i) | 0);
   if ((outer.f > outer.gh)) {
@@ -61140,7 +61143,7 @@ $p.c = (function() {
   while (true) {
     var this$1 = this.qQ;
     if (((this$1.h === 0) && (this$1.i === 0))) {
-      if ((((1 + this.qP) | 0) >= this.Es.eN())) {
+      if ((((1 + this.qP) | 0) >= this.Es.eM())) {
         return false;
       }
       this.qP = ((1 + this.qP) | 0);
@@ -61221,18 +61224,18 @@ function $f_sc_IndexedSeqOps__head__O($thiz) {
   if ((!$thiz.t())) {
     return $thiz.s(0);
   } else {
-    throw new $c_ju_NoSuchElementException(("head of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.eJ() : $thiz.j())));
+    throw new $c_ju_NoSuchElementException(("head of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.eI() : $thiz.j())));
   }
 }
 function $f_sc_IndexedSeqOps__last__O($thiz) {
   if ((!$thiz.t())) {
     return $thiz.s((((-1) + $thiz.g()) | 0));
   } else {
-    throw new $c_ju_NoSuchElementException(("last of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.eJ() : $thiz.j())));
+    throw new $c_ju_NoSuchElementException(("last of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.eI() : $thiz.j())));
   }
 }
 function $f_sc_Iterable__toString__T($thiz) {
-  return $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, ($thiz.eJ() + "("), ", ", ")");
+  return $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, ($thiz.eI() + "("), ", ", ")");
 }
 function $is_sc_Iterable(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.n.f)));
@@ -61799,41 +61802,41 @@ var $d_sc_StrictOptimizedLinearSeqOps$$anon$1 = new $TypeData().i($c_sc_StrictOp
   e: 1
 }));
 function $p_sc_StringOps$$anon$1__advance__T($thiz) {
-  var start = $thiz.eU;
+  var start = $thiz.eT;
   while (true) {
-    if (($thiz.eU < $thiz.qW)) {
+    if (($thiz.eT < $thiz.qW)) {
       var this$ = $thiz.xd;
-      var i = $thiz.eU;
+      var i = $thiz.eT;
       var c = this$.charCodeAt(i);
       var $x_1 = (!((c === 13) || (c === 10)));
     } else {
       var $x_1 = false;
     }
     if ($x_1) {
-      $thiz.eU = ((1 + $thiz.eU) | 0);
+      $thiz.eT = ((1 + $thiz.eT) | 0);
     } else {
       break;
     }
   }
-  var end = $thiz.eU;
-  if (($thiz.eU < $thiz.qW)) {
+  var end = $thiz.eT;
+  if (($thiz.eT < $thiz.qW)) {
     var this$$2 = $thiz.xd;
-    var i$1 = $thiz.eU;
+    var i$1 = $thiz.eT;
     var c$1 = this$$2.charCodeAt(i$1);
-    $thiz.eU = ((1 + $thiz.eU) | 0);
-    if (($thiz.eU < $thiz.qW)) {
+    $thiz.eT = ((1 + $thiz.eT) | 0);
+    if (($thiz.eT < $thiz.qW)) {
       var this$$3 = $thiz.xd;
-      var i$2 = $thiz.eU;
+      var i$2 = $thiz.eT;
       var c$2 = this$$3.charCodeAt(i$2);
       var $x_2 = ((c$1 === 13) && (c$2 === 10));
     } else {
       var $x_2 = false;
     }
     if ($x_2) {
-      $thiz.eU = ((1 + $thiz.eU) | 0);
+      $thiz.eT = ((1 + $thiz.eT) | 0);
     }
     if ((!$thiz.Kw)) {
-      end = $thiz.eU;
+      end = $thiz.eT;
     }
   }
   var this$6 = $thiz.xd;
@@ -61843,13 +61846,13 @@ function $p_sc_StringOps$$anon$1__advance__T($thiz) {
 /** @constructor */
 function $c_sc_StringOps$$anon$1(\u03b4this$2, stripped$1) {
   this.qW = 0;
-  this.eU = 0;
+  this.eT = 0;
   this.xd = null;
   this.Kw = false;
   this.xd = \u03b4this$2;
   this.Kw = stripped$1;
   this.qW = \u03b4this$2.length;
-  this.eU = 0;
+  this.eT = 0;
 }
 $p = $c_sc_StringOps$$anon$1.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sc_StringOps$$anon$1;
@@ -61858,10 +61861,10 @@ function $h_sc_StringOps$$anon$1() {
 }
 $h_sc_StringOps$$anon$1.prototype = $p;
 $p.c = (function() {
-  return (this.eU < this.qW);
+  return (this.eT < this.qW);
 });
 $p.QQ = (function() {
-  return ((this.eU >= this.qW) ? $m_sc_Iterator$().r.d() : $p_sc_StringOps$$anon$1__advance__T(this));
+  return ((this.eT >= this.qW) ? $m_sc_Iterator$().r.d() : $p_sc_StringOps$$anon$1__advance__T(this));
 });
 $p.d = (function() {
   return this.QQ();
@@ -61880,31 +61883,31 @@ function $p_sci_ChampBaseIterator__initNodes__V($thiz) {
   }
 }
 function $p_sci_ChampBaseIterator__setupPayloadNode__sci_Node__V($thiz, node) {
-  $thiz.fm = node;
+  $thiz.fl = node;
   $thiz.bF = 0;
   $thiz.kJ = node.zX();
 }
 function $p_sci_ChampBaseIterator__pushNode__sci_Node__V($thiz, node) {
   $p_sci_ChampBaseIterator__initNodes__V($thiz);
-  $thiz.eX = ((1 + $thiz.eX) | 0);
-  var cursorIndex = ($thiz.eX << 1);
-  var lengthIndex = ((1 + ($thiz.eX << 1)) | 0);
-  $thiz.kK.a[$thiz.eX] = node;
+  $thiz.eW = ((1 + $thiz.eW) | 0);
+  var cursorIndex = ($thiz.eW << 1);
+  var lengthIndex = ((1 + ($thiz.eW << 1)) | 0);
+  $thiz.kK.a[$thiz.eW] = node;
   $thiz.hd.a[cursorIndex] = 0;
   $thiz.hd.a[lengthIndex] = node.zQ();
 }
 function $p_sci_ChampBaseIterator__popNode__V($thiz) {
-  $thiz.eX = (((-1) + $thiz.eX) | 0);
+  $thiz.eW = (((-1) + $thiz.eW) | 0);
 }
 function $p_sci_ChampBaseIterator__searchNextValueNode__Z($thiz) {
-  while (($thiz.eX >= 0)) {
-    var cursorIndex = ($thiz.eX << 1);
-    var lengthIndex = ((1 + ($thiz.eX << 1)) | 0);
+  while (($thiz.eW >= 0)) {
+    var cursorIndex = ($thiz.eW << 1);
+    var lengthIndex = ((1 + ($thiz.eW << 1)) | 0);
     var nodeCursor = $thiz.hd.a[cursorIndex];
     if ((nodeCursor < $thiz.hd.a[lengthIndex])) {
       var ev$1 = $thiz.hd;
       ev$1.a[cursorIndex] = ((1 + ev$1.a[cursorIndex]) | 0);
-      var nextNode = $thiz.kK.a[$thiz.eX].zu(nodeCursor);
+      var nextNode = $thiz.kK.a[$thiz.eW].zu(nodeCursor);
       if (nextNode.zC()) {
         $p_sci_ChampBaseIterator__pushNode__sci_Node__V($thiz, nextNode);
       }
@@ -61921,7 +61924,7 @@ function $p_sci_ChampBaseIterator__searchNextValueNode__Z($thiz) {
 function $ct_sci_ChampBaseIterator__($thiz) {
   $thiz.bF = 0;
   $thiz.kJ = 0;
-  $thiz.eX = (-1);
+  $thiz.eW = (-1);
   return $thiz;
 }
 function $ct_sci_ChampBaseIterator__sci_Node__($thiz, rootNode) {
@@ -61938,8 +61941,8 @@ function $ct_sci_ChampBaseIterator__sci_Node__($thiz, rootNode) {
 function $c_sci_ChampBaseIterator() {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
 }
@@ -62040,12 +62043,12 @@ function $p_sci_HashMapBuilder__insertValue__sci_BitmapIndexedMapNode__I__O__I__
   var destPos = ((2 + idx) | 0);
   var length = ((src.a.length - idx) | 0);
   src.a3(idx, dst, destPos, length);
-  var dstHashes = $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, bm.eW, dataIx, originalHash);
+  var dstHashes = $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, bm.eV, dataIx, originalHash);
   bm.bc = (bm.bc | bitpos);
   bm.cm = dst;
-  bm.eW = dstHashes;
+  bm.eV = dstHashes;
   bm.cK = ((1 + bm.cK) | 0);
-  bm.eV = ((bm.eV + keyHash) | 0);
+  bm.eU = ((bm.eU + keyHash) | 0);
 }
 function $p_sci_HashMapBuilder__ensureUnaliased__V($thiz) {
   if ($p_sci_HashMapBuilder__isAliased__Z($thiz)) {
@@ -62073,10 +62076,10 @@ $p.cw = (function(size) {
 $p.wW = (function(mapNode, key, value, originalHash, keyHash, shift) {
   if ((mapNode instanceof $c_sci_BitmapIndexedMapNode)) {
     var x2 = mapNode;
-    var mask = $m_sci_Node$().fg(keyHash, shift);
+    var mask = $m_sci_Node$().ff(keyHash, shift);
     var bitpos = $m_sci_Node$().cv(mask);
     if (((x2.bc & bitpos) !== 0)) {
-      var index = $m_sci_Node$().eL(x2.bc, mask, bitpos);
+      var index = $m_sci_Node$().eK(x2.bc, mask, bitpos);
       var key0 = x2.e7(index);
       var key0UnimprovedHash = x2.cI(index);
       if (((key0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().Q(key0, key))) {
@@ -62088,13 +62091,13 @@ $p.wW = (function(mapNode, key, value, originalHash, keyHash, shift) {
         x2.QO(bitpos, key0Hash, subNodeNew);
       }
     } else if (((x2.bw & bitpos) !== 0)) {
-      var index$2 = $m_sci_Node$().eL(x2.bw, mask, bitpos);
-      var subNode = x2.ff(index$2);
+      var index$2 = $m_sci_Node$().eK(x2.bw, mask, bitpos);
+      var subNode = x2.fe(index$2);
       var beforeSize = subNode.aI();
       var beforeHash = subNode.cT();
       this.wW(subNode, key, value, originalHash, keyHash, ((5 + shift) | 0));
       x2.cK = ((x2.cK + ((subNode.aI() - beforeSize) | 0)) | 0);
-      x2.eV = ((x2.eV + ((subNode.cT() - beforeHash) | 0)) | 0);
+      x2.eU = ((x2.eU + ((subNode.cT() - beforeHash) | 0)) | 0);
     } else {
       $p_sci_HashMapBuilder__insertValue__sci_BitmapIndexedMapNode__I__O__I__I__O__V(this, x2, bitpos, key, originalHash, keyHash, value);
     }
@@ -62246,10 +62249,10 @@ $p.cw = (function(size) {
 $p.Jp = (function(setNode, element, originalHash, elementHash, shift) {
   if ((setNode instanceof $c_sci_BitmapIndexedSetNode)) {
     var x2 = setNode;
-    var mask = $m_sci_Node$().fg(elementHash, shift);
+    var mask = $m_sci_Node$().ff(elementHash, shift);
     var bitpos = $m_sci_Node$().cv(mask);
     if (((x2.bf & bitpos) !== 0)) {
-      var index = $m_sci_Node$().eL(x2.bf, mask, bitpos);
+      var index = $m_sci_Node$().eK(x2.bf, mask, bitpos);
       var element0 = x2.gF(index);
       var element0UnimprovedHash = x2.cI(index);
       if (((element0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().Q(element0, element))) {
@@ -62260,7 +62263,7 @@ $p.Jp = (function(setNode, element, originalHash, elementHash, shift) {
         x2.Wm(bitpos, element0Hash, subNodeNew);
       }
     } else if (((x2.c8 & bitpos) !== 0)) {
-      var index$2 = $m_sci_Node$().eL(x2.c8, mask, bitpos);
+      var index$2 = $m_sci_Node$().eK(x2.c8, mask, bitpos);
       var subNode = x2.ix(index$2);
       var beforeSize = subNode.aI();
       var beforeHashCode = subNode.cT();
@@ -63566,7 +63569,7 @@ $p.Vw = (function(v) {
     }
     case 3: {
       var v2 = v;
-      var d2 = v2.fo;
+      var d2 = v2.fn;
       var a$1 = v2.X;
       this.c2 = ((a$1.a.length === 32) ? a$1 : $m_ju_Arrays$().ba(a$1, 0, 32));
       this.by = 2;
@@ -63589,7 +63592,7 @@ $p.Vw = (function(v) {
       var a$2 = v3.X;
       this.c2 = ((a$2.a.length === 32) ? a$2 : $m_ju_Arrays$().ba(a$2, 0, 32));
       this.by = 3;
-      this.bq = ((1024 - v3.fp) | 0);
+      this.bq = ((1024 - v3.fo) | 0);
       var i$2 = ((v3.a0 + this.bq) | 0);
       this.bh = (31 & i$2);
       this.aN = ((i$2 - this.bh) | 0);
@@ -64805,7 +64808,7 @@ function $p_Ltigerpython_parser_ast_AstNode$Parameters__hasFirstName__sci_Seq__Z
     var x1 = $thiz.cQ.a[0];
     if ((x1 instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
       var x2 = x1;
-      return names.al(x2.f2);
+      return names.al(x2.f1);
     } else {
       return false;
     }
@@ -64820,15 +64823,15 @@ function $c_Ltigerpython_parser_ast_AstNode$Parameters(pos, args, defaults, maxP
   this.eC = null;
   this.uz = 0;
   this.mO = 0;
-  this.f3 = null;
-  this.fs = null;
+  this.f2 = null;
+  this.fr = null;
   this.mP = pos;
   this.cQ = args;
   this.eC = defaults;
   this.uz = maxPositionalOnlyArgCount;
   this.mO = maxPositionalArgCount;
-  this.f3 = varArgs;
-  this.fs = kwArgs;
+  this.f2 = varArgs;
+  this.fr = kwArgs;
 }
 $p = $c_Ltigerpython_parser_ast_AstNode$Parameters.prototype = new $h_Ltigerpython_parser_ast_AstNode();
 $p.constructor = $c_Ltigerpython_parser_ast_AstNode$Parameters;
@@ -64882,12 +64885,12 @@ $p.j = (function() {
   }
   var elem$2 = $m_sc_StringOps$().ao("(pos-max: %d)", new $c_sjsr_WrappedVarArgs([this.mO]));
   result.I(elem$2);
-  if ((this.f3 !== null)) {
-    var elem$3 = ("*" + $m_sr_ScalaRunTime$().M(this.f3));
+  if ((this.f2 !== null)) {
+    var elem$3 = ("*" + $m_sr_ScalaRunTime$().M(this.f2));
     result.I(elem$3);
   }
-  if ((this.fs !== null)) {
-    var elem$4 = ("**" + $m_sr_ScalaRunTime$().M(this.fs));
+  if ((this.fr !== null)) {
+    var elem$4 = ("**" + $m_sr_ScalaRunTime$().M(this.fr));
     result.I(elem$4);
   }
   return (("Parameters(" + $f_sc_IterableOnceOps__mkString__T__T__T__T(result, "", ", ", "")) + ")");
@@ -64921,11 +64924,11 @@ $p.A = (function(x$1) {
       break;
     }
     case 5: {
-      return this.f3;
+      return this.f2;
       break;
     }
     case 6: {
-      return this.fs;
+      return this.fr;
       break;
     }
     default: {
@@ -64944,8 +64947,8 @@ $p.q = (function() {
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.eC));
   acc = $m_sr_Statics$().e(acc, this.uz);
   acc = $m_sr_Statics$().e(acc, this.mO);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f3));
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fs));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f2));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fr));
   return $m_sr_Statics$().H(acc, 7);
 });
 $p.b = (function(x$1) {
@@ -64955,15 +64958,15 @@ $p.b = (function(x$1) {
     var Parameters$1 = x$1;
     if ((((this.mP === Parameters$1.mP) && (this.uz === Parameters$1.uz)) && ((this.mO === Parameters$1.mO) && (this.cQ === Parameters$1.cQ)))) {
       if ((this.eC === Parameters$1.eC)) {
-        var x = this.f3;
-        var x$2 = Parameters$1.f3;
+        var x = this.f2;
+        var x$2 = Parameters$1.f2;
         var $x_1 = ((x === null) ? (x$2 === null) : x.b(x$2));
       } else {
         var $x_1 = false;
       }
       if ($x_1) {
-        var x$3 = this.fs;
-        var x$4 = Parameters$1.fs;
+        var x$3 = this.fr;
+        var x$4 = Parameters$1.fr;
         return ((x$3 === null) ? (x$4 === null) : x$3.b(x$4));
       } else {
         return false;
@@ -65027,7 +65030,7 @@ function $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_l
         if ((x$11 === tokenType)) {
           var result$4 = new $c_Ltigerpython_parser_lexer_Token($thiz.G.iu(len), len, tokenType);
           result$4.ah = $thiz.G.zx(result$4.x, len);
-          var this$7 = $thiz.f5;
+          var this$7 = $thiz.f4;
           var pos = result$4.x;
           var code = $m_Ltigerpython_parser_errors_ErrorCode$().nd;
           var params = new $c_sjsr_WrappedVarArgs([result$4.ah]);
@@ -65107,7 +65110,7 @@ function $p_Ltigerpython_parser_lexer_Lexer__getTokenTypeFromPrefix__I__Ltigerpy
       elem$1 = false;
     }
     if (elem$1) {
-      var this$12 = $thiz.f5;
+      var this$12 = $thiz.f4;
       var pos = $thiz.G.aR;
       var code = $m_Ltigerpython_parser_errors_ErrorCode$().pg;
       var params = new $c_sjsr_WrappedVarArgs([$thiz.G.zY(0, prefixLen)]);
@@ -65142,7 +65145,7 @@ function $p_Ltigerpython_parser_lexer_Lexer__matchBracket$1__C__V($thiz, ch) {
 }
 /** @constructor */
 function $c_Ltigerpython_parser_lexer_Lexer(source, parserState, caretPos) {
-  this.f5 = null;
+  this.f4 = null;
   this.rY = 0;
   this.G = null;
   this.pQ = null;
@@ -65150,7 +65153,7 @@ function $c_Ltigerpython_parser_lexer_Lexer(source, parserState, caretPos) {
   this.y8 = false;
   this.k8 = null;
   this.FX = 0;
-  this.f5 = parserState;
+  this.f4 = parserState;
   this.rY = caretPos;
   this.G = new $c_Ltigerpython_parser_lexer_Scanner(source);
   if ((parserState.cu >= 3)) {
@@ -65193,7 +65196,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -65266,7 +65269,7 @@ $p.Qu = (function(name, followChar) {
       var hash = (originalHash ^ ((originalHash >>> 16) | 0));
       var idx = (hash & (((-1) + this$7.Z.a.length) | 0));
       var x1$1 = this$7.Z.a[idx];
-      var nd = ((x1$1 === null) ? null : x1$1.fe(name, hash));
+      var nd = ((x1$1 === null) ? null : x1$1.fd(name, hash));
       if ((nd !== null)) {
         var $x_1 = nd.bU;
       } else {
@@ -65341,7 +65344,7 @@ $p.wK = (function() {
       var x$3 = this.G.gT.hG(this.G.aq(len));
       var x$4 = $m_Ltigerpython_parser_lexer_CatCodes$().y7;
       if ((((!((x$3 === null) ? (x$4 === null) : x$3.b(x$4))) || (len > 3)) || $f_sc_SeqOps__contains__O__Z($m_Ltigerpython_parser_lexer_TokenType$().Bo, s))) {
-        return $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len, this.f5.XX(s));
+        return $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len, this.f4.XX(s));
       } else {
         return this.Rp(len);
       }
@@ -65362,8 +65365,8 @@ $p.wK = (function() {
           var x$9 = $m_Ltigerpython_parser_lexer_CatCodes$().y5;
           if (((x$9 === null) ? (x1 === null) : x$9.b(x1))) {
             if (((this.G.aq(0) === 58) && (this.G.aq(1) === 61))) {
-              if ((this.f5.cu < 3)) {
-                var this$10 = this.f5;
+              if ((this.f4.cu < 3)) {
+                var this$10 = this.f4;
                 var pos$1 = this.G.aR;
                 var code = $m_Ltigerpython_parser_errors_ErrorCode$().k1;
                 var params = new $c_sjsr_WrappedVarArgs([":=", "="]);
@@ -65426,7 +65429,7 @@ $p.wK = (function() {
                 }
                 var ch2 = $x_5.UU((($x_4 + ((i - start) | 0)) | 0));
                 if (((((((ch1 !== 44) && (ch1 !== 91)) && (ch2 !== 44)) && (ch2 !== 93)) && (!((ch1 === 40) && (ch2 === 41)))) && (!((ch1 === 123) && (ch2 === 125))))) {
-                  var this$25 = this.f5;
+                  var this$25 = this.f4;
                   var pos$2 = result.x;
                   this$25.MS.b4(pos$2);
                 }
@@ -65441,7 +65444,7 @@ $p.wK = (function() {
                 var $x_6 = false;
               }
               if (($x_6 && $m_jl_Character$().dS(this.G.aq(1)))) {
-                var this$31 = this.f5;
+                var this$31 = this.f4;
                 var pos$3 = this.G.aR;
                 var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().pn;
                 var params$1 = $m_sci_Nil$();
@@ -65485,7 +65488,7 @@ $p.wK = (function() {
                           break;
                         }
                         case 42: {
-                          if ((this.f5.cu < 3)) {
+                          if ((this.f4.cu < 3)) {
                             max_len = 2;
                           } else {
                             var j = 2;
@@ -65517,7 +65520,7 @@ $p.wK = (function() {
                       var $x_8 = false;
                     }
                     if ($x_8) {
-                      var $x_10 = this.f5;
+                      var $x_10 = this.f4;
                       var $x_9 = this.G.aR;
                       var value = new $ac_C(new Uint16Array([this.G.aq(0), this.G.aq(2)]));
                       var x1$3 = $x_10.Ic($x_9, $m_jl_String$().D4(value, 0, value.a.length));
@@ -65527,17 +65530,17 @@ $p.wK = (function() {
                       var l = x1$3.z4();
                       var tp = x1$3.an();
                       if ((l === 2)) {
-                        var this$45 = this.f5;
+                        var this$45 = this.f4;
                         var pos$4 = ((1 + this.G.aR) | 0);
                         var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().hu;
                         var params$2 = $m_sci_Nil$();
                         this$45.l(pos$4, (-1), code$2, params$2);
                         var x1$4 = $ct_T2__O__O__(new $c_T2(), 3, tp);
                       } else {
-                        var x1$4 = this.f5.Ic(this.G.aR, this.G.zY(0, max_len));
+                        var x1$4 = this.f4.Ic(this.G.aR, this.G.zY(0, max_len));
                       }
                     } else {
-                      var x1$4 = this.f5.Ic(this.G.aR, this.G.zY(0, max_len));
+                      var x1$4 = this.f4.Ic(this.G.aR, this.G.zY(0, max_len));
                     }
                     if ((x1$4 === null)) {
                       throw new $c_s_MatchError(x1$4);
@@ -65564,14 +65567,14 @@ $p.wK = (function() {
                             return this.wK();
                           } else {
                             if (((this.G.aq(0) === 0) && (this.G.aq(0) === 0))) {
-                              var this$53 = this.f5;
+                              var this$53 = this.f4;
                               var pos$5 = this.G.aR;
                               var code$3 = $m_Ltigerpython_parser_errors_ErrorCode$().j6;
                               var params$3 = $m_sci_Nil$();
                               this$53.l(pos$5, (-1), code$3, params$3);
                               return null;
                             }
-                            var this$62 = this.f5;
+                            var this$62 = this.f4;
                             var pos$6 = this.G.aR;
                             var code$4 = $m_Ltigerpython_parser_errors_ErrorCode$().nd;
                             var params$4 = new $c_sjsr_WrappedVarArgs([$m_sc_StringOps$().ao("%s'/'[%d]", new $c_sjsr_WrappedVarArgs([this.G.zY(0, 1), this.G.aq(0)]))]);
@@ -65619,7 +65622,7 @@ $p.IO = (function() {
     } else {
       var ch = this.G.UN(len);
       if ((ch === 0)) {
-        var this$9 = this.f5;
+        var this$9 = this.f4;
         var pos = this.G.aR;
         var code = $m_Ltigerpython_parser_errors_ErrorCode$().n8;
         var params = $m_sci_Nil$();
@@ -65780,7 +65783,7 @@ $p.J6 = (function() {
         var len = 1;
       }
     }
-    return (this.G.Ds(len, new $c_sjsr_WrappedVarArgs([$bC(108), $bC(76)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len) | 0), $m_Ltigerpython_parser_lexer_TokenType$().lp) : (this.G.Ds(len, new $c_sjsr_WrappedVarArgs([$bC(106), $bC(74)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len) | 0), $m_Ltigerpython_parser_lexer_TokenType$().fx) : $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len, $m_Ltigerpython_parser_lexer_TokenType$().bt)));
+    return (this.G.Ds(len, new $c_sjsr_WrappedVarArgs([$bC(108), $bC(76)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len) | 0), $m_Ltigerpython_parser_lexer_TokenType$().lp) : (this.G.Ds(len, new $c_sjsr_WrappedVarArgs([$bC(106), $bC(74)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len) | 0), $m_Ltigerpython_parser_lexer_TokenType$().fw) : $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len, $m_Ltigerpython_parser_lexer_TokenType$().bt)));
   } else {
     var t_type = $m_Ltigerpython_parser_lexer_TokenType$().bt;
     var this$33 = this.G;
@@ -65896,7 +65899,7 @@ $p.J6 = (function() {
     if (((x$9 === x$2$1) && this.G.Ds(len$2, new $c_sjsr_WrappedVarArgs([$bC(108), $bC(76)])))) {
       return $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len$2) | 0), $m_Ltigerpython_parser_lexer_TokenType$().lp);
     } else {
-      return (this.G.Ds(len$2, new $c_sjsr_WrappedVarArgs([$bC(106), $bC(74)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len$2) | 0), $m_Ltigerpython_parser_lexer_TokenType$().fx) : $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len$2, t_type));
+      return (this.G.Ds(len$2, new $c_sjsr_WrappedVarArgs([$bC(106), $bC(74)])) ? $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, ((1 + len$2) | 0), $m_Ltigerpython_parser_lexer_TokenType$().fw) : $p_Ltigerpython_parser_lexer_Lexer__makeToken__I__Ltigerpython_parser_lexer_TokenType__Ltigerpython_parser_lexer_Token(this, len$2, t_type));
     }
   }
 });
@@ -66003,7 +66006,7 @@ $p.Rp = (function(prefixLen) {
       }
     }
     if ((((i === ((3 + prefixLen) | 0)) || (this.G.aq((((-1) + i) | 0)) !== delimiter)) || (!this.G.wF((((-3) + i) | 0))))) {
-      var this$2 = this.f5;
+      var this$2 = this.f4;
       var pos = this.G.aR;
       var code = $m_Ltigerpython_parser_errors_ErrorCode$().ll;
       var params = $m_sci_Nil$();
@@ -66041,7 +66044,7 @@ $p.Rp = (function(prefixLen) {
       }
     }
     if ((i$2 === ((1 + prefixLen) | 0))) {
-      var this$4 = this.f5;
+      var this$4 = this.f4;
       var pos$1 = this.G.aR;
       var code$1 = $m_Ltigerpython_parser_errors_ErrorCode$().ll;
       var params$1 = $m_sci_Nil$();
@@ -66108,7 +66111,7 @@ $p.Rp = (function(prefixLen) {
           i$2 = (((-1) + i$2) | 0);
         }
       }
-      var this$12 = this.f5;
+      var this$12 = this.f4;
       var pos$2 = this.G.aR;
       var code$2 = $m_Ltigerpython_parser_errors_ErrorCode$().ll;
       var params$2 = $m_sci_Nil$();
@@ -66195,7 +66198,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -66225,7 +66228,7 @@ $p.de = (function() {
 $p.t3 = (function() {
   return ((this.aE > 0) ? this.aH.s((((-1) + this.aE) | 0)) : null);
 });
-$p.eO = (function() {
+$p.eN = (function() {
   return ((this.aE > 0) ? this.aH.s((((-1) + this.aE) | 0)).x : (-1));
 });
 $p.m1 = (function() {
@@ -66254,7 +66257,7 @@ $p.b6 = (function(idx) {
 });
 $p.De = (function(idx) {
   var pt = this.b6(idx);
-  return ((pt !== null) ? pt.fw : (-1));
+  return ((pt !== null) ? pt.fv : (-1));
 });
 $p.CR = (function(idx, tokenTypes) {
   return tokenTypes.al(this.b6(idx));
@@ -66280,7 +66283,7 @@ $p.bp = (function(tokenType) {
   if ((!$x_1)) {
     if ((this.ie !== null)) {
       if (this.c()) {
-        if ((tokenType.fw === $m_Ltigerpython_parser_lexer_TokenType$().aO)) {
+        if ((tokenType.fv === $m_Ltigerpython_parser_lexer_TokenType$().aO)) {
           var x$3 = this.a6().o;
           var x$4 = $m_Ltigerpython_parser_lexer_TokenType$().T;
           var $x_2 = (x$3 === x$4);
@@ -66624,7 +66627,7 @@ $p.PU = (function(startIndex) {
   return $m_s_None$();
 });
 $p.Vm = (function() {
-  return (this.c() && (this.a6().o.fw === $m_Ltigerpython_parser_lexer_TokenType$().aO));
+  return (this.c() && (this.a6().o.fv === $m_Ltigerpython_parser_lexer_TokenType$().aO));
 });
 $p.wE = (function() {
   return ((!this.c()) || $m_sci_Seq$().jm(new $c_sjsr_WrappedVarArgs([$m_Ltigerpython_parser_lexer_TokenType$().am, $m_Ltigerpython_parser_lexer_TokenType$().b3, $m_Ltigerpython_parser_lexer_TokenType$().b9])).al(this.a6().o));
@@ -66642,7 +66645,7 @@ $p.QC = (function(names) {
     return false;
   }
 });
-$p.eR = (function() {
+$p.eQ = (function() {
   return ((!this.aH.t()) ? this.aH.V().x : (-1));
 });
 $p.aF = (function() {
@@ -67851,7 +67854,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -68201,7 +68204,7 @@ $p.Xp = (function(indentLen) {
                             if ((x$51 === x1)) {
                               var token$4 = this.bi.d();
                               if (($f_sc_SeqOps__isEmpty__Z(result) && this.bi.c())) {
-                                if ((this.bi.V().o.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
+                                if ((this.bi.V().o.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt)) {
                                   var elem$17 = $m_Ltigerpython_parser_lexer_Token$().sG(token$4);
                                   result.I(elem$17);
                                 } else {
@@ -68216,7 +68219,7 @@ $p.Xp = (function(indentLen) {
                               if ((x$53 === x1)) {
                                 var token$5 = this.bi.d();
                                 if ($f_sc_SeqOps__isEmpty__Z(result)) {
-                                  if ((this.bi.c() && (this.bi.V().o.fw === $m_Ltigerpython_parser_lexer_TokenType$().dt))) {
+                                  if ((this.bi.c() && (this.bi.V().o.fv === $m_Ltigerpython_parser_lexer_TokenType$().dt))) {
                                     var elem$19 = $m_Ltigerpython_parser_lexer_Token$().sG(token$5);
                                     result.I(elem$19);
                                   } else {
@@ -68669,14 +68672,14 @@ function $c_Ltigerpython_parser_parsing_PreParser(source, lexer, parserState) {
   this.yk = null;
   this.sa = null;
   this.MU = null;
-  this.fy = 0;
+  this.fx = 0;
   this.s9 = null;
   this.MV = null;
   this.Gn = false;
   this.yk = source;
   this.sa = parserState;
   this.MU = new $c_Ltigerpython_parser_parsing_LineParser(source, lexer, parserState);
-  this.fy = 0;
+  this.fx = 0;
 }
 $p = $c_Ltigerpython_parser_parsing_PreParser.prototype = new $h_O();
 $p.constructor = $c_Ltigerpython_parser_parsing_PreParser;
@@ -68708,7 +68711,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -68736,26 +68739,26 @@ $p.Wv = (function() {
   return result;
 });
 $p.QS = (function() {
-  if ((this.fy < this.iB().a.length)) {
-    var srcLine = this.iB().a[this.fy];
-    this.fy = ((1 + this.fy) | 0);
-    while ((((this.fy < this.iB().a.length) && (srcLine.U2() || srcLine.U1())) && this.iB().a[this.fy].VC(this.sa))) {
+  if ((this.fx < this.iB().a.length)) {
+    var srcLine = this.iB().a[this.fx];
+    this.fx = ((1 + this.fx) | 0);
+    while ((((this.fx < this.iB().a.length) && (srcLine.U2() || srcLine.U1())) && this.iB().a[this.fx].VC(this.sa))) {
       var this$1 = this.sa;
       var pos = srcLine.q0;
       var code = $m_Ltigerpython_parser_errors_ErrorCode$().n6;
       var params = $m_sci_Nil$();
       this$1.l(pos, (-1), code, params);
-      srcLine.Wl(this.iB().a[this.fy]);
-      this.fy = ((1 + this.fy) | 0);
+      srcLine.Wl(this.iB().a[this.fx]);
+      this.fx = ((1 + this.fx) | 0);
     }
     var this$2 = $m_scm_ArrayBuffer$();
     var elems = $m_sci_Nil$();
     var suite = this$2.ak(elems);
-    if ((((((1 + this.fy) | 0) < this.iB().a.length) && $p_Ltigerpython_parser_parsing_PreParser__isSemiEmptyLine__Ltigerpython_parser_parsing_LineParser$Line__Z(this, this.iB().a[this.fy])) && (this.iB().a[((1 + this.fy) | 0)].ij > srcLine.ij))) {
-      this.sa.jx(this.iB().a[this.fy].cG, $m_Ltigerpython_parser_errors_ErrorCode$().c5, $m_sci_Nil$());
-      this.fy = ((1 + this.fy) | 0);
+    if ((((((1 + this.fx) | 0) < this.iB().a.length) && $p_Ltigerpython_parser_parsing_PreParser__isSemiEmptyLine__Ltigerpython_parser_parsing_LineParser$Line__Z(this, this.iB().a[this.fx])) && (this.iB().a[((1 + this.fx) | 0)].ij > srcLine.ij))) {
+      this.sa.jx(this.iB().a[this.fx].cG, $m_Ltigerpython_parser_errors_ErrorCode$().c5, $m_sci_Nil$());
+      this.fx = ((1 + this.fx) | 0);
     }
-    while (((this.fy < this.iB().a.length) && (this.iB().a[this.fy].ij > srcLine.ij))) {
+    while (((this.fx < this.iB().a.length) && (this.iB().a[this.fx].ij > srcLine.ij))) {
       var elem = this.QS();
       suite.I(elem);
     }
@@ -68921,10 +68924,10 @@ var $d_Ltigerpython_parser_types_AbstractType = new $TypeData().i($c_Ltigerpytho
 }));
 /** @constructor */
 function $c_Ltigerpython_utilities_fastparse_Arg(name, argType, defaultValue) {
-  this.fA = null;
+  this.fz = null;
   this.gC = null;
   this.je = null;
-  this.fA = name;
+  this.fz = name;
   this.gC = argType;
   this.je = defaultValue;
 }
@@ -68943,7 +68946,7 @@ $p.z = (function() {
 $p.A = (function(x$1) {
   switch (x$1) {
     case 0: {
-      return this.fA;
+      return this.fz;
       break;
     }
     case 1: {
@@ -68973,7 +68976,7 @@ $p.b = (function(x$1) {
     return true;
   } else if ((x$1 instanceof $c_Ltigerpython_utilities_fastparse_Arg)) {
     var Arg$1 = x$1;
-    if ((this.fA === Arg$1.fA)) {
+    if ((this.fz === Arg$1.fz)) {
       var x = this.gC;
       var x$2 = Arg$1.gC;
       var $x_1 = ((x === null) ? (x$2 === null) : x.b(x$2));
@@ -72254,7 +72257,7 @@ $h_sc_AbstractIterable.prototype = $p;
 $p.ca = (function() {
   return $m_sc_Iterable$();
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return this.ck();
 });
 $p.ck = (function() {
@@ -72305,7 +72308,7 @@ $p.nQ = (function(ord) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.gI = (function() {
@@ -72433,14 +72436,14 @@ var $d_sc_IndexedSeqView$IndexedSeqViewIterator = new $TypeData().i($c_sc_Indexe
 }));
 function $ct_sc_IndexedSeqView$IndexedSeqViewReverseIterator__sc_IndexedSeqView__($thiz, self) {
   $thiz.Eu = self;
-  $thiz.fl = self.g();
-  $thiz.qR = (((-1) + $thiz.fl) | 0);
+  $thiz.fk = self.g();
+  $thiz.qR = (((-1) + $thiz.fk) | 0);
   return $thiz;
 }
 /** @constructor */
 function $c_sc_IndexedSeqView$IndexedSeqViewReverseIterator() {
   this.Eu = null;
-  this.fl = 0;
+  this.fk = 0;
   this.qR = 0;
 }
 $p = $c_sc_IndexedSeqView$IndexedSeqViewReverseIterator.prototype = new $h_sc_AbstractIterator();
@@ -72450,36 +72453,36 @@ function $h_sc_IndexedSeqView$IndexedSeqViewReverseIterator() {
 }
 $h_sc_IndexedSeqView$IndexedSeqViewReverseIterator.prototype = $p;
 $p.c = (function() {
-  return (this.fl > 0);
+  return (this.fk > 0);
 });
 $p.d = (function() {
-  if ((this.fl > 0)) {
+  if ((this.fk > 0)) {
     var r = this.Eu.s(this.qR);
     this.qR = (((-1) + this.qR) | 0);
-    this.fl = (((-1) + this.fl) | 0);
+    this.fk = (((-1) + this.fk) | 0);
     return r;
   } else {
     return $m_sc_Iterator$().r.d();
   }
 });
 $p.wR = (function(from, until) {
-  if ((this.fl > 0)) {
-    if ((this.fl <= from)) {
-      this.fl = 0;
+  if ((this.fk > 0)) {
+    if ((this.fk <= from)) {
+      this.fk = 0;
     } else if ((from <= 0)) {
-      if (((until >= 0) && (until < this.fl))) {
-        this.fl = until;
+      if (((until >= 0) && (until < this.fk))) {
+        this.fk = until;
       }
     } else {
       this.qR = ((this.qR - from) | 0);
-      if (((until >= 0) && (until < this.fl))) {
+      if (((until >= 0) && (until < this.fk))) {
         if ((until <= from)) {
-          this.fl = 0;
+          this.fk = 0;
         } else {
-          this.fl = ((until - from) | 0);
+          this.fk = ((until - from) | 0);
         }
       } else {
-        this.fl = ((this.fl - from) | 0);
+        this.fk = ((this.fk - from) | 0);
       }
     }
   }
@@ -72682,14 +72685,14 @@ function $m_sci_ArraySeq$() {
 function $c_sci_HashMapBuilder$$anon$1(outer, x2$1) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, x2$1.bG);
   while (this.c()) {
-    var originalHash = this.fm.cI(this.bF);
-    outer.wW(outer.kL, this.fm.e7(this.bF), this.fm.e8(this.bF), originalHash, $m_sc_Hashing$().bz(originalHash), 0);
+    var originalHash = this.fl.cI(this.bF);
+    outer.wW(outer.kL, this.fl.e7(this.bF), this.fl.e8(this.bF), originalHash, $m_sc_Hashing$().bz(originalHash), 0);
     this.bF = ((1 + this.bF) | 0);
   }
 }
@@ -72718,14 +72721,14 @@ var $d_sci_HashMapBuilder$$anon$1 = new $TypeData().i($c_sci_HashMapBuilder$$ano
 function $c_sci_HashSetBuilder$$anon$1(outer, x2$1) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
-  $ct_sci_ChampBaseIterator__sci_Node__(this, x2$1.fn);
+  $ct_sci_ChampBaseIterator__sci_Node__(this, x2$1.fm);
   while (this.c()) {
-    var originalHash = this.fm.cI(this.bF);
-    outer.Jp(outer.r0, this.fm.gF(this.bF), originalHash, $m_sc_Hashing$().bz(originalHash), 0);
+    var originalHash = this.fl.cI(this.bF);
+    outer.Jp(outer.r0, this.fl.gF(this.bF), originalHash, $m_sc_Hashing$().bz(originalHash), 0);
     this.bF = ((1 + this.bF) | 0);
   }
 }
@@ -72967,8 +72970,8 @@ var $d_sci_Map$Map4$$anon$9 = new $TypeData().i($c_sci_Map$Map4$$anon$9, "scala.
 function $c_sci_MapKeyIterator(rootNode) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, rootNode);
@@ -72983,7 +72986,7 @@ $p.d = (function() {
   if ((!this.c())) {
     $m_sc_Iterator$().r.d();
   }
-  var key = this.fm.e7(this.bF);
+  var key = this.fl.e7(this.bF);
   this.bF = ((1 + this.bF) | 0);
   return key;
 });
@@ -73040,8 +73043,8 @@ var $d_sci_MapKeyValueTupleHashIterator = new $TypeData().i($c_sci_MapKeyValueTu
 function $c_sci_MapKeyValueTupleIterator(rootNode) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, rootNode);
@@ -73056,7 +73059,7 @@ $p.Wt = (function() {
   if ((!this.c())) {
     $m_sc_Iterator$().r.d();
   }
-  var payload = this.fm.Ir(this.bF);
+  var payload = this.fl.Ir(this.bF);
   this.bF = ((1 + this.bF) | 0);
   return payload;
 });
@@ -73075,8 +73078,8 @@ var $d_sci_MapKeyValueTupleIterator = new $TypeData().i($c_sci_MapKeyValueTupleI
 function $c_sci_MapValueIterator(rootNode) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, rootNode);
@@ -73091,7 +73094,7 @@ $p.d = (function() {
   if ((!this.c())) {
     $m_sc_Iterator$().r.d();
   }
-  var value = this.fm.e8(this.bF);
+  var value = this.fl.e8(this.bF);
   this.bF = ((1 + this.bF) | 0);
   return value;
 });
@@ -73122,11 +73125,11 @@ function $p_sci_NewVectorIterator__advanceSlice__V($thiz) {
   var x1 = $thiz.oa;
   switch (x1) {
     case 1: {
-      $thiz.eY = slice;
+      $thiz.eX = slice;
       break;
     }
     case 2: {
-      $thiz.eZ = slice;
+      $thiz.eY = slice;
       break;
     }
     case 3: {
@@ -73168,55 +73171,55 @@ function $p_sci_NewVectorIterator__advance__V($thiz) {
     $thiz.ty = io;
   }
   $thiz.hh = (($thiz.hh - $thiz.dX) | 0);
-  var a = $thiz.eY.a.length;
+  var a = $thiz.eX.a.length;
   var b = $thiz.hh;
   $thiz.ml = ((a < b) ? a : b);
   $thiz.dX = 0;
 }
 function $p_sci_NewVectorIterator__advanceA__I__I__V($thiz, io, xor) {
   if ((xor < 1024)) {
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 32768)) {
-    $thiz.eZ = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
-    $thiz.eY = $thiz.eZ.a[0];
+    $thiz.eY = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
+    $thiz.eX = $thiz.eY.a[0];
   } else if ((xor < 1048576)) {
     $thiz.gK = $thiz.jG.a[(31 & ((io >>> 15) | 0))];
-    $thiz.eZ = $thiz.gK.a[0];
-    $thiz.eY = $thiz.eZ.a[0];
+    $thiz.eY = $thiz.gK.a[0];
+    $thiz.eX = $thiz.eY.a[0];
   } else if ((xor < 33554432)) {
     $thiz.jG = $thiz.r2.a[(31 & ((io >>> 20) | 0))];
     $thiz.gK = $thiz.jG.a[0];
-    $thiz.eZ = $thiz.gK.a[0];
-    $thiz.eY = $thiz.eZ.a[0];
+    $thiz.eY = $thiz.gK.a[0];
+    $thiz.eX = $thiz.eY.a[0];
   } else {
     $thiz.r2 = $thiz.EQ.a[((io >>> 25) | 0)];
     $thiz.jG = $thiz.r2.a[0];
     $thiz.gK = $thiz.jG.a[0];
-    $thiz.eZ = $thiz.gK.a[0];
-    $thiz.eY = $thiz.eZ.a[0];
+    $thiz.eY = $thiz.gK.a[0];
+    $thiz.eX = $thiz.eY.a[0];
   }
 }
 function $p_sci_NewVectorIterator__setA__I__I__V($thiz, io, xor) {
   if ((xor < 1024)) {
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 32768)) {
-    $thiz.eZ = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eY = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 1048576)) {
     $thiz.gK = $thiz.jG.a[(31 & ((io >>> 15) | 0))];
-    $thiz.eZ = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eY = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 33554432)) {
     $thiz.jG = $thiz.r2.a[(31 & ((io >>> 20) | 0))];
     $thiz.gK = $thiz.jG.a[(31 & ((io >>> 15) | 0))];
-    $thiz.eZ = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eY = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   } else {
     $thiz.r2 = $thiz.EQ.a[((io >>> 25) | 0)];
     $thiz.jG = $thiz.r2.a[(31 & ((io >>> 20) | 0))];
     $thiz.gK = $thiz.jG.a[(31 & ((io >>> 15) | 0))];
-    $thiz.eZ = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
-    $thiz.eY = $thiz.eZ.a[(31 & ((io >>> 5) | 0))];
+    $thiz.eY = $thiz.gK.a[(31 & ((io >>> 10) | 0))];
+    $thiz.eX = $thiz.eY.a[(31 & ((io >>> 5) | 0))];
   }
 }
 /** @constructor */
@@ -73224,8 +73227,8 @@ function $c_sci_NewVectorIterator(v, totalLength, sliceCount) {
   this.ER = null;
   this.mm = 0;
   this.KK = 0;
+  this.eX = null;
   this.eY = null;
-  this.eZ = null;
   this.gK = null;
   this.jG = null;
   this.r2 = null;
@@ -73241,8 +73244,8 @@ function $c_sci_NewVectorIterator(v, totalLength, sliceCount) {
   this.ER = v;
   this.mm = totalLength;
   this.KK = sliceCount;
-  this.eY = v.K;
-  this.ml = this.eY.a.length;
+  this.eX = v.K;
+  this.ml = this.eX.a.length;
   this.dX = 0;
   this.ty = 0;
   this.hh = this.mm;
@@ -73267,7 +73270,7 @@ $p.d = (function() {
   if ((this.dX === this.ml)) {
     $p_sci_NewVectorIterator__advance__V(this);
   }
-  var r = this.eY.a[this.dX];
+  var r = this.eX.a[this.dX];
   this.dX = ((1 + this.dX) | 0);
   return r;
 });
@@ -73290,7 +73293,7 @@ $p.dQ = (function(n) {
         $p_sci_NewVectorIterator__setA__I__I__V(this, io, (this.ty ^ io));
         this.ty = io;
       }
-      this.ml = this.eY.a.length;
+      this.ml = this.eX.a.length;
       this.dX = (31 & io);
       this.hh = ((this.dX + ((this.mm - newpos) | 0)) | 0);
       if ((this.ml > this.hh)) {
@@ -73314,15 +73317,15 @@ $p.aa = (function(xs, start, len) {
       $p_sci_NewVectorIterator__advance__V(this);
     }
     var a = ((total - copied) | 0);
-    var b = ((this.eY.a.length - this.dX) | 0);
+    var b = ((this.eX.a.length - this.dX) | 0);
     var count = ((a < b) ? a : b);
     if (isBoxed) {
-      var src = this.eY;
+      var src = this.eX;
       var srcPos = this.dX;
       var destPos = ((start + copied) | 0);
       src.a3(srcPos, xs, destPos, count);
     } else {
-      $m_s_Array$().bL(this.eY, this.dX, xs, ((start + copied) | 0), count);
+      $m_s_Array$().bL(this.eX, this.dX, xs, ((start + copied) | 0), count);
     }
     this.dX = ((this.dX + count) | 0);
     copied = ((copied + count) | 0);
@@ -73368,7 +73371,7 @@ $p.d = (function() {
   }
   var value = this.Av;
   this.tz = (!$m_sr_BoxesRunTime$().Q(value, this.ES));
-  this.Av = this.xt.fi(value, this.ET.b2);
+  this.Av = this.xt.fh(value, this.ET.b2);
   return value;
 });
 var $d_sci_NumericRange$NumericRangeIterator = new $TypeData().i($c_sci_NumericRange$NumericRangeIterator, "scala.collection.immutable.NumericRange$NumericRangeIterator", ({
@@ -73506,8 +73509,8 @@ $p.dQ = (function(n) {
 function $c_sci_SetHashIterator(rootNode) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   this.EU = 0;
@@ -73527,7 +73530,7 @@ $p.d = (function() {
   if ((!this.c())) {
     $m_sc_Iterator$().r.d();
   }
-  this.EU = this.fm.cI(this.bF);
+  this.EU = this.fl.cI(this.bF);
   this.bF = ((1 + this.bF) | 0);
   return this;
 });
@@ -73543,8 +73546,8 @@ var $d_sci_SetHashIterator = new $TypeData().i($c_sci_SetHashIterator, "scala.co
 function $c_sci_SetIterator(rootNode) {
   this.bF = 0;
   this.kJ = 0;
-  this.fm = null;
-  this.eX = 0;
+  this.fl = null;
+  this.eW = 0;
   this.hd = null;
   this.kK = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, rootNode);
@@ -73559,7 +73562,7 @@ $p.d = (function() {
   if ((!this.c())) {
     $m_sc_Iterator$().r.d();
   }
-  var payload = this.fm.gF(this.bF);
+  var payload = this.fl.gF(this.bF);
   this.bF = ((1 + this.bF) | 0);
   return payload;
 });
@@ -74118,10 +74121,10 @@ var $d_s_reflect_ClassTag$GenericClassTag = new $TypeData().i($c_s_reflect_Class
 function $c_Ltigerpython_parser_ast_AstNode$Alias(pos, name, asName) {
   this.bW = null;
   this.rf = 0;
-  this.fq = null;
+  this.fp = null;
   this.em = null;
   this.rf = pos;
-  this.fq = name;
+  this.fp = name;
   this.em = asName;
   $ct_Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__(this, $m_Ltigerpython_parser_ast_AstNodeKind$().Le);
 }
@@ -74135,7 +74138,7 @@ $p.n = (function() {
   return this.rf;
 });
 $p.j = (function() {
-  return ((this.em !== null) ? $m_sc_StringOps$().ao("%s as %s", new $c_sjsr_WrappedVarArgs([this.fq.R, this.em.R])) : this.fq.R);
+  return ((this.em !== null) ? $m_sc_StringOps$().ao("%s as %s", new $c_sjsr_WrappedVarArgs([this.fp.R, this.em.R])) : this.fp.R);
 });
 $p.y = (function() {
   return "Alias";
@@ -74150,7 +74153,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 1: {
-      return this.fq;
+      return this.fp;
       break;
     }
     case 2: {
@@ -74169,7 +74172,7 @@ $p.q = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().e(acc, $f_T__hashCode__I("Alias"));
   acc = $m_sr_Statics$().e(acc, this.rf);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fq));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fp));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.em));
   return $m_sr_Statics$().H(acc, 3);
 });
@@ -74179,8 +74182,8 @@ $p.b = (function(x$1) {
   } else if ((x$1 instanceof $c_Ltigerpython_parser_ast_AstNode$Alias)) {
     var Alias$1 = x$1;
     if ((this.rf === Alias$1.rf)) {
-      var x = this.fq;
-      var x$2 = Alias$1.fq;
+      var x = this.fp;
+      var x$2 = Alias$1.fp;
       var $x_1 = ((x === null) ? (x$2 === null) : x.b(x$2));
     } else {
       var $x_1 = false;
@@ -74630,10 +74633,10 @@ var $d_Ltigerpython_parser_ast_AstNode$Break = new $TypeData().i($c_Ltigerpython
 function $c_Ltigerpython_parser_ast_AstNode$Compare(pos, left, comparators) {
   this.bW = null;
   this.ow = 0;
-  this.fr = null;
+  this.fq = null;
   this.bV = null;
   this.ow = pos;
-  this.fr = left;
+  this.fq = left;
   this.bV = comparators;
   $ct_Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__(this, $m_Ltigerpython_parser_ast_AstNodeKind$().Lr);
 }
@@ -74678,7 +74681,7 @@ $p.t8 = (function() {
 });
 $p.j = (function() {
   if ((this.bV.a.length !== 0)) {
-    var $x_2 = this.fr.j();
+    var $x_2 = this.fq.j();
     var $x_1 = $m_s_Predef$();
     var this$7 = new $c_sc_ArrayOps$WithFilter(new $c_sjsr_AnonFunction1(((check$ifrefutable$1$2) => (check$ifrefutable$1$2 !== null))), this.bV);
     var capacity = 0;
@@ -74705,7 +74708,7 @@ $p.j = (function() {
     }
     return (($x_2 + " ") + $f_sc_IterableOnceOps__mkString__T__T__T__T($x_1.as(new ($d_T.r().C)(jsElems)), "", " ", ""));
   } else {
-    return this.fr.j();
+    return this.fq.j();
   }
 });
 $p.y = (function() {
@@ -74721,7 +74724,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 1: {
-      return this.fr;
+      return this.fq;
       break;
     }
     case 2: {
@@ -74740,7 +74743,7 @@ $p.q = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().e(acc, $f_T__hashCode__I("Compare"));
   acc = $m_sr_Statics$().e(acc, this.ow);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fr));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fq));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.bV));
   return $m_sr_Statics$().H(acc, 3);
 });
@@ -74750,8 +74753,8 @@ $p.b = (function(x$1) {
   } else if ((x$1 instanceof $c_Ltigerpython_parser_ast_AstNode$Compare)) {
     var Compare$1 = x$1;
     if ((this.ow === Compare$1.ow)) {
-      var x = this.fr;
-      var x$2 = Compare$1.fr;
+      var x = this.fq;
+      var x$2 = Compare$1.fq;
       var $x_1 = ((x === null) ? (x$2 === null) : x.b(x$2));
     } else {
       var $x_1 = false;
@@ -76557,10 +76560,10 @@ var $d_Ltigerpython_parser_ast_AstNode$MultiSlice = new $TypeData().i($c_Ltigerp
 /** @constructor */
 function $c_Ltigerpython_parser_ast_AstNode$NameParameter(pos, name, annotation) {
   this.uv = 0;
-  this.f2 = null;
+  this.f1 = null;
   this.fU = null;
   this.uv = pos;
-  this.f2 = name;
+  this.f1 = name;
   this.fU = annotation;
 }
 $p = $c_Ltigerpython_parser_ast_AstNode$NameParameter.prototype = new $h_Ltigerpython_parser_ast_AstNode$Parameter();
@@ -76585,7 +76588,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 1: {
-      return this.f2;
+      return this.f1;
       break;
     }
     case 2: {
@@ -76604,7 +76607,7 @@ $p.q = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().e(acc, $f_T__hashCode__I("NameParameter"));
   acc = $m_sr_Statics$().e(acc, this.uv);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f2));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f1));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fU));
   return $m_sr_Statics$().H(acc, 3);
 });
@@ -76616,7 +76619,7 @@ $p.b = (function(x$1) {
     return true;
   } else if ((x$1 instanceof $c_Ltigerpython_parser_ast_AstNode$NameParameter)) {
     var NameParameter$1 = x$1;
-    if (((this.uv === NameParameter$1.uv) && (this.f2 === NameParameter$1.f2))) {
+    if (((this.uv === NameParameter$1.uv) && (this.f1 === NameParameter$1.f1))) {
       var x = this.fU;
       var x$2 = NameParameter$1.fU;
       return ((x === null) ? (x$2 === null) : x.b(x$2));
@@ -77934,7 +77937,7 @@ $p.aa = (function(xs, start, len) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.S = (function() {
@@ -78581,7 +78584,7 @@ function $f_sc_SortedSetOps__max__s_math_Ordering__O($thiz, ord) {
   }
 }
 function $f_sc_View__toString__T($thiz) {
-  return ($thiz.eJ() + "(<not computed>)");
+  return ($thiz.eI() + "(<not computed>)");
 }
 function $is_sc_View(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.n.R)));
@@ -78860,7 +78863,7 @@ var $d_scm_CheckedIndexedSeqView$CheckedIterator = new $TypeData().i($c_scm_Chec
 /** @constructor */
 function $c_scm_CheckedIndexedSeqView$CheckedReverseIterator(self, mutationCount) {
   this.Eu = null;
-  this.fl = 0;
+  this.fk = 0;
   this.qR = 0;
   this.L2 = null;
   this.L1 = 0;
@@ -78879,7 +78882,7 @@ $p.c = (function() {
   var expectedCount = this.L1;
   var actualCount = (this.L2.dc() | 0);
   this$2.HS(expectedCount, actualCount, "mutation occurred during iteration");
-  return (this.fl > 0);
+  return (this.fk > 0);
 });
 var $d_scm_CheckedIndexedSeqView$CheckedReverseIterator = new $TypeData().i($c_scm_CheckedIndexedSeqView$CheckedReverseIterator, "scala.collection.mutable.CheckedIndexedSeqView$CheckedReverseIterator", ({
   kV: 1,
@@ -80507,12 +80510,12 @@ var $d_Ltigerpython_parser_ast_AstNode$Subscript = new $TypeData().i($c_Ltigerpy
 function $c_Ltigerpython_parser_ast_AstNode$Try(pos, body, handlers, elseBody, finalBody) {
   this.bS = null;
   this.rK = 0;
-  this.ft = null;
+  this.fs = null;
   this.gv = null;
   this.ep = null;
   this.eq = null;
   this.rK = pos;
-  this.ft = body;
+  this.fs = body;
   this.gv = handlers;
   this.ep = elseBody;
   this.eq = finalBody;
@@ -80530,7 +80533,7 @@ $p.n = (function() {
 $p.nU = (function(key, value) {
   switch (key) {
     case "body": {
-      this.ft = value;
+      this.fs = value;
       break;
     }
     case "else":
@@ -80551,7 +80554,7 @@ $p.nU = (function(key, value) {
   }
 });
 $p.j = (function() {
-  return $m_sc_StringOps$().ao("Try(%d,%s,[%s],%s,%s)", new $c_sjsr_WrappedVarArgs([this.rK, this.ft, $f_sc_IterableOnceOps__mkString__T__T__T__T($m_s_Predef$().as(this.gv), "", ", ", ""), this.ep, this.eq]));
+  return $m_sc_StringOps$().ao("Try(%d,%s,[%s],%s,%s)", new $c_sjsr_WrappedVarArgs([this.rK, this.fs, $f_sc_IterableOnceOps__mkString__T__T__T__T($m_s_Predef$().as(this.gv), "", ", ", ""), this.ep, this.eq]));
 });
 $p.y = (function() {
   return "Try";
@@ -80566,7 +80569,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 1: {
-      return this.ft;
+      return this.fs;
       break;
     }
     case 2: {
@@ -80593,7 +80596,7 @@ $p.q = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().e(acc, $f_T__hashCode__I("Try"));
   acc = $m_sr_Statics$().e(acc, this.rK);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.ft));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.fs));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.gv));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.ep));
   acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.eq));
@@ -80605,8 +80608,8 @@ $p.b = (function(x$1) {
   } else if ((x$1 instanceof $c_Ltigerpython_parser_ast_AstNode$Try)) {
     var Try$1 = x$1;
     if ((this.rK === Try$1.rK)) {
-      var x = this.ft;
-      var x$2 = Try$1.ft;
+      var x = this.fs;
+      var x$2 = Try$1.fs;
       if (((x === null) ? (x$2 === null) : x.b(x$2))) {
         var $x_1 = (this.gv === Try$1.gv);
       } else {
@@ -80838,7 +80841,7 @@ function $f_sc_BitSetOps__contains__I__Z($thiz, elem) {
 }
 function $f_sc_BitSetOps__size__I($thiz) {
   var s = 0;
-  var i = $thiz.eN();
+  var i = $thiz.eM();
   while ((i > 0)) {
     i = (((-1) + i) | 0);
     var $x_1 = s;
@@ -80850,7 +80853,7 @@ function $f_sc_BitSetOps__size__I($thiz) {
   return s;
 }
 function $f_sc_BitSetOps__isEmpty__Z($thiz) {
-  var end = $thiz.eN();
+  var end = $thiz.eM();
   var isEmpty = (end <= 0);
   var scala$collection$immutable$Range$$lastElement = (((-1) + end) | 0);
   var res = true;
@@ -80864,7 +80867,7 @@ function $f_sc_BitSetOps__isEmpty__Z($thiz) {
 }
 function $f_sc_BitSetOps__max__s_math_Ordering__I($thiz, ord) {
   if (($m_s_math_Ordering$Int$() === ord)) {
-    var i = (((-1) + $thiz.eN()) | 0);
+    var i = (((-1) + $thiz.eM()) | 0);
     while ((i >= 0)) {
       var t = $thiz.dW(i);
       var lo = t.h;
@@ -80876,7 +80879,7 @@ function $f_sc_BitSetOps__max__s_math_Ordering__I($thiz, ord) {
     }
     throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.largestInt");
   } else if ($f_s_math_Ordering$CachedReverse__isReverseOf__s_math_Ordering__Z($m_s_math_Ordering$Int$(), ord)) {
-    var thisnwords = $thiz.eN();
+    var thisnwords = $thiz.eM();
     var i$1 = 0;
     while ((i$1 < thisnwords)) {
       var t$1 = $thiz.dW(i$1);
@@ -80910,7 +80913,7 @@ function $f_sc_BitSetOps__max__s_math_Ordering__I($thiz, ord) {
 }
 function $f_sc_BitSetOps__foreach__F1__V($thiz, f) {
   var i = 0;
-  while ((i < $thiz.eN())) {
+  while ((i < $thiz.eM())) {
     var t = $thiz.dW(i);
     var w__lo = t.h;
     var w__hi = t.i;
@@ -83031,11 +83034,11 @@ function $c_Ltigerpython_parser_ast_AstNode$List(pos, endPos, elements) {
   this.bW = null;
   this.rw = 0;
   this.oG = 0;
-  this.f1 = null;
+  this.f0 = null;
   this.Fs = null;
   this.rw = pos;
   this.oG = endPos;
-  this.f1 = elements;
+  this.f0 = elements;
   $ct_Ltigerpython_parser_ast_AstNode$Expression__s_Enumeration$Value__(this, $m_Ltigerpython_parser_ast_AstNodeKind$().LI);
   this.Fs = $m_Ltigerpython_parser_ast_ExprContext$().uW;
 }
@@ -83055,10 +83058,10 @@ $p.aF = (function() {
   return this.oG;
 });
 $p.hL = (function() {
-  return this.f1;
+  return this.f0;
 });
 $p.j = (function() {
-  return $m_sc_StringOps$().ao("List(%s)", new $c_sjsr_WrappedVarArgs([$f_sc_IterableOnceOps__mkString__T__T__T__T($m_s_Predef$().as(this.f1), "", ", ", "")]));
+  return $m_sc_StringOps$().ao("List(%s)", new $c_sjsr_WrappedVarArgs([$f_sc_IterableOnceOps__mkString__T__T__T__T($m_s_Predef$().as(this.f0), "", ", ", "")]));
 });
 $p.y = (function() {
   return "List";
@@ -83077,7 +83080,7 @@ $p.A = (function(x$1) {
       break;
     }
     case 2: {
-      return this.f1;
+      return this.f0;
       break;
     }
     default: {
@@ -83093,7 +83096,7 @@ $p.q = (function() {
   acc = $m_sr_Statics$().e(acc, $f_T__hashCode__I("List"));
   acc = $m_sr_Statics$().e(acc, this.rw);
   acc = $m_sr_Statics$().e(acc, this.oG);
-  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f1));
+  acc = $m_sr_Statics$().e(acc, $m_sr_Statics$().m(this.f0));
   return $m_sr_Statics$().H(acc, 3);
 });
 $p.b = (function(x$1) {
@@ -83101,7 +83104,7 @@ $p.b = (function(x$1) {
     return true;
   } else if ((x$1 instanceof $c_Ltigerpython_parser_ast_AstNode$List)) {
     var List$1 = x$1;
-    return (((this.rw === List$1.rw) && (this.oG === List$1.oG)) && (this.f1 === List$1.f1));
+    return (((this.rw === List$1.rw) && (this.oG === List$1.oG)) && (this.f0 === List$1.f0));
   } else {
     return false;
   }
@@ -83435,7 +83438,7 @@ $p.ca = (function() {
 $p.j = (function() {
   return $f_sc_View__toString__T(this);
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "SeqView";
 });
 $p.gH = (function() {
@@ -83480,7 +83483,7 @@ $p.nQ = (function(ord) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.Dk = (function() {
@@ -83521,7 +83524,7 @@ $p.h1 = (function(coll) {
 $p.cH = (function(n) {
   return $ct_sc_SeqView$Drop__sc_SeqOps__I__(new $c_sc_SeqView$Drop(), this, n);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return this.Jg(ord);
 });
 var $d_sc_SeqView$Sorted = new $TypeData().i($c_sc_SeqView$Sorted, "scala.collection.SeqView$Sorted", ({
@@ -83565,7 +83568,7 @@ $p.ca = (function() {
 $p.j = (function() {
   return $f_sc_View__toString__T(this);
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "SeqView";
 });
 $p.gH = (function() {
@@ -83610,7 +83613,7 @@ $p.nQ = (function(ord) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.s = (function(i) {
@@ -83644,7 +83647,7 @@ $p.h1 = (function(coll) {
 $p.cH = (function(n) {
   return $ct_sc_SeqView$Drop__sc_SeqOps__I__(new $c_sc_SeqView$Drop(), this, n);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return this.Jg(ord);
 });
 var $d_sc_SeqView$Sorted$ReverseSorted = new $TypeData().i($c_sc_SeqView$Sorted$ReverseSorted, "scala.collection.SeqView$Sorted$ReverseSorted", ({
@@ -84002,7 +84005,7 @@ $p.jA = (function(x, y) {
 $p.h5 = (function(x, y) {
   return $f_s_math_Numeric$ByteIsIntegral__minus__B__B__B(this, (x | 0), (y | 0));
 });
-$p.fi = (function(x, y) {
+$p.fh = (function(x, y) {
   return $f_s_math_Numeric$ByteIsIntegral__plus__B__B__B(this, (x | 0), (y | 0));
 });
 $p.bm = (function(x, y) {
@@ -84084,7 +84087,7 @@ $p.jA = (function(x, y) {
 $p.h5 = (function(x, y) {
   return $bC($f_s_math_Numeric$CharIsIntegral__minus__C__C__C(this, $uC(x), $uC(y)));
 });
-$p.fi = (function(x, y) {
+$p.fh = (function(x, y) {
   return $bC($f_s_math_Numeric$CharIsIntegral__plus__C__C__C(this, $uC(x), $uC(y)));
 });
 $p.bm = (function(x, y) {
@@ -84167,7 +84170,7 @@ $p.jA = (function(x, y) {
 $p.h5 = (function(x, y) {
   return $f_s_math_Numeric$IntIsIntegral__minus__I__I__I(this, (x | 0), (y | 0));
 });
-$p.fi = (function(x, y) {
+$p.fh = (function(x, y) {
   return $f_s_math_Numeric$IntIsIntegral__plus__I__I__I(this, (x | 0), (y | 0));
 });
 $p.bm = (function(x, y) {
@@ -84270,7 +84273,7 @@ $p.h5 = (function(x, y) {
   var t$1 = $uJ(y);
   return $f_s_math_Numeric$LongIsIntegral__minus__J__J__J(this, new $c_RTLong(lo, hi), new $c_RTLong(t$1.h, t$1.i));
 });
-$p.fi = (function(x, y) {
+$p.fh = (function(x, y) {
   var t = $uJ(x);
   var lo = t.h;
   var hi = t.i;
@@ -84360,7 +84363,7 @@ $p.jA = (function(x, y) {
 $p.h5 = (function(x, y) {
   return $f_s_math_Numeric$ShortIsIntegral__minus__S__S__S(this, (x | 0), (y | 0));
 });
-$p.fi = (function(x, y) {
+$p.fh = (function(x, y) {
   return $f_s_math_Numeric$ShortIsIntegral__plus__S__S__S(this, (x | 0), (y | 0));
 });
 $p.bm = (function(x, y) {
@@ -84529,7 +84532,7 @@ $p.nP = (function(p, from) {
 $p.al = (function(elem) {
   return $f_sc_SeqOps__contains__O__Z(this, elem);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $f_sc_SeqOps__sorted__s_math_Ordering__O(this, ord);
 });
 $p.dT = (function(len) {
@@ -84580,7 +84583,7 @@ $p.dT = (function(len) {
 $p.t = (function() {
   return $f_sc_SeqOps__isEmpty__Z(this);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $ct_sc_SeqView$Sorted__sc_SeqOps__s_math_Ordering__(new $c_sc_SeqView$Sorted(), this, ord);
 });
 $p.cH = (function(n) {
@@ -84703,7 +84706,7 @@ $p.s = (function(i) {
 $p.qp = (function(n) {
   return $ct_sc_SeqView$Drop__sc_SeqOps__I__(new $c_sc_SeqView$Drop(), this.to, ((this.Ak + n) | 0));
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $ct_sc_SeqView$Sorted__sc_SeqOps__s_math_Ordering__(new $c_sc_SeqView$Sorted(), this, ord);
 });
 $p.cH = (function(n) {
@@ -84808,7 +84811,7 @@ $p.s = (function(idx) {
 $p.g = (function() {
   return this.Al.g();
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $ct_sc_SeqView$Sorted__sc_SeqOps__s_math_Ordering__(new $c_sc_SeqView$Sorted(), this, ord);
 });
 function $ct_sc_SeqView$Reverse__sc_SeqOps__($thiz, underlying) {
@@ -85246,7 +85249,7 @@ $p.s = (function(n) {
 $p.g = (function() {
   return this.EZ.u;
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "ArrayBufferView";
 });
 $p.k = (function() {
@@ -86560,12 +86563,12 @@ function $isArrayOf_scm_Map(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.c7)));
 }
 function $p_sci_HashSet__newHashSetOrThis__sci_BitmapIndexedSetNode__sci_HashSet($thiz, newRootNode) {
-  return (($thiz.fn === newRootNode) ? $thiz : new $c_sci_HashSet(newRootNode));
+  return (($thiz.fm === newRootNode) ? $thiz : new $c_sci_HashSet(newRootNode));
 }
 /** @constructor */
 function $c_sci_HashSet(rootNode) {
-  this.fn = null;
-  this.fn = rootNode;
+  this.fm = null;
+  this.fm = rootNode;
 }
 $p = $c_sci_HashSet.prototype = new $h_sci_AbstractSet();
 $p.constructor = $c_sci_HashSet;
@@ -86583,29 +86586,29 @@ $p.ca = (function() {
   return $m_sci_HashSet$();
 });
 $p.S = (function() {
-  return this.fn.dE;
+  return this.fm.dE;
 });
 $p.aI = (function() {
-  return this.fn.dE;
+  return this.fm.dE;
 });
 $p.t = (function() {
-  return (this.fn.dE === 0);
+  return (this.fm.dE === 0);
 });
 $p.k = (function() {
-  return (this.t() ? $m_sc_Iterator$().r : new $c_sci_SetIterator(this.fn));
+  return (this.t() ? $m_sc_Iterator$().r : new $c_sci_SetIterator(this.fm));
 });
 $p.al = (function(element) {
   var elementUnimprovedHash = $m_sr_Statics$().m(element);
   var elementHash = $m_sc_Hashing$().bz(elementUnimprovedHash);
-  return this.fn.zk(element, elementUnimprovedHash, elementHash, 0);
+  return this.fm.zk(element, elementUnimprovedHash, elementHash, 0);
 });
 $p.wD = (function(element) {
   var elementUnimprovedHash = $m_sr_Statics$().m(element);
   var elementHash = $m_sc_Hashing$().bz(elementUnimprovedHash);
-  return $p_sci_HashSet__newHashSetOrThis__sci_BitmapIndexedSetNode__sci_HashSet(this, this.fn.RY(element, elementUnimprovedHash, elementHash, 0));
+  return $p_sci_HashSet__newHashSetOrThis__sci_BitmapIndexedSetNode__sci_HashSet(this, this.fm.RY(element, elementUnimprovedHash, elementHash, 0));
 });
 $p.az = (function(f) {
-  this.fn.az(f);
+  this.fm.az(f);
 });
 $p.Dq = (function(that) {
   if (this.t()) {
@@ -86613,7 +86616,7 @@ $p.Dq = (function(that) {
   } else if ((!that.t())) {
     if ((that instanceof $c_sci_HashSet)) {
       var x2 = that;
-      return this.fn.Jk(x2.fn, 0);
+      return this.fm.Jk(x2.fm, 0);
     } else {
       return $f_sc_IterableOnceOps__forall__F1__Z(this, that);
     }
@@ -86627,24 +86630,24 @@ $p.b = (function(that) {
     if ((this === x2)) {
       return true;
     } else {
-      var x = this.fn;
-      var x$2 = x2.fn;
+      var x = this.fm;
+      var x$2 = x2.fm;
       return ((x === null) ? (x$2 === null) : x.b(x$2));
     }
   } else {
     return $f_sc_Set__equals__O__Z(this, that);
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "HashSet";
 });
 $p.q = (function() {
-  var it = new $c_sci_SetHashIterator(this.fn);
+  var it = new $c_sci_SetHashIterator(this.fm);
   return $m_s_util_hashing_MurmurHash3$().wV(it, $m_s_util_hashing_MurmurHash3$().AD);
 });
 $p.Ud = (function(pred, isFlipped) {
-  var newRootNode = this.fn.PS(pred, isFlipped);
-  return ((newRootNode === this.fn) ? this : ((newRootNode.dE === 0) ? $m_sci_HashSet$().xm : new $c_sci_HashSet(newRootNode)));
+  var newRootNode = this.fm.PS(pred, isFlipped);
+  return ((newRootNode === this.fm) ? this : ((newRootNode.dE === 0) ? $m_sci_HashSet$().xm : new $c_sci_HashSet(newRootNode)));
 });
 $p.cH = (function(n) {
   return $f_sc_IterableOps__drop__I__O(this, n);
@@ -86891,7 +86894,7 @@ $p.az = (function(f) {
     _$this = _$this.aS().dV();
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "LazyList";
 });
 $p.h6 = (function(f) {
@@ -86980,7 +86983,7 @@ $h_sjsr_WrappedVarArgs.prototype = $p;
 $p.g5 = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $f_sc_SeqOps__sorted__s_math_Ordering__O(this, ord);
 });
 $p.aY = (function(f) {
@@ -87065,7 +87068,7 @@ $p.nQ = (function(ord) {
 $p.g3 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eS = (function(evidence$2) {
+$p.eR = (function(evidence$2) {
   return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2);
 });
 $p.g = (function() {
@@ -87074,7 +87077,7 @@ $p.g = (function() {
 $p.s = (function(idx) {
   return this.Fe[idx];
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "WrappedVarArgs";
 });
 $p.h1 = (function(coll) {
@@ -87195,7 +87198,7 @@ $p.Tj = (function(that) {
       var improved = $m_sc_Hashing$().bz(originalHash);
       current = current.wX(next.hm, next.bU, originalHash, improved, 0, true);
       if ((current !== this.bG)) {
-        var shallowlyMutableNodeMap = $m_sci_Node$().cv($m_sci_Node$().fg(improved, 0));
+        var shallowlyMutableNodeMap = $m_sci_Node$().cv($m_sci_Node$().ff(improved, 0));
         while (iter.c()) {
           var next$2 = iter.d();
           var improvedHash$1 = next$2.gN;
@@ -87216,7 +87219,7 @@ $p.Tj = (function(that) {
       var improved$2 = $m_sc_Hashing$().bz(originalHash$3);
       current$2 = current$2.wX(next$3.D0(), next$3.dj(), originalHash$3, improved$2, 0, true);
       if ((current$2 !== this.bG)) {
-        var shallowlyMutableNodeMap$2 = $m_sci_Node$().cv($m_sci_Node$().fg(improved$2, 0));
+        var shallowlyMutableNodeMap$2 = $m_sci_Node$().cv($m_sci_Node$().ff(improved$2, 0));
         while (iter$2.c()) {
           var next$4 = iter$2.d();
           var originalHash$4 = x4.RX(next$4.CS());
@@ -87276,7 +87279,7 @@ $p.q = (function() {
     return $m_s_util_hashing_MurmurHash3$().wV(hashIterator, $m_s_util_hashing_MurmurHash3$().mx);
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "HashMap";
 });
 $p.cH = (function(n) {
@@ -87402,10 +87405,10 @@ $p.k = (function() {
     var id = (id$2 | 0);
     var this$3 = this.kG;
     var x = ((this.kG.ez + id) | 0);
-    return this$3.fk.w(x);
+    return this$3.fj.w(x);
   })));
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return (this.kG + ".ValueSet");
 });
 $p.CI = (function(coll) {
@@ -87594,7 +87597,7 @@ $p.OX = (function(xs) {
       var h = (h$2 | 0);
       $p_scm_HashSet__addElem__O__I__Z(this, k$2, this.Do(h));
     }));
-    x2.fn.Ie(f);
+    x2.fm.Ie(f);
     return this;
   } else if ((xs instanceof $c_scm_HashSet)) {
     var x3 = xs;
@@ -87639,7 +87642,7 @@ $p.az = (function(f) {
     i = ((1 + i) | 0);
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "HashSet";
 });
 $p.q = (function() {
@@ -87797,13 +87800,13 @@ function $p_sci_NumericRange__crossesTheEndAfterN__I__Z($thiz, n) {
     var y$6 = $thiz.a4.bE(0);
     if ($f_s_math_Ordering__lt__O__O__Z(this$14, x$6, y$6)) {
       if (walksOnZero) {
-        var twoStepsAfterLargestNegativeNumber = $thiz.a4.fi(closestToZero, $thiz.a4.jA($thiz.b2, $thiz.a4.bE(2)));
+        var twoStepsAfterLargestNegativeNumber = $thiz.a4.fh(closestToZero, $thiz.a4.jA($thiz.b2, $thiz.a4.bE(2)));
         var x1 = new $c_T3(($m_sci_NumericRange$(), new $c_sci_NumericRange$Exclusive($thiz.bH, closestToZero, $thiz.b2, $thiz.a4)), $thiz.wp(twoStepsAfterLargestNegativeNumber, $thiz.ee, $thiz.b2), 2);
       } else {
-        var x1 = new $c_T3(($m_sci_NumericRange$(), new $c_sci_NumericRange$Exclusive($thiz.bH, closestToZero, $thiz.b2, $thiz.a4)), $thiz.wp($thiz.a4.fi(closestToZero, $thiz.b2), $thiz.ee, $thiz.b2), 1);
+        var x1 = new $c_T3(($m_sci_NumericRange$(), new $c_sci_NumericRange$Exclusive($thiz.bH, closestToZero, $thiz.b2, $thiz.a4)), $thiz.wp($thiz.a4.fh(closestToZero, $thiz.b2), $thiz.ee, $thiz.b2), 1);
       }
     } else {
-      var x1 = (walksOnZero ? new $c_T3($thiz.wp($thiz.a4.jA($thiz.b2, $thiz.a4.bE(2)), $thiz.ee, $thiz.b2), ($m_sci_NumericRange$(), new $c_sci_NumericRange$Inclusive($thiz.bH, new $c_s_math_Integral$IntegralOps($thiz.a4, $thiz.b2).Jo(), $thiz.b2, $thiz.a4)), 2) : new $c_T3($thiz.wp($thiz.a4.fi(closestToZero, $thiz.a4.jA($thiz.b2, $thiz.a4.bE(2))), $thiz.ee, $thiz.b2), ($m_sci_NumericRange$(), new $c_sci_NumericRange$Inclusive($thiz.bH, closestToZero, $thiz.b2, $thiz.a4)), 2));
+      var x1 = (walksOnZero ? new $c_T3($thiz.wp($thiz.a4.jA($thiz.b2, $thiz.a4.bE(2)), $thiz.ee, $thiz.b2), ($m_sci_NumericRange$(), new $c_sci_NumericRange$Inclusive($thiz.bH, new $c_s_math_Integral$IntegralOps($thiz.a4, $thiz.b2).Jo(), $thiz.b2, $thiz.a4)), 2) : new $c_T3($thiz.wp($thiz.a4.fh(closestToZero, $thiz.a4.jA($thiz.b2, $thiz.a4.bE(2))), $thiz.ee, $thiz.b2), ($m_sci_NumericRange$(), new $c_sci_NumericRange$Inclusive($thiz.bH, closestToZero, $thiz.b2, $thiz.a4)), 2));
     }
     matchEnd6: {
       var x$1$1___1;
@@ -87866,7 +87869,7 @@ function $p_sci_NumericRange__unsafeRangeLength$1__sci_NumericRange__O($thiz, r)
     return $f_s_math_Ordering__max__O__O__O(this$4, quotient, y$1);
   } else {
     var this$7 = $thiz.a4;
-    var x = $thiz.a4.fi(quotient, $thiz.a4.bE(1));
+    var x = $thiz.a4.fh(quotient, $thiz.a4.bE(1));
     var y$2 = $thiz.a4.bE(0);
     return $f_s_math_Ordering__max__O__O__O(this$7, x, y$2);
   }
@@ -87905,7 +87908,7 @@ $h_sci_NumericRange.prototype = $p;
 $p.g5 = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $f_sc_SeqOps__sorted__s_math_Ordering__O(this, ord);
 });
 $p.aY = (function(f) {
@@ -88017,7 +88020,7 @@ $p.j = (function() {
   var stepped = ($m_sr_BoxesRunTime$().Q(this.b2, 1) ? "" : (" by " + this.b2));
   return (((((((empty + "NumericRange ") + this.bH) + " ") + preposition) + " ") + this.ee) + stepped);
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "NumericRange";
 });
 $p.ca = (function() {
@@ -88311,7 +88314,7 @@ $p.j = (function() {
   var stepped = ((this.aK === 1) ? "" : (" by " + this.aK));
   return ((((((((this.bP ? "empty " : ((!$p_sci_Range__isExact__Z(this)) ? "inexact " : "")) + "Range ") + this.b8) + " ") + preposition) + " ") + this.gL) + stepped);
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "Range";
 });
 $p.XT = (function(ord) {
@@ -88328,7 +88331,7 @@ $p.qm = (function(idx) {
 $p.ca = (function() {
   return $m_sci_IndexedSeq$();
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return this.XT(ord);
 });
 $p.nJ = (function() {
@@ -88429,7 +88432,7 @@ $p.TW = (function(n) {
 $p.Y3 = (function() {
   return $m_sci_ArraySeq$().ta($m_sc_ArrayOps$().m8(this.hT()));
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "ArraySeq";
 });
 $p.aa = (function(xs, start, len) {
@@ -88447,7 +88450,7 @@ $p.aa = (function(xs, start, len) {
 $p.wk = (function() {
   return 2147483647;
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if (($m_jl_reflect_Array$().aX(this.hT()) <= 1)) {
     return this;
   } else {
@@ -88471,8 +88474,8 @@ $p.h1 = (function(coll) {
   var evidence$5 = this.dd();
   return this$1.Ih(coll, evidence$5);
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.aD = (function() {
   return this.Y3();
@@ -88712,7 +88715,7 @@ $h_sci_Vector.prototype = $p;
 $p.g5 = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $f_sc_SeqOps__sorted__s_math_Ordering__O(this, ord);
 });
 $p.wn = (function(that) {
@@ -88804,7 +88807,7 @@ $p.Ue = (function(pred, isFlipped) {
     return this;
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "Vector";
 });
 $p.aa = (function(xs, start, len) {
@@ -88917,7 +88920,7 @@ $p.Qa = (function(coll) {
 $p.gH = (function() {
   return $m_scm_ArraySeq$().D5(this.dd());
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "ArraySeq";
 });
 $p.aa = (function(xs, start, len) {
@@ -88944,7 +88947,7 @@ $p.b = (function(other) {
 $p.XU = (function(ord) {
   return $m_scm_ArraySeq$().zL($m_sc_ArrayOps$().Jh(this.it(), ord));
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return this.XU(ord);
 });
 $p.h1 = (function(coll) {
@@ -88986,7 +88989,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Boolean$())) {
@@ -88996,7 +88999,7 @@ $p.eQ = (function(ord) {
     this$2.Ji(a, 0, a.a.length, evidence$3);
     return new $c_sci_ArraySeq$ofBoolean(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
@@ -89005,8 +89008,8 @@ $p.k = (function() {
 $p.hH = (function(i) {
   return this.md.a[i];
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return this.hH((v1 | 0));
@@ -89082,7 +89085,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Byte$())) {
@@ -89090,14 +89093,14 @@ $p.eQ = (function(ord) {
     $m_ju_Arrays$().RI(a);
     return new $c_sci_ArraySeq$ofByte(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
   return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.me);
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return this.za((v1 | 0));
@@ -89173,7 +89176,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Char$())) {
@@ -89181,7 +89184,7 @@ $p.eQ = (function(ord) {
     $m_ju_Arrays$().RJ(a);
     return new $c_sci_ArraySeq$ofChar(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
@@ -89190,8 +89193,8 @@ $p.k = (function() {
 $p.g3 = (function(sb, start, sep, end) {
   return new $c_scm_ArraySeq$ofChar(this.kI).g3(sb, start, sep, end);
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return $bC(this.aq((v1 | 0)));
@@ -89418,7 +89421,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Int$())) {
@@ -89426,7 +89429,7 @@ $p.eQ = (function(ord) {
     $m_ju_Arrays$().RK(a);
     return new $c_sci_ArraySeq$ofInt(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
@@ -89435,8 +89438,8 @@ $p.k = (function() {
 $p.qm = (function(i) {
   return this.mf.a[i];
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return this.qm((v1 | 0));
@@ -89509,7 +89512,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Long$())) {
@@ -89517,7 +89520,7 @@ $p.eQ = (function(ord) {
     $m_ju_Arrays$().RL(a);
     return new $c_sci_ArraySeq$ofLong(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
@@ -89526,8 +89529,8 @@ $p.k = (function() {
 $p.zf = (function(i) {
   return this.mg.a[i];
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return this.zf((v1 | 0));
@@ -89618,10 +89621,10 @@ $p.RO = (function(ord) {
 $p.k = (function() {
   return $ct_sc_ArrayOps$ArrayIterator__O__(new $c_sc_ArrayOps$ArrayIterator(), this.iN);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return this.RO(ord);
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   return this.RO(ord);
 });
 $p.w = (function(v1) {
@@ -89692,7 +89695,7 @@ $p.b = (function(that) {
     return $f_sc_Seq__equals__O__Z(this, that);
   }
 });
-$p.eQ = (function(ord) {
+$p.eP = (function(ord) {
   if ((this.g() <= 1)) {
     return this;
   } else if ((ord === $m_s_math_Ordering$Short$())) {
@@ -89700,14 +89703,14 @@ $p.eQ = (function(ord) {
     $m_ju_Arrays$().RM(a);
     return new $c_sci_ArraySeq$ofShort(a);
   } else {
-    return $c_sci_ArraySeq.prototype.eQ.call(this, ord);
+    return $c_sci_ArraySeq.prototype.eP.call(this, ord);
   }
 });
 $p.k = (function() {
   return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.mh);
 });
-$p.eP = (function(ord) {
-  return this.eQ(ord);
+$p.eO = (function(ord) {
+  return this.eP(ord);
 });
 $p.w = (function(v1) {
   return this.zb((v1 | 0));
@@ -89873,7 +89876,7 @@ $h_sci_List.prototype = $p;
 $p.g5 = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(ord) {
+$p.eO = (function(ord) {
   return $f_sc_SeqOps__sorted__s_math_Ordering__O(this, ord);
 });
 $p.k = (function() {
@@ -90007,7 +90010,7 @@ $p.gb = (function() {
     return these.V();
   }
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "List";
 });
 $p.b = (function(o) {
@@ -91000,7 +91003,7 @@ $p.al = (function(key) {
   var originalHash = $m_sr_Statics$().m(key);
   var hash = (originalHash ^ ((originalHash >>> 16) | 0));
   var x1 = this.Z.a[(hash & (((-1) + this.Z.a.length) | 0))];
-  return (((x1 === null) ? null : x1.fe(key, hash)) !== null);
+  return (((x1 === null) ? null : x1.fd(key, hash)) !== null);
 });
 $p.cw = (function(size) {
   var target = $p_scm_HashMap__tableSizeFor__I__I(this, $doubleToInt((((1 + size) | 0) / this.F1)));
@@ -91061,14 +91064,14 @@ $p.b1 = (function(key) {
   var originalHash = $m_sr_Statics$().m(key);
   var hash = (originalHash ^ ((originalHash >>> 16) | 0));
   var x1 = this.Z.a[(hash & (((-1) + this.Z.a.length) | 0))];
-  var x1$1 = ((x1 === null) ? null : x1.fe(key, hash));
+  var x1$1 = ((x1 === null) ? null : x1.fd(key, hash));
   return ((x1$1 === null) ? $m_s_None$() : new $c_s_Some(x1$1.bU));
 });
 $p.w = (function(key) {
   var originalHash = $m_sr_Statics$().m(key);
   var hash = (originalHash ^ ((originalHash >>> 16) | 0));
   var x1 = this.Z.a[(hash & (((-1) + this.Z.a.length) | 0))];
-  var x1$1 = ((x1 === null) ? null : x1.fe(key, hash));
+  var x1$1 = ((x1 === null) ? null : x1.fd(key, hash));
   return ((x1$1 === null) ? $f_sc_MapOps__default__O__O(this, key) : x1$1.bU);
 });
 $p.qt = (function(key, default$1) {
@@ -91078,7 +91081,7 @@ $p.qt = (function(key, default$1) {
     var originalHash = $m_sr_Statics$().m(key);
     var hash = (originalHash ^ ((originalHash >>> 16) | 0));
     var x1 = this.Z.a[(hash & (((-1) + this.Z.a.length) | 0))];
-    var nd = ((x1 === null) ? null : x1.fe(key, hash));
+    var nd = ((x1 === null) ? null : x1.fd(key, hash));
     return ((nd === null) ? default$1.dc() : nd.bU);
   }
 });
@@ -91567,9 +91570,9 @@ function $c_sci_Vector2(_prefix1, len1, data2, _suffix1, _length0) {
   this.X = null;
   this.a0 = 0;
   this.go = 0;
-  this.fo = null;
+  this.fn = null;
   this.go = len1;
-  this.fo = data2;
+  this.fn = data2;
   $ct_sci_BigVector__AO__AO__I__(this, _prefix1, _suffix1, _length0);
 }
 $p = $c_sci_Vector2.prototype = new $h_sci_BigVector();
@@ -91584,7 +91587,7 @@ $p.s = (function(index) {
     if ((io >= 0)) {
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
-      return ((i2 < this.fo.a.length) ? this.fo.a[i2].a[i1] : this.X.a[(31 & io)]);
+      return ((i2 < this.fn.a.length) ? this.fn.a[i2].a[i1] : this.X.a[(31 & io)]);
     } else {
       return this.K.a[index];
     }
@@ -91598,8 +91601,8 @@ $p.nV = (function(index, elem) {
       var io = ((index - this.go) | 0);
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
-      if ((i2 < this.fo.a.length)) {
-        var a2 = this.fo;
+      if ((i2 < this.fn.a.length)) {
+        var a2 = this.fn;
         var a2c = a2.N();
         var a1 = a2c.a[i2];
         var a1c = a1.N();
@@ -91610,13 +91613,13 @@ $p.nV = (function(index, elem) {
         var a1$1 = this.X;
         var a1c$1 = a1$1.N();
         a1c$1.a[i1] = elem;
-        return new $c_sci_Vector2(this.K, this.go, this.fo, a1c$1, this.a0);
+        return new $c_sci_Vector2(this.K, this.go, this.fn, a1c$1, this.a0);
       }
     } else {
       var a1$2 = this.K;
       var a1c$2 = a1$2.N();
       a1c$2.a[index] = elem;
-      return new $c_sci_Vector2(a1c$2, this.go, this.fo, this.X, this.a0);
+      return new $c_sci_Vector2(a1c$2, this.go, this.fn, this.X, this.a0);
     }
   } else {
     throw this.ex(index);
@@ -91626,9 +91629,9 @@ $p.lO = (function(elem) {
   if ((this.X.a.length < 32)) {
     var x$1 = $m_sci_VectorStatics$().wq(this.X, elem);
     var x$2 = ((1 + this.a0) | 0);
-    return new $c_sci_Vector2(this.K, this.go, this.fo, x$1, x$2);
-  } else if ((this.fo.a.length < 30)) {
-    var x$6 = $m_sci_VectorStatics$().be(this.fo, this.X);
+    return new $c_sci_Vector2(this.K, this.go, this.fn, x$1, x$2);
+  } else if ((this.fn.a.length < 30)) {
+    var x$6 = $m_sci_VectorStatics$().be(this.fn, this.X);
     var a = new $ac_O(1);
     a.a[0] = elem;
     var x$8 = ((1 + this.a0) | 0);
@@ -91636,7 +91639,7 @@ $p.lO = (function(elem) {
   } else {
     var $x_5 = this.K;
     var $x_4 = this.go;
-    var $x_3 = this.fo;
+    var $x_3 = this.fn;
     var $x_2 = this.go;
     var $x_1 = $m_sci_VectorStatics$().fO;
     var x = this.X;
@@ -91649,14 +91652,14 @@ $p.lO = (function(elem) {
 });
 $p.kv = (function(f) {
   var x$1 = $m_sci_VectorStatics$().jt(this.K, f);
-  var x$2 = $m_sci_VectorStatics$().cJ(2, this.fo, f);
+  var x$2 = $m_sci_VectorStatics$().cJ(2, this.fn, f);
   var x$3 = $m_sci_VectorStatics$().jt(this.X, f);
   return new $c_sci_Vector2(x$1, this.go, x$2, x$3, this.a0);
 });
 $p.jy = (function(lo, hi) {
   var b = new $c_sci_VectorSliceBuilder(lo, hi);
   b.bD(1, this.K);
-  b.bD(2, this.fo);
+  b.bD(2, this.fn);
   b.bD(1, this.X);
   return b.ky();
 });
@@ -91666,7 +91669,7 @@ $p.iF = (function() {
     var x$1 = $m_ju_Arrays$().ba(a, 1, a.a.length);
     var x$2 = (((-1) + this.go) | 0);
     var x$3 = (((-1) + this.a0) | 0);
-    return new $c_sci_Vector2(x$1, x$2, this.fo, this.X, x$3);
+    return new $c_sci_Vector2(x$1, x$2, this.fn, this.X, x$3);
   } else {
     return this.jy(1, this.a0);
   }
@@ -91681,7 +91684,7 @@ $p.kC = (function(idx) {
       break;
     }
     case 1: {
-      return this.fo;
+      return this.fn;
       break;
     }
     case 2: {
@@ -91706,7 +91709,7 @@ $p.w = (function(v1) {
     if ((io >= 0)) {
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
-      return ((i2 < this.fo.a.length) ? this.fo.a[i2].a[i1] : this.X.a[(31 & io)]);
+      return ((i2 < this.fn.a.length) ? this.fn.a[i2].a[i1] : this.X.a[(31 & io)]);
     } else {
       return this.K.a[index];
     }
@@ -91753,14 +91756,14 @@ function $c_sci_Vector3(_prefix1, len1, prefix2, len12, data3, suffix2, _suffix1
   this.K = null;
   this.X = null;
   this.a0 = 0;
-  this.f0 = 0;
+  this.eZ = 0;
   this.fN = null;
-  this.fp = 0;
+  this.fo = 0;
   this.ef = null;
   this.eg = null;
-  this.f0 = len1;
+  this.eZ = len1;
   this.fN = prefix2;
-  this.fp = len12;
+  this.fo = len12;
   this.ef = data3;
   this.eg = suffix2;
   $ct_sci_BigVector__AO__AO__I__(this, _prefix1, _suffix1, _length0);
@@ -91773,14 +91776,14 @@ function $h_sci_Vector3() {
 $h_sci_Vector3.prototype = $p;
 $p.s = (function(index) {
   if (((index >= 0) && (index < this.a0))) {
-    var io = ((index - this.fp) | 0);
+    var io = ((index - this.fo) | 0);
     if ((io >= 0)) {
       var i3 = ((io >>> 10) | 0);
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i3 < this.ef.a.length) ? this.ef.a[i3].a[i2].a[i1] : ((i2 < this.eg.a.length) ? this.eg.a[i2].a[i1] : this.X.a[i1]));
-    } else if ((index >= this.f0)) {
-      var io$2 = ((index - this.f0) | 0);
+    } else if ((index >= this.eZ)) {
+      var io$2 = ((index - this.eZ) | 0);
       return this.fN.a[((io$2 >>> 5) | 0)].a[(31 & io$2)];
     } else {
       return this.K.a[index];
@@ -91791,8 +91794,8 @@ $p.s = (function(index) {
 });
 $p.nV = (function(index, elem) {
   if (((index >= 0) && (index < this.a0))) {
-    if ((index >= this.fp)) {
-      var io = ((index - this.fp) | 0);
+    if ((index >= this.fo)) {
+      var io = ((index - this.fo) | 0);
       var i3 = ((io >>> 10) | 0);
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
@@ -91806,7 +91809,7 @@ $p.nV = (function(index, elem) {
         a1c.a[i1] = elem;
         a2c.a[i2] = a1c;
         a3c.a[i3] = a2c;
-        return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, a3c, this.eg, this.X, this.a0);
+        return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, a3c, this.eg, this.X, this.a0);
       } else if ((i2 < this.eg.a.length)) {
         var a2$1 = this.eg;
         var a2c$1 = a2$1.N();
@@ -91814,15 +91817,15 @@ $p.nV = (function(index, elem) {
         var a1c$1 = a1$1.N();
         a1c$1.a[i1] = elem;
         a2c$1.a[i2] = a1c$1;
-        return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, this.ef, a2c$1, this.X, this.a0);
+        return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, this.ef, a2c$1, this.X, this.a0);
       } else {
         var a1$2 = this.X;
         var a1c$2 = a1$2.N();
         a1c$2.a[i1] = elem;
-        return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, this.ef, this.eg, a1c$2, this.a0);
+        return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, this.ef, this.eg, a1c$2, this.a0);
       }
-    } else if ((index >= this.f0)) {
-      var io$2 = ((index - this.f0) | 0);
+    } else if ((index >= this.eZ)) {
+      var io$2 = ((index - this.eZ) | 0);
       var a2$2 = this.fN;
       var idx2 = ((io$2 >>> 5) | 0);
       var idx1 = (31 & io$2);
@@ -91831,12 +91834,12 @@ $p.nV = (function(index, elem) {
       var a1c$3 = a1$3.N();
       a1c$3.a[idx1] = elem;
       a2c$2.a[idx2] = a1c$3;
-      return new $c_sci_Vector3(this.K, this.f0, a2c$2, this.fp, this.ef, this.eg, this.X, this.a0);
+      return new $c_sci_Vector3(this.K, this.eZ, a2c$2, this.fo, this.ef, this.eg, this.X, this.a0);
     } else {
       var a1$4 = this.K;
       var a1c$4 = a1$4.N();
       a1c$4.a[index] = elem;
-      return new $c_sci_Vector3(a1c$4, this.f0, this.fN, this.fp, this.ef, this.eg, this.X, this.a0);
+      return new $c_sci_Vector3(a1c$4, this.eZ, this.fN, this.fo, this.ef, this.eg, this.X, this.a0);
     }
   } else {
     throw this.ex(index);
@@ -91846,27 +91849,27 @@ $p.lO = (function(elem) {
   if ((this.X.a.length < 32)) {
     var x$1 = $m_sci_VectorStatics$().wq(this.X, elem);
     var x$2 = ((1 + this.a0) | 0);
-    return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, this.ef, this.eg, x$1, x$2);
+    return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, this.ef, this.eg, x$1, x$2);
   } else if ((this.eg.a.length < 31)) {
     var x$9 = $m_sci_VectorStatics$().be(this.eg, this.X);
     var a = new $ac_O(1);
     a.a[0] = elem;
     var x$11 = ((1 + this.a0) | 0);
-    return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, this.ef, x$9, a, x$11);
+    return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, this.ef, x$9, a, x$11);
   } else if ((this.ef.a.length < 30)) {
     var x$17 = $m_sci_VectorStatics$().be(this.ef, $m_sci_VectorStatics$().be(this.eg, this.X));
     var x$18 = $m_sci_VectorStatics$().ds;
     var a$1 = new $ac_O(1);
     a$1.a[0] = elem;
     var x$20 = ((1 + this.a0) | 0);
-    return new $c_sci_Vector3(this.K, this.f0, this.fN, this.fp, x$17, x$18, a$1, x$20);
+    return new $c_sci_Vector3(this.K, this.eZ, this.fN, this.fo, x$17, x$18, a$1, x$20);
   } else {
     var $x_8 = this.K;
-    var $x_7 = this.f0;
+    var $x_7 = this.eZ;
     var $x_6 = this.fN;
-    var $x_5 = this.fp;
+    var $x_5 = this.fo;
     var $x_4 = this.ef;
-    var $x_3 = this.fp;
+    var $x_3 = this.fo;
     var $x_2 = $m_sci_VectorStatics$().jL;
     var x = $m_sci_VectorStatics$().be(this.eg, this.X);
     var a$2 = new ($d_O.r().r().r().C)(1);
@@ -91883,7 +91886,7 @@ $p.kv = (function(f) {
   var x$3 = $m_sci_VectorStatics$().cJ(3, this.ef, f);
   var x$4 = $m_sci_VectorStatics$().cJ(2, this.eg, f);
   var x$5 = $m_sci_VectorStatics$().jt(this.X, f);
-  return new $c_sci_Vector3(x$1, this.f0, x$2, this.fp, x$3, x$4, x$5, this.a0);
+  return new $c_sci_Vector3(x$1, this.eZ, x$2, this.fo, x$3, x$4, x$5, this.a0);
 });
 $p.jy = (function(lo, hi) {
   var b = new $c_sci_VectorSliceBuilder(lo, hi);
@@ -91895,11 +91898,11 @@ $p.jy = (function(lo, hi) {
   return b.ky();
 });
 $p.iF = (function() {
-  if ((this.f0 > 1)) {
+  if ((this.eZ > 1)) {
     var a = this.K;
     var x$1 = $m_ju_Arrays$().ba(a, 1, a.a.length);
-    var x$2 = (((-1) + this.f0) | 0);
-    var x$3 = (((-1) + this.fp) | 0);
+    var x$2 = (((-1) + this.eZ) | 0);
+    var x$3 = (((-1) + this.fo) | 0);
     var x$4 = (((-1) + this.a0) | 0);
     return new $c_sci_Vector3(x$1, x$2, this.fN, x$3, this.ef, this.eg, this.X, x$4);
   } else {
@@ -91945,14 +91948,14 @@ $p.aY = (function(f) {
 $p.w = (function(v1) {
   var index = (v1 | 0);
   if (((index >= 0) && (index < this.a0))) {
-    var io = ((index - this.fp) | 0);
+    var io = ((index - this.fo) | 0);
     if ((io >= 0)) {
       var i3 = ((io >>> 10) | 0);
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i3 < this.ef.a.length) ? this.ef.a[i3].a[i2].a[i1] : ((i2 < this.eg.a.length) ? this.eg.a[i2].a[i1] : this.X.a[i1]));
-    } else if ((index >= this.f0)) {
-      var io$2 = ((index - this.f0) | 0);
+    } else if ((index >= this.eZ)) {
+      var io$2 = ((index - this.eZ) | 0);
       return this.fN.a[((io$2 >>> 5) | 0)].a[(31 & io$2)];
     } else {
       return this.K.a[index];
@@ -93228,7 +93231,7 @@ $p.OS = (function(s) {
 $p.j = (function() {
   return this.c4.L;
 });
-$p.eS = (function(ct) {
+$p.eR = (function(ct) {
   return ((ct.dg() === $d_C.l()) ? this.Y9() : $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, ct));
 });
 $p.Y9 = (function() {
@@ -93616,7 +93619,7 @@ $p.constructor = $c_sci_BitSet$BitSet1;
 function $h_sci_BitSet$BitSet1() {
 }
 $h_sci_BitSet$BitSet1.prototype = $p;
-$p.eN = (function() {
+$p.eM = (function() {
   return 1;
 });
 $p.dW = (function(idx) {
@@ -93677,7 +93680,7 @@ $p.constructor = $c_sci_BitSet$BitSet2;
 function $h_sci_BitSet$BitSet2() {
 }
 $h_sci_BitSet$BitSet2.prototype = $p;
-$p.eN = (function() {
+$p.eM = (function() {
   return 2;
 });
 $p.dW = (function(idx) {
@@ -93739,17 +93742,17 @@ $p.constructor = $c_sci_BitSet$BitSetN;
 function $h_sci_BitSet$BitSetN() {
 }
 $h_sci_BitSet$BitSetN.prototype = $p;
-$p.eN = (function() {
+$p.eM = (function() {
   return this.xi.a.length;
 });
 $p.dW = (function(idx) {
-  return ((idx < this.eN()) ? this.xi.a[idx] : $L0);
+  return ((idx < this.eM()) ? this.xi.a[idx] : $L0);
 });
 $p.Js = (function(idx, w) {
   return $m_sci_BitSet$().CH($m_sc_BitSetOps$().Jq(this.xi, idx, w));
 });
 $p.I9 = (function(pred, isFlipped) {
-  var i = (((-1) + this.eN()) | 0);
+  var i = (((-1) + this.eM()) | 0);
   var currentWord__lo = 0;
   var currentWord__hi = 0;
   var anyChanges = false;
@@ -94166,7 +94169,7 @@ $p.g = (function() {
 $p.S = (function() {
   return (this.mw.length | 0);
 });
-$p.eJ = (function() {
+$p.eI = (function() {
   return "WrappedArray";
 });
 $p.c0 = (function() {
@@ -94386,7 +94389,7 @@ $p.aa = (function(dest, destStart, len) {
   }
   return copied;
 });
-$p.eS = (function(evidence$1) {
+$p.eR = (function(evidence$1) {
   var idx = this.br;
   var dest = evidence$1.ey((((this.c3 - idx) | 0) & (((-1) + this.aT.a.length) | 0)));
   var idx$1 = this.br;
@@ -94509,11 +94512,11 @@ $p.b = (function(that) {
 $p.gH = (function() {
   return $ct_scm_GrowableBuilder__scm_Growable__(new $c_scm_GrowableBuilder(), $ct_scm_BitSet__(new $c_scm_BitSet()));
 });
-$p.eN = (function() {
+$p.eM = (function() {
   return this.hk.a.length;
 });
 $p.dW = (function(idx) {
-  return ((idx < this.eN()) ? this.hk.a[idx] : $L0);
+  return ((idx < this.eM()) ? this.hk.a[idx] : $L0);
 });
 $p.UD = (function(elems) {
   return ((elems.a.length === 0) ? $ct_scm_BitSet__(new $c_scm_BitSet()) : $ct_scm_BitSet__AJ__(new $c_scm_BitSet(), elems));
@@ -94535,21 +94538,21 @@ $p.Yh = (function(idx, w) {
 });
 $p.zn = (function(idx) {
   $m_s_Predef$().Dh((idx < 33554432));
-  if ((idx >= this.eN())) {
-    var newlen = this.eN();
+  if ((idx >= this.eM())) {
+    var newlen = this.eM();
     while ((idx >= newlen)) {
       var x = (newlen << 1);
       newlen = ((x < 33554432) ? x : 33554432);
     }
     var elems1 = new $ac_J(newlen);
-    $m_s_Array$().bL(this.hk, 0, elems1, 0, this.eN());
+    $m_s_Array$().bL(this.hk, 0, elems1, 0, this.eM());
     this.hk = elems1;
   }
 });
 $p.St = (function(other) {
-  this.zn((((-1) + other.eN()) | 0));
+  this.zn((((-1) + other.eM()) | 0));
   var i = 0;
-  var othernwords = other.eN();
+  var othernwords = other.eM();
   while ((i < othernwords)) {
     var $x_2 = this.hk;
     var $x_1 = i;
@@ -94628,8 +94631,8 @@ $p.HM = (function(xs) {
 $p.Dq = (function(that) {
   if ($is_sc_BitSet(that)) {
     var x2 = that;
-    var thisnwords = this.eN();
-    var bsnwords = x2.eN();
+    var thisnwords = this.eM();
+    var bsnwords = x2.eM();
     var minWords = ((thisnwords < bsnwords) ? thisnwords : bsnwords);
     var i = bsnwords;
     while ((i < thisnwords)) {
@@ -94658,7 +94661,7 @@ $p.Dq = (function(that) {
   }
 });
 $p.Uf = (function(pred, isFlipped) {
-  var i = (((-1) + this.eN()) | 0);
+  var i = (((-1) + this.eM()) | 0);
   var newArray = null;
   while ((i >= 0)) {
     var t = $m_sc_BitSetOps$().qo(pred, isFlipped, this.dW(i), i);
