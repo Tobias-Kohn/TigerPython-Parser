@@ -16,12 +16,12 @@ declare module "tigerpython-parser" {
       name: string;
       defaultValue: string | null;
       argType: string | null;
-    };
+    }
 
     interface SignatureVarArg {
       name: string;
       argType: string | null;
-    };
+    }
 
     interface Signature {
       positionalOnlyArgs: SignatureArg[];      // before /
@@ -30,7 +30,7 @@ declare module "tigerpython-parser" {
       keywordOnlyArgs: SignatureArg[];         // after *
       varKwargs: SignatureVarArg | null;       // **kwargs
       firstParamIsSelfOrCls: boolean;
-    };
+    }
 
 
     export namespace TPyParser {
