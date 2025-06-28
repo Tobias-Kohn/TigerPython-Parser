@@ -2,6 +2,8 @@ import org.scalatest._
 import tigerpython.utilities.completer._
 import tigerpython.utilities.scopes.ModuleLoader
 
+import java.util.Objects
+
 /**
   *
   *
@@ -91,5 +93,15 @@ class TestCompleter extends FunSuite {
       assert(params == expected_result)
       val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos).map(_.parameters.mkString(", "))
       assert(extParams sameElements Array(expected_result))
+    }
+  for (fileName <- listAllFiles("completer_signature"))
+    test("test program '%s'".format(getFileName(fileName))) {
+      val (pos, expected_result, text) = loadFromCompleterFile(fileName)
+      val completer = new Completer(fileName, text, pos)
+      val funcNameAtPos = text.drop(pos).takeWhile(_ != '(')
+      val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos)
+      assert(extParams.length == 1)
+      assert(expected_result.startsWith("!") == extParams(0).signature.firstParamIsSelfOrCls)
+      assert(Objects.toString(extParams(0).signature) == expected_result.substring(if (expected_result.startsWith("!")) 1 else 0))
     }
 }

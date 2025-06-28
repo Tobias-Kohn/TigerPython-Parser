@@ -7,6 +7,7 @@ import errors.ExtErrorInfo
 import tigerpython.inputenc.StringTranslator
 import tigerpython.utilities.completer.Completer
 import tigerpython.utilities.scopes.ModuleLoader
+import tigerpython.utilities.types.{SignatureArg, SignatureVarArg}
 
 import scala.annotation.tailrec
 
@@ -81,13 +82,13 @@ object TPyParser {
     * Returns all the available languages.
     */
   @JSExport
-  def getLanguages: js.Array[String] = errors.ErrorTranslator.errorTranslator.languages.toJSArray
+  def getLanguages(): js.Array[String] = errors.ErrorTranslator.errorTranslator.languages.toJSArray
 
   /**
     * Returns the currently set language in which error messages are printed.
     */
   @JSExport
-  def getLanguage: String = errors.ErrorTranslator.errorTranslator.language
+  def getLanguage(): String = errors.ErrorTranslator.errorTranslator.language
 
   /**
     * Sets the language in which error messages are printed.
@@ -218,6 +219,17 @@ object TPyParser {
     if (nameFilter == null) {
       return null
     }
+    val makeSignatureArg = (a : SignatureArg) => js.Dynamic.literal(
+      name = a.name,
+      defaultValue = a.defaultValue.getOrElse(null),
+      argType = a.argType.getTypeName
+    )
+    val makeSignatureVarArg = (a : SignatureVarArg) => js.Dynamic.literal(
+      name = a.name,
+      argType = a.argType.getTypeName
+    )
+
+
     val items = nameFilter.getExtInfoList
     (for (item <- items)
       yield js.Dynamic.literal(
@@ -226,6 +238,18 @@ object TPyParser {
         `type` = item.itemType,
         params = if (item.parameters != null)
           item.parameters.toJSArray
+        else
+          null,
+        signature = if (item.signature != null) {
+          js.Dynamic.literal(
+            positionalOnlyArgs = item.signature.positionalOnlyArgs.map(makeSignatureArg).toJSArray,
+            positionalOrKeywordArgs = item.signature.positionalOrKeywordArgs.map(makeSignatureArg).toJSArray,
+            varArgs = item.signature.varArgs.map(makeSignatureVarArg).getOrElse(null),
+            keywordOnlyArgs = item.signature.keywordOnlyArgs.map(makeSignatureArg).toJSArray,
+            varKwargs = item.signature.varKwargs.map(makeSignatureVarArg).getOrElse(null),
+            firstParamIsSelfOrCls = item.signature.firstParamIsSelfOrCls
+          )
+        }
         else
           null
       )

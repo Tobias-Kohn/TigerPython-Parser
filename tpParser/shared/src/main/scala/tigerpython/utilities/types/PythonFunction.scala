@@ -9,6 +9,7 @@ package tigerpython.utilities.types
 class PythonFunction(val name: String,
                      val params: Array[Parameter],
                      val paramCount: Int,
+                     val fullSignature: Signature,
                      var returnType: DataType) extends FunctionType {
   var source: String = _
   var sourcePos: Int = -1
@@ -28,6 +29,8 @@ class PythonFunction(val name: String,
       params.drop(1).map(_.name).take(paramCount - 1).mkString(", ")
     else
       params.map(_.name).take(paramCount).mkString(", ")
+
+  override def getSignature: Signature = fullSignature
 
   override def getReturnType: DataType = returnType
 
@@ -60,7 +63,7 @@ object PythonFunction {
       else {
         val params = Parameter("self", new SelfInstance(methodOfClass)) +:
           rawParams.drop(1).map(p => Parameter(p, BuiltinTypes.ANY_TYPE))
-        new PythonFunction(name, params, params.length, retType)
+        new PythonFunction(name, params, params.length, null, retType)
       }
     } else
       null

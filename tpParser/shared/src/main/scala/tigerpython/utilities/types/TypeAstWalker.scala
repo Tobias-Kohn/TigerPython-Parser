@@ -1,6 +1,7 @@
 package tigerpython.utilities
 package types
 
+import tigerpython.parser.ast.AstNode.{Index, MultiSlice}
 import tigerpython.parser.ast._
 
 /**
@@ -64,7 +65,18 @@ class TypeAstWalker {
       case name: AstNode.Name =>
         validateDataType(findName(name.name))
       case subscript: AstNode.Subscript =>
-        getTypeOfSubscript(subscript)
+        (getType(subscript.base), subscript.slice) match {
+          case (BuiltinTypes.LIST_TYPE, Index(_, value)) =>
+            ListType(getType(value))
+          case (BuiltinTypes.DICT_TYPE, MultiSlice(_, Array(Index(_, key), Index(_, value)))) =>
+            new DictType(getType(key), getType(value))
+          case (BuiltinTypes.TUPLE_TYPE, MultiSlice(_, elements)) if elements.forall {
+            case Index(_, _) => true
+            case _ => false
+          } =>
+            TupleType(elements.collect { case Index(_, v) => getType(v) })
+          case _ => getTypeOfSubscript(subscript)
+        }
       case unOp: AstNode.UnaryOp =>
         getType(unOp.expr)
       case value: AstNode.Value =>

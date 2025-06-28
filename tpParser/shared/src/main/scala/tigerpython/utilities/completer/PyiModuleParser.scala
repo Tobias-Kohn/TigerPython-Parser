@@ -4,7 +4,7 @@ import tigerpython.utilities.fastparse._
 import tigerpython.utilities.types._
 
 import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 /**
  * This takes a Pyi-file and defines a TigerPython-module from it.
@@ -37,6 +37,8 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
         ListType(convertToType(subscript))
       case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(elts)) =>
         TupleType(for (el <- elts) yield convertToType(el))
+      case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
+        new DictType(convertToType(elts(0)), convertToType(elts(1)))
       case OrNode(elts) if elts.nonEmpty =>
         var tp = convertToType(elts.head)
         for (el <- elts.tail)
@@ -98,20 +100,42 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
   def defineFunction(functionName: String, arguments: FunctionArguments, returnType: ExprAst,
                      doc: String, className: String, decorator: ExprAst, isAsync: Boolean): Unit = {
     val params = new ArrayBuffer[Parameter]()
-    for (arg <- arguments.posOnlyArguments)
-      params += Parameter(arg.name, convertToType(arg.argType))
-    for (arg <- arguments.arguments)
-      params += Parameter(arg.name, convertToType(arg.argType))
+    val positionalOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val positionalOrKeywordArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val varArgs: Option[SignatureVarArg] = Option(arguments.varArg).map((arg) => SignatureVarArg(arg.name, if (arg.argType == null) BuiltinTypes.TUPLE_TYPE else new VarTupleType(convertToType(arg.argType))))
+    val keywordOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val varKwargs: Option[SignatureVarArg] = Option(arguments.keywordArg).map((arg) => SignatureVarArg(arg.name, if (arg.argType == null) BuiltinTypes.DICT_TYPE else new DictType(BuiltinTypes.STRING_TYPE, convertToType(arg.argType))))
+    for (arg <- arguments.posOnlyArguments) {
+      val argType = convertToType(arg.argType)
+      params += Parameter(arg.name, argType)
+      positionalOnlyArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
+    for (arg <- arguments.arguments) {
+      val argType = convertToType(arg.argType)
+      params += Parameter(arg.name, argType)
+      positionalOrKeywordArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
+    for (arg <- arguments.keywordOnlyArguments) {
+      val argType = convertToType(arg.argType)
+      keywordOnlyArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
     val paramCount = (arguments.posOnlyArguments.count(_.defaultValue == null) +
       arguments.arguments.count(_.defaultValue == null))
+    var firstParamIsSelfOrCls = false;
     if (className != null && currentClass != null && currentClass.name == className &&
         params.nonEmpty && !hasDecorator(decorator, "staticmethod")) {
+      firstParamIsSelfOrCls = true;
       if (hasDecorator(decorator, "classmethod"))
         params.head.dataType = currentClass
       else
         params.head.dataType = new SelfInstance(currentClass)
     }
-    val f = new PythonFunction(functionName, params.toArray, paramCount, convertToType(returnType))
+    val retType = convertToType(returnType)
+    if (firstParamIsSelfOrCls && positionalOnlyArgs.isEmpty && positionalOrKeywordArgs.nonEmpty) {
+      // Move self from pos-or-keyword to pos-only, which makes more semantic sense:
+      positionalOnlyArgs += positionalOrKeywordArgs.remove(0)
+    }
+    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, firstParamIsSelfOrCls), retType)
     if (doc != null)
       f.docString = doc
     if (className == null)

@@ -84,8 +84,8 @@ class AstConverter(val parser: Parser) {
       case AstNode.NameParameter(_, name, annotation) =>
         addRef(name)
         js.Dynamic.literal(name=name, annotation=convert(annotation))
-      case AstNode.Parameters(_, args, defaults, _, varArgs, kwArgs) =>
-        js.Dynamic.literal(args=convert(args), vararg=convert(varArgs), kwarg=convert(kwArgs), default=convert(defaults))
+      case AstNode.Parameters(_, args, defaults, _, _, varArgs, kwArgs) =>
+        js.Dynamic.literal(args=convert(args), vararg=convert(varArgs), kwarg=convert(kwArgs), default=convert(defaults.map(_._1)))
 
       ///// Statements /////
       case AstNode.Assert(_, test, msg) =>

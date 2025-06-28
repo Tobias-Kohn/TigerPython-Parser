@@ -34,13 +34,14 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
   private case class CompArgument(pos: Int, value: Expression) extends Argument
 
   private abstract class Parameter
-  private case class DefaultParameter(pos: Int, name: String, default: Expression, annot: Expression) extends Parameter
-  private case class DefaultTupleParameter(pos: Int, name: AstNode.NameTuple, default: Expression) extends Parameter
+  private case class DefaultParameter(pos: Int, name: String, default: Expression, defaultAsString: String, annot: Expression) extends Parameter
+  private case class DefaultTupleParameter(pos: Int, name: AstNode.NameTuple, default: Expression, defaultAsString: String) extends Parameter
   private case class KeywordParameter(pos: Int, name: String, annot: Expression) extends Parameter
   private case class SimpleParameter(pos: Int, name: String, annot: Expression) extends Parameter
   private case class TupleParameter(pos: Int, dest: AstNode.NameTuple) extends Parameter
   private case class VarParameter(pos: Int, name: String, annot: Expression) extends Parameter
   private case class StarParameter(pos: Int) extends Parameter
+  private case class SlashParameter(pos: Int) extends Parameter
 
   private lazy val placeholderName = AstNode.Name(-1, "???")
   
@@ -70,8 +71,9 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         }
 
       val args = ArrayBuffer[AstNode.Parameter]()
-      val defaults = ArrayBuffer[Expression]()
+      val defaults = ArrayBuffer[(Expression, String)]()
       var posMaxCount: Int = -1
+      var posOnlyCount: Int = 0
       var varArg: AstNode.NameParameter = null
       var kwArg: AstNode.NameParameter = null
       var varArgErrorPos: Int = -1
@@ -84,16 +86,16 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             checkName(pos, name)
             args += AstNode.NameParameter(pos, name, annot)
             if (posMaxCount >= 0)
-              defaults += null
+              defaults += ((null, null))
             else if (defaults.nonEmpty) {
-              defaults += AstNode.Value(pos, ValueType.NONE)
+              defaults += ((AstNode.Value(pos, ValueType.NONE), "None"))
               if (varArgErrorPos < 0)
                 varArgErrorPos = pos
             }
-          case DefaultParameter(pos, name, value, annot) =>
+          case DefaultParameter(pos, name, valueExpr, valueStr, annot) =>
             checkName(pos, name)
             args += AstNode.NameParameter(pos, name, annot)
-            defaults += value
+            defaults += ((valueExpr, valueStr))
             if (kwArg != null && kwArgErrorPos < 0)
               kwArgErrorPos = pos
           case TupleParameter(pos, tuple) =>
@@ -102,7 +104,7 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
                 checkName(pos, n.name)
               args += AstNode.TupleParameter(pos, tuple)
               if (defaults.nonEmpty) {
-                defaults += AstNode.Value(pos, ValueType.NONE)
+                defaults += ((AstNode.Value(pos, ValueType.NONE), "None"))
                 if (varArgErrorPos < 0)
                   varArgErrorPos = pos
               }
@@ -110,12 +112,12 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
                 varArgErrorPos = pos
             } else
               parserState.reportError(pos, ErrorCode.PYTHON_2_FEATURE_NOT_AVAILABLE)
-          case DefaultTupleParameter(pos, tuple, value) =>
+          case DefaultTupleParameter(pos, tuple, value, valStr) =>
             if (parserState.pythonVersion < 3 || parserState.ignoreVersionErrors) {
               for (n <- tuple.names)
                 checkName(pos, n.name)
               args += AstNode.TupleParameter(pos, tuple)
-              defaults += value
+              defaults += ((value, valStr))
               if (kwArg != null && kwArgErrorPos < 0)
                 kwArgErrorPos = pos
             } else
@@ -126,6 +128,10 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             if (varArg != null)
               parserState.reportError(pos, ErrorCode.MULTIPLE_VAR_PARAMS)
             posMaxCount = args.length
+          case SlashParameter(pos) =>
+            if (parserState.pythonVersion < 3 && !parserState.ignoreVersionErrors)
+              parserState.reportError(pos, ErrorCode.PYTHON_3_FEATURE_NOT_AVAILABLE)
+            posOnlyCount = args.length
           case VarParameter(pos, name, annot) =>
             checkName(pos, name)
             if (varArg == null && posMaxCount == -1)
@@ -146,9 +152,9 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         parserState.reportError(kwArgErrorPos, ErrorCode.PARAM_AFTER_KEYWORD_PARAM)
       if (posMaxCount < 0)
         posMaxCount = args.length
-      AstNode.Parameters(startPos, args.toArray, defaults.toArray, posMaxCount, varArg, kwArg)
+      AstNode.Parameters(startPos, args.toArray, defaults.toArray, posOnlyCount, posMaxCount, varArg, kwArg)
     } else
-      AstNode.Parameters(tokens.pos, Array(), Array(), 0, null, null)
+      AstNode.Parameters(tokens.pos, Array(), Array(), 0, 0, null, null)
 
   private def parseParameters(tokens: TokenBuffer, allowTypes: Boolean): List[Parameter] =
     tokens.headType match {
@@ -191,16 +197,21 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         val pos = tokens.pos
         val tuple = parseParamNameList(tokens)
         val result =
-          if (tokens.matchType(TokenType.ASSIGN))
-            DefaultTupleParameter(pos, tuple, expressionParser.parseTest(tokens))
+          if (tokens.matchType(TokenType.ASSIGN)) {
+            val defStart = tokens.pos
+            val defExpr = expressionParser.parseTest(tokens)
+            val defEnd = tokens.pos
+            DefaultTupleParameter(pos, tuple, defExpr, tokens.textSource.subSequence(defStart, defEnd).toString.trim)
+          }
           else
             TupleParameter(pos, tuple)
         matchComa(tokens)
         result :: parseParameters(tokens, allowTypes)
       case TokenType.DIV =>
+        val pos = tokens.pos
         tokens.next()
         matchComa(tokens)
-        parseParameters(tokens, allowTypes)
+        SlashParameter(pos) :: parseParameters(tokens, allowTypes)
       case _ =>
         val name = parseKeywordName(tokens)
         if (name == null) {
@@ -211,8 +222,12 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         }
         val annot = if (allowTypes) parseParamAnnotation(tokens) else null
         val result =
-          if (tokens.matchType(TokenType.ASSIGN))
-            DefaultParameter(name.pos, name.name, expressionParser.parseTest(tokens), annot)
+          if (tokens.matchType(TokenType.ASSIGN)) {
+            val defStart = tokens.pos
+            val defExpr = expressionParser.parseTest(tokens)
+            val defEnd = tokens.pos
+            DefaultParameter(name.pos, name.name, defExpr, tokens.textSource.subSequence(defStart, defEnd).toString.trim, annot)
+          }
           else
             SimpleParameter(name.pos, name.name, annot)
         matchComa(tokens)
