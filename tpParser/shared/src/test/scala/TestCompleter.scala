@@ -2,6 +2,8 @@ import org.scalatest._
 import tigerpython.utilities.completer._
 import tigerpython.utilities.scopes.ModuleLoader
 
+import java.util.Objects
+
 /**
   *
   *
@@ -34,7 +36,10 @@ class TestCompleter extends FunSuite {
         // some of the contents might be meaningfully indented so we can't just trim every line:
         val module_name = leadingComments(0).drop(1).trim
         val module_contents = leadingComments.slice(1, leadingComments.length - 2).map((x) => if (x.length < 2) x else x.substring(2))
-        ModuleLoader.addModule(module_name, module_contents)
+        if (module_name.startsWith("pyi:"))
+          ModuleLoader.addPyiModule(module_name.substring("pyi:".length), module_contents.mkString("\n"))
+        else
+          ModuleLoader.addModule(module_name, module_contents)
         // Note: the module contents are not cleared between tests, so it's a good idea to name
         // all involved modules uniquely to avoid interference.
       }
@@ -67,6 +72,8 @@ class TestCompleter extends FunSuite {
 
   test("testing PYI-reading") {
     ModuleLoader.addPyiModule("turtle", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi"))
+    ModuleLoader.addPyiModule("deeply.nested.turtle2", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi"))
+    ModuleLoader.addPyiModule("turtle_alias", loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle_alias.pyi"))
   }
 
   for (fileName <- listAllFiles("completer"))
@@ -86,5 +93,15 @@ class TestCompleter extends FunSuite {
       assert(params == expected_result)
       val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos).map(_.parameters.mkString(", "))
       assert(extParams sameElements Array(expected_result))
+    }
+  for (fileName <- listAllFiles("completer_signature"))
+    test("test program '%s'".format(getFileName(fileName))) {
+      val (pos, expected_result, text) = loadFromCompleterFile(fileName)
+      val completer = new Completer(fileName, text, pos)
+      val funcNameAtPos = text.drop(pos).takeWhile(_ != '(')
+      val extParams = completer.getNameFilter.getExtInfoList.filter(_.name == funcNameAtPos)
+      assert(extParams.length == 1)
+      assert(expected_result.startsWith("!") == extParams(0).signature.firstParamIsSelfOrCls)
+      assert(Objects.toString(extParams(0).signature) == expected_result.substring(if (expected_result.startsWith("!")) 1 else 0))
     }
 }

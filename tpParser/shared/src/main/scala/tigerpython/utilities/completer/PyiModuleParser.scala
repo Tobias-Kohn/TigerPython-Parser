@@ -3,12 +3,18 @@ package tigerpython.utilities.completer
 import tigerpython.utilities.fastparse._
 import tigerpython.utilities.types._
 
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 /**
  * This takes a Pyi-file and defines a TigerPython-module from it.
  */
-class PyiModuleParser(val module: Module) extends PyiParser {
+class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, DataType]) extends PyiParser {
+
+  // Maps an alias to a module, imported either as:
+  // import math          # produces "math" -> <math Module>
+  // import math as m     # produces "m" -> <math Module>
+  private val fullModuleImports: mutable.Map[String, Module] = mutable.Map()
 
   private var currentClass: PythonClass = _
 
@@ -31,11 +37,24 @@ class PyiModuleParser(val module: Module) extends PyiParser {
         ListType(convertToType(subscript))
       case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(elts)) =>
         TupleType(for (el <- elts) yield convertToType(el))
+      case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
+        new DictType(convertToType(elts(0)), convertToType(elts(1)))
       case OrNode(elts) if elts.nonEmpty =>
         var tp = convertToType(elts.head)
         for (el <- elts.tail)
           tp = DataType.getCompatibleType(tp, convertToType(el))
         tp
+      case AttributeNode(base, name) =>
+        val baseDotted = PyiModuleParser.toDotted(base)
+        if (baseDotted != null && fullModuleImports.contains(baseDotted))
+          fullModuleImports(baseDotted).findField(name) match {
+            case Some (tp) =>
+              tp
+            case _ =>
+              BuiltinTypes.ANY_TYPE
+          }
+        else
+          BuiltinTypes.ANY_TYPE
       case _ =>
         BuiltinTypes.ANY_TYPE
     }
@@ -81,20 +100,42 @@ class PyiModuleParser(val module: Module) extends PyiParser {
   def defineFunction(functionName: String, arguments: FunctionArguments, returnType: ExprAst,
                      doc: String, className: String, decorator: ExprAst, isAsync: Boolean): Unit = {
     val params = new ArrayBuffer[Parameter]()
-    for (arg <- arguments.posOnlyArguments)
-      params += Parameter(arg.name, convertToType(arg.argType))
-    for (arg <- arguments.arguments)
-      params += Parameter(arg.name, convertToType(arg.argType))
+    val positionalOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val positionalOrKeywordArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val varArgs: Option[SignatureVarArg] = Option(arguments.varArg).map((arg) => SignatureVarArg(arg.name, if (arg.argType == null) BuiltinTypes.TUPLE_TYPE else new VarTupleType(convertToType(arg.argType))))
+    val keywordOnlyArgs: ListBuffer[SignatureArg] = ListBuffer()
+    val varKwargs: Option[SignatureVarArg] = Option(arguments.keywordArg).map((arg) => SignatureVarArg(arg.name, if (arg.argType == null) BuiltinTypes.DICT_TYPE else new DictType(BuiltinTypes.STRING_TYPE, convertToType(arg.argType))))
+    for (arg <- arguments.posOnlyArguments) {
+      val argType = convertToType(arg.argType)
+      params += Parameter(arg.name, argType)
+      positionalOnlyArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
+    for (arg <- arguments.arguments) {
+      val argType = convertToType(arg.argType)
+      params += Parameter(arg.name, argType)
+      positionalOrKeywordArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
+    for (arg <- arguments.keywordOnlyArguments) {
+      val argType = convertToType(arg.argType)
+      keywordOnlyArgs += SignatureArg(arg.name, Option(arg.defaultValue).map(ExprAst.toString), argType)
+    }
     val paramCount = (arguments.posOnlyArguments.count(_.defaultValue == null) +
       arguments.arguments.count(_.defaultValue == null))
+    var firstParamIsSelfOrCls = false;
     if (className != null && currentClass != null && currentClass.name == className &&
         params.nonEmpty && !hasDecorator(decorator, "staticmethod")) {
+      firstParamIsSelfOrCls = true;
       if (hasDecorator(decorator, "classmethod"))
         params.head.dataType = currentClass
       else
         params.head.dataType = new SelfInstance(currentClass)
     }
-    val f = new PythonFunction(functionName, params.toArray, paramCount, convertToType(returnType))
+    val retType = convertToType(returnType)
+    if (firstParamIsSelfOrCls && positionalOnlyArgs.isEmpty && positionalOrKeywordArgs.nonEmpty) {
+      // Move self from pos-or-keyword to pos-only, which makes more semantic sense:
+      positionalOnlyArgs += positionalOrKeywordArgs.remove(0)
+    }
+    val f = new PythonFunction(functionName, params.toArray, paramCount, new Signature(positionalOnlyArgs.result(), positionalOrKeywordArgs.result(), varArgs, keywordOnlyArgs.result(), varKwargs, retType, firstParamIsSelfOrCls), retType)
     if (doc != null)
       f.docString = doc
     if (className == null)
@@ -113,8 +154,56 @@ class PyiModuleParser(val module: Module) extends PyiParser {
   }
 
   override protected
-  def importModule(module: String, alias: String): Boolean = false
+  def importModule(module: String, alias: String): Boolean = {
+    val segments = module.split("\\.")
+    if (segments.isEmpty) return false
+
+    // Start with the outermost module
+    var currentOpt = moduleLookup.get(segments.head) match {
+      case Some(m: Module) if m != null => Some(m)
+      case _ => None
+    }
+
+    // Traverse nested modules
+    for (name <- segments.tail if currentOpt.isDefined) {
+      currentOpt = currentOpt match {
+        case Some(mod) =>
+          mod.getFields(name) match {
+            case m: Module if m != null => Some(m)
+            case _ => None
+          }
+        case None => None
+      }
+    }
+
+    currentOpt match {
+      case Some(finalModule) =>
+        if (alias == null)
+          fullModuleImports(module) = finalModule
+        else
+          fullModuleImports(alias) = finalModule
+        true
+      case None =>
+        false
+    }
+  }
+
 
   override protected
   def importNameFromModule(module: String, name: String, alias: String): Boolean = false
+}
+
+object PyiModuleParser {
+  private def toDotted(exprAst: ExprAst): String = {
+    exprAst match {
+      case NameNode(name) =>
+        name
+      case AttributeNode(base, name) =>
+        val prefix = toDotted(base)
+        if (prefix == null) null
+        else s"$prefix.$name"
+      case _ =>
+        null
+    }
+  }
 }

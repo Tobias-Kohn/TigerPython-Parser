@@ -209,11 +209,11 @@ class PyiParser {
       tryReadLeftPar('(') match {
         case Some(leftPar) =>
           if (!lexer.tryMatchToken(leftPar)) {
-            val (args, kws) = _parseArgList(leftPar)
-            if (kws.nonEmpty && kws.length == 1 && kws(0) == "metaclass")
-              (args.dropRight(1), args.last)
+            val args = _parseArgList(leftPar)
+            if (args.nonEmpty && args(args.length -1)._1 == Option("metaclass"))
+              (args.dropRight(1).map(_._2), args.last._2)
             else
-              (args, null)
+              (args.map(_._2), null)
           } else
             (null, null)
         case _ =>
@@ -585,10 +585,10 @@ class PyiParser {
       case lp @ LeftPar('(') =>
         lexer.next()
         if (!lexer.tryMatchToken(lp)) {
-          val (args, keywords) = _parseArgList(lp)
-          parseTrailer(CallNode(base, args, keywords))
+          val args = _parseArgList(lp)
+          parseTrailer(CallNode(base, args))
         } else
-          parseTrailer(CallNode(base, Array(), Array()))
+          parseTrailer(CallNode(base, Array()))
       case lp @ LeftPar('[') =>
         lexer.next()
         parseTrailer(SubscriptNode(base, parseExprList(lp)))
@@ -650,21 +650,19 @@ class PyiParser {
     exprList.toArray
   }
 
-  private def _parseArgList(leftPar: LeftPar): (Array[ExprAst], Array[String]) = {
-    val exprList = ArrayBuffer[ExprAst]()
-    val keywords = ArrayBuffer[String]()
-    exprList += parseExpr()
-    while (lexer.hasNextListItem) {
+  private def _parseArgList(leftPar: LeftPar): Array[(Option[String], ExprAst)] = {
+    val exprList = ArrayBuffer[(Option[String], ExprAst)]()
+    do {
       parseExpr() match {
         case NameNode(n) if lexer.tryMatchToken(TokenType.ASSIGN_TOKEN) =>
-          keywords += n
-          exprList += parseExpr()
+          exprList += ((Option(n), parseExpr()))
         case expr =>
-          exprList += expr
+          exprList += ((Option.empty, expr))
       }
     }
+    while (lexer.hasNextListItem)
     lexer.matchToken(leftPar)
-    (exprList.toArray, keywords.toArray)
+    exprList.toArray
   }
 
   private def _parseDictOrSet(leftPar: LeftPar): ExprAst =

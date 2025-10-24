@@ -60,7 +60,7 @@ class AstWalker(val visitor: AstVisitor) {
         for (arg <- parameters.args)
           visitor.acceptParameter(arg)
         for (default <- parameters.defaults)
-          walkNode(default)
+          walkNode(default._1)
         visitor.endNode(parameters)
       case comprehension: Comprehension =>
         visitor.beginNode(comprehension)
