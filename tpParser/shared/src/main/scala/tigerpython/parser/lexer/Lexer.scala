@@ -318,7 +318,7 @@ class Lexer(val source: CharSequence,
           if (ch == '\u0000')
             parserState.reportError(scanner.pos, ErrorCode.INCONSISTENT_INDENTATION)
           if (ch != ' ')
-            makeToken(len * 8, TokenType.INDENTATION)
+            Token(scanner.consume(len), len * 8, TokenType.INDENTATION)
           else
             makeToken(len, TokenType.INDENTATION)
       }

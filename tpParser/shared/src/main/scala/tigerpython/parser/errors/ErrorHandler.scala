@@ -112,6 +112,8 @@ object ErrorHandler {
         sort()
         // In some cases, we have to make the error message less specific, as picking just the first one might be
         // highly misleading.
+        if (errorList.length > 1 && errorList.head.errorCode == ErrorCode.UNKNOWN)
+          errorList.remove(0)
         val headPos = errorList.head.position
         val headErrors = errorList.takeWhile(_.position == headPos)
         if (headErrors.length > 1) {
