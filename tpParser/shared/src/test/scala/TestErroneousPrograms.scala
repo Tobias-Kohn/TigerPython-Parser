@@ -85,6 +85,7 @@ class TestErroneousPrograms extends FunSuite {
       val (line_no, error_msg, text) = loadFromErrorFile(fileName)
       val p = new Parser(text, getPythonVersion(fileName))
       p.rejectDeadCode = true
+      p.repeatStatement = true
       p.strictCode = true
       val cs = p.checkSyntax()
       assert(cs.isDefined)

@@ -581,6 +581,11 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           parserState.reportError(tokens, ErrorCode.WRONG_TOKEN, ".", ",")
           tokens.replaceToken(TokenType.COMMA)
           base
+        } else
+        if (tokens.nonEmpty && tokens.headType == TokenType.REPEAT) {
+          val token = tokens.next()
+          val name = AstNode.Name(token.pos, token.value)
+          parseTrailer(AstNode.Attribute(base.pos, tokens.prevEndPos, base, name), tokens)
         } else {
           if (tokens.nonEmpty && tokens.headType.category == TokenType.TYPE_KEYWORD)
             parserState.reportError(tokens, ErrorCode.CANNOT_USE_KEYWORD_AS_NAME)

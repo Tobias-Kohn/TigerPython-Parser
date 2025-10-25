@@ -1,0 +1,7 @@
+# 1
+# CANNOT_USE_KEYWORD_AS_NAME
+repeat = 5
+
+while repeat > 0:
+    print("*", end="")
+    repeat -= 1

@@ -73,6 +73,7 @@ class TestCorrectPrograms extends FunSuite {
   for (fileName <- listAllFiles("correct"))
     test("test program '%s'".format(getFileName(fileName))) {
       val p = new Parser(loadFromCorrectFile(fileName), getPythonVersion(fileName))
+      p.repeatStatement = true
       val cs = p.checkSyntax()
 
       // In case of an error, we print some extended information to help debugging
