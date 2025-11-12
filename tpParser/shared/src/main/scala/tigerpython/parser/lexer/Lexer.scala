@@ -367,22 +367,33 @@ class Lexer(val source: CharSequence,
 
   private def getTokenTypeFromPrefix(prefixLen: Int): TokenType =
     if (prefixLen > 0) {
+      val hasLiteral = Array[Boolean](false, false, false, false, false)   // bB uU rR fF tT
       var hasError: Boolean = prefixLen > 2
       var result: TokenType = TokenType.STR
       for (i <- 0 until prefixLen)
         scanner(i) match {
           case 'b' | 'B' =>
-            hasError = hasError || result != TokenType.STR
+            hasError = hasError || (result != TokenType.STR) || hasLiteral(0)
             result = TokenType.BYTEARRAY
+            hasLiteral(0) = true
           case 'u' | 'U' =>
-            hasError = hasError || result != TokenType.STR
+            hasError = hasError || (result != TokenType.STR) || hasLiteral(1)
             result = TokenType.UNICODE
+            hasLiteral(1) = true
           case 'r' | 'R' =>
+            hasError = hasError || hasLiteral(2)
+            hasLiteral(2) = true
           case 'f' | 'F' =>
+            hasError = hasError || hasLiteral(3)
+            hasLiteral(3) = true
+          case 't' | 'T' =>
+            hasError = hasError || hasLiteral(4)
+            hasLiteral(4) = true
           case _ =>
             hasError = true
         }
-      hasError = hasError || (prefixLen > 1 && result == TokenType.STR)
+      if (!(prefixLen == 2 && hasLiteral(2)))
+        hasError = hasError || (prefixLen > 1 && result == TokenType.STR)
       if (hasError)
         parserState.reportError(scanner.pos, ErrorCode.INVALID_STRING_PREFIX,
           scanner.peekString(0, prefixLen))
