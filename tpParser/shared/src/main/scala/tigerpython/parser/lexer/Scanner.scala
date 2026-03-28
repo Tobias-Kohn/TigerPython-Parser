@@ -318,4 +318,16 @@ class Scanner(val source: CharSequence) {
         false
     } else
       false
+
+  def isAtBeginningOfLine: Boolean =
+    if (_pos <= 0 && _pos < source.length) {
+      _pos == 0 || (source.charAt(_pos-1) == '\n') || (source.charAt(_pos-1) == '\r')
+    } else
+      false
+
+  def hasReplArtefact: Boolean =
+    if (isAtBeginningOfLine && _pos + 3 <= source.length)
+      source.charAt(_pos) == '>' && source.charAt(_pos + 1) == '>' && source.charAt(_pos + 2) == '>'
+    else
+      false
 }

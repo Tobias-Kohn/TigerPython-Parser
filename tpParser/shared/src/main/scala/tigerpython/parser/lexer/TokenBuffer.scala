@@ -124,6 +124,13 @@ class TokenBuffer(tokenSource: Seq[Token],
     true
   }
 
+  def hasNameSequence(names: String*): Boolean = {
+    for (i <- names.indices)
+      if ((peekType(i) != TokenType.NAME) || peek(i).value != names(i))
+        return false
+    true
+  }
+
   def matchType(tokenTypes: TokenType*): Boolean =
     if (hasNext && tokenTypes.contains(head.tokenType)) {
       index += 1

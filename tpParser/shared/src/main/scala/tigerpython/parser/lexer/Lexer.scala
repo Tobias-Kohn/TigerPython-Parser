@@ -61,6 +61,10 @@ class Lexer(val source: CharSequence,
   }
 
   def next(): Token = {
+    while (scanner.hasReplArtefact) {
+      parserState.reportError(scanner.pos, ErrorCode.THIS_IS_NOT_REPL)
+      scanner.skipLine()
+    }
     val result = head
     if (cache != null && cache.tokenType == TokenType.NEWLINE)
       cache = nextIndentation()

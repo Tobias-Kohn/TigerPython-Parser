@@ -14,8 +14,7 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """if:
-      |     pass
+    """>>> 3 + 34
       |""".stripMargin
 
   {

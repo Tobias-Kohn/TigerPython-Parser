@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 object Parser {
 
@@ -630,6 +630,10 @@ class Parser(val source: CharSequence,
   protected def parseSimpleStatement(line: Line): Array[Statement] = {
     val tokens = line.tokenSource
     val stmts = ArrayBuffer[Statement]()
+    if (tokens.hasNameSequence("pip", "install") && tokens.peekType(2) == TokenType.NAME) {
+      parserState.reportError(tokens.pos, ErrorCode.THIS_IS_NOT_PIP, "pip install")
+      return Array()
+    }
     while (tokens.hasNext) {
       var stmt = parseSmallStatement(tokens)
       if (tokens.hasNext && !tokens.matchType(TokenType.SEMICOLON)) {
