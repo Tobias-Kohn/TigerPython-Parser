@@ -410,7 +410,18 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
     while (tokens.hasType(TokenType.EQ, TokenType.NEQ, TokenType.IS, TokenType.IS_NOT,
       TokenType.LEQ, TokenType.LESS, TokenType.IN, TokenType.NOT_IN,
       TokenType.GEQ, TokenType.GREATER)) {
-      val op = BinOp.fromTokenType(tokens.next().tokenType)
+      val op: BinOp.Value =
+        if (tokens.hasType(TokenType.IS, TokenType.IS_NOT) && tokens.peekType(1) == TokenType.IN) {
+          val invert = tokens.headType == TokenType.IS_NOT
+          parserState.reportError(tokens.pos, ErrorCode.EXTRA_TOKEN, "is")
+          tokens.next()
+          tokens.next()
+          if (invert)
+            BinOp.CMP_NOT_IN
+          else
+            BinOp.CMP_IN
+        } else
+          BinOp.fromTokenType(tokens.next().tokenType)
       result += ((op, parseExpr(tokens)))
     }
     if (result.nonEmpty)
@@ -763,7 +774,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
     val test =
       if (tokens.headType == TokenType.COMMA) {
         parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
-        null
+        AstNode.EmptyExpression(tokens.pos)
       } else
         parseTest(tokens)
     if (tokens.hasType(TokenType.FOR)) {

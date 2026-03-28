@@ -14,9 +14,8 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """my_list = [,,,]
-      |
-      |print(my_list)
+    """if:
+      |     pass
       |""".stripMargin
 
   {

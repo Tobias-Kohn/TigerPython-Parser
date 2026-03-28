@@ -1,0 +1,4 @@
+# 1
+# EXTRA_TOKEN
+if: x < 5:
+    print(x)

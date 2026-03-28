@@ -1233,8 +1233,14 @@ class Parser(val source: CharSequence,
     val tokens = line.tokenSource
     tokens.next()
     val test = if (tokens.hasType(TokenType.COLON)) {
-      parserState.reportError(tokens.pos, ErrorCode.MISSING_COMPARISON)
-      AstNode.EmptyExpression(tokens.pos)
+      if (tokens.remaining > 1 && expressionParser.firstOfTest(tokens.peek(1)) && (tokens.hasColonAtEnd || line.hasSuite)) {
+        parserState.reportError(tokens.pos, ErrorCode.EXTRA_TOKEN, ":")
+        tokens.next()
+        expressionParser.parseCmpTest(tokens)
+      } else {
+        parserState.reportError(tokens.pos, ErrorCode.MISSING_COMPARISON)
+        AstNode.EmptyExpression(tokens.pos)
+      }
     } else
       expressionParser.parseCmpTest(tokens)
     if (tokens.hasNext && tokens.head.tokenType != TokenType.COLON && line.hasSuite && tokens.hasColonAtEnd) {
