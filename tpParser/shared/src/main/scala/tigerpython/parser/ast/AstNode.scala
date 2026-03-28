@@ -472,6 +472,11 @@ object AstNode {
       result.value = token.value
       result
     }
+    def apply(pos: Int, intValue: Int): Value = {
+      val result = new Value(pos, ValueType.INTEGER)
+      result.value = intValue.toString
+      result
+    }
   }
   case class Value(pos: Int, valueType: ValueType.Value) extends Expression(AstNodeKind.CONSTANT) {
     var value: String = _

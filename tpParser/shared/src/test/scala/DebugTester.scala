@@ -14,10 +14,8 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """def foo(x=+y=+z):
-      |    print(x)
-      |
-      |x = 123""".stripMargin
+    """print(''Hello World'')
+      |""".stripMargin
 
   {
 /*    val pyiSource = loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi")
@@ -32,6 +30,8 @@ class DebugTester extends FunSuite  {
       println("– no entries –")*/
     /*val p = new Parser(PROGRAM)
     p.repeatStatement = true
+    p.rejectDeadCode = true
+    p.strictCode = true
     val cs = p.checkSyntax()
     if (cs.nonEmpty) {
       val pos = cs.get.position
@@ -39,6 +39,10 @@ class DebugTester extends FunSuite  {
       println(PROGRAM.slice(0, pos))
       println("???")
       println(PROGRAM.slice(pos, PROGRAM.length))
+    } else {
+      val q = new Parser(PROGRAM)
+      q.repeatStatement = true
+      println(q.parse())
     }
     assert(cs.isEmpty)
     print("DONE")*/

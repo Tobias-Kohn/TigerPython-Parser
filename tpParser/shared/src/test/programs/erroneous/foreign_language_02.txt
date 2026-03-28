@@ -1,0 +1,6 @@
+# 4
+# FOREIGN_TOKEN
+primes = [2, 3, 5, 7, 11, 13, 17, 19]
+i = 0
+while i < len(primes):
+    print(primes[i++])

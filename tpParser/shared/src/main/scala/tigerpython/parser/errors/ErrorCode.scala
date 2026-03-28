@@ -9,11 +9,11 @@ package tigerpython.parser.errors
 
 /**
   * The abstract list of all error messages.
-  * These need to be translated to a human readable format by a `ErrorTranslator`.
+  * These need to be translated to a human-readable format by a `ErrorTranslator`.
   *
   * Scala would allow us to just use `Value` instead of the much more verbose `Value("...")`.  The reason for using the
   * string values is to make sure that these names are not optimised away or mangled, but remain fully available in the
-  * compiled module.  Other modules might want to access these values instead of parsing the human readable error
+  * compiled module.  Other modules might want to access these values instead of parsing the human-readable error
   * message.
   *
   * All changes must be accounted for in the respective objects in `errormessages` to make sure that there is an actual
@@ -23,7 +23,7 @@ package tigerpython.parser.errors
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 21/05/2016
-  * Updated by Tobias Kohn on 26/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 object ErrorCode extends Enumeration {
 
@@ -146,10 +146,13 @@ object ErrorCode extends Enumeration {
   final val SINGLE_EQUAL_SIGN_EXPECTED = Value("SINGLE_EQUAL_SIGN_EXPECTED")
   final val SUPERFLUOUS_COMPARISON = Value("SUPERFLUOUS_COMPARISON")
   final val SWAPPED_TOKENS = Value("SWAPPED_TOKENS")
+  final val THIS_IS_NOT_PIP = Value("THIS_IS_NOT_PIP")                   // NEW 28-MAR-2026
+  final val THIS_IS_NOT_REPL = Value("THIS_IS_NOT_REPL")                 // NEW 28-MAR-2026
   final val TOKEN_REQUIRED = Value("TOKEN_REQUIRED")
   final val TRY_INCOMPLETE_STRUCTURE = Value("TRY_INCOMPLETE_STRUCTURE") // NEW 21-NOV-2024
-  final val TWO_STATEMENTS = Value("TWO_STATEMENTS")  // NEW 18-JAN-2020
   final val TUPLE_NEEDS_PARENS = Value("TUPLE_NEEDS_PARENS")
+  final val TWO_STATEMENTS = Value("TWO_STATEMENTS")  // NEW 18-JAN-2020
+  final val TYPO = Value("TYPO")                      // NEW 28-MAR-2026
   final val UNEXPECTED_END_OF_INPUT = Value("UNEXPECTED_END_OF_INPUT")
   final val UNEXPECTED_KEYWORD = Value("UNEXPECTED_KEYWORD")
   final val UNMATCHED_BRACKET = Value("UNMATCHED_BRACKET")
@@ -173,6 +176,7 @@ object ErrorCode extends Enumeration {
   final val VARARG_AFTER_KEYWORD_ARG = Value("VARARG_AFTER_KEYWORD_ARG")
   final val VARARG_NOT_ALLOWED = Value("VARARG_NOT_ALLOWED")
   final val WRONG_BRACKET = Value("WRONG_BRACKET")
+  final val WRONG_STRING_DELIMITER = Value("WRONG_STRING_DELIMITER")    // NEW 28-MAR-2026
   final val WRONG_TOKEN = Value("WRONG_TOKEN")
   final val YIELD_OUTSIDE_FUNCTION = Value("YIELD_OUTSIDE_FUNCTION")
 }

@@ -15,7 +15,7 @@ import tigerpython.parser.errors.{ErrorHandler, ErrorCode}
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 private[parser] object PreParser {
 
@@ -189,7 +189,7 @@ class PreParser(val source: CharSequence,
       val srcLine = lines(currentIndex)
       currentIndex += 1
       while (currentIndex < lines.length && (srcLine.endsInOperator || srcLine.endsInAssignment) &&
-        lines(currentIndex).isExpression(parserState)) {
+        lines(currentIndex).isExpression(parserState) && !srcLine.endsInC_Operator) {
         parserState.reportError(srcLine.endPos, ErrorCode.EXTRA_LINEBREAK)
         srcLine.mergeWithLine(lines(currentIndex))
         currentIndex += 1

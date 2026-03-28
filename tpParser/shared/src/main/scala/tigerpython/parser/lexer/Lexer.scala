@@ -19,7 +19,7 @@ import scala.util.control.Breaks._
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 15/05/2016
-  * Updated by Tobias Kohn on 21/05/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 class Lexer(val source: CharSequence,
             val parserState: ParserState,
@@ -565,8 +565,26 @@ class Lexer(val source: CharSequence,
         }
         parserState.reportError(scanner.pos, ErrorCode.UNTERMINATED_STRING)
       }
+      else if (delimiter == '\'' && i == prefixLen + 2 && scanner(i).isLetterOrDigit) {
+        findDoubleSingleQuote(i + 1) match {
+          case Some(j) =>
+            parserState.reportError(scanner.pos, ErrorCode.WRONG_STRING_DELIMITER, "''")
+            i = j + 2
+          case None =>
+        }
+      }
       makeToken(i, getTokenTypeFromPrefix(prefixLen))
     }
+
+  private def findDoubleSingleQuote(start: Int): Option[Int] = {
+    var i = start
+    while (scanner(i) >= ' ') {
+      if (scanner(i) == '\'' && scanner(i+1) == '\'')
+        return Some(i)
+      i += 1
+    }
+    None
+  }
 
   def lineFromPosition(position: Int): Int = scanner.lineFromPosition(position)
 

@@ -8,9 +8,9 @@
 package tigerpython.parser
 package parsing
 
-import ast.{AstNode, BinOp, UnOp, ValueType}
+import ast.{AstNode, AugAssignOp, BinOp, UnOp, ValueType}
 import lexer.{Token, TokenBuffer, TokenType}
-import tigerpython.parser.ast.AstNode.NamedExpr
+import tigerpython.parser.ast.AstNode.{AugAssign, NamedExpr}
 import tigerpython.parser.errors.ErrorCode
 
 import scala.collection.mutable.ArrayBuffer
@@ -19,7 +19,7 @@ import scala.collection.mutable.ArrayBuffer
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 object ExpressionParser {
 
@@ -472,8 +472,18 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
   protected def parseArithExpr(tokens: TokenBuffer): Expression = {
     var result = parseTerm(tokens)
     while (tokens.hasType(TokenType.PLUS, TokenType.MINUS) && result != null) {
-      val op = BinOp.fromTokenType(tokens.next().tokenType)
-      result = AstNode.BinaryOp(result.pos, op, result, parseTerm(tokens))
+      val tt = tokens.next().tokenType
+      val op = BinOp.fromTokenType(tt)
+      // Check for C-style ++ and --
+      if (tokens.hasType(tt) && (tokens.remaining == 1 ||
+        (tokens.remaining > 1 && tokens.peekType(1).isOneOf(TokenType.RIGHT_PARENS, TokenType.RIGHT_BRACKET,
+          TokenType.RIGHT_BRACE, TokenType.COMMA, TokenType.COLON, TokenType.SEMICOLON)))) {
+        val s = if (tt == TokenType.PLUS) "+" else "-"
+        parserState.reportError(tokens.prevPos, ErrorCode.FOREIGN_TOKEN, s+s, s+"= 1")
+        tokens.next()
+        result = AstNode.BinaryOp(result.pos, op, result, AstNode.Value(tokens.prevPos, 1))
+      } else
+        result = AstNode.BinaryOp(result.pos, op, result, parseTerm(tokens))
     }
     result
   }

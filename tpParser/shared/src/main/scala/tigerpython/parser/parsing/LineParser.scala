@@ -15,7 +15,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 17/05/2016
-  * Updated by Tobias Kohn on 24/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 private[parser] object LineParser {
   case class Line(indent: Int, endPos: Int, var tokens: Array[Token]) {
@@ -27,6 +27,11 @@ private[parser] object LineParser {
     def beginsInOperator: Boolean =
       tokens.nonEmpty && tokens.head.tokenType.category == TokenType.TYPE_OPERATOR &&
         tokens.head.tokenType.isOneOf(TokenType.PLUS, TokenType.AND, TokenType.OR, TokenType.DOT)
+
+    def endsInC_Operator: Boolean =
+      tokens.length > 2 && tokens.last.tokenType.isOneOf(TokenType.PLUS, TokenType.MINUS) && (
+        tokens(tokens.length - 2).tokenType == tokens(tokens.length - 1).tokenType
+      )
 
     def endsInOperator: Boolean =
       tokens.nonEmpty && tokens.last.tokenType.isOneOf(TokenType.PLUS, TokenType.AND, TokenType.OR, TokenType.MOD,

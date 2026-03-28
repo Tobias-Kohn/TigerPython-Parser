@@ -14,7 +14,7 @@ import tigerpython.parser.errors.ErrorCode
   * @author Tobias Kohn
   *
   * Created by Tobias Kohn on 30/06/2016
-  * Updated by Tobias Kohn on 26/04/2024
+  * Updated by Tobias Kohn on 28/03/2026
   */
 object EnglishMessages extends ModifiableErrorMessages {
   import tigerpython.parser.errors.ErrorCode._
@@ -128,10 +128,13 @@ object EnglishMessages extends ModifiableErrorMessages {
       case SINGLE_EQUAL_SIGN_EXPECTED => "Use a single equal sign '=' for assignment."
       case SUPERFLUOUS_COMPARISON => "The comparison to '%s' is superfluous here."
       case SWAPPED_TOKENS => "These symbols seem to be swapped: '%s' and '%s'."
+      case THIS_IS_NOT_PIP => "'%s' cannot be used here."
+      case THIS_IS_NOT_REPL => "This is the editor window, not the interactive console/shell/repl."
       case TOKEN_REQUIRED => "'%s' required but '%s' found."
       case TRY_INCOMPLETE_STRUCTURE => "A 'try' structure must be followed by at least one 'except' or 'finally' block'."
-      case TWO_STATEMENTS => "You cannot put two statements on a single line."
       case TUPLE_NEEDS_PARENS => "This tuple needs to be enclosed in parentheses."
+      case TWO_STATEMENTS => "You cannot put two statements on a single line."
+      case TYPO => "There seems to be a typo here: '%s' should probably be '%s'."
       case UNEXPECTED_END_OF_INPUT => "Unexpected end of line or input."
       case UNEXPECTED_KEYWORD => "The keyword '%s' cannot occur at this point."
       case UNMATCHED_BRACKET => "This left bracket '%s' has no matching right bracket."
@@ -153,6 +156,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case VARARG_NOT_ALLOWED => "Unpacking var/keyword-arguments are not allowed at this point."
       case WALRUS_AS_STATEMENT => "You can only use ':=' inside expressions, use '=' for assignment statements."
       case WRONG_BRACKET => "Wrong parenthesis or bracket: '%s' is required instead of '%s'."
+      case WRONG_STRING_DELIMITER => "%s cannot be used as a string delimiter.  Use either \' or \"."
       case WRONG_TOKEN => "Wrong symbol '%s' instead of '%s'."
       case YIELD_OUTSIDE_FUNCTION => "A 'yield'-expression cannot occur outside a function."
       case _ => msg.toString
