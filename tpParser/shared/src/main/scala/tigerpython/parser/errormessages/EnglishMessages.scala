@@ -97,6 +97,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case MISSING_COMMA => "There seems to be a comma missing."
       case MISSING_COMPARISON => "There is a comparison missing."
       case MISSING_DOT => "There seems to be a dot missing."
+      case MISSING_EXPRESSION => "There is an expression or value missing here."
       case MISSING_LEFT_BRACKET => "There is a missing left bracket or parenthesis: '%s'."
       case MISSING_LEFT_PARENTHESIS => "There is a missing left parenthesis '('."
       case MISSING_LINE_BREAK => "You need to put '%s' on a new (indented) line."

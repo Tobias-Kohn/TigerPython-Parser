@@ -760,7 +760,12 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
 
   protected def parseListMaker(tokens: TokenBuffer): Expression = {
     val startPos = tokens.head.pos
-    val test = parseTest(tokens)
+    val test =
+      if (tokens.headType == TokenType.COMMA) {
+        parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
+        null
+      } else
+        parseTest(tokens)
     if (tokens.hasType(TokenType.FOR)) {
       val c = parseComprehension(tokens)
       AstNode.ListComp(startPos, tokens.endPosOfList, test, c)
@@ -792,7 +797,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         } else
         if (tokens.matchType(TokenType.SEMICOLON))
           parserState.reportError(tokens.prevPos, ErrorCode.TYPO, ";", ",")
-        if (!tokens.matchType(TokenType.COMMA))
+        else if (!tokens.matchType(TokenType.COMMA))
           parserState.reportError(tokens, ErrorCode.MISSING_OPERATOR_OR_COMMA)
         if (firstOfTest(tokens))
           result += parseTest(tokens)

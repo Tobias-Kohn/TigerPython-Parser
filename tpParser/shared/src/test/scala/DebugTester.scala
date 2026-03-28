@@ -14,10 +14,9 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """def foo(x);
-      |    pass
+    """my_list = [,,,]
       |
-      |foo(12)
+      |print(my_list)
       |""".stripMargin
 
   {
