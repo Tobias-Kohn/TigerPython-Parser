@@ -471,7 +471,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
 
   protected def parseArithExpr(tokens: TokenBuffer): Expression = {
     var result = parseTerm(tokens)
-    while (tokens.hasType(TokenType.PLUS, TokenType.MINUS)) {
+    while (tokens.hasType(TokenType.PLUS, TokenType.MINUS) && result != null) {
       val op = BinOp.fromTokenType(tokens.next().tokenType)
       result = AstNode.BinaryOp(result.pos, op, result, parseTerm(tokens))
     }
@@ -481,7 +481,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
   protected def parseTerm(tokens: TokenBuffer): Expression = {
     var result = parseFactor(tokens)
     while (tokens.hasType(TokenType.STAR, TokenType.DIV, TokenType.INT_DIV, TokenType.MOD,
-                  TokenType.ANNOTATION)) {
+                  TokenType.ANNOTATION) && result != null) {
       val op = BinOp.fromTokenType(tokens.next().tokenType)
       result = AstNode.BinaryOp(result.pos, op, result, parseFactor(tokens))
     }

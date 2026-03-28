@@ -14,19 +14,33 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """import turtle
-      |turtle.""".stripMargin
+    """def foo(x=+y=+z):
+      |    print(x)
+      |
+      |x = 123""".stripMargin
 
   {
-    val pyiSource = loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi")
+/*    val pyiSource = loadFromFile("./tpParser/shared/src/test/programs/completer/typeshed/turtle.pyi")
     ModuleLoader.addPyiModule("turtle", pyiSource)
     val completer = new Completer("<module>", PROGRAM, PROGRAM.length)
-    val nameFilter = completer.getNameFilter
+    val nameFilter = completer.getNameFilter*/
     /*if (nameFilter != null) {
       val suggestions = nameFilter.getNameList("")
       println(suggestions.mkString(";"))
       println("– done –")
     } else
       println("– no entries –")*/
+    /*val p = new Parser(PROGRAM)
+    p.repeatStatement = true
+    val cs = p.checkSyntax()
+    if (cs.nonEmpty) {
+      val pos = cs.get.position
+      println("ERROR")
+      println(PROGRAM.slice(0, pos))
+      println("???")
+      println(PROGRAM.slice(pos, PROGRAM.length))
+    }
+    assert(cs.isEmpty)
+    print("DONE")*/
   }
 }

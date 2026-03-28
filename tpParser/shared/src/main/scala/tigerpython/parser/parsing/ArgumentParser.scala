@@ -212,6 +212,24 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         tokens.next()
         matchComa(tokens)
         SlashParameter(pos) :: parseParameters(tokens, allowTypes)
+      case TokenType.ASSIGN =>
+        val pos = tokens.pos
+        tokens.next()
+        if (tokens.hasType(TokenType.RIGHT_PARENS, TokenType.COMMA)) {
+          parserState.reportError(pos, ErrorCode.EXTRA_TOKEN, "=")
+          if (matchComa(tokens))
+            SimpleParameter(pos, "", null) :: parseParameters(tokens, allowTypes)
+          else
+            SimpleParameter(pos, "", null) :: Nil
+        } else {
+          parserState.reportError(pos, ErrorCode.NAME_EXPECTED)
+          val defStart = tokens.pos
+          val defExpr = expressionParser.parseTest(tokens)
+          val defEnd = tokens.pos
+          val result = DefaultParameter(pos, "", defExpr, tokens.textSource.subSequence(defStart, defEnd).toString.trim, null)
+          matchComa(tokens)
+          result :: parseParameters(tokens, allowTypes)
+        }
       case _ =>
         val name = parseKeywordName(tokens)
         if (name == null) {
@@ -226,6 +244,14 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
             val defStart = tokens.pos
             val defExpr = expressionParser.parseTest(tokens)
             val defEnd = tokens.pos
+            if (tokens.matchType(TokenType.ASSIGN)) {
+              if (tokens.hasType(TokenType.COMMA, TokenType.RIGHT_PARENS))
+                parserState.reportError(tokens.prevPos, ErrorCode.EXTRA_TOKEN, "=")
+              else {
+                parserState.reportError(tokens.prevPos, ErrorCode.MISPLACED_ASSIGN, "=")
+                expressionParser.parseTest(tokens)
+              }
+            }
             DefaultParameter(name.pos, name.name, defExpr, tokens.textSource.subSequence(defStart, defEnd).toString.trim, annot)
           }
           else

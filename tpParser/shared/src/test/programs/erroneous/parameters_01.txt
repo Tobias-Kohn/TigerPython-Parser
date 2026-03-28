@@ -1,0 +1,6 @@
+# 1
+# MISPLACED_ASSIGN
+def garage(screws=+nails=+washers):
+    print("Final price is: " screws=+nails=+washers)
+
+screws = 123
