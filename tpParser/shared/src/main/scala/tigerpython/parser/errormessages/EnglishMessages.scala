@@ -68,6 +68,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case GENERATOR_CANNOT_RETURN_VALUE => "A generator cannot use 'return' to return a value."
       case GLOBAL_MUST_BE_FIRST => "'%s'-statements must be the first statements inside a function."
       case GLOBAL_OUTSIDE_FUNCTION => "A '%s'-statement cannot occur outside a function."
+      case GLOBAL_WITH_ASSIGNMENT => "'%s' cannot be combined with an assignment."
       case IMPORT_INSIDE_LOOP => "An 'import'-statement cannot be inside a loop."
       case INCOMPLETE_IMPORT => "This import statement is incomplete."
       case INCONSISTENT_INDENTATION => "The indentation is inconsistent."

@@ -14,7 +14,10 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """print(''Hello World'')
+    """def foo():
+      |    global x = 1
+      |    print(x)
+      |foo()
       |""".stripMargin
 
   {

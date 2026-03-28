@@ -1,0 +1,8 @@
+# 2
+# GLOBAL_WITH_ASSIGNMENT
+def access_global_variable(x):
+    global memory = x, y
+    y += 1
+
+y = 0
+access_global_variable(12)

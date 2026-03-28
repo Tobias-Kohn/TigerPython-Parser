@@ -709,7 +709,7 @@ class Parser(val source: CharSequence,
               tokens.peekTypeCategory(1) == TokenType.TYPE_ASSIGNMENT) {
               val s1 = expr.expression.asInstanceOf[AstNode.Name].name
               val s2 = tokens.head.value
-              if ((s1 == "var" || s1 == "val") && tokens.hasType(TokenType.NAME) &&
+              if ((s1 == "var" || s1 == "val" || s1 == "int" || s1 == "let" || s1 == "const") && tokens.hasType(TokenType.NAME) &&
                 lexer.getNameCount(s2) > lexer.getNameCount(s1 + s2) &&
                 lexer.getNameCount(s2) > lexer.getNameCount(s1 + "_" + s2)) {
                 parserState.reportError(tokens, ErrorCode.FOREIGN_VAR, s1)
@@ -959,7 +959,14 @@ class Parser(val source: CharSequence,
           parseImport(tokens)
         case TokenType.GLOBAL =>
           val pos = tokens.next().pos
-          AstNode.Global(pos, expressionParser.parseNameList(tokens))
+          var nameList = expressionParser.parseNameList(tokens)
+          while (tokens.matchType(TokenType.ASSIGN)) {
+            parserState.reportError(tokens.pos, ErrorCode.GLOBAL_WITH_ASSIGNMENT, "global")
+            expressionParser.parseTest(tokens)
+            if (tokens.matchType(TokenType.COMMA))
+              nameList = nameList ++ expressionParser.parseNameList(tokens)
+          }
+          AstNode.Global(pos, nameList)
         case TokenType.NONLOCAL =>
           val pos = tokens.next().pos
           AstNode.NonLocal(pos, expressionParser.parseNameList(tokens))
