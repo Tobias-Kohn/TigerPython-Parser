@@ -140,6 +140,8 @@ class TokenBuffer(tokenSource: Seq[Token],
             errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.MISSPELLED_KEYWORD, head, tokenType)
             index += 1
             return true
+          } else if (tokenType == TokenType.COLON && headType.isOneOf(TokenType.SEMICOLON, TokenType.DOT)) {
+            errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.TYPO, tokenType.toString, headType.toString)
           } else {
             if (tokenType == TokenType.COLON && source.last.tokenType == TokenType.COLON)
               errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.EXTRA_TOKEN, head)

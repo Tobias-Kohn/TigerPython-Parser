@@ -14,10 +14,10 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """def foo():
-      |    global x = 1
-      |    print(x)
-      |foo()
+    """def foo(x);
+      |    pass
+      |
+      |foo(12)
       |""".stripMargin
 
   {

@@ -790,6 +790,8 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
             return AstNode.List(startPos, tokens.endPosOfList, result.toArray)
           }
         } else
+        if (tokens.matchType(TokenType.SEMICOLON))
+          parserState.reportError(tokens.prevPos, ErrorCode.TYPO, ";", ",")
         if (!tokens.matchType(TokenType.COMMA))
           parserState.reportError(tokens, ErrorCode.MISSING_OPERATOR_OR_COMMA)
         if (firstOfTest(tokens))

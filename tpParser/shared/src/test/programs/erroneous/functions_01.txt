@@ -1,0 +1,6 @@
+# 1
+# TYPO
+def some_f(x);
+    print(x)
+
+some_f(12)
