@@ -1,0 +1,7 @@
+# 3
+# MISSING_EXPRESSION
+x = 123
+y = input('')
+if (10<):
+    x += y
+    print(x)

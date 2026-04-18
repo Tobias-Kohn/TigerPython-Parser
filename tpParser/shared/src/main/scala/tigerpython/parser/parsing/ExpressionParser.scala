@@ -741,8 +741,8 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           tokens.requireType(TokenType.REPR)
           AstNode.Call.withName(token.pos, tokens.pos, "repr", result)
         case TokenType.RIGHT_PARENS | TokenType.RIGHT_BRACE | TokenType.RIGHT_BRACKET =>
-          parserState.reportError(token.pos, ErrorCode.EXTRA_RIGHT_BRACKET, token)
-        case TokenType.SEMICOLON =>
+          parserState.reportError(token.pos, ErrorCode.MISSING_EXPRESSION)
+        case TokenType.SEMICOLON | TokenType.COLON =>
           parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
         case tt =>
           tokens.headType match {

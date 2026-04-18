@@ -1,6 +1,6 @@
 # 3
-# NO_VIABLE_ALTERNATIVE
+# MISSING_EXPRESSION
 a = "test"
 print(a)
-with a as:
+with a as :
     pass

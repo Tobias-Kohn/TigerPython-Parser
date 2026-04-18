@@ -14,7 +14,16 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """>>> 3 + 34
+    """from keyboard import readKey
+      |
+      |x = 0
+      |while True:
+      |    ch = readKey()
+      |    if ch == +:
+      |        x += 1
+      |    elif ch == '-':
+      |        x -= 1
+      |    print(x)
       |""".stripMargin
 
   {

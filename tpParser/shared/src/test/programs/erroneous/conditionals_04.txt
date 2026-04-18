@@ -1,0 +1,12 @@
+# 6
+# MISSING_EXPRESSION
+from keyboard import readKey
+
+x = 0
+while True:
+    ch = readKey()
+    if ch == +:
+        x += 1
+    elif ch == '-':
+        x -= 1
+    print(x)
