@@ -103,7 +103,9 @@ abstract class DefaultNameFilter extends NameFilter {
         case Some(_: Instance) =>
           new CompleterInfoItem(name)
         case Some(dt) =>
-          new CompleterInfoItem(dt)
+          // Overloaded function types end up with an abstract type named <any> so we must
+          // override the name to avoid ending up with a list of completions named <any>:
+          new CompleterInfoItem(dt, name)
         case None =>
           new CompleterInfoItem(name)
       }

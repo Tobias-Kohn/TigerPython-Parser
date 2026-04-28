@@ -82,6 +82,9 @@ class TestCompleter extends FunSuite {
       val completer = new Completer(fileName, text, pos)
       val suggestions = completer.getNameFilter.getNameList("").mkString(";")
       assert(suggestions == expected_result)
+      // Should be the same output if we ask for the names from getExtInfoList:
+      val extSuggestions = completer.getNameFilter.getExtInfoList.map(info => info.name).filter(name => !name.startsWith("_")).mkString(";")
+      assert(extSuggestions == expected_result)
     }
 
   for (fileName <- listAllFiles("completer_params"))
