@@ -15,6 +15,6 @@ case class CompleterInfoItem(name: String,
   def this(name: String) =
     this(name, null, "variable", null, null)
 
-  def this(dataType: DataType) =
-    this(dataType.name, dataType.docString, dataType.getTypeName, dataType.getParams, dataType.getSignature)
+  def this(dataType: DataType, overrideName: String = null) =
+    this(if (overrideName != null) overrideName else dataType.name, dataType.docString, dataType.getTypeName, dataType.getParams, dataType.getSignature)
 }
