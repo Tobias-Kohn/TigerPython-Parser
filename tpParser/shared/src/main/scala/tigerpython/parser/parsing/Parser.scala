@@ -873,8 +873,34 @@ class Parser(val source: CharSequence,
           case AstNode.ExprStatement(pos, expr) =>
             expr match {
               case binOp: AstNode.BinaryOp =>
-                if (!parserState.errorHandler.hasErrorInRange(binOp.pos, binOp.endPos))
-                  parserState.reportError(pos, ErrorCode.USELESS_COMPUTATION)
+                if (!parserState.errorHandler.hasErrorInRange(binOp.pos, binOp.endPos)) {
+                  var errorCode = ErrorCode.USELESS_COMPUTATION
+                  parserState.hasSuspicionAtPos(binOp.pos) match {
+                    case Some(suspicion)
+                        if suspicion.code == ErrorCode.USE_UNDERLINE_NOT_MINUS &&
+                           binOp.op == BinOp.SUB &&
+                           binOp.left.isSingleName =>
+                      val first = binOp.left.asInstanceOf[AstNode.Name].name
+                      binOp.right match {
+                        case AstNode.Call(_, _, AstNode.Name(_, n), _, _, _, _) =>
+                          if (checkMinusNames(pos, first, n))
+                            errorCode = null
+                        case AstNode.Attribute(_, _, AstNode.Name(_, n), _) =>
+                          if (checkMinusNames(pos, first, n))
+                            errorCode = null
+                        case AstNode.Subscript(_, _, AstNode.Name(_, n), _) =>
+                          if (checkMinusNames(pos, first, n))
+                            errorCode = null
+                        case AstNode.Name(_, n) =>
+                          errorCode = ErrorCode.USELESS_STATEMENT
+                        case _ =>
+                      }
+                      suspicion.resolved()
+                    case _ =>
+                  }
+                  if (errorCode != null)
+                    parserState.reportError(pos, errorCode)
+                }
               case _ =>
             }
           case _ =>
@@ -884,6 +910,19 @@ class Parser(val source: CharSequence,
     }
     stmts.filter(_ != null).toArray
   }
+
+  private def checkMinusNames(pos: Int, first: String, second: String): Boolean = {
+    val originalName = first + "-" + second
+    checkName(pos, originalName, first + "_" + second) || checkName(pos, originalName, first + second) ||
+      checkName(pos, originalName, first + second.head.toUpper + second.tail)
+  }
+
+  private def checkName(pos: Int, originalName: String, suggestion: String): Boolean =
+    if (lexer.hasName(suggestion)) {
+      parserState.reportError(pos, ErrorCode.MISSPELLED_NAME, originalName, suggestion)
+      true
+    } else
+      false
 
   private def suiteContainsBreak(suite: Array[PreParser.Line]): Boolean =
     try {

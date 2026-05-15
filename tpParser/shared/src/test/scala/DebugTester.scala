@@ -14,16 +14,10 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """from keyboard import readKey
+    """def setSpeed():
+      |    pass
       |
-      |x = 0
-      |while True:
-      |    ch = readKey()
-      |    if ch == +:
-      |        x += 1
-      |    elif ch == '-':
-      |        x -= 1
-      |    print(x)
+      |set-speed(3,1415)
       |""".stripMargin
 
   {
@@ -37,7 +31,7 @@ class DebugTester extends FunSuite  {
       println("– done –")
     } else
       println("– no entries –")*/
-    /*val p = new Parser(PROGRAM)
+    val p = new Parser(PROGRAM)
     p.repeatStatement = true
     p.rejectDeadCode = true
     p.strictCode = true
@@ -54,6 +48,6 @@ class DebugTester extends FunSuite  {
       println(q.parse())
     }
     assert(cs.isEmpty)
-    print("DONE")*/
+    print("DONE")
   }
 }

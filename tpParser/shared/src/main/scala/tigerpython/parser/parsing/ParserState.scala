@@ -42,13 +42,17 @@ case class ParserState(source: CharSequence,
 
   private[parsing] var currentStatementType: TokenType = _
 
+  private[parsing] val suspicions = collection.mutable.ArrayBuffer[Suspicion]()
+
   // Depending on a country's locate settings, fractional numbers might typically be written using a comma instead of
   // a dot (e.g., `4,5` instead of `4.5`).  The lexer collects the locations where this might be the case in this set,
   // allowing for some testing further down the line.
   private val tupleNumberLocations = collection.mutable.Set[Int]()
 
-  private[parser] def addTupleIsNumberLocation(pos: Int): Unit =
+  private[parser] def addTupleIsNumberLocation(pos: Int): Unit = {
     tupleNumberLocations += pos
+    addSuspicion(pos, ErrorCode.USE_DOT_NOT_COMMA)
+  }
 
   def copyFrom(source: ParserState): Unit = {
     evalMode = source.evalMode
@@ -136,6 +140,16 @@ case class ParserState(source: CharSequence,
       currentStatementType = null
     tokenType
   }
+
+  def addSuspicion(pos: Int, code: ErrorCode.Value, params: AnyRef*): Unit =
+    suspicions += new Suspicion(this, pos, code, params)
+
+  def hasSuspicionAtPos(pos: Int): Option[Suspicion] =
+    suspicions.find(_.pos == pos)
+
+  def resolveSuspicions(): Unit =
+    for (suspicion <- suspicions)
+      suspicion.resolve()
 
   def hasError: Boolean =
     if (errorHandler != null)

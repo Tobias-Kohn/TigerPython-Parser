@@ -34,6 +34,8 @@ class Lexer(val source: CharSequence,
 
   private var cache: Token = nextIndentation()
 
+  private var prevToken: Token = _
+
   protected val names: mutable.Map[String, NameInfo] = collection.mutable.Map[String, Lexer.NameInfo]()
 
   protected var bracketError: Boolean = false
@@ -41,12 +43,16 @@ class Lexer(val source: CharSequence,
 
   private var lineStart: Int = 0
 
+  // The set of all opening/left parentheses that follow directly a name
+  private val callParens = collection.mutable.Set[Int]()
+
   def reset(): Unit = {
     scanner.reset()
     names.clear()
     bracketError = false
     bracketStack.clear()
     lineStart = 0
+    prevToken = null
     cache = nextIndentation()
   }
 
@@ -65,6 +71,7 @@ class Lexer(val source: CharSequence,
       parserState.reportError(scanner.pos, ErrorCode.THIS_IS_NOT_REPL)
       scanner.skipLine()
     }
+    prevToken = cache
     val result = head
     if (cache != null && cache.tokenType == TokenType.NEWLINE)
       cache = nextIndentation()
@@ -92,6 +99,9 @@ class Lexer(val source: CharSequence,
       case Some(nameInfo) => nameInfo.listCount
       case _ => 0
     }
+
+  def hasName(name: String): Boolean =
+    names.contains(name)
 
   def getNameList: Array[String] = names.filter(name => name._2.refCount > 0).keys.toArray
 
@@ -172,7 +182,11 @@ class Lexer(val source: CharSequence,
           bracketStack.clear()
         }
       bracket match {
-        case '(' | '[' | '{' =>
+        case '(' =>
+          if (prevToken != null && prevToken.tokenType == TokenType.NAME)
+            callParens += scanner.pos
+          bracketStack.push(bracket)
+        case '[' | '{' =>
           bracketStack.push(bracket)
         case ')' =>
           matchBracket('(')
@@ -190,6 +204,8 @@ class Lexer(val source: CharSequence,
         case CatCodes.ALPHA =>
           val len = scanner.prefixLength(CatCodes.ALPHA, CatCodes.DIGIT, 0)
           val s = scanner.peekString(0, len)
+          if (scanner(len) == '-' && catCodes(scanner(len+1)) == CatCodes.ALPHA)
+            parserState.addSuspicion(scanner.pos, ErrorCode.USE_UNDERLINE_NOT_MINUS)
           if (catCodes(scanner(len)) != CatCodes.STRING || len > 3 || TokenType.isKeyword(s))
             makeToken(len, parserState.stringToTokenType(s))
           else
@@ -214,8 +230,12 @@ class Lexer(val source: CharSequence,
         case CatCodes.DIGIT =>
           val result = readNumber()
           if (result.tokenType == TokenType.INT && scanner(0) == ',' && scanner(1).isDigit) {
-            val ch1 = scanner.getLastNonWhitespaceChar(result.pos)
-            val ch2 = scanner.getNextNonWhitespaceChar(result.pos + scanner.prefixLengthWithUnderline(_.isDigit, 1))
+            val (idx1, ch1) = scanner.getLastNonDigitCharExt(result.pos)
+            val (_, ch2) = scanner.getNextNonDigitCharExt(result.pos + scanner.prefixLengthWithUnderline(_.isDigit, 1))
+            if (ch1 == '(' && ch2 == ')') {
+              if (callParens.contains(idx1))
+                parserState.addTupleIsNumberLocation(result.pos)
+            } else
             if (ch1 != ',' && ch1 != '[' && ch2 != ',' && ch2 != ']' && !(ch1 == '(' && ch2 == ')') &&
                   !(ch1 == '{' && ch2 == '}'))
               parserState.addTupleIsNumberLocation(result.pos)

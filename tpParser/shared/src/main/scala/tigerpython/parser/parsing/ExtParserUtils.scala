@@ -14,11 +14,13 @@ import tigerpython.parser.errors.ErrorCode
 import types.BuiltinTypes
 
 /**
-  * @author Tobias Kohn
-  *
-  * Created by Tobias Kohn on 26/06/2016
-  * Updated by Tobias Kohn on 22/02/2018
-  */
+ * The extended parser utilities check for errors that did not strictly arise from the parsing itself.  This includes,
+ * e.g. `break`-statements outside a loop, but also conditions like `if x and y > 0:`.
+ *
+ * @author Tobias Kohn
+ *
+ * Created by Tobias Kohn on 26/06/2016
+ */
 class ExtParserUtils(val parser: Parser, val parserState: ParserState) {
   import parser.lexer
 

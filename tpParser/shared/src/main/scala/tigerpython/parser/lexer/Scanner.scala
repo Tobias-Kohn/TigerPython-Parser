@@ -171,6 +171,18 @@ class Scanner(val source: CharSequence) {
     } else
       '\u0000'
 
+  def getLastNonDigitCharExt(startPos: Int): (Int, Char) =
+    if (startPos <= source.length) {
+      var i = startPos - 1
+      while (i >= 0 && catCodes(source.charAt(i)) == CatCodes.DIGIT)
+        i -= 1
+      if (i >= 0)
+        (i, source.charAt(i))
+      else
+        (-1, '\u0000')
+    } else
+      (-1, '\u0000')
+
   def getNextNonWhitespaceChar(startPos: Int): Char =
     if (startPos > 0) {
       var i = startPos
@@ -182,6 +194,18 @@ class Scanner(val source: CharSequence) {
         '\u0000'
     } else
       '\u0000'
+
+  def getNextNonDigitCharExt(startPos: Int): (Int, Char) =
+    if (startPos > 0) {
+      var i = startPos
+      while (i < source.length && catCodes(source.charAt(i)) == CatCodes.DIGIT)
+        i += 1
+      if (i < source.length)
+        (i, source.charAt(i))
+      else
+        (-1, '\u0000')
+    } else
+      (-1, '\u0000')
 
   def prefixLength(p: Char=>Boolean, startIndex: Int = 0): Int = {
     val start = (pos + startIndex) max 0
