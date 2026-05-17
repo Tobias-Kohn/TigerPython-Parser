@@ -23,7 +23,7 @@ object DutchMessages extends ModifiableErrorMessages {
 
   protected def _getMessage(msg: ErrorCode.Value): String =
     msg match {
-        case AND_CONNECTS_CMP_NOT_VARS => "'%s' verbindt vergelijkingen en geen variabelen."
+        case AND_CONNECTS_CMP_NOT_VALUES => "'%s' verbindt vergelijkingen en geen variabelen."
         case ARG_AFTER_VARARGS => "Je mag geen bijkomende argumenten na een unpacking var/keyword-argument doorgeven."
         case AS_NOT_ALLOWED_HERE => "'as' is hier niet toegestaan."
         case ASSIGNMENT_TO_RIGHT => "Het doel van een toewijzing moet links staan."

@@ -14,10 +14,7 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """def setSpeed():
-      |    pass
-      |
-      |set-speed(3,1415)
+    """jelly spam = 12, 34
       |""".stripMargin
 
   {
@@ -35,6 +32,8 @@ class DebugTester extends FunSuite  {
     p.repeatStatement = true
     p.rejectDeadCode = true
     p.strictCode = true
+    p.protectFunctions = true
+   // p.rejectInfiniteLoops = true
     val cs = p.checkSyntax()
     if (cs.nonEmpty) {
       val pos = cs.get.position

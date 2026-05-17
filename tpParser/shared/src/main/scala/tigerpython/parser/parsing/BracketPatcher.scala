@@ -107,7 +107,10 @@ class BracketPatcher(val lexer: Lexer, val parserState: ParserState, tokenSource
   private def deleteToken(tokenIndex: Int): Boolean = {
     val token = tokens(tokenIndex)
     tokens.remove(tokenIndex)
-    parserState.reportError(token.pos, ErrorCode.EXTRA_TOKEN, token)
+    if (token.tokenType.isRightBracket && tokenIndex > 0 && tokens(tokenIndex - 1).tokenType == token.tokenType)
+      parserState.reportError(token.pos, ErrorCode.EXTRA_RIGHT_BRACKET, token)
+    else
+      parserState.reportError(token.pos, ErrorCode.EXTRA_TOKEN, token)
     true
   }
 

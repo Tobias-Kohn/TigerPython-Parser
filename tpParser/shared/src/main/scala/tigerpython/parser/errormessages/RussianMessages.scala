@@ -21,7 +21,7 @@ object RussianMessages extends ModifiableErrorMessages {
 
   protected def _getMessage(msg: ErrorCode.Value): String =
     msg match {
-        case AND_CONNECTS_CMP_NOT_VARS => "'%s' связывает сравнения, а не переменные."
+        case AND_CONNECTS_CMP_NOT_VALUES => "'%s' связывает сравнения, а не переменные."
         case ARG_AFTER_VARARGS => "Запрещено передавать другие аргументы после распаковывающего аргумента."
         case AS_NOT_ALLOWED_HERE => "'as' здесь не разрешено / не поддерживается."
         case ASSIGNMENT_TO_RIGHT => "Целевой объект операции присваивания должен находиться слева."

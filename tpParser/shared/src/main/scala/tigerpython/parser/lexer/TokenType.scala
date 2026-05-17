@@ -7,6 +7,8 @@
  */
 package tigerpython.parser.lexer
 
+import scala.annotation.tailrec
+
 /**
   * @author Tobias Kohn
   *
@@ -183,6 +185,7 @@ object TokenType {
 
   def isKeyword(s: String): Boolean = keywords.contains(s)
 
+  @tailrec
   def findOperator(op: String): (Int, TokenType) =
     try {
       (op.length, withName(op))

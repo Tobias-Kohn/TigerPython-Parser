@@ -241,12 +241,12 @@ class ExtParserUtils(val parser: Parser, val parserState: ParserState) {
       case _: AstNode.BooleanValue =>
       case s: AstNode.StringValue =>
         if (parentOp.isDefined)
-          parserState.reportError(s.pos, ErrorCode.AND_CONNECTS_CMP_NOT_VARS, parentOp.get.toString)
+          parserState.reportError(s.pos, ErrorCode.AND_CONNECTS_CMP_NOT_VALUES, parentOp.get.toString)
         else if (parserState.strictCode)
           parserState.reportError(s.pos, ErrorCode.INVALID_CONDITION, s.toString)
       case v: AstNode.Value =>
         if (parentOp.isDefined)
-          parserState.reportError(v.pos, ErrorCode.AND_CONNECTS_CMP_NOT_VARS, parentOp.get.toString)
+          parserState.reportError(v.pos, ErrorCode.AND_CONNECTS_CMP_NOT_VALUES, parentOp.get.toString)
         else if (parserState.strictCode)
           parserState.reportError(v.pos, ErrorCode.INVALID_CONDITION, v.value)
       case _ =>
@@ -268,13 +268,13 @@ class ExtParserUtils(val parser: Parser, val parserState: ParserState) {
         case BinOp.CMP_EQ =>
           if (leftValue != rightValue)
             parserState.reportError(pos, ErrorCode.CONDITION_CANNOT_BE_FULFILLED)
-          else
-            parserState.reportError(pos, ErrorCode.CONDITION_ALWAYS_FULFILLED)
+          /*else
+            parserState.reportError(pos, ErrorCode.CONDITION_ALWAYS_FULFILLED)*/
         case BinOp.CMP_NEQ =>
           if (leftValue == rightValue)
             parserState.reportError(pos, ErrorCode.CONDITION_CANNOT_BE_FULFILLED)
-          else
-            parserState.reportError(pos, ErrorCode.CONDITION_ALWAYS_FULFILLED)
+          /*else
+            parserState.reportError(pos, ErrorCode.CONDITION_ALWAYS_FULFILLED)*/
         case BinOp.CMP_LT =>
           if (leftValue >= rightValue)
             parserState.reportError(pos, ErrorCode.CONDITION_CANNOT_BE_FULFILLED)

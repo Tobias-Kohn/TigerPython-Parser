@@ -22,7 +22,7 @@ object FrenchMessages extends ModifiableErrorMessages {
 
  protected def _getMessage(msg: ErrorCode.Value): String =
     msg match {
-        case AND_CONNECTS_CMP_NOT_VARS => "Combinaison erronée d'une expression booléenne avec une variable non booléenne à l'aide de l'opérateur logique '%s'."
+        case AND_CONNECTS_CMP_NOT_VALUES => "Combinaison erronée d'une expression booléenne avec une variable non booléenne à l'aide de l'opérateur logique '%s'."
         case AS_NOT_ALLOWED_HERE => "'as' n'est pas autorisé dans ce contexte."
         case ASSIGNMENT_TO_RIGHT => "La destination d'une assignation doit se trouve à gauche de l'opérateur d'assignation et non à droite."
         case USE_BREAK_INSTEAD_OF_RETURN => "Il faut utiliser 'break' au lieu de 'return' pour interrompre une boucle."

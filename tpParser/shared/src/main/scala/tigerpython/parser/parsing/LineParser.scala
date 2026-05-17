@@ -226,7 +226,9 @@ class LineParser(val source: CharSequence,
           val nameToken = tokenSource.next()
           val followType = if (tokenSource.hasNext) tokenSource.head.tokenType else TokenType.NEWLINE
           nameToken.value match {
-            case "async" if followType.isOneOf(TokenType.DEF, TokenType.FOR, TokenType.WITH) =>
+            // The way `async` is treated has changed with newer versions of Python; we originally treated it as a
+            // 'soft keyword'.
+            case "async" => // if followType.isOneOf(TokenType.DEF, TokenType.FOR, TokenType.WITH) =>
               result += Token.changeType(nameToken, TokenType.ASYNC)
             case "await" if followType.isOneOf(TokenType.NAME, TokenType.INT, TokenType.LEFT_PARENS,
                               TokenType.LEFT_BRACKET, TokenType.LEFT_BRACE) =>

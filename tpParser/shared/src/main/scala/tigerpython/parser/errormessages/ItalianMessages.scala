@@ -22,7 +22,7 @@ object ItalianMessages extends ModifiableErrorMessages {
 
   protected def _getMessage(msg: ErrorCode.Value): String =
     msg match {
-        case AND_CONNECTS_CMP_NOT_VARS => "'%s' connette comparazioni, non variabili."
+        case AND_CONNECTS_CMP_NOT_VALUES => "'%s' connette comparazioni, non variabili."
         case ARG_AFTER_VARARGS => "Non puoi passare ulteriori argomenti dopo un argomento spacchettante."
         case AS_NOT_ALLOWED_HERE => "'as' non è permesso/supportato qui."
         case ASSIGNMENT_TO_RIGHT => "Il target dell'assegnamento deve essere sulla sinistra."

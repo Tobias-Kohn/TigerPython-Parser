@@ -21,7 +21,7 @@ object GermanMessages extends ModifiableErrorMessages {
 
   protected def _getMessage(msg: ErrorCode.Value): String =
     msg match {
-      case AND_CONNECTS_CMP_NOT_VARS => "'%s' verknüpft Vergleiche, nicht Variablen."
+      case AND_CONNECTS_CMP_NOT_VALUES => "'%s' verknüpft Vergleiche, nicht Variablen."
       case ARG_AFTER_VARARGS => "Nach einem entpackenden Argument können keine weiteren Argumente folgen."
       case AS_NOT_ALLOWED_HERE => "'as' ist hier nicht erlaubt/unterstützt."
       case ASSIGNMENT_TO_RIGHT => "Das Ziel einer Zuweisung muss immer links stehen."

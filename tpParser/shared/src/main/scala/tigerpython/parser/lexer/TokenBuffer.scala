@@ -336,7 +336,7 @@ class TokenBuffer(tokenSource: Seq[Token],
   def nextSimpleKeyword(): Token = {
     val result = next()
     if (peekType(0) == TokenType.LEFT_PARENS && peekType(1) == TokenType.RIGHT_PARENS) {
-      errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.EXTRA_BRACKETS)
+      errorHandler.reportError(pos, lineFromPos(pos), ErrorCode.EXTRA_BRACKETS, result.toString)
       index += 2
     }
     result
