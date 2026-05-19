@@ -672,8 +672,8 @@ class Parser(val source: CharSequence,
               tokens.skipAll()
               stmt = null
             } else
-            if (name == "case" && tokens.hasColonAtEnd && line.hasSuite) {
-              parserState.reportError(line.startPos, ErrorCode.FOREIGN_STATEMENT, "case/switch")
+            if ((name == "case" || name == "switch") && tokens.hasColonAtEnd && line.hasSuite) {
+              parserState.reportError(line.startPos, ErrorCode.FOREIGN_SWITCH_STATEMENT, "case/switch")
               tokens.skipAll()
               stmt = null
             } else
@@ -790,7 +790,7 @@ class Parser(val source: CharSequence,
             }
           case expr: AstNode.ExprStatement if expr.isSingleCall && tokens.hasType(TokenType.LEFT_BRACE) &&
             isCallOfFunction(expr.expression, "switch") =>
-            parserState.reportError(line.startPos, ErrorCode.FOREIGN_STATEMENT, "case/switch")
+            parserState.reportError(line.startPos, ErrorCode.FOREIGN_SWITCH_STATEMENT, "case/switch")
             tokens.skipAll()
           case expr: AstNode.ExprStatement if expr.isSingleCall && tokens.hasType(TokenType.COLON) && line.hasSuite =>
             expr.expression.asInstanceOf[AstNode.Call].function match {
@@ -799,7 +799,7 @@ class Parser(val source: CharSequence,
               case AstNode.Name(pos, name) if name.startsWith("def") =>
                 parserState.reportError(pos + 3, ErrorCode.MISSING_SPACE)
               case AstNode.Name(_, name) if name == "switch" && line.hasSuite =>
-                parserState.reportError(line.startPos, ErrorCode.FOREIGN_STATEMENT, "case/switch")
+                parserState.reportError(line.startPos, ErrorCode.FOREIGN_SWITCH_STATEMENT, "case/switch")
               case _ =>
                 parserState.reportError(line.startPos, ErrorCode.MISSING_TOKEN, "def")
                 return Array(parseStatement(line.recreate(Token(line.startPos, 0, TokenType.DEF) +: line.tokens)))

@@ -70,7 +70,7 @@ object ErrorCode extends Enumeration {
   final val EXTRA_TOKEN = Value("EXTRA_TOKEN")
   final val FOREIGN_KEYWORD = Value("FOREIGN_KEYWORD")
   final val FOREIGN_PRIVATE = Value("FOREIGN_PRIVATE")
-  final val FOREIGN_STATEMENT = Value("FOREIGN_STATEMENT")
+  final val FOREIGN_SWITCH_STATEMENT = Value("FOREIGN_SWITCH_STATEMENT")
   final val FOREIGN_SYNTAX = Value("FOREIGN_SYNTAX")
   final val FOREIGN_TOKEN = Value("FOREIGN_TOKEN")
   final val FOREIGN_VAR = Value("FOREIGN_VAR")

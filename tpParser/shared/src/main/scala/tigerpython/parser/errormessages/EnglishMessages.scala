@@ -61,7 +61,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case EXTRA_TOKEN => "There seems to be an extra symbol '%s' here."
       case FOREIGN_KEYWORD => "'%s' is not a keyword in Python."
       case FOREIGN_PRIVATE => "The token '%s' is invalid, use underscores '_' to mark a function as 'private'."
-      case FOREIGN_STATEMENT => "Python has no '%s'-statement."
+      case FOREIGN_SWITCH_STATEMENT => "Python uses pattern matching with 'match' and 'case'."
       case FOREIGN_SYNTAX => "This %s-syntax is invalid in Python."
       case FOREIGN_TOKEN => "The token '%s' is invalid, use '%s' instead."
       case FOREIGN_VAR => "Python does not use '%s' to define variables."

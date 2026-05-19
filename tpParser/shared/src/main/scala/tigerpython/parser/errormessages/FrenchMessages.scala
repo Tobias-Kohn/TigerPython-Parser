@@ -60,7 +60,7 @@ object FrenchMessages extends ModifiableErrorMessages {
         case EXTRA_SPACE_OR_MISSING_COMMA => "Soit il y a un espace en trop, soit il manque une virgule."
         case EXTRA_TOKEN => "Tokens en trop détectés : '%s'."
         case FOREIGN_KEYWORD => "'%s' n'est pas un mot-clé Python valide."
-        case FOREIGN_STATEMENT => "'%s' n'est pas une instruction Python valide."
+        case FOREIGN_SWITCH_STATEMENT => "'%s' n'est pas une instruction Python valide."
         case FOREIGN_SYNTAX => "'%s' ne constitue pas une syntaxe valide en Python."
         case FOREIGN_TOKEN => "Le token '%s' est invalide en Python. Essayer d'utiliser '%s' à la place."
         case FOREIGN_VAR => "Python n'utilise pas '%s' pour définir les variables."

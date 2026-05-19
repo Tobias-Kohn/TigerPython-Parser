@@ -186,7 +186,7 @@ class Scanner(val source: CharSequence) {
   def getNextNonWhitespaceChar(startPos: Int): Char =
     if (startPos > 0) {
       var i = startPos
-      while (i < source.length && !(catCodes(source.charAt(i)) == CatCodes.WHITESPACE))
+      while (i < source.length && (catCodes(source.charAt(i)) == CatCodes.WHITESPACE))
         i += 1
       if (i < source.length())
         source.charAt(i)

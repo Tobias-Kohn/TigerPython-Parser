@@ -57,7 +57,7 @@ object RussianMessages extends ModifiableErrorMessages {
         case EXTRA_TOKEN => "Лишняя лексема: '%s'."
         case FOREIGN_KEYWORD => "В Python нет ключевого слова '%s'."
         case FOREIGN_PRIVATE => "Недопустимая лексема '%s', используйте нижнее подчёркивание '_', чтобы пометить функцию как закрытую ('private')."
-        case FOREIGN_STATEMENT => "В Python нет инструкции '%s'."
+        case FOREIGN_SWITCH_STATEMENT => "В Python нет инструкции '%s'."
         case FOREIGN_SYNTAX => "Синтаксис %s недействителен в Python."
         case FOREIGN_TOKEN => "Недопустимая лексема '%s', используйте '%s'."
         case FOREIGN_VAR => "В Python не используется '%s' для определения переменных."

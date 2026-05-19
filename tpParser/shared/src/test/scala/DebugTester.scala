@@ -14,7 +14,8 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """jelly spam = 12, 34
+    """while i++ < 0:
+      |    k--
       |""".stripMargin
 
   {

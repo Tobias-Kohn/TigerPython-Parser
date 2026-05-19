@@ -117,6 +117,9 @@ object TokenType {
   final val SHIFT_RIGHT_ASSIGN = Value(TYPE_ASSIGNMENT, ">>=")
   final val STAR = MUL
 
+  final val POSTFIX_INCREMENT = Value(TYPE_ASSIGNMENT, "<++>")
+  final val POSTFIX_DECREMENT = Value(TYPE_ASSIGNMENT, "<-->")
+
   final val BOOL = Value(TYPE_LITERAL, "<bool>")
   final val BYTEARRAY = Value(TYPE_LITERAL, "<bytearray>")
   final val COMPLEX = Value(TYPE_LITERAL, "<complex>")

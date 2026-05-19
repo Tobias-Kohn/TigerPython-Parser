@@ -58,7 +58,7 @@ object ItalianMessages extends ModifiableErrorMessages {
         case EXTRA_TOKEN => "C'è un token di troppo: '%s'."
         case FOREIGN_KEYWORD => "'%s' non è una parola chiave in Python."
         case FOREIGN_PRIVATE => "Il token '%s' non è valido, usa il trattino basso '_' per marcare la funzione come 'privata'."
-        case FOREIGN_STATEMENT => "Python non ha un istruzione '%s'."
+        case FOREIGN_SWITCH_STATEMENT => "Python non ha un istruzione '%s'."
         case FOREIGN_SYNTAX => "La seguente sintassi non è valida in Python: %s."
         case FOREIGN_TOKEN => "Il token '%s' non è valido, invece usa '%s'."
         case FOREIGN_VAR => "Python non usa '%s' per definire variabili."

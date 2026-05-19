@@ -58,7 +58,7 @@ object DutchMessages extends ModifiableErrorMessages {
         case EXTRA_TOKEN => "Er is/zijn extra token(s): '%s'."
         case FOREIGN_KEYWORD => "'%s' is geen sleutelwoord in Python."
         case FOREIGN_PRIVATE => "Het token '%s' is ongeldig, gebruik '_' om de functie als 'private' te markeren."
-        case FOREIGN_STATEMENT => "Python kent geen '%s'-uitdrukking."
+        case FOREIGN_SWITCH_STATEMENT => "Python kent geen '%s'-uitdrukking."
         case FOREIGN_SYNTAX => "Deze %s-syntax is niet toegestaan in Python."
         case FOREIGN_TOKEN => "Het token '%s' is ongeldig, gebruik '%s'."
         case FOREIGN_VAR => "Python gebruikt geen '%s' om variabelen te definiëren."

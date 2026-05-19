@@ -58,7 +58,7 @@ object GermanMessages extends ModifiableErrorMessages {
       case EXTRA_TOKEN => "Das Symbol '%s' scheint hier zu viel zu sein."
       case FOREIGN_KEYWORD => "'%s' is in Python kein Schlüsselwort."
       case FOREIGN_PRIVATE => "Unerlaubts Symbol: '%s', verwende den Unterstrich '_', um eine Funktion als 'private' zu markieren."
-      case FOREIGN_STATEMENT => "Python hat keine '%s'-Anweisung."
+      case FOREIGN_SWITCH_STATEMENT => "Python verwendet Pattern Matching mit 'match' und 'case'."
       case FOREIGN_SYNTAX => "Diese %s-Syntax ist in Python ungültig."
       case FOREIGN_TOKEN => "Unerlaubtes Symbol: '%s', verwende stattdessen '%s'"
       case FOREIGN_VAR => "Python verwendet kein '%s', um Variablen zu definieren."

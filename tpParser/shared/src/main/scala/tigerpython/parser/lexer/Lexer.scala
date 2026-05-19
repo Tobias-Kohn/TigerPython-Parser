@@ -221,9 +221,9 @@ class Lexer(val source: CharSequence,
           else
             nextToken()
         case CatCodes.DELIMITER =>
-          if (scanner(0) == ':' && scanner(1) == '=') {
-            if (parserState.pythonVersion < 3)
-              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_TOKEN, ":=", "=")
+          if (scanner(0) == ':' && scanner(1) == '=' && scanner(2) != '=') {
+            /*if (parserState.pythonVersion < 3)
+              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_TOKEN, ":=", "=")*/
             makeToken(2, TokenType.EXPR_ASSIGN)
           } else
             makeToken(1, TokenType.fromString(scanner(0)))
@@ -277,6 +277,12 @@ class Lexer(val source: CharSequence,
             } else
           if (max_len == 1 && scanner(0) == '<' && scanner(1) == '>')
             max_len = 2
+          if (max_len == 2 && (scanner(0) == '+' || scanner(0) == '-')) {
+            val ch = scanner.getNextNonWhitespaceChar(scanner.pos + 2)
+            if ("\n\r)]}!=<>.,:;#".contains(ch))
+              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_SYNTAX, scanner.peekString(0, 2))
+            return makeToken(2, if (scanner(0) == '+') TokenType.POSTFIX_INCREMENT else TokenType.POSTFIX_DECREMENT)
+          }
           val (len, t_type) =
             if (max_len == 1 && scanner(1) == ' ' && scanner(2) == '=' &&
               inCharSet(scanner(0), '=', '<', '>', '+', '-', '*', '/', '%')) {
