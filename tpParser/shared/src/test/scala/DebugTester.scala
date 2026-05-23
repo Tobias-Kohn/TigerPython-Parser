@@ -14,8 +14,7 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """while (foo.x := input()):
-      |    print(foo.x)
+    """def pi = 3.14159
       |""".stripMargin
 
   {
@@ -29,6 +28,7 @@ class DebugTester extends FunSuite  {
       println("– done –")
     } else
       println("– no entries –")*/
+
     /*val p = new Parser(PROGRAM)
     p.repeatStatement = true
     p.rejectDeadCode = true

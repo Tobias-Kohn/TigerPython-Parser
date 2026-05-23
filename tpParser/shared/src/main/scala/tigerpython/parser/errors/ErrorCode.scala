@@ -60,6 +60,7 @@ object ErrorCode extends Enumeration {
   final val ELSE_WITHOUT_IF = Value("ELSE_WITHOUT_IF")
   final val EMPTY_SUBSCRIPT = Value("EMPTY_SUBSCRIPT")
   final val EXTRA_BRACKETS = Value("EXTRA_BRACKETS")
+  final val EXTRA_DEF = Value("EXTRA_DEF")                // NEW 23-MAY-2026
   final val EXTRA_INDENTATION = Value("EXTRA_INDENTATION")
   final val EXTRA_LEFT_BRACKET = Value("EXTRA_LEFT_BRACKET")
   final val EXTRA_LINEBREAK = Value("EXTRA_LINEBREAK")

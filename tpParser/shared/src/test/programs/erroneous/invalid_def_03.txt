@@ -1,0 +1,4 @@
+# 1
+# INVALID_FUNCTION_DEF
+def breakfast;
+    print("Eggs and bacon")

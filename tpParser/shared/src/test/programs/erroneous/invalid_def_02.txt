@@ -1,0 +1,3 @@
+# 1
+# INVALID_FUNCTION_DEF_ASSIGN
+def double x = 2 * x

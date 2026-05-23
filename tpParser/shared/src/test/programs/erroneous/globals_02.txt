@@ -1,0 +1,9 @@
+# 6
+# GLOBAL_MUST_BE_FIRST
+def on_mouse_click(x, y):
+    if is_first:
+        set_pos(x, y)
+    else:
+        line_to(x, y)
+    global is_first
+    is_first = False

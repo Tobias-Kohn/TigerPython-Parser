@@ -384,8 +384,35 @@ class Parser(val source: CharSequence,
                 parserState.reportError(line.startPos, ErrorCode.MISSPELLED_KEYWORD, "def", "del")
                 line.replaceToken(0, TokenType.DEL)
                 parseStatements(line, followLines: _*)
-              } else {
-                parserState.reportError(line.startPos, ErrorCode.EXTRA_TOKEN, "def")
+              } else if (
+                line.tokens.length >= 6 &&
+                  line.tokens(1).tokenType == TokenType.NAME &&
+                  line.tokens(2).tokenType == TokenType.LEFT_PARENS &&
+                  line.tokens(3).tokenType.isOneOf(TokenType.RIGHT_PARENS, TokenType.NAME) &&
+                  line.tokens.exists(_.tokenType == TokenType.ASSIGN)
+              )
+                Array(parseFunctionDef(line))
+              else if (
+                line.tokens.length >= 5 &&
+                  line.tokens(1).tokenType == TokenType.NAME &&
+                  line.tokens(2).tokenType == TokenType.NAME &&
+                  line.tokens(3).tokenType == TokenType.ASSIGN &&
+                  expressionParser.firstOfExpr(line.tokens(4)) &&
+                  line.tokens.drop(4).exists(t => t.tokenType == TokenType.NAME && t.value == line.tokens(2).value)
+              ) {
+                parserState.reportError(line.startPos, ErrorCode.INVALID_FUNCTION_DEF_ASSIGN)
+                Array(parseFunctionDef(line))
+              }
+              else {
+                if (
+                  line.tokens.length >= 4 &&
+                    line.tokens(1).tokenType == TokenType.NAME &&
+                    line.tokens(2).tokenType == TokenType.ASSIGN &&
+                    expressionParser.firstOfExpr(line.tokens(3))
+                )
+                  parserState.reportError(line.startPos, ErrorCode.EXTRA_DEF)
+                else
+                  parserState.reportError(line.startPos, ErrorCode.EXTRA_TOKEN, "def")
                 parseStatements(line.recreate(line.tokens.tail), followLines: _*)
               }
             } else

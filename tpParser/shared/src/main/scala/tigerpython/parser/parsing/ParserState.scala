@@ -218,9 +218,12 @@ case class ParserState(source: CharSequence,
     reportWarning(pos, -1, code, params: _*)
 
   override def reportWarning(pos: Int, line: Int, code: ErrorCode.Value, params: AnyRef*): Null =
-    if (warningsAsErrors)
-      errorHandler.reportError(pos, line, code, params: _*)
-    else if (line == -1)
+    if (warningsAsErrors) {
+      if (line == -1)
+        errorHandler.reportError(pos, lineFromPosition(pos), code, params: _*)
+      else
+        errorHandler.reportError(pos, line, code, params: _*)
+    } else if (line == -1)
       errorHandler.reportWarning(pos, lineFromPosition(pos), code, params: _*)
     else
       errorHandler.reportWarning(pos, line, code, params: _*)
