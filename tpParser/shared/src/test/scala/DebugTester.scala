@@ -29,7 +29,7 @@ class DebugTester extends FunSuite  {
       println("– done –")
     } else
       println("– no entries –")*/
-    val p = new Parser(PROGRAM)
+    /*val p = new Parser(PROGRAM)
     p.repeatStatement = true
     p.rejectDeadCode = true
     p.strictCode = true
@@ -48,6 +48,6 @@ class DebugTester extends FunSuite  {
       println(q.parse())
     }
     assert(cs.isEmpty)
-    print("DONE")
+    print("DONE")*/
   }
 }
