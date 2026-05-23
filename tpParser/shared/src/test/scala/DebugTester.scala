@@ -14,8 +14,8 @@ class DebugTester extends FunSuite  {
   }
 
   private val PROGRAM: String =
-    """while i++ < 0:
-      |    k--
+    """while (foo.x := input()):
+      |    print(foo.x)
       |""".stripMargin
 
   {

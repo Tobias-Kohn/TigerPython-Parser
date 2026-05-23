@@ -277,10 +277,10 @@ class Lexer(val source: CharSequence,
             } else
           if (max_len == 1 && scanner(0) == '<' && scanner(1) == '>')
             max_len = 2
-          if (max_len == 2 && (scanner(0) == '+' || scanner(0) == '-')) {
+          if (max_len == 2 && (scanner(0) == '+' || scanner(0) == '-') && (scanner(0) == scanner(1))) {
             val ch = scanner.getNextNonWhitespaceChar(scanner.pos + 2)
             if ("\n\r)]}!=<>.,:;#".contains(ch))
-              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_SYNTAX, scanner.peekString(0, 2))
+              parserState.reportError(scanner.pos, ErrorCode.FOREIGN_SYNTAX, "C/Java")
             return makeToken(2, if (scanner(0) == '+') TokenType.POSTFIX_INCREMENT else TokenType.POSTFIX_DECREMENT)
           }
           val (len, t_type) =

@@ -80,6 +80,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case INFINITE_LOOP => "This is an infinite loop: it runs forever."
       case INITIALIZATION_INSIDE_LOOP => "You cannot have the initialization inside the loop."
       case INVALID_ASSIGNMENT => "You cannot assign something to '%s'."
+      case INVALID_CONDITION => "'%s' is not a valid condition."
       case INVALID_EXPR_ASSIGN_TARGET => "The target of an expression assignment ':=' must be a name, not '%s'."
       case INVALID_FUNCTION_DEF => "Invalid definition of a function."
       case INVALID_FUNCTION_DEF_ASSIGN => "Use ':' and 'return' instead of an assignment."
