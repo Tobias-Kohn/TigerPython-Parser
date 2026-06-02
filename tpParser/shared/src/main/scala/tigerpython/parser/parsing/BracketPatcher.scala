@@ -117,7 +117,10 @@ class BracketPatcher(val lexer: Lexer, val parserState: ParserState, tokenSource
   private def replaceToken(tokenIndex: Int, tokenType: TokenType): Boolean = {
     val token = tokens(tokenIndex)
     tokens(tokenIndex) = Token(token.pos, token.len, tokenType)
-    parserState.reportError(token.pos, ErrorCode.TOKEN_REQUIRED, tokenType, token)
+    if (tokenType.isRightBracket && token.tokenType.isRightBracket)
+      parserState.reportError(token.pos, ErrorCode.MISMATCHED_CLOSING_BRACKET, tokenType, token.tokenType)
+    else
+      parserState.reportError(token.pos, ErrorCode.TOKEN_REQUIRED, tokenType, token)
     true
   }
 

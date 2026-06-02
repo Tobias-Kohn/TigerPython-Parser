@@ -568,6 +568,11 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         tokens.next()
         bracketStack.push(TokenType.LEFT_BRACE)
         val slice = argumentParser.parseSliceList(tokens)
+        if (tokens.hasType(TokenType.ASSIGN, TokenType.MUL_ASSIGN, TokenType.INC, TokenType.DEC)) {
+          parserState.reportError(tokens.pos, ErrorCode.MISPLACED_ASSIGN, tokens.headType)
+          while (!tokens.hasType(TokenType.RIGHT_BRACKET))
+            tokens.next()
+        }
         tokens.requireType(TokenType.RIGHT_BRACKET)
         bracketStack.pop()
         parseTrailer(AstNode.Subscript(base.pos, tokens.prevEndPos, base, slice), tokens)

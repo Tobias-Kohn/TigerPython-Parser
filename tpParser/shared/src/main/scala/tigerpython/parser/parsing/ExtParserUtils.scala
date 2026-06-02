@@ -54,7 +54,8 @@ class ExtParserUtils(val parser: Parser, val parserState: ParserState) {
               if (!fun.params.hasClassSelf)
                 parserState.reportError(fun.params.pos, ErrorCode.CLASS_METHOD_WITHOUT_SELF)
             } else
-            if (!fun.hasDecorator("staticmethod") && !fun.params.hasSelf) {
+            if (!fun.hasDecorator("staticmethod") && !(fun.params.hasSelf ||
+                  fun.params.hasFirstName(parent.asInstanceOf[AstNode.ClassDef].getName.toLowerCase))) {
               if (parserState.pythonVersion >= 3) {
                 if (fun.params.varArgs == null && !fun.params.hasClassSelf && !fun.getName.startsWith("_"))
                   parserState.reportError(fun.params.pos, ErrorCode.METHOD_WITHOUT_SELF)

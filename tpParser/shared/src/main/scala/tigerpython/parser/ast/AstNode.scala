@@ -361,11 +361,11 @@ object AstNode {
                         maxPositionalOnlyArgCount: Int, // Index of slash, or 0 if it wasn't present
                         maxPositionalArgCount: Int, // Index of star, or args.length if it wasn't present
                         varArgs: NameParameter, kwArgs: NameParameter) extends AstNode {
-    private def hasFirstName(names: String*): Boolean =
+    def hasFirstName(names: String*): Boolean =
       if (args.nonEmpty)
         args(0) match {
           case np: NameParameter =>
-            names.contains(np.name)
+            names.contains(np.name) || names.contains(np.name.toLowerCase)
           case _ =>
             false
         }
@@ -375,7 +375,7 @@ object AstNode {
     def kind: AstNodeKind.Value = AstNodeKind.PARAMETERS
 
     def hasClassSelf: Boolean = hasFirstName("self", "this", "cls", "class", "type", "klass", "metacls", "mcls")
-    def hasSelf: Boolean = hasFirstName("self", "this")
+    def hasSelf: Boolean = hasFirstName("self", "this", "slf")
 
     override def toString: String = {
       val result = collection.mutable.ArrayBuffer[String]()

@@ -147,6 +147,7 @@ class LineParser(val source: CharSequence,
       case Token(_, _, TokenType.NEWLINE) =>
         null
       case t @ Token(pos, _, _) =>
+        // This seems to be an unreachable path
         parserState.reportError(pos, ErrorCode.INVALID_TOKEN_AT_START_OF_LINE, t)
         null
     }
