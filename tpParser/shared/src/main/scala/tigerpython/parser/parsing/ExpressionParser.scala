@@ -841,6 +841,8 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         parserState.reportError(tokens.peek(1).pos, ErrorCode.MISSING_COMMA)
         tokens.insertToken(TokenType.COMMA, 1)
       }
+      if (tokens.hasType(TokenType.STAR))
+        parserState.reportError(tokens.pos, ErrorCode.CANNOT_USE_STAR_IN_DICT)
       val value = parseTest(tokens)
       if (tokens.hasType(TokenType.FOR)) {
         val c = parseComprehension(tokens)
@@ -864,7 +866,7 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
               keys += AstNode.Value(tokens.prevPos, ValueType.NONE)
               values += parseExpr(tokens)
             } else
-              parserState.reportError(pairPos, ErrorCode.INVALID_KEY_VALUE_PAIR)
+              parserState.reportError(pairPos, ErrorCode.MISSING_EXPRESSION)
           } else {
             val key =
               if (firstOfTest(tokens)) {
@@ -878,10 +880,12 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
                   parserState.reportError(tokens.peek(1).pos, ErrorCode.MISSING_COMMA)
                   tokens.insertToken(TokenType.COMMA, 1)
                 }
+                else if (tokens.hasType(TokenType.STAR))
+                  parserState.reportError(tokens.pos, ErrorCode.CANNOT_USE_STAR_IN_DICT)
                 keys += key
                 values += parseTest(tokens)
               } else {
-                parserState.reportError(pairPos, ErrorCode.INVALID_KEY_VALUE_PAIR)
+                parserState.reportError(pairPos, ErrorCode.MISSING_EXPRESSION)
                 if (!tokens.hasType(TokenType.COMMA, TokenType.RIGHT_BRACE))
                   tokens.discard()
               }
