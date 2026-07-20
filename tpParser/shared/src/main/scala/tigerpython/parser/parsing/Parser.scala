@@ -1592,22 +1592,28 @@ class Parser(val source: CharSequence,
 
   protected def _parseWith(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement =
     if (tokens.matchType(TokenType.WITH, TokenType.COMMA)) {
-      val test = expressionParser.parseTest(tokens)
-      if (test == null) {
-        null
-      } else {
-        val asExpr =
-          if (tokens.matchType(TokenType.AS))
-            expressionParser.parseExpr(tokens)
-          else
-            null
-        val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
-        if (tokens.matchType(TokenType.COLON))
-          parseBody(tokens, line, result)
-        else
-          result.body = _parseWith(tokens, line, isAsync)
-        result
+      val testPos = tokens.pos
+      // A missing/unparseable context expression (e.g. `with as:`) used to make this
+      // return `null` for the *entire* with-statement here, discarding it (and its
+      // body) from the enclosing suite entirely rather than just the one missing
+      // piece. Substituting a placeholder - the same recovery already used elsewhere
+      // for a missing expression - lets parsing continue and keeps the rest of the
+      // statement (the `as`-target, the body) instead of losing it all.
+      val test = expressionParser.parseTest(tokens) match {
+        case null => AstNode.EmptyExpression(testPos)
+        case t => t
       }
+      val asExpr =
+        if (tokens.matchType(TokenType.AS))
+          expressionParser.parseExpr(tokens)
+        else
+          null
+      val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
+      if (tokens.matchType(TokenType.COLON))
+        parseBody(tokens, line, result)
+      else
+        result.body = _parseWith(tokens, line, isAsync)
+      result
     } else
       null
 
