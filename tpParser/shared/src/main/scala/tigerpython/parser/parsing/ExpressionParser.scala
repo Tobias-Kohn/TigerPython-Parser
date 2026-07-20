@@ -748,6 +748,12 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         case TokenType.RIGHT_PARENS | TokenType.RIGHT_BRACE | TokenType.RIGHT_BRACKET =>
           parserState.reportError(token.pos, ErrorCode.MISSING_EXPRESSION)
         case TokenType.SEMICOLON | TokenType.COLON =>
+          // Do not consume the ';'/':' - it is a statement-level terminator (e.g. the
+          // colon of an `if`/`with`/`for` header, or a slice/statement separator), not
+          // part of the malformed expression, and callers further up (e.g. `_parseWith`,
+          // which checks `tokens.matchType(TokenType.COLON)` right after parsing the
+          // expression before it) need to still be able to see it.
+          tokens.back()
           parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
         case tt =>
           tokens.headType match {
