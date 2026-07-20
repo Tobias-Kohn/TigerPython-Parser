@@ -20,10 +20,14 @@ messages are directly inlined into the code.
 
 ### NPM Package
 
-You can point to this GitHub repository as an NPM dependency.  Add the following line to your `"dependencies"` in 
-your `package.json`:
+Install directly from the npm registry:
 
-    "tigerpython-parser": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git",
+    npm install @tigerpython/tpparser
+
+Alternatively, you can point to this GitHub repository as an NPM dependency instead of using the published package.
+Add the following line to your `"dependencies"` in your `package.json`:
+
+    "@tigerpython/tpparser": "git+https://github.com/Tobias-Kohn/TigerPython-Parser.git",
 
 ### ES Module
 
