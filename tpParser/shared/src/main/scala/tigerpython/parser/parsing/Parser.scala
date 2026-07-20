@@ -1841,6 +1841,12 @@ class Parser(val source: CharSequence,
     expr match {
       case NamedExpr(pos, target, value) =>
         parserState.reportError(tokens, ErrorCode.WALRUS_AS_STATEMENT)
+        // `target` is reused as-is from the walrus expression, where it was parsed as
+        // a plain (load-context) name - unlike every other assignment-target path
+        // (below), which explicitly flips each target's context to STORE, so it must
+        // be done here too or the resulting Assignment's target is left inconsistent
+        // with a genuine `target = value` assignment's target.
+        target.expr_context = ExprContext.STORE
         return AstNode.Assignment(pos, Array(target), value)
       case _ =>
     }
