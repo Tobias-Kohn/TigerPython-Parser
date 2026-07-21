@@ -1592,22 +1592,28 @@ class Parser(val source: CharSequence,
 
   protected def _parseWith(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement =
     if (tokens.matchType(TokenType.WITH, TokenType.COMMA)) {
-      val test = expressionParser.parseTest(tokens)
-      if (test == null) {
-        null
-      } else {
-        val asExpr =
-          if (tokens.matchType(TokenType.AS))
-            expressionParser.parseExpr(tokens)
-          else
-            null
-        val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
-        if (tokens.matchType(TokenType.COLON))
-          parseBody(tokens, line, result)
-        else
-          result.body = _parseWith(tokens, line, isAsync)
-        result
+      val testPos = tokens.pos
+      // A missing/unparseable context expression (e.g. `with as:`) used to make this
+      // return `null` for the *entire* with-statement here, discarding it (and its
+      // body) from the enclosing suite entirely rather than just the one missing
+      // piece. Substituting a placeholder - the same recovery already used elsewhere
+      // for a missing expression - lets parsing continue and keeps the rest of the
+      // statement (the `as`-target, the body) instead of losing it all.
+      val test = expressionParser.parseTest(tokens) match {
+        case null => AstNode.EmptyExpression(testPos)
+        case t => t
       }
+      val asExpr =
+        if (tokens.matchType(TokenType.AS))
+          expressionParser.parseExpr(tokens)
+        else
+          null
+      val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
+      if (tokens.matchType(TokenType.COLON))
+        parseBody(tokens, line, result)
+      else
+        result.body = _parseWith(tokens, line, isAsync)
+      result
     } else
       null
 
@@ -1835,6 +1841,12 @@ class Parser(val source: CharSequence,
     expr match {
       case NamedExpr(pos, target, value) =>
         parserState.reportError(tokens, ErrorCode.WALRUS_AS_STATEMENT)
+        // `target` is reused as-is from the walrus expression, where it was parsed as
+        // a plain (load-context) name - unlike every other assignment-target path
+        // (below), which explicitly flips each target's context to STORE, so it must
+        // be done here too or the resulting Assignment's target is left inconsistent
+        // with a genuine `target = value` assignment's target.
+        target.expr_context = ExprContext.STORE
         return AstNode.Assignment(pos, Array(target), value)
       case _ =>
     }

@@ -249,7 +249,12 @@ class ExtParserUtils(val parser: Parser, val parserState: ParserState) {
         if (parentOp.isDefined)
           parserState.reportError(v.pos, ErrorCode.AND_CONNECTS_CMP_NOT_VALUES, parentOp.get.toString)
         else if (parserState.strictCode)
-          parserState.reportError(v.pos, ErrorCode.INVALID_CONDITION, v.value)
+          // `v.value` is `null` for a `None` or complex-number literal (`ExpressionParser`
+          // never sets it for those - only INT/FLOAT get their raw source text copied in),
+          // and passing `null` as a message parameter crashes the error-message renderer
+          // rather than producing a message; fall back to `toString` in that case, matching
+          // how the `StringValue` case above already does it.
+          parserState.reportError(v.pos, ErrorCode.INVALID_CONDITION, if (v.value != null) v.value else v.toString)
       case _ =>
     }
 
