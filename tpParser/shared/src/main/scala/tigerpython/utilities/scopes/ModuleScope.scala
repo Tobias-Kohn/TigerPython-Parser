@@ -2,7 +2,7 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast.AstNode
-import types.{DataType, Package}
+import types.{DataType, Package, PythonFunction}
 
 /**
   * @author Tobias Kohn
@@ -16,6 +16,12 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
   private val globals = collection.mutable.Set[String]()
 
   val extNameInfo = new ExtNameInfo()
+
+  // Module-level (non-method, non-nested) function defs, registered by AstWalker.walkFunction
+  // as they're encountered, and consumed once by AstWalker.reinferParamsFromCallSites after
+  // the whole module has been walked, to refine parameter types from call-site evidence.
+  val topLevelFunctionDefs: collection.mutable.ArrayBuffer[ModuleScope.TopLevelFunctionRecord] =
+    collection.mutable.ArrayBuffer()
 
   override def getModule: ModuleScope = this
 
@@ -60,4 +66,9 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
 
   override def incNameUseCounter(name: AstNode.Name): Unit =
     extNameInfo += name
+}
+object ModuleScope {
+  case class TopLevelFunctionRecord(defNode: AstNode.FunctionDef,
+                                     pythonFunction: PythonFunction,
+                                     functionScope: FunctionScope)
 }

@@ -25,6 +25,20 @@ abstract class Scope {
     } else
       null
 
+  // Replaces a previously-added sub-scope in place (same array slot), so that
+  // findScope keeps resolving to the up-to-date scope instead of a stale one that
+  // was walked before its function's parameter types were refined from call-site
+  // evidence. Falls back to appending if oldScope isn't a current sub-scope.
+  def replaceScope(oldScope: Scope, newScope: Scope): Unit =
+    if (newScope != null) {
+      val idx = subScopes.indexOf(oldScope)
+      if (idx >= 0)
+        subScopes(idx) = newScope
+      else
+        subScopes += newScope
+      newScope.parent = this
+    }
+
   def findScope(position: Int): Option[Scope] =
     if (endPos == -1 || (startPos <= position && position <= endPos)) {
       for (scope <- subScopes) {
@@ -207,6 +221,8 @@ object Scope {
     if (ast != null) {
       val walker = new AstWalker(moduleScope)
       walker.walkNode(ast)
+      if (moduleScope.topLevelFunctionDefs.nonEmpty)
+        walker.reinferParamsFromCallSites(moduleScope)
     }
     moduleScope
   }

@@ -285,6 +285,53 @@ class AstWalker(val scope: Scope) {
     if (!hasReturn(function.body))
       functionScope.returnType = BuiltinTypes.NONE_TYPE
     result.returnType = functionScope.returnType
+    scope match {
+      case mod: ModuleScope =>
+        mod.topLevelFunctionDefs += ModuleScope.TopLevelFunctionRecord(function, result, functionScope)
+      case _ =>
+    }
+  }
+
+  // Runs once, after the whole module has been walked, so call-site evidence for
+  // every top-level function is complete. Refines any parameter that is still
+  // ANY_TYPE/ECHO_TYPE/ECHO2_TYPE using evidence gathered by
+  // TypeAstWalker.recordCallSiteEvidence, then re-walks just that function's body so
+  // its locals (and hence member completion inside it) reflect the refined types.
+  def reinferParamsFromCallSites(moduleScope: ModuleScope): Unit =
+    for (record <- moduleScope.topLevelFunctionDefs)
+      patchFunctionIfEvidenceAvailable(moduleScope, record)
+
+  private def isEchoOrAnyMarker(dataType: DataType): Boolean =
+    dataType == ANY_TYPE || dataType == BuiltinTypes.ECHO_TYPE || dataType == BuiltinTypes.ECHO2_TYPE
+
+  private def patchFunctionIfEvidenceAvailable(moduleScope: ModuleScope, record: ModuleScope.TopLevelFunctionRecord): Unit = {
+    val fun = record.pythonFunction
+    var changed = false
+    for (i <- fun.params.indices) {
+      val evidence = fun.paramCallEvidence(i)
+      if (evidence != null && isEchoOrAnyMarker(fun.params(i).dataType)) {
+        fun.params(i).dataType = evidence
+        changed = true
+      }
+    }
+    if (changed) {
+      // Preserve echo-style return-type dispatch (identity(5) vs identity('hi')
+      // returning different types at their own call sites) - only overwrite the
+      // function's return type with the re-walked result if it wasn't relying on
+      // one of the echo markers to dispatch per call site.
+      val originalReturnType = fun.returnType
+      val newFunctionScope = new FunctionScope(record.defNode.pos, record.defNode.endPos, fun)
+      moduleScope.replaceScope(record.functionScope, newFunctionScope)
+      new AstWalker(newFunctionScope).walkNode(record.defNode.body)
+      fun.returnType =
+        if (originalReturnType == BuiltinTypes.ECHO_TYPE || originalReturnType == BuiltinTypes.ECHO2_TYPE ||
+            originalReturnType == BuiltinTypes.ECHO_ITEM_TYPE || originalReturnType == BuiltinTypes.ECHO_RETURN_TYPE)
+          originalReturnType
+        else if (!hasReturn(record.defNode.body))
+          BuiltinTypes.NONE_TYPE
+        else
+          newFunctionScope.returnType
+    }
   }
 
   protected def walkFor(forStmt: AstNode.For): Unit =
