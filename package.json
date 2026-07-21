@@ -1,10 +1,19 @@
 
 {
-  "name": "tigerpython-parser",
+  "name": "@tigerpython/tpparser",
   "version": "1.1.4",
   "description": "Enhanced error recognition in Python ",
   "main": "release/tigerpython-parser.mjs",
   "types": "tpParser/js/types/index.d.ts",
+  "files": [
+    "release/",
+    "tpParser/js/types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
     "doc": "doc"
   },

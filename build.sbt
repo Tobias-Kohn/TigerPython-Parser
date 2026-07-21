@@ -84,11 +84,20 @@ makeRelease := {
   val packageJsonString =
     s"""
        |{
-       |  "name": "tigerpython-parser",
+       |  "name": "@tigerpython/tpparser",
        |  "version": "${releaseVersion}",
        |  "description": "Enhanced error recognition in Python ",
        |  "main": "release/tigerpython-parser.mjs",
        |  "types": "tpParser/js/types/index.d.ts",
+       |  "files": [
+       |    "release/",
+       |    "tpParser/js/types/",
+       |    "README.md",
+       |    "LICENSE"
+       |  ],
+       |  "publishConfig": {
+       |    "access": "public"
+       |  },
        |  "directories": {
        |    "doc": "doc"
        |  },
@@ -112,7 +121,7 @@ makeRelease := {
   val packageLockJsonString =
     s"""
        |{
-       |  "name": "tigerpython-parser",
+       |  "name": "@tigerpython/tpparser",
        |  "version": "${releaseVersion}",
        |  "lockfileVersion": 1
        |}
