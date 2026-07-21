@@ -1565,8 +1565,9 @@ class Parser(val source: CharSequence,
     val tokens = line.tokenSource
     val startPos = tokens.head.pos
     tokens.matchType(TokenType.EXCEPT)
+    val isStar = tokens.matchType(TokenType.STAR)
     if (tokens.matchType(TokenType.COLON)) {
-      val result = AstNode.ExceptHandler(startPos, null, null, null)
+      val result = AstNode.ExceptHandler(startPos, null, null, null, isStar)
       parseBody(tokens, line, result)
       result
     } else {
@@ -1577,7 +1578,7 @@ class Parser(val source: CharSequence,
         else
           null
       tokens.matchType(TokenType.COLON)
-      val result = AstNode.ExceptHandler(startPos, test, name, null)
+      val result = AstNode.ExceptHandler(startPos, test, name, null, isStar)
       parseBody(tokens, line, result)
       result
     }

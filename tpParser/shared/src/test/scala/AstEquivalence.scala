@@ -263,10 +263,11 @@ object AstEquivalence {
             seq(node(patternA, patternB, "pattern", path), node(guardA, guardB, "guard", path), bodyNode(bodyA, bodyB, "body", path))
           case _ => typeMismatch(a, b, path)
         }
-      case ExceptHandler(_, exTypeA, nameA, bodyA) =>
+      case ExceptHandler(_, exTypeA, nameA, bodyA, isStarA) =>
         b match {
-          case ExceptHandler(_, exTypeB, nameB, bodyB) =>
-            seq(node(exTypeA, exTypeB, "exType", path), node(nameA, nameB, "name", path), bodyNode(bodyA, bodyB, "body", path))
+          case ExceptHandler(_, exTypeB, nameB, bodyB, isStarB) =>
+            seq(node(exTypeA, exTypeB, "exType", path), node(nameA, nameB, "name", path),
+              bodyNode(bodyA, bodyB, "body", path), eq(isStarA, isStarB, "isStar", path))
           case _ => typeMismatch(a, b, path)
         }
 
