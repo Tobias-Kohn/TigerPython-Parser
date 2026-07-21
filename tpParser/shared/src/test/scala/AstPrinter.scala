@@ -66,8 +66,9 @@ object AstPrinter {
       case other => printStatement(other, indent)
     }
 
+  // Decorators are attached in reverse source order, so print them in reverse too.
   private def decoratorLines(dec: Decoratable, indent: Int): Vector[String] =
-    dec.decoratorList.iterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
+    dec.decoratorList.reverseIterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
 
   private def printStatement(stmt: Statement, indent: Int): Vector[String] =
     stmt match {

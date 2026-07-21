@@ -216,23 +216,14 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
       names.toArray
     }
 
-  def parseDecorator(tokens: TokenBuffer): Expression = {
-    var result: AstNode.Expression = parseName(tokens)
-    while (tokens.matchType(TokenType.DOT)) {
-      val name = parseName(tokens)
-      result = AstNode.Attribute(result.pos, name.endPos, result, name)
-    }
-    if (tokens.matchType(TokenType.LEFT_PARENS)) {
-      if (tokens.matchType(TokenType.RIGHT_PARENS))
-        result = AstNode.Call.withoutArguments(result, tokens.prevEndPos)
-      else {
-        val arg = argumentParser.parseArgList(tokens)
-        tokens.requireType(TokenType.RIGHT_PARENS)
-        result = AstNode.Call.withArguments(result, arg, tokens.prevEndPos)
-      }
-    }
-    result
-  }
+  // Before PEP 614 (Python 3.9), a decorator was restricted to a dotted name with an
+  // optional call: `dotted_name ['(' [arglist] ')']`. Since 3.9 a decorator can be any
+  // expression (`namedexpr_test`), e.g. `@buttons[0].clicked` or `@(x if y else z)` -
+  // `parseTest` already accepts a strict superset of the old grammar (dotted names,
+  // attribute access and calls all being ordinary expressions to it), so it directly
+  // replaces the old hand-rolled dotted-name-plus-call parsing rather than extending it.
+  def parseDecorator(tokens: TokenBuffer): Expression =
+    parseTest(tokens)
 
   def parseCmpTest(tokens: TokenBuffer): Expression = {
     val curIndex = tokens.getIndex
