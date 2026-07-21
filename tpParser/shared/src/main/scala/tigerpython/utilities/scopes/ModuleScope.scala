@@ -17,10 +17,15 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
 
   val extNameInfo = new ExtNameInfo()
 
-  // Module-level (non-method, non-nested) function defs, registered by AstWalker.walkFunction
-  // as they're encountered, and consumed once by AstWalker.reinferParamsFromCallSites after
-  // the whole module has been walked, to refine parameter types from call-site evidence.
-  val topLevelFunctionDefs: collection.mutable.ArrayBuffer[ModuleScope.TopLevelFunctionRecord] =
+  // Function defs eligible for call-site parameter-type inference: module-level free
+  // functions, and methods of classes that are themselves defined directly at module
+  // level (not nested in another function/class). Registered by AstWalker.walkFunction
+  // as they're encountered, and consumed once by AstWalker.reinferParamsFromCallSites
+  // after the whole module has been walked, to refine parameter types from call-site
+  // evidence. parentScope is whichever scope the FunctionScope actually lives in
+  // (this ModuleScope for a free function, a ClassScope for a method) - patching needs
+  // it to replace the stale FunctionScope in the right place, see Scope.replaceScope.
+  val inferableFunctionDefs: collection.mutable.ArrayBuffer[ModuleScope.InferableFunctionRecord] =
     collection.mutable.ArrayBuffer()
 
   override def getModule: ModuleScope = this
@@ -68,7 +73,8 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
     extNameInfo += name
 }
 object ModuleScope {
-  case class TopLevelFunctionRecord(defNode: AstNode.FunctionDef,
-                                     pythonFunction: PythonFunction,
-                                     functionScope: FunctionScope)
+  case class InferableFunctionRecord(defNode: AstNode.FunctionDef,
+                                      pythonFunction: PythonFunction,
+                                      functionScope: FunctionScope,
+                                      parentScope: Scope)
 }

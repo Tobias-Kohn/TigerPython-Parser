@@ -132,7 +132,11 @@ class TypeAstWalker {
     getType(call.function) match {
       case function: FunctionType =>
         function match {
-          case pyFun: PythonFunction if !pyFun.isMethod =>
+          case pyFun: PythonFunction =>
+            // For a method, call.args never includes an explicit `self`/`cls` argument,
+            // but pyFun.params(0) is self/cls - reaching this case at all already means
+            // getTypeOfAttr resolved a real receiver type via Instance.findField, so
+            // there's no separate "is the receiver known" check needed here.
             recordCallSiteEvidence(pyFun, call.args)
           case _ =>
         }
@@ -176,13 +180,15 @@ class TypeAstWalker {
   // dropped, so an unresolved argument at one call site can't poison evidence
   // collected from other, more informative call sites.
   protected def recordCallSiteEvidence(fun: PythonFunction, args: Array[AstNode.Expression]): Unit = {
-    val n = math.min(fun.paramCount, args.length)
+    val paramOffset = if (fun.isMethod) 1 else 0
+    val n = math.min(fun.paramCount - paramOffset, args.length)
     var i = 0
     while (i < n) {
       val argType = getType(args(i))
       if (isUsableEvidenceType(argType)) {
-        val existing = fun.paramCallEvidence(i)
-        fun.paramCallEvidence(i) = if (existing == null) argType else DataType.getCompatibleType(existing, argType)
+        val idx = i + paramOffset
+        val existing = fun.paramCallEvidence(idx)
+        fun.paramCallEvidence(idx) = if (existing == null) argType else DataType.getCompatibleType(existing, argType)
       }
       i += 1
     }

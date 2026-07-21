@@ -221,7 +221,7 @@ object Scope {
     if (ast != null) {
       val walker = new AstWalker(moduleScope)
       walker.walkNode(ast)
-      if (moduleScope.topLevelFunctionDefs.nonEmpty)
+      if (moduleScope.inferableFunctionDefs.nonEmpty)
         walker.reinferParamsFromCallSites(moduleScope)
     }
     moduleScope
