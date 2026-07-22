@@ -37,6 +37,10 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
         ListType(convertToType(subscript))
       case SubscriptNode(NameNode("set" | "Set"), subscript) =>
         SetType(convertToType(subscript))
+      // `tuple[X, ...]`: a homogeneous, variable-length tuple (as opposed to `tuple[X, Y]`,
+      // a fixed-arity tuple where each position has its own type).
+      case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(Array(elt, ValueNode("...")))) =>
+        new VarTupleType(convertToType(elt))
       case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(elts)) =>
         TupleType(for (el <- elts) yield convertToType(el))
       case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
