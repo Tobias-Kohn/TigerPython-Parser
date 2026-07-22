@@ -35,6 +35,8 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
         }
       case SubscriptNode(NameNode("list" | "List"), subscript) =>
         ListType(convertToType(subscript))
+      case SubscriptNode(NameNode("set" | "Set"), subscript) =>
+        SetType(convertToType(subscript))
       case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(elts)) =>
         TupleType(for (el <- elts) yield convertToType(el))
       case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
