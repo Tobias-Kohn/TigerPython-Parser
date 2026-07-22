@@ -42,10 +42,7 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
       case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
         new DictType(convertToType(elts(0)), convertToType(elts(1)))
       case OrNode(elts) if elts.nonEmpty =>
-        var tp = convertToType(elts.head)
-        for (el <- elts.tail)
-          tp = DataType.getCompatibleType(tp, convertToType(el))
-        tp
+        UnionType(elts.map(convertToType))
       case AttributeNode(base, name) =>
         val baseDotted = PyiModuleParser.toDotted(base)
         if (baseDotted != null && fullModuleImports.contains(baseDotted))
