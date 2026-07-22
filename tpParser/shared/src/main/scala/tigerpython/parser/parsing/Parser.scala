@@ -1244,7 +1244,11 @@ class Parser(val source: CharSequence,
       } else
       if (!tokens.hasType(TokenType.LEFT_PARENS, TokenType.COLON)) {
         parserState.reportError(line.startPos, ErrorCode.INVALID_FUNCTION_DEF)
-        return null
+        // Rest of the line makes no sense as a def header (e.g. `def double x = 2 * x`
+        // or `def breakfast;`): discard it, like the `EXTRA_TOKEN` case below does, and
+        // let the params/colon fallbacks further down build a degenerate FunctionDef
+        // rather than discarding the whole statement (and any indented body).
+        tokens.skipAll()
       }
     } else
     if (tokens.peekTypeCategory(0) == TokenType.TYPE_KEYWORD &&
@@ -1434,7 +1438,11 @@ class Parser(val source: CharSequence,
         if (expressionParser.firstOfTest(tokens))
           expressionParser.parseTestListAsTuple(tokens)
         else
-          return null
+          // No iterable to recover either (e.g. `for:`): leave `iter` as `null`, like a
+          // missing `target` above, rather than discarding the whole statement (and its
+          // body). The printer/AstEquivalence already treat a `null` expression as
+          // equivalent to the `None` it reprints as, so this still round-trips cleanly.
+          null
       }
     if (!tokens.hasNext && (target == null || iter == null))
       return null
