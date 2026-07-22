@@ -55,10 +55,13 @@ object Instance {
   
   def apply(baseType: DataType): DataType =
     baseType match {
-      case tuple: TupleType =>
-        tuple
-      case list: ListType =>
-        list
+      // Note: TupleType, ListType, SetType, DictType et al. are ClassType subclasses and are
+      // deliberately not special-cased here - they must go through the same
+      // getOrElseUpdate/new Instance(...) wrapping as any other ClassType, since their real
+      // members live in getInstanceFields, which only an Instance wrapper exposes (their own
+      // getFields, inherited from PrimitiveType, is always empty). Special-casing them to be
+      // returned unwrapped used to silently hide all members - see PyiModuleParser pyi return
+      // type tests for list[T]/set[T]/tuple[T, ...].
       case baseClass: ClassType =>
         instances.getOrElseUpdate(baseClass, new Instance (baseClass) )
       case inst: Instance =>
