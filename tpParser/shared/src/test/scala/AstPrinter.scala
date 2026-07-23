@@ -66,8 +66,9 @@ object AstPrinter {
       case other => printStatement(other, indent)
     }
 
+  // Decorators are attached in reverse source order, so print them in reverse too.
   private def decoratorLines(dec: Decoratable, indent: Int): Vector[String] =
-    dec.decoratorList.iterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
+    dec.decoratorList.reverseIterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
 
   private def printStatement(stmt: Statement, indent: Int): Vector[String] =
     stmt match {
@@ -188,12 +189,13 @@ object AstPrinter {
     }
 
   private def printExceptHandler(h: ExceptHandler, indent: Int): Vector[String] = {
+    val star = if (h.isStar) "*" else ""
     val ex =
       if (h.exType != null)
         " " + printExpr(h.exType, 0) + (if (h.name != null) " as " + printExpr(h.name, 0) else "")
       else
         ""
-    (ind(indent) + "except" + ex + ":") +: printBody(h.body, indent + 1)
+    (ind(indent) + "except" + star + ex + ":") +: printBody(h.body, indent + 1)
   }
 
   private def printMatchCase(c: MatchCase, indent: Int): Vector[String] = {

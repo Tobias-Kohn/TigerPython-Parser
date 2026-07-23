@@ -393,7 +393,8 @@ object AstNode {
     }
   }
 
-  case class ExceptHandler(pos: Int, exType: Expression, name: Expression, var body: Statement) extends AstNode.Statement(AstNodeKind.EXCEPT_HANDLER)
+  case class ExceptHandler(pos: Int, exType: Expression, name: Expression, var body: Statement,
+                           isStar: Boolean = false) extends AstNode.Statement(AstNodeKind.EXCEPT_HANDLER)
     with CompoundStatement {
     def apply(key: String): Statement =
       key match {
