@@ -2,7 +2,7 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast.AstNode
-import types.{DataType, Package}
+import types.{DataType, Package, PythonFunction}
 
 /**
   * @author Tobias Kohn
@@ -16,6 +16,17 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
   private val globals = collection.mutable.Set[String]()
 
   val extNameInfo = new ExtNameInfo()
+
+  // Function defs eligible for call-site parameter-type inference: module-level free
+  // functions, and methods of classes that are themselves defined directly at module
+  // level (not nested in another function/class). Registered by AstWalker.walkFunction
+  // as they're encountered, and consumed once by AstWalker.reinferParamsFromCallSites
+  // after the whole module has been walked, to refine parameter types from call-site
+  // evidence. parentScope is whichever scope the FunctionScope actually lives in
+  // (this ModuleScope for a free function, a ClassScope for a method) - patching needs
+  // it to replace the stale FunctionScope in the right place, see Scope.replaceScope.
+  val inferableFunctionDefs: collection.mutable.ArrayBuffer[ModuleScope.InferableFunctionRecord] =
+    collection.mutable.ArrayBuffer()
 
   override def getModule: ModuleScope = this
 
@@ -60,4 +71,10 @@ class ModuleScope(sourceLength: Int, val module: Package, val moduleLoader: Modu
 
   override def incNameUseCounter(name: AstNode.Name): Unit =
     extNameInfo += name
+}
+object ModuleScope {
+  case class InferableFunctionRecord(defNode: AstNode.FunctionDef,
+                                      pythonFunction: PythonFunction,
+                                      functionScope: FunctionScope,
+                                      parentScope: Scope)
 }

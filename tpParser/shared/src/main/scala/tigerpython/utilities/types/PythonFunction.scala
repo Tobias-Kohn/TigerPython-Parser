@@ -16,6 +16,13 @@ class PythonFunction(val name: String,
 
   protected val fields = new NameMap()
 
+  // Call-site argument-type evidence accumulated while walking the module, used to
+  // refine still-unresolved parameter types after the whole module has been walked.
+  // Only meaningful for module-level (non-method) functions.
+  val paramCallEvidence: Array[DataType] = new Array[DataType](params.length)
+
+  def hasUsableCallSiteEvidence: Boolean = paramCallEvidence.exists(_ != null)
+
   override def getFields: Map[String, DataType] = fields.toMap
 
   override def getFullName: String =
