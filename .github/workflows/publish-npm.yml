@@ -4,6 +4,7 @@ on:
     branches: [master]
     paths:
       - 'build.sbt'
+  workflow_dispatch:
 permissions:
   contents: write
   id-token: write
