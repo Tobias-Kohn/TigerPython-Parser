@@ -1,6 +1,7 @@
 package tigerpython.parser
 
 import tigerpython.parser.ast.{AstNode, AstNodeKind, ExtExprContext}
+import tigerpython.parser.types.{AbstractType, DataType, Instance}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
@@ -18,6 +19,14 @@ class AstConverter(val parser: Parser) {
   import AstConverter.FunctionInfo
 
   private var functionStack: List[FunctionInfo] = List()
+
+  private var typeAnnotator: AstTypeAnnotator = _
+
+  private def getType(expr: AstNode): Option[DataType] =
+    if (typeAnnotator != null)
+      typeAnnotator(expr)
+    else
+      None
 
   protected def pushFunction(function: AstNode.FunctionDef): Unit =
     if (function != null) {
@@ -68,15 +77,29 @@ class AstConverter(val parser: Parser) {
           dest.decorator_list = (for (decorator <- dec.decoratorList) yield convert(decorator)).toJSArray
         case _ =>
       }
-      dest
+      annotateExpr(dest, source)
     } else
       null
+
+  private def annotateExpr(dest: js.Dynamic, source: AstNode): js.Dynamic =
+    getType(source) match {
+      case Some(_: AbstractType) =>
+        dest
+      case Some(Instance(dType)) =>
+        dest.dType = dType.getFullName
+        dest
+      case Some(dType) =>
+        dest.dType = dType.getFullName
+        dest
+      case None =>
+        dest
+    }
 
   protected def _convert(ast: AstNode): js.Dynamic =
     ast match {
       ///// Helpers/Auxiliaries /////
       case AstNode.Index(_, value) =>
-        js.Dynamic.literal(value=convert(value))
+        annotateExpr(js.Dynamic.literal(value=convert(value)), ast)
       case AstNode.MultiSlice(_, elements) =>
         js.Dynamic.literal(dims=convert(elements))
       case AstNode.SliceRange(_, lower, upper, step) =>
@@ -150,17 +173,17 @@ class AstConverter(val parser: Parser) {
 
       ///// Expressions /////
       case AstNode.Alias(_, name, asName) =>
-        js.Dynamic.literal(name=convert(name), as_name=convert(asName))
+        annotateExpr(js.Dynamic.literal(name=convert(name), as_name=convert(asName)), ast)
       case a @ AstNode.Attribute(_, _, base, attr) =>
-        js.Dynamic.literal(base=convert(base), attr=convert(attr), ctx=a.expr_context.toString)
+        annotateExpr(js.Dynamic.literal(base=convert(base), attr=convert(attr), ctx=a.expr_context.toString), ast)
       case AstNode.Await(_, expr) =>
-        js.Dynamic.literal(value=convert(expr))
+        annotateExpr(js.Dynamic.literal(value=convert(expr)), ast)
       case AstNode.BinaryOp(_, op, left, right) =>
-        js.Dynamic.literal(op=op.toString, left=convert(left), right=convert(right))
+        annotateExpr(js.Dynamic.literal(op=op.toString, left=convert(left), right=convert(right)), ast)
       case AstNode.BooleanValue(_, value) =>
-        js.Dynamic.literal(value_type="bool", value=value)
+        annotateExpr(js.Dynamic.literal(value_type="bool", value=value), ast)
       case AstNode.Call(_, _, function, args, keywords, starArg, kwArg) =>
-        js.Dynamic.literal(func=convert(function), args=convert(args), keywords=_convert_kw(keywords))
+        annotateExpr(js.Dynamic.literal(func=convert(function), args=convert(args), keywords=_convert_kw(keywords)), ast)
       case AstNode.Compare(_, left, comparators) =>
         val ops = collection.mutable.ArrayBuffer[js.Any]()
         val cmps = collection.mutable.ArrayBuffer[js.Any]()
@@ -168,23 +191,23 @@ class AstConverter(val parser: Parser) {
           ops += op.toString
           cmps += convert(cmp)
         }
-        js.Dynamic.literal(left=convert(left), ops=ops, comparators=cmps)
+        annotateExpr(js.Dynamic.literal(left=convert(left), ops=ops, comparators=cmps), ast)
       case AstNode.Dict(_, _, keys, values) =>
-        js.Dynamic.literal(keys=convert(keys), values=convert(values))
+        annotateExpr(js.Dynamic.literal(keys=convert(keys), values=convert(values)), ast)
       case AstNode.DictComp(_, _, key, value, generators) =>
-        js.Dynamic.literal(key=convert(key), value=convert(value), generators=convert(generators))
+        annotateExpr(js.Dynamic.literal(key=convert(key), value=convert(value), generators=convert(generators)), ast)
       case AstNode.Ellipsis(_) =>
-        js.Dynamic.literal(value_type="ellipsis", value="...")
+        annotateExpr(js.Dynamic.literal(value_type="ellipsis", value="..."), ast)
       case AstNode.Generator(_, element, generators) =>
-        js.Dynamic.literal(elts=convert(element), generators=convert(generators))
+        annotateExpr(js.Dynamic.literal(elts=convert(element), generators=convert(generators)), ast)
       case AstNode.IfExpr(_, test, body, elseBody) =>
-        js.Dynamic.literal(test=convert(test), body=convert(body), orelse=convert(elseBody))
+        annotateExpr(js.Dynamic.literal(test=convert(test), body=convert(body), orelse=convert(elseBody)), ast)
       case AstNode.Lambda(_, args, body) =>
-        js.Dynamic.literal(args=convert(args), body=convert(body))
+        annotateExpr(js.Dynamic.literal(args=convert(args), body=convert(body)), ast)
       case l @ AstNode.List(_, _, elements) =>
-        js.Dynamic.literal(elts=convert(elements), ctx=l.expr_context.toString)
+        annotateExpr(js.Dynamic.literal(elts=convert(elements), ctx=l.expr_context.toString), ast)
       case AstNode.ListComp(_, _, elements, generators) =>
-        js.Dynamic.literal(elts=convert(elements), generators=convert(generators))
+        annotateExpr(js.Dynamic.literal(elts=convert(elements), generators=convert(generators)), ast)
       case n @ AstNode.Name(_, name) =>
         n.extExprContext match {
           case ExtExprContext.PARAMETER =>
@@ -195,29 +218,29 @@ class AstConverter(val parser: Parser) {
             addGlobal(name)
           case _ =>
         }
-        js.Dynamic.literal(name=name, ctx=n.expr_context.toString)
+        annotateExpr(js.Dynamic.literal(name=name, ctx=n.expr_context.toString), ast)
       case AstNode.NameTuple(_, names) =>
-        js.Dynamic.literal(elts=convert(names))
+        annotateExpr(js.Dynamic.literal(elts=convert(names)), ast)
       case AstNode.Set(_, elements) =>
-        js.Dynamic.literal(elts=convert(elements))
+        annotateExpr(js.Dynamic.literal(elts=convert(elements)), ast)
       case AstNode.SetComp(_, elements, generators) =>
-        js.Dynamic.literal(elts=convert(elements), generators=convert(generators))
+        annotateExpr(js.Dynamic.literal(elts=convert(elements), generators=convert(generators)), ast)
       case s @ AstNode.Starred(_, expr) =>
-        js.Dynamic.literal(value=convert(expr), ctx=s.expr_context.toString)
+        annotateExpr(js.Dynamic.literal(value=convert(expr), ctx=s.expr_context.toString), ast)
       case AstNode.StringValue(_, _, value, isUnicode) =>
-        js.Dynamic.literal(value_type="str", value=value)
+        annotateExpr(js.Dynamic.literal(value_type="str", value=value), ast)
       case AstNode.Subscript(_, _, base, slice) =>
-        js.Dynamic.literal(value=convert(base), slice=convert(slice))
+        annotateExpr(js.Dynamic.literal(value=convert(base), slice=convert(slice)), ast)
       case t @ AstNode.Tuple(_, elements) =>
-        js.Dynamic.literal(elts=convert(elements), ctx=t.expr_context.toString)
+        annotateExpr(js.Dynamic.literal(elts=convert(elements), ctx=t.expr_context.toString), ast)
       case AstNode.UnaryOp(_, op, value) =>
-        js.Dynamic.literal(op=op.toString, operand=convert(value))
+        annotateExpr(js.Dynamic.literal(op=op.toString, operand=convert(value)), ast)
       case value @ AstNode.Value(_, valueType) =>
-        js.Dynamic.literal(value_type=valueType.toString, value=value.value)
+        annotateExpr(js.Dynamic.literal(value_type=valueType.toString, value=value.value), ast)
       case AstNode.Yield(_, expr) =>
-        js.Dynamic.literal(expr=convert(expr))
+        annotateExpr(js.Dynamic.literal(expr=convert(expr)), ast)
       case AstNode.YieldFrom(_, source) =>
-        js.Dynamic.literal(source=convert(source))
+        annotateExpr(js.Dynamic.literal(source=convert(source)), ast)
 
       ///// Anything else /////
       case _ =>
@@ -259,6 +282,14 @@ class AstConverter(val parser: Parser) {
         js.Dynamic.literal(kind=AstNodeKind.MODULE.toString, body=_convert_body(suite))
       case _ =>
         annotateNode(_convert(node), node)
+    }
+
+  def apply(node: AstNode, typeAnnotator: AstTypeAnnotator): js.Any =
+    try {
+      this.typeAnnotator = typeAnnotator
+      apply(node)
+    } finally {
+      this.typeAnnotator = null
     }
 }
 object AstConverter {

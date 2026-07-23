@@ -124,7 +124,8 @@ class TypeAstWalker {
     }
   }
 
-  protected def getTypeOfCall(call: AstNode.Call): DataType =
+  protected def getTypeOfCall(call: AstNode.Call): DataType = {
+    call.args.foreach(getType)
     getType(call.function) match {
       case function: FunctionType =>
         function.getReturnType match {
@@ -160,6 +161,7 @@ class TypeAstWalker {
       case _ =>
         ANY_TYPE
     }
+  }
 
   protected def getTypeOfLambda(lambda: AstNode.Lambda): DataType =
     if (lambda != null) {

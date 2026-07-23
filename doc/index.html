@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>Scala Parser goes JavaScript</title>
+    <style>
+      #inputArea {
+        min-width: 50%;
+        min-height: 100px;
+      }
+    </style>
   </head>
   <body>
-    <textarea id="inputArea">print "Hello"</textarea>
+    <textarea id="inputArea">print("Hello")</textarea>
     <br/>
     <button onclick="checkSyntax();">Check Syntax</button>
     <button onclick="showAST();">Parse</button>
@@ -28,7 +34,7 @@
         var inp = document.getElementById('inputArea');
         var outp = document.getElementById('output');
         TPyParser.rejectDeadCode = true;
-        var ast = TPyParser.parse(inp.value);
+        var ast = TPyParser.parseWithTypes(inp.value);
         console.log(ast);
         outp.innerHTML = "Beta-Testing AST:<br/>" + JSON.stringify(ast);
         console.log("Done");

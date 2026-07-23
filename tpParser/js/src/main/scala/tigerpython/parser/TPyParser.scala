@@ -5,6 +5,7 @@ import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import errors.ExtErrorInfo
 import tigerpython.inputenc.StringTranslator
+import tigerpython.parser.scopes.Scope
 import tigerpython.utilities.completer.Completer
 import tigerpython.utilities.scopes.ModuleLoader
 import tigerpython.utilities.types.{SignatureArg, SignatureVarArg}
@@ -188,6 +189,30 @@ object TPyParser {
     val converter = new AstConverter(parser)
     val ast = parser.parse()
     converter(ast)
+  }
+
+  /**
+   * Parses the given source code, performs type inference and returns the AST.
+   *
+   * @param source  The entire Python program as a single string.
+   * @return
+   */
+  @JSExport
+  def parseWithTypes(source: String): js.Any = {
+    val src =
+      if (translateUnicodePunctuation)
+        StringTranslator.translate(source)
+      else
+        source
+    val parser = new Parser(src, pythonVersion)
+    parser.newDivision = newDivision
+    parser.rejectDeadCode = rejectDeadCode
+    parser.repeatStatement = repeatStatement
+    parser.sagePower = sagePower
+    parser.strictCode = strictCode
+    val converter = new AstConverter(parser)
+    val ast = parser.parse()
+    converter(ast, new AstTypeAnnotator(ast))
   }
 
   /**

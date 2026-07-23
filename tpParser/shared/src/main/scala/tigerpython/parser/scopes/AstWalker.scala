@@ -38,7 +38,22 @@ class AstWalker(val scope: Scope) {
         case _ =>
           None
       }
+
+    override def getType(expr: AstNode.Expression): DataType = {
+      val result = super.getType(expr)
+      registerExprType(expr, result)
+      result
+    }
   }
+
+  /**
+   * This method is called whenever the type of an expression is determined so that it may be stored for future
+   * reference.  Override this as needed, otherwise it is just a no-op.
+   *
+   * @param expr   The expression whose type has been determined.
+   * @param dType  The type of the expression.
+   */
+  def registerExprType(expr: AstNode, dType: DataType): Unit = {}
 
   private def getType(expr: AstNode.Expression): DataType = typeWalker.getType(expr)
 
