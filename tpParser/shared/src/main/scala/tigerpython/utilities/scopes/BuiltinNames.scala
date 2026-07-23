@@ -57,7 +57,7 @@ object BuiltinNames {
       "This function is similar to the exec statement, but parses a file instead of a string. It is different " +
         "from the import statement in that it does not use the module administration - it reads the file " +
         "unconditionally and does not create a new module."),
-    BuiltinFunction("filter", Array("function", "iterable"), BuiltinTypes.LIST,
+    BuiltinFunction("filter", Array("function", "iterable"), BuiltinTypes.ECHO2_TYPE,
       "Construct a list from those elements of iterable for which function returns true."),
     BuiltinFunction("format", Array("value"), BuiltinTypes.STRING,
       "Convert a value to a \"formatted\" representation, as controlled by format_spec."),
