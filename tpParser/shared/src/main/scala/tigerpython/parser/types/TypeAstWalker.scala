@@ -181,7 +181,7 @@ class TypeAstWalker {
     if (list.elements.nonEmpty) {
       var result = getType(list.elements.head)
       for (element <- list.elements)
-        result = DataType.getCompatibleType(result, getType(element))
+        result = DataType.getUnifyingType(result, getType(element))
       if (result != null && result != ANY_TYPE)
         Instance(ListType(result))
       else

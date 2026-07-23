@@ -73,6 +73,10 @@ A third method returns the AST:
   possible, there are some minor differences, which stem mainly from the fact that the parser supports several different
   versions of Python, or provides slightly more information in some cases.
   Note that this is feature is currently under development and not thoroughly tested, yet.
+- **`TPyParser.parseWithTypes(source: string): object`**  Essentially the same as `TPyParser.parse()` above.  However,
+  it also performs type inference and tries to determine the types of all expressions.  Whenever it can determine a
+  type, it adds a field `dType` to the respective AST object.
+  This function is still in beta.
 
 Available options:
 - **`enableTigerPythonModifications()`**  This will enable TigerPython-specific modifications such as adding fields for

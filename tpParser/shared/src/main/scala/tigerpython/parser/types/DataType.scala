@@ -69,6 +69,9 @@ abstract class DataType {
 object DataType {
   import BuiltinTypes._
 
+  /**
+   * Determines the outcome of combining the two given types in a binary operation, say.
+   */
   def getCompatibleType(type1: DataType, type2: DataType): DataType =
     if (type1 != type2)
       (type1, type2) match {
@@ -89,6 +92,51 @@ object DataType {
           val result = new Array[DataType](t1.length)
           for (i <- result.indices) {
             val dt = getCompatibleType(t1.itemTypes(i), t2.itemTypes(i))
+            if (dt != ANY_TYPE)
+              result(i) = dt
+            else
+              return TUPLE
+          }
+          TupleType(result)
+        case (_: TupleType, TUPLE) | (TUPLE, _: TupleType) =>
+          TUPLE
+        case (LIST_TYPE, TUPLE_TYPE) | (TUPLE_TYPE, LIST_TYPE) | (LIST_TYPE, STRING_TYPE) | (STRING_TYPE, LIST_TYPE) |
+             (STRING_TYPE, TUPLE_TYPE) | (TUPLE_TYPE, STRING_TYPE) =>
+          SEQ_TYPE
+        case (STRING_TYPE, UNICODE_TYPE) | (UNICODE_TYPE, STRING_TYPE) =>
+          STRING_TYPE
+        case _ =>
+          ANY_TYPE
+      }
+    else if (type1 != null)
+      type1
+    else
+      ANY_TYPE
+
+  /**
+   * In contrast to `getCompatibleType`, this function does not try to determine to result of a binary operation, but
+   * rather tries to find a common super-type.  For instance, `float` and `int` give a number here, not a `float`.
+   */
+  def getUnifyingType(type1: DataType, type2: DataType): DataType =
+    if (type1 != type2)
+      (type1, type2) match {
+        case (INTEGER, FLOAT) | (FLOAT, INTEGER) =>
+          NUMERIC_TYPE
+        case (COMPLEX, FLOAT) | (COMPLEX, INTEGER) |
+             (FLOAT, COMPLEX) | (INTEGER, COMPLEX) =>
+          NUMERIC_TYPE
+        case (l1: ListType, l2: ListType) =>
+          val dt = getUnifyingType(l1.itemType, l2.itemType)
+          if (dt != ANY_TYPE)
+            ListType(dt)
+          else
+            LIST
+        case (_: ListType, LIST) | (LIST, _: ListType) =>
+          LIST
+        case (t1: TupleType, t2: TupleType) if t1.length == t2.length =>
+          val result = new Array[DataType](t1.length)
+          for (i <- result.indices) {
+            val dt = getUnifyingType(t1.itemTypes(i), t2.itemTypes(i))
             if (dt != ANY_TYPE)
               result(i) = dt
             else
