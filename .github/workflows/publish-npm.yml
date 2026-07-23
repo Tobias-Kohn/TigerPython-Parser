@@ -4,6 +4,7 @@ on:
     branches: [master]
     paths:
       - 'build.sbt'
+  workflow_dispatch:
 permissions:
   contents: write
   id-token: write
@@ -47,7 +48,7 @@ jobs:
         if: steps.check.outputs.already_published == 'false'
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
       - name: Update npm for OIDC trusted publishing support
         if: steps.check.outputs.already_published == 'false'
