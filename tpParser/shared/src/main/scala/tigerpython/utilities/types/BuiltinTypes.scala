@@ -178,13 +178,13 @@ object BuiltinTypes {
     BuiltinFunction("rpartition", Array("sep"), TUPLE_TYPE,
       "Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the " +
         "separator, the separator itself, and the part after the separator."),
-    BuiltinFunction("rsplit", Array("sep"), LIST_TYPE,
+    BuiltinFunction("rsplit", Array("sep"), ListType(STRING_TYPE),
       "Return a list of the words in the string, using sep as the delimiter string."),
     BuiltinFunction("rstrip", Array(), STRING_TYPE,
       "Return a copy of the string with trailing characters removed."),
-    BuiltinFunction("split", Array("sep"), LIST_TYPE,
+    BuiltinFunction("split", Array("sep"), ListType(STRING_TYPE),
       "Return a list of the words in the string, using sep as the delimiter string."),
-    BuiltinFunction("splitlines", Array(), LIST_TYPE,
+    BuiltinFunction("splitlines", Array(), ListType(STRING_TYPE),
       "Return a list of the lines in the string, breaking at line boundaries."),
     BuiltinFunction("startswith", Array("prefix"), BOOLEAN_TYPE,
       "Return True if string starts with the prefix, otherwise return False. prefix can also be a tuple of " +
@@ -266,7 +266,7 @@ object BuiltinTypes {
     BuiltinFunction("readline", Array(), STRING_TYPE,
       "Read one entire line from the file. A trailing newline character is kept in the string (but may be absent " +
         "when a file ends with an incomplete line)."),
-    BuiltinFunction("readlines", Array(), LIST_TYPE,
+    BuiltinFunction("readlines", Array(), ListType(STRING_TYPE),
       "Read until EOF using readline() and return a list containing the lines thus read."),
     BuiltinFunction("seek", Array("offset"), NONE_TYPE,
       "Set the file's current position. See also: 'tell'."),

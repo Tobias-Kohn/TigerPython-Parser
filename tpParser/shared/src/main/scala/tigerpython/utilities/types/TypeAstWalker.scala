@@ -131,6 +131,15 @@ class TypeAstWalker {
   protected def getTypeOfCall(call: AstNode.Call): DataType =
     getType(call.function) match {
       case function: FunctionType =>
+        function match {
+          case pyFun: PythonFunction =>
+            // For a method, call.args never includes an explicit `self`/`cls` argument,
+            // but pyFun.params(0) is self/cls - reaching this case at all already means
+            // getTypeOfAttr resolved a real receiver type via Instance.findField, so
+            // there's no separate "is the receiver known" check needed here.
+            recordCallSiteEvidence(pyFun, call.args)
+          case _ =>
+        }
         function.getReturnType match {
           case BuiltinTypes.ECHO_TYPE =>
             if (call.args.length > 0)
@@ -164,6 +173,32 @@ class TypeAstWalker {
       case _ =>
         ANY_TYPE
     }
+
+  // Accumulates call-site argument-type evidence on `fun`, so that a later pass can
+  // refine any still-unresolved parameter types for module-level functions. Evidence
+  // that doesn't carry useful type information (ANY_TYPE, echo markers, etc.) is
+  // dropped, so an unresolved argument at one call site can't poison evidence
+  // collected from other, more informative call sites.
+  protected def recordCallSiteEvidence(fun: PythonFunction, args: Array[AstNode.Expression]): Unit = {
+    val paramOffset = if (fun.isMethod) 1 else 0
+    val n = math.min(fun.paramCount - paramOffset, args.length)
+    var i = 0
+    while (i < n) {
+      val argType = getType(args(i))
+      if (isUsableEvidenceType(argType)) {
+        val idx = i + paramOffset
+        val existing = fun.paramCallEvidence(idx)
+        fun.paramCallEvidence(idx) = if (existing == null) argType else DataType.getCompatibleType(existing, argType)
+      }
+      i += 1
+    }
+  }
+
+  private def isUsableEvidenceType(dataType: DataType): Boolean =
+    dataType != null && dataType != ANY_TYPE && dataType != BuiltinTypes.ECHO_TYPE &&
+      dataType != BuiltinTypes.ECHO2_TYPE && dataType != BuiltinTypes.ECHO_ITEM_TYPE &&
+      dataType != BuiltinTypes.ECHO_RETURN_TYPE && dataType != BuiltinTypes.SUPER_TYPE &&
+      dataType != BuiltinTypes.UNKNOWN_TYPE
 
   protected def getTypeOfLambda(lambda: AstNode.Lambda): DataType =
     if (lambda != null) {

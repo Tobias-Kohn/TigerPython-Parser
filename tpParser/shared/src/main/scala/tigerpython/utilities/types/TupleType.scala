@@ -12,6 +12,15 @@ class TupleType(val itemTypes: Array[DataType]) extends
     BuiltinTypes.TUPLE_TYPE, BuiltinTypes.TUPLE_TYPE.fields) {
 
   def length: Int = itemTypes.length
+
+  // Subscripting a tuple by a literal index isn't tracked, so fall back to the type shared by
+  // all elements (e.g. a zip() of same-typed lists), rather than always ANY_TYPE. Wrapped in
+  // Instance since a bare ClassType exposes no fields - only its Instance wrapper does.
+  override def getItemType: DataType =
+    if (itemTypes.nonEmpty)
+      Instance(itemTypes.reduce(DataType.getCompatibleType))
+    else
+      BuiltinTypes.ANY_TYPE
 }
 object TupleType {
   private val tuples1 = collection.mutable.Map[DataType, TupleType]()

@@ -285,6 +285,68 @@ class AstWalker(val scope: Scope) {
     if (!hasReturn(function.body))
       functionScope.returnType = BuiltinTypes.NONE_TYPE
     result.returnType = functionScope.returnType
+    scope match {
+      case mod: ModuleScope =>
+        mod.inferableFunctionDefs += ModuleScope.InferableFunctionRecord(function, result, functionScope, mod)
+      // Methods of a class that is itself defined directly at module level are eligible
+      // too - obj.method(x) call sites resolve to this same shared PythonFunction via
+      // Instance.findField, exactly like a module-level function's calls resolve by name.
+      // Classes nested in a function/another class are excluded, same restriction (and
+      // same reasoning) as for free functions defined inside another function.
+      case cls: ClassScope if cls.parent.isInstanceOf[ModuleScope] =>
+        cls.parent.asInstanceOf[ModuleScope].inferableFunctionDefs +=
+          ModuleScope.InferableFunctionRecord(function, result, functionScope, cls)
+      case _ =>
+    }
+  }
+
+  // Runs once, after the whole module has been walked, so call-site evidence for
+  // every eligible function/method is complete. Refines any parameter that is still
+  // ANY_TYPE/ECHO_TYPE/ECHO2_TYPE using evidence gathered by
+  // TypeAstWalker.recordCallSiteEvidence, then re-walks just that function's body so
+  // its locals (and hence member completion inside it) reflect the refined types.
+  //
+  // Note on methods and polymorphism: evidence is attached to one specific class's own
+  // PythonFunction (the one obj.method(x)'s statically-resolved receiver type points
+  // to). A call through a base-class-typed receiver never informs an overriding
+  // subclass's version of the method, even if the runtime object would actually be the
+  // subclass - there's no virtual dispatch in this type model. Pre-existing limitation
+  // of member completion generally, just more visible here; not fixed by this pass.
+  def reinferParamsFromCallSites(moduleScope: ModuleScope): Unit =
+    for (record <- moduleScope.inferableFunctionDefs)
+      patchFunctionIfEvidenceAvailable(record)
+
+  private def isEchoOrAnyMarker(dataType: DataType): Boolean =
+    dataType == ANY_TYPE || dataType == BuiltinTypes.ECHO_TYPE || dataType == BuiltinTypes.ECHO2_TYPE
+
+  private def patchFunctionIfEvidenceAvailable(record: ModuleScope.InferableFunctionRecord): Unit = {
+    val fun = record.pythonFunction
+    var changed = false
+    for (i <- fun.params.indices) {
+      val evidence = fun.paramCallEvidence(i)
+      if (evidence != null && isEchoOrAnyMarker(fun.params(i).dataType)) {
+        fun.params(i).dataType = evidence
+        changed = true
+      }
+    }
+    if (changed) {
+      // Preserve echo-style return-type dispatch (identity(5) vs identity('hi')
+      // returning different types at their own call sites) - only overwrite the
+      // function's return type with the re-walked result if it wasn't relying on
+      // one of the echo markers to dispatch per call site.
+      val originalReturnType = fun.returnType
+      val newFunctionScope = new FunctionScope(record.defNode.pos, record.defNode.endPos, fun)
+      record.parentScope.replaceScope(record.functionScope, newFunctionScope)
+      new AstWalker(newFunctionScope).walkNode(record.defNode.body)
+      fun.returnType =
+        if (originalReturnType == BuiltinTypes.ECHO_TYPE || originalReturnType == BuiltinTypes.ECHO2_TYPE ||
+            originalReturnType == BuiltinTypes.ECHO_ITEM_TYPE || originalReturnType == BuiltinTypes.ECHO_RETURN_TYPE)
+          originalReturnType
+        else if (!hasReturn(record.defNode.body))
+          BuiltinTypes.NONE_TYPE
+        else
+          newFunctionScope.returnType
+    }
   }
 
   protected def walkFor(forStmt: AstNode.For): Unit =
@@ -293,8 +355,16 @@ class AstWalker(val scope: Scope) {
         _walkFor(forStmt, Map(name -> getType(forStmt.iter).getItemType))
       case tuple: AstNode.Tuple if tuple.elements.forall(_.isInstanceOf[AstNode.Name]) =>
         val params = collection.mutable.Map[String, DataType]()
-        for (elem <- tuple.elements)
-          params(elem.asInstanceOf[AstNode.Name].name) = BuiltinTypes.ANY_TYPE
+        // e.g. `for key, value in pairs:` - bind each name to its own element type, rather than
+        // every name collapsing to ANY_TYPE, when the iterable's items are a matching tuple.
+        val itemTypes = getType(forStmt.iter).getItemType match {
+          case t: TupleType if t.length == tuple.elements.length => Some(t.itemTypes)
+          case Instance(t: TupleType) if t.length == tuple.elements.length => Some(t.itemTypes)
+          case _ => None
+        }
+        for (i <- tuple.elements.indices)
+          params(tuple.elements(i).asInstanceOf[AstNode.Name].name) =
+            itemTypes.map(t => Instance(t(i))).getOrElse(BuiltinTypes.ANY_TYPE)
         _walkFor(forStmt, params.toMap)
       case _ =>
         walkNode(forStmt.body)

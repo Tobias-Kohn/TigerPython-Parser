@@ -2,7 +2,7 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast.AstNode
-import types.{DataType, Instance, ListType, Module}
+import types.{ClassType, DataType, Instance, ListType, Module}
 
 /**
   * @author Tobias Kohn
@@ -24,6 +24,20 @@ abstract class Scope {
       scope
     } else
       null
+
+  // Replaces a previously-added sub-scope in place (same array slot), so that
+  // findScope keeps resolving to the up-to-date scope instead of a stale one that
+  // was walked before its function's parameter types were refined from call-site
+  // evidence. Falls back to appending if oldScope isn't a current sub-scope.
+  def replaceScope(oldScope: Scope, newScope: Scope): Unit =
+    if (newScope != null) {
+      val idx = subScopes.indexOf(oldScope)
+      if (idx >= 0)
+        subScopes(idx) = newScope
+      else
+        subScopes += newScope
+      newScope.parent = this
+    }
 
   def findScope(position: Int): Option[Scope] =
     if (endPos == -1 || (startPos <= position && position <= endPos)) {
@@ -60,6 +74,16 @@ abstract class Scope {
 
   def define(name: String, dataType: DataType): Unit
 
+  private lazy val typeAstWalker: types.TypeAstWalker = new types.TypeAstWalker() {
+    override def findName(name: String): Option[DataType] = {
+      val result = super.findName(name)
+      if (result.isDefined) result else findLocal(name)
+    }
+
+    override def getCurrentClass: Option[ClassType] =
+      Scope.this.getCurrentClass.map(_.pyClass)
+  }
+
   def findLocal(name: String): Option[DataType] =
     getLocals.get(name) match {
       case None =>
@@ -93,12 +117,10 @@ abstract class Scope {
             None
         }
       case call: AstNode.Call =>
-        findName(call.function) match {
-          case Some(dt) if dt.isCallable =>
-            Some(types.Instance(dt.getReturnType))
-          case _ =>
-            None
-        }
+        // Delegate to the full TypeAstWalker rather than re-deriving the return type here: some
+        // builtins (sorted/max/min/property/...) rely on argument-dependent ECHO_* sentinel return
+        // types (see BuiltinTypes), which a plain `Instance(dt.getReturnType)` can't express.
+        Some(typeAstWalker.getType(call))
       case subscript: AstNode.Subscript =>
         findName(subscript.base) match {
           case Some(dt) =>
@@ -207,6 +229,8 @@ object Scope {
     if (ast != null) {
       val walker = new AstWalker(moduleScope)
       walker.walkNode(ast)
+      if (moduleScope.inferableFunctionDefs.nonEmpty)
+        walker.reinferParamsFromCallSites(moduleScope)
     }
     moduleScope
   }

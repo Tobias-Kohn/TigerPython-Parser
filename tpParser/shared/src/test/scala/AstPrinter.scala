@@ -66,8 +66,9 @@ object AstPrinter {
       case other => printStatement(other, indent)
     }
 
+  // Decorators are attached in reverse source order, so print them in reverse too.
   private def decoratorLines(dec: Decoratable, indent: Int): Vector[String] =
-    dec.decoratorList.iterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
+    dec.decoratorList.reverseIterator.map(d => ind(indent) + "@" + printExpr(d, 0)).toVector
 
   private def printStatement(stmt: Statement, indent: Int): Vector[String] =
     stmt match {
@@ -135,7 +136,18 @@ object AstPrinter {
         (head +: bodyLines) ++ elseLines
       case f: For =>
         val asyncPrefix = if (f.isAsync) "async " else ""
-        val head = ind(indent) + asyncPrefix + "for " + printExpr(f.target, 0) + " in " + printExpr(f.iter, Precedence.OR) + ":"
+        // `target`/`iter` both `null` is the recovery outcome for `for:` (neither a
+        // target nor an `in <iterable>` clause to parse at all). Printing `None` in
+        // both slots (as elsewhere for a single missing expression) would reparse as
+        // `for None in None:`, but `None` can't be a for-target, so that trips a
+        // *different* error (CANNOT_USE_KEYWORD_AS_NAME) than the original
+        // (FOR_TARGET_NAME_REQUIRED + TOKEN_REQUIRED). Reproducing the bare `for:`
+        // header instead reparses through the exact same recovery path.
+        val head =
+          if (f.target == null && f.iter == null)
+            ind(indent) + asyncPrefix + "for:"
+          else
+            ind(indent) + asyncPrefix + "for " + printExpr(f.target, 0) + " in " + printExpr(f.iter, Precedence.OR) + ":"
         val bodyLines = printBody(f.body, indent + 1)
         val elseLines = if (f.elseBody != null) (ind(indent) + "else:") +: printBody(f.elseBody, indent + 1) else Vector()
         (head +: bodyLines) ++ elseLines
@@ -177,12 +189,13 @@ object AstPrinter {
     }
 
   private def printExceptHandler(h: ExceptHandler, indent: Int): Vector[String] = {
+    val star = if (h.isStar) "*" else ""
     val ex =
       if (h.exType != null)
         " " + printExpr(h.exType, 0) + (if (h.name != null) " as " + printExpr(h.name, 0) else "")
       else
         ""
-    (ind(indent) + "except" + ex + ":") +: printBody(h.body, indent + 1)
+    (ind(indent) + "except" + star + ex + ":") +: printBody(h.body, indent + 1)
   }
 
   private def printMatchCase(c: MatchCase, indent: Int): Vector[String] = {
@@ -196,6 +209,12 @@ object AstPrinter {
   // ---------------------------------------------------------------- parameters
 
   private def printParamList(p: Parameters): String = {
+    // `p` can legitimately be `null`: a `def` header recovered without any parameter
+    // list at all (e.g. missing `(` entirely) leaves `FunctionDef.params` as `null`
+    // rather than an empty `Parameters`, same idea as the `isNoneLike`/bare-`null`
+    // recovery placeholders documented in `AstEquivalence`.
+    if (p == null)
+      return ""
     val parts = collection.mutable.ArrayBuffer[String]()
     val offset = p.args.length - p.defaults.length
 

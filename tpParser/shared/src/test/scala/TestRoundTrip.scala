@@ -79,8 +79,8 @@ class TestRoundTrip extends FunSuite {
     val p1 = new Parser(source, pythonVersion)
     val ast1 = p1.parse()
     if (ast1 == null)
-      cancel(s"'$name': parser produced no AST at all for this input (catastrophic failure, outside " +
-        s"this round-trip property's scope)\n\noriginal source:\n$source")
+      cancel(s"'$name': file cannot be parsed initially, so no point attempting a round-trip parse test." +
+        s"\n\noriginal source:\n$source")
     // Errors already present after the *first* parse (e.g. a permanently-flagged but
     // still-recoverable dialect mismatch, such as a Python-2 `print` statement parsed
     // under Python 3) are allowed to recur after reprinting; only *new* kinds of errors

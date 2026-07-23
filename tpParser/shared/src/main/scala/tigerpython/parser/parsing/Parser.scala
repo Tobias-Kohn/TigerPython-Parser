@@ -1244,7 +1244,11 @@ class Parser(val source: CharSequence,
       } else
       if (!tokens.hasType(TokenType.LEFT_PARENS, TokenType.COLON)) {
         parserState.reportError(line.startPos, ErrorCode.INVALID_FUNCTION_DEF)
-        return null
+        // Rest of the line makes no sense as a def header (e.g. `def double x = 2 * x`
+        // or `def breakfast;`): discard it, like the `EXTRA_TOKEN` case below does, and
+        // let the params/colon fallbacks further down build a degenerate FunctionDef
+        // rather than discarding the whole statement (and any indented body).
+        tokens.skipAll()
       }
     } else
     if (tokens.peekTypeCategory(0) == TokenType.TYPE_KEYWORD &&
@@ -1434,7 +1438,11 @@ class Parser(val source: CharSequence,
         if (expressionParser.firstOfTest(tokens))
           expressionParser.parseTestListAsTuple(tokens)
         else
-          return null
+          // No iterable to recover either (e.g. `for:`): leave `iter` as `null`, like a
+          // missing `target` above, rather than discarding the whole statement (and its
+          // body). The printer/AstEquivalence already treat a `null` expression as
+          // equivalent to the `None` it reprints as, so this still round-trips cleanly.
+          null
       }
     if (!tokens.hasNext && (target == null || iter == null))
       return null
@@ -1565,8 +1573,9 @@ class Parser(val source: CharSequence,
     val tokens = line.tokenSource
     val startPos = tokens.head.pos
     tokens.matchType(TokenType.EXCEPT)
+    val isStar = tokens.matchType(TokenType.STAR)
     if (tokens.matchType(TokenType.COLON)) {
-      val result = AstNode.ExceptHandler(startPos, null, null, null)
+      val result = AstNode.ExceptHandler(startPos, null, null, null, isStar)
       parseBody(tokens, line, result)
       result
     } else {
@@ -1577,7 +1586,7 @@ class Parser(val source: CharSequence,
         else
           null
       tokens.matchType(TokenType.COLON)
-      val result = AstNode.ExceptHandler(startPos, test, name, null)
+      val result = AstNode.ExceptHandler(startPos, test, name, null, isStar)
       parseBody(tokens, line, result)
       result
     }
@@ -1587,18 +1596,64 @@ class Parser(val source: CharSequence,
     parserState.setStatementType(TokenType.WITH)
     val tokens = line.tokenSource
     val isAsync = tokens.matchType(TokenType.ASYNC)
-    _parseWith(tokens, line, isAsync)
+    tokens.matchType(TokenType.WITH)
+    // A `with (...)：` is ambiguous in general (is `(...)` one parenthesized context
+    // manager, or PEP 617's grouping of several?) but does not actually require trying
+    // both and backtracking: since Python 3.9 a parenthesized *list* of context
+    // managers is a strict superset of a single parenthesized one (a lone expression is
+    // already a valid with-item on its own), so it is always safe to parse the
+    // parenthesized content as a with-items list first and only reinterpret it
+    // afterwards, based on what follows the closing paren - see `parseParenWithItems`.
+    if (tokens.hasType(TokenType.LEFT_PARENS))
+      parseParenWithItems(tokens, line, isAsync)
+    else
+      parseWithItem(tokens, line, isAsync)
   }
 
-  protected def _parseWith(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement =
-    if (tokens.matchType(TokenType.WITH, TokenType.COMMA)) {
+  // Parses one `test ['as' target]` with-item (the un-parenthesized `with a, b:` form),
+  // then either its body (if ':' follows) or recurses for a comma-chained next item.
+  protected def parseWithItem(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement = {
+    val testPos = tokens.pos
+    // A missing/unparseable context expression (e.g. `with as:`) used to make this
+    // return `null` for the *entire* with-statement here, discarding it (and its
+    // body) from the enclosing suite entirely rather than just the one missing
+    // piece. Substituting a placeholder - the same recovery already used elsewhere
+    // for a missing expression - lets parsing continue and keeps the rest of the
+    // statement (the `as`-target, the body) instead of losing it all.
+    val test = expressionParser.parseTest(tokens) match {
+      case null => AstNode.EmptyExpression(testPos)
+      case t => t
+    }
+    val asExpr =
+      if (tokens.matchType(TokenType.AS))
+        expressionParser.parseExpr(tokens)
+      else
+        null
+    val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
+    if (tokens.matchType(TokenType.COLON))
+      parseBody(tokens, line, result)
+    else if (tokens.matchType(TokenType.COMMA))
+      result.body = parseWithItem(tokens, line, isAsync)
+    result
+  }
+
+  // Parses `'(' ','.with_item+ ','? ')'` (PEP 617), where each with_item is
+  // `test ['as' target]`. Structured as "parse the items once, then decide how to
+  // interpret them from one token of lookahead after the ')'" rather than backtracking:
+  //  - followed by ':' (the common case, including a single plain item, which behaves
+  //    exactly like `with (x):` always has) - build a chain of nested `With` nodes, one
+  //    per item, in the same shape `with a, b:` already produces.
+  //  - followed by 'as' (rare, e.g. `with (a, b) as t:`, and only possible when no item
+  //    already had its own 'as' - Python does not allow both) - the parenthesized items
+  //    were not actually a group at all, but a single parenthesized expression (a tuple,
+  //    if there was more than one) being used as one context manager, bound by the
+  //    trailing 'as' - which is exactly how this case already worked before grouping
+  //    was added, so it is reconstructed here rather than dropped.
+  protected def parseParenWithItems(tokens: TokenBuffer, line: Line, isAsync: Boolean): Statement = {
+    tokens.next()  // consume '('
+    case class WithItem(test: AstNode.Expression, asExpr: AstNode.Expression)
+    def parseItem(): WithItem = {
       val testPos = tokens.pos
-      // A missing/unparseable context expression (e.g. `with as:`) used to make this
-      // return `null` for the *entire* with-statement here, discarding it (and its
-      // body) from the enclosing suite entirely rather than just the one missing
-      // piece. Substituting a placeholder - the same recovery already used elsewhere
-      // for a missing expression - lets parsing continue and keeps the rest of the
-      // statement (the `as`-target, the body) instead of losing it all.
       val test = expressionParser.parseTest(tokens) match {
         case null => AstNode.EmptyExpression(testPos)
         case t => t
@@ -1608,14 +1663,49 @@ class Parser(val source: CharSequence,
           expressionParser.parseExpr(tokens)
         else
           null
-      val result = AstNode.With(test.pos, line.endPos, test, asExpr, null, isAsync)
+      WithItem(test, asExpr)
+    }
+    val items = ArrayBuffer[WithItem]()
+    if (!tokens.hasType(TokenType.RIGHT_PARENS)) {
+      items += parseItem()
+      while (tokens.matchType(TokenType.COMMA) && !tokens.hasType(TokenType.RIGHT_PARENS))
+        items += parseItem()
+    }
+    tokens.requireType(TokenType.RIGHT_PARENS)
+
+    if (items.isEmpty) {
+      val emptyTest = AstNode.EmptyExpression(tokens.pos)
+      parserState.reportError(tokens, ErrorCode.MISSING_EXPRESSION)
+      val result = AstNode.With(emptyTest.pos, line.endPos, emptyTest, null, null, isAsync)
       if (tokens.matchType(TokenType.COLON))
         parseBody(tokens, line, result)
-      else
-        result.body = _parseWith(tokens, line, isAsync)
       result
-    } else
-      null
+    } else if (tokens.hasType(TokenType.AS) && !items.exists(_.asExpr != null)) {
+      tokens.next()  // consume 'as'
+      val combinedTest =
+        if (items.length == 1)
+          items.head.test
+        else
+          AstNode.Tuple(items.head.test.pos, items.map(_.test).toArray)
+      val asExpr = expressionParser.parseExpr(tokens)
+      val result = AstNode.With(combinedTest.pos, line.endPos, combinedTest, asExpr, null, isAsync)
+      if (tokens.matchType(TokenType.COLON))
+        parseBody(tokens, line, result)
+      result
+    } else {
+      def build(idx: Int): AstNode.With = {
+        val item = items(idx)
+        val result = AstNode.With(item.test.pos, line.endPos, item.test, item.asExpr, null, isAsync)
+        if (idx == items.length - 1) {
+          if (tokens.matchType(TokenType.COLON))
+            parseBody(tokens, line, result)
+        } else
+          result.body = build(idx + 1)
+        result
+      }
+      build(0)
+    }
+  }
 
   protected def parseElse(lines: Seq[Line], head: AstNode.Statement with AstNode.CompoundStatement): Statement = {
     parserState.setStatementType(TokenType.ELSE)

@@ -58,6 +58,15 @@ object AstEquivalence {
   private def bodyNode(x: Statement, y: Statement, name: String, path: String): Either[String, Unit] =
     node(unwrapSingleton(x), unwrapSingleton(y), name, path)
 
+  // A `null` `Parameters` (a `def` header recovered with no parameter list to parse
+  // at all, e.g. missing `(` entirely) means the same thing as an explicit empty
+  // parameter list - same idea as a `null` array being treated as equivalent to
+  // `Array()` in `arr` above.
+  private def paramsNode(a: Parameters, b: Parameters, path: String): Either[String, Unit] = {
+    def norm(p: Parameters) = if (p != null) p else Parameters.empty(-1)
+    node(norm(a), norm(b), "params", path)
+  }
+
   // `EmptyExpression` is a recovery placeholder for a missing expression that has no
   // valid Python spelling of its own; a bare `null` expression (e.g. a missing element
   // in an otherwise-populated `Call` args list) is the same idea. The unparser renders
@@ -185,7 +194,7 @@ object AstEquivalence {
       case FunctionDef(_, _, nameA, paramsA, bodyA, returnsA, isAsyncA) =>
         b match {
           case FunctionDef(_, _, nameB, paramsB, bodyB, returnsB, isAsyncB) =>
-            seq(node(nameA, nameB, "name", path), node(paramsA, paramsB, "params", path),
+            seq(node(nameA, nameB, "name", path), paramsNode(paramsA, paramsB, path),
               bodyNode(bodyA, bodyB, "body", path), node(returnsA, returnsB, "returns", path),
               eq(isAsyncA, isAsyncB, "isAsync", path))
           case _ => typeMismatch(a, b, path)
@@ -263,10 +272,11 @@ object AstEquivalence {
             seq(node(patternA, patternB, "pattern", path), node(guardA, guardB, "guard", path), bodyNode(bodyA, bodyB, "body", path))
           case _ => typeMismatch(a, b, path)
         }
-      case ExceptHandler(_, exTypeA, nameA, bodyA) =>
+      case ExceptHandler(_, exTypeA, nameA, bodyA, isStarA) =>
         b match {
-          case ExceptHandler(_, exTypeB, nameB, bodyB) =>
-            seq(node(exTypeA, exTypeB, "exType", path), node(nameA, nameB, "name", path), bodyNode(bodyA, bodyB, "body", path))
+          case ExceptHandler(_, exTypeB, nameB, bodyB, isStarB) =>
+            seq(node(exTypeA, exTypeB, "exType", path), node(nameA, nameB, "name", path),
+              bodyNode(bodyA, bodyB, "body", path), eq(isStarA, isStarB, "isStar", path))
           case _ => typeMismatch(a, b, path)
         }
 

@@ -1,0 +1,6 @@
+# 3
+# MISSING_EXPRESSION
+a = "test"
+print(a)
+with ():
+    pass

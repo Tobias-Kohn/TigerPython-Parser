@@ -65,6 +65,12 @@ class PythonClass(val name: String, val bases: Array[ClassType]) extends ClassTy
     dataType match {
       case function: PythonFunction if function.isMethod =>
         instanceFields(name) = function
+        // A classmethod (params(0) is SelfClass, not SelfInstance) must also be
+        // reachable via the class name itself (e.g. Factory.make(...)), which is
+        // its normal calling convention - unlike a regular instance method, which
+        // is ordinarily only called through an instance.
+        if (function.params.nonEmpty && function.params(0).dataType.isInstanceOf[SelfClass])
+          classFields(name) = function
         if (name == "__init__")
           initFunction = function
       case _: FunctionType =>
