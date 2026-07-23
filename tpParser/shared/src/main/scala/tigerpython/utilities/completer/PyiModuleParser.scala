@@ -35,15 +35,18 @@ class PyiModuleParser(val module: Module, val moduleLookup: mutable.Map[String, 
         }
       case SubscriptNode(NameNode("list" | "List"), subscript) =>
         ListType(convertToType(subscript))
+      case SubscriptNode(NameNode("set" | "Set"), subscript) =>
+        SetType(convertToType(subscript))
+      // `tuple[X, ...]`: a homogeneous, variable-length tuple (as opposed to `tuple[X, Y]`,
+      // a fixed-arity tuple where each position has its own type).
+      case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(Array(elt, ValueNode("...")))) =>
+        new VarTupleType(convertToType(elt))
       case SubscriptNode(NameNode("tuple" | "Tuple"), TupleNode(elts)) =>
         TupleType(for (el <- elts) yield convertToType(el))
       case SubscriptNode(NameNode("dict" | "Dict"), TupleNode(elts)) if elts.length == 2 =>
         new DictType(convertToType(elts(0)), convertToType(elts(1)))
       case OrNode(elts) if elts.nonEmpty =>
-        var tp = convertToType(elts.head)
-        for (el <- elts.tail)
-          tp = DataType.getCompatibleType(tp, convertToType(el))
-        tp
+        UnionType(elts.map(convertToType))
       case AttributeNode(base, name) =>
         val baseDotted = PyiModuleParser.toDotted(base)
         if (baseDotted != null && fullModuleImports.contains(baseDotted))

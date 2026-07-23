@@ -6,4 +6,7 @@ package tigerpython.utilities.types
   */
 class VarTupleType(val itemType: DataType) extends
   PrimitiveType("tuple[%s, ...]".format(itemType.name),
-    BuiltinTypes.TUPLE_TYPE, BuiltinTypes.TUPLE_TYPE.fields)
+    BuiltinTypes.TUPLE_TYPE, BuiltinTypes.TUPLE_TYPE.fields) {
+
+  override def getItemType: DataType = itemType
+}
