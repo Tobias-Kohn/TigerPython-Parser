@@ -293,8 +293,16 @@ class AstWalker(val scope: Scope) {
         _walkFor(forStmt, Map(name -> getType(forStmt.iter).getItemType))
       case tuple: AstNode.Tuple if tuple.elements.forall(_.isInstanceOf[AstNode.Name]) =>
         val params = collection.mutable.Map[String, DataType]()
-        for (elem <- tuple.elements)
-          params(elem.asInstanceOf[AstNode.Name].name) = BuiltinTypes.ANY_TYPE
+        // e.g. `for key, value in pairs:` - bind each name to its own element type, rather than
+        // every name collapsing to ANY_TYPE, when the iterable's items are a matching tuple.
+        val itemTypes = getType(forStmt.iter).getItemType match {
+          case t: TupleType if t.length == tuple.elements.length => Some(t.itemTypes)
+          case Instance(t: TupleType) if t.length == tuple.elements.length => Some(t.itemTypes)
+          case _ => None
+        }
+        for (i <- tuple.elements.indices)
+          params(tuple.elements(i).asInstanceOf[AstNode.Name].name) =
+            itemTypes.map(t => Instance(t(i))).getOrElse(BuiltinTypes.ANY_TYPE)
         _walkFor(forStmt, params.toMap)
       case _ =>
         walkNode(forStmt.body)
