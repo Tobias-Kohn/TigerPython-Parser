@@ -2,7 +2,7 @@ package tigerpython.utilities
 package scopes
 
 import tigerpython.parser.ast.AstNode
-import types.{DataType, Instance, ListType, Module}
+import types.{ClassType, DataType, Instance, ListType, Module}
 
 /**
   * @author Tobias Kohn
@@ -60,6 +60,16 @@ abstract class Scope {
 
   def define(name: String, dataType: DataType): Unit
 
+  private lazy val typeAstWalker: types.TypeAstWalker = new types.TypeAstWalker() {
+    override def findName(name: String): Option[DataType] = {
+      val result = super.findName(name)
+      if (result.isDefined) result else findLocal(name)
+    }
+
+    override def getCurrentClass: Option[ClassType] =
+      Scope.this.getCurrentClass.map(_.pyClass)
+  }
+
   def findLocal(name: String): Option[DataType] =
     getLocals.get(name) match {
       case None =>
@@ -93,12 +103,10 @@ abstract class Scope {
             None
         }
       case call: AstNode.Call =>
-        findName(call.function) match {
-          case Some(dt) if dt.isCallable =>
-            Some(types.Instance(dt.getReturnType))
-          case _ =>
-            None
-        }
+        // Delegate to the full TypeAstWalker rather than re-deriving the return type here: some
+        // builtins (sorted/max/min/property/...) rely on argument-dependent ECHO_* sentinel return
+        // types (see BuiltinTypes), which a plain `Instance(dt.getReturnType)` can't express.
+        Some(typeAstWalker.getType(call))
       case subscript: AstNode.Subscript =>
         findName(subscript.base) match {
           case Some(dt) =>
