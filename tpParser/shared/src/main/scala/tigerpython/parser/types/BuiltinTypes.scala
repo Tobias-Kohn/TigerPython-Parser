@@ -7,6 +7,8 @@
  */
 package tigerpython.parser.types
 
+import javax.print.attribute.standard.PrinterInfo
+
 /**
   * @author Tobias Kohn
   *
@@ -26,17 +28,17 @@ object BuiltinTypes {
   val SUPER_TYPE = AbstractType("<super>")
   val UNKNOWN_TYPE = AbstractType("<unknown>")
 
-  val NONE_TYPE = PrimitiveType("NoneType")
-  val NUMERIC_TYPE = PrimitiveType("<numeric>")
-  val TYPE_TYPE = PrimitiveType("type")
-  val BOOLEAN_TYPE = PrimitiveType("bool", NUMERIC_TYPE)
-  val COMPLEX_TYPE = PrimitiveType("complex", NUMERIC_TYPE)
-  val INTEGER_TYPE = PrimitiveType("int", NUMERIC_TYPE)
+  val NONE_TYPE: PrimitiveType = PrimitiveType("NoneType").registerTo(builtins)
+  val NUMERIC_TYPE: PrimitiveType = PrimitiveType("<numeric>")
+  val TYPE_TYPE: PrimitiveType = PrimitiveType("type").registerTo(builtins)
+  val BOOLEAN_TYPE: PrimitiveType = PrimitiveType("bool", NUMERIC_TYPE).registerTo(builtins)
+  val COMPLEX_TYPE: PrimitiveType = PrimitiveType("complex", NUMERIC_TYPE).registerTo(builtins)
+  val INTEGER_TYPE: PrimitiveType = PrimitiveType("int", NUMERIC_TYPE).registerTo(builtins)
   INTEGER_TYPE.addFields(
     BuiltinFunction("bit_length", Array(), INTEGER_TYPE,
       "Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros.")
   )
-  val LONG_TYPE = PrimitiveType("long", INTEGER_TYPE)
+  val LONG_TYPE: PrimitiveType = PrimitiveType("long", INTEGER_TYPE).registerTo(builtins)
 
   val SEQ_TYPE: PrimitiveType = new PrimitiveType("seq", null, Map()) {
     override def getItemType: DataType = ANY_TYPE
@@ -91,7 +93,7 @@ object BuiltinTypes {
     BuiltinFunction("clear", Array(), NONE_TYPE,
       "Remove all elements from the set.")
   ))
-  val FROZENSET_TYPE = PrimitiveType("frozenset", SETLIKE_TYPE)
+  val FROZENSET_TYPE: PrimitiveType = PrimitiveType("frozenset", SETLIKE_TYPE).registerTo(builtins)
 
   val MUTABLE_SEQ = PrimitiveType("<mutable-seq>", SEQ_TYPE)
   MUTABLE_SEQ.addFields(
@@ -103,16 +105,16 @@ object BuiltinTypes {
     BuiltinFunction("reverse", Array(), MUTABLE_SEQ, "reverses the items of the sequence in place"),
     BuiltinFunction("sort", Array(), MUTABLE_SEQ, "sort the items of the sequence in place")
   )
-  val LIST_TYPE = PrimitiveType("list", MUTABLE_SEQ)
+  val LIST_TYPE: PrimitiveType = PrimitiveType("list", MUTABLE_SEQ).registerTo(builtins)
   LIST_TYPE.addFields(
     PrimitiveType("first"),
     PrimitiveType("head"),
     PrimitiveType("last"),
     PrimitiveType("tail", LIST_TYPE)
   )
-  val TUPLE_TYPE = PrimitiveType("tuple", SEQ_TYPE)
-  val BYTEARRAY_TYPE = PrimitiveType("bytearray", SEQ_TYPE)
-  val BUFFER_TYPE = PrimitiveType("buffer", SEQ_TYPE)
+  val TUPLE_TYPE: PrimitiveType = PrimitiveType("tuple", SEQ_TYPE).registerTo(builtins)
+  val BYTEARRAY_TYPE: PrimitiveType = PrimitiveType("bytearray", SEQ_TYPE).registerTo(builtins)
+  val BUFFER_TYPE: PrimitiveType = PrimitiveType("buffer", SEQ_TYPE).registerTo(builtins)
   val XRANGE_TYPE = PrimitiveType("xrange", SEQ_TYPE)
   val UNICODE_TYPE: PrimitiveType = new PrimitiveType("unicode", SEQ_TYPE, Map()) {
     override def getItemType: DataType = this
@@ -120,6 +122,8 @@ object BuiltinTypes {
   val STRING_TYPE: PrimitiveType = new PrimitiveType("str", SEQ_TYPE, Map()) {
     override def getItemType: DataType = this
   }
+  UNICODE_TYPE.registerTo(builtins)
+  STRING_TYPE.registerTo(builtins)
   STRING_TYPE.addFields(
     BuiltinFunction("capitalize", Array(), STRING_TYPE,
       "Return a copy of the string with its first character capitalized and the rest lowercased."),
@@ -208,16 +212,16 @@ object BuiltinTypes {
       "Return the numeric string left filled with zeros in a string of length width.")
   )
 
-  val FLOAT_TYPE = PrimitiveType("float", NUMERIC_TYPE, Seq(
+  val FLOAT_TYPE: PrimitiveType = PrimitiveType("float", NUMERIC_TYPE, Seq(
     BuiltinFunction("as_integer_ratio", Array(), TUPLE_TYPE,
       "Return a pair of integers whose ratio is exactly equal to the original float and with a positive denominator."),
     BuiltinFunction("is_integer", Array(), BOOLEAN_TYPE,
       "Return True if the float instance is finite with integral value, and False otherwise."),
     BuiltinFunction("hex", Array(), STRING_TYPE,
       "Return a representation of a floating-point number as a hexadecimal string.")
-  ))
+  )).registerTo(builtins)
 
-  val DICT_TYPE = PrimitiveType("dict")
+  val DICT_TYPE: PrimitiveType = PrimitiveType("dict").registerTo(builtins)
   DICT_TYPE.addFields(
     BuiltinFunction("clear", Array(), NONE_TYPE,
       "Remove all items from the dictionary."),
@@ -256,12 +260,12 @@ object BuiltinTypes {
       "Return a new view of the dictionary’s values.")
   )
 
-  val FILE_TYPE = PrimitiveType("file", Map(
+  val FILE_TYPE: PrimitiveType = PrimitiveType("file", Map(
     "closed" -> BOOLEAN_TYPE,
     "encoding" -> ANY_TYPE,
     "mode" -> STRING_TYPE,
     "name" -> STRING_TYPE
-  ))
+  )).registerTo(builtins)
   FILE_TYPE.addFields(
     BuiltinFunction("close", Array(), NONE_TYPE,
       "Close the file. A closed file cannot be read or written any more."),

@@ -58,6 +58,12 @@ abstract class DataType {
 
   def setField(name: String, dataType: DataType): Unit
 
+  def registerTo(map: collection.mutable.Map[String, DataType]): this.type = {
+    if (map != null)
+      map(name) = this
+    this
+  }
+
   override def toString: String = name
 }
 object DataType {

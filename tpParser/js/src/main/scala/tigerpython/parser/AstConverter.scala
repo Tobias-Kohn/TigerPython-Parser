@@ -88,8 +88,14 @@ class AstConverter(val parser: Parser) {
       case Some(Instance(dType)) =>
         dest.dType = dType.getFullName
         dest
+      case Some(fType: types.FunctionType) =>
+        if (fType.getReturnType != null)
+          dest.dType = fType.getReturnType.getFullName
+        else
+          dest.dType = fType.getFullName + '@' + fType.getClass.getName
+        dest
       case Some(dType) =>
-        dest.dType = dType.getFullName
+        dest.dType = dType.getFullName + '@' + dType.getClass.getName
         dest
       case None =>
         dest

@@ -34,7 +34,7 @@ object BuiltinFunction {
   }
 
   def fromString(s: String): BuiltinFunction =
-    if (s != null && s.length > 0) {
+    if (s != null && s.nonEmpty) {
       val (retType, source) =
         if (s(0) == '[')
           (BuiltinTypes.fromString(s.drop(1).takeWhile(_ != ']')), s.dropWhile(_ != ']').drop(1))
