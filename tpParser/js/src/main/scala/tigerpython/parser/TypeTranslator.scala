@@ -31,6 +31,12 @@ object TypeTranslator {
           "kind" -> "tuple",
           "item" -> apply(tType.getItemType).getOrElse("<ANY>")
         ))
+      case dType: DictType =>
+        Some(js.Dynamic.literal(
+          "kind" -> "dict",
+          "keys" -> apply(dType.keyType).getOrElse("<ANY>"),
+          "values" -> apply(dType.valueType).getOrElse("<ANY>")
+        ))
       case _ =>
         Some(js.Dynamic.literal(
           "kind" -> "type",
