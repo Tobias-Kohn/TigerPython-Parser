@@ -116,7 +116,12 @@ class Completer(val moduleName: String,
         }
         nameWalker.getNodeForPosition(caretPos) match {
           case Some(prefixName) =>
-            val tokenRange = tokenLine.getTokenRange(prefixName.endPos, caretPos)
+            // `getTokenRange` includes tokens whose `pos` equals `caretPos` (its upper bound is
+            // inclusive), but a token starting exactly at the caret lies after it, not within the
+            // range up to it -- e.g. the `)` closing an enclosing call immediately after the caret
+            // in `wrap((expr).<caret>)`. Left in, that stray token breaks the length/last-token
+            // checks below, so it's filtered out here.
+            val tokenRange = tokenLine.getTokenRange(prefixName.endPos, caretPos).filter(_.pos < caretPos)
             if (0 < tokenRange.length && tokenRange.length <= 2 && tokenRange(0).tokenType == TokenType.DOT) {
               val n = if (filterType == FilterType.IMPORT_FROM)
                   scope.findName(moduleBase, prefixName)

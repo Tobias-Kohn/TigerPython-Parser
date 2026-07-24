@@ -148,6 +148,12 @@ abstract class Scope {
         Some(types.BuiltinTypes.LIST)
       case _: AstNode.StringValue =>
         Some(types.BuiltinTypes.STRING)
+      case expr: AstNode.Expression =>
+        // Catch-all for literal/expression kinds with no bespoke case above (int/float/complex/none
+        // literals, booleans, unary/binary ops, comparisons, ...): TypeAstWalker.getType already
+        // knows how to resolve these, so delegate rather than falling through to None, which would
+        // make e.g. `(5).bit_length` unresolvable and fall back to a full builtin-name dump.
+        Some(typeAstWalker.getType(expr))
       case _ =>
         None
     }

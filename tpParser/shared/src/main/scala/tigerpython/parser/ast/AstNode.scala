@@ -459,7 +459,9 @@ object AstNode {
     override def isValidAssignTarget: Boolean = true
     override def toString: String = "(%s)".format(names.mkString(", "))
   }
-  case class BooleanValue(pos: Int, value: Boolean) extends Expression(AstNodeKind.CONSTANT) {
+  case class BooleanValue(pos: Int, value: Boolean) extends Expression(AstNodeKind.CONSTANT) with Span {
+    // `True`/`False` are fixed-width keywords, so the end position needs no extra state to track.
+    def endPos: Int = pos + (if (value) 4 else 5)
     def notToString: String = if (value) "False" else "True"
     override def toString: String = if (value) "True" else "False"
   }
@@ -471,26 +473,34 @@ object AstNode {
     def apply(token: Token): Value = {
       val result = new Value(token.pos, ValueType.fromTokenType(token.tokenType))
       result.value = token.value
+      result.endPos = token.endPos
       result
     }
     def apply(pos: Int, intValue: Int): Value = {
       val result = new Value(pos, ValueType.INTEGER)
       result.value = intValue.toString
+      result.endPos = pos + result.value.length
       result
     }
   }
-  case class Value(pos: Int, valueType: ValueType.Value) extends Expression(AstNodeKind.CONSTANT) {
+  case class Value(pos: Int, valueType: ValueType.Value) extends Expression(AstNodeKind.CONSTANT) with Span {
     var value: String = _
+    // Defaults to a zero-width span at `pos` for values not constructed from a real source token
+    // (e.g. synthetic placeholders inserted during error recovery); real construction sites set
+    // this from the originating token's `endPos`.
+    var endPos: Int = pos
     def createNegative(): Value =
       if (value != null && value != "" &&
         (valueType == ValueType.INTEGER || valueType == ValueType.FLOAT)) {
         if (value(0) == '-') {
           val result = Value(pos + 1, valueType)
           result.value = value.drop(1)
+          result.endPos = result.pos + result.value.length
           result
         } else {
           val result = Value(pos - 1, valueType)
           result.value = "-" + value
+          result.endPos = result.pos + result.value.length
           result
         }
       } else
