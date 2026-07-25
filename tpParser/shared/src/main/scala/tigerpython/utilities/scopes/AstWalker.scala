@@ -555,7 +555,15 @@ class AstWalker(val scope: Scope) {
           case AstNode.NameParameter(_, name, annotation) =>
             val dataType =
               if (annotation != null)
-                getType(annotation)
+                // A bare class (or a container built from one, e.g. `list[Widget]`) resolves
+                // via getType to the raw ClassType/PrimitiveType itself - its real members
+                // live in getInstanceFields, which only an Instance wrapper exposes (see
+                // Instance.apply's docs). Every other call-site that produces a value of a
+                // user's own type (constructor calls, function-call return values, `for`
+                // targets) already goes through this same wrapping; a param annotation was
+                // the one place that didn't, silently losing all member completion for any
+                // annotated parameter.
+                Instance(getType(annotation))
               else if (i >= delta) {
                 getType(params.defaults(i - delta)._1) match {
                   case BuiltinTypes.NONE_TYPE => BuiltinTypes.ANY_TYPE

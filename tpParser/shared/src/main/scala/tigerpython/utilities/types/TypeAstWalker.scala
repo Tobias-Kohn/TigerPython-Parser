@@ -68,8 +68,14 @@ class TypeAstWalker {
         (getType(subscript.base), subscript.slice) match {
           case (BuiltinTypes.LIST_TYPE, Index(_, value)) =>
             ListType(getType(value))
+          case (BuiltinTypes.SET_TYPE, Index(_, value)) =>
+            SetType(getType(value))
           case (BuiltinTypes.DICT_TYPE, MultiSlice(_, Array(Index(_, key), Index(_, value)))) =>
             new DictType(getType(key), getType(value))
+          // `tuple[X, ...]`: a homogeneous, variable-length tuple (as opposed to `tuple[X, Y]`,
+          // a fixed-arity tuple where each position has its own type).
+          case (BuiltinTypes.TUPLE_TYPE, MultiSlice(_, Array(Index(_, elt), Index(_, _: AstNode.Ellipsis)))) =>
+            new VarTupleType(getType(elt))
           case (BuiltinTypes.TUPLE_TYPE, MultiSlice(_, elements)) if elements.forall {
             case Index(_, _) => true
             case _ => false
