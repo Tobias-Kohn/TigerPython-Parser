@@ -57,6 +57,7 @@ if (err !== null) {
   // Display the error...
 }
 ```
+When using the module, import it using, e.g. `import { TPyParser } from "@tigerpython/tpparser";`.
 
 
 ### The TPyParser Object
