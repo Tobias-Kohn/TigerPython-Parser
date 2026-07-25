@@ -648,16 +648,24 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
           checkMissingOperator(tokens)
           val result = AstNode.Value(token.pos, ValueType.FLOAT)
           result.value = token.value
+          result.endPos = token.endPos
           result
         case TokenType.INT | TokenType.LONG =>
           checkMissingOperator(tokens)
           val result = AstNode.Value(token.pos, ValueType.INTEGER)
           result.value = token.value
+          result.endPos = token.endPos
           result
         case TokenType.COMPLEX =>
-          AstNode.Value(token.pos, ValueType.COMPLEX)
+          val result = AstNode.Value(token.pos, ValueType.COMPLEX)
+          result.value = token.value
+          result.endPos = token.endPos
+          result
         case TokenType.NONE =>
-          AstNode.Value(token.pos, ValueType.NONE)
+          val result = AstNode.Value(token.pos, ValueType.NONE)
+          result.value = token.value
+          result.endPos = token.endPos
+          result
         case TokenType.TRUE =>
           AstNode.BooleanValue(token.pos, value = true)
         case TokenType.FALSE =>
@@ -679,7 +687,9 @@ class ExpressionParser(val parser: Parser, val parserState: ParserState) {
         case TokenType.BYTEARRAY =>
           while (tokens.hasType(TokenType.BYTEARRAY))
             tokens.next()
-          AstNode.Value(token.pos, ValueType.BYTE_ARRAY)
+          val result = AstNode.Value(token.pos, ValueType.BYTE_ARRAY)
+          result.endPos = tokens.prevEndPos
+          result
         case TokenType.LEFT_PARENS =>
           // Check for Lisp-Syntax
           if (tokens.getIndex <= 1 && tokens.peekType(1) == TokenType.NAME)
