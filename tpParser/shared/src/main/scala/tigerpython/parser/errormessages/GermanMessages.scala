@@ -114,7 +114,7 @@ object GermanMessages extends ModifiableErrorMessages {
       case MISSING_SPACE => "Fehlender Abstand."
       case MISSING_TOKEN => "Hier fehlt ein '%s'."
       case MISSPELLED_KEYWORD => "Falsch geschriebenes Schlüsselwort: '%s' anstelle von '%s'."
-      case MISSPELLED_NAME		"Falsch geschriebener Name: '%s' anstelle von '%s'."
+      case MISSPELLED_NAME	=>	"Falsch geschriebener Name: '%s' anstelle von '%s'."
       case MISSPELLED_NUMBER => "In dieser Zahl hat es offenbar einen Tippfehler."
       case MISSPELLED_OPERATOR => "Falsch geschriebener Operator: '%s' anstelle von '%s'."
       case MULTIPLE_VAR_ARGS => "Es darf nur ein entpackendes Argument vorkommen."
