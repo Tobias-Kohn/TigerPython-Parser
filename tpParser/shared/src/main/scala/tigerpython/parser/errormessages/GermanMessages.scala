@@ -120,7 +120,7 @@ object GermanMessages extends ModifiableErrorMessages {
       case MULTIPLE_VAR_ARGS => "Es darf nur ein entpackendes Argument vorkommen."
       case MULTIPLE_VAR_PARAMS => "Es darf nur ein entpackender Parameter vorkommen."
       case NAME_EXPECTED => "Hier wird ein Name erwartet."
-      case NESTED_FUNCTIONS	=>		"Definition einer Funktion in einer anderen. Ist das wirklich so gemeint?"
+      case NESTED_FUNCTIONS	=>	"Definition einer Funktion in einer anderen. Ist das wirklich so gemeint?"
       case NO_END_NEEDED => "Python braucht kein 'end'."
       case NO_PARAM_DEFAULT_ALLOWED => "Entpackende Parameter können keine Standardwerte haben."
       case NO_VIABLE_ALTERNATIVE => "Hier finde ich keine Möglichkeit mehr, den Code zu verstehen: '%s'"
