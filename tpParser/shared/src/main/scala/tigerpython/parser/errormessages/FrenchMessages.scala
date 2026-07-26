@@ -54,7 +54,7 @@ object FrenchMessages extends ModifiableErrorMessages {
         case EXTRA_INDENTATION => "Cette ligne est trop indentée par rapport à la précédente."
         case EXTRA_LEFT_BRACKET => "Il y a une parenthèse ouvrante en trop: '%s'."
         case EXTRA_LINEBREAK => "Pour écrire cette instruction sur plusieurs lignes, il faut mettre '\\' en fin de ligne."
-        case EXTRA_LINE_NUMBER => "Il semble qu'il y ait un nombre trop grand de lignes."
+        case EXTRA_LINE_NUMBER => "Il semble qu'il y ait une numérotation au début des lignes qui doit être enlevée."
         case EXTRA_RIGHT_BRACKET => "Il y a une parenthèse fermante en trop: '%s'."
         case EXTRA_SPACE => "Il y a un espace en trop."
         case EXTRA_SPACE_OR_MISSING_COMMA => "Soit il y a un espace en trop, soit il manque une virgule."
