@@ -1223,14 +1223,14 @@ class Parser(val source: CharSequence,
         tokens.hasType(TokenType.COMMA)) {
         if (!tokens.hasType(TokenType.COMMA) && lexer.getNameCount(name.name) > 1) {
           if (tokens.hasType(TokenType.RIGHT_PARENS)) {
-            parserState.reportError(tokens, ErrorCode.MISSING_LEFT_PARENTHESIS)
+            parserState.reportError(tokens, ErrorCode.MISSING_LEFT_BRACKET, "(")
             tokens.insertToken(TokenType.LEFT_PARENS)
           }
         } else
         extParserUtils.trySplitName(name.name) match {
           case Some((fName, pName)) =>
             val pos = name.pos
-            parserState.reportError(pos + fName.length, ErrorCode.MISSING_LEFT_PARENTHESIS)
+            parserState.reportError(pos + fName.length, ErrorCode.MISSING_LEFT_BRACKET, "(")
             name = AstNode.Name(pos, fName)
             tokens.insertToken(Token.createNameToken(pos + fName.length, pName))
             tokens.insertToken(Token(pos + fName.length, 0, TokenType.LEFT_PARENS))

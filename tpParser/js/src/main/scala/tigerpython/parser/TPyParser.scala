@@ -38,6 +38,12 @@ object TPyParser {
   var newDivision: Boolean = true
 
   /**
+   * Disallow nested function definitions.
+   */
+  @JSExport
+  var flatFunctions: Boolean = false
+
+  /**
     * Set the Python version to either 2 or 3.
     */
   @JSExport
@@ -119,6 +125,7 @@ object TPyParser {
     val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
     parser.rejectDeadCode = rejectDeadCode
+    parser.flatFunctions = flatFunctions
     parser.repeatStatement = repeatStatement
     parser.sagePower = sagePower
     parser.strictCode = strictCode
@@ -156,6 +163,7 @@ object TPyParser {
         source
     val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
+    parser.flatFunctions = flatFunctions
     parser.rejectDeadCode = rejectDeadCode
     parser.repeatStatement = repeatStatement
     parser.sagePower = sagePower
@@ -182,6 +190,7 @@ object TPyParser {
         source
     val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
+    parser.flatFunctions = flatFunctions
     parser.rejectDeadCode = rejectDeadCode
     parser.repeatStatement = repeatStatement
     parser.sagePower = sagePower
@@ -206,6 +215,7 @@ object TPyParser {
         source
     val parser = new Parser(src, pythonVersion)
     parser.newDivision = newDivision
+    parser.flatFunctions = flatFunctions
     parser.rejectDeadCode = rejectDeadCode
     parser.repeatStatement = repeatStatement
     parser.sagePower = sagePower
