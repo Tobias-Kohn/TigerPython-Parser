@@ -153,6 +153,13 @@ class TypeAstWalker {
                 ANY_TYPE
             } else
               ANY_TYPE
+          case BuiltinTypes.ECHO_SELF_ITEM_TYPE =>
+            call.function match {
+              case attr: AstNode.Attribute =>
+                getType(attr.base).getItemType
+              case _ =>
+                ANY_TYPE
+            }
           case ret =>
             Instance(ret)
         }
