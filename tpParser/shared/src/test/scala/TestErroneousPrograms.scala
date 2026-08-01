@@ -100,5 +100,7 @@ class TestErroneousPrograms extends FunSuite {
       }
       assert(cs.get.line+1 == line_no)
       assert(cs.get.errorCode.toString == error_msg)
+      // The error message must have all of its '%s' placeholders substituted with actual values
+      assert(!cs.get.errorMessage.contains("%s"), s"un-substituted placeholder in message: ${cs.get.errorMessage}")
     }
 }
