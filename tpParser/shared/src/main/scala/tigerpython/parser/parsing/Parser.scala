@@ -1434,7 +1434,10 @@ class Parser(val source: CharSequence,
         parserState.reportError(line.startPos, ErrorCode.FOREIGN_SYNTAX, "Pascal")
         return null
       } else {
-        parserState.reportError(tokens, ErrorCode.TOKEN_REQUIRED, "in")
+        if (tokens.hasNext)
+          parserState.reportError(tokens, ErrorCode.TOKEN_REQUIRED, "in")
+        else
+          parserState.reportError(tokens.endPos, ErrorCode.MISSING_TOKEN, "in")
         if (expressionParser.firstOfTest(tokens))
           expressionParser.parseTestListAsTuple(tokens)
         else
