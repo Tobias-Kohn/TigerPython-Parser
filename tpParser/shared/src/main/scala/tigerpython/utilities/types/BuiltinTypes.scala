@@ -99,13 +99,13 @@ object BuiltinTypes {
 
   val MUTABLE_SEQ = PrimitiveType("<mutable-seq>", SEQ_TYPE)
   MUTABLE_SEQ.addFields(
-    BuiltinFunction("append", Array("x"), MUTABLE_SEQ, null),
-    BuiltinFunction("extend", Array("x"), MUTABLE_SEQ, null),
-    BuiltinFunction("insert", Array(), MUTABLE_SEQ, null),
-    BuiltinFunction("pop", Array(), MUTABLE_SEQ, null),
-    BuiltinFunction("remove", Array("x"), MUTABLE_SEQ, null),
-    BuiltinFunction("reverse", Array(), MUTABLE_SEQ, "reverses the items of the sequence in place"),
-    BuiltinFunction("sort", Array(), MUTABLE_SEQ, "sort the items of the sequence in place")
+    BuiltinFunction("append", Array("x"), NONE_TYPE, null),
+    BuiltinFunction("extend", Array("x"), NONE_TYPE, null),
+    BuiltinFunction("insert", Array(), NONE_TYPE, null),
+    BuiltinMethod(null, "pop", Array(), null),
+    BuiltinFunction("remove", Array("x"), NONE_TYPE, null),
+    BuiltinFunction("reverse", Array(), NONE_TYPE, "reverses the items of the sequence in place"),
+    BuiltinFunction("sort", Array(), NONE_TYPE, "sort the items of the sequence in place")
   )
   val LIST_TYPE = PrimitiveType("list", MUTABLE_SEQ)
   val TUPLE_TYPE = PrimitiveType("tuple", SEQ_TYPE)

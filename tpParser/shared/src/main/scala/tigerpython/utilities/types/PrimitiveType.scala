@@ -27,6 +27,12 @@ class PrimitiveType(val name: String,
 
   def getInstanceFields: Map[String, DataType] = fields
 
+  /**
+   * This method is used by `BuiltinMethod` to retrieve contextual type information.
+   */
+  protected[types]
+  def getMethodType(methodName: String): DataType = BuiltinTypes.ANY_TYPE
+
   override def isCallable: Boolean = true
 
   def isSubclassOf(base: DataType): Boolean =
