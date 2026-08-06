@@ -92,13 +92,34 @@ class TypeAstWalker {
     }
 
   protected def getTypeOfAttr(attr: AstNode.Attribute): DataType = {
-    getType(attr.base).findField(attr.attr.name) match {
+    val baseType = getType(attr.base)
+    baseType.findField(attr.attr.name) match {
+      case Some(method: BuiltinMethod) =>
+        getPrimitiveType(baseType) match {
+          case Some(receiver) =>
+            method.boundTo(receiver)
+          case None =>
+            method
+        }
       case Some(result) =>
         validateDataType(result)
       case None =>
         ANY_TYPE
     }
   }
+
+  // A `BuiltinMethod` field is shared by every instance of its declaring type (e.g. all lists share
+  // the same "pop" field object), so it can't carry the receiver's own type (e.g. `list[Actor]` rather
+  // than plain `list`) - that has to be bound in at each attribute access instead, from here.
+  private def getPrimitiveType(dataType: DataType): Option[PrimitiveType] =
+    dataType match {
+      case instance: Instance =>
+        getPrimitiveType(instance.baseType)
+      case primitive: PrimitiveType =>
+        Some(primitive)
+      case _ =>
+        None
+    }
 
   protected def getTypeOfBinaryOp(binOp: AstNode.BinaryOp): DataType = {
     val left = getType(binOp.left)
