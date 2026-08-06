@@ -12,6 +12,15 @@ class ListType(val itemType: DataType) extends
   //override def getFields: Map[String, DataType] = super.fields
 
   override def getItemType: DataType = itemType
+
+  protected[types]
+  override def getMethodType(methodName: String): DataType =
+    methodName match {
+      case "pop" =>
+        itemType
+      case _ =>
+        BuiltinTypes.ANY_TYPE
+    }
 }
 object ListType {
   private val listTypes = collection.mutable.Map[DataType, ListType]()
