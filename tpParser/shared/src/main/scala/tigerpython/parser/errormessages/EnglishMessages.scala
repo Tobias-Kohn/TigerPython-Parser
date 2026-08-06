@@ -117,6 +117,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case MULTIPLE_VAR_ARGS => "Only one unpacking var/keyword-argument is allowed."
       case MULTIPLE_VAR_PARAMS => "Only one unpacking var/keyword-parameter is allowed."
       case NAME_EXPECTED => "There is a name required here."
+      case NESTED_FUNCTIONS => "Nested function definitions are not allowed."
       case NO_END_NEEDED => "There is no 'end' needed or allowed in Python."
       case NO_PARAM_DEFAULT_ALLOWED => "An unpacking parameter cannot have a default value."
       case NO_VIABLE_ALTERNATIVE => "I am lost and cannot make sense of your program code, anymore, at '%s'."

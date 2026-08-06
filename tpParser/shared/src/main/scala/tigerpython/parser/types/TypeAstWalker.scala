@@ -12,9 +12,6 @@ import ast._
 
 /**
   * @author Tobias Kohn
-  *
-  * Created by Tobias Kohn on 14/06/2016
-  * Updated by Tobias Kohn on 07/11/2019
   */
 class TypeAstWalker {
 
@@ -65,10 +62,10 @@ class TypeAstWalker {
         getTypeOfList(list)
       case list: AstNode.ListComp =>
         getTypeOfListComp(list)
-      case _: AstNode.Dict =>
-        BuiltinTypes.DICT
-      case _dict: AstNode.DictComp =>
-        BuiltinTypes.DICT
+      case dict: AstNode.Dict =>
+        getTypeOfDict(dict)
+      case dict: AstNode.DictComp =>
+        getTypeOfDictComp(dict)
       case name: AstNode.Name =>
         validateDataType(findName(name.name))
       case subscript: AstNode.Subscript =>
@@ -204,6 +201,24 @@ class TypeAstWalker {
       }
     else
       BuiltinTypes.LIST
+
+  protected def getTypeOfDict(dict: AstNode.Dict): DataType =
+    if (dict.keys.nonEmpty && dict.values.nonEmpty) {
+      var key = getType(dict.keys.head)
+      for (element <- dict.keys.tail)
+        key = DataType.getUnifyingType(key, getType(element))
+      var value = getType(dict.values.head)
+      for (element <- dict.values.tail)
+        value = DataType.getUnifyingType(value, getType(element))
+      if (key != null && value != null)
+        Instance(DictType(key, value))
+      else
+        BuiltinTypes.DICT
+    } else
+      BuiltinTypes.DICT
+
+  protected def getTypeOfDictComp(dictComp: AstNode.DictComp): DataType =
+    BuiltinTypes.DICT
 
   protected def getTypeOfSubscript(subscript: AstNode.Subscript): DataType =
     subscript.slice match {

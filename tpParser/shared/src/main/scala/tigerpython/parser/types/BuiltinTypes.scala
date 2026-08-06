@@ -93,6 +93,7 @@ object BuiltinTypes {
     BuiltinFunction("clear", Array(), NONE_TYPE,
       "Remove all elements from the set.")
   ))
+  SET_TYPE.registerTo(builtins)
   val FROZENSET_TYPE: PrimitiveType = PrimitiveType("frozenset", SETLIKE_TYPE).registerTo(builtins)
 
   val MUTABLE_SEQ = PrimitiveType("<mutable-seq>", SEQ_TYPE)
@@ -115,7 +116,7 @@ object BuiltinTypes {
   val TUPLE_TYPE: PrimitiveType = PrimitiveType("tuple", SEQ_TYPE).registerTo(builtins)
   val BYTEARRAY_TYPE: PrimitiveType = PrimitiveType("bytearray", SEQ_TYPE).registerTo(builtins)
   val BUFFER_TYPE: PrimitiveType = PrimitiveType("buffer", SEQ_TYPE).registerTo(builtins)
-  val XRANGE_TYPE = PrimitiveType("xrange", SEQ_TYPE)
+  val XRANGE_TYPE: PrimitiveType = PrimitiveType("xrange", SEQ_TYPE)
   val UNICODE_TYPE: PrimitiveType = new PrimitiveType("unicode", SEQ_TYPE, Map()) {
     override def getItemType: DataType = this
   }
@@ -230,7 +231,7 @@ object BuiltinTypes {
     BuiltinFunction("get", Array("key", "default"), ANY_TYPE,
       "Return the value for key if key is in the dictionary, else default. If default is not given, it defaults " +
         "to None, so that this method never raises a KeyError."),
-    BuiltinFunction("items", Array(), LIST_TYPE,
+    BuiltinMethod(DICT_TYPE, "[tuple]items", Array(),
       "Return a copy of the dictionary’s list of (key, value) pairs."),
     BuiltinFunction("iteritems", Array(), ITERATOR_TYPE,
       "Return an iterator over the dictionary’s (key, value) pairs."),
@@ -238,7 +239,7 @@ object BuiltinTypes {
       "Return an iterator over the dictionary’s keys."),
     BuiltinFunction("itervalues", Array(), ITERATOR_TYPE,
       "Return an iterator over the dictionary’s values."),
-    BuiltinFunction("keys", Array(), LIST_TYPE,
+    BuiltinMethod(DICT_TYPE, "keys", Array(),
       "Return a copy of the dictionary’s list of keys."),
     BuiltinFunction("pop", Array("key", "default"), ANY_TYPE,
       "If key is in the dictionary, remove it and return its value, else return default. If default is not given " +
@@ -250,7 +251,7 @@ object BuiltinTypes {
         "default. default defaults to None."),
     BuiltinFunction("update", Array("other"), NONE_TYPE,
       "Update the dictionary with the key/value pairs from other, overwriting existing keys. Return None."),
-    BuiltinFunction("values", Array(), LIST_TYPE,
+    BuiltinMethod(DICT_TYPE, "values", Array(),
       "Return a copy of the dictionary’s list of values."),
     BuiltinFunction("viewitems", Array(), ANY_TYPE,
       "Return a new view of the dictionary’s items ((key, value) pairs)."),
