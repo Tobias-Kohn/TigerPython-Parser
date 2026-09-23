@@ -1,0 +1,3 @@
+# 0
+# prompt = ...
+raw_input()

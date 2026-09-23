@@ -1,0 +1,3 @@
+# 3
+# key, default = ...
+{}.pop("k")
