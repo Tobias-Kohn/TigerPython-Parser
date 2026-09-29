@@ -192,6 +192,8 @@ class TypeAstWalker {
                 ANY_TYPE
             } else
               ANY_TYPE
+          case BuiltinTypes.SUPER_TYPE =>
+            getTypeOfSuper(call)
           case ret =>
             Instance(ret)
         }
@@ -200,6 +202,20 @@ class TypeAstWalker {
       case _ =>
         ANY_TYPE
     }
+
+  // `super()` and `super(Cls, self)` resolve to the members of the base classes of the enclosing
+  // class (respectively of `Cls`).  Without a known class the result stays the empty `<super>` type.
+  private def getTypeOfSuper(call: AstNode.Call): DataType = {
+    val cls = call.args.length match {
+      case 0 => getCurrentClass
+      case 2 => Some(getType(call.args(0))).collect { case c: PythonClass => c }
+      case _ => None
+    }
+    cls match {
+      case Some(pyClass: PythonClass) => new SuperInstance(pyClass.bases)
+      case _ => BuiltinTypes.SUPER_TYPE
+    }
+  }
 
   // Accumulates call-site argument-type evidence on `fun`, so that a later pass can
   // refine any still-unresolved parameter types for module-level functions. Evidence

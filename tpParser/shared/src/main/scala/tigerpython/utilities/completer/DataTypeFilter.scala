@@ -1,7 +1,7 @@
 package tigerpython.utilities
 package completer
 
-import types.{DataType, SelfInstance}
+import types.{DataType, SelfInstance, SuperInstance}
 
 /**
   * @author Tobias Kohn
@@ -11,7 +11,7 @@ import types.{DataType, SelfInstance}
   */
 class DataTypeFilter(val startPos: Int, val base: DataType) extends DefaultNameFilter {
 
-  hideProtected = !base.isInstanceOf[SelfInstance]
+  hideProtected = !(base.isInstanceOf[SelfInstance] || base.isInstanceOf[SuperInstance])
 
   for ((name, field) <- base.getFields)
     addName(name, field)
