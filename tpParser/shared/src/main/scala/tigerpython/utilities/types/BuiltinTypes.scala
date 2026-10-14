@@ -178,11 +178,11 @@ object BuiltinTypes {
     BuiltinFunction("rpartition", Array("sep"), TUPLE_TYPE,
       "Split the string at the last occurrence of sep, and return a 3-tuple containing the part before the " +
         "separator, the separator itself, and the part after the separator."),
-    BuiltinFunction("rsplit", Array("sep"), ListType(STRING_TYPE),
+    BuiltinFunction("rsplit", Array("sep="), ListType(STRING_TYPE),
       "Return a list of the words in the string, using sep as the delimiter string."),
     BuiltinFunction("rstrip", Array(), STRING_TYPE,
       "Return a copy of the string with trailing characters removed."),
-    BuiltinFunction("split", Array("sep"), ListType(STRING_TYPE),
+    BuiltinFunction("split", Array("sep="), ListType(STRING_TYPE),
       "Return a list of the words in the string, using sep as the delimiter string."),
     BuiltinFunction("splitlines", Array(), ListType(STRING_TYPE),
       "Return a list of the lines in the string, breaking at line boundaries."),
@@ -221,22 +221,22 @@ object BuiltinTypes {
       "Remove all items from the dictionary."),
     BuiltinFunction("copy", Array(), DICT_TYPE,
       "Return a shallow copy of the dictionary."),
-    BuiltinFunction("get", Array("key", "default"), ANY_TYPE,
+    BuiltinFunction("get", Array("key", "default="), ANY_TYPE,
       "Return the value for key if key is in the dictionary, else default. If default is not given, it defaults " +
         "to None, so that this method never raises a KeyError."),
     BuiltinFunction("items", Array(), LIST_TYPE,
       "Return a copy of the dictionary’s list of (key, value) pairs."),
     BuiltinFunction("keys", Array(), LIST_TYPE,
       "Return a copy of the dictionary’s list of keys."),
-    BuiltinFunction("pop", Array("key", "default"), ANY_TYPE,
+    BuiltinFunction("pop", Array("key", "default="), ANY_TYPE,
       "If key is in the dictionary, remove it and return its value, else return default. If default is not given " +
         "and key is not in the dictionary, a KeyError is raised."),
     BuiltinFunction("popitem", Array(), ANY_TYPE,
       "Remove and return an arbitrary (key, value) pair from the dictionary."),
-    BuiltinFunction("setdefault", Array("key", "default"), ANY_TYPE,
+    BuiltinFunction("setdefault", Array("key", "default="), ANY_TYPE,
       "If key is in the dictionary, return its value. If not, insert key with a value of default and return " +
         "default. default defaults to None."),
-    BuiltinFunction("update", Array("other"), NONE_TYPE,
+    BuiltinFunction("update", Array("other="), NONE_TYPE,
       "Update the dictionary with the key/value pairs from other, overwriting existing keys. Return None."),
     BuiltinFunction("values", Array(), LIST_TYPE,
       "Return a copy of the dictionary’s list of values.")
@@ -260,7 +260,7 @@ object BuiltinTypes {
       "Return True if the file is connected to a tty(-like) device, else False."),
     BuiltinFunction("next", Array(), ANY_TYPE,
       "This method returns the next input line."),
-    BuiltinFunction("read", Array("size"), ANY_TYPE,
+    BuiltinFunction("read", Array("size="), ANY_TYPE,
       "Read at most size bytes from the file (less if the read hits EOF before obtaining size bytes). If the " +
         "size argument is negative or omitted, read all data until EOF is reached."),
     BuiltinFunction("readline", Array(), STRING_TYPE,
@@ -272,7 +272,7 @@ object BuiltinTypes {
       "Set the file's current position. See also: 'tell'."),
     BuiltinFunction("tell", Array(), INTEGER_TYPE,
       "Return the file's current position. See also: 'seek'."),
-    BuiltinFunction("truncate", Array("size"), NONE_TYPE,
+    BuiltinFunction("truncate", Array("size="), NONE_TYPE,
       "Truncate the file’s size. If the optional size argument is present, the file is truncated to (at most) " +
         "that size. The size defaults to the current position."),
     BuiltinFunction("write", Array("str"), NONE_TYPE,

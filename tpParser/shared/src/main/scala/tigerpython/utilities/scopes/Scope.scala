@@ -136,7 +136,7 @@ abstract class Scope {
       case name: AstNode.Name =>
         findLocal(name.name)
       case _: AstNode.Dict | _: AstNode.DictComp =>
-        Some(types.BuiltinTypes.LIST)
+        Some(types.BuiltinTypes.DICT)
       case lst: AstNode.List if lst.elements.nonEmpty =>
         val itemTypes = for (el <- lst.elements) yield findName(el).orNull
         val itemType = itemTypes.head

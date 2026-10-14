@@ -1,0 +1,3 @@
+# 0
+# fget = ..., fset = ..., fdel = ..., doc = ...
+property()

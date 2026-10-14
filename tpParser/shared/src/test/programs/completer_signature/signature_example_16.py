@@ -1,0 +1,3 @@
+# 0
+# name, mode = ...
+open()

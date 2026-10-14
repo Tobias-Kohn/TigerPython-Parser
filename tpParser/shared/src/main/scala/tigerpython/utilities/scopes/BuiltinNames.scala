@@ -76,7 +76,7 @@ object BuiltinNames {
     BuiltinFunction("id", Array("object"), BuiltinTypes.INTEGER,
       "Return the \"identity\" of an object. This is an integer (or long integer) which is guaranteed to be unique " +
         "and constant for this object during its lifetime."),
-    BuiltinFunction("input", Array("prompt"), BuiltinTypes.ANY_TYPE,
+    BuiltinFunction("input", Array("prompt="), BuiltinTypes.ANY_TYPE,
       "The function asks the user to input a text or numeric value and returns it as \"str\", \"int\" or \"float\"."),
     BuiltinFunction("isinstance", Array("object", "classinfo"), BuiltinTypes.BOOLEAN,
       "Return true if the object argument is an instance of the classinfo argument, or of a (direct, " +
@@ -98,19 +98,19 @@ object BuiltinNames {
       "Retrieve the next item from the iterator by calling its next() method."),
     BuiltinFunction("oct", Array("x"), BuiltinTypes.STRING,
       "Convert an integer number (of any size) to an octal string."),
-    BuiltinFunction("open", Array("name", "mode"), BuiltinTypes.FILE,
+    BuiltinFunction("open", Array("name", "mode="), BuiltinTypes.FILE,
       "Open a file, returning an object of the file type"),
     BuiltinFunction("ord", Array("c"), BuiltinTypes.INTEGER,
       "Given a string of length one, return an integer representing the Unicode code point of the character when the " +
         "argument is a unicode object, or the value of the byte when the argument is an 8-bit string."),
-    BuiltinFunction("property", Array("fget, fset"), BuiltinTypes.ECHO_RETURN_TYPE,
+    BuiltinFunction("property", Array("fget=", "fset=", "fdel=", "doc="), BuiltinTypes.ECHO_RETURN_TYPE,
       "Return a property attribute."),
     BuiltinFunction("pow", Array("x", "y"), BuiltinTypes.ANY_TYPE,
       "Return x to the power y; if z is present, return x to the power y, modulo z (computed more efficiently than " +
         "pow(x, y) % z). The two-argument form pow(x, y) is equivalent to using the power operator: x**y."),
     BuiltinFunction("range", Array("stop:int"), ListType(BuiltinTypes.INTEGER),
       "This is a versatile function to create lists containing arithmetic progressions."),
-    BuiltinFunction("raw_input", Array("prompt"), BuiltinTypes.STRING,
+    BuiltinFunction("raw_input", Array("prompt="), BuiltinTypes.STRING,
       "The function reads a line from input, converts it to a string (stripping a trailing newline), and returns that."),
     BuiltinFunction("reduce", Array("function", "iterable"), BuiltinTypes.LIST,
       "Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce " +
@@ -122,7 +122,7 @@ object BuiltinNames {
       "Return a string containing a printable representation of an object."),
     BuiltinFunction("reversed", Array("seq"), BuiltinTypes.ECHO_TYPE,
       "Return a reverse iterator."),
-    BuiltinFunction("round", Array("number", "ndigits"), BuiltinTypes.ANY_TYPE,
+    BuiltinFunction("round", Array("number", "ndigits="), BuiltinTypes.ANY_TYPE,
       "Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is " +
         "omitted, it defaults to zero."),
     BuiltinFunction("setattr", Array("object", "name", "value"), BuiltinTypes.NONE,

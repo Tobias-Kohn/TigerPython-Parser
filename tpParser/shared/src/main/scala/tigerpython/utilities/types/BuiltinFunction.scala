@@ -13,8 +13,8 @@ class BuiltinFunction(val name: String,
 
   override def getFullName: String = if (parent != null) parent.getFullName + "." + name else name
 
-  override def getParams: Array[String] = params
-  override def getParamsString: String = params.mkString(", ")
+  override def getParams: Array[String] = params.map(_.stripSuffix("="))
+  override def getParamsString: String = getParams.mkString(", ")
   override def getReturnType: DataType = returnType
 
   override def getSignature: Signature = Signature.fromPlainParams(params)

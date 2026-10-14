@@ -1,0 +1,3 @@
+# 0
+# prompt = ...
+input()

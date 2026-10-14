@@ -77,6 +77,11 @@ case class Signature(
 
 object Signature {
 
-  def fromPlainParams(params: Array[String]): Signature = new Signature(List.empty, params.map((n) => SignatureArg(n, Option.empty, BuiltinTypes.ANY_TYPE)).toList, Option.empty, List.empty, Option.empty, BuiltinTypes.ANY_TYPE, false)
+  def fromPlainParams(params: Array[String]): Signature = new Signature(List.empty, params.map((n) =>
+    if (n.endsWith("="))
+      SignatureArg(n.dropRight(1), Some("..."), BuiltinTypes.ANY_TYPE)
+    else
+      SignatureArg(n, Option.empty, BuiltinTypes.ANY_TYPE)
+  ).toList, Option.empty, List.empty, Option.empty, BuiltinTypes.ANY_TYPE, false)
 
 }
