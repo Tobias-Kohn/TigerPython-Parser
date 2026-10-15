@@ -178,22 +178,19 @@ object TokenType {
 
   def fromString(c: Char): TokenType = fromString(c.toString)
 
+  // Use getOrElse/get here rather than catching NoSuchElementException from withName(): a miss is the
+  // normal case (most names aren't keywords) and in Scala.js constructing an exception is expensive.
   def fromString(s: String): TokenType =
-    try {
-      withName(s)
-    } catch {
-      case _: NoSuchElementException =>
-        NAME
-    }
+    values.getOrElse(s, NAME)
 
   def isKeyword(s: String): Boolean = keywords.contains(s)
 
   @tailrec
   def findOperator(op: String): (Int, TokenType) =
-    try {
-      (op.length, withName(op))
-    } catch {
-      case _: NoSuchElementException =>
+    values.get(op) match {
+      case Some(tokenType) =>
+        (op.length, tokenType)
+      case None =>
         if (op.length > 1)
           findOperator(op.dropRight(1))
         else

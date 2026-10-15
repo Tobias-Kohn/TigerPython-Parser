@@ -117,17 +117,26 @@ class TokenBuffer(tokenSource: Seq[Token],
     else
       false
 
+  // Note: these use while loops rather than "for (...) ... return false": in Scala.js a "return" inside a for
+  // closure is compiled to a thrown NonLocalReturnControl, and since the usual answer here is "no match",
+  // that would mean constructing (and capturing a stack trace for) an exception on nearly every call.
   def hasTypeSequence(tokenTypes: TokenType*): Boolean = {
-    for (i <- tokenTypes.indices)
+    var i = 0
+    while (i < tokenTypes.length) {
       if (peekType(i) != tokenTypes(i))
         return false
+      i += 1
+    }
     true
   }
 
   def hasNameSequence(names: String*): Boolean = {
-    for (i <- names.indices)
+    var i = 0
+    while (i < names.length) {
       if ((peekType(i) != TokenType.NAME) || peek(i).value != names(i))
         return false
+      i += 1
+    }
     true
   }
 
