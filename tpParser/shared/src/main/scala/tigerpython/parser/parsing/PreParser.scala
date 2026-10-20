@@ -50,9 +50,13 @@ private[parser] object PreParser {
 
     def hasTypeSequence(tokenTypes: TokenType*): Boolean =
       if (tokenTypes.length <= tokens.length) {
-        for (i <- tokenTypes.indices)
+        // A while loop, not "for ... return false", which Scala.js compiles to a thrown exception:
+        var i = 0
+        while (i < tokenTypes.length) {
           if (tokens(i).tokenType != tokenTypes(i))
             return false
+          i += 1
+        }
         true
       } else
         false
