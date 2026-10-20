@@ -10,5 +10,13 @@ def describe(value):
             return "mapping2", ident, tag, others
         case {**everything}:
             return "only rest", everything
+        case {"id": ident, **others,}:
+            return "trailing comma after rest", ident, others
+        case [first, *_]:
+            return "wildcard star", first
+        case [*_, last]:
+            return "wildcard star first", last
+        case [*_]:
+            return "only wildcard star"
         case _:
             return "other"

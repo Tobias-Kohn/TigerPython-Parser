@@ -60,9 +60,10 @@ class PatternParser(val parser: Parser, val parserState: ParserState) {
     if (tokens.matchType(TokenType.STAR)) {
       val pos = tokens.pos
       if (tokens.hasType(TokenType.NAME)) {
-        if (tokens.peek(0).value == "_")
+        if (tokens.peek(0).value == "_") {
+          tokens.next()
           AstNode.MatchStar(pos, null)
-        else
+        } else
           AstNode.MatchStar(pos, parseCaptureName(tokens))
       } else {
         // ToDo: Handle Error
@@ -306,11 +307,16 @@ class PatternParser(val parser: Parser, val parserState: ParserState) {
         val keywords = if (pairs.nonEmpty) pairs.map(_._1).toArray else null
         val values = if (pairs.nonEmpty) pairs.map(_._2).toArray else null
         val rest =
-          if (tokens.matchType(TokenType.DOUBLE_STAR))
-            parseCaptureName(tokens)
-          else if (tokens.hasTypeSequence(TokenType.STAR, TokenType.STAR)) {
+          if (tokens.matchType(TokenType.DOUBLE_STAR)) {
+            val name = parseCaptureName(tokens)
+            // A trailing comma is allowed after the rest pattern, i.e. {"k": v, **rest,}
+            tokens.matchType(TokenType.COMMA)
+            name
+          } else if (tokens.hasTypeSequence(TokenType.STAR, TokenType.STAR)) {
             tokens.next(); tokens.next()
-            parseCaptureName(tokens)
+            val name = parseCaptureName(tokens)
+            tokens.matchType(TokenType.COMMA)
+            name
           } else
             null
         tokens.requireType(TokenType.RIGHT_BRACE)
