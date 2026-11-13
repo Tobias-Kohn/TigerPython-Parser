@@ -42,7 +42,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case DECORATOR_NAME_CLASH => "A function and its decorator cannot have the same name '%s'."
       case DECORATOR_NEEDS_CALLABLE => "Decorators are only applicable to functions and classes."
       case DEFINITION_INSIDE_LOOP => "A '%s'-definition cannot be inside a loop."
-      case DOUBLE_CALL => "You are calling the turn argument of a function here."
+      case DOUBLE_CALL => "You are calling the return argument of a function here."
       case DOUBLE_ELSE => "An '%s'-structure can only have one 'else'-branch."
       case DOUBLE_EQUAL_SIGN_EXPECTED => "A double equal sign '==' is required here."
       case DOUBLE_PARAMETER_NAMES => "Two parameters cannot have the same name: '%s'."

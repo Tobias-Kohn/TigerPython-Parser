@@ -371,6 +371,10 @@ class ArgumentParser(val parser: Parser, val parserState: ParserState) {
         case TokenType.DOUBLE_STAR =>
           val pos = tokens.next().pos
           KeywordArgument(pos, expressionParser.parseExpr(tokens))
+        case tt @ (TokenType.COLON | TokenType.DOT | TokenType.SEMICOLON) =>           // This should probably be a semicolon
+          parserState.reportError(tokens, ErrorCode.TYPO, tt.toString, ",")
+          tokens.next()
+          return parseArguments(tokens)
         case tt if tt.category == TokenType.TYPE_KEYWORD && !expressionParser.firstOfTest(tokens) =>
           val pos = tokens.pos
           tokens.peekType(1) match {
