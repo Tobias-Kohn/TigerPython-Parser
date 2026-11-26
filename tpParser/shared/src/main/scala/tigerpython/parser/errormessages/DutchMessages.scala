@@ -140,7 +140,7 @@ object DutchMessages extends ModifiableErrorMessages {
         case USE_REPEAT_INSTEAD_OF_WHILE => "Gebruik 'repeat' in plaats van 'while'."
         case USE_RETURN_INSTEAD_OF_BREAK => "Gebruik 'return' in plaats van 'break' om een functie te verlaten."
         case USELESS_COMPUTATION => "Het resultaat van deze expressie wordt nooit gebruikt."
-        case USELESS_STATEMENT => "Deze opdracht heeft geen effect, en is dus nutteloos."
+        case USELESS_STATEMENT | USELESS_STATEMENT_PART => "Deze opdracht heeft geen effect, en is dus nutteloos."
         case USELESS_STMT_USE_AUG_ASSIGN => "Deze opdracht is nutteloos. Bedoel je '%s='?"
         case VARARG_AFTER_KEYWORD_ARG => "Het unpacking var-argument moet het unpacking keyword-argument voorafgaan."
         case VARARG_NOT_ALLOWED => "Unpacking var/keyword-argumenten zijn hier niet toegestaan."

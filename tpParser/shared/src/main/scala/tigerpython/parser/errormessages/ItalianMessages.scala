@@ -140,7 +140,7 @@ object ItalianMessages extends ModifiableErrorMessages {
         case USE_NOT_INSTEAD_OF_FALSE => "Usa 'not' piuttosto che una comparazione con '%s'."
         case USE_REPEAT_INSTEAD_OF_WHILE => "Usa 'repeat' invece di 'while'."
         case USELESS_COMPUTATION => "Il risultato di questa espressione non viene mai usato."
-        case USELESS_STATEMENT => "Questa istruzione è inutile: non ha nessun effetto."
+        case USELESS_STATEMENT | USELESS_STATEMENT_PART => "Questa istruzione è inutile: non ha nessun effetto."
         case USELESS_STMT_USE_AUG_ASSIGN => "Questa istruzione è inutile. Intendevi '%s='?"
         case VARARG_AFTER_KEYWORD_ARG => "L'argomento spacchettante variabile deve essere prima dell'argomento spacchettante con parola chiave."
         case VARARG_NOT_ALLOWED => "Argomenti spacchettanti non sono permessi a questo punto."

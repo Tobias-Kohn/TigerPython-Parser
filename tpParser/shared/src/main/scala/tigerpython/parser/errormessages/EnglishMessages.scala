@@ -160,7 +160,7 @@ object EnglishMessages extends ModifiableErrorMessages {
       case USE_REPEAT_INSTEAD_OF_WHILE => "Use 'repeat' instead of 'while'."
       case USE_UNDERLINE_NOT_MINUS => "Use an underline '_' here, not a hyphen."
       case USELESS_COMPUTATION => "The result of this expression is never used."
-      case USELESS_STATEMENT => "This statement seems useless: it has no effect."
+      case USELESS_STATEMENT | USELESS_STATEMENT_PART => "This statement seems useless: it has no effect."
       case USELESS_STMT_USE_AUG_ASSIGN => "This statement seems useless. Did you mean '%s='?"
       case VARARG_AFTER_KEYWORD_ARG => "The unpacking var-argument must precede the unpacking keyword-argument."
       case VARARG_NOT_ALLOWED => "Unpacking var/keyword-arguments are not allowed at this point."
