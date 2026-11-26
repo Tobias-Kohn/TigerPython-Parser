@@ -877,7 +877,9 @@ class Parser(val source: CharSequence,
           }
           stmt = parseSmallStatement(tokens)
         } else
-        if (parserState.rejectDeadCode && !parserState.evalMode) {
+        // As below, but note that `s.` is also parsed as the single name `s` (after reporting `NAME_EXPECTED`)
+        if (parserState.rejectDeadCode && !parserState.evalMode &&
+            !parserState.errorHandler.hasErrorInRange(stmt.pos, tokens.prevEndPos)) {
           if (extParserUtils.isCallableName(stmt.pos, name))
             parserState.reportError(stmt.pos, ErrorCode.CALL_NEEDS_PARENTHESES, name)
           else
@@ -886,54 +888,51 @@ class Parser(val source: CharSequence,
       } else
       if (parserState.rejectDeadCode && !parserState.evalMode) {
         stmt match {
+          case AstNode.ExprStatement(pos, _) if parserState.errorHandler.hasErrorInRange(pos, tokens.prevEndPos) =>
+            // The statement already contains an error.  The errors below are reported at the start of the statement,
+            // so they would take precedence over (and hide) that error, e.g. `NAME_EXPECTED` in `s.`.  The range
+            // covers the entire statement, since not every expression has an end position (e.g. `Compare`), and an
+            // incomplete one may end early (e.g. `x +`, where the right operand is missing).
           case AstNode.ExprStatement(pos, expr) if !hasSideEffect(expr) =>
             expr match {
               case binOp: AstNode.BinaryOp if binOp.left.isInstanceOf[AstNode.Name] =>
-                if (!parserState.errorHandler.hasErrorInRange(binOp.pos, binOp.endPos))
-                  parserState.reportError(pos, ErrorCode.USELESS_STMT_USE_AUG_ASSIGN, binOp.op)
-              case span: AstNode with AstNode.Span =>
-                if (!parserState.errorHandler.hasErrorInRange(span.pos, span.endPos))
-                  parserState.reportError(pos, ErrorCode.USELESS_STATEMENT)
+                parserState.reportError(pos, ErrorCode.USELESS_STMT_USE_AUG_ASSIGN, binOp.op)
               case _ =>
                 parserState.reportError(pos, ErrorCode.USELESS_STATEMENT)
             }
           case AstNode.ExprStatement(pos, expr) =>
             expr match {
               case binOp: AstNode.BinaryOp =>
-                if (!parserState.errorHandler.hasErrorInRange(binOp.pos, binOp.endPos)) {
-                  var errorCode = ErrorCode.USELESS_COMPUTATION
-                  parserState.hasSuspicionAtPos(binOp.pos) match {
-                    case Some(suspicion)
-                        if suspicion.code == ErrorCode.USE_UNDERLINE_NOT_MINUS &&
-                           binOp.op == BinOp.SUB &&
-                           binOp.left.isSingleName =>
-                      val first = binOp.left.asInstanceOf[AstNode.Name].name
-                      binOp.right match {
-                        case AstNode.Call(_, _, AstNode.Name(_, n), _, _, _, _) =>
-                          if (checkMinusNames(pos, first, n))
-                            errorCode = null
-                        case AstNode.Attribute(_, _, AstNode.Name(_, n), _) =>
-                          if (checkMinusNames(pos, first, n))
-                            errorCode = null
-                        case AstNode.Subscript(_, _, AstNode.Name(_, n), _) =>
-                          if (checkMinusNames(pos, first, n))
-                            errorCode = null
-                        case AstNode.Name(_, n) =>
-                          errorCode = ErrorCode.USELESS_STATEMENT
-                        case _ =>
-                      }
-                      suspicion.resolved()
-                    case _ =>
-                  }
-                  if (errorCode != null)
-                    parserState.reportError(pos, errorCode)
+                var errorCode = ErrorCode.USELESS_COMPUTATION
+                parserState.hasSuspicionAtPos(binOp.pos) match {
+                  case Some(suspicion)
+                      if suspicion.code == ErrorCode.USE_UNDERLINE_NOT_MINUS &&
+                         binOp.op == BinOp.SUB &&
+                         binOp.left.isSingleName =>
+                    val first = binOp.left.asInstanceOf[AstNode.Name].name
+                    binOp.right match {
+                      case AstNode.Call(_, _, AstNode.Name(_, n), _, _, _, _) =>
+                        if (checkMinusNames(pos, first, n))
+                          errorCode = null
+                      case AstNode.Attribute(_, _, AstNode.Name(_, n), _) =>
+                        if (checkMinusNames(pos, first, n))
+                          errorCode = null
+                      case AstNode.Subscript(_, _, AstNode.Name(_, n), _) =>
+                        if (checkMinusNames(pos, first, n))
+                          errorCode = null
+                      case AstNode.Name(_, n) =>
+                        errorCode = ErrorCode.USELESS_STATEMENT
+                      case _ =>
+                    }
+                    suspicion.resolved()
+                  case _ =>
                 }
+                if (errorCode != null)
+                  parserState.reportError(pos, errorCode)
               case _ if isUselessOutermostExpr(expr) =>
                 // Some inner part has a side effect, but the outermost operation is still useless, e.g. `f().play`
-                // where `f().play()` was meant.  The range check covers the entire statement (a `Compare` has no end
-                // position), so that this does not take precedence over a syntax error further along the statement.
-                if (!parserState.errorHandler.hasErrorInRange(pos, tokens.prevEndPos))
-                  parserState.reportError(pos, ErrorCode.USELESS_STATEMENT_PART)
+                // where `f().play()` was meant.
+                parserState.reportError(pos, ErrorCode.USELESS_STATEMENT_PART)
               case _ =>
             }
           case _ =>
