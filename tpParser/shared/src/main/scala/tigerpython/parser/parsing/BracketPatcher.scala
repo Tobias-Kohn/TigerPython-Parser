@@ -237,7 +237,8 @@ class BracketPatcher(val lexer: Lexer, val parserState: ParserState, tokenSource
         else
           TokenType.COLON
       var i = findEndOfExpression(bracketIndex+1)
-      while (tokenTypes(i).isOneOf(TokenType.COMMA, secondaryAllowed)) {
+      // `i` is `tokens.length` (and `tokenTypes(i)` is `null`) if the expression runs to the end of the input.
+      while (i < tokens.length && tokenTypes(i).isOneOf(TokenType.COMMA, secondaryAllowed)) {
         i = findEndOfExpression(i+1)
       }
       while (tokenTypes(i) == TokenType.NEWLINE && tokenTypes(i-1).isOneOf(TokenType.COMMA, TokenType.PLUS,

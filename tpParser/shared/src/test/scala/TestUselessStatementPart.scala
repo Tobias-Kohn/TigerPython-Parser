@@ -229,10 +229,9 @@ class TestUselessStatementPart extends FunSuite {
   // ---------------------------------------------------------------------------------------------------------------
   // Must not hide a genuine syntax error.  Errors are sorted by position, and USELESS_STATEMENT_PART is reported at
   // the start of the statement, so it would take precedence over a syntax error later in the same statement.
-  // (An unclosed '[' at the very end of the input, e.g. `arr[f(1)`, is not tested here: it currently crashes the
-  // parser's bracket patcher, with or without dead code checks.)
 
-  for (source <- Seq("s().", "arr[f(2)].", "s()[1", "arr[f(1)\nx = 1", "f(3) <", "3 == f(4", "f(3) < 5 +"))
+  for (source <- Seq("s().", "arr[f(1)", "arr[f(2)].", "s()[1", "arr[f(1)\nx = 1", "f(3) <", "3 == f(4",
+                     "f(3) < 5 +"))
     test("syntax error in '%s' is reported as it would be without dead code checks".format(source.replace("\n", "\\n"))) {
       val withCheck = check(source)
       val withoutCheck = check(source, rejectDeadCode = false)
