@@ -1,0 +1,8 @@
+# 6
+# USELESS_STATEMENT_PART
+def load_sound(data):
+    return Sound(data)
+
+load_sound("UklGRiQAAABXQVZF").play()
+load_sound("UklGRiQAAABXQVZF").volume = 5
+load_sound("UklGRiQAAABXQVZF").play

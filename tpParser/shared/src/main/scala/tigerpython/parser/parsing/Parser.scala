@@ -928,6 +928,12 @@ class Parser(val source: CharSequence,
                   if (errorCode != null)
                     parserState.reportError(pos, errorCode)
                 }
+              case _ if isUselessOutermostExpr(expr) =>
+                // Some inner part has a side effect, but the outermost operation is still useless, e.g. `f().play`
+                // where `f().play()` was meant.  The range check covers the entire statement (a `Compare` has no end
+                // position), so that this does not take precedence over a syntax error further along the statement.
+                if (!parserState.errorHandler.hasErrorInRange(pos, tokens.prevEndPos))
+                  parserState.reportError(pos, ErrorCode.USELESS_STATEMENT_PART)
               case _ =>
             }
           case _ =>
@@ -985,6 +991,20 @@ class Parser(val source: CharSequence,
       case cmp: AstNode.Compare if !hasSideEffect(cmp.left) =>
         cmp.comparators.exists(x => hasSideEffect(x._2))
       case _ => true
+    }
+
+  /**
+   * Returns `true` if the outermost operation of an expression is useless as a statement on its own, whether or not
+   * its operands have side effects: accessing an attribute or an item, or comparing two values, and then discarding
+   * the result.
+   *
+   * Strictly speaking, attribute and item access can have side effects in Python (e.g. through properties or
+   * `__getitem__`), which is why this is reported as `USELESS_STATEMENT_PART`, which clients can switch off on its own.
+   */
+  private def isUselessOutermostExpr(expr: AstNode.Expression): Boolean =
+    expr match {
+      case _: AstNode.Attribute | _: AstNode.Subscript | _: AstNode.Compare => true
+      case _ => false
     }
 
   private def splitSimpleName(name: String): Int = {

@@ -139,7 +139,7 @@ object FrenchMessages extends ModifiableErrorMessages {
         case USE_REPEAT_INSTEAD_OF_WHILE => "Utiliser 'repeat' au lieu de 'while'."
         case USE_SEMICOLON_INSTEAD_OF_COMMA => "Utiliser un point-virgule au lieu d'une virgule."
         case USELESS_COMPUTATION => "Le résultat de cette expression n'est jamais utilisé."
-        case USELESS_STATEMENT => "Cette instruction est inutile : elle n'a aucun effet."
+        case USELESS_STATEMENT | USELESS_STATEMENT_PART => "Cette instruction est inutile : elle n'a aucun effet."
         case USELESS_STMT_USE_AUG_ASSIGN => "Cette instruction est inutile. L'idée était-elle de faire '%s='?"
         case WRONG_BRACKET => "Mauvais type de parenthèses : il faut utiliser '%s' au lieu de '%s'."
         case WRONG_TOKEN => "Mauvais token : utiliser '%s' au lieu de '%s'."

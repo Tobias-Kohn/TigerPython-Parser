@@ -139,7 +139,7 @@ object RussianMessages extends ModifiableErrorMessages {
         case USE_NOT_INSTEAD_OF_FALSE => "Используйте 'not' вместо сравнения с '%s'."
         case USE_REPEAT_INSTEAD_OF_WHILE => "Используйте 'repeat' вместо 'while'."
         case USELESS_COMPUTATION => "Результат этого выражения нигде не используется."
-        case USELESS_STATEMENT => "Бесполезная инструкция: она ничего не делает."
+        case USELESS_STATEMENT | USELESS_STATEMENT_PART => "Бесполезная инструкция: она ничего не делает."
         case USELESS_STMT_USE_AUG_ASSIGN => "Бесполезная инструкция. Возможно, вы имели в виду '%s='?"
         case VARARG_AFTER_KEYWORD_ARG => "Распаковывающий параметр должен идти перед ключевым распаковывающим параметром."
         case VARARG_NOT_ALLOWED => "Распаковывающие параметры здесь запрещены."

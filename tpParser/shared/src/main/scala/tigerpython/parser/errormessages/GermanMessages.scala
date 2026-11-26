@@ -165,7 +165,7 @@ object GermanMessages extends ModifiableErrorMessages {
       case USE_SEMICOLON_INSTEAD_OF_COMMA => "Verwende einen Strichpunkt anstelle des Kommas."
       case USE_UNDERLINE_NOT_MINUS => "Verwende einen Unterstrich '_' anstelle des Bindestrichs '-' (Minuszeichen)."
       case USELESS_COMPUTATION => "Das Resultat dieses Ausdrucks wird nie verwendet."
-      case USELESS_STATEMENT => "Diese Anweisung scheint keine Wirkung zu haben."
+      case USELESS_STATEMENT | USELESS_STATEMENT_PART => "Diese Anweisung scheint keine Wirkung zu haben."
       case USELESS_STMT_USE_AUG_ASSIGN => "Diese Anweisung scheint keine Wirkung zu haben. Meinst du vielleicht '%s='?"
       case VARARG_AFTER_KEYWORD_ARG => "Das entpackende VAR-argument muss vor dem entpackenden Schlüsselwert-Argument stehen."
       case VARARG_NOT_ALLOWED => "Entpackende Argumente sind an dieser Stelle nicht erlaubt."
